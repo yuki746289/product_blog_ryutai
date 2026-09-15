@@ -13,7 +13,7 @@ jobs:
   import-site:
     if: github.ref == 'refs/heads/import-current-site'
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 40
     steps:
       - name: Checkout import branch
         uses: actions/checkout@v4
@@ -21,17 +21,20 @@ jobs:
           ref: import-current-site
           fetch-depth: 0
 
-      - name: Download current site from FTPS
+      - name: Install lftp
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq lftp
+
+      - name: Resolve FTP endpoint
+        shell: bash
         env:
           FTP_SERVER: ${{ secrets.FTP_SERVER }}
           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
         run: |
-          python3 - <<'PY'
-          import ftplib
+          python3 - <<'PY' >> "$GITHUB_ENV"
           import os
-          import pathlib
-          import shutil
           from urllib.parse import urlparse
 
           server = os.environ.get('FTP_SERVER', '').strip()
@@ -51,65 +54,45 @@ jobs:
               else:
                   host, port = server, 21
 
-          root = pathlib.Path('_ftp_snapshot')
-          if root.exists():
-              shutil.rmtree(root)
-          root.mkdir()
+          if not host:
+              raise SystemExit('FTP_SERVER does not contain a valid host')
 
-          ftp = ftplib.FTP_TLS(timeout=30)
-          # Decode FTP listings byte-for-byte so mixed legacy encodings cannot fail.
-          # Commands re-encode with latin-1, preserving the original server bytes.
-          ftp.encoding = 'latin-1'
-          ftp.connect(host, port)
-          ftp.login(username, password)
-          ftp.prot_p()
-          ftp.set_pasv(True)
-
-          def local_name(remote_name):
-              raw = remote_name.encode('latin-1')
-              for enc in ('utf-8', 'cp932', 'euc_jp', 'shift_jis'):
-                  try:
-                      decoded = raw.decode(enc)
-                      if decoded and '\x00' not in decoded:
-                          return pathlib.PurePosixPath(decoded).name
-                  except UnicodeDecodeError:
-                      pass
-              # Reversible fallback for any filename that uses an unknown legacy encoding.
-              return ''.join(chr(b) if 32 <= b < 127 and chr(b) not in '/\\' else f'_x{b:02X}_' for b in raw)
-
-          def download_dir(remote_dir, local_dir):
-              local_dir.mkdir(parents=True, exist_ok=True)
-              ftp.cwd(remote_dir)
-              entries = list(ftp.mlsd())
-              for name, facts in entries:
-                  if name in ('.', '..'):
-                      continue
-                  typ = facts.get('type', '')
-                  lname = local_name(name)
-                  if typ == 'dir':
-                      download_dir(name, local_dir / lname)
-                      ftp.cwd('..')
-                  elif typ == 'file':
-                      with open(local_dir / lname, 'wb') as f:
-                          ftp.retrbinary(f'RETR {name}', f.write)
-
-          try:
-              download_dir('/', root)
-          finally:
-              try:
-                  ftp.quit()
-              except Exception:
-                  pass
-
-          count = sum(1 for p in root.rglob('*') if p.is_file())
-          print(f'Downloaded files: {count}')
-          if count == 0:
-              raise SystemExit('No files downloaded')
-          if not (root / 'index.html').exists():
-              raise SystemExit('index.html was not downloaded')
+          print(f'FTP_HOST={host}')
+          print(f'FTP_PORT={port}')
           PY
 
+      - name: Download current site from FTPS
+        shell: bash
+        env:
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          rm -rf _ftp_snapshot
+          mkdir -p _ftp_snapshot
+
+          # Preserve remote path bytes as-is. The legacy site contains filenames
+          # created under more than one Japanese encoding, so no charset conversion
+          # is applied during the snapshot import.
+          lftp -u "$(printf '%s' "$FTP_USERNAME" | xargs)","$(printf '%s' "$FTP_PASSWORD" | xargs)" -p "$FTP_PORT" "$FTP_HOST" <<'LFTP'
+          set ftp:ssl-force true
+          set ftp:ssl-protect-data true
+          set ftp:passive-mode true
+          set net:timeout 30
+          set net:max-retries 3
+          set net:reconnect-interval-base 3
+          set xfer:clobber true
+          set ftp:charset ""
+          set file:charset ""
+          mirror --verbose=1 --parallel=6 --no-perms --no-umask / _ftp_snapshot
+          bye
+          LFTP
+
+          test -f _ftp_snapshot/index.html
+          echo "Downloaded files: $(find _ftp_snapshot -type f | wc -l)"
+          echo "Downloaded bytes: $(du -sb _ftp_snapshot | awk '{print $1}')"
+
       - name: Copy snapshot into repository root
+        shell: bash
         run: |
           shopt -s dotglob nullglob
           for item in _ftp_snapshot/*; do
@@ -123,6 +106,7 @@ jobs:
           rm -rf _ftp_snapshot
 
       - name: Commit imported production snapshot
+        shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
