@@ -1,0 +1,81 @@
+{
+  "version": "1.1",
+  "feature": "responsive_navigation",
+  "sourceSpecification": ".document/v1.1/00_index.md",
+  "processes": [
+    {"id":"S001","type":"MOD","name":"Init extension","description":"Keep existing initialization and add mobile navigation initialization.","targetFile":"menu.html","mainFunction":"Init"},
+    {"id":"S002","type":"ADD","name":"Mobile navigation initialization","description":"Create and bind mobile menu controls in the parent page.","targetFile":"menu.html","mainFunction":"refreshMobileNavigation"},
+    {"id":"S003","type":"ADD","name":"Mobile menu state update","description":"Synchronize parent body classes and ARIA state.","targetFile":"menu.html","mainFunction":"updateMobileMenuState"},
+    {"id":"S004","type":"KEEP","name":"Current category display","description":"Keep existing current-category menu display logic.","targetFile":"menu.html","mainFunction":"disp"},
+    {"id":"S005","type":"KEEP","name":"Iframe height adjustment","description":"Keep existing iframe height adjustment logic.","targetFile":"menu.html","mainFunction":"set_height"}
+  ],
+  "functions": [
+    {"id":"F001","type":"MOD","name":"Init","description":"Call disp and set_height as before, then call refreshMobileNavigation.","sourceStepId":"S001","targetFile":"menu.html","arguments":[],"returns":["O001"]},
+    {"id":"F002","type":"ADD","name":"refreshMobileNavigation","description":"Initialize mobile navigation controls on the parent document.","sourceStepId":"S002","targetFile":"menu.html","arguments":[],"returns":["O002"]},
+    {"id":"F003","type":"ADD","name":"updateMobileMenuState","description":"Update mobile menu open state and ARIA attributes.","sourceStepId":"S003","targetFile":"menu.html","arguments":["I001","I002","I003"],"returns":["O003"]},
+    {"id":"F004","type":"KEEP","name":"disp","description":"Display and emphasize the active menu category.","sourceStepId":"S004","targetFile":"menu.html","arguments":[],"returns":["O004"]},
+    {"id":"F005","type":"KEEP","name":"set_height","description":"Adjust parent menu iframe height using existing logic.","sourceStepId":"S005","targetFile":"menu.html","arguments":[],"returns":["O005"]}
+  ],
+  "helpers": [],
+  "inputs": [
+    {"id":"I001","type":"ADD","name":"parentDocument","dataType":"Document","description":"Parent page document passed to state update.","sourceStepId":"S003"},
+    {"id":"I002","type":"ADD","name":"menuButton","dataType":"HTMLButtonElement","description":"Hamburger button whose ARIA state is updated.","sourceStepId":"S003"},
+    {"id":"I003","type":"ADD","name":"isOpen","dataType":"boolean","description":"Requested mobile menu open state.","sourceStepId":"S003"}
+  ],
+  "outputs": [
+    {"id":"O001","type":"KEEP","name":"returnValue","dataType":"undefined","description":"Init returns no value.","sourceStepId":"S001"},
+    {"id":"O002","type":"ADD","name":"returnValue","dataType":"undefined","description":"refreshMobileNavigation returns no value.","sourceStepId":"S002"},
+    {"id":"O003","type":"ADD","name":"returnValue","dataType":"undefined","description":"updateMobileMenuState returns no value.","sourceStepId":"S003"},
+    {"id":"O004","type":"KEEP","name":"returnValue","dataType":"undefined","description":"disp returns no value.","sourceStepId":"S004"},
+    {"id":"O005","type":"KEEP","name":"returnValue","dataType":"undefined","description":"set_height returns no value.","sourceStepId":"S005"}
+  ],
+  "variables": [
+    {"id":"V001","type":"KEEP","name":"parent","dataType":"Window","description":"Browser-provided parent iframe window, already used by legacy code.","usedBy":["F002","F004","F005"]},
+    {"id":"V002","type":"KEEP","name":"document","dataType":"Document","description":"menu.html document, already used by legacy code.","usedBy":["F002","F004","F005"]}
+  ],
+  "logic": [
+    {"id":"L001","sourceStepId":"S001","type":"KEEP","summary":"Call disp.","targetFunction":"Init"},
+    {"id":"L002","sourceStepId":"S001","type":"KEEP","summary":"Call set_height.","targetFunction":"Init"},
+    {"id":"L003","sourceStepId":"S001","type":"ADD","summary":"Call refreshMobileNavigation.","targetFunction":"Init"},
+    {"id":"L004","sourceStepId":"S002","type":"ADD","summary":"Exit when menu.html is not framed.","targetFunction":"refreshMobileNavigation"},
+    {"id":"L005","sourceStepId":"S002","type":"ADD","summary":"Resolve parent document, body, header and menu iframe.","targetFunction":"refreshMobileNavigation"},
+    {"id":"L006","sourceStepId":"S002","type":"ADD","summary":"Set iframe accessibility title.","targetFunction":"refreshMobileNavigation"},
+    {"id":"L007","sourceStepId":"S002","type":"ADD","summary":"Create mobile menu button once.","targetFunction":"refreshMobileNavigation"},
+    {"id":"L008","sourceStepId":"S002","type":"ADD","summary":"Create three hamburger line spans with DOM APIs.","targetFunction":"refreshMobileNavigation"},
+    {"id":"L009","sourceStepId":"S002","type":"ADD","summary":"Create mobile menu overlay once.","targetFunction":"refreshMobileNavigation"},
+    {"id":"L010","sourceStepId":"S002","type":"ADD","summary":"Add mobile-nav-ready to parent body after successful initialization.","targetFunction":"refreshMobileNavigation"},
+    {"id":"L011","sourceStepId":"S002","type":"ADD","summary":"Bind button click and toggle current open state.","targetFunction":"refreshMobileNavigation"},
+    {"id":"L012","sourceStepId":"S002","type":"ADD","summary":"Bind overlay click to close.","targetFunction":"refreshMobileNavigation"},
+    {"id":"L013","sourceStepId":"S002","type":"ADD","summary":"Bind Escape key to close.","targetFunction":"refreshMobileNavigation"},
+    {"id":"L014","sourceStepId":"S002","type":"ADD","summary":"Bind resize to close at 768px or wider.","targetFunction":"refreshMobileNavigation"},
+    {"id":"L015","sourceStepId":"S002","type":"ADD","summary":"Initialize menu as closed.","targetFunction":"refreshMobileNavigation"},
+    {"id":"L016","sourceStepId":"S003","type":"ADD","summary":"Add or remove mobile-menu-open class.","targetFunction":"updateMobileMenuState"},
+    {"id":"L017","sourceStepId":"S003","type":"ADD","summary":"Synchronize aria-expanded.","targetFunction":"updateMobileMenuState"},
+    {"id":"L018","sourceStepId":"S003","type":"ADD","summary":"Synchronize aria-label.","targetFunction":"updateMobileMenuState"},
+    {"id":"L019","sourceStepId":"S004","type":"KEEP","summary":"Read parent menu_id.","targetFunction":"disp"},
+    {"id":"L020","sourceStepId":"S004","type":"KEEP","summary":"Display and emphasize current category.","targetFunction":"disp"},
+    {"id":"L021","sourceStepId":"S004","type":"KEEP","summary":"Display current subcategory when menu_id_2 exists.","targetFunction":"disp"},
+    {"id":"L022","sourceStepId":"S005","type":"KEEP","summary":"Use menu as parent iframe ID.","targetFunction":"set_height"},
+    {"id":"L023","sourceStepId":"S005","type":"KEEP","summary":"Check parent iframe existence.","targetFunction":"set_height"},
+    {"id":"L024","sourceStepId":"S005","type":"KEEP","summary":"Set iframe height from body scroll/offset height.","targetFunction":"set_height"}
+  ],
+  "styles": [
+    {"id":"STYLE001","type":"MOD","targetFile":"css/responsive.css","description":"Scope responsive overrides to max-width 767px, preserve PC/tablet layout, provide CSS fallback and off-canvas menu states activated by mobile-nav-ready/mobile-menu-open."}
+  ],
+  "constraints": [
+    "Smartphone breakpoint is max-width 767px.",
+    "PC/tablet breakpoint is min-width 768px.",
+    "Do not duplicate menu link definitions outside menu.html.",
+    "Do not change disp or set_height implementation.",
+    "Do not convert legacy Shift_JIS/CP932 HTML files to UTF-8.",
+    "Do not deploy to production FTP in this implementation step.",
+    "Do not insert external input through innerHTML."
+  ],
+  "invariants": [
+    "Existing public URLs remain unchanged.",
+    "Existing menu links remain unchanged.",
+    "PC/tablet left-side menu remains visible at 768px and wider.",
+    "Scientific body text and equation images remain unchanged.",
+    "JavaScript failure must not hide the page body."
+  ]
+}
