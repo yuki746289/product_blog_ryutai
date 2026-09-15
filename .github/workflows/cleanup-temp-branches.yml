@@ -1,0 +1,37 @@
+# Created: 2026-09-15 16:01 JST
+name: Cleanup Temporary Branches
+
+on:
+  push:
+    branches:
+      - develop
+    paths:
+      - '.github/workflows/cleanup-temp-branches.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    if: github.event.head_commit.message == 'chore: add temporary branch cleanup workflow'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout develop
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - name: Delete temporary setup branches
+        shell: bash
+        run: |
+          git push origin --delete \
+            noop \
+            tmp-ignore \
+            tmp-ignore-2 \
+            tmp-ignore-3 \
+            tmp-ignore-4 \
+            tmp-ignore-5 \
+            tmp-ignore-6 \
+            tmp-ignore-7
