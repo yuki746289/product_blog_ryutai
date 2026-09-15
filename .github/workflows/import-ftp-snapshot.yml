@@ -57,15 +57,25 @@ jobs:
           root.mkdir()
 
           ftp = ftplib.FTP_TLS(timeout=30)
-          # This legacy Japanese site stores some FTP path names in CP932/Shift-JIS.
-          ftp.encoding = 'cp932'
+          # Decode FTP listings byte-for-byte so mixed legacy encodings cannot fail.
+          # Commands re-encode with latin-1, preserving the original server bytes.
+          ftp.encoding = 'latin-1'
           ftp.connect(host, port)
           ftp.login(username, password)
           ftp.prot_p()
           ftp.set_pasv(True)
 
-          def safe_name(name):
-              return pathlib.PurePosixPath(name).name
+          def local_name(remote_name):
+              raw = remote_name.encode('latin-1')
+              for enc in ('utf-8', 'cp932', 'euc_jp', 'shift_jis'):
+                  try:
+                      decoded = raw.decode(enc)
+                      if decoded and '\x00' not in decoded:
+                          return pathlib.PurePosixPath(decoded).name
+                  except UnicodeDecodeError:
+                      pass
+              # Reversible fallback for any filename that uses an unknown legacy encoding.
+              return ''.join(chr(b) if 32 <= b < 127 and chr(b) not in '/\\' else f'_x{b:02X}_' for b in raw)
 
           def download_dir(remote_dir, local_dir):
               local_dir.mkdir(parents=True, exist_ok=True)
@@ -75,11 +85,12 @@ jobs:
                   if name in ('.', '..'):
                       continue
                   typ = facts.get('type', '')
+                  lname = local_name(name)
                   if typ == 'dir':
-                      download_dir(name, local_dir / safe_name(name))
+                      download_dir(name, local_dir / lname)
                       ftp.cwd('..')
                   elif typ == 'file':
-                      with open(local_dir / safe_name(name), 'wb') as f:
+                      with open(local_dir / lname, 'wb') as f:
                           ftp.retrbinary(f'RETR {name}', f.write)
 
           try:
