@@ -28,8 +28,8 @@ jobs:
           from urllib.parse import urlparse
 
           server = os.environ.get("FTP_SERVER", "").strip()
-          username = os.environ.get("FTP_USERNAME", "")
-          password = os.environ.get("FTP_PASSWORD", "")
+          username = os.environ.get("FTP_USERNAME", "").strip()
+          password = os.environ.get("FTP_PASSWORD", "").strip()
 
           missing = [name for name, value in {
               "FTP_SERVER": server,
