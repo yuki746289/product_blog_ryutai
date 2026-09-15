@@ -1,4 +1,4 @@
-name: FTP Readonly Connection Test
+name: FTP Connection Test
 
 on:
   push:
@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 3
     steps:
-      - name: Test FTPS login and list root directory
+      - name: Test FTPS login, listing, upload and delete
         shell: bash
         env:
           FTP_SERVER: ${{ secrets.FTP_SERVER }}
@@ -23,6 +23,7 @@ jobs:
         run: |
           python3 - <<'PY'
           import ftplib
+          import io
           import os
           import sys
           from urllib.parse import urlparse
@@ -55,12 +56,17 @@ jobs:
               print("FTP_SERVER does not contain a valid host name.")
               sys.exit(2)
 
+          test_name = "__chatgpt_ftps_connection_test__.txt"
+          payload = b"temporary FTPS deployment test\n"
           ftp = ftplib.FTP_TLS(timeout=20)
+          uploaded = False
+
           try:
               ftp.connect(host, port)
               ftp.login(username, password)
               ftp.prot_p()
               ftp.set_pasv(True)
+
               current_dir = ftp.pwd()
               entries = ftp.nlst()
               names = {entry.rstrip('/').split('/')[-1].lower() for entry in entries}
@@ -69,10 +75,29 @@ jobs:
               print(f"Login directory: {current_dir}")
               print(f"Directory listing: OK ({len(entries)} entries)")
               print("index.html present: " + ("YES" if "index.html" in names else "NO"))
+
+              ftp.storbinary(f"STOR {test_name}", io.BytesIO(payload))
+              uploaded = True
+              if test_name not in {entry.rstrip('/').split('/')[-1] for entry in ftp.nlst()}:
+                  raise RuntimeError("temporary upload was not visible after STOR")
+              print("Temporary upload: OK")
+
+              ftp.delete(test_name)
+              uploaded = False
+              if test_name in {entry.rstrip('/').split('/')[-1] for entry in ftp.nlst()}:
+                  raise RuntimeError("temporary file still exists after delete")
+              print("Temporary delete: OK")
+              print("FTPS deployment capability: OK")
           except Exception as exc:
-              print(f"FTPS connection test failed: {type(exc).__name__}: {exc}")
+              print(f"FTPS connection/deployment test failed: {type(exc).__name__}: {exc}")
               sys.exit(1)
           finally:
+              if uploaded:
+                  try:
+                      ftp.delete(test_name)
+                      print("Cleanup after failure: OK")
+                  except Exception:
+                      print("WARNING: cleanup of temporary test file failed")
               try:
                   ftp.quit()
               except Exception:
