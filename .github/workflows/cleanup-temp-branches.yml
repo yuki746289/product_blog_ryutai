@@ -1,4 +1,5 @@
 # Created: 2026-09-15 16:01 JST
+# Updated: 2026-09-15 16:03 JST
 name: Cleanup Temporary Branches
 
 on:
@@ -13,7 +14,6 @@ permissions:
 
 jobs:
   cleanup:
-    if: github.event.head_commit.message == 'chore: add temporary branch cleanup workflow'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -26,7 +26,8 @@ jobs:
       - name: Delete temporary setup branches
         shell: bash
         run: |
-          git push origin --delete \
+          set -euo pipefail
+          for branch in \
             noop \
             tmp-ignore \
             tmp-ignore-2 \
@@ -35,3 +36,11 @@ jobs:
             tmp-ignore-5 \
             tmp-ignore-6 \
             tmp-ignore-7
+          do
+            if git ls-remote --exit-code --heads origin "$branch" >/dev/null 2>&1; then
+              echo "Deleting $branch"
+              git push origin --delete "$branch"
+            else
+              echo "Already absent: $branch"
+            fi
+          done
