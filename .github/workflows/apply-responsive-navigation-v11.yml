@@ -6,6 +6,7 @@ on:
       - develop
     paths:
       - '.github/workflows/apply-responsive-navigation-v11.yml'
+      - '.github/scripts/apply-responsive-navigation-v11.py'
 
 permissions:
   contents: write
@@ -21,22 +22,22 @@ jobs:
           ref: develop
           fetch-depth: 0
 
-      - name: Apply implementation
+      - name: Apply implementation repair
         run: python3 .github/scripts/apply-responsive-navigation-v11.py
 
       - name: Show implementation diff
         run: |
-          git diff -- menu.html css/responsive.css
+          git diff -- menu.html
           git status --short
 
-      - name: Commit implementation
+      - name: Commit implementation repair
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add menu.html css/responsive.css
+          git add menu.html
           if git diff --cached --quiet; then
-            echo "No implementation changes to commit."
+            echo "No implementation repair changes to commit."
           else
-            git commit -m "feat: add smartphone hamburger navigation"
+            git commit -m "fix: remove duplicated legacy Init fragment"
             git push origin HEAD:develop
           fi
