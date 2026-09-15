@@ -1,4 +1,5 @@
 # Created: 2026-09-15 15:54 JST
+# Updated: 2026-09-15 15:56 JST
 name: Apply Responsive Layout Patch
 
 on:
@@ -23,7 +24,7 @@ jobs:
           ref: develop
           fetch-depth: 0
 
-      - name: Apply viewport and responsive CSS
+      - name: Apply viewport and responsive stylesheet
         shell: bash
         run: |
           python3 - <<'PY'
@@ -31,10 +32,8 @@ jobs:
           from pathlib import Path
 
           VIEWPORT = '<meta name="viewport" content="width=device-width, initial-scale=1.0">'
-          CSS_START = '/* responsive-20260915 start */'
-          CSS_END = '/* responsive-20260915 end */'
-          GRAPH_START = '/* responsive-graph-20260915 start */'
-          GRAPH_END = '/* responsive-graph-20260915 end */'
+          RESPONSIVE_IMPORT = '@import url("responsive.css");'
+          GRAPH_MARKER = 'responsive-graph-20260915'
 
           def decode_file(path):
               data = path.read_bytes()
@@ -45,16 +44,14 @@ jobs:
                       pass
               raise RuntimeError(f'Unsupported text encoding: {path}')
 
-          def write_preserving_encoding(path, text, enc):
+          def write_file(path, text, enc):
               path.write_bytes(text.encode(enc))
 
           html_files = sorted(Path('.').rglob('*.html'))
           changed_html = 0
-          encoding_before = {}
 
           for path in html_files:
               text, enc = decode_file(path)
-              encoding_before[path.as_posix()] = enc
               original = text
               newline = '\r\n' if '\r\n' in text else '\n'
 
@@ -62,213 +59,42 @@ jobs:
                   head = re.search(r'<head\b[^>]*>', text, re.I)
                   if not head:
                       raise RuntimeError(f'<head> not found: {path}')
-                  insert = newline + '\t' + VIEWPORT
-                  text = text[:head.end()] + insert + text[head.end():]
+                  text = text[:head.end()] + newline + '\t' + VIEWPORT + text[head.end():]
 
-              # The two standalone canvas demos do not use lib.css. Keep the
-              # drawing coordinate system unchanged and make the canvas area
-              # horizontally scrollable on narrow screens instead of scaling it.
-              if path.as_posix() in ('graph.html', 'graph_2.html') and GRAPH_START not in text:
+              if path.as_posix() in ('graph.html', 'graph_2.html') and GRAPH_MARKER not in text:
                   style_end = re.search(r'</style\s*>', text, re.I)
                   if not style_end:
                       raise RuntimeError(f'</style> not found: {path}')
                   graph_css = (
-                      newline + newline + GRAPH_START + newline
+                      newline + newline
+                      + '/* responsive-graph-20260915 start */' + newline
                       + '@media screen and (max-width: 820px) {' + newline
                       + '\tbody { margin: 0; padding: 12px; overflow-x: hidden; }' + newline
                       + '\t#canvas { width: 100%; max-width: 800px; overflow-x: auto; overflow-y: hidden; }' + newline
                       + '\tcanvas { max-width: none; }' + newline
                       + '}' + newline
-                      + GRAPH_END + newline
+                      + '/* responsive-graph-20260915 end */' + newline
                   )
                   text = text[:style_end.start()] + graph_css + text[style_end.start():]
 
               if text != original:
-                  write_preserving_encoding(path, text, enc)
+                  write_file(path, text, enc)
                   changed_html += 1
 
           css_path = Path('css/lib.css')
           css, css_enc = decode_file(css_path)
-          if CSS_START not in css:
+          if RESPONSIVE_IMPORT not in css:
               newline = '\r\n' if '\r\n' in css else '\n'
-              responsive_css = r'''
-
-/* responsive-20260915 start */
-/* Mobile-safe defaults. Desktop dimensions remain unchanged. */
-img {
-	max-width: 100%;
-	height: auto;
-}
-
-iframe {
-	max-width: 100%;
-}
-
-pre {
-	max-width: 100%;
-	overflow-x: auto;
-	-webkit-overflow-scrolling: touch;
-}
-
-@media screen and (max-width: 768px) {
-	html,
-	body {
-		width: 100%;
-		min-width: 0;
-	}
-
-	body {
-		font-size: 16px;
-		line-height: 1.6em;
-		letter-spacing: 0.04em;
-		overflow-x: hidden;
-	}
-
-	div#wrapper,
-	div#header,
-	div#main,
-	div#content,
-	div#sub,
-	div#footer {
-		width: 100%;
-		max-width: 100%;
-	}
-
-	div#wrapper,
-	div#sub-wrapper {
-		background-image: none;
-	}
-
-	div#main,
-	div#image,
-	div#content,
-	div#content-text,
-	div#content-main,
-	div#content-attend {
-		float: none;
-	}
-
-	div#main,
-	div#image,
-	div#content {
-		width: 100%;
-	}
-
-	div#content {
-		margin-top: 0;
-	}
-
-	div#content-text {
-		width: auto;
-		margin: 20px 12px 10px 12px;
-	}
-
-	div#content-main {
-		width: auto;
-		margin: 0 12px;
-	}
-
-	div#content-attend {
-		width: auto;
-		margin: 20px 12px 0 12px;
-	}
-
-	div#header h1 {
-		float: none;
-		padding: 16px 12px 8px 12px;
-	}
-
-	div#header h1 a {
-		font-size: 1.35em;
-		overflow-wrap: anywhere;
-	}
-
-	div#header ul {
-		margin-left: 12px !important;
-		margin-right: 12px;
-	}
-
-	div#image {
-		height: auto;
-		min-height: 0;
-		padding-bottom: 12px;
-		background-size: cover;
-		background-position: center top;
-	}
-
-	div#image p {
-		font-size: 1.4em;
-		padding: 14px 12px 0 12px;
-		text-indent: 0;
-	}
-
-	div#content-text h2,
-	div#content-main h2,
-	div#content-attend h2 {
-		margin-left: 0;
-		margin-right: 0;
-		padding-left: 12px;
-	}
-
-	p {
-		padding-left: 0.75em;
-		padding-right: 0.75em;
-		overflow-wrap: anywhere;
-	}
-
-	div#sub {
-		width: 100%;
-		overflow: visible;
-		margin-top: 24px;
-	}
-
-	div#sub iframe#menu {
-		display: block;
-		width: 100% !important;
-		max-width: 100%;
-	}
-
-	div#sub-menu {
-		width: auto;
-		padding-top: 10px;
-	}
-
-	div.sub-text {
-		width: auto;
-		margin: 20px 12px 0 12px;
-	}
-
-	div#sub-menu li {
-		padding-left: 12px;
-		padding-right: 12px;
-	}
-
-	div#footer {
-		margin-top: 24px;
-	}
-
-	table {
-		display: block;
-		max-width: 100%;
-		overflow-x: auto;
-		-webkit-overflow-scrolling: touch;
-	}
-
-	input,
-	textarea,
-	select {
-		max-width: 100%;
-		box-sizing: border-box;
-	}
-}
-/* responsive-20260915 end */
-'''.replace('\n', newline)
-              css += responsive_css
-              write_preserving_encoding(css_path, css, css_enc)
+              charset = re.search(r'@charset\s+["\'][^"\']+["\']\s*;', css, re.I)
+              if charset:
+                  css = css[:charset.end()] + newline + RESPONSIVE_IMPORT + css[charset.end():]
+              else:
+                  css = RESPONSIVE_IMPORT + newline + css
+              write_file(css_path, css, css_enc)
 
           print(f'HTML files changed: {changed_html}')
-          print(f'CSS encoding preserved: {css_enc}')
           print(f'Total HTML files: {len(html_files)}')
+          print(f'lib.css encoding: {css_enc}')
           PY
 
       - name: Validate responsive patch
@@ -292,41 +118,34 @@ pre {
           encodings = Counter()
           missing_viewport = []
           duplicate_viewport = []
-          missing_head = []
 
           for path in html_files:
               text, enc = decode_file(path)
               encodings[enc] += 1
-              if not re.search(r'<head\b', text, re.I):
-                  missing_head.append(path.as_posix())
               count = len(re.findall(r'<meta\b[^>]*\bname\s*=\s*["\']viewport["\']', text, re.I))
               if count == 0:
                   missing_viewport.append(path.as_posix())
               elif count > 1:
                   duplicate_viewport.append(path.as_posix())
 
-          css, css_enc = decode_file(Path('css/lib.css'))
-          checks = {
-              'html_total': len(html_files),
-              'encodings': dict(encodings),
-              'missing_viewport': missing_viewport,
-              'duplicate_viewport': duplicate_viewport,
-              'missing_head': missing_head,
-              'css_encoding': css_enc,
-              'responsive_marker_count': css.count('/* responsive-20260915 start */'),
-              'media_query_count': len(re.findall(r'@media\b', css, re.I)),
-              'max_width_rule_count': len(re.findall(r'\bmax-width\s*:', css, re.I)),
-          }
-          print(checks)
+          lib_css, css_enc = decode_file(Path('css/lib.css'))
+          responsive_css = Path('css/responsive.css').read_text(encoding='utf-8')
 
-          assert len(html_files) == 192, f'Unexpected HTML count: {len(html_files)}'
+          print('HTML total:', len(html_files))
+          print('Encodings:', dict(encodings))
+          print('Missing viewport:', missing_viewport)
+          print('Duplicate viewport:', duplicate_viewport)
+          print('lib.css encoding:', css_enc)
+          print('Responsive import count:', lib_css.count('@import url("responsive.css");'))
+          print('Responsive media queries:', len(re.findall(r'@media\b', responsive_css, re.I)))
+
+          assert len(html_files) == 192
           assert encodings == Counter({'cp932': 190, 'utf-8': 2}), encodings
           assert not missing_viewport, missing_viewport
           assert not duplicate_viewport, duplicate_viewport
-          assert not missing_head, missing_head
-          assert checks['responsive_marker_count'] == 1
-          assert checks['media_query_count'] >= 1
-          assert checks['max_width_rule_count'] >= 1
+          assert lib_css.count('@import url("responsive.css");') == 1
+          assert css_enc == 'cp932'
+          assert len(re.findall(r'@media\b', responsive_css, re.I)) >= 1
           assert 'responsive-graph-20260915 start' in decode_file(Path('graph.html'))[0]
           assert 'responsive-graph-20260915 start' in decode_file(Path('graph_2.html'))[0]
           PY
@@ -355,24 +174,20 @@ pre {
           trap 'kill $SERVER_PID 2>/dev/null || true' EXIT
           sleep 2
 
-          "$CHROME" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage \
-            --hide-scrollbars --window-size=375,812 \
-            --screenshot=/tmp/responsive-smoke/index-mobile.png \
+          "$CHROME" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars \
+            --window-size=375,812 --screenshot=/tmp/responsive-smoke/index-mobile.png \
             http://127.0.0.1:8000/index.html
 
-          "$CHROME" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage \
-            --hide-scrollbars --window-size=375,812 \
-            --screenshot=/tmp/responsive-smoke/physics-mobile.png \
+          "$CHROME" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars \
+            --window-size=375,812 --screenshot=/tmp/responsive-smoke/physics-mobile.png \
             http://127.0.0.1:8000/physics/physics.html
 
-          "$CHROME" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage \
-            --hide-scrollbars --window-size=375,812 \
-            --screenshot=/tmp/responsive-smoke/fem-mobile.png \
+          "$CHROME" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars \
+            --window-size=375,812 --screenshot=/tmp/responsive-smoke/fem-mobile.png \
             http://127.0.0.1:8000/fem/fem.html
 
-          "$CHROME" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage \
-            --hide-scrollbars --window-size=1365,768 \
-            --screenshot=/tmp/responsive-smoke/index-desktop.png \
+          "$CHROME" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars \
+            --window-size=1365,768 --screenshot=/tmp/responsive-smoke/index-desktop.png \
             http://127.0.0.1:8000/index.html
 
           test -s /tmp/responsive-smoke/index-mobile.png
