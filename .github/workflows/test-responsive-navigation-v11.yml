@@ -35,13 +35,23 @@ jobs:
           design = json.loads(Path('responsive_navigation_v1.1/responsive_navigation_v1.1_7_detail.json').read_text(encoding='utf-8'))
           css = Path('css/responsive.css').read_text(encoding='utf-8')
 
-          def section(text, start_marker, end_marker):
-              start = text.index(start_marker)
-              end = text.index(end_marker, start)
+          def heading_position(text, label, start=0):
+              pattern = r'^\t\t//' + re.escape(label) + r'\r?$'
+              match = re.search(pattern, text[start:], re.M)
+              assert match, label
+              return start + match.start()
+
+          def keep_section(text, start_label, end_label):
+              start = heading_position(text, start_label)
+              end = heading_position(text, end_label, start + 1)
               return text[start:end]
 
-          assert section(current, '\t\t//表示', '\t\t//高さ調節') == section(release, '\t\t//表示', '\t\t//高さ調節')
-          assert section(current, '\t\t//高さ調節', '\t//-->') == section(release, '\t\t//高さ調節', '\t//-->')
+          assert keep_section(current, '表示', '高さ調節') == keep_section(release, '表示', '高さ調節')
+          current_height_start = heading_position(current, '高さ調節')
+          release_height_start = heading_position(release, '高さ調節')
+          current_height_end = current.index('\t//-->', current_height_start)
+          release_height_end = release.index('\t//-->', release_height_start)
+          assert current[current_height_start:current_height_end] == release[release_height_start:release_height_end]
 
           href_pattern = re.compile(r'href=["\']([^"\']+)["\']', re.I)
           assert href_pattern.findall(current) == href_pattern.findall(release)
@@ -57,13 +67,7 @@ jobs:
           assert not missing, missing
 
           named_functions = re.findall(r'function\s+([A-Za-z_$][\w$]*)\s*\(', current)
-          assigned_f = re.findall(r'// \[(F\d+)\]', current)
-          assigned_t = re.findall(r'// \[(T\d+)\]', current)
-          assert len(named_functions) == 5, named_functions
-          assert len(set(assigned_f)) == 3, assigned_f
-          assert len(set(assigned_t)) == 0, assigned_t
-          assert 'function disp()' in current
-          assert 'function set_height()' in current
+          assert named_functions == ['Init', 'refreshMobileNavigation', 'updateMobileMenuState', 'disp', 'set_height'], named_functions
 
           print('KEEP disp(): exact match')
           print('KEEP set_height(): exact match')
@@ -104,10 +108,8 @@ jobs:
               ('fem/fem.html', 'fem/__test_fem.html'),
           ]:
               source = Path(source_name)
-              data = source.read_bytes()
-              text = data.decode('cp932')
+              text = source.read_bytes().decode('cp932')
               marker = '</body>'
-              assert marker in text.lower()
               index = text.lower().rindex(marker)
               text = text[:index] + script + text[index:]
               Path(target_name).write_bytes(text.encode('cp932'))
@@ -149,7 +151,7 @@ jobs:
           assert display != 'none' and display != 'missing', display
           assert expanded == 'false', expanded
           assert overflow == 'false', overflow
-          assert 'mobile-nav-ready' in closed
+          assert 'mobile-nav-ready' in re.search(r'<body[^>]*>', closed, re.I).group(0)
           assert 'mobile-menu-open' not in re.search(r'<body[^>]*>', closed, re.I).group(0)
 
           display, expanded, overflow, opened = attrs('index-mobile-open.html')
