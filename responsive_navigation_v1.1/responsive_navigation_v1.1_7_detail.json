@@ -1,0 +1,95 @@
+{
+  "version": "1.1",
+  "summary": "スマートフォン幅767px以下で既存menu.html iframeをオフキャンバス型ハンバーガーメニューとして再利用し、768px以上のPC/タブレット表示と既存ナビゲーションを維持する。",
+  "target": "responsive_navigation",
+  "features": [
+    {"id":"L001","sourceStepId":"S001","type":"KEEP","summary":"既存disp()呼び出しを維持する。","targetFunction":"Init"},
+    {"id":"L002","sourceStepId":"S001","type":"KEEP","summary":"既存set_height()呼び出しを維持する。","targetFunction":"Init"},
+    {"id":"L003","sourceStepId":"S001","type":"ADD","summary":"Init()末尾からrefreshMobileNavigation()を呼び出す。","targetFunction":"Init"},
+    {"id":"L004","sourceStepId":"S002","type":"ADD","summary":"menu.html単体表示時はモバイルナビ初期化を行わず終了する。","targetFunction":"refreshMobileNavigation"},
+    {"id":"L005","sourceStepId":"S002","type":"ADD","summary":"親document、body、header、menu iframeを取得して前提条件を確認する。","targetFunction":"refreshMobileNavigation"},
+    {"id":"L006","sourceStepId":"S002","type":"ADD","summary":"menu iframeへアクセシビリティ用titleを設定する。","targetFunction":"refreshMobileNavigation"},
+    {"id":"L007","sourceStepId":"S002","type":"ADD","summary":"親ページへモバイルメニューボタンを一度だけ生成する。","targetFunction":"refreshMobileNavigation"},
+    {"id":"L008","sourceStepId":"S002","type":"ADD","summary":"DOM APIでハンバーガー3本線を生成する。","targetFunction":"refreshMobileNavigation"},
+    {"id":"L009","sourceStepId":"S002","type":"ADD","summary":"親ページへ背景オーバーレイを一度だけ生成する。","targetFunction":"refreshMobileNavigation"},
+    {"id":"L010","sourceStepId":"S002","type":"ADD","summary":"初期化成功後に親bodyへmobile-nav-readyを付与する。","targetFunction":"refreshMobileNavigation"},
+    {"id":"L011","sourceStepId":"S002","type":"ADD","summary":"ボタン押下で現在の開閉状態を反転して更新する。","targetFunction":"refreshMobileNavigation"},
+    {"id":"L012","sourceStepId":"S002","type":"ADD","summary":"オーバーレイ押下でメニューを閉じる。","targetFunction":"refreshMobileNavigation"},
+    {"id":"L013","sourceStepId":"S002","type":"ADD","summary":"Escapeキーでメニューを閉じる。","targetFunction":"refreshMobileNavigation"},
+    {"id":"L014","sourceStepId":"S002","type":"ADD","summary":"768px以上へのリサイズ時にメニューを閉じる。","targetFunction":"refreshMobileNavigation"},
+    {"id":"L015","sourceStepId":"S002","type":"ADD","summary":"初期状態を閉状態へ同期する。","targetFunction":"refreshMobileNavigation"},
+    {"id":"L016","sourceStepId":"S003","type":"ADD","summary":"mobile-menu-openクラスを開閉状態に応じて追加・削除する。","targetFunction":"updateMobileMenuState"},
+    {"id":"L017","sourceStepId":"S003","type":"ADD","summary":"aria-expandedを開閉状態と同期する。","targetFunction":"updateMobileMenuState"},
+    {"id":"L018","sourceStepId":"S003","type":"ADD","summary":"aria-labelを開閉状態と同期する。","targetFunction":"updateMobileMenuState"},
+    {"id":"L019","sourceStepId":"S004","type":"KEEP","summary":"親menu_idを取得する既存処理を維持する。","targetFunction":"disp"},
+    {"id":"L020","sourceStepId":"S004","type":"KEEP","summary":"現在カテゴリの表示・強調処理を維持する。","targetFunction":"disp"},
+    {"id":"L021","sourceStepId":"S004","type":"KEEP","summary":"menu_id_2に対応する下位カテゴリ表示を維持する。","targetFunction":"disp"},
+    {"id":"L022","sourceStepId":"S005","type":"KEEP","summary":"親iframe ID menuの使用を維持する。","targetFunction":"set_height"},
+    {"id":"L023","sourceStepId":"S005","type":"KEEP","summary":"親iframe存在確認を維持する。","targetFunction":"set_height"},
+    {"id":"L024","sourceStepId":"S005","type":"KEEP","summary":"既存のiframe高さ調整を維持する。","targetFunction":"set_height"},
+    {"id":"STYLE001","sourceStepId":"S001","type":"MOD","summary":"responsive.cssを767px以下へ限定し、ready/openクラスによるスマホ用ドロワー表示へ変更する。","targetFunction":null}
+  ],
+  "functions": [
+    {"id":"F001","type":"MOD","name":"Init","description":"既存disp()・set_height()の後にrefreshMobileNavigation()を追加呼び出しする。","targetFile":"menu.html"},
+    {"id":"F002","type":"ADD","name":"refreshMobileNavigation","description":"親ページへスマホ用メニュー操作要素を生成しイベントを登録する。","targetFile":"menu.html"},
+    {"id":"F003","type":"ADD","name":"updateMobileMenuState","description":"親bodyクラスとメニューボタンARIA属性を開閉状態と同期する。","targetFile":"menu.html"},
+    {"id":"F004","type":"KEEP","name":"disp","description":"既存カテゴリ表示処理。変更しない。","targetFile":"menu.html"},
+    {"id":"F005","type":"KEEP","name":"set_height","description":"既存iframe高さ調整処理。変更しない。","targetFile":"menu.html"}
+  ],
+  "variables": [
+    {"id":"I001","type":"ADD","name":"parentDocument","dataType":"Document","description":"親ページDOM。F003引数。"},
+    {"id":"I002","type":"ADD","name":"menuButton","dataType":"HTMLButtonElement","description":"ARIA状態を更新するボタン。F003引数。"},
+    {"id":"I003","type":"ADD","name":"isOpen","dataType":"boolean","description":"要求するメニュー開閉状態。F003引数。"},
+    {"id":"O001","type":"KEEP","name":"returnValue","dataType":"undefined","description":"Initは値を返さない。"},
+    {"id":"O002","type":"ADD","name":"returnValue","dataType":"undefined","description":"refreshMobileNavigationは値を返さない。"},
+    {"id":"O003","type":"ADD","name":"returnValue","dataType":"undefined","description":"updateMobileMenuStateは値を返さない。"},
+    {"id":"O004","type":"KEEP","name":"returnValue","dataType":"undefined","description":"dispは既存どおり値を返さない。"},
+    {"id":"O005","type":"KEEP","name":"returnValue","dataType":"undefined","description":"set_heightは既存どおり値を返さない。"},
+    {"id":"V001","type":"KEEP","name":"parent","dataType":"Window","description":"iframe親ウィンドウ。既存参照を維持。"},
+    {"id":"V002","type":"KEEP","name":"document","dataType":"Document","description":"menu.html自身のDocument。既存参照を維持。"}
+  ],
+  "processes": [
+    {"id":"S001","type":"MOD","name":"Init初期化拡張"},
+    {"id":"S002","type":"ADD","name":"スマートフォンナビゲーション初期化"},
+    {"id":"S003","type":"ADD","name":"メニュー開閉状態更新"},
+    {"id":"S004","type":"KEEP","name":"既存カテゴリ表示"},
+    {"id":"S005","type":"KEEP","name":"既存iframe高さ調整"}
+  ],
+  "deleted_items": {
+    "features": [],
+    "functions": [],
+    "inputs": [],
+    "outputs": [],
+    "variables": []
+  },
+  "implementationTargets": [
+    {"file":"menu.html","encoding":"CP932/Shift_JISを維持","changes":["F001","F002","F003","L003-L018"]},
+    {"file":"css/responsive.css","encoding":"UTF-8を維持","changes":["STYLE001"]}
+  ],
+  "digest": {"ADD":25,"MOD":3,"DEL":0,"KEEP":17},
+  "constraints": [
+    "スマートフォン判定はmax-width: 767pxとする。",
+    "768px以上はPC/タブレット表示とし、既存左サイドメニューを維持する。",
+    "メニューリンク定義をmenu.html以外へ複製しない。",
+    "disp()とset_height()の実装を変更しない。",
+    "menu.htmlのCP932/Shift_JIS系文字コードをUTF-8へ変換しない。",
+    "外部入力をinnerHTMLへ挿入しない。",
+    "本工程では本番FTPへデプロイしない。"
+  ],
+  "invariants": [
+    "既存公開URLを変更しない。",
+    "既存menu.htmlのリンク先を変更しない。",
+    "768px以上のPC/タブレット左サイドメニューを維持する。",
+    "科学技術本文と数式画像を変更しない。",
+    "JavaScript初期化失敗時にも本文を非表示にしない。"
+  ],
+  "confirmation": {
+    "result":"PASS",
+    "notes":[
+      "基本設計S001-S005との対応を確認済み。",
+      "現行menu.htmlのInit/disp/set_heightと照合し、変更対象はInitのみ、新規関数はF002/F003と確認済み。",
+      "詳細設計の集計誤りをADD 25 / MOD 3 / KEEP 17 / DEL 0へ補正済み。",
+      "Markdownと本JSONのID・変更区分を一致させた。"
+    ]
+  }
+}
