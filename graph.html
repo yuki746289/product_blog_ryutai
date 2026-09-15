@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="UTF-8">
 <title>canvasで図形を描く</title>
 <script src="graph.js"></script>
@@ -29,6 +30,15 @@
 			top: 0px;
 		}
  -->
+
+
+/* responsive-graph-20260915 start */
+@media screen and (max-width: 820px) {
+	body { margin: 0; padding: 12px; overflow-x: hidden; }
+	#canvas { width: 100%; max-width: 800px; overflow-x: auto; overflow-y: hidden; }
+	canvas { max-width: none; }
+}
+/* responsive-graph-20260915 end */
 </style>
 
 </head>
