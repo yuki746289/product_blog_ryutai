@@ -1,0 +1,169 @@
+/* Created: 2026-09-15 15:56 JST */
+/* Responsive overrides for the legacy fixed-width layout. */
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+iframe {
+	max-width: 100%;
+}
+
+pre {
+	max-width: 100%;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+@media screen and (max-width: 768px) {
+	html,
+	body {
+		width: 100%;
+		min-width: 0;
+	}
+
+	body {
+		font-size: 16px;
+		line-height: 1.6em;
+		letter-spacing: 0.04em;
+		overflow-x: hidden;
+	}
+
+	div#wrapper,
+	div#header,
+	div#main,
+	div#content,
+	div#sub,
+	div#footer {
+		width: 100%;
+		max-width: 100%;
+	}
+
+	div#wrapper,
+	div#sub-wrapper {
+		background-image: none;
+	}
+
+	div#main,
+	div#image,
+	div#content,
+	div#content-text,
+	div#content-main,
+	div#content-attend {
+		float: none;
+	}
+
+	div#main,
+	div#image,
+	div#content {
+		width: 100%;
+	}
+
+	div#content {
+		margin-top: 0;
+	}
+
+	div#content-text {
+		width: auto;
+		margin: 20px 12px 10px 12px;
+	}
+
+	div#content-main {
+		width: auto;
+		margin: 0 12px;
+	}
+
+	div#content-attend {
+		width: auto;
+		margin: 20px 12px 0 12px;
+	}
+
+	div#header h1 {
+		float: none;
+		padding: 16px 12px 8px 12px;
+	}
+
+	div#header h1 a {
+		font-size: 1.35em;
+		overflow-wrap: anywhere;
+	}
+
+	div#header ul {
+		margin-left: 12px !important;
+		margin-right: 12px;
+	}
+
+	div#image {
+		height: auto;
+		min-height: 0;
+		padding-bottom: 12px;
+		background-size: cover;
+		background-position: center top;
+	}
+
+	div#image p {
+		font-size: 1.4em;
+		padding: 14px 12px 0 12px;
+		text-indent: 0;
+	}
+
+	div#content-text h2,
+	div#content-main h2,
+	div#content-attend h2 {
+		margin-left: 0;
+		margin-right: 0;
+		padding-left: 12px;
+	}
+
+	p {
+		padding-left: 0.75em;
+		padding-right: 0.75em;
+		overflow-wrap: anywhere;
+	}
+
+	div#sub {
+		width: 100%;
+		overflow: visible;
+		margin-top: 24px;
+	}
+
+	div#sub iframe#menu {
+		display: block;
+		width: 100% !important;
+		max-width: 100%;
+	}
+
+	div#sub-menu {
+		width: auto;
+		padding-top: 10px;
+	}
+
+	div.sub-text {
+		width: auto;
+		margin: 20px 12px 0 12px;
+	}
+
+	div#sub-menu li {
+		padding-left: 12px;
+		padding-right: 12px;
+	}
+
+	div#footer {
+		margin-top: 24px;
+	}
+
+	table {
+		display: block;
+		max-width: 100%;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	input,
+	textarea,
+	select {
+		max-width: 100%;
+		box-sizing: border-box;
+	}
+}
