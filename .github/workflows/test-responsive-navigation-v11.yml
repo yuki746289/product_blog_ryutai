@@ -6,6 +6,9 @@ on:
       - develop
     paths:
       - '.github/workflows/test-responsive-navigation-v11.yml'
+      - '.github/scripts/test-responsive-navigation-v11.py'
+      - 'menu.html'
+      - 'css/responsive.css'
 
 permissions:
   contents: read
@@ -21,164 +24,14 @@ jobs:
           ref: develop
           fetch-depth: 0
 
-      - name: Verify traceability and KEEP invariants
-        run: |
-          git fetch origin release_1.0.0:refs/remotes/origin/release_1.0.0
-          git show origin/release_1.0.0:menu.html > /tmp/menu-release.html
-          python3 - <<'PY'
-          import json
-          import re
-          from pathlib import Path
-
-          current = Path('menu.html').read_bytes().decode('cp932')
-          release = Path('/tmp/menu-release.html').read_bytes().decode('cp932')
-          design = json.loads(Path('responsive_navigation_v1.1/responsive_navigation_v1.1_7_detail.json').read_text(encoding='utf-8'))
-          css = Path('css/responsive.css').read_text(encoding='utf-8')
-
-          def heading_position(text, label, start=0):
-              pattern = r'^\t\t//' + re.escape(label) + r'\r?$'
-              match = re.search(pattern, text[start:], re.M)
-              assert match, label
-              return start + match.start()
-
-          def keep_section(text, start_label, end_label):
-              start = heading_position(text, start_label)
-              end = heading_position(text, end_label, start + 1)
-              return text[start:end]
-
-          assert keep_section(current, '表示', '高さ調節') == keep_section(release, '表示', '高さ調節')
-          current_height_start = heading_position(current, '高さ調節')
-          release_height_start = heading_position(release, '高さ調節')
-          current_height_end = current.index('\t//-->', current_height_start)
-          release_height_end = release.index('\t//-->', release_height_start)
-          assert current[current_height_start:current_height_end] == release[release_height_start:release_height_end]
-
-          href_pattern = re.compile(r'href=["\']([^"\']+)["\']', re.I)
-          assert href_pattern.findall(current) == href_pattern.findall(release)
-
-          required_ids = []
-          for item in design['features'] + design['functions'] + design['variables']:
-              if item.get('type') in ('ADD', 'MOD'):
-                  item_id = item['id']
-                  if item_id.startswith(('L', 'F', 'T', 'I', 'O', 'V')):
-                      required_ids.append(item_id)
-          source = current + '\n' + css
-          missing = [item_id for item_id in required_ids if f'[{item_id}]' not in source]
-          assert not missing, missing
-
-          named_functions = re.findall(r'function\s+([A-Za-z_$][\w$]*)\s*\(', current)
-          assert named_functions == ['Init', 'refreshMobileNavigation', 'updateMobileMenuState', 'disp', 'set_height'], named_functions
-
-          print('KEEP disp(): exact match')
-          print('KEEP set_height(): exact match')
-          print('Menu href list: exact match')
-          print('ADD/MOD traceability IDs:', len(required_ids))
-          print('Named functions:', named_functions)
-          PY
-
-      - name: Prepare browser test pages
-        run: |
-          python3 - <<'PY'
-          from pathlib import Path
-
-          script = r'''
-          <script type="text/javascript">
-          window.addEventListener("load", function(){
-            window.setTimeout(function(){
-              var button = document.getElementById("mobile-menu-button");
-              var shouldOpen = window.location.search.indexOf("open=1") >= 0;
-              if(button && shouldOpen){button.click();}
-              window.setTimeout(function(){
-                var buttonAfter = document.getElementById("mobile-menu-button");
-                var buttonDisplay = buttonAfter ? window.getComputedStyle(buttonAfter).display : "missing";
-                var expanded = buttonAfter ? buttonAfter.getAttribute("aria-expanded") : "missing";
-                var overflow = document.documentElement.scrollWidth > document.documentElement.clientWidth + 1 ? "true" : "false";
-                document.body.setAttribute("data-test-button-display", buttonDisplay);
-                document.body.setAttribute("data-test-expanded", expanded);
-                document.body.setAttribute("data-test-overflow", overflow);
-              }, 300);
-            }, 700);
-          });
-          </script>
-          '''
-
-          for source_name, target_name in [
-              ('index.html', '__test_index.html'),
-              ('physics/physics.html', 'physics/__test_physics.html'),
-              ('fem/fem.html', 'fem/__test_fem.html'),
-          ]:
-              source = Path(source_name)
-              text = source.read_bytes().decode('cp932')
-              marker = '</body>'
-              index = text.lower().rindex(marker)
-              text = text[:index] + script + text[index:]
-              Path(target_name).write_bytes(text.encode('cp932'))
-          PY
-
-      - name: Run Chrome DOM and screenshot smoke tests
-        run: |
-          CHROME="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium)"
-          test -n "$CHROME"
-          mkdir -p /tmp/v11-smoke
-          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/v11-http.log 2>&1 &
-          SERVER_PID=$!
-          trap 'kill $SERVER_PID 2>/dev/null || true' EXIT
-          sleep 2
-
-          "$CHROME" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --window-size=375,812 --virtual-time-budget=3000 --dump-dom http://127.0.0.1:8000/__test_index.html > /tmp/v11-smoke/index-mobile-closed.html
-          "$CHROME" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --window-size=375,812 --virtual-time-budget=3000 --dump-dom 'http://127.0.0.1:8000/__test_index.html?open=1' > /tmp/v11-smoke/index-mobile-open.html
-          "$CHROME" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --window-size=1365,768 --virtual-time-budget=3000 --dump-dom http://127.0.0.1:8000/__test_index.html > /tmp/v11-smoke/index-desktop.html
-          "$CHROME" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --window-size=375,812 --virtual-time-budget=3000 --dump-dom http://127.0.0.1:8000/physics/__test_physics.html > /tmp/v11-smoke/physics-mobile.html
-          "$CHROME" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --window-size=375,812 --virtual-time-budget=3000 --dump-dom http://127.0.0.1:8000/fem/__test_fem.html > /tmp/v11-smoke/fem-mobile.html
-
-          "$CHROME" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars --window-size=375,812 --virtual-time-budget=3000 --screenshot=/tmp/v11-smoke/index-mobile-closed.png http://127.0.0.1:8000/__test_index.html
-          "$CHROME" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars --window-size=375,812 --virtual-time-budget=3000 --screenshot=/tmp/v11-smoke/index-mobile-open.png 'http://127.0.0.1:8000/__test_index.html?open=1'
-          "$CHROME" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars --window-size=1365,768 --virtual-time-budget=3000 --screenshot=/tmp/v11-smoke/index-desktop.png http://127.0.0.1:8000/__test_index.html
-
-          python3 - <<'PY'
-          import re
-          from pathlib import Path
-
-          def attrs(name):
-              text = Path('/tmp/v11-smoke/' + name).read_text(encoding='utf-8')
-              def value(attr):
-                  match = re.search(attr + r'="([^"]*)"', text)
-                  assert match, (name, attr)
-                  return match.group(1)
-              return value('data-test-button-display'), value('data-test-expanded'), value('data-test-overflow'), text
-
-          display, expanded, overflow, closed = attrs('index-mobile-closed.html')
-          assert display != 'none' and display != 'missing', display
-          assert expanded == 'false', expanded
-          assert overflow == 'false', overflow
-          assert 'mobile-nav-ready' in re.search(r'<body[^>]*>', closed, re.I).group(0)
-          assert 'mobile-menu-open' not in re.search(r'<body[^>]*>', closed, re.I).group(0)
-
-          display, expanded, overflow, opened = attrs('index-mobile-open.html')
-          assert display != 'none' and display != 'missing', display
-          assert expanded == 'true', expanded
-          assert overflow == 'false', overflow
-          assert 'mobile-menu-open' in re.search(r'<body[^>]*>', opened, re.I).group(0)
-
-          display, expanded, overflow, desktop = attrs('index-desktop.html')
-          assert display == 'none', display
-          assert overflow == 'false', overflow
-
-          for name in ('physics-mobile.html', 'fem-mobile.html'):
-              display, expanded, overflow, text = attrs(name)
-              assert display != 'none' and display != 'missing', (name, display)
-              assert expanded == 'false', (name, expanded)
-              assert overflow == 'false', (name, overflow)
-
-          print('Mobile closed: OK')
-          print('Mobile open: OK')
-          print('Desktop hamburger hidden: OK')
-          print('Page-wide horizontal overflow: none on tested pages')
-          PY
+      - name: Run static and browser verification
+        run: python3 .github/scripts/test-responsive-navigation-v11.py
 
       - name: Upload smoke test artifacts
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: responsive-navigation-v11-smoke
           path: /tmp/v11-smoke
+          if-no-files-found: ignore
           retention-days: 7
