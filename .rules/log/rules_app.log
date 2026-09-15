@@ -1,0 +1,9 @@
+2026-09-15 Step1 specification creation (app/v1.1)
+- Referenced: .rules/rules_common.md
+- Referenced: .rules/dev/rules_dev.md
+- Referenced: .rules/dev/rules_dev_custom.md (empty)
+- Referenced: .rules/dev/app/rules_app_1_spec.md
+- Created specification set under .document/v1.1/
+- Scope clarified: hamburger menu is smartphone-only; PC keeps existing left-side menu.
+- Math-image to LaTeX conversion is excluded from v1.1 and remains a later task.
+- Open item for step2: smartphone breakpoint proposal max-width 767px.
