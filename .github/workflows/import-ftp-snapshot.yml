@@ -32,7 +32,6 @@ jobs:
           import os
           import pathlib
           import shutil
-          import sys
           from urllib.parse import urlparse
 
           server = os.environ.get('FTP_SERVER', '').strip()
@@ -58,6 +57,8 @@ jobs:
           root.mkdir()
 
           ftp = ftplib.FTP_TLS(timeout=30)
+          # This legacy Japanese site stores some FTP path names in CP932/Shift-JIS.
+          ftp.encoding = 'cp932'
           ftp.connect(host, port)
           ftp.login(username, password)
           ftp.prot_p()
@@ -69,33 +70,17 @@ jobs:
           def download_dir(remote_dir, local_dir):
               local_dir.mkdir(parents=True, exist_ok=True)
               ftp.cwd(remote_dir)
-              try:
-                  entries = list(ftp.mlsd())
-                  for name, facts in entries:
-                      if name in ('.', '..'):
-                          continue
-                      typ = facts.get('type', '')
-                      if typ == 'dir':
-                          download_dir(name, local_dir / safe_name(name))
-                          ftp.cwd('..')
-                      elif typ == 'file':
-                          with open(local_dir / safe_name(name), 'wb') as f:
-                              ftp.retrbinary(f'RETR {name}', f.write)
-              except (ftplib.error_perm, AttributeError):
-                  names = ftp.nlst()
-                  for entry in names:
-                      name = safe_name(entry)
-                      if name in ('.', '..'):
-                          continue
-                      try:
-                          ftp.cwd(name)
-                      except ftplib.error_perm:
-                          with open(local_dir / name, 'wb') as f:
-                              ftp.retrbinary(f'RETR {name}', f.write)
-                      else:
-                          ftp.cwd('..')
-                          download_dir(name, local_dir / name)
-                          ftp.cwd('..')
+              entries = list(ftp.mlsd())
+              for name, facts in entries:
+                  if name in ('.', '..'):
+                      continue
+                  typ = facts.get('type', '')
+                  if typ == 'dir':
+                      download_dir(name, local_dir / safe_name(name))
+                      ftp.cwd('..')
+                  elif typ == 'file':
+                      with open(local_dir / safe_name(name), 'wb') as f:
+                          ftp.retrbinary(f'RETR {name}', f.write)
 
           try:
               download_dir('/', root)
