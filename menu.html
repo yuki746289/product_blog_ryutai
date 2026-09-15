@@ -1,5 +1,13 @@
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--
+ 更新日時: 2026/09/15
+ 処理概要: [S001][S002][S003] スマートフォン用ハンバーガーメニュー初期化・開閉制御
+ 前回バージョンとの違い:
+ - [ADD]: refreshMobileNavigation(), updateMobileMenuState() を追加
+ - [MOD]: Init() からモバイルナビゲーション初期化を呼び出す
+ - [DEL]: なし
+-->
 <html lang="ja">
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,9 +29,169 @@
 	<script type="text/javascript">
 	<!--
 
+		// [F001] [MOD] ページ初期化
 		function Init(){
 
+			// [L001] [KEEP] 選択中カテゴリ表示
 			disp();		//表示
+
+			// [L002] [KEEP] 既存iframe高さ調整
+			set_height();		//高さ調節
+
+			// [L003] [ADD] スマートフォンナビゲーション初期化
+			refreshMobileNavigation();
+
+			// [O001] [KEEP] 値は返さない
+		}
+
+		// [F002] [ADD] スマートフォンナビゲーション初期化
+		function refreshMobileNavigation(){
+
+			// [O002] [ADD] DOM初期化のみ行い値は返さない
+			// [L004] [ADD] iframe外でmenu.htmlを直接表示した場合は終了
+			if(parent === self)return;
+
+			// [V001] [KEEP] 既存のiframe親ウィンドウを参照
+			var parentWindow = parent;
+			// [V002] [KEEP] 親ページDOMを取得
+			var parentDocument = parentWindow.document;
+			var parentBody = parentDocument.body;
+			var headerId = "header";
+			var menuIframeId = "menu";
+			var parentHeader = parentDocument.getElementById(headerId);
+			var menuIframe = parentDocument.getElementById(menuIframeId);
+
+			// [L005] [ADD] 必要DOMが無い場合は本文へ影響を与えず終了
+			if(!parentBody || !parentHeader || !menuIframe)return;
+
+			// [L006] [ADD] iframeへアクセシビリティ用titleを設定
+			var menuTitle = "サイトメニュー";
+			menuIframe.setAttribute("title", menuTitle);
+
+			// [L007] [ADD] モバイルメニューボタンを一度だけ生成
+			var menuButtonId = "mobile-menu-button";
+			var menuButtonClassName = "mobile-menu-button";
+			var menuButton = parentDocument.getElementById(menuButtonId);
+			if(!menuButton){
+				var buttonTagName = "button";
+				var buttonType = "button";
+				var controlsAttribute = "aria-controls";
+				var expandedAttribute = "aria-expanded";
+				var labelAttribute = "aria-label";
+				var closedValue = "false";
+				var closedLabel = "メニューを開く";
+				menuButton = parentDocument.createElement(buttonTagName);
+				menuButton.id = menuButtonId;
+				menuButton.className = menuButtonClassName;
+				menuButton.type = buttonType;
+				menuButton.setAttribute(controlsAttribute, menuIframeId);
+				menuButton.setAttribute(expandedAttribute, closedValue);
+				menuButton.setAttribute(labelAttribute, closedLabel);
+
+				// [L008] [ADD] DOM APIでハンバーガー3本線を生成
+				var hamburgerLineCount = 3;
+				var hamburgerLineClassName = "mobile-menu-button-line";
+				var spanTagName = "span";
+				var lineIndex;
+				for(lineIndex = 0; lineIndex < hamburgerLineCount; lineIndex++){
+					var hamburgerLine = parentDocument.createElement(spanTagName);
+					hamburgerLine.className = hamburgerLineClassName;
+					menuButton.appendChild(hamburgerLine);
+				}
+				parentHeader.appendChild(menuButton);
+			}
+
+			// [L009] [ADD] 背景オーバーレイを一度だけ生成
+			var overlayId = "mobile-menu-overlay";
+			var overlayClassName = "mobile-menu-overlay";
+			var menuOverlay = parentDocument.getElementById(overlayId);
+			if(!menuOverlay){
+				var overlayTagName = "div";
+				menuOverlay = parentDocument.createElement(overlayTagName);
+				menuOverlay.id = overlayId;
+				menuOverlay.className = overlayClassName;
+				parentBody.appendChild(menuOverlay);
+			}
+
+			var boundAttribute = "data-mobile-nav-bound";
+			var boundValue = "true";
+			var menuOpenClassName = "mobile-menu-open";
+			if(menuButton.getAttribute(boundAttribute) !== boundValue){
+				// [L011] [ADD] ボタン押下で現在の開閉状態を反転
+				menuButton.addEventListener("click", function(){
+					var currentIsOpen = parentBody.classList.contains(menuOpenClassName);
+					var requestedIsOpen = !currentIsOpen;
+					updateMobileMenuState(parentDocument, menuButton, requestedIsOpen);
+				});
+
+				// [L012] [ADD] オーバーレイ押下で閉じる
+				menuOverlay.addEventListener("click", function(){
+					var requestedIsOpen = false;
+					updateMobileMenuState(parentDocument, menuButton, requestedIsOpen);
+				});
+
+				// [L013] [ADD] Escapeキーで閉じる
+				parentWindow.addEventListener("keydown", function(event){
+					var escapeKey = "Escape";
+					if(event.key === escapeKey){
+						var requestedIsOpen = false;
+						updateMobileMenuState(parentDocument, menuButton, requestedIsOpen);
+					}
+				});
+
+				// [L014] [ADD] 768px以上へ戻った場合は閉じる
+				parentWindow.addEventListener("resize", function(){
+					var desktopMinWidth = 768;
+					if(parentWindow.innerWidth >= desktopMinWidth){
+						var requestedIsOpen = false;
+						updateMobileMenuState(parentDocument, menuButton, requestedIsOpen);
+					}
+				});
+
+				menuButton.setAttribute(boundAttribute, boundValue);
+			}
+
+			// [L010] [ADD] 初期化成功後にreadyクラスを付与
+			var mobileReadyClassName = "mobile-nav-ready";
+			parentBody.classList.add(mobileReadyClassName);
+
+			// [L015] [ADD] 初期状態を閉状態へ同期
+			var initialIsOpen = false;
+			updateMobileMenuState(parentDocument, menuButton, initialIsOpen);
+		}
+
+		// [F003] [ADD] モバイルメニュー開閉状態更新
+		function updateMobileMenuState(parentDocument, menuButton, isOpen){
+
+			// [I001] [ADD] parentDocument: 親ページDOM
+			// [I002] [ADD] menuButton: ARIA状態を更新するボタン
+			// [I003] [ADD] isOpen: true=開、false=閉
+			// [O003] [ADD] 状態更新のみ行い値は返さない
+			if(!parentDocument || !menuButton)return;
+
+			var parentBody = parentDocument.body;
+			if(!parentBody)return;
+
+			// [L016] [ADD] bodyクラスを開閉状態と同期
+			var menuOpenClassName = "mobile-menu-open";
+			if(isOpen){
+				parentBody.classList.add(menuOpenClassName);
+			}else{
+				parentBody.classList.remove(menuOpenClassName);
+			}
+
+			// [L017] [ADD] aria-expandedを同期
+			var expandedAttribute = "aria-expanded";
+			var expandedValue = isOpen ? "true" : "false";
+			menuButton.setAttribute(expandedAttribute, expandedValue);
+
+			// [L018] [ADD] aria-labelを同期
+			var labelAttribute = "aria-label";
+			var menuLabel = isOpen ? "メニューを閉じる" : "メニューを開く";
+			menuButton.setAttribute(labelAttribute, menuLabel);
+		}
+
+		//表示
 
 			set_height();		//高さ調節
 

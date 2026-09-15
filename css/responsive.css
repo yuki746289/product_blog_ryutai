@@ -1,22 +1,13 @@
-/* Created: 2026-09-15 15:56 JST */
-/* Responsive overrides for the legacy fixed-width layout. */
+/**
+ * 更新日時: 2026/09/15
+ * 処理概要: [S001][STYLE001] スマートフォン幅767px以下のレスポンシブ表示とオフキャンバスメニュー
+ * 前回バージョンとの違い:
+ * - [ADD]: mobile-nav-ready / mobile-menu-open によるスマホメニュー表示を追加
+ * - [MOD]: レスポンシブ指定を767px以下へ限定し、PC/タブレットへの影響を除去
+ * - [DEL]: なし
+ */
 
-img {
-	max-width: 100%;
-	height: auto;
-}
-
-iframe {
-	max-width: 100%;
-}
-
-pre {
-	max-width: 100%;
-	overflow-x: auto;
-	-webkit-overflow-scrolling: touch;
-}
-
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
 	html,
 	body {
 		width: 100%;
@@ -30,14 +21,29 @@ pre {
 		overflow-x: hidden;
 	}
 
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+
+	iframe {
+		max-width: 100%;
+	}
+
+	pre {
+		max-width: 100%;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+
 	div#wrapper,
 	div#header,
 	div#main,
 	div#content,
-	div#sub,
 	div#footer {
 		width: 100%;
 		max-width: 100%;
+		box-sizing: border-box;
 	}
 
 	div#wrapper,
@@ -50,7 +56,8 @@ pre {
 	div#content,
 	div#content-text,
 	div#content-main,
-	div#content-attend {
+	div#content-attend,
+	div#sub {
 		float: none;
 	}
 
@@ -79,9 +86,13 @@ pre {
 		margin: 20px 12px 0 12px;
 	}
 
+	div#header {
+		position: relative;
+	}
+
 	div#header h1 {
 		float: none;
-		padding: 16px 12px 8px 12px;
+		padding: 16px 68px 8px 12px;
 	}
 
 	div#header h1 a {
@@ -122,8 +133,23 @@ pre {
 		overflow-wrap: anywhere;
 	}
 
+	table {
+		display: block;
+		max-width: 100%;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	input,
+	textarea,
+	select {
+		max-width: 100%;
+		box-sizing: border-box;
+	}
+
 	div#sub {
 		width: 100%;
+		max-width: 100%;
 		overflow: visible;
 		margin-top: 24px;
 	}
@@ -134,8 +160,14 @@ pre {
 		max-width: 100%;
 	}
 
+	div#sub-wrapper,
 	div#sub-menu {
-		width: auto;
+		width: 100%;
+		max-width: 100%;
+		box-sizing: border-box;
+	}
+
+	div#sub-menu {
 		padding-top: 10px;
 	}
 
@@ -153,17 +185,95 @@ pre {
 		margin-top: 24px;
 	}
 
-	table {
-		display: block;
-		max-width: 100%;
-		overflow-x: auto;
-		-webkit-overflow-scrolling: touch;
+	body.mobile-nav-ready div#sub {
+		width: 0;
+		height: 0;
+		margin: 0;
+		padding: 0;
+		overflow: visible;
 	}
 
-	input,
-	textarea,
-	select {
-		max-width: 100%;
-		box-sizing: border-box;
+	body.mobile-nav-ready div#sub > *:not(iframe#menu) {
+		display: none !important;
+	}
+
+	body.mobile-nav-ready div#sub iframe#menu {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 86vw !important;
+		max-width: 320px;
+		height: 100vh !important;
+		height: 100dvh !important;
+		margin: 0;
+		background: #ffffff;
+		border: 0;
+		border-right: 1px solid #b9b9b9;
+		box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+		transform: translateX(-105%);
+		transition: transform 0.2s ease;
+		z-index: 1002;
+	}
+
+	body.mobile-nav-ready.mobile-menu-open div#sub iframe#menu {
+		transform: translateX(0);
+	}
+
+	.mobile-menu-button {
+		position: fixed;
+		top: 10px;
+		right: 10px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 5px;
+		width: 46px;
+		height: 46px;
+		margin: 0;
+		padding: 0;
+		border: 1px solid #777777;
+		border-radius: 4px;
+		background: #ffffff;
+		cursor: pointer;
+		z-index: 1003;
+	}
+
+	.mobile-menu-button-line {
+		display: block;
+		width: 24px;
+		height: 2px;
+		margin: 0;
+		padding: 0;
+		background: #333333;
+	}
+
+	.mobile-menu-overlay {
+		position: fixed;
+		inset: 0;
+		margin: 0;
+		background: rgba(0, 0, 0, 0.35);
+		opacity: 0;
+		visibility: hidden;
+		pointer-events: none;
+		transition: opacity 0.2s ease, visibility 0.2s ease;
+		z-index: 1001;
+	}
+
+	body.mobile-menu-open .mobile-menu-overlay {
+		opacity: 1;
+		visibility: visible;
+		pointer-events: auto;
+	}
+
+	body.mobile-menu-open {
+		overflow: hidden;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.mobile-menu-button,
+	.mobile-menu-overlay {
+		display: none !important;
 	}
 }
