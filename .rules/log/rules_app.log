@@ -6,4 +6,15 @@
 - Created specification set under .document/v1.1/
 - Scope clarified: hamburger menu is smartphone-only; PC keeps existing left-side menu.
 - Math-image to LaTeX conversion is excluded from v1.1 and remains a later task.
-- Open item for step2: smartphone breakpoint proposal max-width 767px.
+
+2026-09-15 Step2 specification verification (app/v1.1)
+- Referenced: .rules/dev/app/rules_app_2_spec_confirm.md
+- Resolved smartphone breakpoint: max-width 767px; min-width 768px is PC/tablet.
+- Added relative links and completed cross-file consistency checks.
+- Created .document/v1.1/99_仕様確認.md.
+- Result: PASS.
+
+2026-09-15 Step3 requirements (responsive_navigation/v1.1)
+- Referenced: .rules/dev/app/rules_app_3_request.md
+- Created responsive_navigation_v1.1/responsive_navigation_v1.1_3_request.md.
+- No unresolved requirement items remain.
