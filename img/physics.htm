@@ -1,0 +1,776 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=shift_jis">
+<meta name=Generator content="Microsoft Word 11 (filtered)">
+<title>内容</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"ＭＳ 明朝";
+	panose-1:2 2 6 9 4 2 5 8 3 4;}
+@font-face
+	{font-family:Century;
+	panose-1:2 4 6 4 5 5 5 2 3 4;}
+@font-face
+	{font-family:"\@ＭＳ 明朝";
+	panose-1:2 2 6 9 4 2 5 8 3 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0mm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	font-size:10.5pt;
+	font-family:Century;}
+span.MsoEndnoteReference
+	{vertical-align:super;}
+p.MsoEndnoteText, li.MsoEndnoteText, div.MsoEndnoteText
+	{margin:0mm;
+	margin-bottom:.0001pt;
+	layout-grid-mode:char;
+	font-size:10.5pt;
+	font-family:Century;}
+ /* Page Definitions */
+ @page Section1
+	{size:595.3pt 841.9pt;
+	margin:20.0mm 10.0mm 20.0mm 10.0mm;
+	layout-grid:14.55pt -.9pt;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0mm;}
+ul
+	{margin-bottom:0mm;}
+-->
+</style>
+
+</head>
+
+<body lang=JA style='text-justify-trim:punctuation'>
+
+<div class=Section1 style='layout-grid:14.55pt -.9pt'>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>・物理</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　流体力学で使用する単位や、物理量、作用素について説明する。流体力学で使用する式や物理量はこれらの組み合わせで表現される。パズル感覚で覚えることができれば良いと思う。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>・単位</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　流体力学では、</span><span
+lang=EN-US>SI</span><span style='font-family:"ＭＳ 明朝"'>単位が使用される。使用する単位は次の</span><span
+lang=EN-US style='font-family:"Times New Roman"'>3</span><span
+style='font-family:"ＭＳ 明朝"'>つである。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　</span><span lang=EN-US><img
+width=292 height=85 src="physics.files/image001.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　キログラム</span><span
+lang=EN-US style='font-family:"Times New Roman"'>[kg]</span><span
+style='font-family:"ＭＳ 明朝"'>　質量</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　メートル</span><span
+lang=EN-US style='font-family:"Times New Roman"'>[m]</span><span
+style='font-family:"ＭＳ 明朝"'>　　距離、長さ</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　秒</span><span
+lang=EN-US style='font-family:"Times New Roman"'>[s]</span><span
+style='font-family:"ＭＳ 明朝"'>　　　　　時間</span><span lang=EN-US style='font-family:
+"Times New Roman"'>(</span><span style='font-family:"ＭＳ 明朝"'>秒数</span><span
+lang=EN-US style='font-family:"Times New Roman"'>)</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　力学的な物理量は、これらの</span><span
+lang=EN-US style='font-family:"Times New Roman"'>3</span><span
+style='font-family:"ＭＳ 明朝"'>つの物理量で定義される。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>・物理量</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　流体力学で使用する物理量の定義を行う。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・速度</span><span
+style='font-family:"Times New Roman"'> <i><span lang=EN-US>v</span></i><span
+lang=EN-US>[m/s]</span></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　単位時間当たりに進む距離。また、時間と距離の変換。時間を</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>t</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[s]</span><span style='font-family:"ＭＳ 明朝"'>、移動距離を</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>l</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[m]</span><span style='font-family:"ＭＳ 明朝"'>とすると次式で定義される。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　</span><span lang=EN-US
+style='font-family:"Times New Roman"'><sub><img width=107 height=85
+src="physics.files/image002.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・加速度</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>a</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[m/s<sup>2</sup>]</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　時間に対する速度勾配</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　</span><span lang=EN-US
+style='font-family:"Times New Roman"'><sub><img width=111 height=85
+src="physics.files/image003.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　重力も加速度である。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　</span><span lang=EN-US
+style='font-family:"Times New Roman"'><sub><img width=39 height=19
+src="physics.files/image004.gif" alt="*"></sub></span><span style='font-family:
+"ＭＳ 明朝"'>：時間に対して速度が変化している。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　</span><span lang=EN-US
+style='font-family:"Times New Roman"'><sub><img width=37 height=19
+src="physics.files/image005.gif" alt="*"></sub></span><span style='font-family:
+"ＭＳ 明朝"'>：速度は変わらない。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・力</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>F</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[N]</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　質量</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>m</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[kg]</span><span style='font-family:"ＭＳ 明朝"'>の時間に対する速度勾配。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=137 height=107 src="physics.files/image006.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　単位には、ニュートン</span><span
+lang=EN-US style='font-family:"Times New Roman"'>[N]</span><span
+style='font-family:"ＭＳ 明朝"'>が使用され、次式で定義される。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'>[N] = [kg m/s<sup>2</sup>]</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　次の様にも表現できる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　力が大きい</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　より短時間でより大きく速度が変わる。高速で物がぶつかった場合など。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><img width=287 height=98 src="physics.files/image007.gif"></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　力が加わらない</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　速度が変わらない。同じ速度で動き続ける。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><img width=372 height=61 src="physics.files/image008.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・運動量</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>mv</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[kg m/s]</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　加えた力</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>F</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[N]</span><span style='font-family:"ＭＳ 明朝"'>の総量。力積とも言う。簡易的に言うと何秒間、力を加え続けたか。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=171 height=100 src="physics.files/image009.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　上式から大きな力</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>F</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[N]</span><span style='font-family:"ＭＳ 明朝"'>が短時間加わった場合の運動量と、小さな力</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>F</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[N]</span><span style='font-family:"ＭＳ 明朝"'>が長時間加わった場合の運動量は等しいことがわかる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><img width=233 height=206 src="physics.files/image010.gif"></span><span
+style='font-family:"ＭＳ 明朝"'>　</span> <span lang=EN-US><img width=233
+height=206 src="physics.files/image011.gif"></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　次の様にも表現できる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　運動量が大きい→より大きな質量</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>m</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[kg]</span><span style='font-family:"ＭＳ 明朝"'>の速度</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>v</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[m/s]</span><span style='font-family:
+"ＭＳ 明朝"'>が、より大きく変化した。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・エネルギー</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>E</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[J]</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　加えた力</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>F</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[N]</span><span style='font-family:"ＭＳ 明朝"'>の総量。簡易的に言うと何メートル力を加え続けたか。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=128 height=235 src="physics.files/image012.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　上式から大きな力</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>F</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[N]</span><span style='font-family:"ＭＳ 明朝"'>が短い距離加わった場合のエネルギーと、小さな力</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>F</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[N]</span><span style='font-family:"ＭＳ 明朝"'>が長距離加わった場合のエネルギーは等しいことがわかる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　単位には、ジュール</span><span
+lang=EN-US style='font-family:"Times New Roman"'>[J]</span><span
+style='font-family:"ＭＳ 明朝"'>が使用され、次式で定義される。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'>[J] = [N m] = [kg m<sup>2</sup>/s<sup>2</sup>]</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　エネルギー</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>E</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[J]</span><span style='font-family:"ＭＳ 明朝"'>を速度</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>v</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[m/s]</span><span style='font-family:
+"ＭＳ 明朝"'>で微分すると運動量</span><i><span lang=EN-US style='font-family:"Times New Roman"'>mv</span></i><span
+lang=EN-US style='font-family:"Times New Roman"'>[kg m/s]</span><span
+style='font-family:"ＭＳ 明朝"'>になる。これは、速度</span><i><span lang=EN-US
+style='font-family:"Times New Roman"'>v</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[m/s]</span><span style='font-family:
+"ＭＳ 明朝"'>を距離</span><i><span lang=EN-US style='font-family:"Times New Roman"'>l</span></i><span
+lang=EN-US style='font-family:"Times New Roman"'>[m]</span><span
+style='font-family:"ＭＳ 明朝"'>と時間</span><i><span lang=EN-US style='font-family:
+"Times New Roman"'>t</span></i><span lang=EN-US style='font-family:"Times New Roman"'>[s]</span><span
+style='font-family:"ＭＳ 明朝"'>の変換と解釈する理解できる。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・角速度</span><i><span
+lang=EN-US style='font-family:Symbol'>w</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[rad/s]</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・慣性モーメント</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>I<sub>z</sub></span></i><span
+lang=EN-US style='font-family:"Times New Roman"'>[Nm/s]</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・トルク</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>N</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[Nm]</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>・ベクトル計算</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・単位ベクトル</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　単位ベクトルを定義する。ベクトル量は、単位ベクトルとその係数で表現される。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>x</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>, <i>y</i>, <i>z</i></span><span
+style='font-family:"ＭＳ 明朝"'>軸方向の長さ</span><span lang=EN-US style='font-family:
+"Times New Roman"'>1</span><span style='font-family:"ＭＳ 明朝"'>のベクトル。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><img width=207 height=187 src="physics.files/image013.gif"></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=19 height=27
+src="physics.files/image014.gif"></sub> :<i>x</i></span><span style='font-family:
+"ＭＳ 明朝"'>軸方向の単位ベクトル。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=20 height=28
+src="physics.files/image015.gif"></sub> :<i>y</i></span><span style='font-family:
+"ＭＳ 明朝"'>軸方向の単位ベクトル。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=19 height=25
+src="physics.files/image016.gif"></sub> :<i>z</i></span><span style='font-family:
+"ＭＳ 明朝"'>軸方向の単位ベクトル。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　また、</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=116 height=32 src="physics.files/image017.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・物理量の分類</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　物理量は次の</span><span
+lang=EN-US style='font-family:"Times New Roman"'>3</span><span
+style='font-family:"ＭＳ 明朝"'>つに分類される。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　</span><span
+style='font-family:"ＭＳ 明朝"'>　　・オーダー</span><span lang=EN-US style='font-family:
+"Times New Roman"'>0</span><span style='font-family:"ＭＳ 明朝"'>の物理量</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　スカラー量。方向を持たない。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　例：温度</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>T</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[K]</span><span style='font-family:"ＭＳ 明朝"'>、濃度</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>C</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[mol/m<sup>3</sup>]</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><img width=204 height=244 src="physics.files/image018.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　・オーダー</span><span
+lang=EN-US style='font-family:"Times New Roman"'>1</span><span
+style='font-family:"ＭＳ 明朝"'>の物理量</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　ベクトル量。方向がある。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　例：方向ベクトル</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=13 height=17
+src="physics.files/image019.gif"></sub>[m]</span><span style='font-family:"ＭＳ 明朝"'>、速度</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=13 height=19
+src="physics.files/image020.gif"></sub>[m/s]</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><sub><img width=145 height=75 src="physics.files/image021.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　大きさは絶対値で表される。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><sub><img width=119 height=32 src="physics.files/image022.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><img width=292 height=244 src="physics.files/image023.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　・オーダー</span><span
+lang=EN-US style='font-family:"Times New Roman"'>2</span><span
+style='font-family:"ＭＳ 明朝"'>の物理量</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　テンソル量。方向と面の向きがある。方向</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>i</span></i><span
+style='font-family:"ＭＳ 明朝"'>に垂直な面の</span><i><span lang=EN-US style='font-family:
+"Times New Roman"'>j</span></i><span style='font-family:"ＭＳ 明朝"'>方向の成分を表現する。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><b><i><span
+lang=EN-US style='font-family:"Times New Roman"'>x</span></i></b><b><span
+lang=EN-US style='font-family:"Times New Roman"'>, <i>y</i>, <i>z</i></span></b><b><span
+style='font-family:"ＭＳ 明朝"'>面にそれぞれ働く摩擦力の</span></b><b><i><span lang=EN-US
+style='font-family:"Times New Roman"'>x</span></i></b><b><span lang=EN-US
+style='font-family:"Times New Roman"'>, <i>y</i>, <i>z</i></span></b><b><span
+style='font-family:"ＭＳ 明朝"'>成分等を表現できる。</span></b></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　例：剪断応力</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=13 height=19
+src="physics.files/image024.gif"></sub>[N/m<sup>2</sup>]</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><sub><img width=213 height=183 src="physics.files/image025.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><img width=309 height=319 src="physics.files/image026.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　オーダーの違う物理量の加算、減算はできない。例えば、温度</span><span
+lang=EN-US style='font-family:"Times New Roman"'>+</span><span
+style='font-family:"ＭＳ 明朝"'>速度などの計算はできない。分類することで物理量を正確に表現できる。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・作用素の種類</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　・オーダー</span><span
+lang=EN-US style='font-family:"Times New Roman"'>0</span><span
+style='font-family:"ＭＳ 明朝"'>の作用素</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　オーダー</span><span
+lang=EN-US style='font-family:"Times New Roman"'>0</span><span
+style='font-family:"ＭＳ 明朝"'>の作用素にはラプラシアン作用素</span><span lang=EN-US
+style='font-family:"Times New Roman"'><sub><img width=15 height=17
+src="physics.files/image027.gif"></sub></span><span style='font-family:"ＭＳ 明朝"'>がある。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=140 height=96
+src="physics.files/image028.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　ラプラシアンは</span><span
+lang=EN-US style='font-family:"Times New Roman"'>2</span><span
+style='font-family:"ＭＳ 明朝"'>回微分の作用素である。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　・オーダー</span><span
+lang=EN-US style='font-family:"Times New Roman"'>1</span><span
+style='font-family:"ＭＳ 明朝"'>の作用素</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　オーダー</span><span
+lang=EN-US style='font-family:"Times New Roman"'>1</span><span
+style='font-family:"ＭＳ 明朝"'>の作用素には</span><span style='font-family:"ＭＳ 明朝"'>微分作用素</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=16 height=19
+src="physics.files/image029.gif"></sub></span><span style='font-family:"ＭＳ 明朝"'>がある。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=171 height=93
+src="physics.files/image030.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・計算の種類</span></p>
+
+<p class=MsoNormal style='margin-left:19.25pt;text-indent:-19.25pt'><span
+style='font-family:"ＭＳ 明朝"'>　　　計算には次の種類があり、それぞれオーダーがある。項のオーダーは、物理量、作用素、計算のオーダーの足し算で決まる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　・オーダー</span><span
+lang=EN-US style='font-family:"Times New Roman"'>0</span><span
+style='font-family:"ＭＳ 明朝"'>の計算</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　オーダー</span><span
+lang=EN-US style='font-family:"Times New Roman"'>0</span><span
+style='font-family:"ＭＳ 明朝"'>の作用素には加算、減算、乗算などがある。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　・加算、乗算</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　ベクトルの計算</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US><sub><img width=337 height=168 src="physics.files/image031.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　テンソルの計算</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US><sub><img width=420 height=232 src="physics.files/image032.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　減算も同様に計算できる。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　・微分作用素を含む場合</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　スカラーの微分</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><sub><img width=177 height=141 src="physics.files/image033.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　ベクトルの微分</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><sub><img width=251 height=339 src="physics.files/image034.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　ベクトルのラプラシアン</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><sub><img width=205 height=349 src="physics.files/image035.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　・オーダー</span><span
+lang=EN-US style='font-family:"Times New Roman"'>-2</span><span
+style='font-family:"ＭＳ 明朝"'>の計算</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　オーダー</span><span
+lang=EN-US style='font-family:"Times New Roman"'>-2</span><span
+style='font-family:"ＭＳ 明朝"'>の計算には内積がある。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　計算の準備</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　・クロネッカーの</span><i><span
+lang=EN-US style='font-family:Symbol'>d</span></i><i><sub><span lang=EN-US
+style='font-family:"Times New Roman"'>ij</span></sub></i></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　ベクトル、テンソルの計算に使用する。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><sub><img width=111 height=53 src="physics.files/image036.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　内積計算はこの記号を用いて下記で定義される。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><sub><img width=83 height=28 src="physics.files/image037.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><sub><img width=143 height=56 src="physics.files/image038.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　これは、内積の定義から説明される。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><sub><img width=136 height=155 src="physics.files/image039.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><img width=105 height=123 src="physics.files/image040.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　ベクトルとベクトルの内積</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US><sub><img width=184 height=269 src="physics.files/image041.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　上記の項のオーダーは、</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'>(</span><span
+style='font-family:"ＭＳ 明朝"'>ベクトル・ベクトル</span><span lang=EN-US style='font-family:
+"Times New Roman"'>) = (1 &#8211; 2 + 1) = 0</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　と計算されるので、スカラー量になる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US><img width=229 height=195 src="physics.files/image042.gif"></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　また、下記が成り立つ。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US><sub><img width=96 height=21 src="physics.files/image043.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　微分作用素とベクトルの内積</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US><sub><img width=191 height=244 src="physics.files/image044.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　上記の項のオーダーは、</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'>(</span><span
+style='font-family:"ＭＳ 明朝"'>微分作用素・ベクトル</span><span lang=EN-US style='font-family:
+"Times New Roman"'>) = (1 &#8211; 2 + 1) = 0</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　と計算されるので、スカラー量になる。この物理量は発散と呼ばれ、微小要素への流入・流出量を表している。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US><img width=166 height=172 src="physics.files/image045.gif"></span><span
+style='font-family:"ＭＳ 明朝"'>　　</span><span lang=EN-US><img width=169
+height=183 src="physics.files/image046.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=69 height=21
+src="physics.files/image047.gif"></sub> </span><span style='font-family:"ＭＳ 明朝"'>→</span><span
+style='font-family:"Times New Roman"'> </span><span style='font-family:"ＭＳ 明朝"'>微小要素へ物理量が流出した</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=69 height=21
+src="physics.files/image048.gif"></sub> </span><span style='font-family:"ＭＳ 明朝"'>→</span><span
+style='font-family:"Times New Roman"'> </span><span style='font-family:"ＭＳ 明朝"'>微小要素への流入・流出は無い</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=69 height=21
+src="physics.files/image049.gif"></sub> </span><span style='font-family:"ＭＳ 明朝"'>→</span><span
+style='font-family:"Times New Roman"'> </span><span style='font-family:"ＭＳ 明朝"'>微小要素へ物理量が流入した</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　上記からわかるように発散とは</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>x</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>, <i>y</i>, <i>z</i></span><span
+style='font-family:"ＭＳ 明朝"'>軸方向の勾配の和であり、</span><span lang=EN-US
+style='font-family:"Times New Roman"'>0</span><span style='font-family:"ＭＳ 明朝"'>の場合は、平らなので流入・流出は無いと解釈できる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　また、下記が成り立つ。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US><sub><img width=97 height=21 src="physics.files/image050.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　微分作用素とテンソルの内積</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US><sub><img width=231 height=441 src="physics.files/image051.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　上記の項のオーダーは、</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'>(</span><span
+style='font-family:"ＭＳ 明朝"'>微分作用素・テンソル</span><span lang=EN-US style='font-family:
+"Times New Roman"'>) = (1 &#8211; 2 + 2) = 1</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　と計算されるので、ベクトル量になる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　また、下記が成り立つ。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US><sub><img width=103 height=21 src="physics.files/image052.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　ラプラシアン作用素</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　ラプラシアン作用素は、微分作用素の内積で表される。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US><sub><img width=168 height=316 src="physics.files/image053.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　上記の項のオーダーは、</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'>(</span><span
+style='font-family:"ＭＳ 明朝"'>微分作用素・微分作用素</span><span lang=EN-US
+style='font-family:"Times New Roman"'>) = (1 &#8211; 2 + 1) = 0</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　と計算されるので、スカラー量になる。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　全微分作用素</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　流体力学で使用する全微分作用素には、内積が使用されている。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US><sub><img width=227 height=337 src="physics.files/image054.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　上記の項のオーダーは、</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'>(</span><span
+style='font-family:"ＭＳ 明朝"'>ベクトル・微分作用素</span><span lang=EN-US style='font-family:
+"Times New Roman"'>) = (1 &#8211; 2 + 1) = 0</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　と計算されるので、スカラー量になる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　これは、流体力学で使用される。微小領域の変化量をテーラー展開した</span><span
+lang=EN-US>1</span><span style='font-family:"ＭＳ 明朝"'>次の項である。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　内積から角度の計算</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　内積から</span><span
+lang=EN-US style='font-family:"Times New Roman"'>2</span><span
+style='font-family:"ＭＳ 明朝"'>つのベクトルの角度が計算できる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US><sub><img width=121 height=96 src="physics.files/image055.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　数値計算で要素の変形度や作成時に使用する。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　・オーダー</span><span
+lang=EN-US style='font-family:"Times New Roman"'>-1</span><span
+style='font-family:"ＭＳ 明朝"'>の計算</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　オーダー</span><span
+lang=EN-US style='font-family:"Times New Roman"'>-1</span><span
+style='font-family:"ＭＳ 明朝"'>の計算には外積がある。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　準備</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　外積の計算には次の記号が用いられる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US><sub><img width=209 height=83 src="physics.files/image056.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　ベクトルとベクトルの外積</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US><sub><img width=401 height=232 src="physics.files/image057.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　ベクトルとベクトルの外積の成分は、</span><span
+lang=EN-US style='font-family:"Times New Roman"'>2</span><span
+style='font-family:"ＭＳ 明朝"'>つのベクトルで表される平行四辺形の面積を表している。次の様にも表される。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US><sub><img width=144 height=27 src="physics.files/image058.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　従って、</span><span
+lang=EN-US style='font-family:"Times New Roman"'>2</span><span
+style='font-family:"ＭＳ 明朝"'>つのベクトルが平行の時は、外積は</span><span lang=EN-US
+style='font-family:"Times New Roman"'>0</span><span style='font-family:"ＭＳ 明朝"'>になる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US><img width=171 height=154 src="physics.files/image059.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　微分作用素とベクトルの外積</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US><sub><img width=365 height=348 src="physics.files/image060.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　微分作用素とベクトルの外積は、渦度と呼ばれる。これは、台風や海の渦巻きの様に回転に対して垂直方向のベクトルを表している。回転方向のベクトルを用いて表される。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US><img width=247 height=206 src="physics.files/image061.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US><img width=228 height=211 src="physics.files/image062.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US><img width=190 height=211 src="physics.files/image063.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US><img width=196 height=211 src="physics.files/image064.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　微小平面で考えると良くわかる。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・公式</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　流体力学で使用される公式を示す。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=180 height=21 src="physics.files/image065.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　これは、ヘルムホルツ分解と言う。流体力学では、粘性項の分解に用いられる。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

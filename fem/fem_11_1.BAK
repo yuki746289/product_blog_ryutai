@@ -1,0 +1,155 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+	<meta http-equiv="content-style-type" content="text/css">
+
+	<meta name="description" content="有限要素法・流体力学による数値計算サイト。">
+	<meta name="keywords" content="有限要素法,FEM,流体力学,数値計算,メッシュ"> 
+
+	<title>ガウスの消去法（有限要素法）</title>
+	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body>
+	<input type="hidden" id="menu_id"   value="4">
+	<input type="hidden" id="menu_id_2" value="4_11">
+
+	<div id="wrapper">
+
+	<div id="header">
+		<h1><a href="./../index.html" title="トップページへ">有限要素法・流体力学による数値計算</a></h1>
+
+		<br style="clear:both;">
+		<ul style="margin-left:30px;">
+		<li><a href="./../index.html" title="indexへ">index</a>&gt;</li>
+		<li><a href="./fem.html" title="有限要素法へ">有限要素法</a>&gt;</li>
+		<li><a href="./fem_11.html" title="行列計算へ">行列計算</a>&gt;</li>
+		<li><a href="./fem_11_1.html" title="ガウスの消去法へ">ガウスの消去法</a>&gt;</li>
+		</ul>
+		<hr>
+	</div>
+
+	<div id="main" >
+
+	<div id="image">
+		<p>流体力学から数値計算まで</p>
+		<p><img src="./../img/shiki1.gif"></p>
+		<p><img src="./../img/shiki2.gif"></p>
+	</div>
+
+	<div id="content">
+
+		<div id="content-text">
+
+			<h2>広告</h2>
+			<p><iframe src="./../ad.html" width="470" height="60" scrolling="no" frameborder="0"></iframe></p>
+			<br>
+
+			<h2>・ガウスの消去法</h2>
+			<p>ガウスの消去法は、直接、連立方程式を解く方法です。</p>
+			<p>この解法で<span class="ft">3</span>元<span class="ft">1</span>次方程式を解いてみます。</p>
+			<p class="im"><img src="./../img/fem_m_gauss.files/image001.gif"></p>
+			<p>上式を行列式で表すと次式となります。</p>
+			<p class="im"><img src="./../img/fem_m_gauss.files/image002.gif"></p>
+			<p>これを次式の形に直すと変数がわかります。</p>
+			<p class="im"><img src="./../img/fem_m_gauss.files/image003.gif"></p>
+			<br><br>
+			<p><span class="ft">1</span>つの行列で表すと次式となります。</p>
+			<p class="im"><img src="./../img/fem_m_gauss.files/image004.gif"></p>
+			<p>手順<span class="ft">1</span>.<br>
+			　　　　・<span class="ft">1</span>行目を係数<span class="ft"><i>a</i><sub>1</sub></span>で割る。<br>
+			　　　　・<span class="ft">2</span>行目を係数<span class="ft"><i>a</i><sub>2</sub></span>で割る。<br>
+			　　　　・<span class="ft">3</span>行目を係数<span class="ft"><i>a</i><sub>3</sub></span>で割る。<br>
+			<p class="im"><img src="./../img/fem_m_gauss.files/image005.gif"></p>
+			<p>手順<span class="ft">2</span>.<span class="ft">1</span>行目を引く。</p>
+			<p class="im"><img src="./../img/fem_m_gauss.files/image006.gif"></p>
+			<p>手順<span class="ft">3</span>.係数を次式で置き換える。</p>
+			<p class="im"><img src="./../img/fem_m_gauss.files/image007.gif"></p>
+			<p>手順<span class="ft">4</span>.<br>
+			　　　　・<span class="ft">2</span>行目を係数<span class="ft"><i>s</i><sub>1</sub></span>で割る。<br>
+			　　　　・<span class="ft">3</span>行目を係数<span class="ft"><i>t</i><sub>1</sub></span>で割る。</p>
+			<p class="im"><img src="./../img/fem_m_gauss.files/image008.gif"></p>
+			<p>手順<span class="ft">5</span>.<span class="ft">2</span>行目を引く。</p>
+			<p class="im"><img src="./../img/fem_m_gauss.files/image009.gif"></p>
+			<br><br>
+			<p>連列方程式に直すと次式となります。
+					<span class="ft"><i>z</i></span>→
+					<span class="ft"><i>y</i></span>→
+					<span class="ft"><i>x</i></span>の順番に変数が計算できます。</p>
+			<p class="im"><img src="./../img/fem_m_gauss.files/image010.gif"></p>
+			<p class="im"><img src="./../img/fem_m_gauss.files/image011.gif"></p>
+			<br>
+			<p>・ポイント</p>
+			<p>割り算をする係数が<span class="ft">0</span>の場合は、計算ができません。
+					係数が<span class="ft">0</span>となる場合は、列を入れ替える必要があります。
+					割り算をする係数は、<span class="ft"><i>a</i><sub>ii</sub></span>成分です。</p>
+			<br>
+
+
+			<div style="margin-top:10px;"></div>
+			<h2>
+				<table><tr>
+				<td style="padding:0px 10px;"><a href="./fem_11.html">prev</a></td>
+				<td style="padding:0px 10px;">|</td>
+				<td style="padding:0px 10px;"><a href="./fem_11.html">up</a></td>
+				<td style="padding:0px 10px;">|</td>
+				<td style="padding:0px 10px;"><a href="./fem_11_2.html">next</a></td>
+				</tr></table>
+			</h2>
+
+			<!-- 広告 -->
+			<p><iframe src="./../questionnaire.html" width="650" height="325" scrolling="yes" frameborder="0"></iframe></p>
+		</div>
+
+	</div>	<!-- id="content" -->
+
+	</div>	<!-- id="main" -->
+
+	<div id="sub">
+		<iframe src="./../menu.html" id="menu" name="menu" width="180" scrolling="no" frameborder="0"></iframe>
+
+		<!-- 広告 -->
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- バナー3（メニュー欄） -->
+		<ins class="adsbygoogle"
+		     style="display:inline-block;width:160px;height:600px"
+		     data-ad-client="ca-pub-4382202381956938"
+		     data-ad-slot="2356729377"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+
+		<!-- ページ別カウンタ -->
+		<!--shinobi1-->
+		<script type="text/javascript" src="http://x7.tuzikaze.com/ufo/10850280Q"></script>
+		<noscript><a href="http://x7.tuzikaze.com/bin/gg?10850280Q" target="_blank">
+		<img src="http://x7.tuzikaze.com/bin/ll?10850280Q" border="0"></a><br>
+		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://www.viaverdeprogresopr.com/">気になる住宅</a></span></noscript>
+		<!--shinobi2-->
+
+		<div class="sub-text">
+			<dl>
+				<dt>カウンタ</dt>
+				<dd>
+					<!-- shinobi ct2 -->
+					<script type="text/javascript" src="http://ct2.tirirenge.com/sc/1515356"></script>
+					<noscript><a href="http://ct2.tirirenge.com/gg/1515356" target="_blank">
+					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="カウンター" /></a><br />
+					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">ポイント</a></span></noscript>
+					<!-- /shinobi ct2 -->
+					<br>
+				（2011.3.15～）
+				</dd>
+			</dl>
+		</div>
+
+	</div>
+
+	<div id="footer">
+		<iframe id="ft" name="ft" src="./../footer.html" width="100%" scrolling="no" frameborder="0"></iframe>
+	</div>
+
+	</div>	<!-- id="wrapper" -->
+</body>
+</html>

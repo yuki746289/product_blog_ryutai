@@ -1,0 +1,150 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+	<meta http-equiv="content-style-type" content="text/css">
+
+	<meta name="description" content="流体力学・有限要素法による数値計算サイト。">
+	<meta name="keywords" content="流体力学,有限要素法,数値計算,メッシュ,FEM"> 
+	<meta name="author" content="HTMQ"> 
+
+	<title>使用する単位（伝熱工学）</title>
+	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body>
+	<input type="hidden" id="menu_id" value="9">
+
+	<div id="wrapper">
+
+	<div id="header">
+		<h1><a href="./../index.html" title="トップページへ">有限要素法・流体力学による数値計算</a></h1>
+
+		<br style="clear:both;">
+		<ul style="margin-left:30px;">
+		<li><a href="./../index.html" title="indexへ">index</a>&gt;</li>
+		<li><a href="./heat.html" title="伝熱工学へ">伝熱工学</a>&gt;</li>
+		<li><a href="./heat_1.html" title="使用する単位へ">使用する単位</a>&gt;</li>
+		</ul>
+		<hr>
+	</div>
+
+	<div id="main" >
+
+	<div id="image">
+		<p>流体力学から数値計算まで</p>
+		<p><img src="./../img/shiki1.gif"></p>
+		<p><img src="./../img/shiki2.gif"></p>
+	</div>
+
+	<div id="content">
+
+		<div id="content-text">
+
+			<h2>広告</h2>
+			<p><iframe src="./../ad.html" width="470" height="60" scrolling="no" frameborder="0"></iframe></p>
+			<br>
+
+			<h2>使用する単位</h2>
+			<p>伝熱工学では次の単位を使用します。</p>
+			<p class="im">
+				<table border="1" align="center">
+					<tr>
+						<th style="padding:5px;text-align:center;">単位</th>
+						<th style="padding:5px;text-align:center;">記号</th>
+						<th style="padding:5px;text-align:center;">説明</th>
+					</tr>
+					<tr>
+						<td style="padding:5px;text-align:center;">温度</td>
+						<td style="padding:5px;text-align:center;"><span class="ft">[K]</span></td>
+						<td style="padding:5px;text-align:left;"  >寒暖の度合いを数量で表したもの</td>
+					</tr>
+					<tr>
+						<td style="padding:5px;text-align:center;">熱量</td>
+						<td style="padding:5px;text-align:center;"><span class="ft">[J]</span></td>
+						<td style="padding:5px;text-align:left;"  >熱エネルギーの大きさを表したもの</td>
+					</tr>
+					<tr>
+						<td style="padding:5px;text-align:center;">質量</td>
+						<td style="padding:5px;text-align:center;"><span class="ft">[kg]</span></td>
+						<td style="padding:5px;text-align:left;"  >物質の重さ</td>
+					</tr>
+					<tr>
+						<td style="padding:5px;text-align:center;">距離、長さ</td>
+						<td style="padding:5px;text-align:center;"><span class="ft">[m]</span></td>
+						<td style="padding:5px;text-align:left;"  >物質間の距離。物質の長さ</td>
+					</tr>
+					<tr>
+						<td style="padding:5px;text-align:center;">時間</td>
+						<td style="padding:5px;text-align:center;"><span class="ft">[s]</span></td>
+						<td style="padding:5px;text-align:left;"  ></td>
+					</tr>
+				</table>
+			</p>
+			<br>
+
+			<div style="margin-top:10px;"></div>
+			<h2>
+				<table><tr>
+				<td style="padding:0px 10px;"><a href="./heat.html">prev</a></td>
+				<td style="padding:0px 10px;">|</td>
+				<td style="padding:0px 10px;"><a href="./heat.html">top</a></td>
+				<td style="padding:0px 10px;">|</td>
+				<td style="padding:0px 10px;"><a href="./heat_2.html">next</a></td>
+				</tr></table>
+			</h2>
+
+			<!-- 広告 -->
+			<p><iframe src="./../questionnaire.html" width="650" height="325" scrolling="yes" frameborder="0"></iframe></p>
+		</div>
+
+	</div>	<!-- id="content" -->
+
+	</div>	<!-- id="main" -->
+
+	<div id="sub">
+		<iframe src="./../menu.html" id="menu" name="menu" width="180" scrolling="no" frameborder="0"></iframe>
+
+		<!-- 広告 -->
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- バナー3（メニュー欄） -->
+		<ins class="adsbygoogle"
+		     style="display:inline-block;width:160px;height:600px"
+		     data-ad-client="ca-pub-4382202381956938"
+		     data-ad-slot="2356729377"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+
+		<!--shinobi1-->
+		<script type="text/javascript" src="http://x7.tuzikaze.com/ufo/10850281a"></script>
+		<noscript><a href="http://x7.tuzikaze.com/bin/gg?10850281a" target="_blank">
+		<img src="http://x7.tuzikaze.com/bin/ll?10850281a" border="0"></a><br>
+		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://home-uchiyama.com/">住宅情報</a></span></noscript>
+		<!--shinobi2-->
+
+		<div class="sub-text">
+			<dl>
+				<dt>カウンタ</dt>
+				<dd>
+					<!-- shinobi ct2 -->
+					<script type="text/javascript" src="http://ct2.tirirenge.com/sc/1515356"></script>
+					<noscript><a href="http://ct2.tirirenge.com/gg/1515356" target="_blank">
+					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="カウンター" /></a><br />
+					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">ポイント</a></span></noscript>
+					<!-- /shinobi ct2 -->
+					<br>
+				（2011.3.15～）
+				</dd>
+			</dl>
+		</div>
+
+	</div>
+
+	<div id="footer">
+		<iframe id="ft" name="ft" src="./../footer.html" width="100%" scrolling="no" frameborder="0"></iframe>
+	</div>
+
+	</div>	<!-- id="wrapper" -->
+</body>
+</html>

@@ -1,0 +1,144 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+	<meta http-equiv="content-style-type" content="text/css">
+
+	<meta name="description" content="有限要素法・流体力学による数値計算サイト。">
+	<meta name="keywords" content="有限要素法,FEM,流体力学,数値計算,メッシュ"> 
+
+	<title>4面体要素（有限要素法）</title>
+	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body>
+	<input type="hidden" id="menu_id"   value="4">
+	<input type="hidden" id="menu_id_2" value="4_2">
+
+	<div id="wrapper">
+
+	<div id="header">
+		<h1><a href="./../index.html" title="トップページへ">有限要素法・流体力学による数値計算</a></h1>
+
+		<br style="clear:both;">
+		<ul style="margin-left:30px;">
+		<li><a href="./../index.html" title="indexへ">index</a>&gt;</li>
+		<li><a href="./fem.html" title="有限要素法へ">有限要素法</a>&gt;</li>
+		<li><a href="./fem_2.html" title="形状関数と内挿関数へ">形状関数と内挿関数</a>&gt;</li>
+		<li><a href="./fem_2_3.html" title="4面体1次要素へ">4面体1次要素</a>&gt;</li>
+		</ul>
+		<hr>
+	</div>
+
+	<div id="main" >
+
+	<div id="image">
+		<p>流体力学から数値計算まで</p>
+		<p><img src="./../img/shiki1.gif"></p>
+		<p><img src="./../img/shiki2.gif"></p>
+	</div>
+
+	<div id="content">
+
+		<div id="content-text">
+
+			<h2>広告</h2>
+			<p><iframe src="./../ad.html" width="470" height="60" scrolling="no" frameborder="0"></iframe></p>
+			<br>
+
+			<h2>・<span class="ft">4</span>面体<span class="ft">1</span>次要素</h2>
+			<p><span class="ft">4</span>面体<span class="ft">1</span>次要素の場合も同様に定義されます。</p>
+			<p class="im"><img src="./../img/fem_tet.files/image001.png"></p>
+			<p>上図の様に<span class="ft"><i>xyz</i></span>座標に<span class="ft">1</span>
+					つの<span class="ft">4</span>面体要素を考える。<span class="ft">1</span>
+					次要素の場合は、物理量<span class="fs"><i>f</i></span>は次式となります。</p>
+			<p class="im"><img src="./../img/fem_tet.files/image002.png"></p>
+			<p>ここで、
+					<span class="fs"><i>a</i></span><span class="ft">, </span>
+					<span class="fs"><i>b</i></span><span class="ft">, </span>
+					<span class="fs"><i>g</i></span><span class="ft">, </span>
+					<span class="fs"><i>h</i></span><span>は未知数です。
+					これら<span class="ft">4</span>つの未知数を
+					<span class="ft">4</span>つの節点の物理量から計算します。</p>
+			<p class="im"><img src="./../img/fem_tet.files/image003.png"></p>
+			<p>この連立方程式の解を物理量<span class="fs"><i>f</i></span>
+					の式に代入すると次式が得られます。</p>
+			<p class="im"><img src="./../img/fem_tet.files/image004.png"></p>
+			<br>
+			<p>ここで、
+					<span class="ft"><i>L</i><sub>1</sub>, <i>L</i><sub>2</sub>, <i>L</i><sub>3</sub>[-]</span>
+					は形状関数と呼ばれ次式で定義されます。</p>
+			<p class="im"><img src="./../img/fem_tet.files/image005.png"></p>
+			<p>また、内挿関数は次式で定義されます。</p>
+			<p class="im"><img src="./../img/fem_tet.files/image006.png"></p>
+			<p>つまり、物理量は体積比で決まっていることがわかります。</p>
+			<p class="im"><img src="./../img/fem_tet.files/image007.png"></p>
+			<br>
+
+
+			<div style="margin-top:10px;"></div>
+			<h2>
+				<table><tr>
+				<td style="padding:0px 10px;"><a href="./fem_2_2.html">prev</a></td>
+				<td style="padding:0px 10px;">|</td>
+				<td style="padding:0px 10px;"><a href="./fem_2.html">up</a></td>
+				<td style="padding:0px 10px;">|</td>
+				<td style="padding:0px 10px;"><a href="./fem_3.html">next</a></td>
+				</tr></table>
+			</h2>
+
+			<!-- 広告 -->
+			<p><iframe src="./../questionnaire.html" width="650" height="325" scrolling="yes" frameborder="0"></iframe></p>
+		</div>
+
+	</div>	<!-- id="content" -->
+
+	</div>	<!-- id="main" -->
+
+	<div id="sub">
+		<iframe src="./../menu.html" id="menu" name="menu" width="180" scrolling="no" frameborder="0"></iframe>
+
+		<!-- 広告 -->
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- バナー3（メニュー欄） -->
+		<ins class="adsbygoogle"
+		     style="display:inline-block;width:160px;height:600px"
+		     data-ad-client="ca-pub-4382202381956938"
+		     data-ad-slot="2356729377"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+
+		<!-- ページ別カウンタ -->
+		<!--shinobi1-->
+		<script type="text/javascript" src="http://x7.tuzikaze.com/ufo/10850280H"></script>
+		<noscript><a href="http://x7.tuzikaze.com/bin/gg?10850280H" target="_blank">
+		<img src="http://x7.tuzikaze.com/bin/ll?10850280H" border="0"></a><br>
+		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> </span></noscript>
+		<!--shinobi2-->
+
+		<div class="sub-text">
+			<dl>
+				<dt>カウンタ</dt>
+				<dd>
+					<!-- shinobi ct2 -->
+					<script type="text/javascript" src="http://ct2.tirirenge.com/sc/1515356"></script>
+					<noscript><a href="http://ct2.tirirenge.com/gg/1515356" target="_blank">
+					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="カウンター" /></a><br />
+					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">ポイント</a></span></noscript>
+					<!-- /shinobi ct2 -->
+					<br>
+				（2011.3.15～）
+				</dd>
+			</dl>
+		</div>
+
+	</div>
+
+	<div id="footer">
+		<iframe id="ft" name="ft" src="./../footer.html" width="100%" scrolling="no" frameborder="0"></iframe>
+	</div>
+
+	</div>	<!-- id="wrapper" -->
+</body>
+</html>

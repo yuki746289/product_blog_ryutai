@@ -1,0 +1,190 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+	<meta http-equiv="content-style-type" content="text/css">
+
+	<meta name="description" content="流体力学・有限要素法による数値計算サイト。">
+	<meta name="keywords" content="流体力学,有限要素法,数値計算,メッシュ,FEM"> 
+
+	<title>バブルメッシュ法（メッシュ）</title>
+	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body>
+	<input type="hidden" id="menu_id" value="5">
+
+	<div id="wrapper">
+
+	<div id="header">
+		<h1><a href="./../index.html" title="トップページへ">有限要素法・流体力学による数値計算</a></h1>
+
+		<br style="clear:both;">
+		<ul style="margin-left:30px;">
+		<li><a href="./../index.html" title="indexへ">index</a>&gt;</li>
+		<li><a href="./mesh.html" title="メッシュへ">メッシュ</a>&gt;</li>
+		<li><a href="./mesh_3.html" title="節点の配置へ">節点の配置</a>&gt;</li>
+		<li><a href="./mesh_3_1.html" title="バブルメッシュ法へ">バブルメッシュ法</a>&gt;</li>
+		</ul>
+		<hr>
+	</div>
+
+	<div id="main" >
+
+	<div id="image">
+		<p>流体力学から数値計算まで</p>
+		<p><img src="./../img/shiki1.gif"></p>
+		<p><img src="./../img/shiki2.gif"></p>
+	</div>
+
+	<div id="content">
+
+		<div id="content-text">
+
+			<h2>広告</h2>
+			<p><iframe src="./../ad.html" width="470" height="60" scrolling="no" frameborder="0"></iframe></p>
+			<br>
+
+			<h2>バブルメッシュ法(bubble mesh method)</h2>
+			<p>解析の精度を上げるためには、できるだけ節点を滑らかに配置する必要があります。
+					また、メッシュ作成もスムーズに行うことができます。ここでは、次のような方法で節点を配置してみます。</p>
+			<p class="im">
+				<img src="./../img/mesh_node_buble.files/image001.png">
+				<img src="./../img/mesh_node_buble.files/image002.png">
+				<img src="./../img/mesh_node_buble.files/image003.png">
+			</p>
+			<br>
+			<p>上図の様に直交座標上に2つの節点があるとします。それぞれ位置ベクトルを
+				<img src="./../img/mesh_node_buble.files/image004.png">, 
+				<img src="./../img/mesh_node_buble.files/image005.png">
+					、半径を<span class="ft"><i>r</i><sub>1</sub></span>
+					, <span class="ft"><i>r</i><sub>2</sub></span>
+					とします。この時、2つの節点に働く力は次式となります。</p>
+			<p class="im"><img src="./../img/mesh_node_buble.files/image006.png"></p>
+			<br>
+			<p>ここで、<span class="ft"><i>w</i></span>は重み関数であり、
+					この式は重み関数と方向ベクトルの積を表しています。
+					ここで、左図では引力、右図では斥力が節点間に働いています。
+					これは、次式の重み関数で表されます。</p>
+			<p class="im"><img src="./../img/mesh_node_buble.files/image007.png"></p>
+			<br>
+			<p><span class="ft"><i>w</i> < 1</span>の場合は、斥力、
+				<span class="ft"><i>w</i> > 1</span>の場合は引力が働きます。
+				次に下図の様に周囲に複数の節点がある場合を考えます。</p>
+			<p class="im"><img src="./../img/mesh_node_buble.files/image008.png"></p>
+			<br>
+			<p>この場合は、節点に働く力は次式となります。</p>
+			<p class="im"><img src="./../img/mesh_node_buble.files/image009.png"></p>
+			<br>
+			<p>これは、斥力が正の向きを表しています。
+					従って、タイムステップごとの節点の方向ベクトルは次式なります。</p>
+			<p class="im"><img src="./../img/mesh_node_buble.files/image010.png"></p>
+			<br>
+			<p>ここで、<span class="ft"><i>c</i></span>は緩和係数である。</p>
+			<br>
+
+			<h2>節点の追加・削除</h2>
+			<p>滑らかな節点を配置するためには、節点を追加・削除する必要があります。
+			<p class="im"><img src="./../img/mesh_node_buble.files/image011.png"></p>
+			<p>上図の様に節点ごとに周囲の節点の粗密を考えます。
+				<span class="ft">2</span>次元の場合、節点の追加・削除の条件は次式なります。<p>
+			<p class="im">節点削除：<img src="./../img/mesh_node_buble.files/image012.png"></p>
+			<br>
+			<p class="im">節点追加：<img src="./../img/mesh_node_buble.files/image013.png"></p>
+			<br>
+			<p>ここで、節点の数密度を<span class="ft"><i>n</i>(<i>r<sub>i</sub></i>)</span>です。</p>
+			<br>
+
+			<h2>節点半径の補正</h2>
+			<p>節点の半径は、次式の様に距離の加重平均で補正しました。</p>
+			<p class="im"><img src="./../img/mesh_node_buble.files/image014.png"></p>
+			<br>
+			<p>ここで、wは重み関数で次式となります。</p>
+			<p class="im"><img src="./../img/mesh_node_buble.files/image015.png"></p>
+			<p>補正はタイムステップごとに行います。</p>
+			<br>
+			<h2>結果</h2>
+			<p>2次元の場合、下図の様な結果になりました。</p>
+			<p><iframe width="425" height="349" src="http://www.youtube.com/embed/Voo9Bv1I6Us" frameborder="0" allowfullscreen></iframe></p>
+			<br>
+			<p>デローニ分割後</p>
+			<p class="im"><img width="500" height="250" src="./../img/result/mesh.jpg"></p>
+			<br>
+			<p>矩形</p>
+			<p class="im"><img src="./../img/mesh_node_buble.files/image016.jpg"></p>
+			<br>
+			<p class="im"><img src="./../img/mesh_node_buble.files/image017.jpg"></p>
+			<br>
+			<p>円形</p>
+			<p class="im"><img src="./../img/mesh_node_buble.files/image018.jpg"></p>
+			<br>
+			<p class="im"><img src="./../img/mesh_node_buble.files/image019.jpg"></p>
+			<br>
+
+
+			<div style="margin-top:10px;"></div>
+			<h2>
+				<table><tr>
+				<td style="padding:0px 10px;"><a href="./mesh_3.html">prev</a></td>
+				<td style="padding:0px 10px;">|</td>
+				<td style="padding:0px 10px;"><a href="./mesh_3.html">up</a></td>
+				<td style="padding:0px 10px;">|</td>
+				<td style="padding:0px 10px;"><a href="./mesh_3_2.html">next</a></td>
+				</tr></table>
+			</h2>
+
+			<!-- 広告 -->
+			<p><iframe src="./../questionnaire.html" width="650" height="325" scrolling="yes" frameborder="0"></iframe></p>
+		</div>
+
+	</div>	<!-- id="content" -->
+
+	</div>	<!-- id="main" -->
+
+	<div id="sub">
+		<iframe src="./../menu.html" id="menu" name="menu" width="180" scrolling="no" frameborder="0"></iframe>
+
+		<!-- 広告 -->
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- バナー3（メニュー欄） -->
+		<ins class="adsbygoogle"
+		     style="display:inline-block;width:160px;height:600px"
+		     data-ad-client="ca-pub-4382202381956938"
+		     data-ad-slot="2356729377"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+
+		<!-- ページ別カウンタ -->
+		<!--shinobi1-->
+		<script type="text/javascript" src="http://x7.tuzikaze.com/ufo/10850280V"></script>
+		<noscript><a href="http://x7.tuzikaze.com/bin/gg?10850280V" target="_blank">
+		<img src="http://x7.tuzikaze.com/bin/ll?10850280V" border="0"></a><br>
+		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://www.pearlpig.com/">アイデア次第で変わる教育</a></span></noscript>
+		<!--shinobi2-->
+
+		<div class="sub-text">
+			<dl>
+				<dt>カウンタ</dt>
+				<dd>
+					<!-- shinobi ct2 -->
+					<script type="text/javascript" src="http://ct2.tirirenge.com/sc/1515356"></script>
+					<noscript><a href="http://ct2.tirirenge.com/gg/1515356" target="_blank">
+					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="カウンター" /></a><br />
+					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">ポイント</a></span></noscript>
+					<!-- /shinobi ct2 -->
+					<br>
+				（2011.3.15～）
+				</dd>
+			</dl>
+		</div>
+
+	</div>
+
+	<div id="footer">
+		<iframe id="ft" name="ft" src="./../footer.html" width="100%" scrolling="no" frameborder="0"></iframe>
+	</div>
+
+	</div>	<!-- id="wrapper" -->
+</body>
+</html>

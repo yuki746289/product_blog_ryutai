@@ -1,0 +1,540 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=shift_jis">
+<meta name=Generator content="Microsoft Word 11 (filtered)">
+<title>内容</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"ＭＳ 明朝";
+	panose-1:2 2 6 9 4 2 5 8 3 4;}
+@font-face
+	{font-family:Century;
+	panose-1:2 4 6 4 5 5 5 2 3 4;}
+@font-face
+	{font-family:"\@ＭＳ 明朝";
+	panose-1:2 2 6 9 4 2 5 8 3 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0mm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	font-size:10.5pt;
+	font-family:Century;}
+span.MsoEndnoteReference
+	{vertical-align:super;}
+p.MsoEndnoteText, li.MsoEndnoteText, div.MsoEndnoteText
+	{margin:0mm;
+	margin-bottom:.0001pt;
+	layout-grid-mode:char;
+	font-size:10.5pt;
+	font-family:Century;}
+ /* Page Definitions */
+ @page Section1
+	{size:595.3pt 841.9pt;
+	margin:20.0mm 10.0mm 20.0mm 10.0mm;
+	layout-grid:14.55pt -.9pt;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0mm;}
+ul
+	{margin-bottom:0mm;}
+-->
+</style>
+
+</head>
+
+<body lang=JA style='text-justify-trim:punctuation'>
+
+<div class=Section1 style='layout-grid:14.55pt -.9pt'>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>・有限要素法</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　有限要素法</span><span
+lang=EN-US style='font-family:"Times New Roman"'>(Finite Element Method)</span><span
+style='font-family:"ＭＳ 明朝"'>では、節点といくつかの節点から構成される要素が用いられる。計算領域は、要素全体で表される。節点の物理量から各要素の物理量の積分値が計算される。積分値は行列式で表さる。全要素の行列式を組み合わせ、</span><span
+lang=EN-US style='font-family:"Times New Roman"'>1</span><span
+style='font-family:"ＭＳ 明朝"'>つの大きな多元</span><span lang=EN-US style='font-family:
+"Times New Roman"'>1</span><span style='font-family:"ＭＳ 明朝"'>次連立方程式を解くことで、速度などの変数が計算される。この行列式の計算は、タイムステップごとに計算される。タイムステップとは、総計算時間に対するユーザーが設定する微小時間である。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　</span><span lang=EN-US><img
+width=340 height=207 src="fem.files/image001.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・節点、要素</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　要素にはいくつかの種類がある。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'>3</span><span
+style='font-family:"ＭＳ 明朝"'>角形要素</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'>1</span><span
+style='font-family:"ＭＳ 明朝"'>次要素　　　　</span><span lang=EN-US style='font-family:
+"Times New Roman"'>2</span><span style='font-family:"ＭＳ 明朝"'>次要素</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><img width=87 height=91 src="fem.files/image002.gif"></span><span
+style='font-family:"ＭＳ 明朝"'>　　</span><span lang=EN-US><img width=87 height=100
+src="fem.files/image003.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'>4</span><span
+style='font-family:"ＭＳ 明朝"'>角形要素</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'>1</span><span
+style='font-family:"ＭＳ 明朝"'>次要素　　　　</span><span lang=EN-US style='font-family:
+"Times New Roman"'>2</span><span style='font-family:"ＭＳ 明朝"'>次要素</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><img width=87 height=102 src="fem.files/image004.gif"></span><span
+style='font-family:"ＭＳ 明朝"'>　　</span><span lang=EN-US><img width=87 height=102
+src="fem.files/image005.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'>4</span><span
+style='font-family:"ＭＳ 明朝"'>面体要素</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><img width=87 height=138 src="fem.files/image006.gif"></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'>6</span><span
+style='font-family:"ＭＳ 明朝"'>面体要素</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><img width=115 height=110 src="fem.files/image007.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　上図の様に各要素の節点には番号が割り振られる。割り振る順番は、反時計回りである。計算時には全節点に重複しない番号が割り振られるが、その番号とは異なる。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・形状関数</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　要素内の任意の点における物理量の計算には形状関数が使用される。形状関数は、要素</span><span
+style='font-family:"ＭＳ 明朝"'>ごとに異なる。また、各要素には</span><span lang=EN-US
+style='font-family:"Times New Roman"'>1</span><span style='font-family:"ＭＳ 明朝"'>次要素、</span><span
+lang=EN-US style='font-family:"Times New Roman"'>2</span><span
+style='font-family:"ＭＳ 明朝"'>次要素などの高次要素もある。ここでは、最も簡単な</span><span lang=EN-US
+style='font-family:"Times New Roman"'>3</span><span style='font-family:"ＭＳ 明朝"'>角形</span><span
+lang=EN-US style='font-family:"Times New Roman"'>1</span><span
+style='font-family:"ＭＳ 明朝"'>次要素の形状関数を導出する。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　・</span><span
+lang=EN-US style='font-family:"Times New Roman"'>3</span><span
+style='font-family:"ＭＳ 明朝"'>角形</span><span lang=EN-US style='font-family:"Times New Roman"'>1</span><span
+style='font-family:"ＭＳ 明朝"'>次要素</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><img width=295 height=275 src="fem.files/image008.gif"></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　上図の様に</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>xy</span></i><span
+style='font-family:"ＭＳ 明朝"'>座標に</span><span lang=EN-US style='font-family:"Times New Roman"'>1</span><span
+style='font-family:"ＭＳ 明朝"'>つの</span><span lang=EN-US style='font-family:"Times New Roman"'>3</span><span
+style='font-family:"ＭＳ 明朝"'>角形要素を考える。</span><span lang=EN-US style='font-family:
+"Times New Roman"'>1</span><span style='font-family:"ＭＳ 明朝"'>次要素の場合は、物理量</span><i><span
+lang=EN-US style='font-family:Symbol'>f</span></i><span style='font-family:
+"ＭＳ 明朝"'>は次式となる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=141 height=21
+src="fem.files/image009.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　ここで、</span><i><span
+lang=EN-US style='font-family:Symbol'>a</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>, </span><i><span lang=EN-US
+style='font-family:Symbol'>b</span></i><span lang=EN-US style='font-family:
+"Times New Roman"'>, </span><i><span lang=EN-US style='font-family:Symbol'>g</span></i><span
+style='font-family:"ＭＳ 明朝"'>は未知数である。これら</span><span lang=EN-US
+style='font-family:"Times New Roman"'>3</span><span style='font-family:"ＭＳ 明朝"'>つの未知数を</span><span
+lang=EN-US style='font-family:"Times New Roman"'>3</span><span
+style='font-family:"ＭＳ 明朝"'>つの節点の物理量から計算する。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><sub><img width=137 height=75 src="fem.files/image010.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　これを計算すると次式となる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><sub><img width=344 height=72 src="fem.files/image011.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　これを物理量</span><i><span
+lang=EN-US style='font-family:Symbol'>f</span></i><span style='font-family:
+"ＭＳ 明朝"'>の式に代入すると次式が得られる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><sub><img width=172 height=24 src="fem.files/image012.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　ここで、</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>L</span></i><sub><span
+lang=EN-US style='font-family:"Times New Roman"'>1</span></sub><span
+lang=EN-US style='font-family:"Times New Roman"'>, <i>L</i><sub>2</sub>, <i>L</i><sub>3</sub>[-]</span><span
+style='font-family:"ＭＳ 明朝"'>は形状関数と呼ばれ下図を用いて定義できる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><sub><img width=176 height=41 src="fem.files/image013.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><img width=295 height=275 src="fem.files/image014.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　・</span><span
+lang=EN-US style='font-family:"Times New Roman"'>3</span><span
+style='font-family:"ＭＳ 明朝"'>角形</span><span lang=EN-US style='font-family:"Times New Roman"'>2</span><span
+style='font-family:"ＭＳ 明朝"'>次要素</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　次に</span><span
+lang=EN-US style='font-family:"Times New Roman"'>3</span><span
+style='font-family:"ＭＳ 明朝"'>角形</span><span lang=EN-US style='font-family:"Times New Roman"'>2</span><span
+style='font-family:"ＭＳ 明朝"'>次要素の場合は、物理量</span><i><span lang=EN-US
+style='font-family:Symbol'>f</span></i><span style='font-family:"ＭＳ 明朝"'>は次式となる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=268 height=24
+src="fem.files/image015.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　未知数は</span><span
+lang=EN-US>6</span><span style='font-family:"ＭＳ 明朝"'>個で、要素の</span><span
+lang=EN-US>6</span><span style='font-family:"ＭＳ 明朝"'>個の節点から</span><span
+lang=EN-US>6</span><span style='font-family:"ＭＳ 明朝"'>元</span><span lang=EN-US>1</span><span
+style='font-family:"ＭＳ 明朝"'>次方程式を解くことになる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><sub><img width=275 height=160 src="fem.files/image016.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　これを解くと次式が得られる。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　・</span><span
+lang=EN-US style='font-family:"Times New Roman"'>3</span><span
+style='font-family:"ＭＳ 明朝"'>角形要素の内挿関数</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　導出した</span><span
+lang=EN-US style='font-family:"Times New Roman"'>3</span><span
+style='font-family:"ＭＳ 明朝"'>角形要素の形状関数を用いて内挿関数</span><i><span lang=EN-US
+style='font-family:"Times New Roman"'>N<sub>i</sub></span></i><span
+style='font-family:"ＭＳ 明朝"'>を次式で定義する。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'>3</span><span
+style='font-family:"ＭＳ 明朝"'>角形</span><span lang=EN-US style='font-family:"Times New Roman"'>1</span><span
+style='font-family:"ＭＳ 明朝"'>次要素</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=149 height=48
+src="fem.files/image017.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'>3</span><span
+style='font-family:"ＭＳ 明朝"'>角形</span><span lang=EN-US style='font-family:"Times New Roman"'>2</span><span
+style='font-family:"ＭＳ 明朝"'>次要素</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　また、</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=111 height=24
+src="fem.files/image018.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　従って、</span><span
+lang=EN-US style='font-family:"Times New Roman"'>3</span><span
+style='font-family:"ＭＳ 明朝"'>角形要素内の任意の位置の物理量は、内挿関数</span><i><span lang=EN-US
+style='font-family:"Times New Roman"'>N<sub>i</sub></span></i><span
+style='font-family:"ＭＳ 明朝"'>と節点の物理量</span><i><span lang=EN-US style='font-family:
+Symbol'>f</span></i><sub><span lang=EN-US>1</span></sub><span lang=EN-US>, </span><i><span
+lang=EN-US style='font-family:Symbol'>f</span></i><sub><span lang=EN-US>2</span></sub><span
+lang=EN-US>, </span><i><span lang=EN-US style='font-family:Symbol'>f</span></i><sub><span
+lang=EN-US>3</span></sub><span style='font-family:"ＭＳ 明朝"'>で表される。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　・</span><span
+lang=EN-US style='font-family:"Times New Roman"'>4</span><span
+style='font-family:"ＭＳ 明朝"'>面体</span><span lang=EN-US style='font-family:"Times New Roman"'>1</span><span
+style='font-family:"ＭＳ 明朝"'>次要素の形状関数</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US>4</span><span style='font-family:"ＭＳ 明朝"'>面体</span><span lang=EN-US>1</span><span
+style='font-family:"ＭＳ 明朝"'>次要素の場合も同様に定義される。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><img width=389 height=335 src="fem.files/image019.gif"></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　上図の様に</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>xyz</span></i><span
+style='font-family:"ＭＳ 明朝"'>座標に</span><span lang=EN-US style='font-family:"Times New Roman"'>1</span><span
+style='font-family:"ＭＳ 明朝"'>つの</span><span lang=EN-US style='font-family:"Times New Roman"'>4</span><span
+style='font-family:"ＭＳ 明朝"'>面体要素を考える。</span><span lang=EN-US style='font-family:
+"Times New Roman"'>1</span><span style='font-family:"ＭＳ 明朝"'>次要素の場合は、物理量</span><i><span
+lang=EN-US style='font-family:Symbol'>f</span></i><span style='font-family:
+"ＭＳ 明朝"'>は次式となる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=185 height=21
+src="fem.files/image020.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　ここで、</span><i><span
+lang=EN-US style='font-family:Symbol'>a</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>, </span><i><span lang=EN-US
+style='font-family:Symbol'>b</span></i><span lang=EN-US style='font-family:
+"Times New Roman"'>, </span><i><span lang=EN-US style='font-family:Symbol'>g</span></i><span
+lang=EN-US style='font-family:"Times New Roman"'>, </span><i><span lang=EN-US
+style='font-family:Symbol'>h</span></i><span style='font-family:"ＭＳ 明朝"'>は未知数である。これら</span><span
+lang=EN-US style='font-family:"Times New Roman"'>4</span><span
+style='font-family:"ＭＳ 明朝"'>つの未知数を</span><span lang=EN-US style='font-family:
+"Times New Roman"'>4</span><span style='font-family:"ＭＳ 明朝"'>つの節点の物理量から計算する。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><sub><img width=172 height=99 src="fem.files/image021.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　この連立方程式の解を物理量</span><i><span
+lang=EN-US style='font-family:Symbol'>f</span></i><span style='font-family:
+"ＭＳ 明朝"'>の式に代入すると次式が得られる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><sub><img width=220 height=24 src="fem.files/image022.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　ここで、</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>L</span></i><sub><span
+lang=EN-US style='font-family:"Times New Roman"'>1</span></sub><span
+lang=EN-US style='font-family:"Times New Roman"'>, <i>L</i><sub>2</sub>, <i>L</i><sub>3</sub>[-]</span><span
+style='font-family:"ＭＳ 明朝"'>は形状関数と呼ばれ下図を用いて定義できる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><sub><img width=223 height=41 src="fem.files/image023.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><img width=346 height=335 src="fem.files/image024.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　・</span><span
+lang=EN-US style='font-family:"Times New Roman"'>4</span><span
+style='font-family:"ＭＳ 明朝"'>面体</span><span style='font-family:"ＭＳ 明朝"'>要素の内挿関数</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　導出した</span><span
+lang=EN-US style='font-family:"Times New Roman"'>4</span><span
+style='font-family:"ＭＳ 明朝"'>面体</span><span style='font-family:"ＭＳ 明朝"'>要素の形状関数を用いて内挿関数</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>N<sub>i</sub></span></i><span
+style='font-family:"ＭＳ 明朝"'>を次式で定義する。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'>4</span><span
+style='font-family:"ＭＳ 明朝"'>面体</span><span lang=EN-US style='font-family:"Times New Roman"'>1</span><span
+style='font-family:"ＭＳ 明朝"'>次要素</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=196 height=48
+src="fem.files/image025.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　また、</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=148 height=24
+src="fem.files/image026.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　従って、</span><span
+lang=EN-US style='font-family:"Times New Roman"'>4</span><span
+style='font-family:"ＭＳ 明朝"'>面体要素内の任意の位置の物理量は、内挿関数</span><i><span lang=EN-US
+style='font-family:"Times New Roman"'>N<sub>i</sub></span></i><span
+style='font-family:"ＭＳ 明朝"'>と節点の物理量</span><i><span lang=EN-US style='font-family:
+Symbol'>f</span></i><sub><span lang=EN-US>1</span></sub><span lang=EN-US>, </span><i><span
+lang=EN-US style='font-family:Symbol'>f</span></i><sub><span lang=EN-US>2</span></sub><span
+lang=EN-US>, </span><i><span lang=EN-US style='font-family:Symbol'>f</span></i><sub><span
+lang=EN-US>3</span></sub><span lang=EN-US>, </span><i><span lang=EN-US
+style='font-family:Symbol'>f</span></i><sub><span lang=EN-US>4</span></sub><span
+style='font-family:"ＭＳ 明朝"'>で表される。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　・高次要素</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　積分</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・収支式のマトリックス化</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　数値計算の目的は、解析的に解けない収支式を四則演算に分解し、プログラム化して解くことである。有限要素法もその</span><span
+lang=EN-US style='font-family:"Times New Roman"'>1</span><span
+style='font-family:"ＭＳ 明朝"'>つである。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　・ガラーキン法</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><sub><img width=73 height=40 src="fem.files/image027.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　・重み付き残差法</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　上図の様な</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>xy</span></i><span
+style='font-family:"ＭＳ 明朝"'>平面上に流れ場を考え、</span><span lang=EN-US
+style='font-family:"Times New Roman"'>3</span><span style='font-family:"ＭＳ 明朝"'>角形</span><span
+lang=EN-US style='font-family:"Times New Roman"'>1</span><span
+style='font-family:"ＭＳ 明朝"'>次要素を用意する。各節点の数値解には誤差が含まれる。その誤差</span><i><span
+lang=EN-US style='font-family:Symbol'>e</span></i><sub><span lang=EN-US
+style='font-family:"Times New Roman"'>1</span></sub><span lang=EN-US
+style='font-family:"Times New Roman"'>, </span><i><span lang=EN-US
+style='font-family:Symbol'>e</span></i><sub><span lang=EN-US style='font-family:
+"Times New Roman"'>2</span></sub><span lang=EN-US style='font-family:"Times New Roman"'>,
+</span><i><span lang=EN-US style='font-family:Symbol'>e</span></i><sub><span
+lang=EN-US style='font-family:"Times New Roman"'>3</span></sub><span
+style='font-family:"ＭＳ 明朝"'>を次式とする。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><sub><img width=243 height=136 src="fem.files/image028.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　従って、要素内の任意の点で、誤差は次式となる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=151 height=24
+src="fem.files/image029.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　要素内の誤差の積分値は次式となる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=237
+height=141 src="fem.files/image030.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・ヤコビアン行列</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　ヤコビアン行列は、座標変換のための行列である。高次要素の積分に使用される。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=136 height=91 src="fem.files/image031.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　従って、</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=153 height=93 src="fem.files/image032.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　この</span><span
+lang=EN-US style='font-family:"Times New Roman"'>2</span><span
+style='font-family:"ＭＳ 明朝"'>×</span><span lang=EN-US style='font-family:"Times New Roman"'>2</span><span
+style='font-family:"ＭＳ 明朝"'>行列を</span><i><span lang=EN-US style='font-family:
+"Times New Roman"'>x</span></i><span lang=EN-US style='font-family:"Times New Roman"'>,
+<i>y</i></span><span style='font-family:"ＭＳ 明朝"'>座標のヤコビアン行列と言う。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・離散化</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・</span><span
+style='font-family:"ＭＳ 明朝"'>座標の取り方</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　・オイラー座標、ラグラジアン座標</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　数値計算では、タイムステップごとに節点の速度を計算していく。節点には、「観測点」という見方と「流体粒子」という見方があり、それぞれオイラー座標、ラグラジアン座標が用いられる。これらの座標の違いは、対流項</span><span
+lang=EN-US>(</span><span style='font-family:"ＭＳ 明朝"'>慣性力</span><span
+lang=EN-US>)</span><span style='font-family:"ＭＳ 明朝"'>を考慮するかしないかである。対流項は、全微分作用の項に含まれている。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+style='font-family:"ＭＳ 明朝"'>　</span><span lang=EN-US style='font-family:"Times New Roman"'><sub><img
+width=124 height=41 src="fem.files/image033.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　・オイラー座標</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　節点を観測点と見なして計算する。対流項を考慮するため、節点は移動しない。逆に言えば、節点を固定するため、慣性力によって節点が押されると解釈できる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=116 height=41
+src="fem.files/image034.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　　</span><span
+lang=EN-US><img width=215 height=135 src="fem.files/image035.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　・ラグラジアン座標</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　節点を流体粒子と見なして計算する。対流項を考慮しないため、節点は移動する。逆に言えば、慣性力によって節点が押されて移動するため、節点自体は慣性力を感じない</span><span
+lang=EN-US>(</span><span style='font-family:"ＭＳ 明朝"'>慣性力が蓄積しない</span><span
+lang=EN-US>)</span><span style='font-family:"ＭＳ 明朝"'>と解釈できる。節点の移動量は、タイムステップ</span><i><span
+lang=EN-US style='font-family:Symbol'>D</span></i><i><span lang=EN-US
+style='font-family:"Times New Roman"'>t</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[s]</span><span style='font-family:"ＭＳ 明朝"'>×計算した速度</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>v</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[m/s]</span><span style='font-family:
+"ＭＳ 明朝"'>となる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=112 height=41
+src="fem.files/image036.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　　</span><span
+lang=EN-US><img width=215 height=122 src="fem.files/image037.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　座標の取り方には、オイラー座標とラグラジアン座標の</span><span
+lang=EN-US style='font-family:"Times New Roman"'>2</span><span
+style='font-family:"ＭＳ 明朝"'>つがある。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・境界条件</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　・第</span><span
+lang=EN-US style='font-family:"Times New Roman"'>1</span><span
+style='font-family:"ＭＳ 明朝"'>種</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　・壁面　滑り無し</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　・第</span><span
+lang=EN-US style='font-family:"Times New Roman"'>2</span><span
+style='font-family:"ＭＳ 明朝"'>種</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　・表面張力</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　・勾配</span><span
+lang=EN-US>0</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・陰解法、陽解法</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・バンド幅の最適化</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・行列計算</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　・ガウス</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　係数≠</span><span
+lang=EN-US>0</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　・コレスキー解</span></p>
+
+</div>
+
+</body>
+
+</html>

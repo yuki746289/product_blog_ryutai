@@ -1,0 +1,152 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+	<meta http-equiv="content-style-type" content="text/css">
+
+	<meta name="description" content="流体力学・有限要素法による数値計算サイト。">
+	<meta name="keywords" content="流体力学,有限要素法,数値計算,メッシュ,FEM"> 
+
+	<title>曲率計算（メッシュ）</title>
+	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body>
+	<input type="hidden" id="menu_id" value="5">
+
+	<div id="wrapper">
+
+	<div id="header">
+		<h1><a href="./../index.html" title="トップページへ">有限要素法・流体力学による数値計算</a></h1>
+
+		<br style="clear:both;">
+		<ul style="margin-left:30px;">
+		<li><a href="./../index.html" title="indexへ">index</a>&gt;</li>
+		<li><a href="./mesh.html" title="メッシュへ">メッシュ</a>&gt;</li>
+		<li><a href="./mesh_2.html" title="曲率計算へ">曲率計算</a>&gt;</li>
+		</ul>
+		<hr>
+	</div>
+
+	<div id="main" >
+
+	<div id="image">
+		<p>流体力学から数値計算まで</p>
+		<p><img src="./../img/shiki1.gif"></p>
+		<p><img src="./../img/shiki2.gif"></p>
+	</div>
+
+	<div id="content">
+
+		<div id="content-text">
+
+			<h2>広告</h2>
+			<p><iframe src="./../ad.html" width="470" height="60" scrolling="no" frameborder="0"></iframe></p>
+			<br>
+
+			<h2>・曲率計算</h2>
+			<p>表面張力を計算するには、曲率を計算する必要があります。
+					ここでは、界面上の節点と近似関数を用いて曲率を計算してみます。</p>
+			<p>曲率を計算する節点を下図で与える。<span class="ft">4</span>面体
+					<span class="ft">1</span>次要素の界面です。</p>
+			<p class="im"><img src="./../img/mesh_curvature.files/image001.png"></p>
+			<br>
+			<p>界面の近似間数を次式で与えます。</p>
+			<p class="im"><img src="./../img/mesh_curvature.files/image002.png"></p>
+			<br>
+			<p>界面上の節点<span class="ft"><i>p</i><sub>1</sub>(<i>x</i><sub>1</sub>, 
+					<i>y</i><sub>1</sub>, <i>z</i><sub>1</sub>)</span>を通るので</p>
+			<p class="im"><img src="./../img/mesh_curvature.files/image003.png"></p>
+			<br>
+			<p>最小二乗法より誤差を計算すると</p>
+			<p class="im"><img src="./../img/mesh_curvature.files/image004.png"></p>
+			<br>
+			<p><span class="ft"><i>x</i><sub>c</sub></span>で微分して
+			<p class="im"><img src="./../img/mesh_curvature.files/image005.png"></p>
+			<br>
+			<p><span class="ft"><i>y</i><sub>c</sub></span>で微分して
+			<p class="im"><img src="./../img/mesh_curvature.files/image006.png"></p>
+			<br>
+			<p><span class="ft"><i>z</i><sub>c</sub></span>で微分して
+			<p class="im"><img src="./../img/mesh_curvature.files/image007.png"></p>
+			<br>
+			<p>まとめると</p>
+			<p class="im"><img src="./../img/mesh_curvature.files/image008.png"></p>
+			<br>
+			<p>変数ごとにまとめて</p>
+			<p class="im"><img src="./../img/mesh_curvature.files/image009.png"></p>
+			<br>
+			<p>これを解くと変数<span class="ft"><i>x</i><sub>c</sub>, 
+					<i>y</i><sub>c</sub>, <i>z</i><sub>c</sub></span>
+					が求まるので曲率が計算できます。</p>
+			<p>また、法線ベクトルは次式となります。</p>
+			<p class="im"><img src="./../img/mesh_curvature.files/image010.png"></p>
+			<br>
+
+
+			<div style="margin-top:10px;"></div>
+			<h2>
+				<table><tr>
+				<td style="padding:0px 10px;"><a href="./mesh_1.html">prev</a></td>
+				<td style="padding:0px 10px;">|</td>
+				<td style="padding:0px 10px;"><a href="./mesh.html">up</a></td>
+				<td style="padding:0px 10px;">|</td>
+				<td style="padding:0px 10px;"><a href="./mesh_3.html">next</a></td>
+				</tr></table>
+			</h2>
+
+			<!-- 広告 -->
+			<p><iframe src="./../questionnaire.html" width="650" height="325" scrolling="yes" frameborder="0"></iframe></p>
+		</div>
+
+	</div>	<!-- id="content" -->
+
+	</div>	<!-- id="main" -->
+
+	<div id="sub">
+		<iframe src="./../menu.html" id="menu" name="menu" width="180" scrolling="no" frameborder="0"></iframe>
+	</div>
+
+	<div id="footer">
+		<iframe id="ft" name="ft" src="./../footer.html" width="100%" scrolling="no" frameborder="0"></iframe>
+
+		<!-- 広告 -->
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- バナー3（メニュー欄） -->
+		<ins class="adsbygoogle"
+		     style="display:inline-block;width:160px;height:600px"
+		     data-ad-client="ca-pub-4382202381956938"
+		     data-ad-slot="2356729377"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+
+		<!-- ページ別カウンタ -->
+		<!--shinobi1-->
+		<script type="text/javascript" src="http://x7.tuzikaze.com/ufo/10850280T"></script>
+		<noscript><a href="http://x7.tuzikaze.com/bin/gg?10850280T" target="_blank">
+		<img src="http://x7.tuzikaze.com/bin/ll?10850280T" border="0"></a><br>
+		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://home-iwamoto.com/">年金を貰うまでの空白期間</a></span></noscript>
+		<!--shinobi2-->
+
+		<div class="sub-text">
+			<dl>
+				<dt>カウンタ</dt>
+				<dd>
+					<!-- shinobi ct2 -->
+					<script type="text/javascript" src="http://ct2.tirirenge.com/sc/1515356"></script>
+					<noscript><a href="http://ct2.tirirenge.com/gg/1515356" target="_blank">
+					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="カウンター" /></a><br />
+					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">ポイント</a></span></noscript>
+					<!-- /shinobi ct2 -->
+					<br>
+				（2011.3.15～）
+				</dd>
+			</dl>
+		</div>
+
+	</div>
+
+	</div>	<!-- id="wrapper" -->
+</body>
+</html>

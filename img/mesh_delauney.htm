@@ -1,0 +1,112 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=shift_jis">
+<meta name=Generator content="Microsoft Word 11 (filtered)">
+<title>内容</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"ＭＳ 明朝";
+	panose-1:2 2 6 9 4 2 5 8 3 4;}
+@font-face
+	{font-family:Century;
+	panose-1:2 4 6 4 5 5 5 2 3 4;}
+@font-face
+	{font-family:"\@ＭＳ 明朝";
+	panose-1:2 2 6 9 4 2 5 8 3 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0mm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	font-size:10.5pt;
+	font-family:Century;}
+span.MsoEndnoteReference
+	{vertical-align:super;}
+p.MsoEndnoteText, li.MsoEndnoteText, div.MsoEndnoteText
+	{margin:0mm;
+	margin-bottom:.0001pt;
+	layout-grid-mode:char;
+	font-size:10.5pt;
+	font-family:Century;}
+ /* Page Definitions */
+ @page Section1
+	{size:595.3pt 841.9pt;
+	margin:20.0mm 10.0mm 20.0mm 10.0mm;
+	layout-grid:14.55pt -.9pt;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0mm;}
+ul
+	{margin-bottom:0mm;}
+-->
+</style>
+
+</head>
+
+<body lang=JA style='text-justify-trim:punctuation'>
+
+<div class=Section1 style='layout-grid:14.55pt -.9pt'>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>・デローニ</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　デローニ分割は、メッシュを作成する方法の</span><span
+lang=EN-US>1</span><span style='font-family:"ＭＳ 明朝"'>つである。節点を</span><span
+lang=EN-US>1</span><span style='font-family:"ＭＳ 明朝"'>つずつ領域に追加することで</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　メッシュが作成されていく。ここでは</span><span
+lang=EN-US>3</span><span style='font-family:"ＭＳ 明朝"'>角形要素を用いて領域に節点を追加してメッシュが作成されるプロセスを示してみる。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　下図の様に領域に節点を</span><span
+lang=EN-US>1</span><span style='font-family:"ＭＳ 明朝"'>つ追加する。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　</span><span lang=EN-US><img
+width=323 height=311 src="mesh_delauney.files/image001.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　次に各要素の外接円を描いて、追加した節点が外接円に含まれる要素を探す。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　</span><span lang=EN-US><img
+width=323 height=311 src="mesh_delauney.files/image002.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　外接円に節点を含む要素で作られる多角形ができあがる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　</span><span lang=EN-US><img
+width=323 height=312 src="mesh_delauney.files/image003.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　この多角形の各頂点と節点を直線で結ぶと新たな要素が出来上がる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　</span><span lang=EN-US><img
+width=323 height=311 src="mesh_delauney.files/image004.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　</span><span lang=EN-US>4</span><span
+style='font-family:"ＭＳ 明朝"'>面体要素を用いる場合は、節点を外接球に含む要素を探すことになる。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

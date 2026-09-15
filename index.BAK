@@ -1,0 +1,373 @@
+a
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+	<meta http-equiv="content-style-type" content="text/css">
+
+	<meta name="description" content="有限要素法・流体力学による数値計算サイト。">
+	<meta name="keywords" content="有限要素法,流体力学,数値計算,メッシュ,FEM"> 
+	<meta name="google-site-verification" content="8fFdfer7twGFxARAK7--Wvr10h9YL3JLdx1jS0vUID0" />
+	<META name="y_key" content="52db1cceacd03657" />
+
+
+	<title>有限要素法・流体力学による数値計算</title>
+	<link href="./css/lib.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body>
+	<input type="hidden" id="menu_id" value="0">
+
+	<div id="wrapper">
+
+	<div id="header">
+		<h1><a href="index.html" title="トップページへ">有限要素法・流体力学による数値計算</a></h1>
+
+		<br style="clear:both;">
+		<ul style="margin-left:30px;">
+		<li><a href="index.html" title="indexへ">index</a>&gt;</li>
+		</ul>
+		<hr>
+	</div>
+
+	<div id="main" >
+
+	<div id="image">
+		<p>流体力学から数値計算まで</p>
+		<p><img src="./img/shiki1.gif"></p>
+		<p><img src="./img/shiki2.gif"></p>
+	</div>
+
+	<div id="content">
+
+		<div id="content-main">
+
+			<h2>広告</h2>
+			<p><iframe src="./../ad_top.html" width="500" height="60" scrolling="no" frameborder="0"></iframe></p>
+
+			<h2>お知らせ等</h2>
+			<!--
+			<p>ブログ更新しました(´・ω・)ノ
+				<img src="./img/allow.gif">
+				<a href="http://orange314.blog55.fc2.com/" target="_parent" title="ブログへ">ブログ</a>
+			</p>
+			-->
+			<p>2016.5.20 図式の解像度を向上。</p>
+			<p>2016.5.22 動画追加（無次元数）</p>
+
+<!--
+			<h2>新着情報</h2>
+			<ul>
+			<li>2011.7.14 <a href="./library/library.html"><b>ソフトライブラリ</b></a>更新</li>
+			<li>2011.6.30 <a href="./book/book.html"><b>書籍紹介</b></a>追加</li>
+			<li>2011.4.20 <a href="./heat/heat.html"><b>伝熱工学</b></a>追加</li>
+			<li>2011.3.15 サイト掲載</li>
+			</ul>
+-->
+
+
+			<h2>数値計算について</h2>
+				<p>　<strong>流体力学</strong>や<strong>有限要素法</strong>、<strong>数値計算</strong>
+						についてわかり易く説明している（つもり）サイトです。
+						有限要素法は数値計算を行うための強力な手法の１つです。
+						しかし、理解するためには高校で習う物理から流体力学、プログラミング、メッシュ作成などの
+						幅広い知識が必要になります。それらの内容を学ぶ順番に下記に示してみます。</p>
+				<br>
+				<p>・古典力学</p>
+				<p>　基本となる知識は、<a href="./physics/physics.html" target="_parent">古典力学</a>です。
+						質量[kg]、長さ[m]、時間[s]などの
+						<a href="./physics/physics_1.html" target="_parent"><b>SI単位</b></a>の意味や
+						速度[m/s]、運動量[N・s]、エネルギー[N・m]などの
+						<a href="./physics/physics_2.html" target="_parent">物理量</a>の意味について考えます。
+						使用する数学は、基本的な<a href="./physics/physics_3.html" target="_parent">ベクトル</a>や微分積分などです。</p>
+				<br>
+				<p>・流体力学</p>
+				<p>　古典力学の次に学ぶのは、<a href="./hydronamics/hydronamics.html" target="_parent"><b>流体力学</b></a>です。
+						流体力学とは、水や空気などの<a href="./hydronamics/hydronamics_1.html" target="_parent">流体</a>
+						が流れる現象を力学的に解析する学問です。流体にはどの様な力が作用するかを考えて、それらの作用する力、
+						<a href="./hydronamics/hydronamics_6_1.html" target="_parent">慣性力</a>
+						、<a href="./hydronamics/hydronamics_6_2.html" target="_parent">せん断応力</a>
+						、<a href="./hydronamics/hydronamics_6_3.html" target="_parent">圧力</a>
+						、<a href="./hydronamics/hydronamics_6_4.html" target="_parent">重力</a>などを具体的に式で表すことから始まります。
+						そしてそれらの力の収支を取ると<a href="./hydronamics/hydronamics_7.html" target="_parent">収支式</a>が導出されます。
+						質量の収支式は<a href="./hydronamics/hydronamics_4.html" target="_parent"><b>連続の式</b></a>
+						、そして運動量の収支式は<a href="./hydronamics/hydronamics_8.html" target="_parent"><b>ナヴィエ・ストークスの式</b></a>
+						と呼ばれています。これらの収支式は、数値計算を行うための重要な基礎式になります。
+						流体力学を学ぶには<a href="./physics/physics_6_2.html" target="_parent">内積</a>や
+						<a href="./physics/physics_6_3.html" target="_parent">外積</a>、面積分や体積分などの知識が必要になります。</p>
+				<br>
+				<p>・有限要素法</p>
+				<p>　<a href="./fem/fem.html" target="_parent"><b>有限要素法</b></a>(Finite Element Method:FEM)は、
+						流体力学で導出された連続の式やナヴィエ・ストークスなどの微分方程式を
+						<a href="./fem/fem_7.html" target="_parent"><b>離散化</b></a>
+						という作業で行列式に分解する方法です。この離散化によって微分方程式を四則演算のプログラム
+						で記述することが可能になります。有限要素法には
+						<a href="./fem/fem_1.html" target="_parent">節点や要素</a>
+						、また<a href="./fem/fem_2.html" target="_parent"><b>形状関数</b></a>
+						や<a href="./fem/fem_2.html" target="_parent"><b>内挿関数</b></a>といった考え方が出てきます。
+						また、解析領域の<a href="./fem/fem_8_2.html" target="_parent">界面</a>
+						を扱うために<a href="./hydronamics/hydronamics_14.html"><b>グリーン・ガウスの定理</b></a>
+						や<a href="./fem/fem_8_2_1.html" target="_parent">ラプラスの式</a>といった公式を使用します。</p>
+				<br>
+				<p>・数値計算</p>
+				<p>　数値計算は方程式をプログラミングするための手法です。離散化された式を解く際には、
+						膨大な連立方程式を解く方法が必要になります。これには
+						<a href="./fem/fem_11_1.html" target="_parent"><b>ガウスの消去法</b></a>などが利用されます。
+						また、
+						<a href="./mesh/mesh_2.html" target="_parent">自由表面</a>を扱う際には
+						<a href="./mesh/mesh_1.html" target="_parent">最小二乗法</a>という考えが必要になる場合があります。
+						また、<b>ヤコビアン行列</b>という座標変換に必要な行列ついて学ぶ必要もあります。
+						テーラー展開の考えも必要になります。特に有限要素法の場合は、
+						<a href="./fem/fem_12.html" target="_parent"><b>バンド幅の最適化</b></a>が重要になります。</p>
+				<br>
+				<p>・プログラミング</p>
+				<p>　プログラミングには<a href="./fortran/fortran.html" target="_parent"><b>フォートラン</b></a>
+						(fortran)などが使われています。それほど難しい言語ではありません。
+						<a href="./fortran/fortran_2.html" target="_parent">変数</a>や
+						<a href="./fortran/fortran_3.html" target="_parent">配列</a>の宣言、
+						<a href="./fortran/fortran_7.html" target="_parent">関数の定義</a>などが理解できれば
+						基本的には十分だと思います。フォートランの特徴は、変数の頭文字でその変数の型が決まることでしょうか。
+						また、左側をラベル用に7文字分空けることも大きな特徴の１つです。</p>
+				<br>
+				<p>・メッシュ作成</p>
+				<p>　数値解析を行う上で、<a href="./mesh/mesh.html" target="_parent"><b>メッシュ</b></a>
+						の作成はとても重要です。有限要素法で数値解析を行うためには、
+						解析領域を<a href="./fem/fem_2_1.html" target="_parent">3角形</a>
+						や<a href="./fem/fem_2_3.html" target="_parent">4面体</a>
+						などの集まりに変換する必要があります。このメッシュ作成の手法として
+						<a href="./mesh/mesh_4.html" target="_parent"><b>デローニ分割</b></a>
+						などがあり、解析領域が複雑な場合ほどメッシュ作成も困難になります。
+						特に水などの自由表面を扱う場合などは<a href="./mesh/mesh_5.html">要素の変形</a>
+						が大きいため解析は大変です。また、精度の良い計算を行うためには、
+						より滑らかな<a href="./mesh/mesh_3.html" target="_parent"><b>節点配置</b></a>を行う必要があります。</p>
+				<br>
+				<p>・上記以外</p>
+				<p>　ここに述べた以外にも乱流や粘弾性流体、構造物との連成解析など、数値計算は幅広く利用されています。
+						また、有限要素法に限らず、差分法や有限体積法、粒子法など様々な解析方法が存在します。</p>
+				<br>
+				<!--
+				<p>Ｑ＆Ａコーナー<img src="./img/allow.gif"><a href="./mail/mail.html">こちら</a></p>
+				<p>質問掲示板　　<img src="./img/allow.gif"><a href="http://orange314.bbs.fc2.com/">こちら</a></p>
+				-->
+
+			<h2>動画</h2>
+			<p>バブルメッシュ法(bubble mesh method)　詳しくは<img src="./img/allow.gif"><a href="./mesh/mesh_3_1.html">こちら</a></p>
+			<p><iframe width="425" height="349" src="http://www.youtube.com/embed/Voo9Bv1I6Us" frameborder="0" allowfullscreen></iframe></p>
+			<br>
+			<p>デローニ分割後</p>
+			<p class="im"><img width="500" height="250" src="./img/result/mesh.jpg"></p>
+			<br>
+			<p>デローニ分割(delaunay method)　詳しくは<img src="./img/allow.gif"><a href="./mesh/mesh_4.html">こちら</a></p>
+			<p><iframe width="425" height="349" src="http://www.youtube.com/embed/QJyFDWlckGk" frameborder="0" allowfullscreen></iframe></p>
+			<br>
+			<p>レイノルズ数　詳しくは<img src="./img/allow.gif"><a href="./hydronamics/hydronamics_11_1.html">こちら</a></p>
+			<p><iframe width="560" height="315" src="https://www.youtube.com/embed/LRw1yIGUFuw" frameborder="0" allowfullscreen></iframe></p>
+			<br>
+			<p>ウェーバー数　詳しくは<img src="./img/allow.gif"><a href="./hydronamics/hydronamics_11_2.html">こちら</a></p>
+			<p><iframe width="560" height="315" src="https://www.youtube.com/embed/engtlqzQWWw" frameborder="0" allowfullscreen></iframe></p>
+			<br>
+			<h2>メインコンテンツ</h2>
+			<ul>
+<!--
+			<li><a href="./math/math.html" target="_parent" title="数学へ">数学</a></li>
+-->
+			<li><a href="./physics/physics.html" target="_parent" title="物理へ">物理</a></li>
+			<li><a href="./hydronamics/hydronamics.html" target="_parent" title="流体力学へ">流体力学</a></li>
+			<li><a href="./fem/fem.html" target="_parent" title="有限要素法へ">有限要素法</a></li>
+			<li><a href="./mesh/mesh.html" 		target="_parent" title="メッシュへ">メッシュ</a></li>
+			<li><a href="./counting/counting.html" target="_parent" title="フローチャートへ">フローチャート</a></li>
+			<li><a href="./appendix/appendix.html" 		target="_parent" title="Appendixへ">Appendix</a></li>
+			<li><a href="./column/column.html" 		target="_parent" title="コラムへ">コラム</a></li>
+			<li><a href="./mail/mail_base.html" target="_parent" title="メールへ">メール</a></li>
+			<li><a href="http://orange314.bbs.fc2.com/" target="_parent" title="掲示板へ">掲示板</a></li>
+			<li><a href="./link/link.html" target="_parent" title="リンクへ">リンク</a></li>
+			<li><a href="./sitemap/sitemap.html" target="_parent" title="サイトマップへ">サイトマップ</a></li>
+			<!--
+			<li><a href="http://orange314.blog55.fc2.com/" target="_parent" title="ブログへ">ブログ</a></li>
+			-->
+			</ul>
+			<br>
+
+			<!--
+			<p><iframe src="./../ad.html" width="470" height="65" scrolling="no" frameborder="0"></iframe></p>
+			-->
+
+			<h2>サイト内検索</h2>
+
+				<!-- /#srchBox -->
+				<div id="srchBox" class="watermark">
+				<style type="text/css">
+					#srchBox{
+						width:398px;
+						_width:396px;
+						margin-bottom:10px;
+						background-color:#FFFFFF;
+						border-style:solid;
+						border-width:1px;
+						border-color:#EEEEEE;
+						color:#000000;
+						text-align:left;
+					}
+					#srchBox *{
+						margin:0;
+						padding:0;
+						font-size:13px;
+						*font-size:small;
+						*font:x-small;
+					}
+					#srchBox a img{border:none;}
+					#srchBox #srch{padding:10px 10px 0 10px;}
+					#srchBox #srch #srchForm{white-space:nowrap;}
+					#srchBox #srchInput{
+						width:288px;
+						margin-right:6px;
+						vertical-align:bottom;
+					}
+					#srchBox #srchBtn{width:80px;}
+					*html #srchBox #srchBtn{padding-top:2px;}
+					*:first-child+html #srchBox #srchBtn{padding-top:2px;}
+					#srchBox ul{
+						margin-top:6px;
+						text-align:left;
+					}
+					#srchBox li{
+						list-style-type:none;
+						display:inline;
+						zoom:1;
+						padding-right:10px;
+					}
+					#srchBox li input{
+						zoom:1;
+						margin-right:2px;
+						_margin:-4px 0 -4px -4px;
+						vertical-align:middle;
+						border:0;
+					}
+					*:+html #srchBox li input{margin:-4px 0 -4px -4px;}
+					#srchBox #srchLogo{
+						margin:6px 6px 6px 0;
+						text-align:right;
+					}
+					#srchBox #srchLogo a{
+						color:#666666;
+						text-decoration:none;
+						font-size:85%;
+					}
+					#srchBox #srchLogo a:hover{text-decoration:underline;}
+					#srchBox.watermark{padding-bottom: 6px;}
+					#srchBox.watermark #srchInput{
+						padding:1px 1px 2px 1px;
+						border:1px solid #a5acb2;
+						background: #fff url(http://i.yimg.jp/images/search/customsearch/yjlogo/yjlogo_type4.gif) center center no-repeat;
+					}
+					#srchBox.watermark #srchInput.nomark{background: #fff;}
+					#srchBox.watermark #srchLogo{display: none;}
+
+				</style>
+				<form action="http://custom.search.yahoo.co.jp/search" method="get" id="srch">
+					<p id="srchForm">
+						<input type="text" name="p" id="srchInput"><input type="submit" value="検索" id="srchBtn" onclick="document.getElementById('srchInput').focus();">
+						<input type="hidden" id="fr" name="fr" value="cse">
+						<input type="hidden" id="ei" name="ei" value="Shift_JIS">
+						<input type="hidden" id="csid" name="csid" value="Y.cZmXENYKS6lmDpJNadO1M.iRxow6HYO0aM">
+					</p>
+					<ul id="srchToggle">
+					<li id="srchInsite">
+						<label for="yjInsite">
+						<input type="radio" name="vs" value="ryutai.ninja-web.net" id="yjInsite" checked="checked">サイト内検索</label>
+					</li>
+					<li id="srchWeb">
+						<label for="yjWeb">
+						<input type="radio" name="vs" value="" id="yjWeb">ウェブ検索</label>
+					</li>
+					</ul>
+				</form>
+				<img src="http://custom.search.yahoo.co.jp/images/window/Y.cZmXENYKS6lmDpJNadO1M.iRxow6HYO0aM.gif">
+				</div>
+				<script type="text/javascript">
+				(function() {
+					var sb = document.getElementById('srchBox');
+					if(sb && sb.className == 'watermark'){
+						var si = document.getElementById('srchInput');
+						var f = function(){ si.className = 'nomark';};
+						var b = function(){
+							if(si.value == ''){si.className = '';}
+						};
+						si.onfocus = f;
+						si.onblur = b;
+						if(!/[&?]p=[^&]/.test(location.search)){b();}else{f();}
+					}
+				})();
+				</script>
+				<!-- /#srchBox -->
+
+		</div>	<!-- id="content-main" -->
+
+		<div id="content-attend">
+			<script type="text/javascript"><!--
+				google_ad_client = "ca-pub-4382202381956938";
+				/* バナー縦イメージ */
+				google_ad_slot = "3994918548";
+				google_ad_width = 120;
+				google_ad_height = 600;
+			//-->
+			</script>
+			<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+		</div><!--  id="content-attend" -->
+
+	</div>	<!-- id="content" -->
+
+	</div>	<!-- id="main" -->
+
+	<!-- 左側メニュー欄 -->
+	<div id="sub">
+
+		<!-- メニュー -->
+		<iframe src="./menu.html" id="menu" name="menu" width="180" scrolling="no" frameborder="0"></iframe>
+
+		<!-- 広告 -->
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- バナー3（メニュー欄） -->
+		<ins class="adsbygoogle"
+		     style="display:inline-block;width:160px;height:600px"
+		     data-ad-client="ca-pub-4382202381956938"
+		     data-ad-slot="2356729377"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+
+		<!-- ページ別カウンタ -->
+		<!--shinobi1-->
+		<script type="text/javascript" src="http://x7.tuzikaze.com/ufo/108502800"></script>
+		<noscript><a href="http://x7.tuzikaze.com/bin/gg?108502800" target="_blank">
+		<img src="http://x7.tuzikaze.com/bin/ll?108502800" border="0"></a><br>
+		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://www.cantalaguacolombia.com/">リビングデザイン</a></span></noscript>
+		<!--shinobi2-->
+
+		<br><br>
+
+		<div class="sub-text">
+			<dl>
+				<dt>カウンタ</dt>
+				<dd>
+					<!-- shinobi ct2 -->
+					<script type="text/javascript" src="http://ct2.tirirenge.com/sc/1515356"></script>
+					<noscript><a href="http://ct2.tirirenge.com/gg/1515356" target="_blank">
+					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="カウンター" /></a><br />
+					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">ポイント</a></span></noscript>
+					<!-- /shinobi ct2 -->
+					<br>
+				（2011.3.15～）
+				</dd>
+			</dl>
+		</div>
+
+	</div>	<!-- id="sub" -->
+
+	<!-- フッター -->
+	<div id="footer">
+		<iframe id="ft" name="ft" src="./footer.html" width="100%" scrolling="no" frameborder="0"></iframe>
+	</div>
+
+	</div>	<!-- id="wrapper" -->
+</body>
+</html>

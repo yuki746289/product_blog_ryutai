@@ -1,0 +1,159 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+	<meta http-equiv="content-style-type" content="text/css">
+
+	<meta name="description" content="流体力学・有限要素法による数値計算サイト。">
+	<meta name="keywords" content="流体力学,有限要素法,数値計算,メッシュ,FEM"> 
+
+	<title>書籍紹介</title>
+	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body>
+	<input type="hidden" id="menu_id" value="12">
+
+	<div id="wrapper">
+
+	<div id="header">
+		<h1><a href="./../index.html" title="トップページへ">有限要素法・流体力学による数値計算</a></h1>
+
+		<br style="clear:both;">
+		<ul style="margin-left:30px;">
+		<li><a href="./../index.html" title="indexへ">index</a>&gt;</li>
+		<li><a href="./book.html" title="書籍紹介へ">書籍紹介</a>&gt;</li>
+		</ul>
+		<hr>
+	</div>
+
+	<div id="main" >
+
+	<div id="image">
+		<p>流体力学から数値計算まで</p>
+		<p><img src="./../img/shiki1.gif"></p>
+		<p><img src="./../img/shiki2.gif"></p>
+	</div>
+
+	<div id="content">
+
+		<div id="content-text">
+
+			<h2>広告</h2>
+			<p><iframe src="./../ad.html" width="470" height="60" scrolling="no" frameborder="0"></iframe></p>
+			<br>
+
+			<h2>書籍紹介</h2>
+			<p>関連する書籍を紹介したいと思います。自分が購入してみて良かったなーと思った書籍が主です。</p>
+			<br>
+
+			<h2>流体力学関連</h2>
+			<p>流体力学の基礎から解析例まで丁寧に解説されています。
+					連続の式やナヴィエ・ストークス式の導出なども載っているのでリファレンスにも良いと思います。
+					この本が理解できれば基礎は十分です。
+					学生時代、この著者の授業を受けたことがあり、当時は「難しいなー。」と思っていました。
+					今、読んでみるととても丁寧に書かれていることがわかります。</p>
+			<p style="text-align:center;">
+				<!-- 粘性流体力学の基礎 -->
+				<iframe src="http://rcm-jp.amazon.co.jp/e/cm?t=yukitaka83-22&o=9&p=8&l=as1&asins=4844521268&ref=qf_sp_asin_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+			</p>
+			<br>
+			<p>英書です。９００ページ以上の豊富な内容です。私が大学の授業で購入したときは赤い本
+				だったのですが、今は色も変わって新しくなっているようです。
+				流体力学の基礎はもちろん解析例が非常に沢山載っています。
+				この本の良い所は、Appendixにベクトル・テンソルの計算例が沢山載っていることです。
+				この著者から講義を受けたという先生から習ったことがありまが、
+				非常にユーモアのある先生だったようです。</p>
+			<p style="text-align:center;">
+				<!-- transport phenomena -->
+				<iframe src="http://rcm-jp.amazon.co.jp/e/cm?t=yukitaka83-22&o=9&p=8&l=as1&asins=0470115394&ref=qf_sp_asin_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+			</p>
+			<br>
+
+			<h2>メッシュ関連</h2>
+			<p>メッシュ関連の和書は少ないので、とても貴重な本だと思います。
+				3角形、4面体要素のデローニ分割について丁寧に解説して言います。
+				ソースコードも付いているので安心です。</p>
+			<p style="text-align:center;">
+				<!-- delauney分割:2次元 -->
+				<iframe src="http://rcm-jp.amazon.co.jp/e/cm?t=yukitaka83-22&o=9&p=8&l=as1&asins=4627914008&ref=qf_sp_asin_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+				<!-- delauney分割:3次元 -->
+				<iframe src="http://rcm-jp.amazon.co.jp/e/cm?t=yukitaka83-22&o=9&p=8&l=as1&asins=4627918917&ref=qf_sp_asin_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+			</p>
+			<br>
+
+			<h2>fortran</h2>
+			<p>fortranは、覚える文法もそれほど多くないのでこれ一冊あれば十分だと思います。
+				基本的な文法から最小二乗法やガウスの消去法などの数値計算法などが載っています。</p>
+			<p style="text-align:center;">
+				<!-- FORTRAN77と数値計算法 -->
+				<iframe src="http://rcm-jp.amazon.co.jp/e/cm?t=yukitaka83-22&o=9&p=8&l=as1&asins=4563013633&ref=qf_sp_asin_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+			</p>
+			<br>
+
+			<div style="margin-top:10px;"></div>
+			<h2>
+				<table><tr>
+				<td style="padding:0px 10px;">prev</td>
+				<td style="padding:0px 10px;">|</td>
+				<td style="padding:0px 10px;"><a href="./../index.html">top</a></td>
+				<td style="padding:0px 10px;">|</td>
+				<td style="padding:0px 10px;">next</td>
+				</tr></table>
+			</h2>
+
+			<!-- 広告 -->
+			<p><iframe src="./../questionnaire.html" width="650" height="325" scrolling="yes" frameborder="0"></iframe></p>
+		</div>
+
+	</div>	<!-- id="content" -->
+
+	</div>	<!-- id="main" -->
+
+	<div id="sub">
+		<iframe src="./../menu.html" id="menu" name="menu" width="180" scrolling="no" frameborder="0"></iframe>
+
+		<!-- 広告 -->
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- バナー3（メニュー欄） -->
+		<ins class="adsbygoogle"
+		     style="display:inline-block;width:160px;height:600px"
+		     data-ad-client="ca-pub-4382202381956938"
+		     data-ad-slot="2356729377"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+
+		<!-- ページ別カウンタ -->
+		<!--shinobi1-->
+		<script type="text/javascript" src="http://x7.tuzikaze.com/ufo/10850281x"></script>
+		<noscript><a href="http://x7.tuzikaze.com/bin/gg?10850281x" target="_blank">
+		<img src="http://x7.tuzikaze.com/bin/ll?10850281x" border="0"></a><br>
+		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://www.right-rites.net/">結婚相手を見つけたら</a></span></noscript>
+		<!--shinobi2-->
+
+		<div class="sub-text">
+			<dl>
+				<dt>カウンタ</dt>
+				<dd>
+					<!-- shinobi ct2 -->
+					<script type="text/javascript" src="http://ct2.tirirenge.com/sc/1515356"></script>
+					<noscript><a href="http://ct2.tirirenge.com/gg/1515356" target="_blank">
+					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="カウンター" /></a><br />
+					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">ポイント</a></span></noscript>
+					<!-- /shinobi ct2 -->
+					<br>
+				（2011.3.15～）
+				</dd>
+			</dl>
+		</div>
+
+	</div>
+
+	<div id="footer">
+		<iframe id="ft" name="ft" src="./../footer.html" width="100%" scrolling="no" frameborder="0"></iframe>
+	</div>
+
+	</div>	<!-- id="wrapper" -->
+</body>
+</html>

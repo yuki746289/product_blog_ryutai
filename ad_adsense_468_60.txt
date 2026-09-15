@@ -1,0 +1,15 @@
+ad_top.html
+questionnaire.html
+
+
+	<!-- google -->
+	<script type="text/javascript">
+	<!--
+		google_ad_client = "ca-pub-4382202381956938";
+		/* ƒoƒi[ */
+		google_ad_slot = "4832539076";
+		google_ad_width = 468;
+		google_ad_height = 60;
+	//-->
+	</script>
+	<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>

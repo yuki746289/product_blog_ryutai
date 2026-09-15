@@ -1,0 +1,160 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=shift_jis">
+<meta name=Generator content="Microsoft Word 11 (filtered)">
+<title>・内挿関数の微分</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"ＭＳ 明朝";
+	panose-1:2 2 6 9 4 2 5 8 3 4;}
+@font-face
+	{font-family:Century;
+	panose-1:2 4 6 4 5 5 5 2 3 4;}
+@font-face
+	{font-family:"\@ＭＳ 明朝";
+	panose-1:2 2 6 9 4 2 5 8 3 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0mm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	font-size:10.5pt;
+	font-family:Century;}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{margin:0mm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	layout-grid-mode:char;
+	font-size:10.5pt;
+	font-family:Century;}
+ /* Page Definitions */
+ @page Section1
+	{size:595.3pt 841.9pt;
+	margin:20.0mm 42.55pt 42.55pt 42.55pt;
+	layout-grid:14.55pt -.85pt;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+
+</head>
+
+<body lang=JA style='text-justify-trim:punctuation'>
+
+<div class=Section1 style='layout-grid:14.55pt -.85pt'>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>・内挿関数の微分</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=419 height=376
+src="fem_n_tri.files/image001.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>3</span><span
+style='font-family:"ＭＳ 明朝"'>角形の面積</span><i><span lang=EN-US style='font-family:
+"Times New Roman"'>S</span></i></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=360 height=141
+src="fem_n_tri.files/image002.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>ここで、</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=193 height=86
+src="fem_n_tri.files/image003.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>同様に、</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=340 height=141
+src="fem_n_tri.files/image004.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=334 height=141
+src="fem_n_tri.files/image005.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=340 height=141
+src="fem_n_tri.files/image006.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>形状関数</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>N</span></i><sub><span
+lang=EN-US style='font-family:"Times New Roman"'>1</span></sub><span
+style='font-family:"ＭＳ 明朝"'>の微分</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=360 height=152
+src="fem_n_tri.files/image007.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=351 height=161
+src="fem_n_tri.files/image008.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>形状関数</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>N</span></i><sub><span
+lang=EN-US style='font-family:"Times New Roman"'>2</span></sub><span
+style='font-family:"ＭＳ 明朝"'>の微分</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=352 height=152
+src="fem_n_tri.files/image009.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=352 height=157
+src="fem_n_tri.files/image010.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>形状関数</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>N</span></i><sub><span
+lang=EN-US style='font-family:"Times New Roman"'>3</span></sub><span
+style='font-family:"ＭＳ 明朝"'>の微分</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=348 height=153
+src="fem_n_tri.files/image011.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=347 height=157
+src="fem_n_tri.files/image012.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>形状関数の微分まとめ</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=250 height=50
+src="fem_n_tri.files/image013.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=241 height=53
+src="fem_n_tri.files/image014.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=247 height=50
+src="fem_n_tri.files/image015.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=257 height=53
+src="fem_n_tri.files/image016.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=250 height=50
+src="fem_n_tri.files/image017.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=238 height=53
+src="fem_n_tri.files/image018.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

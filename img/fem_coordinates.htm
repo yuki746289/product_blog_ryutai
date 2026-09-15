@@ -1,0 +1,122 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=shift_jis">
+<meta name=Generator content="Microsoft Word 11 (filtered)">
+<title>内容</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"ＭＳ 明朝";
+	panose-1:2 2 6 9 4 2 5 8 3 4;}
+@font-face
+	{font-family:Century;
+	panose-1:2 4 6 4 5 5 5 2 3 4;}
+@font-face
+	{font-family:"\@ＭＳ 明朝";
+	panose-1:2 2 6 9 4 2 5 8 3 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0mm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	font-size:10.5pt;
+	font-family:Century;}
+span.MsoEndnoteReference
+	{vertical-align:super;}
+p.MsoEndnoteText, li.MsoEndnoteText, div.MsoEndnoteText
+	{margin:0mm;
+	margin-bottom:.0001pt;
+	layout-grid-mode:char;
+	font-size:10.5pt;
+	font-family:Century;}
+ /* Page Definitions */
+ @page Section1
+	{size:595.3pt 841.9pt;
+	margin:20.0mm 10.0mm 20.0mm 10.0mm;
+	layout-grid:14.55pt -.9pt;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0mm;}
+ul
+	{margin-bottom:0mm;}
+-->
+</style>
+
+</head>
+
+<body lang=JA style='text-justify-trim:punctuation'>
+
+<div class=Section1 style='layout-grid:14.55pt -.9pt'>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・</span><span
+style='font-family:"ＭＳ 明朝"'>座標の取り方</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　・オイラー座標、ラグラジアン座標</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　数値計算では、タイムステップごとに節点の速度を計算していく。節点には、「観測点」という見方と「流体粒子」という見方があり、それぞれオイラー座標、ラグラジアン座標が用いられる。これらの座標の違いは、対流項</span><span
+lang=EN-US>(</span><span style='font-family:"ＭＳ 明朝"'>慣性力</span><span
+lang=EN-US>)</span><span style='font-family:"ＭＳ 明朝"'>を考慮するかしないかである。対流項は、全微分作用の項に含まれている。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+style='font-family:"ＭＳ 明朝"'>　</span><span lang=EN-US style='font-family:"Times New Roman"'><sub><img
+width=185 height=62 src="fem_coordinates.files/image001.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　・オイラー座標</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　節点を観測点と見なして計算する。対流項を考慮するため、節点は移動しない。逆に言えば、節点を固定するため、慣性力によって節点が押されると解釈できる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=172 height=62
+src="fem_coordinates.files/image002.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　　</span><span
+lang=EN-US><img width=215 height=135 src="fem_coordinates.files/image003.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　・ラグラジアン座標</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　節点を流体粒子と見なして計算する。対流項を考慮しないため、節点は移動する。逆に言えば、慣性力によって節点が押されて移動するため、節点自体は慣性力を感じない</span><span
+lang=EN-US>(</span><span style='font-family:"ＭＳ 明朝"'>慣性力が蓄積しない</span><span
+lang=EN-US>)</span><span style='font-family:"ＭＳ 明朝"'>と解釈できる。節点の移動量は、タイムステップ</span><i><span
+lang=EN-US style='font-family:Symbol'>D</span></i><i><span lang=EN-US
+style='font-family:"Times New Roman"'>t</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[s]</span><span style='font-family:"ＭＳ 明朝"'>×計算した速度</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>v</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[m/s]</span><span style='font-family:
+"ＭＳ 明朝"'>となる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=166 height=62
+src="fem_coordinates.files/image004.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　　</span><span
+lang=EN-US><img width=215 height=122 src="fem_coordinates.files/image005.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　座標の取り方には、オイラー座標とラグラジアン座標の</span><span
+lang=EN-US style='font-family:"Times New Roman"'>2</span><span
+style='font-family:"ＭＳ 明朝"'>つがある。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

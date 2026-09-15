@@ -1,0 +1,158 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+	<meta http-equiv="content-style-type" content="text/css">
+
+	<meta name="description" content="流体力学・有限要素法による数値計算サイト。">
+	<meta name="keywords" content="流体力学,有限要素法,数値計算,メッシュ,FEM"> 
+
+	<title>運動量収支式（流体力学）</title>
+	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body>
+	<input type="hidden" id="menu_id" value="3">
+
+	<div id="wrapper">
+
+	<div id="header">
+		<h1><a href="./../index.html" title="トップページへ">有限要素法・流体力学による数値計算</a></h1>
+
+		<br style="clear:both;">
+		<ul style="margin-left:30px;">
+		<li><a href="./../index.html" title="indexへ">index</a>&gt;</li>
+		<li><a href="./hydronamics.html" title="流体力学へ">流体力学</a>&gt;</li>
+		<li><a href="./hydronamics_8.html" title="運動量収支式へ">運動量収支式</a>&gt;</li>
+		</ul>
+		<hr>
+	</div>
+
+	<div id="main" >
+
+	<div id="image">
+		<p>流体力学から数値計算まで</p>
+		<p><img src="./../img/shiki1.gif"></p>
+		<p><img src="./../img/shiki2.gif"></p>
+	</div>
+
+	<div id="content">
+
+		<div id="content-text">
+
+			<h2>広告</h2>
+			<p><iframe src="./../ad.html" width="470" height="60" scrolling="no" frameborder="0"></iframe></p>
+			<br>
+
+			<h2>運動量収支式</h2>
+			<p>運動量収支式は、流体粒子に作用する力の収支を取ることで導出されます。
+					<span class="ft"><i>x</i></span>成分の収支は次式となります。
+					作用する力には慣性力、粘性力、圧力、重力が考慮されています。</p>
+			<p class="im"><img src="./../img/hydronamics_e_momentum.files/image001.gif"></p>
+			<p><i><span class="fs">D</span></i>
+					<i><span class="ft">x</span></i>
+					<i><span class="fs">D</span></i>
+					<i><span class="ft">y</span></i>
+					<i><span class="fs">D</span></i>
+					<i><span class="ft">z</span></i>
+					で割ると</p>
+			<p class="im"><img src="./../img/hydronamics_e_momentum.files/image002.gif"></p>
+			<p><i><span class="fs">D</span></i>
+					<i><span class="ft">t</span></i>
+					<span class="ft">, </span>
+					<i><span class="fs">D</span></i>
+					<i><span class="ft">x</span></i>
+					<span class="ft">, </span>
+					<i><span class="fs">D</span></i>
+					<i><span class="ft">y</span></i>
+					<span class="ft">, </span>
+					<i><span class="fs">D</span></i>
+					<i><span class="ft">z</span></i>
+					→<span class="ft">0</span>とすると</p>
+			<p class="im"><img src="./../img/hydronamics_e_momentum.files/image003.gif"></p>
+			<p>質量収支式より</p>
+			<p class="im"><img src="./../img/hydronamics_e_momentum.files/image004.gif"></p>
+			<p>と展開できる。</p>
+			<p><span class="ft"><i>y</i>, <i>z</i></span>成分も同様に導出される。</p>
+			<p class="im"><img src="./../img/hydronamics_e_momentum.files/image005.gif"></p>
+			<p class="im"><img src="./../img/hydronamics_e_momentum.files/image006.gif"></p>
+			<p>ベクトル表示は、次式で表されます。</p>
+			<p class="im"><img src="./../img/hydronamics_e_momentum.files/image007.gif"></p>
+			<p>ここで、全微分表示作用素</p>
+			<p class="im"><img src="./../img/hydronamics_e_momentum.files/image008.gif"></p>
+			<p>を用いると、次式で表されます。</p>
+			<p class="im"><img src="./../img/hydronamics_e_momentum.files/image009.gif"></p>
+			<p>また、応力を<span class="ft">1</span>つの項で表すと次式となります。</p>
+			<p class="im"><img src="./../img/hydronamics_e_momentum.files/image010.gif"></p>
+			<p>ここで、<img src="./../img/hydronamics_e_momentum.files/image011.gif"></sub>[N/m<sup>2</sup>]</span>
+					は応力テンソルで、</p>
+			<p class="im"><img src="./../img/hydronamics_e_momentum.files/image012.gif"></p>
+			<br>
+
+
+			<div style="margin-top:10px;"></div>
+			<h2>
+				<table><tr>
+				<td style="padding:0px 10px;"><a href="./hydronamics_7.html">prev</a></td>
+				<td style="padding:0px 10px;">|</td>
+				<td style="padding:0px 10px;"><a href="./hydronamics.html">up</a></td>
+				<td style="padding:0px 10px;">|</td>
+				<td style="padding:0px 10px;"><a href="./hydronamics_9.html">next</a></td>
+				</tr></table>
+			</h2>
+
+			<!-- 広告 -->
+			<p><iframe src="./../questionnaire.html" width="650" height="325" scrolling="yes" frameborder="0"></iframe></p>
+		</div>
+
+	</div>	<!-- id="content" -->
+
+	</div>	<!-- id="main" -->
+
+	<div id="sub">
+		<iframe src="./../menu.html" id="menu" name="menu" width="180" scrolling="no" frameborder="0"></iframe>
+
+		<!-- 広告 -->
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- バナー3（メニュー欄） -->
+		<ins class="adsbygoogle"
+		     style="display:inline-block;width:160px;height:600px"
+		     data-ad-client="ca-pub-4382202381956938"
+		     data-ad-slot="2356729377"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+
+		<!-- ページ別カウンタ -->
+		<!--shinobi1-->
+		<script type="text/javascript" src="http://x7.tuzikaze.com/ufo/10850280z"></script>
+		<noscript><a href="http://x7.tuzikaze.com/bin/gg?10850280z" target="_blank">
+		<img src="http://x7.tuzikaze.com/bin/ll?10850280z" border="0"></a><br>
+		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://home-iwamoto.com/">年金を貰うまでの空白期間</a></span></noscript>
+		<!--shinobi2-->
+
+		<div class="sub-text">
+			<dl>
+				<dt>カウンタ</dt>
+				<dd>
+					<!-- shinobi ct2 -->
+					<script type="text/javascript" src="http://ct2.tirirenge.com/sc/1515356"></script>
+					<noscript><a href="http://ct2.tirirenge.com/gg/1515356" target="_blank">
+					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="カウンター" /></a><br />
+					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">ポイント</a></span></noscript>
+					<!-- /shinobi ct2 -->
+					<br>
+				（2011.3.15～）
+				</dd>
+			</dl>
+		</div>
+
+	</div>
+
+	<div id="footer">
+		<iframe id="ft" name="ft" src="./../footer.html" width="100%" scrolling="no" frameborder="0"></iframe>
+	</div>
+
+	</div>	<!-- id="wrapper" -->
+</body>
+</html>

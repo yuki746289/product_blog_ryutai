@@ -1,0 +1,220 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+	<meta http-equiv="content-style-type" content="text/css">
+
+	<meta name="description" content="有限要素法・流体力学による数値計算サイト。">
+	<meta name="keywords" content="有限要素法,FEM,流体力学,数値計算,メッシュ"> 
+
+	<title>運動量収支式の離散化（有限要素法）</title>
+	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body>
+	<input type="hidden" id="menu_id"   value="4">
+	<input type="hidden" id="menu_id_2" value="4_7">
+
+	<div id="wrapper">
+
+	<div id="header">
+		<h1><a href="./../index.html" title="トップページへ">有限要素法・流体力学による数値計算</a></h1>
+
+		<br style="clear:both;">
+		<ul style="margin-left:30px;">
+		<li><a href="./../index.html" title="indexへ">index</a>&gt;</li>
+		<li><a href="./fem.html" title="有限要素法へ">有限要素法</a>&gt;</li>
+		<li><a href="./fem_7.html" title="離散化へ">離散化</a>&gt;</li>
+		<li><a href="./fem_7_1.html" title="3角形1次要素へ">3角形1次要素</a>&gt;</li>
+		<li><a href="./fem_7_1_2.html" title="運動量収支式の離散化へ">運動量収支式の離散化</a>&gt;</li>
+		</ul>
+		<hr>
+	</div>
+
+	<div id="main" >
+
+	<div id="image">
+		<p>流体力学から数値計算まで</p>
+		<p><img src="./../img/shiki1.gif"></p>
+		<p><img src="./../img/shiki2.gif"></p>
+	</div>
+
+	<div id="content">
+
+		<div id="content-text">
+
+			<h2>広告</h2>
+			<p><iframe src="./../ad.html" width="470" height="60" scrolling="no" frameborder="0"></iframe></p>
+			<br>
+
+			<h2>・運動量収支式の離散化</h2>
+			<p><span class="ft"><i>x</i>, <i>y</i></span>軸方向の無次元化した運動量収支式は次式となります。</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image001.png"></p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image002.png"></p>
+			<br><br>
+			<p>内挿関数<span class="ft"><i>N<sub>i</sub></i></span>を重み関数に使用すると離散化式は次式となります。</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image003.png"></p>
+			<br><br>
+			<p>速度、圧力は、内挿関数<span class="ft"><i>N<sub>i</sub></i></span>を用いてそれぞれ次式で表されます。</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image004.png"></p>
+			<br><br>
+			<p><span class="ft"><i>i</i></span>軸方向の離散化式は、次式となります。</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image005.png"></p>
+			<br><br>
+			<p>展開すると</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image006.png"></p><br>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image007.png"></p><br>
+			<p>グリーン・ガウスの定理より</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image008.png"></p><br>
+			<p>界面に作用する応力をまとめると</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image009.png"></p><br>
+			<p>応力を展開して</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image010.png"></p><br>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image011.png"></p><br>
+			<p>項ごとに分解して</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image012.png"></p><br>
+			<p>速度、圧力を内挿関数で表示して</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image013.png"></p><br>
+			<p>速度、圧力は定数なので積分の外に出す</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image014.png"></p><br>
+
+			<p>行列式で表す</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image015.png"></p><br>
+			<p>対流項</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image016.png"></p><br>
+			<p><span class="ft"><i>x</i></span>軸方向の粘性項と圧力項</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image017.png"></p><br>
+			<p><span class="ft"><i>y</i></span>軸方向の粘性項と圧力項</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image018.png"></p><br>
+			<p>表面張力項</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image019.png"></p><br>
+			<p>重力項</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image020.png"></p><br>
+
+			<p>内挿関数を形状関数に直す</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image021.png"></p><br>
+			<p>対流項</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image022.png"></p><br>
+			<p><span class="ft"><i>x</i></span>軸方向の粘性項と圧力項</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image023.png"></p><br>
+			<p><span class="ft"><i>y</i></span>軸方向の粘性項と圧力項</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image024.png"></p><br>
+			<p>表面張力項</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image025.png"></p><br>
+			<p>重力項</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image026.png"></p><br>
+
+			<p>ここで、面積積分、体積積分の公式より</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image027.png"></p><br>
+
+			<p>形状関数を積分すると</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image028.png"></p><br>
+			<p>対流項</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image029.png"></p><br>
+			<p><span class="ft"><i>x</i></span>軸方向の粘性項と圧力項</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image030.png"></p><br>
+			<p><span class="ft"><i>y</i></span>軸方向の粘性項と圧力項</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image031.png"></p><br>
+			<p>表面張力項</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image032.png"></p><br>
+			<p>重力項</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image033.png"></p><br>
+
+			<p>係数をまとめて</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image028.png"></p><br>
+			<p>対流項</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image034.png"></p><br>
+			<p><span class="ft"><i>x</i></span>軸方向の粘性項と圧力項</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image035.png"></p><br>
+			<p><span class="ft"><i>y</i></span>軸方向の粘性項と圧力項</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image036.png"></p><br>
+			<p>表面張力項</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image032.png"></p><br>
+			<p>重力項</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image033.png"></p><br>
+
+			<p>行列式をまとめると</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image037.png"></p><br>
+
+			<p>行列ごとにまとめると</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image038.png"></p><br>
+
+			<p>最終的に次式が導出されます。</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image039.png"></p><br>
+
+			<p>既知の項を右辺に移項すします。</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image040.png"></p><br>
+
+			<p><span class="ft"><i>x</i></span>軸方向の成分は次式となります。</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image041.png"></p><br>
+			<p><span class="ft"><i>y</i></span>軸方向の成分は次式となります。</p>
+			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image042.png"></p><br>
+			<br>
+
+
+			<div style="margin-top:10px;"></div>
+			<h2>
+				<table><tr>
+				<td style="padding:0px 10px;"><a href="./fem_7_1_1.html">prev</a></td>
+				<td style="padding:0px 10px;">|</td>
+				<td style="padding:0px 10px;"><a href="./fem_7_1.html">up</a></td>
+				<td style="padding:0px 10px;">|</td>
+				<td style="padding:0px 10px;"><a href="./fem_7_2.html">next</a></td>
+				</tr></table>
+			</h2>
+
+			<!-- 広告 -->
+			<p><iframe src="./../questionnaire.html" width="650" height="325" scrolling="yes" frameborder="0"></iframe></p>
+		</div>
+
+	</div>	<!-- id="content" -->
+
+	</div>	<!-- id="main" -->
+
+	<div id="sub">
+		<iframe src="./../menu.html" id="menu" name="menu" width="180" scrolling="no" frameborder="0"></iframe>
+
+		<!-- 広告 -->
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- バナー3（メニュー欄） -->
+		<ins class="adsbygoogle"
+		     style="display:inline-block;width:160px;height:600px"
+		     data-ad-client="ca-pub-4382202381956938"
+		     data-ad-slot="2356729377"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+
+		<!-- ページ別カウンタ -->
+		<!--shinobi1-->
+		<script type="text/javascript" src="http://x7.tuzikaze.com/ufo/10850280M"></script>
+		<noscript><a href="http://x7.tuzikaze.com/bin/gg?10850280M" target="_blank">
+		<img src="http://x7.tuzikaze.com/bin/ll?10850280M" border="0"></a><br>
+		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://www.soudsite.com/">知恵と工夫</a></span></noscript>
+		<!--shinobi2-->
+
+		<div class="sub-text">
+			<dl>
+				<dt>カウンタ</dt>
+				<dd>
+					<!-- shinobi ct2 -->
+					<script type="text/javascript" src="http://ct2.tirirenge.com/sc/1515356"></script>
+					<noscript><a href="http://ct2.tirirenge.com/gg/1515356" target="_blank">
+					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="カウンター" /></a><br />
+					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">ポイント</a></span></noscript>
+					<!-- /shinobi ct2 -->
+					<br>
+				（2011.3.15～）
+				</dd>
+			</dl>
+		</div>
+
+	</div>
+
+	<div id="footer">
+		<iframe id="ft" name="ft" src="./../footer.html" width="100%" scrolling="no" frameborder="0"></iframe>
+	</div>
+
+	</div>	<!-- id="wrapper" -->
+</body>
+</html>

@@ -1,0 +1,149 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+	<meta http-equiv="content-style-type" content="text/css">
+
+	<meta name="description" content="有限要素法・流体力学による数値計算サイト。">
+	<meta name="keywords" content="有限要素法,FEM,流体力学,数値計算,メッシュ"> 
+
+	<title>バンド幅最適化の方法（有限要素法）</title>
+	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body>
+	<input type="hidden" id="menu_id" value="4">
+
+	<div id="wrapper">
+
+	<div id="header">
+		<h1><a href="./../index.html" title="トップページへ">有限要素法・流体力学による数値計算</a></h1>
+
+		<br style="clear:both;">
+		<ul style="margin-left:30px;">
+		<li><a href="./../index.html" title="indexへ">index</a>&gt;</li>
+		<li><a href="./fem.html" title="有限要素法へ">有限要素法</a>&gt;</li>
+		<li><a href="./fem_13.html" title="バンド幅最適化の方法へ">バンド幅最適化の方法</a>&gt;</li>
+		</ul>
+		<hr>
+	</div>
+
+	<div id="main" >
+
+	<div id="image">
+		<p>流体力学から数値計算まで</p>
+		<p><img src="./../img/shiki1.gif"></p>
+		<p><img src="./../img/shiki2.gif"></p>
+	</div>
+
+	<div id="content">
+
+		<div id="content-text">
+
+			<h2>広告</h2>
+			<p><iframe src="./../ad.html" width="470" height="60" scrolling="no" frameborder="0"></iframe></p>
+			<br>
+
+			<h2>・バンド幅最適化の方法</h2>
+			<p>　バンド幅の最適化とは、隣接する節点間の節点番号の差を最小にすることを意味しています。
+				ここでは、バンド幅が最小になる節点の割り振り方について考えてみます。</p>
+			<p class="im"><img src="./../img/fem_band_method.files/image001.gif"></p>
+			<br>
+			<p>上図の領域について、バンド幅の最小化を考えてみます。この領域のバンド幅は、</p>
+			<p><span class="ft">　　(15 - 1) + 1 = 15</span></p>
+			<p>となります。バンド幅を最適化するために、節点を分木で表示すると下図となります。</p>
+			<p class="im"><img src="./../img/fem_band_method.files/image002.gif"></p>
+			<br>
+			<p>ここで、下図の様な場合の節点配置を考えてみます。</p>
+			<p class="im"><img src="./../img/fem_band_method.files/image003.gif"></p>
+			<br>
+			<p>この場合は、より小さい節点番号に小さい順に節点を割り振れば、バンド幅は最小となります。</p>
+			<p class="im"><img src="./../img/fem_band_method.files/image004.gif"></p>
+			<br>
+			<p>次に、枝が結合・分離した場合を考えて見ます。</p>
+			<p class="im"><img src="./../img/fem_band_method.files/image005.gif"></p>
+			<br>
+			<p>この場合も同様に節点番号の小さい順に節点を割り振れば、バンド幅は最小となります。</p>
+			<p class="im"><img src="./../img/fem_band_method.files/image006.gif"></p>
+			<br>
+			<p>つまり、バンド幅を最小化するためには、節点番号のより小さい節点に、
+				節点番号のより小さい節点から順番に割り振ればよいことになります。
+				従って、分木で表した場合、ある段について左の枝から節点番号の小さい順に節点を割り振った場合、
+				次の段についても左の枝から小さい順に節点を割り振ればバンド幅は最小になります。
+				赤字が新しい節点番号です。</p>
+			<p class="im"><img src="./../img/fem_band_method.files/image007.gif"></p>
+			<br>
+			<p>従って、新しい節点番号の領域は下図となります。</p>
+			<p class="im"><img src="./../img/fem_band_method.files/image008.gif"></p>
+			<br>
+			<p>この図のバンド幅は、</p>
+			<p><span class="ft">　　(10 - 4) + 1 = 7</span></p>
+			<p>となります。</p>
+			<br>
+
+			<div style="margin-top:10px;"></div>
+			<h2>
+				<table><tr>
+				<td style="padding:0px 10px;"><a href="./fem_12.html">prev</a></td>
+				<td style="padding:0px 10px;">|</td>
+				<td style="padding:0px 10px;"><a href="./fem.html">up</a></td>
+				<td style="padding:0px 10px;">|</td>
+				<td style="padding:0px 10px;">next</td>
+				</tr></table>
+			</h2>
+
+			<!-- 広告 -->
+			<p><iframe src="./../questionnaire.html" width="650" height="325" scrolling="yes" frameborder="0"></iframe></p>
+		</div>
+
+	</div>	<!-- id="content" -->
+
+	</div>	<!-- id="main" -->
+
+	<div id="sub">
+		<iframe src="./../menu.html" id="menu" name="menu" width="180" scrolling="no" frameborder="0"></iframe>
+
+		<!-- 広告 -->
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- バナー3（メニュー欄） -->
+		<ins class="adsbygoogle"
+		     style="display:inline-block;width:160px;height:600px"
+		     data-ad-client="ca-pub-4382202381956938"
+		     data-ad-slot="2356729377"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+
+		<!-- ページ別カウンタ -->
+		<!--shinobi1-->
+		<script type="text/javascript" src="http://x7.tuzikaze.com/ufo/10850280R"></script>
+		<noscript><a href="http://x7.tuzikaze.com/bin/gg?10850280R" target="_blank">
+		<img src="http://x7.tuzikaze.com/bin/ll?10850280R" border="0"></a><br>
+		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://www.lifequartz.com/">暮らしの引き出し</a></span></noscript>
+		<!--shinobi2-->
+
+		<div class="sub-text">
+			<dl>
+				<dt>カウンタ</dt>
+				<dd>
+					<!-- shinobi ct2 -->
+					<script type="text/javascript" src="http://ct2.tirirenge.com/sc/1515356"></script>
+					<noscript><a href="http://ct2.tirirenge.com/gg/1515356" target="_blank">
+					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="カウンター" /></a><br />
+					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">ポイント</a></span></noscript>
+					<!-- /shinobi ct2 -->
+					<br>
+				（2011.3.15～）
+				</dd>
+			</dl>
+		</div>
+
+	</div>
+
+	<div id="footer">
+		<iframe id="ft" name="ft" src="./../footer.html" width="100%" scrolling="no" frameborder="0"></iframe>
+	</div>
+
+	</div>	<!-- id="wrapper" -->
+</body>
+</html>

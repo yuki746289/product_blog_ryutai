@@ -1,0 +1,153 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+	<meta http-equiv="content-style-type" content="text/css">
+
+	<meta name="description" content="流体力学・有限要素法による数値計算サイト。">
+	<meta name="keywords" content="流体力学,有限要素法,数値計算,メッシュ,FEM"> 
+
+	<title>要素の変形（メッシュ）</title>
+	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body>
+	<input type="hidden" id="menu_id" value="5">
+
+	<div id="wrapper">
+
+	<div id="header">
+		<h1><a href="./../index.html" title="トップページへ">有限要素法・流体力学による数値計算</a></h1>
+
+		<br style="clear:both;">
+		<ul style="margin-left:30px;">
+		<li><a href="./../index.html" title="indexへ">index</a>&gt;</li>
+		<li><a href="./mesh.html" title="メッシュへ">メッシュ</a>&gt;</li>
+		<li><a href="./mesh_5.html" title="要素の変形へ">要素の変形</a>&gt;</li>
+		</ul>
+		<hr>
+	</div>
+
+	<div id="main" >
+
+	<div id="image">
+		<p>流体力学から数値計算まで</p>
+		<p><img src="./../img/shiki1.gif"></p>
+		<p><img src="./../img/shiki2.gif"></p>
+	</div>
+
+	<div id="content">
+
+		<div id="content-text">
+
+			<h2>広告</h2>
+			<p><iframe src="./../ad.html" width="470" height="60" scrolling="no" frameborder="0"></iframe></p>
+			<br>
+
+			<h2>要素の変形</h2>
+			<p>ラグラジアン座標の場合は、節点が移動するため要素が変形します。</p>
+			<p>そのまま変形が進むと計算が破綻したりするので、メッシュの再作成が必要とります。</p>
+			<p>その目安を要素の変形度として次の様に計算してみます。</p>
+			<p class="im">
+				<img src="./../img/mesh_deformation_tet.files/image001.png">　　
+				<img src="./../img/mesh_deformation_tet.files/image002.png"></p>
+
+			<p>上図の様に正<span class="ft">4</span>面体の場合は、
+					重心と外心の座標が等しいが、変形するとそれらの位置はずれます。
+					この重心と外心のずれから要素の変形度を計算します。</p>
+			<p>つまり、本来は外心と等しいはずの要素の重心から各節点までの距離を計算します。
+					外心を使用するのは、外心が外接球の中心で各節点までの距離が等しいからです。</p>
+			<br>
+			<p>まず、要素の重心の位置は次式となります。</p>
+			<p class="im"><img src="./../img/mesh_deformation_tet.files/image003.png"></p>
+
+			<p>正<span class="ft">4<span>面体の重心から各節点までの距離を
+					<span class="ft"><i>r</i></span>とします。<span class="ft"><i>r</i></span>は未知数です。</p>
+			<p>また、変形した<span class="ft">4</span>面体の重心から各節点までの距離を次式とします。</p>
+			<p class="im"><img src="./../img/mesh_deformation_tet.files/image004.png"></p>
+
+			<p>ここで、各節点から重心までの距離のずれを<span class="ft"><i>dr</i></span>とすると次式となる。</p>
+			<p class="im"><img src="./../img/mesh_deformation_tet.files/image005.png"></p>
+
+			<p>ここで、</p>
+			<p class="im"><img src="./../img/mesh_deformation_tet.files/image006.png"></p>
+
+			<p>このずれは、次の場合に最小となります。</p>
+			<p class="im"><img src="./../img/mesh_deformation_tet.files/image007.png"></p>
+
+			<p>従って、規格化したこのずれを変形度とすると次式となります。</p>
+			<p class="im"><img src="./../img/mesh_deformation_tet.files/image008.png"></p>
+
+			<p>従って、</p>
+			<p class="im"><img src="./../img/mesh_deformation_tet.files/image009.png"></p>
+			<p>この変形度は、要素が正4面体の場合<span class="ft">0</span>になります。</p>
+			<p>経験的に<span class="ft">0.5</span>～<span class="ft">0.7</span>がメッシュ再作成の目安になりました。</p>
+			<br>
+
+
+			<div style="margin-top:10px;"></div>
+			<h2>
+				<table><tr>
+				<td style="padding:0px 10px;"><a href="./mesh_4.html">prev</a></td>
+				<td style="padding:0px 10px;">|</td>
+				<td style="padding:0px 10px;"><a href="./mesh.html">up</a></td>
+				<td style="padding:0px 10px;">|</td>
+				<td style="padding:0px 10px;">next</td>
+				</tr></table>
+			</h2>
+
+			<!-- 広告 -->
+			<p><iframe src="./../questionnaire.html" width="650" height="325" scrolling="yes" frameborder="0"></iframe></p>
+		</div>
+
+	</div>	<!-- id="content" -->
+
+	</div>	<!-- id="main" -->
+
+	<div id="sub">
+		<iframe src="./../menu.html" id="menu" name="menu" width="180" scrolling="no" frameborder="0"></iframe>
+
+		<!-- 広告 -->
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- バナー3（メニュー欄） -->
+		<ins class="adsbygoogle"
+		     style="display:inline-block;width:160px;height:600px"
+		     data-ad-client="ca-pub-4382202381956938"
+		     data-ad-slot="2356729377"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+
+		<!-- ページ別カウンタ -->
+		<!--shinobi1-->
+		<script type="text/javascript" src="http://x7.tuzikaze.com/ufo/10850280Y"></script>
+		<noscript><a href="http://x7.tuzikaze.com/bin/gg?10850280Y" target="_blank">
+		<img src="http://x7.tuzikaze.com/bin/ll?10850280Y" border="0"></a><br>
+		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://life-matsuura.info/">暮らしで困ったこと</a></span></noscript>
+		<!--shinobi2-->
+
+		<div class="sub-text">
+			<dl>
+				<dt>カウンタ</dt>
+				<dd>
+					<!-- shinobi ct2 -->
+					<script type="text/javascript" src="http://ct2.tirirenge.com/sc/1515356"></script>
+					<noscript><a href="http://ct2.tirirenge.com/gg/1515356" target="_blank">
+					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="カウンター" /></a><br />
+					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">ポイント</a></span></noscript>
+					<!-- /shinobi ct2 -->
+					<br>
+				（2011.3.15～）
+				</dd>
+			</dl>
+		</div>
+
+	</div>
+
+	<div id="footer">
+		<iframe id="ft" name="ft" src="./../footer.html" width="100%" scrolling="no" frameborder="0"></iframe>
+	</div>
+
+	</div>	<!-- id="wrapper" -->
+</body>
+</html>

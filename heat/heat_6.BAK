@@ -1,0 +1,156 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+	<meta http-equiv="content-style-type" content="text/css">
+
+	<meta name="description" content="流体力学・有限要素法による数値計算サイト。">
+	<meta name="keywords" content="流体力学,有限要素法,数値計算,メッシュ,FEM"> 
+	<meta name="author" content="HTMQ"> 
+
+	<title>無次元化（伝熱工学）</title>
+	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body>
+	<input type="hidden" id="menu_id" value="9">
+
+	<div id="wrapper">
+
+	<div id="header">
+		<h1><a href="./../index.html" title="トップページへ">有限要素法・流体力学による数値計算</a></h1>
+
+		<br style="clear:both;">
+		<ul style="margin-left:30px;">
+		<li><a href="./../index.html" title="indexへ">index</a>&gt;</li>
+		<li><a href="./heat.html" title="伝熱工学へ">伝熱工学</a>&gt;</li>
+		<li><a href="./heat_6.html" title="無次元化へ">無次元化</a>&gt;</li>
+		</ul>
+		<hr>
+	</div>
+
+	<div id="main" >
+
+	<div id="image">
+		<p>流体力学から数値計算まで</p>
+		<p><img src="./../img/shiki1.gif"></p>
+		<p><img src="./../img/shiki2.gif"></p>
+	</div>
+
+	<div id="content">
+
+		<div id="content-text">
+
+			<h2>広告</h2>
+			<p><iframe src="./../ad.html" width="470" height="60" scrolling="no" frameborder="0"></iframe></p>
+			<br>
+
+			<h2>無次元化</h2>
+			<p>無次元化とは、収支式に使用されている変数の次元を無次元<span class="ft">[-]</span>
+					にする操作です。簡易的に言えば、割合に変える操作です。
+					<b>無次元化することで収支式の定数は無次元数のみとなります。</b>
+					逆に言えば、ある無次元数で計算された結果は、その無次元数を構成する変数をどのようにとっても変わりません。
+					速度や長さ、密度などが異なっても無次元数が等しければ同じ現象が現れます。
+					変数は次式で無次元化されます。ここで、<span class="ft"><i>x</i><sub>0</sub>[m]</span>
+					は代表長さ、<span class="ft"><i>v</i><sub>0</sub>[m/s]</span>
+					は代表速度でです。</p>
+			<br>
+			<p>座標の無次元化</p>
+			<p class="im"><img src="./../img/heat_dimensionless.files/image001.png"></p>
+			<br>
+			<p>速度の無次元化</p>
+			<p class="im"><img src="./../img/heat_dimensionless.files/image002.png"></p>
+			<br>
+			<p>温度の無次元化</p><br>
+			<p class="im"><img src="./../img/heat_dimensionless.files/image003.png"></p>
+			<br>
+			<p>時間の無次元化</p>
+			<p class="im"><img src="./../img/heat_dimensionless.files/image004.png"></p>
+			<br>
+
+			<h2>熱収支式の無次元化</h2>
+			<p>無次元化前</p>
+			<p class="im"><img src="./../img/heat_dimensionless.files/image005.png"></p>
+			<p>ここで、<img src="./../img/heat_dimensionless.files/image006.png"><span class="ft">[N/m<sup>2</sup>s]</span>
+					は熱流束で、</p>
+			<p class="im"><img src="./../img/heat_dimensionless.files/image007.png"></p>
+			<p>成分表示すると</p>
+			<p class="im"><img src="./../img/heat_dimensionless.files/image008.png"></p>
+			<br>
+			<p>無次元化後</p>
+			<p class="im"><img src="./../img/heat_dimensionless.files/image009.png"></p>
+			<p>ここで、<img src="./../img/heat_dimensionless.files/image010.png">[-]は熱流束で、</p>
+			<p class="im"><img src="./../img/heat_dimensionless.files/image011.png"></p>
+			<p>成分表示すると</p>
+			<p class="im"><img src="./../img/heat_dimensionless.files/image012.png"></p>
+			<p>また、</p>
+			<p class="im"><img src="./../img/heat_dimensionless.files/image013.png"></p>
+			<p>ペクレ数<span class="ft"><i>Pe</i></span>は、対流伝熱と伝導伝熱の比を表しています。</p>
+			<br>
+
+			<div style="margin-top:10px;"></div>
+			<h2>
+				<table><tr>
+				<td style="padding:0px 10px;"><a href="./heat_5_4.html">prev</a></td>
+				<td style="padding:0px 10px;">|</td>
+				<td style="padding:0px 10px;"><a href="./heat.html">top</a></td>
+				<td style="padding:0px 10px;">|</td>
+				<td style="padding:0px 10px;"><a href="./heat_7.html">next</a></td>
+				</tr></table>
+			</h2>
+
+			<!-- 広告 -->
+			<p><iframe src="./../questionnaire.html" width="650" height="325" scrolling="yes" frameborder="0"></iframe></p>
+		</div>
+
+	</div>	<!-- id="content" -->
+
+	</div>	<!-- id="main" -->
+
+	<div id="sub">
+		<iframe src="./../menu.html" id="menu" name="menu" width="180" scrolling="no" frameborder="0"></iframe>
+
+		<!-- 広告 -->
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- バナー3（メニュー欄） -->
+		<ins class="adsbygoogle"
+		     style="display:inline-block;width:160px;height:600px"
+		     data-ad-client="ca-pub-4382202381956938"
+		     data-ad-slot="2356729377"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+
+		<!-- ページ別カウンタ -->
+		<!--shinobi1-->
+		<script type="text/javascript" src="http://x7.tuzikaze.com/ufo/10850281m"></script>
+		<noscript><a href="http://x7.tuzikaze.com/bin/gg?10850281m" target="_blank">
+		<img src="http://x7.tuzikaze.com/bin/ll?10850281m" border="0"></a><br>
+		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://news-miyazaki.info/">ニュースの特性</a></span></noscript>
+		<!--shinobi2-->
+
+		<div class="sub-text">
+			<dl>
+				<dt>カウンタ</dt>
+				<dd>
+					<!-- shinobi ct2 -->
+					<script type="text/javascript" src="http://ct2.tirirenge.com/sc/1515356"></script>
+					<noscript><a href="http://ct2.tirirenge.com/gg/1515356" target="_blank">
+					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="カウンター" /></a><br />
+					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">ポイント</a></span></noscript>
+					<!-- /shinobi ct2 -->
+					<br>
+				（2011.3.15～）
+				</dd>
+			</dl>
+		</div>
+
+	</div>
+
+	<div id="footer">
+		<iframe id="ft" name="ft" src="./../footer.html" width="100%" scrolling="no" frameborder="0"></iframe>
+	</div>
+
+	</div>	<!-- id="wrapper" -->
+</body>
+</html>

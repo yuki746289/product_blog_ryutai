@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>canvasで図形を描く</title>
+<script src="graph.js"></script>
+
+<style type="text/css">
+<!--
+		#canvas {
+			position: relative;
+			width: 800px;
+			height: 500px;
+			margin: 0 auto;
+			border: 1px black solid;
+		}
+		
+		#canvas_main {
+			position:absolute;
+			z-index: 1;
+			left: 0px;
+			top: 0px;
+		}
+		
+		#canvas_sub {
+			position:absolute;
+			z-index: 100;
+			left: 0px;
+			top: 0px;
+		}
+ -->
+</style>
+
+</head>
+<body onLoad="test()">
+<h2>Canvasで図形を描く</h2>
+<form name="form">
+	<input type="text" name="t1" value="0">
+</form>
+
+<div id="canvas">
+	<canvas id="canvas_main"></canvas>
+	<canvas id="canvas_sub"></canvas>
+</div>
+
+
+</body>
+</html>

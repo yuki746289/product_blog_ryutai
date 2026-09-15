@@ -1,0 +1,248 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=shift_jis">
+<meta name=Generator content="Microsoft Word 11 (filtered)">
+<title>熱収支式の離散化</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"ＭＳ 明朝";
+	panose-1:2 2 6 9 4 2 5 8 3 4;}
+@font-face
+	{font-family:Century;
+	panose-1:2 4 6 4 5 5 5 2 3 4;}
+@font-face
+	{font-family:"\@ＭＳ 明朝";
+	panose-1:2 2 6 9 4 2 5 8 3 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0mm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	font-size:10.5pt;
+	font-family:Century;}
+ /* Page Definitions */
+ @page Section1
+	{size:595.3pt 841.9pt;
+	margin:99.25pt 30.0mm 30.0mm 30.0mm;
+	layout-grid:18.0pt;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+
+</head>
+
+<body lang=JA style='text-justify-trim:punctuation'>
+
+<div class=Section1 style='layout-grid:18.0pt'>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>熱収支式の離散化</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　</span><span lang=EN-US
+style='font-family:"Times New Roman"'>3</span><span style='font-family:"ＭＳ 明朝"'>角形</span><span
+lang=EN-US style='font-family:"Times New Roman"'>1</span><span
+style='font-family:"ＭＳ 明朝"'>次要素</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　</span><span lang=EN-US
+style='font-family:"Times New Roman"'><sub><img width=312 height=54
+src="heat_discretization_tri.files/image001.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>要素に</span><span
+lang=EN-US style='font-family:"Times New Roman"'>3</span><span
+style='font-family:"ＭＳ 明朝"'>角形を用いた場合、</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=215 height=90
+src="heat_discretization_tri.files/image002.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=498 height=157
+src="heat_discretization_tri.files/image003.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>となるので、</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=389 height=272
+src="heat_discretization_tri.files/image004.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>展開すると</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=389 height=301
+src="heat_discretization_tri.files/image005.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=376 height=118
+src="heat_discretization_tri.files/image006.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>グリーン・ガウスの定理より</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=338 height=244
+src="heat_discretization_tri.files/image007.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=344 height=230
+src="heat_discretization_tri.files/image008.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=345 height=294
+src="heat_discretization_tri.files/image009.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=346 height=232
+src="heat_discretization_tri.files/image010.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=392 height=230
+src="heat_discretization_tri.files/image011.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=398 height=230
+src="heat_discretization_tri.files/image012.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=346 height=90
+src="heat_discretization_tri.files/image013.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=320 height=291
+src="heat_discretization_tri.files/image014.gif"></sub></span></p>
+
+<p class=MsoNormal><b><span lang=EN-US>&nbsp;</span></b></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=363 height=291
+src="heat_discretization_tri.files/image015.gif"></sub></span></p>
+
+<p class=MsoNormal><b><span lang=EN-US>&nbsp;</span></b></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=179 height=61
+src="heat_discretization_tri.files/image016.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=319 height=90
+src="heat_discretization_tri.files/image017.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=294 height=183
+src="heat_discretization_tri.files/image018.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=325 height=182
+src="heat_discretization_tri.files/image019.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=176 height=61
+src="heat_discretization_tri.files/image020.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>ここで、</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=372 height=367
+src="heat_discretization_tri.files/image021.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=249 height=90
+src="heat_discretization_tri.files/image022.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=234 height=182
+src="heat_discretization_tri.files/image023.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=307 height=182
+src="heat_discretization_tri.files/image024.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=144 height=58
+src="heat_discretization_tri.files/image025.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=248 height=90
+src="heat_discretization_tri.files/image026.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=201 height=183
+src="heat_discretization_tri.files/image027.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=285 height=182
+src="heat_discretization_tri.files/image028.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=159 height=58
+src="heat_discretization_tri.files/image029.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=336 height=167
+src="heat_discretization_tri.files/image030.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=321 height=256
+src="heat_discretization_tri.files/image031.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=304 height=194
+src="heat_discretization_tri.files/image032.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>陰解法</span></p>
+
+<p class=MsoNormal><span lang=EN-US><sub><img width=285 height=162
+src="heat_discretization_tri.files/image033.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

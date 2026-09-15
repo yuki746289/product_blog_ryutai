@@ -1,0 +1,175 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=shift_jis">
+<meta name=Generator content="Microsoft Word 11 (filtered)">
+<title>内容</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"ＭＳ 明朝";
+	panose-1:2 2 6 9 4 2 5 8 3 4;}
+@font-face
+	{font-family:Century;
+	panose-1:2 4 6 4 5 5 5 2 3 4;}
+@font-face
+	{font-family:"\@ＭＳ 明朝";
+	panose-1:2 2 6 9 4 2 5 8 3 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0mm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	font-size:10.5pt;
+	font-family:Century;}
+span.MsoEndnoteReference
+	{vertical-align:super;}
+p.MsoEndnoteText, li.MsoEndnoteText, div.MsoEndnoteText
+	{margin:0mm;
+	margin-bottom:.0001pt;
+	layout-grid-mode:char;
+	font-size:10.5pt;
+	font-family:Century;}
+ /* Page Definitions */
+ @page Section1
+	{size:595.3pt 841.9pt;
+	margin:20.0mm 10.0mm 20.0mm 10.0mm;
+	layout-grid:14.55pt -.9pt;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0mm;}
+ul
+	{margin-bottom:0mm;}
+-->
+</style>
+
+</head>
+
+<body lang=JA style='text-justify-trim:punctuation'>
+
+<div class=Section1 style='layout-grid:14.55pt -.9pt'>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>・要素の変形</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　ラグラジアン座標の場合は、要素が変形する。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　そのまま変形が進むと計算が破綻したりするので、メッシュの再作成が必要となる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　その目安を要素の変形度として次の様に計算してみる。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><img width=260 height=301
+src="mesh_deformation_tet.files/image001.gif"></span><span style='font-family:
+"ＭＳ 明朝"'>　　</span><span lang=EN-US><img width=242 height=259
+src="mesh_deformation_tet.files/image002.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　上図の様に正</span><span
+lang=EN-US>4</span><span style='font-family:"ＭＳ 明朝"'>面体の場合は、重心と外心の座標が等しいが、変形するとそれらの位置はずれる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　この重心と外心のずれから要素の変形度を計算する。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　つまり本来、外心と等しい要素の重心から各節点までの距離を計算する。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　外心を使用するのは、外心が外接球の中心で各節点までの距離が等しいからである。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　まず、要素の重心の位置は次式となる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=99 height=166
+src="mesh_deformation_tet.files/image003.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　正</span><span
+lang=EN-US style='font-family:"Times New Roman"'>4</span><span
+style='font-family:"ＭＳ 明朝"'>面体の重心から各節点までの距離を</span><i><span lang=EN-US
+style='font-family:"Times New Roman"'>r</span></i><span style='font-family:
+"ＭＳ 明朝"'>とする。</span><i><span lang=EN-US style='font-family:"Times New Roman"'>r</span></i><span
+style='font-family:"ＭＳ 明朝"'>は未知数である。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　また、変形した</span><span
+lang=EN-US style='font-family:"Times New Roman"'>4</span><span
+style='font-family:"ＭＳ 明朝"'>面体の重心から各節点までの距離を次式とする。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=312 height=38
+src="mesh_deformation_tet.files/image004.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　ここで、各節点から重心までの距離のずれを</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>dr</span></i><span
+style='font-family:"ＭＳ 明朝"'>とすると次式となる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=303 height=512
+src="mesh_deformation_tet.files/image005.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　ここで、</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=75 height=112
+src="mesh_deformation_tet.files/image006.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　このずれは、次の場合に最小となる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=242 height=50
+src="mesh_deformation_tet.files/image007.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　従って、規格化したこのずれを変形度とすると次式となる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=170 height=220
+src="mesh_deformation_tet.files/image008.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　従って、</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=243 height=134
+src="mesh_deformation_tet.files/image009.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　この変形度は、要素が正</span><span
+lang=EN-US style='font-family:"Times New Roman"'>4</span><span
+style='font-family:"ＭＳ 明朝"'>面体の場合</span><span lang=EN-US style='font-family:
+"Times New Roman"'>0</span><span style='font-family:"ＭＳ 明朝"'>になる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　経験的に</span><span
+lang=EN-US style='font-family:"Times New Roman"'>0.5</span><span
+style='font-family:"ＭＳ 明朝"'>～</span><span lang=EN-US style='font-family:"Times New Roman"'>0.7</span><span
+style='font-family:"ＭＳ 明朝"'>がメッシュ再作成の目安になった。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

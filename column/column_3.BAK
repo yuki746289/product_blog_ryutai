@@ -1,0 +1,131 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+	<meta http-equiv="content-style-type" content="text/css">
+
+	<meta name="description" content="流体力学・有限要素法による数値計算サイト。">
+	<meta name="keywords" content="流体力学,有限要素法,数値計算,メッシュ,FEM"> 
+	<meta name="author" content="HTMQ"> 
+
+	<title>日常にあるスケール化（コラム）</title>
+	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body>
+	<input type="hidden" id="menu_id" value="8">
+
+	<div id="wrapper">
+
+	<div id="header">
+		<h1><a href="./../index.html" title="トップページへ">有限要素法・流体力学による数値計算</a></h1>
+
+		<br style="clear:both;">
+		<ul style="margin-left:30px;">
+		<li><a href="./../index.html" title="indexへ">index</a>&gt;</li>
+		<li><a href="./column.html" title="コラムへ">コラム</a>&gt;</li>
+		<li><a href="./column_3.html" title="日常にあるスケール化へ">日常にあるスケール化</a>&gt;</li>
+		</ul>
+		<hr>
+	</div>
+
+	<div id="main" >
+
+	<div id="image">
+		<p>流体力学から数値計算まで</p>
+		<p><img src="./../img/shiki1.gif"></p>
+		<p><img src="./../img/shiki2.gif"></p>
+	</div>
+
+	<div id="content">
+
+		<div id="content-text">
+
+			<h2>広告</h2>
+			<p><iframe src="./../ad.html" width="470" height="60" scrolling="no" frameborder="0"></iframe></p>
+			<br>
+
+			<h2>コラム：日常にあるスケール化</h2>
+			<p>　趣味で山に登ることがある。ある程度上って町を見下ろすと家やビルが小さく見える。
+				これを規格化の考えで説明すれば、「山という高さでスケール化された町を見ているから」
+				ということになる。要するに山の高さは、家やビルよりもとても高いということである。
+				逆にこの考え方で小さなスケーリングをするとどうなるだろうか。
+				これは、地面に寝そべって上を見ればよいことになる。
+				すると家やビルはとても高く見え、その高さの差がはっきりわかるだろう。</p>
+			<p>　基準の取り方一つで同じものが全く異なって見えることに興味を覚える。</p>
+			<p>　勿論、これは長さだけに限らず、お金や時間についても同じことである。
+				もっとスケールの大きいことで言えば、宇宙から見た地球上の人間活動などはちっぽけなことであろうし、
+				その逆も然りである。</p>
+			<p>　要はその時々に応じて、様々な量を最適な尺度で意識的・無意識的に選択しているのであろう。
+				または、それらの意図的な操作如何によっては、より良い人生が送れるになれるのかもしれない。
+				まあ、より良い人生と言うのも当の本人の尺度によるのではあるが。。。</p>
+			<p>　プロセス（過程）とゴール（結果）は互いに影響し合うものであるし、時間と共に変化する。
+				築いた山を壊しては、より大きい山を築く連続なのかもしれない。勿論、山の大きさも人によって様々である。</p>
+			<br>
+
+			<div style="margin-top:10px;"></div>
+			<h2>
+				<table><tr>
+				<td style="padding:0px 10px;"><a href="./column_2.html">prev</a></td>
+				<td style="padding:0px 10px;">|</td>
+				<td style="padding:0px 10px;"><a href="./column.html">top</a></td>
+				<td style="padding:0px 10px;">|</td>
+				<td style="padding:0px 10px;"><a href="./column_4.html">next</a></td>
+				</tr></table>
+			</h2>
+
+			<!-- 広告 -->
+			<p><iframe src="./../questionnaire.html" width="650" height="325" scrolling="yes" frameborder="0"></iframe></p>
+		</div>
+
+	</div>	<!-- id="content" -->
+
+	</div>	<!-- id="main" -->
+
+	<div id="sub">
+		<iframe src="./../menu.html" id="menu" name="menu" width="180" scrolling="no" frameborder="0"></iframe>
+
+		<!-- 広告 -->
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- バナー3（メニュー欄） -->
+		<ins class="adsbygoogle"
+		     style="display:inline-block;width:160px;height:600px"
+		     data-ad-client="ca-pub-4382202381956938"
+		     data-ad-slot="2356729377"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+
+		<!-- ページ別カウンタ -->
+		<!--shinobi1-->
+		<script type="text/javascript" src="http://x7.tuzikaze.com/ufo/108502815"></script>
+		<noscript><a href="http://x7.tuzikaze.com/bin/gg?108502815" target="_blank">
+		<img src="http://x7.tuzikaze.com/bin/ll?108502815" border="0"></a><br>
+		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://home-itou.com/">一番の住みやすさ</a></span></noscript>
+		<!--shinobi2-->
+
+		<div class="sub-text">
+			<dl>
+				<dt>カウンタ</dt>
+				<dd>
+					<!-- shinobi ct2 -->
+					<script type="text/javascript" src="http://ct2.tirirenge.com/sc/1515356"></script>
+					<noscript><a href="http://ct2.tirirenge.com/gg/1515356" target="_blank">
+					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="カウンター" /></a><br />
+					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">ポイント</a></span></noscript>
+					<!-- /shinobi ct2 -->
+					<br>
+				（2011.3.15～）
+				</dd>
+			</dl>
+		</div>
+
+	</div>
+
+	<div id="footer">
+		<iframe id="ft" name="ft" src="./../footer.html" width="100%" scrolling="no" frameborder="0"></iframe>
+	</div>
+
+	</div>	<!-- id="wrapper" -->
+</body>
+</html>

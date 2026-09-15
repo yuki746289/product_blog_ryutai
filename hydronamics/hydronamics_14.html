@@ -1,0 +1,154 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+	<meta http-equiv="content-style-type" content="text/css">
+
+	<meta name="description" content="流体力学・有限要素法による数値計算サイト。">
+	<meta name="keywords" content="流体力学,有限要素法,数値計算,メッシュ,FEM"> 
+
+	<title>グリーン・ガウスの定理（流体力学）</title>
+	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body>
+	<input type="hidden" id="menu_id" value="3">
+
+	<div id="wrapper">
+
+	<div id="header">
+		<h1><a href="./../index.html" title="トップページへ">有限要素法・流体力学による数値計算</a></h1>
+
+		<br style="clear:both;">
+		<ul style="margin-left:30px;">
+		<li><a href="./../index.html" title="indexへ">index</a>&gt;</li>
+		<li><a href="./hydronamics.html" title="流体力学へ">流体力学</a>&gt;</li>
+		<li><a href="./hydronamics_14.html" title="グリーン・ガウスの定理へ">グリーン・ガウスの定理</a>&gt;</li>
+		</ul>
+		<hr>
+	</div>
+
+	<div id="main" >
+
+	<div id="image">
+		<p>流体力学から数値計算まで</p>
+		<p><img src="./../img/shiki1.gif"></p>
+		<p><img src="./../img/shiki2.gif"></p>
+	</div>
+
+	<div id="content">
+
+		<div id="content-text">
+
+			<h2>広告</h2>
+			<p><iframe src="./../ad.html" width="470" height="60" scrolling="no" frameborder="0"></iframe></p>
+			<br>
+
+			<h2>グリーン・ガウスの定理</h2>
+			<p>グリーン・ガウスの定理とは、簡易的に言えば
+					体積分を面積分に換える定理です。</p>
+			<p class="im"><img src="./../img/hydronamics_gauss.files/image001.png"></p>
+
+			<p>上図から</p>
+			<p>　　領域内の変化量　＝　表面からの流入・流出量</p>
+			<p>であり、</p>
+			<p>　　体積分：領域内の変化量</p>
+			<p>　　面積分：表面からの流入・流出量</p>
+			<p>という考えに基づいています。</p>
+			<p class="im"><img src="./../img/hydronamics_gauss.files/image002.png"></p>
+			<p>上図において、微小領域内のx軸方向の収支を考えます。物理量を
+					<span class="fs"><i>f</i></span>とすると</p>
+			<p class="im"><img src="./../img/hydronamics_gauss.files/image003.png"></p>
+			<p>ここで、法線ベクトルは</p>
+			<p class="im"><img src="./../img/hydronamics_gauss.files/image004.png"></p>
+			<p>であり、微小面積は</p>
+			<p class="im">　　<span class="ft"><i>L</i></span>面：
+					<img src="./../img/hydronamics_gauss.files/image005.png"></p>
+			<p class="im">　　<span class="ft"><i>R</i></span>面：
+					<img src="./../img/hydronamics_gauss.files/image006.png"></p>
+			<p>であるので、</p>
+			<p class="im"><img src="./../img/hydronamics_gauss.files/image007.png"></p>
+			<p>領域全体を積分すると</p>
+			<p class="im"><img src="./../img/hydronamics_gauss.files/image008.png"></p>
+			<p>同様に</p>
+			<p class="im"><img src="./../img/hydronamics_gauss.files/image009.png"></p>
+			<p class="im"><img src="./../img/hydronamics_gauss.files/image010.png"></p>
+			<p>ベクトル表示すると</p>
+			<p class="im"><img src="./../img/hydronamics_gauss.files/image011.png"></p>
+			<br>
+			<h2>有限要素法で使用する形式</h2>
+			<p><span class="fs"><i>f</i></span><span class="ft"> = <i>uv</i></span>の場合、</p>
+			<p class="im"><img src="./../img/hydronamics_gauss.files/image012.png"></p>
+			<p>となるので、</p>
+			<p class="im"><img src="./../img/hydronamics_gauss.files/image013.png"></p>
+			<p>移項して、</p>
+			<p class="im"><img src="./../img/hydronamics_gauss.files/image014.png"></p>
+			<p>この形式は、有限要素法で収支式の離散化に使用されます。</p>
+			<br>
+
+			<div style="margin-top:10px;"></div>
+			<h2>
+				<table><tr>
+				<td style="padding:0px 10px;"><a href="./hydronamics_13.html">prev</a></td>
+				<td style="padding:0px 10px;">|</td>
+				<td style="padding:0px 10px;"><a href="./hydronamics.html">up</a></td>
+				<td style="padding:0px 10px;">|</td>
+				<td style="padding:0px 10px;">next</td>
+				</tr></table>
+			</h2>
+
+			<!-- 広告 -->
+			<p><iframe src="./../questionnaire.html" width="650" height="325" scrolling="yes" frameborder="0"></iframe></p>
+		</div>
+
+	</div>	<!-- id="content" -->
+
+	</div>	<!-- id="main" -->
+
+	<div id="sub">
+		<iframe src="./../menu.html" id="menu" name="menu" width="180" scrolling="no" frameborder="0"></iframe>
+
+		<!-- 広告 -->
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- バナー3（メニュー欄） -->
+		<ins class="adsbygoogle"
+		     style="display:inline-block;width:160px;height:600px"
+		     data-ad-client="ca-pub-4382202381956938"
+		     data-ad-slot="2356729377"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+
+		<!-- ページ別カウンタ -->
+		<!--shinobi1-->
+		<script type="text/javascript" src="http://x7.tuzikaze.com/ufo/10850280F"></script>
+		<noscript><a href="http://x7.tuzikaze.com/bin/gg?10850280F" target="_blank">
+		<img src="http://x7.tuzikaze.com/bin/ll?10850280F" border="0"></a><br>
+		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://www.whysetalk.com/">結婚の悩み</a></span></noscript>
+		<!--shinobi2-->
+
+		<div class="sub-text">
+			<dl>
+				<dt>カウンタ</dt>
+				<dd>
+					<!-- shinobi ct2 -->
+					<script type="text/javascript" src="http://ct2.tirirenge.com/sc/1515356"></script>
+					<noscript><a href="http://ct2.tirirenge.com/gg/1515356" target="_blank">
+					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="カウンター" /></a><br />
+					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">ポイント</a></span></noscript>
+					<!-- /shinobi ct2 -->
+					<br>
+				（2011.3.15～）
+				</dd>
+			</dl>
+		</div>
+
+	</div>
+
+	<div id="footer">
+		<iframe id="ft" name="ft" src="./../footer.html" width="100%" scrolling="no" frameborder="0"></iframe>
+	</div>
+
+	</div>	<!-- id="wrapper" -->
+</body>
+</html>

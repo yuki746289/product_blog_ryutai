@@ -1,0 +1,147 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+	<meta http-equiv="content-style-type" content="text/css">
+
+	<meta name="description" content="流体力学・有限要素法による数値計算サイト。">
+	<meta name="keywords" content="流体力学,有限要素法,数値計算,メッシュ,FEM"> 
+
+	<title>メールフォーム</title>
+	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body>
+	<input type="hidden" id="menu_id" value="0">
+
+	<div id="wrapper">
+
+	<div id="header">
+		<h1><a href="./../index.html" title="トップページへ">有限要素法・流体力学による数値計算</a></h1>
+
+		<br style="clear:both;">
+		<ul style="margin-left:30px;">
+		<li><a href="./../index.html" title="indexへ">index</a>&gt;</li>
+		<li><a href="./mail.html" title="メールへ">メール</a>&gt;</li>
+		</ul>
+		<hr>
+	</div>
+
+	<div id="main" >
+
+	<div id="image">
+		<p>流体力学から数値計算まで</p>
+		<p><img src="./../img/shiki1.gif"></p>
+		<p><img src="./../img/shiki2.gif"></p>
+	</div>
+
+	<div id="content">
+
+		<div id="content-text">
+
+			<h2>広告</h2>
+			<p><iframe src="./../ad.html" width="470" height="60" scrolling="no" frameborder="0"></iframe></p>
+			<br>
+
+			<h2>Ｑ＆Ａコーナー</h2>
+			<p><a href="#question">質問一覧へ</a></p>
+			<p>解らない事、疑問に思った事があればご質問ください。何でもOKです♪</p>
+
+			<!--ninja_style_mailform-->
+			<div id="SMFkkk">Powered by <a href="http://www.ninja.co.jp/" target="_blank">NINJA TOOLS</a></div>
+			<script type="text/javascript" src="http://mf1.shinobi.jp/call/a8c10600fbdb968704bdcfd0f0e9941c/message.js" charset="utf-8"></script>
+			<noscript>[<a href="http://mf1.shinobi.jp/stat/a8c10600fbdb968704bdcfd0f0e9941c/message.js" target="_blank">NINJA_STYLE_MAILFORM</a>]<br /><a href="http://www.shinobi.jp/affiliate/" target="_blank">アフィリエイト</a></noscript>
+			<!--ninja_style_mailform-->
+
+			<h2 id="question">一覧</h2>
+			<p>Ｑ．数値計算にはどの様な種類がありますか。</p>
+			<p>Ａ．有限要素法以外にも、差分法、有限体積法などがあります。
+					比較的新しい手法では、メッシュフリーの粒子法などがあります。
+					主に構造解析には有限要素法が、流動解析には差分法が用いられています。</p>
+			<br>
+			<p>Ｑ．無次元化の意味がわかりません。</p>
+			<p>Ａ．無次元化の主な目的は、パラメータを減らすことです。粘度や密度といった複数の
+					パラメータを無次元数という1つのパラメータで表現することができます。
+					また、次元がなくなることから無次元化は、スケール化とも言われます。
+					詳しくは、<a href="./../hydronamics/hydronamics_12.html">こちら</a>を参照下さい。</p>
+			<br>
+			<p>Ｑ．どうすればプログラムが作れますか。</p>
+			<p>Ａ．プログラムの作成は、非常に面倒で時間がかかります。管理人も経験ありますが、デバッグや検算
+					など非常に大変です。特に有限要素法は差分法などと比べて手間がかかります。
+					もし、作成されるのであれば、市販のテキストに添付されているサンプルプログラム
+					を理解し、発展させるほうが、0から作るよりも手間が省けると思います。
+					作成の手順としては、メッシュ作成、計算スキーム、描画処理の3つに分けられると思います。</p>
+			<br>
+			<p>Ｑ．数値計算の知識が無くても解析ソフトを使うことはできますか。</p>
+			<p>Ａ．ある程度の知識は必要になると思います。ある程度というのは、簡単なサンプルモデルを作成できて
+					解析結果を示すことができる程度でしょうか。ソフトの中で、どういった処理が行われているかを
+					分かった上で動作させるのと、分からないまま動作させるのでは違いがあると思います。最終的には
+					そのソフトを隅々まで理解できれば良いのですが。</p>
+			<br>
+
+			<div style="margin-top:50px;"></div>
+			<h2>
+				<table><tr>
+				<td style="padding:0px 10px;">prev</td>
+				<td style="padding:0px 10px;">|</td>
+				<td style="padding:0px 10px;"><a href="./../index.html">top</a></td>
+				<td style="padding:0px 10px;">|</td>
+				<td style="padding:0px 10px;">next</td>
+				</tr></table>
+			</h2>
+
+			<!-- 広告 -->
+			<p><iframe src="./../questionnaire.html" width="650" height="325" scrolling="yes" frameborder="0"></iframe></p>
+		</div>
+
+	</div>	<!-- id="content" -->
+
+	</div>	<!-- id="main" -->
+
+	<div id="sub">
+		<iframe src="./../menu.html" id="menu" name="menu" width="180" scrolling="no" frameborder="0"></iframe>
+
+		<!-- 広告 -->
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- バナー3（メニュー欄） -->
+		<ins class="adsbygoogle"
+		     style="display:inline-block;width:160px;height:600px"
+		     data-ad-client="ca-pub-4382202381956938"
+		     data-ad-slot="2356729377"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+
+		<!-- ページ別カウンタ -->
+		<!--shinobi1-->
+		<script type="text/javascript" src="http://x7.tuzikaze.com/ufo/10850281r"></script>
+		<noscript><a href="http://x7.tuzikaze.com/bin/gg?10850281r" target="_blank">
+		<img src="http://x7.tuzikaze.com/bin/ll?10850281r" border="0"></a><br>
+		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://www.northtexaspalm.com/">結婚からお葬式まで</a></span></noscript>
+		<!--shinobi2-->
+
+		<div class="sub-text">
+			<dl>
+				<dt>カウンタ</dt>
+				<dd>
+					<!-- shinobi ct2 -->
+					<script type="text/javascript" src="http://ct2.tirirenge.com/sc/1515356"></script>
+					<noscript><a href="http://ct2.tirirenge.com/gg/1515356" target="_blank">
+					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="カウンター" /></a><br />
+					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">ポイント</a></span></noscript>
+					<!-- /shinobi ct2 -->
+					<br>
+				（2011.3.15～）
+				</dd>
+			</dl>
+		</div>
+
+	</div>
+
+	<div id="footer">
+		<iframe id="ft" name="ft" src="./../footer.html" width="100%" scrolling="no" frameborder="0"></iframe>
+	</div>
+
+	</div>	<!-- id="wrapper" -->
+</body>
+</html>

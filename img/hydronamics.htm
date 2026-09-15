@@ -1,0 +1,1435 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=shift_jis">
+<meta name=Generator content="Microsoft Word 11 (filtered)">
+<title>内容</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"ＭＳ 明朝";
+	panose-1:2 2 6 9 4 2 5 8 3 4;}
+@font-face
+	{font-family:Century;
+	panose-1:2 4 6 4 5 5 5 2 3 4;}
+@font-face
+	{font-family:"\@ＭＳ 明朝";
+	panose-1:2 2 6 9 4 2 5 8 3 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0mm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	font-size:10.5pt;
+	font-family:Century;}
+span.MsoEndnoteReference
+	{vertical-align:super;}
+p.MsoEndnoteText, li.MsoEndnoteText, div.MsoEndnoteText
+	{margin:0mm;
+	margin-bottom:.0001pt;
+	layout-grid-mode:char;
+	font-size:10.5pt;
+	font-family:Century;}
+ /* Page Definitions */
+ @page Section1
+	{size:595.3pt 841.9pt;
+	margin:20.0mm 10.0mm 20.0mm 10.0mm;
+	layout-grid:14.55pt -.9pt;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0mm;}
+ul
+	{margin-bottom:0mm;}
+-->
+</style>
+
+</head>
+
+<body lang=JA style='text-justify-trim:punctuation'>
+
+<div class=Section1 style='layout-grid:14.55pt -.9pt'>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>・流体力学</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　流体力学とは、水や空気などが流れる現象を力学的に解析する学問である。具体的には流体に作用する力を式で表し、収支を取ることから始まる。プログラム化すれば、パソコンの画面上に流れを再現することができる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・流体</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　流体とは水や空気などの流れる物質のことを言う。流体力学は流体を対象にしている。流体を考える最小単位を流体粒子と呼ぶ。これは、分子オーダーよりも大きい。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・流体の物性</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　流体力学には次の様な物性が影響する。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　密度</span><i><span
+lang=EN-US style='font-family:Symbol'>r</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[kg/m<sup>3</sup>]</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　単位体積当りの質量。</span><span
+style='font-family:"ＭＳ 明朝"'>流体の温度や濃度などによって変化する。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　水　</span><span
+lang=EN-US style='font-family:"Times New Roman"'>: 998.2[kg/m<sup>3</sup>]</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　空気</span><span
+lang=EN-US style='font-family:"Times New Roman"'>: 1.189[kg/m<sup>3</sup>]</span><span
+style='font-family:"ＭＳ 明朝"'>　　</span><span lang=EN-US style='font-family:"Times New Roman"'>(20[</span><span
+style='font-family:"ＭＳ 明朝"'>℃</span><span lang=EN-US style='font-family:"Times New Roman"'>]</span><span
+style='font-family:"ＭＳ 明朝"'>、</span><span lang=EN-US style='font-family:"Times New Roman"'>1</span><span
+style='font-family:"ＭＳ 明朝"'>×</span><span lang=EN-US style='font-family:"Times New Roman"'>10<sup>5</sup>[Pa])</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　液体の方が気体の密度よりも大きいことがわかる。下記はイメージ。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><img width=185 height=185 src="hydronamics.files/image001.gif"></span><span
+style='font-family:"ＭＳ 明朝"'>　</span><span lang=EN-US><img width=185 height=185
+src="hydronamics.files/image002.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　粘度</span><i><span
+lang=EN-US style='font-family:Symbol'>m</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[Pa</span><span style='font-family:"ＭＳ 明朝"'>・</span><span
+lang=EN-US style='font-family:"Times New Roman"'>s]</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　流体の粘り気を表している。流体の温度や濃度によって変化する。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　水　</span><span
+lang=EN-US style='font-family:"Times New Roman"'>: 1,006</span><span
+style='font-family:"ＭＳ 明朝"'>×</span><span lang=EN-US style='font-family:"Times New Roman"'>10<sup>-6</sup>[Pa</span><span
+style='font-family:"ＭＳ 明朝"'>・</span><span lang=EN-US style='font-family:"Times New Roman"'>s]</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　空気</span><span
+lang=EN-US style='font-family:"Times New Roman"'>: 18.2</span><span
+style='font-family:"ＭＳ 明朝"'>×</span><span lang=EN-US style='font-family:"Times New Roman"'>10<sup>-6</sup>[Pa</span><span
+style='font-family:"ＭＳ 明朝"'>・</span><span lang=EN-US style='font-family:"Times New Roman"'>s]</span><span
+style='font-family:"ＭＳ 明朝"'>　　</span><span lang=EN-US style='font-family:"Times New Roman"'>(20[</span><span
+style='font-family:"ＭＳ 明朝"'>℃</span><span lang=EN-US style='font-family:"Times New Roman"'>]</span><span
+style='font-family:"ＭＳ 明朝"'>、</span><span lang=EN-US style='font-family:"Times New Roman"'>1</span><span
+style='font-family:"ＭＳ 明朝"'>×</span><span lang=EN-US style='font-family:"Times New Roman"'>10<sup>5</sup>[Pa])</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　液体の方が気体の粘度よりも大きいことがわかる。粘度は、流体粒子間の摩擦係数を表している。大きい程、摩擦による運動量の交換が多くなる。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　表面張力</span><i><span
+lang=EN-US style='font-family:Symbol'>g</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'> [N/m]</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　表面張力の大きさを表している。流体の温度や濃度によって変化する。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　水</span><span
+lang=EN-US style='font-family:"Times New Roman"'>: 72.59</span><span
+style='font-family:"ＭＳ 明朝"'>×</span><span lang=EN-US style='font-family:"Times New Roman"'>10<sup>-3</sup>[N/m]</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・流体使用する収支式</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　流体力学では、</span><span
+lang=EN-US style='font-family:"Times New Roman"'>2</span><span
+style='font-family:"ＭＳ 明朝"'>つの収支式を扱う。収支式とは、微小な変化量の釣り合いを表す微分方程式である。導出は微小領域の釣り合いを考える。</span></p>
+
+<p class=MsoNormal style='margin-left:21.0pt'><span style='font-family:"ＭＳ 明朝"'>・質量収支式　　質量</span><span
+lang=EN-US style='font-family:"Times New Roman"'>[kg]</span><span
+style='font-family:"ＭＳ 明朝"'>の釣り合い式</span></p>
+
+<p class=MsoNormal style='margin-left:21.0pt'><span style='font-family:"ＭＳ 明朝"'>・運動量収支式　力</span><span
+lang=EN-US style='font-family:"Times New Roman"'>[N]</span><span
+style='font-family:"ＭＳ 明朝"'>の釣り合い式。ナビエ・ストークス式と言われる。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・質量収支式</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　下図の様な微小領域に流入・流出する質量の収支を取る。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><img width=250 height=251 src="hydronamics.files/image003.gif"></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>F<sub>i</sub></span></i><span
+lang=EN-US style='font-family:"Times New Roman"'>[kg/s]</span><span
+style='font-family:"ＭＳ 明朝"'>は質量流量で次式となる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>x</span></i><span
+style='font-family:"ＭＳ 明朝"'>軸方向</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=136 height=51 src="hydronamics.files/image004.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>y</span></i><span
+style='font-family:"ＭＳ 明朝"'>軸方向</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=139 height=51 src="hydronamics.files/image005.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>z</span></i><span
+style='font-family:"ＭＳ 明朝"'>軸方向</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=136 height=51 src="hydronamics.files/image006.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　収支式は、次式となる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=308 height=173 src="hydronamics.files/image007.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　両辺を</span><i><span
+lang=EN-US style='font-family:Symbol'>D</span></i><i><span lang=EN-US
+style='font-family:"Times New Roman"'>x</span></i><i><span lang=EN-US
+style='font-family:Symbol'>D</span></i><i><span lang=EN-US style='font-family:
+"Times New Roman"'>y</span></i><i><span lang=EN-US style='font-family:Symbol'>D</span></i><i><span
+lang=EN-US style='font-family:"Times New Roman"'>z</span></i><span
+style='font-family:"ＭＳ 明朝"'>で割って、</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=416 height=47 src="hydronamics.files/image008.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　</span><i><span
+lang=EN-US style='font-family:Symbol'>D</span></i><i><span lang=EN-US
+style='font-family:"Times New Roman"'>t</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>, </span><i><span lang=EN-US
+style='font-family:Symbol'>D</span></i><i><span lang=EN-US style='font-family:
+"Times New Roman"'>x</span></i><span lang=EN-US style='font-family:"Times New Roman"'>,
+</span><i><span lang=EN-US style='font-family:Symbol'>D</span></i><i><span
+lang=EN-US style='font-family:"Times New Roman"'>y</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>, </span><i><span lang=EN-US
+style='font-family:Symbol'>D</span></i><i><span lang=EN-US style='font-family:
+"Times New Roman"'>z</span></i><span lang=EN-US style='font-family:"Times New Roman"'>
+</span><span style='font-family:"ＭＳ 明朝"'>→</span><span lang=EN-US
+style='font-family:"Times New Roman"'> 0</span><span style='font-family:"ＭＳ 明朝"'>とすると</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=221 height=47 src="hydronamics.files/image009.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　右辺を展開すると</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=335 height=47 src="hydronamics.files/image010.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　ベクトル表示すると</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=104 height=41 src="hydronamics.files/image011.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　ここで、</span><span
+lang=EN-US style='font-family:"Times New Roman"'>D/D<i>t</i></span><span
+style='font-family:"ＭＳ 明朝"'>は全微分作用素で</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=109 height=43 src="hydronamics.files/image012.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・流体に働く力</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　・</span><span
+style='font-family:"ＭＳ 明朝"'>粘性力</span><span style='font-family:"ＭＳ 明朝"'>の簡単な説明</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　流体には粘性力という力が働く。これは流体粒子間に働く摩擦力である。下図の様に粘性力によって、ある方向に流れている流体粒子の周囲の粒子がつられて同じ方向に流れ出す。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US><img width=353 height=116 src="hydronamics.files/image013.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　上図の場合、</span><span
+lang=EN-US style='font-family:"Times New Roman"'>2</span><span
+style='font-family:"ＭＳ 明朝"'>つの流体粒子間に作用している応力</span><i><span lang=EN-US
+style='font-family:Symbol'>t</span></i><span lang=EN-US style='font-family:
+"Times New Roman"'> [N/m<sup>2</sup>]</span><span style='font-family:"ＭＳ 明朝"'>は、粘度を</span><i><span
+lang=EN-US style='font-family:Symbol'>m</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'> [Pa</span><span style='font-family:"ＭＳ 明朝"'>・</span><span
+lang=EN-US style='font-family:"Times New Roman"'>s]</span><span
+style='font-family:"ＭＳ 明朝"'>とすると次式となる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US><sub><img width=109 height=85 src="hydronamics.files/image014.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　これはニュートンの粘性の法則と呼ばれる。単位面積当たりに働く粘性力を</span><span
+style='font-family:"ＭＳ 明朝"'>剪断応力と言う。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　・力の種類</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　流体に働く力は、応力</span><span
+lang=EN-US style='font-family:"Times New Roman"'>[N/m<sup>2</sup>]</span><span
+style='font-family:"ＭＳ 明朝"'>と体積力</span><span lang=EN-US style='font-family:
+"Times New Roman"'>[N/m<sup>3</sup>]</span><span style='font-family:"ＭＳ 明朝"'>に分けられる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　応力</span><span
+lang=EN-US style='font-family:"Times New Roman"'>[N/m<sup>2</sup>]</span><span
+style='font-family:"ＭＳ 明朝"'>は、単位面積当りに作用する力で流体粒子の表面に作用する。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+style='font-family:"ＭＳ 明朝";color:black'>慣性力、粘性力、圧力、表面張力　等</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝";color:black'>　　　がある。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　体積力</span><span
+lang=EN-US style='font-family:"Times New Roman"'>[N/m<sup>3</sup>]</span><span
+style='font-family:"ＭＳ 明朝"'>は、</span><span style='font-family:"ＭＳ 明朝"'>単位体積当りに作用する力で流体粒子全体に作用する。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　重力や燃焼・化学反応などによる体積膨張・発熱</span><span
+style='font-family:"ＭＳ 明朝";color:black'>　等</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝";color:black'>　　　がある。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝";color:black'>　　・収支式の導出</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝";color:black'>　　　　下図の様な微小領域に作用する応力、体積力の収支を取ることで、運動量収支式が導出される。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Arial;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　　</span><span
+lang=EN-US><img width=380 height=214 src="hydronamics.files/image015.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Arial;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝";color:black'>　　　　　</span><span
+lang=EN-US style='font-family:Arial;color:black'><sub><img width=428 height=43
+src="hydronamics.files/image016.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:Arial;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝";color:black'>　　・</span><span
+style='font-family:"ＭＳ 明朝"'>運動量収支式</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　流体粒子に作用する力の収支を取り、運動量収支式を導出する。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　・慣性力</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><img width=250 height=251 src="hydronamics.files/image003.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>x</span></i><span
+style='font-family:"ＭＳ 明朝"'>軸方向の流入・流出による慣性力をそれぞれ</span><i><span lang=EN-US
+style='font-family:"Times New Roman"'>F</span></i><sub><span lang=EN-US
+style='font-family:"Times New Roman"'>|<i>x</i></span></sub><span lang=EN-US
+style='font-family:"Times New Roman"'>[N], <i>F</i><sub>|<i>x</i>+</sub></span><i><sub><span
+lang=EN-US style='font-family:Symbol'>D</span></sub></i><i><sub><span
+lang=EN-US style='font-family:"Times New Roman"'>x</span></sub></i><span
+lang=EN-US style='font-family:"Times New Roman"'>[N]</span><span
+style='font-family:"ＭＳ 明朝"'>、</span><i><span lang=EN-US style='font-family:
+"Times New Roman"'>i</span></i><span style='font-family:"ＭＳ 明朝"'>軸方向の質量流量を</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>w<sub>i</sub></span></i><span
+lang=EN-US style='font-family:"Times New Roman"'>, [kg/s]</span><span
+style='font-family:"ＭＳ 明朝"'>とすると、慣性力は下記で表される。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><sub><img width=477 height=188 src="hydronamics.files/image017.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　ここで、</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><sub><img width=96 height=73 src="hydronamics.files/image018.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　これは流入した質量による押す力を現している。同様に、流出側の質量は、次の様になる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><sub><img width=283 height=25 src="hydronamics.files/image019.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>y</span></i><span
+style='font-family:"ＭＳ 明朝"'>軸方向の慣性力は、次の様になる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><sub><img width=252 height=25 src="hydronamics.files/image020.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><sub><img width=287 height=25 src="hydronamics.files/image021.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>z</span></i><span
+style='font-family:"ＭＳ 明朝"'>軸方向の慣性力は、次の様になる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><sub><img width=252 height=25 src="hydronamics.files/image022.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><sub><img width=283 height=25 src="hydronamics.files/image023.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　・粘性力</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US><img width=293 height=285 src="hydronamics.files/image024.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　剪断応力はテンソルである。つまり、</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>x</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>, <i>y</i>, <i>z</i></span><span
+style='font-family:"ＭＳ 明朝"'>軸に垂直な面にそれぞれ働き、各応力は</span><i><span lang=EN-US
+style='font-family:"Times New Roman"'>x</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>, <i>y</i>, <i>z</i></span><span
+style='font-family:"ＭＳ 明朝"'>成分に分けられる。</span><i><span lang=EN-US
+style='font-family:"Times New Roman"'>i</span></i><span style='font-family:
+"ＭＳ 明朝"'>軸に垂直な面に作用する剪断応力の</span><i><span lang=EN-US style='font-family:"Times New Roman"'>j</span></i><span
+style='font-family:"ＭＳ 明朝"'>成分は、</span><i><span lang=EN-US style='font-family:
+Symbol'>t</span></i><sub><span lang=EN-US style='font-family:"Times New Roman"'>ij</span></sub><span
+lang=EN-US style='font-family:"Times New Roman"'>[N/m<sup>2</sup>]</span><span
+style='font-family:"ＭＳ 明朝"'>で表される。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>x</span></i><span
+style='font-family:"ＭＳ 明朝"'>軸方向の流入・流出による</span><span style='font-family:"ＭＳ 明朝"'>粘性力</span><span
+style='font-family:"ＭＳ 明朝"'>をそれぞれ</span><i><span lang=EN-US style='font-family:
+"Times New Roman"'>F</span></i><sub><span lang=EN-US style='font-family:"Times New Roman"'>|<i>x</i></span></sub><span
+lang=EN-US style='font-family:"Times New Roman"'>[N], <i>F</i><sub>|<i>x</i>+</sub></span><i><sub><span
+lang=EN-US style='font-family:Symbol'>D</span></sub></i><i><sub><span
+lang=EN-US style='font-family:"Times New Roman"'>x</span></sub></i><span
+lang=EN-US style='font-family:"Times New Roman"'>[N]</span><span
+style='font-family:"ＭＳ 明朝"'>とすると、次式で表される。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><sub><img width=253 height=25 src="hydronamics.files/image025.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><sub><img width=317 height=25 src="hydronamics.files/image026.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　上式は、</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>x</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>, <i>y</i>, <i>z</i></span><span
+style='font-family:"ＭＳ 明朝"'>軸に垂直な面にそれぞれ作用している応力の</span><i><span lang=EN-US
+style='font-family:"Times New Roman"'>x</span></i><span style='font-family:
+"ＭＳ 明朝"'>成分を考慮している。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>y</span></i><span
+style='font-family:"ＭＳ 明朝"'>成分は、次の様になる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><sub><img width=255 height=25 src="hydronamics.files/image027.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><sub><img width=319 height=25 src="hydronamics.files/image028.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>z</span></i><span
+style='font-family:"ＭＳ 明朝"'>成分は、次の様になる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><sub><img width=252 height=25 src="hydronamics.files/image029.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><sub><img width=315 height=25 src="hydronamics.files/image030.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　・圧力</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US><img width=246 height=251 src="hydronamics.files/image031.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　圧力</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>p</span></i><span lang=EN-US>[N/m<sup>2</sup>]</span><span
+style='font-family:"ＭＳ 明朝"'>は、面に対して法線方向に働く応力である。</span><i><span lang=EN-US
+style='font-family:"Times New Roman"'>x</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>, <i>y</i>, <i>z</i></span><span
+style='font-family:"ＭＳ 明朝"'>軸に垂直な面にそれぞれ法線方向に作用する。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>x</span></i><span
+style='font-family:"ＭＳ 明朝"'>軸方向の流入・流出による</span><span style='font-family:"ＭＳ 明朝"'>圧力</span><span
+style='font-family:"ＭＳ 明朝"'>をそれぞれ</span><i><span lang=EN-US style='font-family:
+"Times New Roman"'>F</span></i><sub><span lang=EN-US style='font-family:"Times New Roman"'>|<i>x</i></span></sub><span
+lang=EN-US style='font-family:"Times New Roman"'>[N], <i>F</i><sub>|<i>x</i>+</sub></span><i><sub><span
+lang=EN-US style='font-family:Symbol'>D</span></sub></i><i><sub><span
+lang=EN-US style='font-family:"Times New Roman"'>x</span></sub></i><span
+lang=EN-US style='font-family:"Times New Roman"'>[N]</span><span
+style='font-family:"ＭＳ 明朝"'>とすると、次の様に表される。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><sub><img width=92 height=25 src="hydronamics.files/image032.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><sub><img width=124 height=25 src="hydronamics.files/image033.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>y</span></i><span
+style='font-family:"ＭＳ 明朝"'>成分は、次の様になる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><sub><img width=93 height=25 src="hydronamics.files/image034.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><sub><img width=125 height=25 src="hydronamics.files/image035.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>z</span></i><span
+style='font-family:"ＭＳ 明朝"'>成分は、次の様になる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><sub><img width=91 height=25 src="hydronamics.files/image036.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><sub><img width=123 height=25 src="hydronamics.files/image037.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　・重力</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US><img width=215 height=245 src="hydronamics.files/image038.gif"></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　重力</span><span
+lang=EN-US><sub><img width=15 height=21 src="hydronamics.files/image039.gif"></sub></span><span
+lang=EN-US style='font-family:"Times New Roman"'>[m/s<sup>2</sup>]</span><span
+style='font-family:"ＭＳ 明朝"'>は加速度である。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><sub><img width=161 height=56 src="hydronamics.files/image040.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　また、単位質量当たりの力を表している。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=127 height=69
+src="hydronamics.files/image041.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>x</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>, <i>y</i>, <i>z</i></span><span
+style='font-family:"ＭＳ 明朝"'>軸方向の力</span><i><span lang=EN-US style='font-family:
+"Times New Roman"'>F<sub>x</sub></span></i><span lang=EN-US style='font-family:
+"Times New Roman"'>[N], <i>F<sub>y</sub></i>[N], <i>F<sub>z</sub></i>[N]</span><span
+style='font-family:"ＭＳ 明朝"'>は、それぞれ次の様になる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=111 height=24
+src="hydronamics.files/image042.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=112 height=25
+src="hydronamics.files/image043.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=111 height=23
+src="hydronamics.files/image044.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　これらは、体積力を表している。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　・運動量収支式の導出</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　運動量収支式は、流体粒子に作用する力の収支を取ることで導出される。</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>x</span></i><span
+style='font-family:"ＭＳ 明朝"'>成分の収支は次式となる。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='position:absolute;z-index:8;left:0px;
+margin-left:466px;margin-top:188px;width:74px;height:31px'>
+
+<table cellpadding=0 cellspacing=0>
+ <tr>
+  <td width=74 height=31 style='vertical-align:top'><span style='position:absolute;
+  left:0pt;z-index:8'>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td>
+    <div style='padding:3.6pt 7.2pt 3.6pt 7.2pt'>
+    <p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>重力</span></p>
+    </div>
+    </td>
+   </tr>
+  </table>
+  </span>&nbsp;</td>
+ </tr>
+</table>
+
+</span><span style='position:absolute;z-index:7;left:0px;margin-left:468px;
+margin-top:157px;width:74px;height:31px'>
+
+<table cellpadding=0 cellspacing=0>
+ <tr>
+  <td width=74 height=31 style='vertical-align:top'><span style='position:absolute;
+  left:0pt;z-index:7'>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td>
+    <div style='padding:3.6pt 7.2pt 3.6pt 7.2pt'>
+    <p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>圧力</span></p>
+    </div>
+    </td>
+   </tr>
+  </table>
+  </span>&nbsp;</td>
+ </tr>
+</table>
+
+</span><span style='position:absolute;z-index:6;left:0px;margin-left:468px;
+margin-top:106px;width:74px;height:30px'>
+
+<table cellpadding=0 cellspacing=0>
+ <tr>
+  <td width=74 height=30 style='vertical-align:top'><span style='position:absolute;
+  left:0pt;z-index:6'>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td>
+    <div style='padding:3.6pt 7.2pt 3.6pt 7.2pt'>
+    <p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>粘性力</span></p>
+    </div>
+    </td>
+   </tr>
+  </table>
+  </span>&nbsp;</td>
+ </tr>
+</table>
+
+</span><span style='position:absolute;z-index:5;left:0px;margin-left:469px;
+margin-top:37px;width:75px;height:30px'>
+
+<table cellpadding=0 cellspacing=0>
+ <tr>
+  <td width=75 height=30 style='vertical-align:top'><span style='position:absolute;
+  left:0pt;z-index:5'>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td>
+    <div style='padding:3.6pt 7.2pt 3.6pt 7.2pt'>
+    <p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>慣性力</span></p>
+    </div>
+    </td>
+   </tr>
+  </table>
+  </span>&nbsp;</td>
+ </tr>
+</table>
+
+</span><span style='position:absolute;z-index:4;left:0px;margin-left:449px;
+margin-top:186px;width:25px;height:31px'><img width=25 height=31
+src="hydronamics.files/image045.gif"></span><span style='position:absolute;
+z-index:3;left:0px;margin-left:449px;margin-top:155px;width:25px;height:32px'><img
+width=25 height=32 src="hydronamics.files/image046.gif"></span><span
+style='position:absolute;z-index:2;left:0px;margin-left:449px;margin-top:83px;
+width:25px;height:71px'><img width=25 height=71
+src="hydronamics.files/image047.gif"></span><span style='position:absolute;
+z-index:1;left:0px;margin-left:449px;margin-top:19px;width:25px;height:64px'><img
+width=25 height=64 src="hydronamics.files/image048.gif"></span><span
+style='font-family:"ＭＳ 明朝";color:black'>　　　　</span><span lang=EN-US
+style='font-family:Arial;color:black'><sub><img width=383 height=199
+src="hydronamics.files/image049.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝";color:black'>　　　</span><i><span
+lang=EN-US style='font-family:Symbol;color:black'>D</span></i><i><span
+lang=EN-US style='font-family:"Times New Roman";color:black'>x</span></i><i><span
+lang=EN-US style='font-family:Symbol;color:black'>D</span></i><i><span
+lang=EN-US style='font-family:"Times New Roman";color:black'>y</span></i><i><span
+lang=EN-US style='font-family:Symbol;color:black'>D</span></i><i><span
+lang=EN-US style='font-family:"Times New Roman";color:black'>z</span></i><span
+style='font-family:"ＭＳ 明朝";color:black'>で割ると</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝";color:black'>　　　　</span><span
+lang=EN-US style='font-family:Arial;color:black'><sub><img width=511
+height=165 src="hydronamics.files/image050.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝";color:black'>　　　</span><i><span
+lang=EN-US style='font-family:Symbol;color:black'>D</span></i><i><span
+lang=EN-US style='font-family:"Times New Roman";color:black'>t</span></i><span
+lang=EN-US style='font-family:"Times New Roman";color:black'>, </span><i><span
+lang=EN-US style='font-family:Symbol;color:black'>D</span></i><i><span
+lang=EN-US style='font-family:"Times New Roman";color:black'>x</span></i><span
+lang=EN-US style='font-family:"Times New Roman";color:black'>, </span><i><span
+lang=EN-US style='font-family:Symbol;color:black'>D</span></i><i><span
+lang=EN-US style='font-family:"Times New Roman";color:black'>y</span></i><span
+lang=EN-US style='font-family:"Times New Roman";color:black'>, </span><i><span
+lang=EN-US style='font-family:Symbol;color:black'>D</span></i><i><span
+lang=EN-US style='font-family:"Times New Roman";color:black'>z</span></i><span
+style='font-family:"ＭＳ 明朝";color:black'>→</span><span lang=EN-US
+style='font-family:Arial;color:black'>0</span><span style='font-family:"ＭＳ 明朝";
+color:black'>とすると</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝";color:black'>　　　　</span><span
+lang=EN-US style='font-family:Arial;color:black'><sub><img width=281
+height=139 src="hydronamics.files/image051.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　質量収支式より</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝";color:black'>　　　　</span><span
+lang=EN-US style='font-family:Arial;color:black'><sub><img width=423 height=47
+src="hydronamics.files/image052.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　と展開できる。詳細は、別に記述している。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>y</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>, <i>z</i></span><span style='font-family:
+"ＭＳ 明朝"'>成分も同様に導出される。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝";color:black'>　　　　</span><span
+lang=EN-US style='font-family:Arial;color:black'><sub><img width=437 height=47
+src="hydronamics.files/image053.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝";color:black'>　　　　</span><span
+lang=EN-US style='font-family:Arial;color:black'><sub><img width=420 height=47
+src="hydronamics.files/image054.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　ベクトル表示は、次式で表される。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=239 height=44
+src="hydronamics.files/image055.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　ここで、全微分表示作用素</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=109 height=41
+src="hydronamics.files/image056.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　を用いると、次式で表される。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=181 height=44
+src="hydronamics.files/image057.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　また、応力を</span><span
+lang=EN-US style='font-family:"Times New Roman"'>1</span><span
+style='font-family:"ＭＳ 明朝"'>つの項で表すと次式となる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=116 height=41
+src="hydronamics.files/image058.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　ここで、</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=16 height=19
+src="hydronamics.files/image059.gif"></sub>[N/m<sup>2</sup>]</span><span
+style='font-family:"ＭＳ 明朝"'>は応力テンソルで、</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=96 height=44
+src="hydronamics.files/image060.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=125 height=48
+src="hydronamics.files/image061.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　・応力の詳細</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　応力テンソルは、圧力と剪断応力で表される。その成分を導出する。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　・剪断速度について</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　剪断速度を直線運動から導出する。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US><img width=353 height=79 src="hydronamics.files/image062.gif"></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　上図を用いて剪断速度</span><i><span
+lang=EN-US style='font-family:Symbol'>g</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[1/s]</span><span style='font-family:
+"ＭＳ 明朝"'>は、次式で表せる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US><sub><img width=99 height=85 src="hydronamics.files/image063.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+style='font-family:"ＭＳ 明朝"'>剪断速度は、距離に対する速度勾配なので、単位は次の様に解釈できる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=120 height=45
+src="hydronamics.files/image064.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　次に剪断速度を回転運動から導出する。</span><span
+style='font-family:"ＭＳ 明朝"'>この場合は角速度を用いる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><img width=204 height=142 src="hydronamics.files/image065.gif"></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　面積の収支から</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><sub><img width=109 height=41 src="hydronamics.files/image066.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><span
+style='font-family:"ＭＳ 明朝"'>剪断</span><span style='font-family:"ＭＳ 明朝"'>速度</span><i><span
+lang=EN-US style='font-family:Symbol'>g</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[1/s]</span><span style='font-family:
+"ＭＳ 明朝"'>は</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><sub><img width=79 height=85 src="hydronamics.files/image067.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　・応力の導出</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　・応力の垂直成分</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　応力テンソルの垂直応力成分を導出する。下図から応力の収支を考える。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><img width=553 height=364 src="hydronamics.files/image068.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><i><span
+lang=EN-US style='font-family:Symbol'>D</span></i><i><span lang=EN-US
+style='font-family:"Times New Roman"'>t</span></i><span style='font-family:
+"ＭＳ 明朝"'>経過後の角度</span><i><span lang=EN-US style='font-family:Symbol'>D</span></i><i><span
+lang=EN-US style='font-family:"Times New Roman"'>a</span></i><span
+style='font-family:"ＭＳ 明朝"'>は次式となる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><sub><img width=220 height=205 src="hydronamics.files/image069.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　剪断速度</span><i><span
+lang=EN-US style='font-family:Symbol'>g</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[m/s]</span><span style='font-family:
+"ＭＳ 明朝"'>は、次式となる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><sub><img width=132 height=181 src="hydronamics.files/image070.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　従って、</span><span
+style='font-family:"ＭＳ 明朝"'>剪断応力</span><i><span lang=EN-US style='font-family:
+Symbol'>t </span></i><span lang=EN-US style='font-family:"Times New Roman"'>’<i><sub>xy</sub></i>[N/m<sup>2</sup>]</span><span
+style='font-family:"ＭＳ 明朝"'>は次式となる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=125 height=73
+src="hydronamics.files/image071.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　また、応力の釣り合いから</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=225 height=44
+src="hydronamics.files/image072.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　より</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=225 height=44
+src="hydronamics.files/image072.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　なので、</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=164 height=73
+src="hydronamics.files/image073.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　同様に</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=167 height=91
+src="hydronamics.files/image074.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><i><span
+lang=EN-US style='font-family:Symbol'>s</span></i><i><sub><span lang=EN-US
+style='font-family:"Times New Roman"'>x</span></sub></i><span lang=EN-US
+style='font-family:"Times New Roman"'>, </span><i><span lang=EN-US
+style='font-family:Symbol'>s</span></i><i><sub><span lang=EN-US
+style='font-family:"Times New Roman"'>y</span></sub></i><span lang=EN-US
+style='font-family:"Times New Roman"'>,</span><i><span lang=EN-US
+style='font-family:Symbol'> s</span></i><i><sub><span lang=EN-US
+style='font-family:"Times New Roman"'>z</span></sub></i><span style='font-family:
+"ＭＳ 明朝"'>は垂直応力なので次式で表される。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=185 height=44
+src="hydronamics.files/image075.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　従って、</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=200
+height=133 src="hydronamics.files/image076.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　・応力の剪断成分の対称性</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　応力テンソルの剪断応力成分を導出する。下図の様な回転運動からトルク</span><span
+lang=EN-US style='font-family:"Times New Roman"'>[Nm]</span><span
+style='font-family:"ＭＳ 明朝"'>の収支を考える。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><img width=432 height=290 src="hydronamics.files/image077.gif"></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　上図の様に</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>xy</span></i><span
+style='font-family:"ＭＳ 明朝"'>平面の中心に慣性モーメント</span><i><span lang=EN-US
+style='font-family:"Times New Roman"'>I<sub>z</sub></span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[Nm/s]</span><span style='font-family:
+"ＭＳ 明朝"'>の軸を取り、角速度を</span><i><span lang=EN-US style='font-family:Symbol'>w</span></i><span
+lang=EN-US style='font-family:"Times New Roman"'>[rad/s]</span><span
+style='font-family:"ＭＳ 明朝"'>とする。剪断応力とのトルク</span><span lang=EN-US
+style='font-family:"Times New Roman"'>[Nm]</span><span style='font-family:"ＭＳ 明朝"'>の収支は次式で与えられる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=416 height=41
+src="hydronamics.files/image078.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　よって、</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=291 height=41
+src="hydronamics.files/image079.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　ここで、慣性モーメントは、</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><sub><img width=231 height=301 src="hydronamics.files/image080.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　となるので、トルクの収支式に代入すると次式となる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=424 height=83
+src="hydronamics.files/image081.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　従って、</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=304 height=41
+src="hydronamics.files/image082.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><i><span
+lang=EN-US style='font-family:Symbol'>D</span></i><i><span lang=EN-US
+style='font-family:"Times New Roman"'>x</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>, </span><i><span lang=EN-US
+style='font-family:Symbol'>D</span></i><i><span lang=EN-US style='font-family:
+"Times New Roman"'>y</span></i><span lang=EN-US style='font-family:"Times New Roman"'>
+</span><span style='font-family:"ＭＳ 明朝"'>→</span><span lang=EN-US
+style='font-family:"Times New Roman"'> 0</span><span style='font-family:"ＭＳ 明朝"'>とすると</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=172 height=25
+src="hydronamics.files/image083.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　従って、</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=56 height=25
+src="hydronamics.files/image084.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　同様に</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=56 height=48
+src="hydronamics.files/image085.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　・応力の剪断成分の値</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　下図より剪断速度を導出する。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US><img width=597 height=292 src="hydronamics.files/image086.gif"></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　</span><i><span
+lang=EN-US style='font-family:Symbol'>Da</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[rad]</span><span style='font-family:
+"ＭＳ 明朝"'>は次式となる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=135
+height=191 src="hydronamics.files/image087.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　また、</span><i><span
+lang=EN-US style='font-family:Symbol'>Db</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[rad]</span><span style='font-family:
+"ＭＳ 明朝"'>は次式となる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=135
+height=204 src="hydronamics.files/image088.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　従って、</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>xy</span></i><span
+style='font-family:"ＭＳ 明朝"'>面の剪断速度</span><i><span lang=EN-US style='font-family:
+Symbol'>g</span></i><i><sub><span lang=EN-US style='font-family:"Times New Roman"'>z</span></sub></i><span
+lang=EN-US style='font-family:"Times New Roman"'> [m/s]</span><span
+style='font-family:"ＭＳ 明朝"'>は次式となる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=224
+height=272 src="hydronamics.files/image089.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　同様に、</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>yz</span></i><span
+style='font-family:"ＭＳ 明朝"'>面</span><span lang=EN-US style='font-family:"Times New Roman"'>,
+<i>zx</i></span><span style='font-family:"ＭＳ 明朝"'>面の剪断速度</span><i><span
+lang=EN-US style='font-family:Symbol'>g</span></i><i><sub><span lang=EN-US
+style='font-family:"Times New Roman"'>y</span></sub></i><span lang=EN-US
+style='font-family:"Times New Roman"'>, </span><i><span lang=EN-US
+style='font-family:Symbol'>g</span></i><i><sub><span lang=EN-US
+style='font-family:"Times New Roman"'>z</span></sub></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[m/s]</span><span style='font-family:
+"ＭＳ 明朝"'>は次式となる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=100 height=96
+src="hydronamics.files/image090.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　従って、</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=172
+height=139 src="hydronamics.files/image091.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　・応力のまとめ</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　まとめると次の様になる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>x</span></i><span
+style='font-family:"ＭＳ 明朝"'>軸に垂直な面に作用する剪断応力の成分</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=169
+height=133 src="hydronamics.files/image092.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>y</span></i><span
+style='font-family:"ＭＳ 明朝"'>軸に垂直な面に作用する剪断応力の成分</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=169
+height=144 src="hydronamics.files/image093.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>z</span></i><span
+style='font-family:"ＭＳ 明朝"'>軸に垂直な面に作用する剪断応力の成分</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=168
+height=133 src="hydronamics.files/image094.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　一般的に次の様に表される。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=229 height=49
+src="hydronamics.files/image095.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　また、</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=281 height=99
+src="hydronamics.files/image096.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　・圧力について</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　上記で述べている圧力</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>p<sub>x</sub></span></i><span
+lang=EN-US style='font-family:"Times New Roman"'>, <i>p<sub>y</sub></i>, <i>p<sub>z</sub></i>[N/m<sup>2</sup>]</span><span
+style='font-family:"ＭＳ 明朝"'>は、動力学的圧力である。熱力学的な平衡圧力</span><i><span lang=EN-US
+style='font-family:"Times New Roman"'>p</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[N/m<sup>2</sup>]</span><span
+style='font-family:"ＭＳ 明朝"'>を用いて次式で表される。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=181 height=44
+src="hydronamics.files/image097.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　ここで、</span><i><span
+lang=EN-US style='font-family:Symbol'>m</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>’[kg/m</span><span style='font-family:
+"ＭＳ 明朝"'>・</span><span lang=EN-US style='font-family:"Times New Roman"'>s]</span><span
+style='font-family:"ＭＳ 明朝"'>は体積粘性係数である。</span><i><span lang=EN-US
+style='font-family:Symbol'>m</span></i><span lang=EN-US style='font-family:
+"Times New Roman"'>’=0</span><span style='font-family:"ＭＳ 明朝"'>として</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><sub><img width=115 height=25 src="hydronamics.files/image098.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　とする場合もある。</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・運動量収支式の詳細</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・境界に働く力</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　・表面張力</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　下図の様な異なる相の界面には、表面張力が作用する。この力は、気液界面に限らず、液液界面や固液界面にも作用する。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><img width=215 height=154 src="hydronamics.files/image099.gif"></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　表面張力を</span><i><span
+lang=EN-US style='font-family:Symbol'>D</span></i><i><span lang=EN-US
+style='font-family:"Times New Roman"'>p</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[N/m<sup>2</sup>]</span><span
+style='font-family:"ＭＳ 明朝"'>、曲率半径を</span><i><span lang=EN-US style='font-family:
+"Times New Roman"'>R</span></i><span lang=EN-US style='font-family:"Times New Roman"'>[m]</span><span
+style='font-family:"ＭＳ 明朝"'>、表面張力係数を</span><i><span lang=EN-US
+style='font-family:Symbol'>g</span></i><span lang=EN-US style='font-family:
+"Times New Roman"'>[N/m]</span><span style='font-family:"ＭＳ 明朝"'>とすると次式が成り立つ。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=128 height=67
+src="hydronamics.files/image100.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　これは、ラプラス</span><span
+lang=EN-US>(Laplace)</span><span style='font-family:"ＭＳ 明朝"'>の式と呼ばれている。次の様に導出される。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><img width=424 height=353 src="hydronamics.files/image101.gif"></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　上図は、微小曲面に作用する表面張力の釣り合いを表している。</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>r</span></i><sub><span
+lang=EN-US style='font-family:"Times New Roman"'>1</span></sub><span
+lang=EN-US style='font-family:"Times New Roman"'>[m], <i>r</i><sub>2</sub>[m]</span><span
+style='font-family:"ＭＳ 明朝"'>は曲率半径である。下図に詳細を示す。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><img width=380 height=324 src="hydronamics.files/image102.gif"></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　中心方向の力を</span><i><span
+lang=EN-US style='font-family:Symbol'>D</span></i><i><span lang=EN-US
+style='font-family:"Times New Roman"'>F</span></i><sub><span lang=EN-US
+style='font-family:"Times New Roman"'>1</span></sub><span lang=EN-US
+style='font-family:"Times New Roman"'>[N/m<sup>2</sup>]</span><span
+style='font-family:"ＭＳ 明朝"'>とすると</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><sub><img width=153 height=195 src="hydronamics.files/image103.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　同様に</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><sub><img width=88 height=23 src="hydronamics.files/image104.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　従って、表面張力による圧力差</span><i><span
+lang=EN-US style='font-family:Symbol'>D</span><span lang=EN-US>P</span></i><span
+lang=EN-US>[N/m<sup>2</sup>]</span><span style='font-family:"ＭＳ 明朝"'>は次式となる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><sub><img width=159 height=200 src="hydronamics.files/image105.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　曲面が球面の場合は、次式となる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><sub><img width=125 height=41 src="hydronamics.files/image106.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　・壁面の速度</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　下図の様に壁面の速度は</span><span
+lang=EN-US style='font-family:"Times New Roman"'>0</span><span
+style='font-family:"ＭＳ 明朝"'>になる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><img width=193 height=89 src="hydronamics.files/image107.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　・蒸発</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　蒸発速度</span><i><span
+lang=EN-US style='font-family:Symbol'>r</span></i><i><span lang=EN-US
+style='font-family:"Times New Roman"'>w</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>(<i>T</i>)[kg/s]</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　質量収支　界面の節点</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・無次元数</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　無次元数は、ある系に作用する力</span><span
+lang=EN-US>[N]</span><span style='font-family:"ＭＳ 明朝"'>の釣り合いを示している。<b>系の現象は、力の大きさではなく、力の釣り合いで決まる。</b>例えば、系</span><span
+lang=EN-US style='font-family:"Times New Roman"'>1</span><span
+style='font-family:"ＭＳ 明朝"'>と系</span><span lang=EN-US style='font-family:"Times New Roman"'>2</span><span
+style='font-family:"ＭＳ 明朝"'>の無次元数が等しい場合、系の大きさや作用する力が異なっても同じ現象が現れる。</span><span
+style='font-family:"ＭＳ 明朝"'>系に作用する力を次式で表す。</span></p>
+
+<p class=MsoNormal><i><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></i></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=340
+height=181 src="hydronamics.files/image108.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=240
+height=112 src="hydronamics.files/image109.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=211 height=115 src="hydronamics.files/image110.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=283 height=79 src="hydronamics.files/image111.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　ここで、</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>x</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[m]</span><span style='font-family:"ＭＳ 明朝"'>は代表長さ、</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>v</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[m/s]</span><span style='font-family:
+"ＭＳ 明朝"'>は代表速度である。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　これらの力の釣り合いを示す無次元数は次式となる。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　レイノルズ数</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　慣性力と粘性力の釣り合いを示す無次元数。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=84 height=143 src="hydronamics.files/image112.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>Re</span></i><span
+style='font-family:"ＭＳ 明朝"'>数の大小で、流れは層流、乱流に分けられる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>Re </span></i><span
+lang=EN-US style='font-family:"Times New Roman"'>&lt; 4000 </span><span
+style='font-family:"ＭＳ 明朝"'>層流</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>Re</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'> &gt; </span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　ウェーバー数</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　慣性力と表面張力の釣り合いを表す無次元数。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=100 height=144 src="hydronamics.files/image113.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　オーネソルジュ数</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　粘性力、表面張力、慣性力の釣り合いを表す無次元数</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=151 height=151 src="hydronamics.files/image114.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　オーネソルジュ数には、代表速度が含まれていない。数値解析で初速が</span><span
+lang=EN-US style='font-family:"Times New Roman"'>0</span><span
+style='font-family:"ＭＳ 明朝"'>の場合に使用されることがある。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　ボンド数</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　重力、表面張力の釣り合いを表す無次元数</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=89 height=144 src="hydronamics.files/image115.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　フルード数</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　慣性力、重力の釣り合いを表す無次元数</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=95 height=208 src="hydronamics.files/image116.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　次に、音速との比に関する無次元数を示す。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　マッハ数</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=53 height=41 src="hydronamics.files/image117.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　ここで、</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>a</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[m/s]</span><span style='font-family:
+"ＭＳ 明朝"'>は流体の音速である。これは、圧縮性流体を扱う場合に使用する。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　上記の無次元数以外にも熱収支式、物質収支式などで使用される無次元数がある。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・無次元化</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　無次元化とは、収支式に使用されている変数の次元を無次元</span><span
+lang=EN-US>[-]</span><span style='font-family:"ＭＳ 明朝"'>にする操作である。<b>無次元化することで収支式の定数は無次元数のみとなる。</b>逆に言えば、ある無次元数で計算された結果は、その無次元数の変数をどのようにとっても変わらない。速度や長さ、密度などが異なっても無次元数が等しければ同じ現象が現れる。変数は次式で無次元化される。ここで、</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>x</span></i><sub><span
+lang=EN-US style='font-family:"Times New Roman"'>0</span></sub><span
+lang=EN-US style='font-family:"Times New Roman"'>[m]</span><span
+style='font-family:"ＭＳ 明朝"'>は代表長さ、</span><i><span lang=EN-US style='font-family:
+"Times New Roman"'>v</span></i><sub><span lang=EN-US style='font-family:"Times New Roman"'>0</span></sub><span
+lang=EN-US style='font-family:"Times New Roman"'>[m/s]</span><span
+style='font-family:"ＭＳ 明朝"'>は代表速度である。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　座標の無次元化</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=163 height=45 src="hydronamics.files/image118.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　速度の無次元化</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=171 height=48 src="hydronamics.files/image119.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　圧力の無次元化</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=60 height=45 src="hydronamics.files/image120.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　時間の無次元化</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><sub><img width=55 height=45 src="hydronamics.files/image121.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　・質量収支式の無次元化</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　無次元化前</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><sub><img width=104 height=41 src="hydronamics.files/image011.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><sub><img width=335 height=47 src="hydronamics.files/image010.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　無次元化後</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><sub><img width=131 height=41 src="hydronamics.files/image122.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><sub><img width=364 height=45 src="hydronamics.files/image123.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　上記の無次元化には、音速式が用いられている。</span><i><span
+lang=EN-US style='font-family:"Times New Roman"'>c</span></i><span lang=EN-US
+style='font-family:"Times New Roman"'>[m/s]</span><span style='font-family:
+"ＭＳ 明朝"'>は音速である。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US><sub><img width=63 height=49 src="hydronamics.files/image124.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　・運動量収支式の無次元化</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　無次元化前</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=116 height=41
+src="hydronamics.files/image058.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　ここで、</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=16 height=19
+src="hydronamics.files/image059.gif"></sub>[N/m<sup>2</sup>]</span><span
+style='font-family:"ＭＳ 明朝"'>は応力テンソルで、</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=96 height=44
+src="hydronamics.files/image060.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=281 height=99
+src="hydronamics.files/image096.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　無次元化後</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=143 height=44
+src="hydronamics.files/image125.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　ここで、</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=16 height=19
+src="hydronamics.files/image059.gif"></sub><sup>*</sup></span><span
+style='font-family:"ＭＳ 明朝"'>は応力テンソルで、</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=96 height=28
+src="hydronamics.files/image126.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　</span><span
+lang=EN-US style='font-family:"Times New Roman"'><sub><img width=312
+height=101 src="hydronamics.files/image127.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-family:"Times New Roman"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　・代表速度、代表長さの取り方</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　ある現象を解析する場合を考える。その際、代表速度、代表長さの取り方により無次元数は異なるため、数値解析の結果も異なる。しかし、どの解析結果でも速度、時間、距離を有次元に戻せば同じ現象を表していることがわかる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　　無次元数をどう取るかに関わらず、解析結果は有次元化すれば同じ現象を表している。これは、全ての現象は同じ現象であることを示している。しかし、極端な無次元数を選択すると数値解析を行う際、タイムステップごとの収束が悪くなったり、途中で計算が破綻しやすくなることが考えられる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　・同じ現象は異なる無次元数で表される。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　　・ある無次元数は様々な現象を表す。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・ヘルムホルツ分解</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・渦</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

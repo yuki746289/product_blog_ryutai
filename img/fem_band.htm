@@ -1,0 +1,108 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=shift_jis">
+<meta name=Generator content="Microsoft Word 11 (filtered)">
+<title>内容</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"ＭＳ 明朝";
+	panose-1:2 2 6 9 4 2 5 8 3 4;}
+@font-face
+	{font-family:Century;
+	panose-1:2 4 6 4 5 5 5 2 3 4;}
+@font-face
+	{font-family:"\@ＭＳ 明朝";
+	panose-1:2 2 6 9 4 2 5 8 3 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0mm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	font-size:10.5pt;
+	font-family:Century;}
+span.MsoEndnoteReference
+	{vertical-align:super;}
+p.MsoEndnoteText, li.MsoEndnoteText, div.MsoEndnoteText
+	{margin:0mm;
+	margin-bottom:.0001pt;
+	layout-grid-mode:char;
+	font-size:10.5pt;
+	font-family:Century;}
+ /* Page Definitions */
+ @page Section1
+	{size:595.3pt 841.9pt;
+	margin:20.0mm 10.0mm 20.0mm 10.0mm;
+	layout-grid:14.55pt -.9pt;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0mm;}
+ul
+	{margin-bottom:0mm;}
+-->
+</style>
+
+</head>
+
+<body lang=JA style='text-justify-trim:punctuation'>
+
+<div class=Section1 style='layout-grid:14.55pt -.9pt'>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　・バンド幅の最適化</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>有限要素法では、最終的に数千、数万オーダーの連立</span><span
+lang=EN-US>1</span><span style='font-family:"ＭＳ 明朝"'>次方程式を解くことになる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>ここで、バンド幅をできるだけ小さくすれば、より計算量を小さくすることができる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>バンド幅は、下図で表される。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　</span><span lang=EN-US><img
+width=486 height=394 src="fem_band.files/image001.gif"></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>バンド幅とは行ごとの計算する必要のある変数の幅である。これは、節点番号の配置で異なる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　</span><span lang=EN-US><img
+width=221 height=246 src="fem_band.files/image002.gif"></span><span
+style='font-family:"ＭＳ 明朝"'>　　</span><span lang=EN-US><img width=221
+height=246 src="fem_band.files/image003.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>上図の様にできるだけ近い節点には近い番号を割り振るとバンド幅が小さくなる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>バンド幅の詳細は下図の様になる。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=463 height=520
+src="fem_band.files/image004.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>バンド幅が小さくなれば、下図の様により小さな行列式を解けばよいことになる。</span></p>
+
+<p class=MsoNormal><span lang=EN-US><img width=406 height=449
+src="fem_band.files/image005.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

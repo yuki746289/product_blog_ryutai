@@ -1,0 +1,187 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+	<meta http-equiv="content-style-type" content="text/css">
+
+	<meta name="description" content="流体力学・有限要素法による数値計算サイト。">
+	<meta name="keywords" content="流体力学,有限要素法,数値計算,メッシュ,FEM"> 
+
+	<title>物理量（物理）</title>
+	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body>
+	<input type="hidden" id="menu_id" value="2">
+
+	<div id="wrapper">
+
+	<div id="header">
+		<h1><a href="./../index.html" title="トップページへ">有限要素法・流体力学による数値計算</a></h1>
+
+		<br style="clear:both;">
+		<ul style="margin-left:30px;">
+		<li><a href="./../index.html" title="indexへ">index</a>&gt;</li>
+		<li><a href="./physics.html" title="物理へ">物理</a>&gt;</li>
+		<li><a href="./physics_2.html" title="物理量へ">物理量</a>&gt;</li>
+		</ul>
+		<hr>
+	</div>
+
+	<div id="main" >
+
+	<div id="image">
+		<p>流体力学から数値計算まで</p>
+		<p><img src="./../img/shiki1.gif"></p>
+		<p><img src="./../img/shiki2.gif"></p>
+	</div>
+
+	<div id="content">
+
+		<div id="content-text">
+
+			<h2>広告</h2>
+			<p><iframe src="./../ad.html" width="470" height="60" scrolling="no" frameborder="0"></iframe></p>
+			<br>
+
+			<h2>物理量</h2>
+			<p>流体力学で使用する物理量の定義を行います。</p>
+			<p>力学的な物理量は、質量<span class="ft">[kg]</span>、長さ<span class="ft">[m]</span>
+				、時間<span class="ft">[s]</span>の<span class="ft">3</span>つの単位の組み合わせで表されます。</p>
+
+			<br>
+			<h2>・速度<span class="ft"><i>v</i>[m/s]</span></h2>
+			<p>単位時間当たりに進む距離。また、時間と距離の変換。時間を<i><span class="ft">t</span></i>
+					<span class="ft">[s]</span>、移動距離を<span class="ft"><i>l</i>[m]</span>とすると次式で定義されます。</p>
+			<p class="im"><img src="./../img/physics_quantity.files/image001.png"></p>
+
+			<br>
+			<h2>・加速度<span class="ft"><i>a</i>[m/s<sup>2</sup>]</span></h2>
+			<p>時間に対する速度勾配</p>
+			<p class="im"><img src="./../img/physics_quantity.files/image002.png"></p>
+			<p>重力も加速度です。これは重力によって質点に速度勾配が生じることを意味しています。</p>
+			<br>
+			<p class="im"><img src="./../img/physics_quantity.files/image003.png" alt="*">：時間に対して速度が変化している。</p>
+			<p class="im"><img src="./../img/physics_quantity.files/image004.png" alt="*">：速度は変わらない。</p>
+
+			<br>
+			<h2>・力<span class="ft"><i>F</i>[N]</span></h2>
+			<p>質量<span class="ft"><i>m</i>[kg]</span>の時間に対する速度勾配。</p>
+			<p class="im"><img src="./../img/physics_quantity.files/image005.png"></p>
+			<p>単位には、ニュートン<span class="ft">[N]</span>が使用され、次式で定義されます。</p>
+			<p class="im"><span class="ft">[N] = [kg m/s<sup>2</sup>]</span></p>
+			<p>次の様にも表現できます。</p>
+			<p>力が大きい</p>
+			<p>より短時間でより大きく速度が変わる。高速で物がぶつかった場合など。</p>
+			<p class="im"><img src="./../img/physics_quantity.files/image006.png"></p>
+			<p>力が加わらない</p>
+			<p>速度が変わらない。同じ速度で動き続ける。</p>
+			<p class="im"><img src="./../img/physics_quantity.files/image007.png"></p>
+			<br>
+
+			<h2>・運動量<span class="ft"><i>mv</i>[kg m/s]</span></h2>
+			<p>加えた力<span class="ft"><i>F</i>[N]</span>の総量。力積とも言います。簡易的に言うと何秒間、力を加え続けたかになります。</p>
+			<p class="im"><img src="./../img/physics_quantity.files/image008.png"></p>
+			<p>上式から大きな力<span class="ft"><i>F</i>[N]</span>が短時間加わった場合の運動量と、
+					小さな力<span class="ft"><i>F</i>[N]</span>が長時間加わった場合の運動量は等しいことがわかります。
+					つまり、運動量は力を加えた結果であり、過程は問われません。</p>
+			<p class="im"><img src="./../img/physics_quantity.files/image009.png">　<img src="./../img/physics_quantity.files/image010.png"></p>
+			<p>次の様にも表現できます。</p>
+			<p>運動量が大きい→より大きな質量<span class="ft"><i>m</i>[kg]</span>の
+					速度<span class="ft"><i>v</i>[m/s]</span>が、より大きく変化した。</p>
+			<br>
+
+			<h2>・エネルギー</span><span class="ft"><i>E</i>[J]</span></h2>
+			<p>加えた力<span class="ft"><i>F</i>[N]</span>の総量。簡易的に言うと何メートル力を加え続けたになります。</p>
+			<p class="im"><img src="./../img/physics_quantity.files/image011.png"></p>
+			<p>速度<span class="ft"><i>v</i>[m/s]</span>が距離<span class="ft"><i>l</i>[m]</span>と
+					時間<span class="ft"><i>t</i>[s]</span>の変換に使用されています。つまり、「何メートル力を加え続けたか。」
+					が「何秒間、力を加え続けたか。」に変換されていることがわかります。</p>
+			<p>上式から大きな力<span class="ft"><i>F</i></span>が短い距離加わった場合のエネルギーと、
+					小さな力<span class="ft"><i>F</i>[N]</span>が長距離加わった場合のエネルギーは等しいことがわかります。</p>
+			<p>単位には、ジュール<span class="ft">[J]</span>が使用され、次式で定義されます。</p>
+			<p class="im"><span class="ft">[J] = [N m] = [kg m<sup>2</sup>/s<sup>2</sup>]</span></p>
+			<p>エネルギー<span class="ft"><i>E</i>[J]</span>は、運動量<span class="ft"><i>mv</i>[kg m/s]</span>
+					を速度<span class="ft"><i>v</i>[m/s]</span>で積分した量でもあります。</p>
+			<p class="im"><img src="./../img/physics_quantity.files/image012.png"></p>
+			<p>エネルギーは、様々な形態への変換ができます。例えば、力学的エネルギー<span class="ft">[J]</span>
+					を熱的エネルギー<span class="ft">[J]</span>に変換することができる便利な単位です。</p>
+			<br>
+<!--
+			<h2>・角速度<span class="fs"><i>w</i></span><span class="ft">[rad/s]</span></h2>
+			<br>
+
+			<h2>・慣性モーメント<span class="ft"><i>I<sub>z</sub></i>[Nm/s]</span></h2>
+			<br>
+
+			<h2>・トルク<span class="ft"><i>N</i>[Nm]</span></h2>
+			<br>
+-->
+
+
+			<div style="margin-top:10px;"></div>
+			<h2>
+				<table><tr>
+				<td style="padding:0px 10px;"><a href="./physics_1.html">prev</a></td>
+				<td style="padding:0px 10px;">|</td>
+				<td style="padding:0px 10px;"><a href="./physics.html">up</a></td>
+				<td style="padding:0px 10px;">|</td>
+				<td style="padding:0px 10px;"><a href="./physics_3.html">next</a></td>
+				</tr></table>
+			</h2>
+
+			<!-- 広告 -->
+			<p><iframe src="./../questionnaire.html" width="650" height="325" scrolling="yes" frameborder="0"></iframe></p>
+		</div>
+
+	</div>	<!-- id="content" -->
+
+	</div>	<!-- id="main" -->
+
+	<div id="sub">
+		<iframe src="./../menu.html" id="menu" name="menu" width="180" scrolling="no" frameborder="0"></iframe>
+
+		<!-- 広告 -->
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- バナー3（メニュー欄） -->
+		<ins class="adsbygoogle"
+		     style="display:inline-block;width:160px;height:600px"
+		     data-ad-client="ca-pub-4382202381956938"
+		     data-ad-slot="2356729377"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+
+		<!-- ページ別カウンタ -->
+		<!--shinobi1-->
+		<script type="text/javascript" src="http://x7.tuzikaze.com/ufo/10850280f"></script>
+		<noscript><a href="http://x7.tuzikaze.com/bin/gg?10850280f" target="_blank">
+		<img src="http://x7.tuzikaze.com/bin/ll?10850280f" border="0"></a><br>
+		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://life-tuji.net/">学校の役割</a></span></noscript>
+		<!--shinobi2-->
+
+		<div class="sub-text">
+			<dl>
+				<dt>カウンタ</dt>
+				<dd>
+					<!-- shinobi ct2 -->
+					<script type="text/javascript" src="http://ct2.tirirenge.com/sc/1515356"></script>
+					<noscript><a href="http://ct2.tirirenge.com/gg/1515356" target="_blank">
+					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="カウンター" /></a><br />
+					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">ポイント</a></span></noscript>
+					<!-- /shinobi ct2 -->
+					<br>
+				（2011.3.15～）
+				</dd>
+			</dl>
+		</div>
+
+	</div>
+
+	<div id="footer">
+		<iframe id="ft" name="ft" src="./../footer.html" width="100%" scrolling="no" frameborder="0"></iframe>
+	</div>
+
+	</div>	<!-- id="wrapper" -->
+</body>
+</html>

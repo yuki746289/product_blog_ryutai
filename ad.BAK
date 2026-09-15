@@ -1,0 +1,44 @@
+a
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+	<meta http-equiv="content-style-type" content="text/css">
+
+	<meta name="description" content="流体力学・有限要素法による数値計算サイト。">
+	<meta name="keywords" content="流体力学,有限要素法,数値計算,メッシュ,FEM"> 
+	<meta name="author" content="HTMQ"> 
+
+	<title>有限要素法・流体力学による数値計算</title>
+	<link href="./css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+</head>
+<body>
+	<!-- ninja -->
+	<!--
+	<script type="text/javascript" src="http://axad.shinobi.jp/s/7e8a5c5c53536a0940d345f188ead745/"></script>
+	-->
+
+	<!-- google -->
+	<script type="text/javascript">
+	<!--
+		google_ad_client = "ca-pub-4382202381956938";
+		/* バナー（イメージ） */
+		google_ad_slot = "8802800686";
+		google_ad_width = 468;
+		google_ad_height = 60;
+	//-->
+	</script>
+	<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+	<!-- 広告をクリックして副収入をゲットしよう！<br> -->
+
+	<font color="#ffffff">
+		シミュレーション
+		有限要素法
+		流体力学
+		数値計算
+		数値解析
+		cae
+	</font>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=shift_jis">
+<meta name=Generator content="Microsoft Word 11 (filtered)">
+<title>内容</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"ＭＳ 明朝";
+	panose-1:2 2 6 9 4 2 5 8 3 4;}
+@font-face
+	{font-family:Century;
+	panose-1:2 4 6 4 5 5 5 2 3 4;}
+@font-face
+	{font-family:"\@ＭＳ 明朝";
+	panose-1:2 2 6 9 4 2 5 8 3 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0mm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	font-size:10.5pt;
+	font-family:Century;}
+span.MsoEndnoteReference
+	{vertical-align:super;}
+p.MsoEndnoteText, li.MsoEndnoteText, div.MsoEndnoteText
+	{margin:0mm;
+	margin-bottom:.0001pt;
+	layout-grid-mode:char;
+	font-size:10.5pt;
+	font-family:Century;}
+ /* Page Definitions */
+ @page Section1
+	{size:595.3pt 841.9pt;
+	margin:20.0mm 10.0mm 20.0mm 10.0mm;
+	layout-grid:14.55pt -.9pt;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0mm;}
+ul
+	{margin-bottom:0mm;}
+-->
+</style>
+
+</head>
+
+<body lang=JA style='text-justify-trim:punctuation'>
+
+<div class=Section1 style='layout-grid:14.55pt -.9pt'>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>・要素の変形</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>節点の配置</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>解析の精度を上げるためには、できるだけ節点を滑らかに配置する必要がある。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>また、メッシュ作成もスムーズに行うことができる。ここでは、次のような方法で節点を配置してみる。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　</span><span lang=EN-US><img
+width=104 height=114 src="mesh_node_buble.files/image001.gif"></span><span
+style='font-family:"ＭＳ 明朝"'>　</span><span lang=EN-US><img width=203 height=220
+src="mesh_node_buble.files/image002.gif"></span><span style='font-family:"ＭＳ 明朝"'>　　　</span><span
+lang=EN-US><img width=150 height=220 src="mesh_node_buble.files/image003.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>上図の様に直交座標上に</span><span
+lang=EN-US>2</span><span style='font-family:"ＭＳ 明朝"'>つの節点があるとする。それぞれ位置ベクトルは</span><span
+lang=EN-US><sub><img width=19 height=23 src="mesh_node_buble.files/image004.gif"></sub>,
+<sub><img width=20 height=23 src="mesh_node_buble.files/image005.gif"></sub></span><span
+style='font-family:"ＭＳ 明朝"'>、半径を</span><span lang=EN-US>r1,r2</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>とする。この時、</span><span
+lang=EN-US>2</span><span style='font-family:"ＭＳ 明朝"'>つの節点に働く力は次式となる。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　</span><span lang=EN-US><sub><img
+width=258 height=117 src="mesh_node_buble.files/image006.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>ここで、</span><span
+lang=EN-US>w</span><span style='font-family:"ＭＳ 明朝"'>は重み関数であり、この式は重み関数と方向ベクトルの積を表している。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>ここで、図</span><span
+lang=EN-US>1</span><span style='font-family:"ＭＳ 明朝"'>では斥力、図</span><span
+lang=EN-US>2</span><span style='font-family:"ＭＳ 明朝"'>では引力が節点間に働いている。これは、次式の重み関数で表される。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　</span><span lang=EN-US><img
+width=224 height=267 src="mesh_node_buble.files/image007.gif"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>W&lt;1</span><span style='font-family:"ＭＳ 明朝"'>の場合は、斥力、</span><span
+lang=EN-US>w &gt; 1</span><span style='font-family:"ＭＳ 明朝"'>の場合は引力が働く。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>次に下図の様に周囲に複数の節点がある場合を考える。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　</span><span lang=EN-US><img
+width=309 height=266 src="mesh_node_buble.files/image008.gif"></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>この場合は、節点に働く力は次式となる。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　</span><span lang=EN-US><sub><img
+width=254 height=74 src="mesh_node_buble.files/image009.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>従って、タイムステップごとの節点の方向ベクトルは次式とした。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　</span><span lang=EN-US><sub><img
+width=307 height=168 src="mesh_node_buble.files/image010.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>ここで、</span><span
+lang=EN-US>c</span><span style='font-family:"ＭＳ 明朝"'>は緩和係数である。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>節点の追加・削除</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>滑らかな節点を配置するためには、節点を追加・削除する必要がある。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　</span><span lang=EN-US><img
+width=158 height=168 src="mesh_node_buble.files/image011.gif"></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>上図の様に節点ごとに周囲の節点の粗密を考える。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>ここで、節点の数密度を</span><span
+lang=EN-US>n(ri)</span><span style='font-family:"ＭＳ 明朝"'>である。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>2</span><span style='font-family:"ＭＳ 明朝"'>次元の場合、節点の追加・削除の条件は次式とした。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　節点削除：</span><span
+lang=EN-US><sub><img width=87 height=36 src="mesh_node_buble.files/image012.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　節点追加：</span><span
+lang=EN-US><sub><img width=87 height=36 src="mesh_node_buble.files/image013.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>節点半径の補正</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>節点の半径は、次式の様に距離の加重平均で補正した。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　</span><span lang=EN-US><sub><img
+width=190 height=131 src="mesh_node_buble.files/image014.gif"></sub></span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>ここで、</span><span
+lang=EN-US>w</span><span style='font-family:"ＭＳ 明朝"'>は重み関数で次式とした。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　</span><span lang=EN-US><sub><img
+width=159 height=62 src="mesh_node_buble.files/image015.gif"></sub></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>補正はタイムステップごとに行った。</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>結果</span></p>
+
+<p class=MsoNormal><span lang=EN-US>2</span><span style='font-family:"ＭＳ 明朝"'>次元の場合、下図の様な結果になった。</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　</span><span lang=EN-US><img
+width=448 height=450 src="mesh_node_buble.files/image016.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　</span><span lang=EN-US><img
+width=452 height=450 src="mesh_node_buble.files/image017.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　</span><span lang=EN-US><img
+width=434 height=450 src="mesh_node_buble.files/image018.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"ＭＳ 明朝"'>　　</span><span lang=EN-US><img
+width=436 height=450 src="mesh_node_buble.files/image019.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>
