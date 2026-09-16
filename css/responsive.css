@@ -217,9 +217,32 @@
 		border: 0;
 		border-right: 1px solid #b9b9b9;
 		box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+		overflow-x: hidden;
+		overflow-y: auto;
+		overscroll-behavior: contain;
+		-webkit-overflow-scrolling: touch;
 		transform: translateX(-105%);
 		transition: transform 0.2s ease;
 		z-index: 1002;
+	}
+
+	/* [L303] menu.htmlをiframe表示した際の背景色・全高を統一する */
+	html,
+	body,
+	div#sub-wrapper,
+	div#sub-menu {
+		background-color: #ffffff;
+	}
+
+	html,
+	body {
+		min-height: 100%;
+	}
+
+	body > div#sub-wrapper {
+		min-height: 100vh;
+		min-height: 100dvh;
+		background-image: none;
 	}
 
 	body.mobile-nav-ready.mobile-menu-open div#sub iframe#menu {

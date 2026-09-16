@@ -1,7 +1,7 @@
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!--
- 更新日時: 2026/09/15
+ 更新日時: 2026/09/16
  処理概要: [S001][S002][S003] スマートフォン用ハンバーガーメニュー初期化・開閉制御
  前回バージョンとの違い:
  - [ADD]: refreshMobileNavigation(), updateMobileMenuState() を追加
@@ -63,6 +63,11 @@
 
 			// [L005] [ADD] 必要DOMが無い場合は本文へ影響を与えず終了
 			if(!parentBody || !parentHeader || !menuIframe)return;
+
+			// [V003][V004][L301] [ADD] モバイルiframeをマウス/タッチでスクロール可能にする
+			var scrollingAttribute = "scrolling";
+			var scrollingValue = "auto";
+			menuIframe.setAttribute(scrollingAttribute, scrollingValue);
 
 			// [L006] [ADD] iframeへアクセシビリティ用titleを設定
 			var menuTitle = "サイトメニュー";
@@ -252,6 +257,7 @@
 			-->
 			<li><a href="./mail/mail_base.html" target="_parent" title="相互リンク募集中へ">相互リンク募集中</a></li>
 			<li><a href="javascript:window.external.AddFavorite('http://ryutai.ninja-web.net/','流体力学・有限要素法による数値計算')">お気に入りに追加</a></li>
+			<li><a href="./revision_history.html" target="_parent" title="修正履歴へ">修正履歴</a></li>
 			</ul>
 
 
