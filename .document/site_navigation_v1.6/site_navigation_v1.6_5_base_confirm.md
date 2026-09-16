@@ -11,17 +11,20 @@
 
 ## 2. 内容・論理
 - [x] ユーザ選定済みのD Monochromeと多層メニューを反映した。
-- [x] 既存 `menu.html` のリンクを情報源とし、URL二重管理を抑える設計である。
+- [x] `footer.html` を新ナビの起動入口とし、長大な `menu.html` を変更対象から外した。
+- [x] 既存 `menu.html` のリンクDOMを読み取り専用情報源とし、URL二重管理を抑える設計である。
+- [x] menu iframe未読込時はload後に初期化する設計である。
 - [x] nestedページの相対URL問題を `anchor.href` 使用で回避する。
 - [x] PC/スマホで同じカテゴリモデルを再利用する。
 - [x] 新ナビ成功後だけ旧左メニューを隠すため、初期化失敗時のフォールバックが成立する。
+- [x] footer不在の特殊ページは従来表示を維持する。
 - [x] 数式・本文を変更対象から除外している。
 - [x] 外部UIフレームワークを追加しない。
 
 ## 3. 入出力
-- [x] 入力DOM、menu ID、viewportを定義した。
+- [x] parentWindow、parentDocument、menuIframe、menuDocument、menu ID、viewportを定義した。
 - [x] PCナビ、スマホナビ、補助リンク、body状態を出力として定義した。
-- [x] mobileMaxWidth、カテゴリID、CSSパスを設定として定義した。
+- [x] mobileMaxWidth、カテゴリID、CSS/JSパスを設定として定義した。
 
 ## 4. 集計
 本文の変更区分と集計は一致する。
@@ -38,5 +41,6 @@
 - [x] FORMULA-FIDELITY-001と矛盾なし。
 - [x] 既存URL維持条件と矛盾なし。
 - [x] フォールバック条件と矛盾なし。
+- [x] `menu.html` を変更しない方針と、旧menuをデータ源として維持する方針が両立している。
 
 総合判定: **合格。詳細設計へ進行可能。**
