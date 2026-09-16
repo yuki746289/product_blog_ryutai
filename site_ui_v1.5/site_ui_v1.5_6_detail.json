@@ -1,0 +1,66 @@
+{
+  "version": "1.5",
+  "steps": [
+    {"id":"S001","type":"KEEP","name":"数式表示改善","description":"MathJax 4自動改行を維持"},
+    {"id":"S002","type":"KEEP","name":"告知・修正履歴導線","description":"v1.4配置を維持"},
+    {"id":"S003","type":"MOD","name":"モバイルメニュー操作・見出し整列","description":"スマホscrollingと広告見出し配置を調整"},
+    {"id":"S004","type":"MOD","name":"PC左メニュー表示","description":"幅整合とPC iframe scrolling抑止"},
+    {"id":"S005","type":"ADD","name":"修正履歴4列化","description":"No./修正種類/対象/修正内容へ再構成"},
+    {"id":"S006","type":"ADD","name":"デザイン比較サンプル","description":"独立した3テーマを追加"}
+  ],
+  "functions": [
+    {"id":"F001","type":"KEEP","name":"Init","sourceStepId":"S003","description":"既存ページ初期化"},
+    {"id":"F002","type":"MOD","name":"refreshMobileNavigation","sourceStepId":"S003","description":"T001を初期化時とresize時に呼び出す"},
+    {"id":"F003","type":"KEEP","name":"updateMobileMenuState","sourceStepId":"S003","description":"モバイルメニュー開閉状態更新"},
+    {"id":"F004","type":"KEEP","name":"disp","sourceStepId":"S004","description":"カテゴリ表示"},
+    {"id":"F005","type":"KEEP","name":"set_height","sourceStepId":"S004","description":"PC iframe高さ調整"}
+  ],
+  "helperFunctions": [
+    {"id":"T001","type":"ADD","name":"refreshMenuScrollingMode","sourceStepId":"S004","description":"viewport幅によりmenu iframe scrollingをauto/noへ同期","arguments":["I004","I005"],"returns":["O006"]}
+  ],
+  "inputs": [
+    {"id":"I001","type":"KEEP","name":"parentDocument","dataType":"Document","sourceStepId":"S003"},
+    {"id":"I002","type":"KEEP","name":"menuButton","dataType":"HTMLElement","sourceStepId":"S003"},
+    {"id":"I003","type":"KEEP","name":"isOpen","dataType":"boolean","sourceStepId":"S003"},
+    {"id":"I004","type":"ADD","name":"parentWindow","dataType":"Window","sourceStepId":"S004"},
+    {"id":"I005","type":"ADD","name":"menuIframe","dataType":"HTMLIFrameElement","sourceStepId":"S004"}
+  ],
+  "outputs": [
+    {"id":"O001","type":"KEEP","name":"Init.returnValue","dataType":"undefined","sourceStepId":"S003"},
+    {"id":"O002","type":"KEEP","name":"refreshMobileNavigation.returnValue","dataType":"undefined","sourceStepId":"S003"},
+    {"id":"O003","type":"KEEP","name":"updateMobileMenuState.returnValue","dataType":"undefined","sourceStepId":"S003"},
+    {"id":"O004","type":"KEEP","name":"disp.returnValue","dataType":"undefined","sourceStepId":"S004"},
+    {"id":"O005","type":"KEEP","name":"set_height.returnValue","dataType":"undefined","sourceStepId":"S004"},
+    {"id":"O006","type":"ADD","name":"refreshMenuScrollingMode.returnValue","dataType":"undefined","sourceStepId":"S004"}
+  ],
+  "variables": [
+    {"id":"V001","type":"KEEP","name":"parent","dataType":"Window","sourceStepId":"S003"},
+    {"id":"V002","type":"KEEP","name":"document","dataType":"Document","sourceStepId":"S003"},
+    {"id":"V003","type":"KEEP","name":"scrollingAttribute","dataType":"string","sourceStepId":"S003"},
+    {"id":"V004","type":"DEL","name":"scrollingValue","dataType":"string","sourceStepId":"S003","description":"固定auto値を廃止"}
+  ],
+  "logic": [
+    {"id":"L101","type":"KEEP","sourceStepId":"S001","summary":"math-block水平スクロールなし"},
+    {"id":"L102","type":"KEEP","sourceStepId":"S001","summary":"MathJax 4 linebreak維持"},
+    {"id":"L103","type":"KEEP","sourceStepId":"S001","summary":"既存TeX式を維持"},
+    {"id":"L201","type":"KEEP","sourceStepId":"S002","summary":"トップ更新告知維持"},
+    {"id":"L202","type":"KEEP","sourceStepId":"S002","summary":"footer履歴リンクなしを維持"},
+    {"id":"L203","type":"KEEP","sourceStepId":"S002","summary":"メニュー履歴リンク維持"},
+    {"id":"L301","type":"MOD","sourceStepId":"S003","summary":"初期化時にT001でscrolling同期","targetFunction":"refreshMobileNavigation"},
+    {"id":"L302","type":"KEEP","sourceStepId":"S003","summary":"スマホiframe縦スクロールCSS維持"},
+    {"id":"L303","type":"MOD","sourceStepId":"S003","summary":"sub-text/dt配置統一"},
+    {"id":"L401","type":"ADD","sourceStepId":"S004","summary":"767px以下auto、768px以上no","targetFunction":"refreshMenuScrollingMode"},
+    {"id":"L402","type":"MOD","sourceStepId":"S004","summary":"resize時にT001再実行","targetFunction":"refreshMobileNavigation"},
+    {"id":"L403","type":"MOD","sourceStepId":"S004","summary":"PC sub幅を180pxへ整合"},
+    {"id":"L404","type":"KEEP","sourceStepId":"S004","summary":"set_height維持"},
+    {"id":"L501","type":"ADD","sourceStepId":"S005","summary":"履歴4列ヘッダー"},
+    {"id":"L502","type":"ADD","sourceStepId":"S005","summary":"修正種類分類"},
+    {"id":"L503","type":"ADD","sourceStepId":"S005","summary":"data-revision-idで内部ID保持"},
+    {"id":"L504","type":"ADD","sourceStepId":"S005","summary":"v1.5 UI改善履歴追加"},
+    {"id":"L601","type":"ADD","sourceStepId":"S006","summary":"サンプル一覧"},
+    {"id":"L602","type":"ADD","sourceStepId":"S006","summary":"Technical Clean"},
+    {"id":"L603","type":"ADD","sourceStepId":"S006","summary":"Academic Minimal"},
+    {"id":"L604","type":"ADD","sourceStepId":"S006","summary":"Modern Dashboard"},
+    {"id":"L605","type":"ADD","sourceStepId":"S006","summary":"共通サンプルCSS"}
+  ]
+}
