@@ -4,6 +4,7 @@ import shutil
 import subprocess
 import sys
 import time
+from html import unescape
 from pathlib import Path
 
 ROOT = Path.cwd()
@@ -83,10 +84,40 @@ window.addEventListener("load", function(){
       var buttonAfter = document.getElementById("mobile-menu-button");
       var buttonDisplay = buttonAfter ? window.getComputedStyle(buttonAfter).display : "missing";
       var expanded = buttonAfter ? buttonAfter.getAttribute("aria-expanded") : "missing";
-      var overflow = document.documentElement.scrollWidth > document.documentElement.clientWidth + 1 ? "true" : "false";
+      var viewportWidth = document.documentElement.clientWidth;
+      var scrollWidth = document.documentElement.scrollWidth;
+      var overflow = scrollWidth > viewportWidth + 1 ? "true" : "false";
+      var overflowElements = [];
+      var allElements = document.querySelectorAll("body *");
+      var elementIndex;
+      for(elementIndex = 0; elementIndex < allElements.length; elementIndex++){
+        var element = allElements[elementIndex];
+        var style = window.getComputedStyle(element);
+        if(style.display === "none" || style.visibility === "hidden")continue;
+        var rect = element.getBoundingClientRect();
+        if(rect.right > viewportWidth + 1){
+          overflowElements.push({
+            tag: element.tagName,
+            id: element.id || "",
+            className: typeof element.className === "string" ? element.className : "",
+            left: Math.round(rect.left * 10) / 10,
+            right: Math.round(rect.right * 10) / 10,
+            width: Math.round(rect.width * 10) / 10,
+            position: style.position
+          });
+          if(overflowElements.length >= 30)break;
+        }
+      }
       document.body.setAttribute("data-test-button-display", buttonDisplay);
       document.body.setAttribute("data-test-expanded", expanded);
       document.body.setAttribute("data-test-overflow", overflow);
+      document.body.setAttribute("data-test-client-width", String(viewportWidth));
+      document.body.setAttribute("data-test-scroll-width", String(scrollWidth));
+      var report = document.createElement("pre");
+      report.id = "test-overflow-report";
+      report.style.display = "none";
+      report.textContent = JSON.stringify(overflowElements);
+      document.body.appendChild(report);
     }, 300);
   }, 700);
 });
@@ -138,12 +169,27 @@ def read_attrs(name):
 
     body_match = re.search(r'<body[^>]*>', text, re.I)
     assert body_match, name
+    report_match = re.search(r'<pre id="test-overflow-report"[^>]*>(.*?)</pre>', text, re.I | re.S)
+    report = []
+    if report_match:
+        report = json.loads(unescape(report_match.group(1)))
     return {
         'display': value('data-test-button-display'),
         'expanded': value('data-test-expanded'),
         'overflow': value('data-test-overflow'),
+        'clientWidth': value('data-test-client-width'),
+        'scrollWidth': value('data-test-scroll-width'),
+        'overflowElements': report,
         'body': body_match.group(0),
     }
+
+
+def assert_no_overflow(name, state):
+    if state['overflow'] != 'false':
+        print(f"Overflow detected: {name} clientWidth={state['clientWidth']} scrollWidth={state['scrollWidth']}")
+        for item in state['overflowElements']:
+            print('  ', item)
+    assert state['overflow'] == 'false', state
 
 
 def verify_browser():
@@ -169,25 +215,25 @@ def verify_browser():
         closed = read_attrs('index-mobile-closed.html')
         assert closed['display'] not in ('none', 'missing'), closed
         assert closed['expanded'] == 'false', closed
-        assert closed['overflow'] == 'false', closed
+        assert_no_overflow('index-mobile-closed.html', closed)
         assert 'mobile-nav-ready' in closed['body']
         assert 'mobile-menu-open' not in closed['body']
 
         opened = read_attrs('index-mobile-open.html')
         assert opened['display'] not in ('none', 'missing'), opened
         assert opened['expanded'] == 'true', opened
-        assert opened['overflow'] == 'false', opened
+        assert_no_overflow('index-mobile-open.html', opened)
         assert 'mobile-menu-open' in opened['body']
 
         desktop = read_attrs('index-desktop.html')
         assert desktop['display'] == 'none', desktop
-        assert desktop['overflow'] == 'false', desktop
+        assert_no_overflow('index-desktop.html', desktop)
 
         for name in ('physics-mobile.html', 'fem-mobile.html'):
             state = read_attrs(name)
             assert state['display'] not in ('none', 'missing'), (name, state)
             assert state['expanded'] == 'false', (name, state)
-            assert state['overflow'] == 'false', (name, state)
+            assert_no_overflow(name, state)
 
         run_chrome(chrome, 375, 812, base + '__test_index.html', 'index-mobile-closed.png', screenshot=True)
         run_chrome(chrome, 375, 812, base + '__test_index.html?open=1', 'index-mobile-open.png', screenshot=True)
