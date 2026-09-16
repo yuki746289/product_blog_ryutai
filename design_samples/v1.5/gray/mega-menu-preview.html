@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>多層メニュー実動プレビュー</title>
+  <link rel="stylesheet" href="./mega-menu-preview.css">
+</head>
+<body>
+<header class="mm-site-header">
+  <div class="mm-header-inner">
+    <div class="mm-brand">有限要素法・流体力学による数値計算<small>Gray navigation prototype</small></div>
+    <nav class="mm-utility" aria-label="補助メニュー">
+      <a href="../../../index.html">ホーム</a>
+      <a href="../../../sitemap/sitemap.html">サイトマップ</a>
+      <a href="../../../revision_history.html">修正履歴</a>
+      <a href="./index.html">デザイン一覧</a>
+    </nav>
+    <button class="mm-mobile-trigger" type="button" aria-label="メニューを開く" aria-controls="mobile-drawer" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mm-desktop-nav-wrap">
+  <nav class="mm-desktop-nav" aria-label="メインカテゴリ">
+    <button class="mm-nav-button" type="button" data-menu="mega-physics" aria-expanded="false">物理</button>
+    <button class="mm-nav-button" type="button" data-menu="mega-fluid" aria-expanded="false">流体力学</button>
+    <button class="mm-nav-button" type="button" data-menu="mega-fem" aria-expanded="false">有限要素法</button>
+    <button class="mm-nav-button" type="button" data-menu="mega-mesh" aria-expanded="false">メッシュ</button>
+    <button class="mm-nav-button" type="button" data-menu="mega-simple" aria-expanded="false">SIMPLE法</button>
+    <button class="mm-nav-button" type="button" data-menu="mega-heat" aria-expanded="false">伝熱工学</button>
+    <button class="mm-nav-button" type="button" data-menu="mega-fortran" aria-expanded="false">Fortran</button>
+    <button class="mm-nav-button" type="button" data-menu="mega-other" aria-expanded="false">その他</button>
+  </nav>
+
+  <section class="mm-mega-panel" id="mega-physics">
+    <div class="mm-mega-inner">
+      <div class="mm-mega-heading"><h2>物理</h2><a href="../../../physics/physics.html">物理トップへ →</a></div>
+      <div class="mm-mega-grid">
+        <div class="mm-nav-group"><h3>基礎</h3><ul class="mm-nav-list"><li><a href="../../../physics/physics_1.html">SI単位</a></li><li><a href="../../../physics/physics_2.html">物理量</a></li><li><a href="../../../physics/physics_3.html">単位ベクトル</a></li><li><a href="../../../physics/physics_4.html">物理量の分類</a></li><li><a href="../../../physics/physics_5.html">作用素の種類</a></li></ul></div>
+        <div class="mm-nav-group"><h3>計算の種類</h3><ul class="mm-nav-list"><li><a class="mm-parent-link" href="../../../physics/physics_6.html">計算の種類</a><ul><li><a href="../../../physics/physics_6_1.html">四則演算</a></li><li><a href="../../../physics/physics_6_2.html">内積</a></li><li><a href="../../../physics/physics_6_3.html">外積</a></li></ul></li></ul></div>
+        <div class="mm-nav-group"><h3>内積の詳細</h3><ul class="mm-nav-list"><li><a href="../../../physics/physics_6_2_1.html">クロネッカーのデルタ</a></li><li><a href="../../../physics/physics_6_2_3.html">発散</a></li><li><a href="../../../physics/physics_6_2_5.html">ラプラシアン</a></li><li><a href="../../../physics/physics_6_2_6.html">全微分作用素</a></li></ul></div>
+        <div class="mm-nav-group"><h3>資料</h3><ul class="mm-nav-list"><li><a href="../../../physics/physics_7.html">公式</a></li><li><a href="../../../physics/physics_8.html">オーダー一覧</a></li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mm-mega-panel" id="mega-fluid">
+    <div class="mm-mega-inner">
+      <div class="mm-mega-heading"><h2>流体力学</h2><a href="../../../hydronamics/hydronamics.html">流体力学トップへ →</a></div>
+      <div class="mm-mega-grid">
+        <div class="mm-nav-group"><h3>基礎・収支式</h3><ul class="mm-nav-list"><li><a href="../../../hydronamics/hydronamics_1.html">流体</a></li><li><a href="../../../hydronamics/hydronamics_2.html">流体の物性</a></li><li><a href="../../../hydronamics/hydronamics_3.html">使用する収支式</a></li><li><a href="../../../hydronamics/hydronamics_4.html">質量収支式</a></li><li><a href="../../../hydronamics/hydronamics_8.html">運動量収支式</a></li></ul></div>
+        <div class="mm-nav-group"><h3>力</h3><ul class="mm-nav-list"><li><a class="mm-parent-link" href="../../../hydronamics/hydronamics_6.html">力の種類</a><ul><li><a href="../../../hydronamics/hydronamics_6_1.html">慣性力</a></li><li><a href="../../../hydronamics/hydronamics_6_2.html">粘性力</a></li><li><a href="../../../hydronamics/hydronamics_6_3.html">圧力</a></li><li><a href="../../../hydronamics/hydronamics_6_4.html">重力</a></li></ul></li></ul></div>
+        <div class="mm-nav-group"><h3>応力・境界</h3><ul class="mm-nav-list"><li><a class="mm-parent-link" href="../../../hydronamics/hydronamics_9.html">応力の詳細</a><ul><li><a href="../../../hydronamics/hydronamics_9_1.html">せん断速度</a></li><li><a href="../../../hydronamics/hydronamics_9_6.html">応力のまとめ</a></li></ul></li><li><a class="mm-parent-link" href="../../../hydronamics/hydronamics_10.html">境界に作用する力</a><ul><li><a href="../../../hydronamics/hydronamics_10_1.html">表面張力</a></li><li><a href="../../../hydronamics/hydronamics_10_2.html">壁面の速度</a></li></ul></li></ul></div>
+        <div class="mm-nav-group"><h3>無次元化</h3><ul class="mm-nav-list"><li><a class="mm-parent-link" href="../../../hydronamics/hydronamics_11.html">無次元数</a><ul><li><a href="../../../hydronamics/hydronamics_11_1.html">レイノルズ数</a></li><li><a href="../../../hydronamics/hydronamics_11_2.html">ウェーバー数</a></li><li><a href="../../../hydronamics/hydronamics_11_5.html">フルード数</a></li></ul></li><li><a href="../../../hydronamics/hydronamics_12.html">無次元化</a></li><li><a href="../../../hydronamics/hydronamics_14.html">グリーン・ガウスの定理</a></li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mm-mega-panel" id="mega-fem">
+    <div class="mm-mega-inner">
+      <div class="mm-mega-heading"><h2>有限要素法</h2><a href="../../../fem/fem.html">有限要素法トップへ →</a></div>
+      <div class="mm-mega-grid">
+        <div class="mm-nav-group"><h3>要素・形状関数</h3><ul class="mm-nav-list"><li><a href="../../../fem/fem_1.html">節点・要素</a></li><li><a class="mm-parent-link" href="../../../fem/fem_2.html">形状関数・内挿関数</a><ul><li><a href="../../../fem/fem_2_1.html">3角形1次要素</a></li><li><a href="../../../fem/fem_2_2.html">3角形2次要素</a></li><li><a href="../../../fem/fem_2_3.html">4面体1次要素</a></li></ul></li><li><a href="../../../fem/fem_3.html">要素の積分</a></li><li><a href="../../../fem/fem_4.html">3角形要素の面積</a></li><li><a href="../../../fem/fem_5.html">4面体要素の体積</a></li></ul></div>
+        <div class="mm-nav-group"><h3>内挿関数の微分</h3><ul class="mm-nav-list"><li><a class="mm-parent-link" href="../../../fem/fem_6_1.html">3角形1次要素</a><ul><li><a href="../../../fem/fem_6_1_1.html">要素の面積</a></li><li><a href="../../../fem/fem_6_1_2.html">N1の微分</a></li><li><a href="../../../fem/fem_6_1_5.html">まとめ</a></li></ul></li><li><a class="mm-parent-link" href="../../../fem/fem_6_2.html">4面体1次要素</a><ul><li><a href="../../../fem/fem_6_2_1.html">要素の体積</a></li><li><a href="../../../fem/fem_6_2_2.html">N1の微分</a></li><li><a href="../../../fem/fem_6_2_6.html">まとめ</a></li></ul></li></ul></div>
+        <div class="mm-nav-group"><h3>離散化</h3><ul class="mm-nav-list"><li><a class="mm-parent-link" href="../../../fem/fem_7_1.html">3角形1次要素</a><ul><li><a href="../../../fem/fem_7_1_1.html">質量収支式</a></li><li><a href="../../../fem/fem_7_1_2.html">運動量収支式</a></li></ul></li><li><a class="mm-parent-link" href="../../../fem/fem_7_2.html">4面体1次要素</a><ul><li><a href="../../../fem/fem_7_2_1.html">質量収支式</a></li><li><a href="../../../fem/fem_7_2_2.html">運動量収支式</a></li></ul></li></ul></div>
+        <div class="mm-nav-group"><h3>境界・行列</h3><ul class="mm-nav-list"><li><a class="mm-parent-link" href="../../../fem/fem_8.html">境界条件</a><ul><li><a href="../../../fem/fem_8_1.html">第1種</a></li><li><a href="../../../fem/fem_8_2.html">第2種</a></li><li><a href="../../../fem/fem_8_2_1.html">表面張力</a></li><li><a href="../../../fem/fem_8_3.html">第3種</a></li></ul></li><li><a class="mm-parent-link" href="../../../fem/fem_11.html">行列計算</a><ul><li><a href="../../../fem/fem_11_1.html">ガウスの消去法</a></li><li><a href="../../../fem/fem_11_2.html">コレスキー解</a></li></ul></li><li><a href="../../../fem/fem_12.html">バンド幅の最適化</a></li></ul></div>
+      </div>
+      <div class="mm-mega-note">多層を横方向へ連続展開せず、2階層目を「列」、3〜4階層目を列内のインデントで見せる案です。</div>
+    </div>
+  </section>
+
+  <section class="mm-mega-panel" id="mega-mesh"><div class="mm-mega-inner"><div class="mm-mega-heading"><h2>メッシュ</h2><a href="../../../mesh/mesh.html">メッシュトップへ →</a></div><div class="mm-mega-grid"><div class="mm-nav-group"><h3>評価</h3><ul class="mm-nav-list"><li><a href="../../../mesh/mesh_1.html">最小2乗法</a></li><li><a href="../../../mesh/mesh_2.html">曲率計算</a></li></ul></div><div class="mm-nav-group"><h3>節点配置</h3><ul class="mm-nav-list"><li><a class="mm-parent-link" href="../../../mesh/mesh_3.html">節点配置</a><ul><li><a href="../../../mesh/mesh_3_1.html">バブルメッシュ法</a></li><li><a href="../../../mesh/mesh_3_2.html">8分木</a></li></ul></li></ul></div><div class="mm-nav-group"><h3>分割</h3><ul class="mm-nav-list"><li><a href="../../../mesh/mesh_4.html">デローニ分割</a></li></ul></div></div></div></section>
+
+  <section class="mm-mega-panel" id="mega-simple"><div class="mm-mega-inner"><div class="mm-mega-heading"><h2>SIMPLE法</h2><a href="../../../simple/simple.html">SIMPLE法トップへ →</a></div><div class="mm-mega-grid"><div class="mm-nav-group"><h3>計算手順</h3><ul class="mm-nav-list"><li><a href="../../../simple/simple.html">SIMPLE法概要</a></li></ul></div><div class="mm-nav-group"><h3>関連項目</h3><ul class="mm-nav-list"><li><a href="../../../hydronamics/hydronamics_4.html">質量収支式</a></li><li><a href="../../../hydronamics/hydronamics_8.html">運動量収支式</a></li></ul></div></div></div></section>
+
+  <section class="mm-mega-panel" id="mega-heat"><div class="mm-mega-inner"><div class="mm-mega-heading"><h2>伝熱工学</h2><a href="../../../heat/heat.html">伝熱工学トップへ →</a></div><div class="mm-mega-grid"><div class="mm-nav-group"><h3>基礎</h3><ul class="mm-nav-list"><li><a href="../../../heat/heat_1.html">使用する単位</a></li><li><a href="../../../heat/heat_2.html">使用する物性値</a></li><li><a href="../../../heat/heat_3.html">熱流束</a></li></ul></div><div class="mm-nav-group"><h3>伝熱の種類</h3><ul class="mm-nav-list"><li><a class="mm-parent-link" href="../../../heat/heat_4.html">伝熱の種類</a><ul><li><a href="../../../heat/heat_4_1.html">伝導伝熱</a></li><li><a href="../../../heat/heat_4_2.html">対流伝熱</a></li><li><a href="../../../heat/heat_4_3.html">放射伝熱</a></li></ul></li></ul></div><div class="mm-nav-group"><h3>熱収支式</h3><ul class="mm-nav-list"><li><a class="mm-parent-link" href="../../../heat/heat_5.html">熱収支式</a><ul><li><a href="../../../heat/heat_5_1.html">蓄積量</a></li><li><a href="../../../heat/heat_5_4.html">収支式の導出</a></li></ul></li></ul></div><div class="mm-nav-group"><h3>離散化</h3><ul class="mm-nav-list"><li><a class="mm-parent-link" href="../../../heat/heat_7.html">離散化</a><ul><li><a href="../../../heat/heat_7_1.html">3角形1次要素</a></li><li><a href="../../../heat/heat_7_2.html">4面体1次要素</a></li></ul></li><li><a href="../../../heat/heat_8.html">境界条件</a></li></ul></div></div></div></section>
+
+  <section class="mm-mega-panel" id="mega-fortran"><div class="mm-mega-inner"><div class="mm-mega-heading"><h2>Fortran</h2><a href="../../../fortran/fortran.html">Fortranトップへ →</a></div><div class="mm-mega-grid"><div class="mm-nav-group"><h3>宣言</h3><ul class="mm-nav-list"><li><a href="../../../fortran/fortran_1.html">コメント</a></li><li><a href="../../../fortran/fortran_2.html">変数の型宣言</a></li><li><a href="../../../fortran/fortran_3.html">配列宣言</a></li><li><a href="../../../fortran/fortran_4.html">parameter文</a></li></ul></div><div class="mm-nav-group"><h3>関数・共有</h3><ul class="mm-nav-list"><li><a href="../../../fortran/fortran_6.html">function関数</a></li><li><a href="../../../fortran/fortran_7.html">subroutine関数</a></li><li><a href="../../../fortran/fortran_8.html">common文</a></li><li><a href="../../../fortran/fortran_9.html">include文</a></li></ul></div><div class="mm-nav-group"><h3>制御</h3><ul class="mm-nav-list"><li><a href="../../../fortran/fortran_10.html">do文</a></li><li><a href="../../../fortran/fortran_11.html">if文</a></li><li><a href="../../../fortran/fortran_12.html">cycle、exit文</a></li><li><a href="../../../fortran/fortran_14.html">goto文</a></li></ul></div><div class="mm-nav-group"><h3>入出力</h3><ul class="mm-nav-list"><li><a href="../../../fortran/fortran_5.html">data文</a></li><li><a href="../../../fortran/fortran_13.html">ファイル操作</a></li></ul></div></div></div></section>
+
+  <section class="mm-mega-panel" id="mega-other"><div class="mm-mega-inner"><div class="mm-mega-heading"><h2>その他</h2><span></span></div><div class="mm-mega-grid"><div class="mm-nav-group"><h3>サイト情報</h3><ul class="mm-nav-list"><li><a href="../../../introduce/introduce.html">はじめに</a></li><li><a href="../../../profile/profile.html">プロフィール</a></li><li><a href="../../../sitemap/sitemap.html">サイトマップ</a></li><li><a href="../../../revision_history.html">修正履歴</a></li></ul></div><div class="mm-nav-group"><h3>資料</h3><ul class="mm-nav-list"><li><a href="../../../library/library.html">ソフトライブラリ</a></li><li><a href="../../../book/book.html">書籍紹介</a></li><li><a href="../../../pdf/pdf.html">PDF資料</a></li></ul></div><div class="mm-nav-group"><h3>コラム</h3><ul class="mm-nav-list"><li><a href="../../../column/column.html">コラム</a></li><li><a href="../../../column/column_1.html">微分と積分</a></li><li><a href="../../../column/column_4.html">メッシュ作成</a></li></ul></div></div></div></section>
+</div>
+
+<div class="mm-mobile-overlay" aria-hidden="true"></div>
+<nav class="mm-mobile-drawer" id="mobile-drawer" aria-label="スマートフォンメニュー" aria-hidden="true">
+  <div class="mm-mobile-drawer-header"><strong>サイトメニュー</strong><button class="mm-mobile-close" type="button" aria-label="メニューを閉じる">×</button></div>
+  <a class="mm-mobile-home" href="../../../index.html">ホーム</a>
+  <details class="mm-mobile-category"><summary>物理</summary><div class="mm-mobile-category-body"><a href="../../../physics/physics.html">物理トップ</a><a href="../../../physics/physics_1.html">SI単位</a><details class="mm-mobile-subgroup"><summary>計算の種類</summary><div class="mm-mobile-subgroup-links"><a href="../../../physics/physics_6_1.html">四則演算</a><a href="../../../physics/physics_6_2.html">内積</a><a href="../../../physics/physics_6_3.html">外積</a></div></details><details class="mm-mobile-subgroup"><summary>内積の詳細</summary><div class="mm-mobile-subgroup-links"><a href="../../../physics/physics_6_2_1.html">クロネッカーのデルタ</a><a href="../../../physics/physics_6_2_3.html">発散</a><a href="../../../physics/physics_6_2_5.html">ラプラシアン</a></div></details></div></details>
+  <details class="mm-mobile-category"><summary>流体力学</summary><div class="mm-mobile-category-body"><a href="../../../hydronamics/hydronamics.html">流体力学トップ</a><a href="../../../hydronamics/hydronamics_4.html">質量収支式</a><a href="../../../hydronamics/hydronamics_8.html">運動量収支式</a><details class="mm-mobile-subgroup"><summary>力の種類</summary><div class="mm-mobile-subgroup-links"><a href="../../../hydronamics/hydronamics_6_1.html">慣性力</a><a href="../../../hydronamics/hydronamics_6_2.html">粘性力</a><a href="../../../hydronamics/hydronamics_6_3.html">圧力</a></div></details><details class="mm-mobile-subgroup"><summary>無次元数</summary><div class="mm-mobile-subgroup-links"><a href="../../../hydronamics/hydronamics_11_1.html">レイノルズ数</a><a href="../../../hydronamics/hydronamics_11_2.html">ウェーバー数</a></div></details></div></details>
+  <details class="mm-mobile-category" open><summary>有限要素法</summary><div class="mm-mobile-category-body"><a href="../../../fem/fem.html">有限要素法トップ</a><details class="mm-mobile-subgroup"><summary>形状関数・内挿関数</summary><div class="mm-mobile-subgroup-links"><a href="../../../fem/fem_2_1.html">3角形1次要素</a><a href="../../../fem/fem_2_2.html">3角形2次要素</a><a href="../../../fem/fem_2_3.html">4面体1次要素</a></div></details><details class="mm-mobile-subgroup"><summary>内挿関数の微分</summary><div class="mm-mobile-subgroup-links"><a href="../../../fem/fem_6_1.html">3角形1次要素</a><a href="../../../fem/fem_6_1_2.html">　N1の微分</a><a href="../../../fem/fem_6_1_5.html">　まとめ</a><a href="../../../fem/fem_6_2.html">4面体1次要素</a><a href="../../../fem/fem_6_2_2.html">　N1の微分</a><a href="../../../fem/fem_6_2_6.html">　まとめ</a></div></details><details class="mm-mobile-subgroup" open><summary>離散化</summary><div class="mm-mobile-subgroup-links"><a href="../../../fem/fem_7_1.html">3角形1次要素</a><a href="../../../fem/fem_7_1_1.html">　質量収支式</a><a href="../../../fem/fem_7_1_2.html">　運動量収支式</a><a href="../../../fem/fem_7_2.html">4面体1次要素</a><a href="../../../fem/fem_7_2_1.html">　質量収支式</a><a href="../../../fem/fem_7_2_2.html">　運動量収支式</a></div></details><details class="mm-mobile-subgroup"><summary>境界条件</summary><div class="mm-mobile-subgroup-links"><a href="../../../fem/fem_8_1.html">第1種</a><a href="../../../fem/fem_8_2.html">第2種</a><a href="../../../fem/fem_8_2_1.html">　表面張力</a><a href="../../../fem/fem_8_3.html">第3種</a></div></details></div></details>
+  <details class="mm-mobile-category"><summary>メッシュ</summary><div class="mm-mobile-category-body"><a href="../../../mesh/mesh.html">メッシュトップ</a><a href="../../../mesh/mesh_1.html">最小2乗法</a><a href="../../../mesh/mesh_2.html">曲率計算</a><details class="mm-mobile-subgroup"><summary>節点配置</summary><div class="mm-mobile-subgroup-links"><a href="../../../mesh/mesh_3_1.html">バブルメッシュ法</a><a href="../../../mesh/mesh_3_2.html">8分木</a></div></details></div></details>
+  <details class="mm-mobile-category"><summary>SIMPLE法</summary><div class="mm-mobile-category-body"><a href="../../../simple/simple.html">SIMPLE法トップ</a><a href="../../../hydronamics/hydronamics_4.html">質量収支式</a><a href="../../../hydronamics/hydronamics_8.html">運動量収支式</a></div></details>
+  <details class="mm-mobile-category"><summary>伝熱工学</summary><div class="mm-mobile-category-body"><a href="../../../heat/heat.html">伝熱工学トップ</a><details class="mm-mobile-subgroup"><summary>伝熱の種類</summary><div class="mm-mobile-subgroup-links"><a href="../../../heat/heat_4_1.html">伝導伝熱</a><a href="../../../heat/heat_4_2.html">対流伝熱</a><a href="../../../heat/heat_4_3.html">放射伝熱</a></div></details><details class="mm-mobile-subgroup"><summary>離散化</summary><div class="mm-mobile-subgroup-links"><a href="../../../heat/heat_7_1.html">3角形1次要素</a><a href="../../../heat/heat_7_2.html">4面体1次要素</a></div></details></div></details>
+  <details class="mm-mobile-category"><summary>Fortran</summary><div class="mm-mobile-category-body"><a href="../../../fortran/fortran.html">Fortranトップ</a><a href="../../../fortran/fortran_2.html">変数の型宣言</a><a href="../../../fortran/fortran_3.html">配列宣言</a><a href="../../../fortran/fortran_6.html">function関数</a><a href="../../../fortran/fortran_7.html">subroutine関数</a><a href="../../../fortran/fortran_10.html">do文</a><a href="../../../fortran/fortran_11.html">if文</a></div></details>
+  <details class="mm-mobile-category"><summary>その他</summary><div class="mm-mobile-category-body"><a href="../../../sitemap/sitemap.html">サイトマップ</a><a href="../../../revision_history.html">修正履歴</a><a href="../../../column/column.html">コラム</a><a href="../../../library/library.html">ソフトライブラリ</a><a href="../../../book/book.html">書籍紹介</a><a href="../../../pdf/pdf.html">PDF資料</a></div></details>
+</nav>
+
+<nav class="mm-breadcrumb" aria-label="パンくず"><span>ホーム</span><span>有限要素法</span><span>離散化</span><span>4面体1次要素</span><span>運動量収支式</span></nav>
+
+<main class="mm-article-shell">
+  <header class="mm-article-header">
+    <p class="mm-eyebrow">Finite Element Method / Navigation prototype</p>
+    <h1>4面体1次要素による運動量収支式の離散化</h1>
+    <p class="mm-lead">左サイドメニューを廃止した場合の実動プレビューです。上部カテゴリからサイト全体を移動し、パンくずで現在位置、右側の目次で記事内の位置を把握します。</p>
+  </header>
+  <div class="mm-article-body">
+    <article class="mm-content">
+      <h2 id="overview">1. 多層メニューの考え方</h2>
+      <p>PCでは第1階層を上部へ固定し、クリックするとメガメニューを開きます。第2階層は列見出し、第3〜4階層は列内のインデントで表示するため、横方向へメニューが増殖しません。</p>
+      <div class="mm-note"><strong>操作例：</strong> 上部の「有限要素法」をクリックすると、形状関数・内挿関数、内挿関数の微分、離散化、境界・行列の4グループが同時に確認できます。</div>
+
+      <h2 id="mobile">2. スマートフォン</h2>
+      <p>スマートフォンでは右上のハンバーガーボタンからドロワーを開きます。第1階層をアコーディオン、その中の第2階層も必要な箇所だけ展開できる構造です。</p>
+      <div class="mm-equation">カテゴリ → 章 → 小分類 → 個別ページ<br>有限要素法 → 離散化 → 4面体1次要素 → 運動量収支式</div>
+
+      <h2 id="content">3. 本文との役割分担</h2>
+      <p>グローバルメニューはサイト全体の移動に限定し、記事ページではパンくずとページ内目次を併用します。これにより、左サイドバーがなくても現在地と記事構造の両方を把握できます。</p>
+      <h3>パンくず</h3>
+      <p>カテゴリ階層を常時表示し、深いページへ直接移動した場合でも現在位置を確認できるようにします。</p>
+      <h3>ページ内目次</h3>
+      <p>長い数式ページでは章見出しだけを目次として表示し、サイトメニューとは分離します。</p>
+    </article>
+    <aside class="mm-toc"><h2>このページ</h2><ol><li><a href="#overview">多層メニュー</a></li><li><a href="#mobile">スマートフォン</a></li><li><a href="#content">本文との役割分担</a></li></ol></aside>
+  </div>
+</main>
+<footer class="mm-footer">Multi-level navigation preview — 本体未適用</footer>
+<script src="./mega-menu-preview.js"></script>
+</body>
+</html>
