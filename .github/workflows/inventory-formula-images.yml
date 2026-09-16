@@ -1,0 +1,35 @@
+name: Inventory Formula Images
+
+on:
+  push:
+    branches:
+      - develop
+    paths:
+      - '.github/workflows/inventory-formula-images.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout develop
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - name: Build formula image inventory
+        run: python3 .github/scripts/inventory-formula-images.py
+
+      - name: Show summary
+        run: cat /tmp/formula-image-inventory/summary.md
+
+      - name: Upload inventory and candidate images
+        uses: actions/upload-artifact@v4
+        with:
+          name: formula-image-inventory
+          path: /tmp/formula-image-inventory
+          retention-days: 7
