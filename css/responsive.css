@@ -5,6 +5,7 @@
  * - [ADD]: mobile-nav-ready / mobile-menu-open によるスマホメニュー表示を追加
  * - [MOD]: レスポンシブ指定を767px以下へ限定し、旧固定幅コンテンツをスマホ画面内へ制約
  * - [MOD]: [L303] 旧PC用wrapper背景画像をスマホ時に確実に無効化し背景の境界ずれを解消
+ * - [MOD]: 旧PC用CSSの後勝ちを抑止し、モバイル用ヘッダー・ヒーロー・float指定を確実に適用
  * - [DEL]: なし
  */
 
@@ -61,7 +62,7 @@
 	div#content-main,
 	div#content-attend,
 	div#sub {
-		float: none;
+		float: none !important;
 	}
 
 	div#main,
@@ -100,12 +101,12 @@
 	}
 
 	div#header h1 {
-		float: none;
-		padding: 16px 68px 8px 12px;
+		float: none !important;
+		padding: 16px 68px 8px 12px !important;
 	}
 
 	div#header h1 a {
-		font-size: 1.35em;
+		font-size: 1.35em !important;
 		overflow-wrap: anywhere;
 	}
 
@@ -115,7 +116,7 @@
 	}
 
 	div#image {
-		height: auto;
+		height: auto !important;
 		min-height: 0;
 		padding-bottom: 12px;
 		background-size: cover;
@@ -123,8 +124,8 @@
 	}
 
 	div#image p {
-		font-size: 1.4em;
-		padding: 14px 12px 0 12px;
+		font-size: 1.4em !important;
+		padding: 14px 12px 0 12px !important;
 		text-indent: 0;
 	}
 
