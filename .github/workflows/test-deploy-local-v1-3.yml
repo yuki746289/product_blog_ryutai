@@ -1,0 +1,85 @@
+name: Test deploy_local v1.3
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - 'deploy_local.sh'
+      - 'deploy_local_v1.3/**'
+      - '.github/workflows/test-deploy-local-v1-3.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - name: Syntax and traceability
+        run: |
+          bash -n deploy_local.sh
+          bash -n deploy_local_v1.3/deploy_local_v1.3.sh
+          python3 - <<'PY'
+          import json, re
+          from pathlib import Path
+          spec = json.loads(Path('deploy_local_v1.3/deploy_local_v1.3_7_detail.json').read_text())
+          code = Path('deploy_local_v1.3/deploy_local_v1.3.sh').read_text()
+          for group in ['features','functions','inputs','outputs','variables']:
+              for item in spec[group]:
+                  if item['type'] in ('ADD','MOD'):
+                      token = f"[{item['id']}]"
+                      assert token in code, (group, token)
+          functions = re.findall(r'^([A-Za-z][A-Za-z0-9]*)\(\) \{', code, re.M)
+          assert functions == ['writeLog','checkEnvironment','updateLocalSite','updateApacheState','refreshLocalPreview'], functions
+          assert code.count('[F001]') == 1
+          assert code.count('[F002]') == 1
+          assert code.count('[F003]') == 1
+          assert code.count('[F004]') == 1
+          assert code.count('[T001]') == 1
+          print('Traceability OK:', len(functions), 'functions')
+          PY
+
+      - name: Prepare fake Apache
+        run: |
+          mkdir -p /tmp/apache24/bin /tmp/apache24/conf /tmp/apache24/htdocs
+          : > /tmp/apache24/conf/httpd.conf
+          cat > /tmp/apache24/bin/httpd.exe <<'SH'
+          #!/usr/bin/env bash
+          if [[ "${1:-}" == "-t" ]]; then
+            echo "Syntax OK"
+            exit 0
+          fi
+          exec python3 -m http.server 18080 --bind 127.0.0.1 --directory /tmp/apache24/htdocs
+          SH
+          chmod +x /tmp/apache24/bin/httpd.exe
+
+      - name: Execute deploy twice
+        env:
+          APACHE_ROOT: /tmp/apache24
+          TARGET_DIR: /tmp/apache24/htdocs/ryutai
+          LOCAL_URL: http://127.0.0.1:18080/ryutai/
+          HTTPD_EXE: /tmp/apache24/bin/httpd.exe
+          HTTPD_CONF: /tmp/apache24/conf/httpd.conf
+          OPEN_BROWSER: '0'
+        run: |
+          bash deploy_local.sh
+          test -f /tmp/apache24/htdocs/ryutai/index.html
+          test ! -e /tmp/apache24/htdocs/ryutai/.git
+          test ! -e /tmp/apache24/htdocs/ryutai/.github
+          test ! -e /tmp/apache24/htdocs/ryutai/.document
+          test ! -e /tmp/apache24/htdocs/ryutai/.rules
+          test ! -e /tmp/apache24/htdocs/ryutai/deploy_local_v1.3
+          test ! -e /tmp/apache24/htdocs/ryutai/deploy_local.sh
+          cmp index.html /tmp/apache24/htdocs/ryutai/index.html
+          cmp fem/fem_7_2_2.html /tmp/apache24/htdocs/ryutai/fem/fem_7_2_2.html
+          curl -fsS http://127.0.0.1:18080/ryutai/ >/dev/null
+          bash deploy_local.sh
+          cmp index.html /tmp/apache24/htdocs/ryutai/index.html
+          curl -fsS http://127.0.0.1:18080/ryutai/ >/dev/null
+          echo 'Execution/idempotence OK'
