@@ -24,7 +24,7 @@ Git Bashで更新した `develop` のサイトをローカルApacheへ反映し�
 - ログは標準出力/標準エラーへ出す。
 
 ## 6. 実行要件
-- 手動実行: `./deploy_local.sh`
+- 手動実行: `bash deploy_local.sh`
 - 再実行可能。
 - 必須条件エラー時は非0終了。
 - 作業ツリーdirtyは警告のみ。
@@ -36,7 +36,7 @@ Git Bashで更新した `develop` のサイトをローカルApacheへ反映し�
 - コピーで文字コードを変換しない。
 
 ## 8. 受入条件
-- [ ] rootの `deploy_local.sh` から実行できる。
+- [ ] rootの `deploy_local.sh` を `bash deploy_local.sh` で実行できる。
 - [ ] `htdocs/ryutai/index.html` が生成される。
 - [ ] `.git/.github/.document/.rules` が公開先に無い。
 - [ ] Apache config test成功。
