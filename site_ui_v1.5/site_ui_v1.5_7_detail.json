@@ -1,0 +1,52 @@
+{
+  "version": "1.5",
+  "summary": "PC左メニューの文字切れ/不要スクロール、モバイル広告見出し、修正履歴表を改善し、独立したデザイン比較サンプル3案を追加する。",
+  "features": [
+    {"id":"L301","sourceStepId":"S003","type":"MOD","summary":"初期化時にT001でmenu iframe scrollingを表示幅別同期","targetFunction":"refreshMobileNavigation"},
+    {"id":"L303","sourceStepId":"S003","type":"MOD","summary":"モバイルsub-text/dtを同じ幅・中央揃えへ統一","targetFunction":null},
+    {"id":"L401","sourceStepId":"S004","type":"ADD","summary":"767px以下auto、768px以上noへscrolling同期","targetFunction":"refreshMenuScrollingMode"},
+    {"id":"L402","sourceStepId":"S004","type":"MOD","summary":"resize時にT001を再実行","targetFunction":"refreshMobileNavigation"},
+    {"id":"L403","sourceStepId":"S004","type":"MOD","summary":"PC #sub幅を180pxへ整合","targetFunction":null},
+    {"id":"L501","sourceStepId":"S005","type":"ADD","summary":"履歴表をNo./修正種類/対象/修正内容へ変更","targetFunction":null},
+    {"id":"L502","sourceStepId":"S005","type":"ADD","summary":"各履歴を利用者向け種類へ分類","targetFunction":null},
+    {"id":"L503","sourceStepId":"S005","type":"ADD","summary":"管理IDをdata-revision-idへ保持","targetFunction":null},
+    {"id":"L504","sourceStepId":"S005","type":"ADD","summary":"v1.5 UI改善履歴を追加","targetFunction":null},
+    {"id":"L601","sourceStepId":"S006","type":"ADD","summary":"サンプル一覧を追加","targetFunction":null},
+    {"id":"L602","sourceStepId":"S006","type":"ADD","summary":"Technical Cleanを追加","targetFunction":null},
+    {"id":"L603","sourceStepId":"S006","type":"ADD","summary":"Academic Minimalを追加","targetFunction":null},
+    {"id":"L604","sourceStepId":"S006","type":"ADD","summary":"Modern Dashboardを追加","targetFunction":null},
+    {"id":"L605","sourceStepId":"S006","type":"ADD","summary":"サンプル共通CSSを追加","targetFunction":null}
+  ],
+  "functions": [
+    {"id":"F002","type":"MOD","name":"refreshMobileNavigation","description":"T001を初期表示とresizeで呼び出す"},
+    {"id":"T001","type":"ADD","name":"refreshMenuScrollingMode","description":"viewport幅に応じmenu iframe scrollingをauto/noへ設定","arguments":["parentWindow","menuIframe"],"returns":"undefined"}
+  ],
+  "variables": [
+    {"id":"I004","type":"ADD","name":"parentWindow","dataType":"Window","description":"親ページWindow"},
+    {"id":"I005","type":"ADD","name":"menuIframe","dataType":"HTMLIFrameElement","description":"menu iframe"},
+    {"id":"O006","type":"ADD","name":"returnValue","dataType":"undefined","description":"T001は値を返さない"}
+  ],
+  "deleted_items": {
+    "features": [],
+    "functions": [],
+    "inputs": [],
+    "outputs": [],
+    "variables": ["V004 scrollingValue"]
+  },
+  "constraints": [
+    "既存CP932 HTMLの文字コードを維持する",
+    "既存URLとMathJax式内容を変更しない",
+    "デザインサンプルはdesign_samples/v1.5配下だけに追加し本体へ適用しない",
+    "本番FTPへデプロイしない",
+    "PC1365px/スマホ390pxでスクリーンショット確認する"
+  ],
+  "invariants": [
+    "F001 Initを変更しない",
+    "F003 updateMobileMenuStateを変更しない",
+    "F004 dispを変更しない",
+    "F005 set_heightを変更しない",
+    "既存メニューhrefを変更しない",
+    "v1.4 MathJax 4自動改行を維持する",
+    "トップ更新告知と修正履歴リンク位置を維持する"
+  ]
+}
