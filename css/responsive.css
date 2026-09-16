@@ -1,13 +1,35 @@
+@charset "UTF-8";
+@import url("site_v1_6.css?v=20260917e");
+@import url("site_font_size_v1_6.css?v=20260917e");
+@import url("site_utility_v1_6.css?v=20260917e");
+
 /**
- * 更新日時: 2026/09/16
- * 処理概要: [S001][STYLE001] スマートフォン幅767px以下のレスポンシブ表示とオフキャンバスメニュー
+ * 更新日時: 2026/09/17
+ * 処理概要: [S001][STYLE001][S010] レスポンシブ表示とv1.6共通UIの先読み、FOUC抑止
  * 前回バージョンとの違い:
- * - [ADD]: mobile-nav-ready / mobile-menu-open によるスマホメニュー表示を追加
- * - [MOD]: レスポンシブ指定を767px以下へ限定し、旧固定幅コンテンツをスマホ画面内へ制約
- * - [MOD]: [L303] 旧PC用wrapper背景画像をスマホ時に確実に無効化し背景の境界ずれを解消
- * - [MOD]: 旧PC用CSSの後勝ちを抑止し、モバイル用ヘッダー・ヒーロー・float指定を確実に適用
- * - [DEL]: なし
+ * - [ADD]: v1.6 D Monochrome / 文字サイズ / ホームメニューCSSをhead段階で先読み
+ * - [ADD]: 新UI構築完了前の旧レイアウト描画を抑止し、1.2秒後に旧表示へフォールバック
+ * - [KEEP]: 767px以下の既存レスポンシブ・オフキャンバス制御
  */
+
+@keyframes rv-v16-fouc-fallback-visible {
+	to {
+		visibility: visible;
+	}
+}
+
+/*
+ * 新UIはfooter iframeから構築されるため、旧レイアウトを先に描画しない。
+ * JS/CSS障害時は1.2秒後に旧ページを表示し、閲覧不能にはしない。
+ */
+body:not(.rv-home-navigation-ready) #wrapper {
+	visibility: hidden;
+	animation: rv-v16-fouc-fallback-visible 0s linear 1.2s forwards;
+}
+
+body.rv-home-navigation-ready #wrapper {
+	visibility: visible;
+}
 
 @media screen and (max-width: 767px) {
 	html,
