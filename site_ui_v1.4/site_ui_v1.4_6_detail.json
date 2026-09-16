@@ -1,0 +1,63 @@
+{
+  "version": "1.4",
+  "summary": "数式自動改行、更新告知と修正履歴導線、モバイルメニューの縦スクロールと背景統一",
+  "steps": [
+    {"id":"S001","type":"MOD","name":"formulaDisplay","description":"MathJax表示を横スクロールから自動改行へ変更"},
+    {"id":"S002","type":"MOD","name":"revisionNavigation","description":"トップ告知と修正履歴導線を更新"},
+    {"id":"S003","type":"MOD","name":"mobileMenuUsability","description":"モバイルメニューのスクロールと背景を改善"},
+    {"id":"S004","type":"KEEP","name":"existingNavigation","description":"PCと既存ナビゲーションを維持"}
+  ],
+  "features": [
+    {"id":"L101","sourceStepId":"S001","type":"MOD","summary":"math-block横スクロール指定撤去","target":"css/math.css"},
+    {"id":"L102","sourceStepId":"S001","type":"MOD","summary":"MathJax 4 linebreak設定","target":"FEM主要5ページ"},
+    {"id":"L103","sourceStepId":"S001","type":"KEEP","summary":"既存TeX式内容維持","target":"FEM主要5ページ"},
+    {"id":"L201","sourceStepId":"S002","type":"ADD","summary":"トップお知らせへ2026-09-16更新告知と履歴リンク追加","target":"index.html"},
+    {"id":"L202","sourceStepId":"S002","type":"MOD","summary":"footer修正履歴リンク削除","target":"footer.html"},
+    {"id":"L203","sourceStepId":"S002","type":"ADD","summary":"メニューに修正履歴リンク追加","target":"menu.html"},
+    {"id":"L301","sourceStepId":"S003","type":"ADD","summary":"menu iframe scrolling=auto設定","targetFunction":"refreshMobileNavigation"},
+    {"id":"L302","sourceStepId":"S003","type":"MOD","summary":"モバイルiframe縦スクロール許可","target":"css/responsive.css"},
+    {"id":"L303","sourceStepId":"S003","type":"MOD","summary":"menu文書背景と高さ統一","target":"menu.html/css/responsive.css"},
+    {"id":"L401","sourceStepId":"S004","type":"KEEP","summary":"PC幅スマホUI非表示維持","target":"css/responsive.css"},
+    {"id":"L402","sourceStepId":"S004","type":"KEEP","summary":"開閉状態とARIA同期維持","targetFunction":"updateMobileMenuState"},
+    {"id":"L403","sourceStepId":"S004","type":"KEEP","summary":"カテゴリ表示維持","targetFunction":"disp"},
+    {"id":"L404","sourceStepId":"S004","type":"KEEP","summary":"PC iframe高さ調整維持","targetFunction":"set_height"}
+  ],
+  "functions": [
+    {"id":"F001","type":"KEEP","name":"Init","description":"ページ初期化。変更なし"},
+    {"id":"F002","type":"MOD","name":"refreshMobileNavigation","description":"モバイルナビ初期化時にmenu iframeのscrollingをautoへ設定"},
+    {"id":"F003","type":"KEEP","name":"updateMobileMenuState","description":"開閉状態とARIA属性同期。変更なし"},
+    {"id":"F004","type":"KEEP","name":"disp","description":"カテゴリ表示。変更なし"},
+    {"id":"F005","type":"KEEP","name":"set_height","description":"PC用iframe高さ調整。変更なし"}
+  ],
+  "inputs": [
+    {"id":"I001","type":"KEEP","name":"parentDocument","dataType":"Document","description":"updateMobileMenuState引数"},
+    {"id":"I002","type":"KEEP","name":"menuButton","dataType":"HTMLButtonElement","description":"updateMobileMenuState引数"},
+    {"id":"I003","type":"KEEP","name":"isOpen","dataType":"boolean","description":"updateMobileMenuState引数"}
+  ],
+  "outputs": [
+    {"id":"O001","type":"KEEP","name":"returnValue","dataType":"undefined","description":"Init戻り値"},
+    {"id":"O002","type":"KEEP","name":"returnValue","dataType":"undefined","description":"refreshMobileNavigation戻り値"},
+    {"id":"O003","type":"KEEP","name":"returnValue","dataType":"undefined","description":"updateMobileMenuState戻り値"},
+    {"id":"O004","type":"KEEP","name":"returnValue","dataType":"undefined","description":"disp戻り値"},
+    {"id":"O005","type":"KEEP","name":"returnValue","dataType":"undefined","description":"set_height戻り値"}
+  ],
+  "variables": [
+    {"id":"V001","type":"KEEP","name":"parent","dataType":"Window","description":"iframe親ウィンドウ"},
+    {"id":"V002","type":"KEEP","name":"document","dataType":"Document","description":"menu.html自身のDOM"},
+    {"id":"V003","type":"ADD","name":"scrollingAttribute","dataType":"string","description":"iframe属性名 scrolling"},
+    {"id":"V004","type":"ADD","name":"scrollingValue","dataType":"string","description":"scrolling属性値 auto"}
+  ],
+  "deleted_items": {"features":[],"functions":[],"inputs":[],"outputs":[],"variables":[]},
+  "constraints": [
+    "既存TeX式内容を変更しない",
+    "既存URLを変更しない",
+    "PC左メニュー動作を維持する",
+    "MathJax 4のdisplayOverflow=linebreakを使用する",
+    "モバイルメニューはiframe内だけ縦スクロールさせる"
+  ],
+  "invariants": [
+    "updateMobileMenuState, disp, set_heightは変更しない",
+    "修正履歴リンク追加以外の既存menu hrefを変更しない",
+    "本番FTPは変更しない"
+  ]
+}
