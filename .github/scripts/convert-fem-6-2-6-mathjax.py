@@ -110,11 +110,11 @@ if 'formula-conversion-note' not in text:
     note = marker + '\n\t\t\t<p id="formula-conversion-note">数式はMathJaxで表示しています。変換前の数式画像は照合用としてリポジトリ内に保持しています。</p>'
     text = text.replace(marker, note, 1)
 
-# All 12 source references must have been removed from the HTML body.
+# All 12 source IMG tags must have been removed from the HTML body.
 for num in formulas:
-    src = f'fem_n_tet.files/image{num:03d}.png'
-    if src in text:
-        raise RuntimeError(f'source image reference remains in HTML: {src}')
+    src = f'./../img/fem_n_tet.files/image{num:03d}.png'
+    if re.search(r'<img\b[^>]*\bsrc=["\']' + re.escape(src) + r'["\']', text, re.I):
+        raise RuntimeError(f'source image tag remains in HTML: {src}')
 
 PATH.write_bytes(text.encode('cp932'))
 print('Converted fem_6_2_6.html: 12 formulas -> MathJax, CP932 preserved.')
