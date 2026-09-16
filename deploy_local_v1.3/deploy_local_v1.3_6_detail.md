@@ -102,14 +102,29 @@ Apache設定ファイルの自動編集やサービス登録は行わない。
 ### 7. 特記事項
 HTTP成功を配備成功条件とし、ブラウザ起動は補助機能とする。
 
-## 共通補助関数
-<span style="color:green">[ADD]</span> [T001] `writeLog`: [V007] `isOutputLog` が1のときログを標準出力する。
+## COMMON 共通ログ出力
+### 1. 処理概要
+<span style="color:green">[ADD]</span> [L001] ログ出力フラグを確認して標準出力へメッセージを出す (COMMON)
+### 2. 補助関数
+<span style="color:green">[ADD]</span> [T001] `writeLog`
+### 3. 引数
+|ID|名称|型|説明|
+|---|---|---|---|
+|<span style="color:green">[ADD]</span> [I001]|message|string|出力するログメッセージ|
+### 4. 戻り値
+該当なし。
+### 5. メイン変数
+[V007] `isOutputLog` を参照する。
+### 6. 処理フロー
+`isOutputLog=1` の場合のみ `printf` で出力する。
+### 7. 特記事項
+秘密情報を引数に渡さない。
 
 ## コンパイル・ダイジェスト
 管理対象件数（本集計表自身を除く）:
 |タグ|件数|内容|
 |---|---:|---|
-|[ADD]|41|S4,F4,T1,O4,V8,L20|
+|[ADD]|43|S4,F4,T1,I1,O4,V8,L21|
 |[MOD]|0|なし|
 |[DEL]|0|なし|
 |[KEEP]|0|初版|
