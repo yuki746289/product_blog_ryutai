@@ -58,3 +58,36 @@
 - Created .document/DEPLOY_READINESS_v1.2.md defining the deployable scope and remaining formula-migration work.
 - Production FTP remains unchanged.
 - Result: READY FOR DEPLOYMENT for the explicitly scoped release; deployment itself awaits explicit user approval.
+
+2026-09-16 Step1-Step7 specification and design (site_ui/v1.4)
+- Created `.document/v1.4/` specification set and `site_ui_v1.4` requirements/basic/detailed design files.
+- Corrected inherited function IDs before implementation: F001=Init, F002=refreshMobileNavigation, F003=updateMobileMenuState, F004=disp, F005=set_height.
+- Only F002 was designated MOD; F001/F003/F004/F005 remained KEEP.
+- Scope: MathJax no-scroll display, top-page notice, revision-history navigation, mobile menu scrolling/background/layout.
+- Result: PASS.
+
+2026-09-16 Step8 implementation (site_ui/v1.4)
+- Upgraded reviewed FEM five pages from MathJax 3 to MathJax 4 automatic line breaking.
+- Removed horizontal scrolling from `.math-block` while retaining correction-history table scrolling.
+- Added 2026-09-16 notices and revision-history link to index.html.
+- Moved revision-history menu link from footer to directly below 'お気に入りに追加'.
+- Made mobile menu iframe vertically scrollable by mouse wheel/touch.
+- Fixed legacy wrapper background seam and enforced intended mobile header/hero/float styles after screenshot review.
+- Added R-UI-001 through R-UI-003 to revision_history.html.
+- Production FTP unchanged.
+
+2026-09-16 Step9 code confirmation (site_ui/v1.4)
+- Browser implementation run 35067399307: SUCCESS.
+- At 390px, all five reviewed FEM pages: math overflow 0, document horizontal overflow 0.
+- Real Selenium wheel action confirmed mobile menu scrolling.
+- Screenshot review detected legacy background/CSS cascade issues; fixes were applied and re-reviewed.
+- Final visual run 35068283541: SUCCESS with Japanese fonts, background DOM checks, PC/mobile screenshots.
+- Final evidence artifact ID 10435465903.
+- Created site_ui_v1.4/site_ui_v1.4_9_code_confirm.md.
+- Result: PASS.
+
+2026-09-16 Step10 final confirmation (site_ui/v1.4)
+- Created site_ui_v1.4/site_ui_v1.4_10_final_confirm.md.
+- User requirements for formula display, announcements, history navigation, menu scrolling, background and screenshot review are satisfied.
+- `release_1.0.0` and production FTP remain unchanged.
+- Result: PASS; local review is ready before any explicit production deployment.
