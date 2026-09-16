@@ -7,3 +7,13 @@
 2026-05-19 smaple.pine v1.0 手順7: コード確認結果を作成。対象: sample/smaple.pine_v1.0/smaple.pine_v1.0_7_code_confirm.md
 2026-05-19 smaple.pine v1.0 手順8: 仕様書を作成。対象: .document/仕様_差分_v1.0.md, .document/仕様_全体_v1.0.md
 2026-05-19 smaple.pine v1.0 手順9: 仕様確認結果を作成。対象: .document/仕様確認_v1.0.md
+2026-09-16 deploy_local v1.3 手順1: batch仕様書を `.document/v1.3/` に作成。
+2026-09-16 deploy_local v1.3 手順2: `.document/v1.3/99_仕様確認.md` を作成。総合判定: 合格。
+2026-09-16 deploy_local v1.3 手順3: `deploy_local_v1.3/deploy_local_v1.3_3_request.md` を作成。
+2026-09-16 deploy_local v1.3 手順4: `deploy_local_v1.3/deploy_local_v1.3_4_base.md` を作成。
+2026-09-16 deploy_local v1.3 手順5: `deploy_local_v1.3/deploy_local_v1.3_5_base_confirm.md` を作成。判定: 合格。
+2026-09-16 deploy_local v1.3 手順6: `deploy_local_v1.3_6_detail.md/.json` を作成。
+2026-09-16 deploy_local v1.3 手順7: `deploy_local_v1.3_7_detail.json` と詳細設計確認を作成。43管理項目を照合。
+2026-09-16 deploy_local v1.3 手順8: `deploy_local_v1.3/deploy_local_v1.3.sh` と root `deploy_local.sh` を実装。
+2026-09-16 deploy_local v1.3 手順9: GitHub Actions run 35062679397 で構文・ID・コピー・HTTP・再実行性を確認。自動検証: 合格。Windows実機確認: 未実施。
+2026-09-16 deploy_local v1.3 手順10: `deploy_local_v1.3_10_final_confirm.md` を作成。状態: 実装完了 / Windows実機受入待ち。
