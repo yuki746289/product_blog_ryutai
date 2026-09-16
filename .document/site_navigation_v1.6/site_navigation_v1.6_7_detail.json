@@ -10,11 +10,11 @@
     "baseDesignConsistency": "PASS",
     "implementationScopeConsistency": "PASS",
     "invariantProtection": "PASS",
+    "encodingCorrection": "footer.htmlはmeta上shift_jisだが実バイト列はUTF-8。2026-09-16のbase64検査で確認。今回の変更では実バイト列UTF-8を維持し、meta指定は変更しない。",
     "notes": [
-      "F001-F006は全て新規JSの主関数でありADD。既存footer Initは変更しないため関数ID対象外のKEEP。",
-      "T001-T007は全て新規補助関数でありADD。",
-      "menu.htmlの既存関数disp/set_height/refreshMobileNavigation等はコード変更対象外。",
-      "footer.htmlはscript読込タグのみMODし、CP932バイト列を維持する。"
+      "F001-F006は新規JSの主関数でADD。既存footer InitはKEEP。",
+      "T001-T007は新規補助関数でADD。",
+      "menu.htmlの既存関数は変更対象外。"
     ]
   },
   "features": [
@@ -92,7 +92,7 @@
   "constraints": [
     "新UI成功後だけrv-nav-readyを付与する",
     "親ページへ複製するリンクはanchor.hrefの解決済みURLを使用する",
-    "footer.htmlはCP932を維持する",
+    "footer.htmlは現状のUTF-8実バイト列を維持し、meta charset指定は今回変更しない",
     "CSS/JSは外部UIフレームワークを使用しない",
     "767px以下をmobile、768px以上をPC/tabletとする"
   ],
