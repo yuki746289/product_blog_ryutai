@@ -21,186 +21,20 @@ jobs:
           ref: develop
           fetch-depth: 0
 
-      - name: Apply v1.4 transformation
-        run: |
-          # The correction-history table intentionally keeps its own horizontal scroll.
-          # Narrow the transformation script's validation to the math-block rules only.
-          python3 - <<'PY'
-          from pathlib import Path
-          p = Path('.github/scripts/apply_site_ui_v1_4.py')
-          text = p.read_text(encoding='utf-8')
-          old = '''    math_css = (ROOT / "css/math.css").read_text(encoding="utf-8")
-    if "overflow-x: auto" in math_css or "min-width: max-content" in math_css:
-        raise RuntimeError("math.css still contains horizontal-scroll rules")
-'''
-          new = '''    math_css = (ROOT / "css/math.css").read_text(encoding="utf-8")
-    math_block = math_css.split(".math-block {", 1)[1].split("}", 1)[0]
-    math_container = math_css.split('.math-block mjx-container[display="true"] {', 1)[1].split("}", 1)[0]
-    if "overflow-x: auto" in math_block or "min-width: max-content" in math_container:
-        raise RuntimeError("math-block still contains horizontal-scroll rules")
-'''
-          if old not in text:
-              raise SystemExit('validation patch target not found')
-          p.write_text(text.replace(old, new, 1), encoding='utf-8')
-          PY
-          python3 .github/scripts/apply_site_ui_v1_4.py
-
-      - name: Static checks
-        run: |
-          python3 - <<'PY'
-          from pathlib import Path
-
-          def cp932(path):
-              return Path(path).read_bytes().decode('cp932')
-
-          math_css = Path('css/math.css').read_text(encoding='utf-8')
-          math_block = math_css.split('.math-block {', 1)[1].split('}', 1)[0]
-          math_container = math_css.split('.math-block mjx-container[display="true"] {', 1)[1].split('}', 1)[0]
-          assert 'overflow-x: auto' not in math_block
-          assert 'min-width: max-content' not in math_container
-
-          responsive = Path('css/responsive.css').read_text(encoding='utf-8')
-          for token in ['overflow-y: auto', 'overscroll-behavior: contain', 'background-color: #ffffff']:
-              assert token in responsive, token
-
-          menu = cp932('menu.html')
-          assert 'menuIframe.setAttribute(scrollingAttribute, scrollingValue);' in menu
-          assert menu.count('href="./revision_history.html"') == 1
-          favorite_pos = menu.index('お気に入りに追加')
-          history_pos = menu.index('>修正履歴</a>')
-          assert favorite_pos < history_pos
-
-          index = cp932('index.html')
-          assert index.count('2026.9.16') >= 2
-          assert '修正履歴はこちら' in index
-
-          footer = cp932('footer.html')
-          assert 'revision_history.html' not in footer
-
-          pages = [
-              'fem/fem_6_2_6.html',
-              'fem/fem_7_1_1.html',
-              'fem/fem_7_1_2.html',
-              'fem/fem_7_2_1.html',
-              'fem/fem_7_2_2.html',
-          ]
-          for page in pages:
-              text = cp932(page)
-              assert 'mathjax@4/tex-mml-chtml.js' in text, page
-              assert "displayOverflow: 'linebreak'" in text, page
-              assert "width: '100%'" in text, page
-              assert 'mathjax@3' not in text, page
-              assert '/es5/' not in text, page
-
-          print('Static checks: OK')
-          PY
+      - name: Apply and statically verify v1.4
+        run: python3 .github/scripts/run_site_ui_v1_4.py
 
       - name: Install browser test dependency
         run: python3 -m pip install --quiet selenium
 
-      - name: Browser, wheel scroll, layout and screenshot checks
+      - name: Start local server
         run: |
           python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/site-ui-http.log 2>&1 &
-          SERVER_PID=$!
-          trap 'kill $SERVER_PID 2>/dev/null || true' EXIT
+          echo $! > /tmp/site-ui-http.pid
           sleep 2
-          mkdir -p /tmp/site-ui-v1-4
 
-          python3 - <<'PY'
-          import time
-          from pathlib import Path
-          from selenium import webdriver
-          from selenium.webdriver.common.by import By
-          from selenium.webdriver.common.action_chains import ActionChains
-          from selenium.webdriver.support.ui import WebDriverWait
-          from selenium.webdriver.support import expected_conditions as EC
-
-          base = 'http://127.0.0.1:8000/'
-          out = Path('/tmp/site-ui-v1-4')
-
-          options = webdriver.ChromeOptions()
-          options.add_argument('--headless=new')
-          options.add_argument('--no-sandbox')
-          options.add_argument('--disable-dev-shm-usage')
-          options.add_argument('--disable-gpu')
-          options.add_argument('--window-size=390,1000')
-          driver = webdriver.Chrome(options=options)
-          wait = WebDriverWait(driver, 25)
-
-          try:
-              driver.set_window_size(390, 1000)
-              driver.get(base + 'index.html')
-              wait.until(EC.presence_of_element_located((By.ID, 'mobile-menu-button')))
-              assert '修正履歴はこちら' in driver.page_source
-              driver.save_screenshot(str(out / 'index-mobile-closed.png'))
-
-              button = driver.find_element(By.ID, 'mobile-menu-button')
-              button.click()
-              wait.until(lambda d: 'mobile-menu-open' in d.find_element(By.TAG_NAME, 'body').get_attribute('class'))
-              iframe = driver.find_element(By.ID, 'menu')
-              assert iframe.get_attribute('scrolling').lower() == 'auto'
-              parent_iframe_bg = driver.execute_script("return getComputedStyle(arguments[0]).backgroundColor", iframe)
-              assert parent_iframe_bg in ('rgb(255, 255, 255)', 'rgba(255, 255, 255, 1)'), parent_iframe_bg
-              driver.save_screenshot(str(out / 'index-mobile-menu-top.png'))
-
-              driver.switch_to.frame(iframe)
-              body_bg = driver.execute_script("return getComputedStyle(document.body).backgroundColor")
-              wrapper_bg = driver.execute_script("return getComputedStyle(document.getElementById('sub-wrapper')).backgroundColor")
-              assert body_bg in ('rgb(255, 255, 255)', 'rgba(255, 255, 255, 1)'), body_bg
-              assert wrapper_bg in ('rgb(255, 255, 255)', 'rgba(255, 255, 255, 1)'), wrapper_bg
-
-              first_links = driver.find_elements(By.CSS_SELECTOR, '#sub-menu > ul:first-of-type li a')
-              link_texts = [x.text.strip() for x in first_links]
-              fav_index = link_texts.index('お気に入りに追加')
-              history_index = link_texts.index('修正履歴')
-              assert history_index == fav_index + 1, link_texts
-
-              scroll_height = driver.execute_script("return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight)")
-              inner_height = driver.execute_script("return window.innerHeight")
-              assert scroll_height > inner_height + 100, (scroll_height, inner_height)
-              before_y = driver.execute_script("return window.scrollY")
-              ActionChains(driver).scroll_by_amount(0, 700).perform()
-              time.sleep(0.7)
-              after_y = driver.execute_script("return window.scrollY")
-              assert after_y > before_y + 10, (before_y, after_y)
-              driver.switch_to.default_content()
-              driver.save_screenshot(str(out / 'index-mobile-menu-scrolled.png'))
-
-              driver.get(base + 'fem/fem_7_2_2.html')
-              wait.until(lambda d: len(d.find_elements(By.CSS_SELECTOR, 'mjx-container')) > 0)
-              time.sleep(1.5)
-              metrics = driver.execute_script('''
-                  const bad = [];
-                  document.querySelectorAll('.math-block').forEach((b, i) => {
-                    const c = b.querySelector('mjx-container[display="true"]');
-                    if (!c) return;
-                    const br = b.getBoundingClientRect();
-                    const cr = c.getBoundingClientRect();
-                    if (cr.right > br.right + 2 || cr.left < br.left - 2) {
-                      bad.push({i, blockWidth: br.width, mathWidth: cr.width, left: cr.left-br.left, right: cr.right-br.right});
-                    }
-                  });
-                  return {bad, docScrollWidth: document.documentElement.scrollWidth, innerWidth: window.innerWidth};
-              ''')
-              assert metrics['docScrollWidth'] <= metrics['innerWidth'] + 2, metrics
-              assert not metrics['bad'], metrics['bad'][:10]
-              driver.save_screenshot(str(out / 'fem722-mobile.png'))
-
-              driver.set_window_size(1365, 900)
-              driver.get(base + 'index.html')
-              wait.until(EC.presence_of_element_located((By.ID, 'menu')))
-              driver.save_screenshot(str(out / 'index-desktop.png'))
-
-              driver.get(base + 'fem/fem_7_2_2.html')
-              wait.until(lambda d: len(d.find_elements(By.CSS_SELECTOR, 'mjx-container')) > 0)
-              time.sleep(1)
-              driver.save_screenshot(str(out / 'fem722-desktop.png'))
-
-              print('Browser checks: OK')
-              print('Mobile formula metrics:', metrics)
-          finally:
-              driver.quit()
-          PY
+      - name: Browser, wheel-scroll and screenshot checks
+        run: python3 .github/scripts/verify_site_ui_v1_4_browser.py
 
       - name: Commit verified changes
         run: |
@@ -213,8 +47,10 @@ jobs:
           git push origin HEAD:develop
 
       - name: Upload visual evidence
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: site-ui-v1-4-evidence
           path: /tmp/site-ui-v1-4/*.png
+          if-no-files-found: ignore
           retention-days: 7
