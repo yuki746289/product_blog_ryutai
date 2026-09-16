@@ -67,7 +67,7 @@
 			<p>速度、圧力を内挿関数で表示して</p>
 			<p class="im" style="text-align:left;"><img src="./../img/fem_d_mass_tet.files/image006.png"></p>
 			<br><br>
-			<p>速度、圧力は定数なので積分の外に出す</p>
+			<p id="fix-r-fem3d-mass-001">形状関数内挿後の節点自由度は積分変数に依存しないため、積分の外に出します。この式変形では、対流項の係数側に現れる <span class="ft"><i>V</i><sub>x</sub>, <i>V</i><sub>y</sub>, <i>V</i><sub>z</sub></span> を既知係数として扱う線形化を前提としています。</p>
 			<p class="im" style="text-align:left;"><img src="./../img/fem_d_mass_tet.files/image007.png"></p>
 			<br><br>
 			<p>行列式で表す</p>

@@ -11,6 +11,13 @@
 
 	<title>運動量収支式の離散化（有限要素法）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+	<script>
+	window.MathJax = {
+		tex: {inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']]},
+		chtml: {displayAlign: 'left', displayIndent: '0'}
+	};
+	</script>
+	<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id"   value="4">
@@ -54,10 +61,26 @@
 			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image002.png"></p>
 			<br><br>
 			<p>内挿関数<span class="ft"><i>N<sub>i</sub></i></span>を重み関数に使用すると離散化式は次式となります。</p>
-			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image003.png"></p>
+			<div class="math-block" id="fix-r-fem2d-mom-001">
+\[
+\int_S
+\begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}\phi_i\,dS
+=\int_S
+\begin{bmatrix}0\\0\\0\end{bmatrix}dS
+=\begin{bmatrix}0\\0\\0\end{bmatrix}.
+\]
+</div>
 			<br><br>
 			<p>速度、圧力は、内挿関数<span class="ft"><i>N<sub>i</sub></i></span>を用いてそれぞれ次式で表されます。</p>
-			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image004.png"></p>
+			<div class="math-block" id="fix-r-fem2d-mom-002">
+\[
+\begin{aligned}
+V_x &= N_1V_{x,1}+N_2V_{x,2}+N_3V_{x,3}=[N]\{V_x\},\\
+V_y &= N_1V_{y,1}+N_2V_{y,2}+N_3V_{y,3}=[N]\{V_y\},\\
+P   &= N_1P_1+N_2P_2+N_3P_3=[N]\{P\}.
+\end{aligned}
+\]
+</div>
 			<br><br>
 			<p><span class="ft"><i>i</i></span>軸方向の離散化式は、次式となります。</p>
 			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image005.png"></p>
@@ -76,7 +99,7 @@
 			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image012.png"></p><br>
 			<p>速度、圧力を内挿関数で表示して</p>
 			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image013.png"></p><br>
-			<p>速度、圧力は定数なので積分の外に出す</p>
+			<p>形状関数内挿後の節点自由度は積分変数に依存しないため、積分の外に出します。</p>
 			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image014.png"></p><br>
 
 			<p>行列式で表す</p>
@@ -106,7 +129,28 @@
 			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image026.png"></p><br>
 
 			<p>ここで、面積積分、体積積分の公式より</p>
-			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image027.png"></p><br>
+			<div class="math-block" id="fix-r-fem2d-mom-003">
+<span id="fix-r-fem2d-mom-005"></span>
+\[
+\int_S L_1^pL_2^qL_3^r\,dS
+=\frac{p!q!r!}{(p+q+r+2)!}\,2A,
+\]
+\[
+\int_S L_iL_j\,dS=
+\begin{cases}
+\dfrac{A}{12}, & i\ne j,\\[4pt]
+\dfrac{A}{6}, & i=j,
+\end{cases}
+\qquad
+\int_S L_i\,dS=\frac{A}{3},
+\]
+\[
+\int_L L_1^pL_2^q\,dL
+=\frac{p!q!}{(p+q+1)!}\,L,
+\qquad
+\int_L L_i\,dL=\frac{L}{2}.
+\]
+</div><br>
 
 			<p>形状関数を積分すると</p>
 			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image028.png"></p><br>
@@ -117,7 +161,17 @@
 			<p><span class="ft"><i>y</i></span>軸方向の粘性項と圧力項</p>
 			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image031.png"></p><br>
 			<p>表面張力項</p>
-			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image032.png"></p><br>
+			<div class="math-block" id="fix-r-fem2d-mom-004">
+\[
++\frac{K^*}{We}\,n_iL
+\begin{bmatrix}1\\1\end{bmatrix}
+\]
+</div>
+<div class="correction-note" id="fix-r-fem2d-mom-007">
+境界辺上の2節点ベクトルは、要素方程式へ加算するときに境界辺の節点番号から三角形要素の3節点へ写像します。以降では
+\(\mathbf b_L=A_L^T[1\;1]^T\)
+と表し、例えば境界辺が要素節点1-2なら \(\mathbf b_L=[1\;1\;0]^T\) となります。
+</div><br>
 			<p>重力項</p>
 			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image033.png"></p><br>
 
@@ -130,26 +184,104 @@
 			<p><span class="ft"><i>y</i></span>軸方向の粘性項と圧力項</p>
 			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image036.png"></p><br>
 			<p>表面張力項</p>
-			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image032.png"></p><br>
+			<div class="math-block">
+\[
++\frac{K^*}{We}\,n_iL
+\begin{bmatrix}1\\1\end{bmatrix}
+\]
+</div><br>
 			<p>重力項</p>
 			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image033.png"></p><br>
 
 			<p>行列式をまとめると</p>
-			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image037.png"></p><br>
+			<div class="math-block">
+\[
+\begin{aligned}
+0={}&[C]\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}
++V_x[C_x]\{V_i\}+V_y[C_y]\{V_i\}\\
+&+\frac1{Re}[S_{xx}]\{V_i\}+\frac1{Re}[S_{xi}]\{V_x\}-\delta_{xi}[H_x]\{P\}\\
+&+\frac1{Re}[S_{yy}]\{V_i\}+\frac1{Re}[S_{yi}]\{V_y\}-\delta_{yi}[H_y]\{P\}\\
+&+\frac{K^*}{We}Ln_i\,\mathbf b_L
+-g_i^*\frac{A}{3}\begin{bmatrix}1\\1\\1\end{bmatrix},\qquad i=1,2.
+\end{aligned}
+\]
+</div><br>
 
 			<p>行列ごとにまとめると</p>
-			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image038.png"></p><br>
+			<div class="math-block" id="fix-r-fem2d-mom-006">
+\[
+\begin{aligned}
+0={}&[C]\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}
++(V_x[C_x]+V_y[C_y])\{V_i\}\\
+&+\frac1{Re}([S_{xx}]+[S_{yy}])\{V_i\}
++\frac1{Re}([S_{xi}]\{V_x\}+[S_{yi}]\{V_y\})\\
+&-(\delta_{xi}[H_x]+\delta_{yi}[H_y])\{P\}
++\frac{K^*}{We}Ln_i\,\mathbf b_L
+-g_i^*\frac{A}{3}\begin{bmatrix}1\\1\\1\end{bmatrix},\qquad i=1,2.
+\end{aligned}
+\]
+</div><br>
 
 			<p>最終的に次式が導出されます。</p>
-			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image039.png"></p><br>
+			<div class="math-block">
+\[
+\begin{aligned}
+[C]\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}
+&+(V_x[C_x]+V_y[C_y])\{V_i\}
++\frac1{Re}([S_{xx}]+[S_{yy}])\{V_i\}\\
+&+\frac1{Re}([S_{xi}]\{V_x\}+[S_{yi}]\{V_y\})
+-(\delta_{xi}[H_x]+\delta_{yi}[H_y])\{P\}\\
+&+\frac{K^*}{We}Ln_i\,\mathbf b_L
+-g_i^*\frac{A}{3}\begin{bmatrix}1\\1\\1\end{bmatrix}
+=\begin{bmatrix}0\\0\\0\end{bmatrix},\qquad i=1,2.
+\end{aligned}
+\]
+</div><br>
 
-			<p>既知の項を右辺に移項すします。</p>
-			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image040.png"></p><br>
+			<p>既知の項を右辺に移項します。</p>
+			<div class="math-block">
+\[
+\begin{aligned}
+\frac{[C]}{\Delta\tau}\{V_i\}^{\tau+\Delta\tau}
+&+(V_x[C_x]+V_y[C_y])\{V_i\}^{\tau+\Delta\tau}
++\frac1{Re}([S_{xx}]+[S_{yy}])\{V_i\}^{\tau+\Delta\tau}\\
+&+\frac1{Re}([S_{xi}]\{V_x\}^{\tau+\Delta\tau}+[S_{yi}]\{V_y\}^{\tau+\Delta\tau})
+-(\delta_{xi}[H_x]+\delta_{yi}[H_y])\{P\}^{\tau+\Delta\tau}\\
+&=\frac{[C]}{\Delta\tau}\{V_i\}^{\tau}
+-\frac{K^*}{We}Ln_i\,\mathbf b_L
++g_i^*\frac{A}{3}\begin{bmatrix}1\\1\\1\end{bmatrix},\qquad i=1,2.
+\end{aligned}
+\]
+</div><br>
 
 			<p><span class="ft"><i>x</i></span>軸方向の成分は次式となります。</p>
-			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image041.png"></p><br>
+			<div class="math-block">
+\[
+\begin{aligned}
+\frac{[C]}{\Delta\tau}\{V_x\}^{\tau+\Delta\tau}
+&+(V_x[C_x]+V_y[C_y])\{V_x\}^{\tau+\Delta\tau}\\
+&+\frac1{Re}\left((2[S_{xx}]+[S_{yy}])\{V_x\}^{\tau+\Delta\tau}
++[S_{yx}]\{V_y\}^{\tau+\Delta\tau}-[H_x]\{P\}^{\tau+\Delta\tau}\right)\\
+&=\frac{[C]}{\Delta\tau}\{V_x\}^{\tau}
+-\frac{K^*}{We}Ln_x\,\mathbf b_L
++g_x^*\frac{A}{3}\begin{bmatrix}1\\1\\1\end{bmatrix}.
+\end{aligned}
+\]
+</div><br>
 			<p><span class="ft"><i>y</i></span>軸方向の成分は次式となります。</p>
-			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tri.files/image042.png"></p><br>
+			<div class="math-block">
+\[
+\begin{aligned}
+\frac{[C]}{\Delta\tau}\{V_y\}^{\tau+\Delta\tau}
+&+(V_x[C_x]+V_y[C_y])\{V_y\}^{\tau+\Delta\tau}\\
+&+\frac1{Re}\left([S_{xy}]\{V_x\}^{\tau+\Delta\tau}
++([S_{xx}]+2[S_{yy}])\{V_y\}^{\tau+\Delta\tau}-[H_y]\{P\}^{\tau+\Delta\tau}\right)\\
+&=\frac{[C]}{\Delta\tau}\{V_y\}^{\tau}
+-\frac{K^*}{We}Ln_y\,\mathbf b_L
++g_y^*\frac{A}{3}\begin{bmatrix}1\\1\\1\end{bmatrix}.
+\end{aligned}
+\]
+</div><br>
 			<br>
 
 

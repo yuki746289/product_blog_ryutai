@@ -11,6 +11,13 @@
 
 	<title>運動量収支式の離散化（有限要素法）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+	<script>
+	window.MathJax = {
+		tex: {inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']]},
+		chtml: {displayAlign: 'left', displayIndent: '0'}
+	};
+	</script>
+	<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id"   value="4">
@@ -77,7 +84,7 @@
 			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tet.files/image013.png"></p><br>
 			<p>速度、圧力を内挿関数で表示して</p>
 			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tet.files/image014.png"></p><br>
-			<p>速度、圧力は定数なので積分の外に出す</p>
+			<p>形状関数内挿後の節点自由度は積分変数に依存しないため、積分の外に出します。</p>
 			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tet.files/image015.png"></p><br>
 
 			<p>行列式で表す</p>
@@ -127,6 +134,9 @@
 			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tet.files/image036.png"></p><br>
 			<p>重力項</p>
 			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tet.files/image037.png"></p><br>
+			<div class="correction-note" id="fix-r-fem3d-mom-001">
+				境界三角形で得られる3節点の表面力ベクトルは、要素方程式へ加算するときに境界面の節点番号から四面体4節点へ写像します。以下の式ではこのアセンブリ写像を省略しています。面局所ベクトルを \(\mathbf f_S\) とすると、要素ベクトルは \(\mathbf f_e=A_S^T\mathbf f_S\) です。例えば境界面が要素節点1-2-3なら、第4成分を0として加算します。
+			</div>
 
 			<p>係数をまとめて</p>
 			<p class="im" style="text-align:left;"><img src="./../img/fem_d_momentum_tet.files/image031.png"></p><br>
