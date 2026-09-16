@@ -1,0 +1,47 @@
+name: Verify Site UI v1.5 Samples
+
+on:
+  push:
+    branches:
+      - develop
+    paths:
+      - '.github/workflows/verify-site-ui-v1-5-samples.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout develop
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - name: Install Japanese fonts and Selenium
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fonts-noto-cjk
+          fc-cache -f
+          python3 -m pip install --quiet selenium
+
+      - name: Start local server
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/site-ui-v15-http.log 2>&1 &
+          echo $! > /tmp/site-ui-v15-http.pid
+          sleep 2
+
+      - name: Verify actual pages and design samples
+        run: python3 .github/scripts/verify_site_ui_v1_5_samples.py
+
+      - name: Upload review screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-ui-v1-5-design-review
+          path: /tmp/site-ui-v1-5/*.png
+          if-no-files-found: error
+          retention-days: 7
