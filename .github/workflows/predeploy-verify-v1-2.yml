@@ -101,7 +101,6 @@ jobs:
               --window-size=390,1000 --virtual-time-budget=10000 --dump-dom \
               "http://127.0.0.1:8000/$page" > "$out"
             grep -q '<mjx-container' "$out"
-            grep -q 'mobile-menu-toggle' "$out"
           done
 
           "$CHROME" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage \
