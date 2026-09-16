@@ -1,4 +1,4 @@
-name: Apply and Verify Site UI v1.4
+name: Verify Site UI v1.4 Final
 
 on:
   push:
@@ -8,10 +8,10 @@ on:
       - '.github/workflows/apply-site-ui-v1-4.yml'
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  apply-verify:
+  verify-final:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -21,11 +21,12 @@ jobs:
           ref: develop
           fetch-depth: 0
 
-      - name: Apply and statically verify v1.4
-        run: python3 .github/scripts/run_site_ui_v1_4.py
-
-      - name: Install browser test dependency
-        run: python3 -m pip install --quiet selenium
+      - name: Install Japanese fonts and browser dependency
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fonts-noto-cjk
+          fc-cache -f
+          python3 -m pip install --quiet selenium
 
       - name: Start local server
         run: |
@@ -33,24 +34,14 @@ jobs:
           echo $! > /tmp/site-ui-http.pid
           sleep 2
 
-      - name: Browser, wheel-scroll and screenshot checks
+      - name: Browser, wheel-scroll, background and screenshot checks
         run: python3 .github/scripts/verify_site_ui_v1_4_browser.py
 
-      - name: Commit verified changes
-        run: |
-          git config user.name 'takapi'
-          git config user.email 'yuki_taka83@hotmail.com'
-          git add css/math.css css/responsive.css menu.html index.html footer.html \
-            fem/fem_6_2_6.html fem/fem_7_1_1.html fem/fem_7_1_2.html fem/fem_7_2_1.html fem/fem_7_2_2.html
-          git diff --cached --quiet && { echo 'No implementation changes found'; exit 1; }
-          git commit -m 'fix: improve formula and mobile menu display'
-          git push origin HEAD:develop
-
-      - name: Upload visual evidence
+      - name: Upload final visual evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: site-ui-v1-4-evidence
+          name: site-ui-v1-4-final-evidence
           path: /tmp/site-ui-v1-4/*.png
           if-no-files-found: ignore
           retention-days: 7
