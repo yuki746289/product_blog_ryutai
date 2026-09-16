@@ -154,11 +154,11 @@ updateApacheState() {
         return 1
     fi
 
-    # [L302] localhostが既に応答しているか確認する (S003)
-    httpCode="$(curl -sS -o /dev/null --max-time 2 -w '%{http_code}' 'http://localhost/' || true)"
+    # [L302] localUrlが既に応答しているか確認する (S003)
+    httpCode="$(curl -sS -o /dev/null --max-time 2 -w '%{http_code}' "${localUrl}" || true)"
     if [[ -n "${httpCode}" && "${httpCode}" != "000" ]]; then
         # [L306] 起動済みの場合は重複起動しない (S003)
-        writeLog "Apache is already responding on localhost."
+        writeLog "Apache is already serving the local preview URL."
         # [O003] S003成功ステータス
         return 0
     fi
@@ -176,7 +176,7 @@ updateApacheState() {
     # [L304] 最大10回、1秒間隔で応答待機する (S003)
     for retryCount in $(seq 1 10); do
         sleep 1
-        httpCode="$(curl -sS -o /dev/null --max-time 2 -w '%{http_code}' 'http://localhost/' || true)"
+        httpCode="$(curl -sS -o /dev/null --max-time 2 -w '%{http_code}' "${localUrl}" || true)"
         if [[ -n "${httpCode}" && "${httpCode}" != "000" ]]; then
             writeLog "Apache started."
             # [O003] S003成功ステータス
@@ -185,7 +185,7 @@ updateApacheState() {
     done
 
     # [L305] 起動失敗時はログ位置を示して異常終了する (S003)
-    printf 'ERROR: Apache did not respond on http://localhost/.\n' >&2
+    printf 'ERROR: Apache did not respond on %s\n' "${localUrl}" >&2
     if [[ -f "${apacheLog}" ]]; then
         printf 'Apache start log: %s\n' "${apacheLog}" >&2
     fi
@@ -220,7 +220,7 @@ refreshLocalPreview() {
     return 0
 }
 
-writeLog "Rail View/ryutai local deploy start"
+writeLog "ryutai local deploy start"
 checkEnvironment
 updateLocalSite
 updateApacheState
