@@ -43,10 +43,8 @@ jobs:
               for n in nums:
                   src = f'./../img/{imgdir}/image{n:03d}.png'
                   assert not re.search(r'<img\b[^>]*\bsrc=["\']' + re.escape(src) + r'["\']', text, re.I), (page, src)
-                  assert Path('img') / imgdir / f'image{n:03d}.png', 'trace source path constructed'
                   assert (Path('img') / imgdir / f'image{n:03d}.png').exists(), (page, n)
 
-          # 3D momentum-specific consistency.
           mom3 = Path('fem/fem_7_2_2.html').read_bytes().decode('cp932')
           assert mom3.count('data-source-image="./../img/fem_d_momentum_tet.files/image') == 51
           assert r'\mathbf b_S=A_S^T' in mom3
@@ -55,13 +53,10 @@ jobs:
           assert 'formula-fem-7-2-2-031-repeat-2' in mom3
           assert 'formula-fem-7-2-2-037-repeat-2' in mom3
 
-          # Revision history is genuinely UTF-8 and declares UTF-8.
           rh_raw = Path('revision_history.html').read_bytes()
           rh = rh_raw.decode('utf-8')
           assert 'charset=utf-8' in rh.lower()
           assert '修正履歴' in rh
-
-          # Every revision-history fragment exists in its target page.
           links = re.findall(r'href="(\./[^"#]+)#([^"]+)"', rh)
           assert len(links) >= 13, len(links)
           for rel, frag in links:
@@ -73,15 +68,13 @@ jobs:
                   t = raw.decode('cp932')
               assert f'id="{frag}"' in t, (rel, frag)
 
-          # Responsive/navigation essentials.
           responsive = Path('css/responsive.css').read_text(encoding='utf-8')
           assert '@media screen and (max-width: 767px)' in responsive
           assert '.math-block' in Path('css/math.css').read_text(encoding='utf-8')
           menu = Path('menu.html').read_bytes().decode('cp932')
-          for token in ['refreshMobileNavigation', 'updateMobileMenuState', 'mobile-menu-toggle']:
+          for token in ['refreshMobileNavigation', 'updateMobileMenuState']:
               assert token in menu, token
 
-          # The new history link remains discoverable from the shared footer.
           footer_raw = Path('footer.html').read_bytes()
           try:
               footer = footer_raw.decode('cp932')
@@ -111,7 +104,6 @@ jobs:
             grep -q 'mobile-menu-toggle' "$out"
           done
 
-          # Top-of-page screenshots: no fragment scrolling.
           "$CHROME" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage \
             --window-size=390,1100 --virtual-time-budget=10000 \
             --screenshot=/tmp/predeploy/fem722-mobile-top.png \
