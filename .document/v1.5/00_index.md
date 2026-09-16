@@ -24,9 +24,9 @@
 |`03_利用者・権限.md`|KEEP|変更なし|-|
 |`04_画面・画面遷移.md`|MOD|メニュー・履歴・サンプル画面仕様追加|UI-NAV-004,UI-HISTORY-002,UI-DESIGN-001|
 |`05_機能・入出力.md`|MOD|PC/スマホ別iframe制御、履歴表示、サンプル表示追加|FN-NAV-003,FN-HISTORY-002,FN-DESIGN-001|
-|`06_データ・API・外部連携.md`|KEEP|変更なし|-|
+|`06_データ・API・外部連携.md`|MOD|サンプルの外部依存禁止条件を追加|EXT-DESIGN-001|
 |`07_ファイル・セキュリティ・非機能.md`|MOD|左メニュー・スクロール・サンプル表示条件追加|NFR-UI-003,NFR-DESIGN-001|
-|`08_ログ・エラー.md`|KEEP|変更なし|-|
+|`08_ログ・エラー.md`|MOD|メニュー制御・サンプルのフォールバックを追加|ERR-NAV-001,ERR-DESIGN-001|
 |`09_図・受け入れ条件.md`|MOD|表示不具合とデザインサンプルの受入条件追加|ACC-UI-009〜013,ACC-DESIGN-001〜004|
 |`10_未決事項・変更履歴.md`|MOD|v1.5履歴追加|CHG-002|
 
@@ -37,8 +37,10 @@
 - FN-NAV-003 → 05
 - FN-HISTORY-002 → 05
 - FN-DESIGN-001 → 05
+- EXT-DESIGN-001 → 06
 - NFR-UI-003 → 07
 - NFR-DESIGN-001 → 07
+- ERR-NAV-001 / ERR-DESIGN-001 → 08
 - ACC-UI-009〜013 → 09
 - ACC-DESIGN-001〜004 → 09
 
