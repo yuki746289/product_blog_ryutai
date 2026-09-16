@@ -22,7 +22,28 @@ jobs:
           fetch-depth: 0
 
       - name: Apply v1.4 transformation
-        run: python3 .github/scripts/apply_site_ui_v1_4.py
+        run: |
+          # The correction-history table intentionally keeps its own horizontal scroll.
+          # Narrow the transformation script's validation to the math-block rules only.
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('.github/scripts/apply_site_ui_v1_4.py')
+          text = p.read_text(encoding='utf-8')
+          old = '''    math_css = (ROOT / "css/math.css").read_text(encoding="utf-8")
+    if "overflow-x: auto" in math_css or "min-width: max-content" in math_css:
+        raise RuntimeError("math.css still contains horizontal-scroll rules")
+'''
+          new = '''    math_css = (ROOT / "css/math.css").read_text(encoding="utf-8")
+    math_block = math_css.split(".math-block {", 1)[1].split("}", 1)[0]
+    math_container = math_css.split('.math-block mjx-container[display="true"] {', 1)[1].split("}", 1)[0]
+    if "overflow-x: auto" in math_block or "min-width: max-content" in math_container:
+        raise RuntimeError("math-block still contains horizontal-scroll rules")
+'''
+          if old not in text:
+              raise SystemExit('validation patch target not found')
+          p.write_text(text.replace(old, new, 1), encoding='utf-8')
+          PY
+          python3 .github/scripts/apply_site_ui_v1_4.py
 
       - name: Static checks
         run: |
@@ -33,8 +54,10 @@ jobs:
               return Path(path).read_bytes().decode('cp932')
 
           math_css = Path('css/math.css').read_text(encoding='utf-8')
-          assert 'overflow-x: auto' not in math_css
-          assert 'min-width: max-content' not in math_css
+          math_block = math_css.split('.math-block {', 1)[1].split('}', 1)[0]
+          math_container = math_css.split('.math-block mjx-container[display="true"] {', 1)[1].split('}', 1)[0]
+          assert 'overflow-x: auto' not in math_block
+          assert 'min-width: max-content' not in math_container
 
           responsive = Path('css/responsive.css').read_text(encoding='utf-8')
           for token in ['overflow-y: auto', 'overscroll-behavior: contain', 'background-color: #ffffff']:
@@ -105,7 +128,6 @@ jobs:
           wait = WebDriverWait(driver, 25)
 
           try:
-              # Mobile top page and menu checks
               driver.set_window_size(390, 1000)
               driver.get(base + 'index.html')
               wait.until(EC.presence_of_element_located((By.ID, 'mobile-menu-button')))
@@ -144,7 +166,6 @@ jobs:
               driver.switch_to.default_content()
               driver.save_screenshot(str(out / 'index-mobile-menu-scrolled.png'))
 
-              # Mobile MathJax layout: no horizontal scroll and no math-block overflow
               driver.get(base + 'fem/fem_7_2_2.html')
               wait.until(lambda d: len(d.find_elements(By.CSS_SELECTOR, 'mjx-container')) > 0)
               time.sleep(1.5)
@@ -159,17 +180,12 @@ jobs:
                       bad.push({i, blockWidth: br.width, mathWidth: cr.width, left: cr.left-br.left, right: cr.right-br.right});
                     }
                   });
-                  return {
-                    bad,
-                    docScrollWidth: document.documentElement.scrollWidth,
-                    innerWidth: window.innerWidth
-                  };
+                  return {bad, docScrollWidth: document.documentElement.scrollWidth, innerWidth: window.innerWidth};
               ''')
               assert metrics['docScrollWidth'] <= metrics['innerWidth'] + 2, metrics
               assert not metrics['bad'], metrics['bad'][:10]
               driver.save_screenshot(str(out / 'fem722-mobile.png'))
 
-              # Desktop visual evidence
               driver.set_window_size(1365, 900)
               driver.get(base + 'index.html')
               wait.until(EC.presence_of_element_located((By.ID, 'menu')))
