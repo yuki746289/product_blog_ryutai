@@ -2,6 +2,7 @@
   "version": "1.3",
   "summary": "Git Bashで更新済みdevelopをApache htdocs/ryutaiへローカル配備し、HTTP確認後にブラウザ表示する",
   "features": [
+    {"id":"L001","sourceStepId":"COMMON","type":"ADD","summary":"ログ出力フラグ確認と標準出力","targetFunction":"writeLog"},
     {"id":"L101","sourceStepId":"S001","type":"ADD","summary":"Git管理下確認","targetFunction":"checkEnvironment"},
     {"id":"L102","sourceStepId":"S001","type":"ADD","summary":"developブランチ確認","targetFunction":"checkEnvironment"},
     {"id":"L103","sourceStepId":"S001","type":"ADD","summary":"dirty警告","targetFunction":"checkEnvironment"},
@@ -30,7 +31,9 @@
     {"id":"F004","type":"ADD","name":"refreshLocalPreview","description":"HTTP疎通確認とブラウザ表示"},
     {"id":"T001","type":"ADD","name":"writeLog","description":"ログ出力補助"}
   ],
-  "inputs": [],
+  "inputs": [
+    {"id":"I001","type":"ADD","name":"message","dataType":"string","description":"writeLogへ渡すログメッセージ"}
+  ],
   "outputs": [
     {"id":"O001","type":"ADD","name":"status","dataType":"integer","description":"S001結果"},
     {"id":"O002","type":"ADD","name":"status","dataType":"integer","description":"S002結果"},
@@ -48,17 +51,6 @@
     {"id":"V008","type":"ADD","name":"openBrowser","dataType":"integer","description":"ブラウザ起動制御"}
   ],
   "deleted_items": {"features":[],"functions":[],"inputs":[],"outputs":[],"variables":[]},
-  "constraints": [
-    "Windows + Git Bashで実行",
-    "事前にdevelopをgit pull --ff-only origin develop",
-    "apacheRoot既定値は/c/server/Apache24",
-    "公開先はapacheRoot/htdocs/ryutai",
-    "Apache設定は変更しない",
-    "本番FTPへ接続しない"
-  ],
-  "invariants": [
-    "元サイトファイルの文字コードを変換しない",
-    "htdocs/ryutai以外を削除しない",
-    "release_1.0.0および本番FTPを変更しない"
-  ]
+  "constraints": ["Windows + Git Bashで実行","事前にdevelopをgit pull --ff-only origin develop","apacheRoot既定値は/c/server/Apache24","公開先はapacheRoot/htdocs/ryutai","Apache設定は変更しない","本番FTPへ接続しない"],
+  "invariants": ["元サイトファイルの文字コードを変換しない","htdocs/ryutai以外を削除しない","release_1.0.0および本番FTPを変更しない"]
 }
