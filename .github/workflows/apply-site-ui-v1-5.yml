@@ -1,0 +1,34 @@
+name: Apply Site UI v1.5
+
+on:
+  push:
+    branches:
+      - develop
+    paths:
+      - '.github/workflows/apply-site-ui-v1-5.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout develop
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - name: Apply and validate v1.5
+        run: python3 .github/scripts/apply_site_ui_v1_5.py
+
+      - name: Commit verified fixes
+        run: |
+          git config user.name 'takapi'
+          git config user.email 'yuki_taka83@hotmail.com'
+          git add menu.html css/lib.css css/responsive.css css/math.css revision_history.html
+          git diff --cached --quiet && { echo 'No implementation changes found'; exit 1; }
+          git commit -m 'fix: refine menu and revision history display'
+          git push origin HEAD:develop
