@@ -8,6 +8,7 @@
     {"id":"S004","type":"ADD","name":"refreshLocalPreview","description":"HTTP確認・ブラウザ表示"}
   ],
   "features": [
+    {"id":"L001","sourceStepId":"COMMON","type":"ADD","summary":"ログ出力フラグ確認と標準出力","targetFunction":"writeLog"},
     {"id":"L101","sourceStepId":"S001","type":"ADD","summary":"Git管理下確認","targetFunction":"checkEnvironment"},
     {"id":"L102","sourceStepId":"S001","type":"ADD","summary":"developブランチ確認","targetFunction":"checkEnvironment"},
     {"id":"L103","sourceStepId":"S001","type":"ADD","summary":"dirty警告","targetFunction":"checkEnvironment"},
@@ -36,7 +37,9 @@
     {"id":"F004","sourceStepId":"S004","type":"ADD","name":"refreshLocalPreview","description":"HTTP確認とブラウザ表示"},
     {"id":"T001","sourceStepId":"COMMON","type":"ADD","name":"writeLog","description":"ログ出力補助"}
   ],
-  "inputs": [],
+  "inputs": [
+    {"id":"I001","sourceStepId":"COMMON","type":"ADD","name":"message","dataType":"string","description":"writeLogへ渡すログメッセージ"}
+  ],
   "outputs": [
     {"id":"O001","sourceStepId":"S001","type":"ADD","name":"status","dataType":"integer","description":"環境検証結果"},
     {"id":"O002","sourceStepId":"S002","type":"ADD","name":"status","dataType":"integer","description":"コピー結果"},
@@ -54,15 +57,6 @@
     {"id":"V008","type":"ADD","name":"openBrowser","dataType":"integer","description":"ブラウザ起動制御"}
   ],
   "deleted_items": {"features":[],"functions":[],"inputs":[],"outputs":[],"variables":[]},
-  "constraints": [
-    "Windows + Git Bash",
-    "developを事前にpullしてから実行",
-    "Apache設定ファイルは変更しない",
-    "本番FTPへ接続しない"
-  ],
-  "invariants": [
-    "サイト元ファイルの文字コードを変換しない",
-    "htdocs/ryutai以外のApache公開領域を削除しない",
-    "本番環境を変更しない"
-  ]
+  "constraints": ["Windows + Git Bash","developを事前にpullしてから実行","Apache設定ファイルは変更しない","本番FTPへ接続しない"],
+  "invariants": ["サイト元ファイルの文字コードを変換しない","htdocs/ryutai以外のApache公開領域を削除しない","本番環境を変更しない"]
 }
