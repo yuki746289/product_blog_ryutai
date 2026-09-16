@@ -5,7 +5,7 @@
  * - [ADD]: Normal / Large / Extra Large selector in the upper-right header area.
  * - [ADD]: Persist selected size in localStorage when available.
  * - [ADD]: Inject the dedicated font-size stylesheet into the parent page.
- * - [MOD]: None. This is a new shared JavaScript file.
+ * - [MOD]: Add a version query to the stylesheet URL so encoding-fix CSS is not served from cache.
  * - [DEL]: None.
  */
 "use strict";
@@ -22,7 +22,7 @@ var mapSiteFontSizeV16Config = {
         {key: "xlarge", label: "\u7279\u5927", className: "rv-font-xlarge"}
     ],
     styleUrl: new URL(
-        "../css/site_font_size_v1_6.css",
+        "../css/site_font_size_v1_6.css?v=20260917b",
         document.currentScript && document.currentScript.src ? document.currentScript.src : window.location.href
     ).href
 };
