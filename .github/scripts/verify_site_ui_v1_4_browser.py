@@ -34,10 +34,20 @@ def assert_white(value: str, label: str) -> None:
         raise AssertionError(f"{label} is not white: {value}")
 
 
+def assert_mobile_wrapper_clean(driver, label: str) -> None:
+    wrapper = driver.find_element(By.ID, "wrapper")
+    background_image = driver.execute_script("return getComputedStyle(arguments[0]).backgroundImage", wrapper)
+    background_color = driver.execute_script("return getComputedStyle(arguments[0]).backgroundColor", wrapper)
+    if background_image != "none":
+        raise AssertionError(f"{label} wrapper background image remains: {background_image}")
+    assert_white(background_color, f"{label} wrapper")
+
+
 def verify_mobile_menu(driver, wait) -> None:
     driver.set_window_size(390, 1000)
     driver.get(BASE_URL + "index.html")
     wait.until(EC.presence_of_element_located((By.ID, "mobile-menu-button")))
+    assert_mobile_wrapper_clean(driver, "index")
     if "修正履歴はこちら" not in driver.page_source:
         raise AssertionError("top-page revision-history notice missing")
     driver.save_screenshot(str(OUTPUT_DIR / "index-mobile-closed.png"))
@@ -58,8 +68,13 @@ def verify_mobile_menu(driver, wait) -> None:
     wrapper_background = driver.execute_script(
         "return getComputedStyle(document.getElementById('sub-wrapper')).backgroundColor"
     )
+    wrapper_image = driver.execute_script(
+        "return getComputedStyle(document.getElementById('sub-wrapper')).backgroundImage"
+    )
     assert_white(body_background, "menu body")
     assert_white(wrapper_background, "menu wrapper")
+    if wrapper_image != "none":
+        raise AssertionError(f"menu wrapper background image remains: {wrapper_image}")
 
     first_links = driver.find_elements(By.CSS_SELECTOR, "#sub-menu > ul:first-of-type li a")
     link_texts = [element.text.strip() for element in first_links]
@@ -93,6 +108,7 @@ def verify_math_layout(driver, wait) -> None:
     for page in MATH_PAGES:
         driver.get(BASE_URL + page)
         wait.until(lambda d: len(d.find_elements(By.CSS_SELECTOR, "mjx-container")) > 0)
+        assert_mobile_wrapper_clean(driver, page)
         time.sleep(1.2)
         metrics = driver.execute_script(
             """
