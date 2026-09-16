@@ -6,6 +6,7 @@ on:
       - develop
     paths:
       - '.github/workflows/convert-fem-6-2-6-mathjax.yml'
+      - '.github/scripts/convert-fem-6-2-6-mathjax.py'
 
 permissions:
   contents: write
@@ -37,10 +38,8 @@ jobs:
           assert text.count('data-source-image="./../img/fem_n_tet.files/image') == 12
           assert len(re.findall(r'id="formula-fem-6-2-6-\d{3}"', text)) == 12
           for n in range(21, 33):
-              assert f'fem_n_tet.files/image{n:03d}.png' not in text.replace(
-                  f'data-source-image="./../img/fem_n_tet.files/image{n:03d}.png"', ''
-              )
-          # Basic formula tokens from all four nodes/directions.
+              src = f'./../img/fem_n_tet.files/image{n:03d}.png'
+              assert not re.search(r'<img\b[^>]*\bsrc=["\']' + re.escape(src) + r'["\']', text, re.I)
           for token in ['c_{1x}', 'c_{1y}', 'c_{1z}', 'c_{2x}', 'c_{2y}', 'c_{2z}',
                         'c_{3x}', 'c_{3y}', 'c_{3z}', 'c_{4x}', 'c_{4y}', 'c_{4z}']:
               assert token in text, token
