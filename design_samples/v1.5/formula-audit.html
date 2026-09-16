@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>数式 元画像一致監査</title>
+  <link rel="stylesheet" href="./formula-audit.css">
+</head>
+<body>
+  <header class="audit-header">
+    <div>
+      <p class="audit-kicker">Formula source fidelity audit</p>
+      <h1>数式 元画像一致監査</h1>
+      <p>元画像と現在のMathJax表示を式ID単位で並べ、Pass 1 / Pass 2を記録します。数学的同値性ではなく、元画像との表記一致を確認します。</p>
+    </div>
+    <a href="./gray/index.html">デザインサンプルへ</a>
+  </header>
+
+  <main class="audit-main">
+    <section class="audit-controls" aria-label="監査対象選択">
+      <label for="audit-page">対象ページ</label>
+      <select id="audit-page">
+        <option value="../../fem/fem_7_1_2.html">3角形1次要素：運動量収支式（42画像）</option>
+        <option value="../../fem/fem_7_2_2.html">4面体1次要素：運動量収支式（49画像）</option>
+        <option value="../../fem/fem_7_1_1.html">3角形1次要素：質量収支式</option>
+        <option value="../../fem/fem_7_2_1.html">4面体1次要素：質量収支式（20画像）</option>
+        <option value="../../fem/fem_6_2_6.html">4面体1次要素：内挿関数の微分まとめ（12画像）</option>
+        <option value="../../fem/fem_6_2_1.html">4面体1次要素：要素の体積</option>
+      </select>
+      <button id="audit-load" type="button">読み込み</button>
+      <label class="audit-custom-label" for="audit-custom">任意ページ</label>
+      <input id="audit-custom" type="text" inputmode="url" placeholder="例: ../../fem/fem_7_2_2.html">
+      <button id="audit-load-custom" type="button">任意ページを読み込み</button>
+    </section>
+
+    <section class="audit-summary" aria-live="polite">
+      <div><span>式</span><strong id="count-total">0</strong></div>
+      <div><span>Pass 1</span><strong id="count-pass1">0</strong></div>
+      <div><span>Pass 2</span><strong id="count-pass2">0</strong></div>
+      <div><span>一致OK</span><strong id="count-match">0</strong></div>
+      <div><span>要修正</span><strong id="count-fix">0</strong></div>
+    </section>
+
+    <p id="audit-status" class="audit-status">対象ページを読み込んでいます。</p>
+    <div id="audit-list" class="audit-list"></div>
+
+    <section class="audit-help">
+      <h2>判定ルール</h2>
+      <ol>
+        <li><strong>Pass 1:</strong> 元画像とLaTeX/式内容を、文字・記号・添字・係数・符号・項順・行列成分単位で確認。</li>
+        <li><strong>Pass 2:</strong> ブラウザで描画されたMathJaxと元画像を目視比較。</li>
+        <li>数学的に同値でも表記が違えば「要修正」。誤記候補は原文式を維持し、補足として分離。</li>
+        <li>チェック状態とメモは、このブラウザのlocalStorageに保存されます。</li>
+      </ol>
+    </section>
+  </main>
+
+  <iframe id="audit-frame" title="監査対象ページ" hidden></iframe>
+  <script src="./formula-audit.js"></script>
+</body>
+</html>
