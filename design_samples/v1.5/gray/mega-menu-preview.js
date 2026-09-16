@@ -14,6 +14,10 @@
   var mobileOverlay = document.querySelector(".mm-mobile-overlay");
   var mobileClose = document.querySelector(".mm-mobile-close");
 
+  if(mobileDrawer){
+    mobileDrawer.setAttribute("inert", "");
+  }
+
   function closeDesktopMenus(){
     desktopButtons.forEach(function(button){
       button.setAttribute("aria-expanded", "false");
@@ -66,6 +70,7 @@
       return;
     }
     document.body.classList.add("mm-drawer-open");
+    mobileDrawer.removeAttribute("inert");
     mobileDrawer.classList.add("is-open");
     mobileOverlay.classList.add("is-open");
     mobileTrigger.setAttribute("aria-expanded", "true");
@@ -76,11 +81,16 @@
     if(!mobileDrawer || !mobileOverlay || !mobileTrigger){
       return;
     }
+    var restoreFocus = document.activeElement && mobileDrawer.contains(document.activeElement);
     document.body.classList.remove("mm-drawer-open");
     mobileDrawer.classList.remove("is-open");
     mobileOverlay.classList.remove("is-open");
     mobileTrigger.setAttribute("aria-expanded", "false");
     mobileDrawer.setAttribute("aria-hidden", "true");
+    mobileDrawer.setAttribute("inert", "");
+    if(restoreFocus && window.getComputedStyle(mobileTrigger).display !== "none"){
+      mobileTrigger.focus();
+    }
   }
 
   if(mobileTrigger){
