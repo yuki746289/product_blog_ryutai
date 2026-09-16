@@ -1,0 +1,68 @@
+{
+  "version": "1.3",
+  "summary": "Git BashからApache htdocs/ryutaiへローカル配備する初版設計",
+  "steps": [
+    {"id":"S001","type":"ADD","name":"checkEnvironment","description":"実行環境検証"},
+    {"id":"S002","type":"ADD","name":"updateLocalSite","description":"公開ファイルコピー"},
+    {"id":"S003","type":"ADD","name":"updateApacheState","description":"Apache確認・起動"},
+    {"id":"S004","type":"ADD","name":"refreshLocalPreview","description":"HTTP確認・ブラウザ表示"}
+  ],
+  "features": [
+    {"id":"L101","sourceStepId":"S001","type":"ADD","summary":"Git管理下確認","targetFunction":"checkEnvironment"},
+    {"id":"L102","sourceStepId":"S001","type":"ADD","summary":"developブランチ確認","targetFunction":"checkEnvironment"},
+    {"id":"L103","sourceStepId":"S001","type":"ADD","summary":"dirty警告","targetFunction":"checkEnvironment"},
+    {"id":"L104","sourceStepId":"S001","type":"ADD","summary":"index.html確認","targetFunction":"checkEnvironment"},
+    {"id":"L105","sourceStepId":"S001","type":"ADD","summary":"Apache実体確認","targetFunction":"checkEnvironment"},
+    {"id":"L201","sourceStepId":"S002","type":"ADD","summary":"既存targetDir削除","targetFunction":"updateLocalSite"},
+    {"id":"L202","sourceStepId":"S002","type":"ADD","summary":"targetDir再作成","targetFunction":"updateLocalSite"},
+    {"id":"L203","sourceStepId":"S002","type":"ADD","summary":"開発管理物を除外してコピー","targetFunction":"updateLocalSite"},
+    {"id":"L204","sourceStepId":"S002","type":"ADD","summary":"コピー後index検証","targetFunction":"updateLocalSite"},
+    {"id":"L205","sourceStepId":"S002","type":"ADD","summary":"配置先ログ","targetFunction":"updateLocalSite"},
+    {"id":"L301","sourceStepId":"S003","type":"ADD","summary":"Apache設定テスト","targetFunction":"updateApacheState"},
+    {"id":"L302","sourceStepId":"S003","type":"ADD","summary":"localhost応答確認","targetFunction":"updateApacheState"},
+    {"id":"L303","sourceStepId":"S003","type":"ADD","summary":"Apacheバックグラウンド起動","targetFunction":"updateApacheState"},
+    {"id":"L304","sourceStepId":"S003","type":"ADD","summary":"起動応答リトライ","targetFunction":"updateApacheState"},
+    {"id":"L305","sourceStepId":"S003","type":"ADD","summary":"起動失敗処理","targetFunction":"updateApacheState"},
+    {"id":"L306","sourceStepId":"S003","type":"ADD","summary":"重複起動回避","targetFunction":"updateApacheState"},
+    {"id":"L401","sourceStepId":"S004","type":"ADD","summary":"localUrl HTTP確認","targetFunction":"refreshLocalPreview"},
+    {"id":"L402","sourceStepId":"S004","type":"ADD","summary":"成功URLログ","targetFunction":"refreshLocalPreview"},
+    {"id":"L403","sourceStepId":"S004","type":"ADD","summary":"既定ブラウザ起動","targetFunction":"refreshLocalPreview"},
+    {"id":"L404","sourceStepId":"S004","type":"ADD","summary":"ブラウザ起動失敗を警告","targetFunction":"refreshLocalPreview"}
+  ],
+  "functions": [
+    {"id":"F001","sourceStepId":"S001","type":"ADD","name":"checkEnvironment","description":"実行環境を検証"},
+    {"id":"F002","sourceStepId":"S002","type":"ADD","name":"updateLocalSite","description":"公開ファイルをコピー"},
+    {"id":"F003","sourceStepId":"S003","type":"ADD","name":"updateApacheState","description":"Apacheを検証・起動"},
+    {"id":"F004","sourceStepId":"S004","type":"ADD","name":"refreshLocalPreview","description":"HTTP確認とブラウザ表示"},
+    {"id":"T001","sourceStepId":"COMMON","type":"ADD","name":"writeLog","description":"ログ出力補助"}
+  ],
+  "inputs": [],
+  "outputs": [
+    {"id":"O001","sourceStepId":"S001","type":"ADD","name":"status","dataType":"integer","description":"環境検証結果"},
+    {"id":"O002","sourceStepId":"S002","type":"ADD","name":"status","dataType":"integer","description":"コピー結果"},
+    {"id":"O003","sourceStepId":"S003","type":"ADD","name":"status","dataType":"integer","description":"Apache確認結果"},
+    {"id":"O004","sourceStepId":"S004","type":"ADD","name":"status","dataType":"integer","description":"HTTP確認結果"}
+  ],
+  "variables": [
+    {"id":"V001","type":"ADD","name":"repoRoot","dataType":"string","description":"リポジトリルート"},
+    {"id":"V002","type":"ADD","name":"apacheRoot","dataType":"string","description":"Apacheルート"},
+    {"id":"V003","type":"ADD","name":"targetDir","dataType":"string","description":"公開先"},
+    {"id":"V004","type":"ADD","name":"localUrl","dataType":"string","description":"確認URL"},
+    {"id":"V005","type":"ADD","name":"httpdExe","dataType":"string","description":"httpd.exeパス"},
+    {"id":"V006","type":"ADD","name":"httpdConf","dataType":"string","description":"httpd.confパス"},
+    {"id":"V007","type":"ADD","name":"isOutputLog","dataType":"integer","description":"ログ制御"},
+    {"id":"V008","type":"ADD","name":"openBrowser","dataType":"integer","description":"ブラウザ起動制御"}
+  ],
+  "deleted_items": {"features":[],"functions":[],"inputs":[],"outputs":[],"variables":[]},
+  "constraints": [
+    "Windows + Git Bash",
+    "developを事前にpullしてから実行",
+    "Apache設定ファイルは変更しない",
+    "本番FTPへ接続しない"
+  ],
+  "invariants": [
+    "サイト元ファイルの文字コードを変換しない",
+    "htdocs/ryutai以外のApache公開領域を削除しない",
+    "本番環境を変更しない"
+  ]
+}
