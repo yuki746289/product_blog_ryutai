@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+/**
+ * Updated: 2026/09/17
+ * Summary: [S008] Header utility navigation sizing for v1.6.
+ */
+
+/* Title-under utility menu: Normal / Large / Extra Large = 14 / 16 / 18px. */
+body.rv-nav-ready .rv-utility-navigation {
+    font-size: 14px !important;
+    line-height: 1.55;
+}
+
+body.rv-nav-ready.rv-font-large .rv-utility-navigation {
+    font-size: 16px !important;
+}
+
+body.rv-nav-ready.rv-font-xlarge .rv-utility-navigation {
+    font-size: 18px !important;
+}
+
+.rv-utility-old-page {
+    font-weight: 650;
+}
+
+@media (max-width: 767px) {
+    body.rv-nav-ready .rv-mobile-utility a {
+        font-size: 12px !important;
+    }
+
+    body.rv-nav-ready.rv-font-large .rv-mobile-utility a {
+        font-size: 13px !important;
+    }
+
+    body.rv-nav-ready.rv-font-xlarge .rv-mobile-utility a {
+        font-size: 14px !important;
+    }
+}
