@@ -1,21 +1,23 @@
 /**
  * Updated: 2026/09/17
- * Summary: [S008] Refine the v1.6 header utility navigation and add a same-page legacy link.
+ * Summary: [S008][S009] Consolidate utility links into a leading Home menu and enable hover-to-open/click-to-top desktop navigation.
  * Differences from previous version:
- * - [ADD]: Hide obsolete utility links in the new UI.
- * - [ADD]: Add an old-page link after revision history.
- * - [ADD]: Resolve the old-page URL to the same relative path under /old/.
- * - [ADD]: Load dedicated utility-navigation CSS.
+ * - [MOD]: Remove the separate title-under utility row after copying its links into Home.
+ * - [ADD]: Add Home as the first global category with Home/intro/profile/Q&A/sitemap/link/history/old-page links.
+ * - [ADD]: Open desktop mega panels on hover/focus while category clicks navigate to each category top.
+ * - [ADD]: Use the site map as the click destination for the virtual Other category.
  */
 "use strict";
 
-// [V003] Utility-navigation configuration. Japanese labels use Unicode escapes.
 var mapSiteUtilityV16Config = {
     styleElementId: "rv-site-utility-v1-6-style",
-    oldLinkClassName: "rv-utility-old-page",
+    appliedClassName: "rv-home-navigation-ready",
+    homeCategoryKey: "home",
+    homeCategoryLabel: "\u30db\u30fc\u30e0",
     oldDirectoryName: "old/",
     oldPageLabel: "\u65e7\u30da\u30fc\u30b8",
     revisionLabel: "\u4fee\u6b63\u5c65\u6b74",
+    sitemapLabel: "\u30b5\u30a4\u30c8\u30de\u30c3\u30d7",
     excludedLabels: [
         "\u30e1\u30fc\u30eb",
         "\u63b2\u793a\u677f",
@@ -27,8 +29,6 @@ var mapSiteUtilityV16Config = {
     ).href
 };
 
-// [F008] Apply header utility cleanup, sizing CSS, and the matching legacy-page link.
-// [O017] Return value: isApplied.
 function refreshHeaderUtilityV16() {
     var isApplied = false;
     if (parent === self) {
@@ -37,92 +37,275 @@ function refreshHeaderUtilityV16() {
 
     var parentWindow = parent;
     var parentDocument = parentWindow.document;
+    var parentBody = parentDocument.body;
+    if (!parentBody) {
+        return isApplied;
+    }
+    if (parentBody.classList.contains(mapSiteUtilityV16Config.appliedClassName)) {
+        return true;
+    }
+
+    var desktopNavigation = parentDocument.querySelector(".rv-site-navigation");
+    var categoryBar = desktopNavigation ? desktopNavigation.querySelector(".rv-category-bar") : null;
     var desktopUtility = parentDocument.querySelector(".rv-utility-navigation");
+    var mobileDrawer = parentDocument.querySelector(".rv-mobile-drawer");
     var mobileUtility = parentDocument.querySelector(".rv-mobile-utility");
-    if (!desktopUtility || !mobileUtility) {
+    var mobileCategories = parentDocument.querySelector(".rv-mobile-categories");
+    if (!desktopNavigation || !categoryBar || !desktopUtility ||
+        !mobileDrawer || !mobileUtility || !mobileCategories) {
         return isApplied;
     }
 
-    // [L731] Load the utility-specific stylesheet only once.
-    var styleElement = parentDocument.getElementById(mapSiteUtilityV16Config.styleElementId);
-    if (!styleElement) {
-        styleElement = parentDocument.createElement("link");
-        styleElement.id = mapSiteUtilityV16Config.styleElementId;
-        styleElement.rel = "stylesheet";
-        styleElement.type = "text/css";
-        styleElement.href = new URL(
-            "css/site_utility_v1_6.css?v=20260917a",
-            mapSiteUtilityV16Config.baseUrl
-        ).href;
-        parentDocument.head.appendChild(styleElement);
+    registUtilityStylesheetV16(parentDocument);
+
+    var listUtilityLinks = selectUtilityLinkModelsV16(desktopUtility);
+    var oldPageModel = createOldPageModelV16(parentWindow);
+    listUtilityLinks.push(oldPageModel);
+
+    var homeLinkModel = selectLinkModelByLabelV16(
+        listUtilityLinks,
+        mapSiteUtilityV16Config.homeCategoryLabel
+    );
+    var sitemapLinkModel = selectLinkModelByLabelV16(
+        listUtilityLinks,
+        mapSiteUtilityV16Config.sitemapLabel
+    );
+    if (!homeLinkModel) {
+        return isApplied;
     }
 
-    var listContainers = [desktopUtility, mobileUtility];
-    listContainers.forEach(function(containerElement) {
-        // [L732] Remove obsolete links from the new navigation only; legacy pages remain unchanged.
-        var listLinks = Array.prototype.slice.call(containerElement.querySelectorAll("a"));
-        listLinks.forEach(function(linkElement) {
-            var label = (linkElement.textContent || "").replace(/^\s+|\s+$/g, "");
-            if (mapSiteUtilityV16Config.excludedLabels.indexOf(label) >= 0) {
-                linkElement.parentNode.removeChild(linkElement);
-            }
-        });
+    registDesktopHomeCategoryV16(
+        parentDocument,
+        desktopNavigation,
+        categoryBar,
+        listUtilityLinks,
+        homeLinkModel
+    );
+    convertDesktopCategoryLinksV16(
+        parentDocument,
+        desktopNavigation,
+        sitemapLinkModel
+    );
+    registDesktopHoverNavigationV16(parentDocument, desktopNavigation);
+    registMobileHomeCategoryV16(
+        parentDocument,
+        mobileCategories,
+        listUtilityLinks,
+        homeLinkModel
+    );
 
-        // [L733] Avoid duplicate old-page links when initialization is retried.
-        var existingOldLink = containerElement.querySelector("." + mapSiteUtilityV16Config.oldLinkClassName);
-        if (existingOldLink) {
-            existingOldLink.parentNode.removeChild(existingOldLink);
-        }
+    if (desktopUtility.parentNode) {
+        desktopUtility.parentNode.removeChild(desktopUtility);
+    }
+    if (mobileUtility.parentNode) {
+        mobileUtility.parentNode.removeChild(mobileUtility);
+    }
 
-        // [L734] Build the same relative page path under /old/.
-        var currentUrl = new URL(parentWindow.location.href);
-        var baseUrl = new URL(mapSiteUtilityV16Config.baseUrl);
-        var relativePath = currentUrl.pathname;
-        if (relativePath.indexOf(baseUrl.pathname) === 0) {
-            relativePath = relativePath.substring(baseUrl.pathname.length);
-        }
-        relativePath = relativePath.replace(/^\/+/, "");
-        if (!relativePath) {
-            relativePath = "index.html";
-        } else if (relativePath.charAt(relativePath.length - 1) === "/") {
-            relativePath += "index.html";
-        }
-
-        var oldPageUrl = new URL(
-            mapSiteUtilityV16Config.oldDirectoryName + relativePath,
-            baseUrl
-        );
-        oldPageUrl.search = currentUrl.search;
-        oldPageUrl.hash = currentUrl.hash;
-
-        var oldLink = parentDocument.createElement("a");
-        oldLink.className = mapSiteUtilityV16Config.oldLinkClassName;
-        oldLink.href = oldPageUrl.href;
-        oldLink.textContent = mapSiteUtilityV16Config.oldPageLabel;
-        oldLink.target = "_blank";
-        oldLink.rel = "noopener";
-        oldLink.title = "\u73fe\u5728\u306e\u30da\u30fc\u30b8\u3068\u540c\u3058\u5834\u6240\u306e\u65e7\u7248\u3092\u65b0\u3057\u3044\u30bf\u30d6\u3067\u958b\u304d\u307e\u3059";
-
-        // [L735] Insert immediately after revision history when it exists.
-        var revisionLink = null;
-        Array.prototype.slice.call(containerElement.querySelectorAll("a")).some(function(linkElement) {
-            var label = (linkElement.textContent || "").replace(/^\s+|\s+$/g, "");
-            if (label === mapSiteUtilityV16Config.revisionLabel) {
-                revisionLink = linkElement;
-                return true;
-            }
-            return false;
-        });
-
-        if (revisionLink && revisionLink.nextSibling) {
-            containerElement.insertBefore(oldLink, revisionLink.nextSibling);
-        } else {
-            containerElement.appendChild(oldLink);
-        }
-    });
-
+    parentBody.classList.add(mapSiteUtilityV16Config.appliedClassName);
     isApplied = true;
     return isApplied;
+}
+
+function registUtilityStylesheetV16(parentDocument) {
+    var styleElement = parentDocument.getElementById(mapSiteUtilityV16Config.styleElementId);
+    if (styleElement) {
+        return styleElement;
+    }
+    styleElement = parentDocument.createElement("link");
+    styleElement.id = mapSiteUtilityV16Config.styleElementId;
+    styleElement.rel = "stylesheet";
+    styleElement.type = "text/css";
+    styleElement.href = new URL(
+        "css/site_utility_v1_6.css?v=20260917b",
+        mapSiteUtilityV16Config.baseUrl
+    ).href;
+    parentDocument.head.appendChild(styleElement);
+    return styleElement;
+}
+
+function selectUtilityLinkModelsV16(containerElement) {
+    var listModels = [];
+    var listLinks = Array.prototype.slice.call(containerElement.querySelectorAll("a"));
+    listLinks.forEach(function(linkElement) {
+        var label = (linkElement.textContent || "").replace(/^\s+|\s+$/g, "");
+        if (!label || mapSiteUtilityV16Config.excludedLabels.indexOf(label) >= 0) {
+            return;
+        }
+        listModels.push({
+            text: label,
+            href: linkElement.href,
+            target: linkElement.target || ""
+        });
+    });
+    return listModels;
+}
+
+function selectLinkModelByLabelV16(listModels, label) {
+    var result = null;
+    listModels.some(function(linkModel) {
+        if (linkModel.text === label) {
+            result = linkModel;
+            return true;
+        }
+        return false;
+    });
+    return result;
+}
+
+function createOldPageModelV16(parentWindow) {
+    var currentUrl = new URL(parentWindow.location.href);
+    var baseUrl = new URL(mapSiteUtilityV16Config.baseUrl);
+    var relativePath = currentUrl.pathname;
+    if (relativePath.indexOf(baseUrl.pathname) === 0) {
+        relativePath = relativePath.substring(baseUrl.pathname.length);
+    }
+    relativePath = relativePath.replace(/^\/+/, "");
+    if (!relativePath) {
+        relativePath = "index.html";
+    } else if (relativePath.charAt(relativePath.length - 1) === "/") {
+        relativePath += "index.html";
+    }
+
+    var oldPageUrl = new URL(
+        mapSiteUtilityV16Config.oldDirectoryName + relativePath,
+        baseUrl
+    );
+    oldPageUrl.search = currentUrl.search;
+    oldPageUrl.hash = currentUrl.hash;
+    return {
+        text: mapSiteUtilityV16Config.oldPageLabel,
+        href: oldPageUrl.href,
+        target: "_blank"
+    };
+}
+
+function registDesktopHomeCategoryV16(
+    parentDocument,
+    desktopNavigation,
+    categoryBar,
+    listUtilityLinks,
+    homeLinkModel
+) {
+    var panelId = "rv-mega-panel-" + mapSiteUtilityV16Config.homeCategoryKey;
+    var homeLink = parentDocument.createElement("a");
+    homeLink.className = "rv-category-button rv-category-link rv-home-category-link";
+    homeLink.href = homeLinkModel.href;
+    homeLink.textContent = mapSiteUtilityV16Config.homeCategoryLabel;
+    homeLink.setAttribute("data-rv-category", mapSiteUtilityV16Config.homeCategoryKey);
+    homeLink.setAttribute("aria-expanded", "false");
+    homeLink.setAttribute("aria-controls", panelId);
+    homeLink.setAttribute("aria-haspopup", "true");
+    categoryBar.insertBefore(homeLink, categoryBar.firstChild);
+
+    var homePanel = parentDocument.createElement("section");
+    homePanel.id = panelId;
+    homePanel.className = "rv-mega-panel rv-home-mega-panel";
+    homePanel.setAttribute("data-rv-panel", mapSiteUtilityV16Config.homeCategoryKey);
+
+    var homeInner = parentDocument.createElement("div");
+    homeInner.className = "rv-mega-inner";
+    var homeHeading = parentDocument.createElement("div");
+    homeHeading.className = "rv-mega-heading";
+    var homeTitle = parentDocument.createElement("h2");
+    homeTitle.textContent = mapSiteUtilityV16Config.homeCategoryLabel;
+    homeHeading.appendChild(homeTitle);
+    homeInner.appendChild(homeHeading);
+
+    var homeGrid = parentDocument.createElement("div");
+    homeGrid.className = "rv-home-link-grid";
+    listUtilityLinks.forEach(function(linkModel) {
+        homeGrid.appendChild(createUtilityAnchorV16(parentDocument, linkModel, "rv-home-menu-link"));
+    });
+    homeInner.appendChild(homeGrid);
+    homePanel.appendChild(homeInner);
+
+    var firstPanel = desktopNavigation.querySelector(".rv-mega-panel");
+    if (firstPanel) {
+        desktopNavigation.insertBefore(homePanel, firstPanel);
+    } else {
+        desktopNavigation.appendChild(homePanel);
+    }
+}
+
+function convertDesktopCategoryLinksV16(parentDocument, desktopNavigation, sitemapLinkModel) {
+    var listButtons = Array.prototype.slice.call(
+        desktopNavigation.querySelectorAll(".rv-category-bar > button.rv-category-button")
+    );
+    listButtons.forEach(function(categoryButton) {
+        var categoryKey = categoryButton.getAttribute("data-rv-category") || "";
+        var panelId = categoryButton.getAttribute("aria-controls") || "";
+        var panelElement = panelId ? parentDocument.getElementById(panelId) : null;
+        var topLink = panelElement ? panelElement.querySelector(".rv-mega-heading > a") : null;
+        var destination = topLink ? topLink.href : "";
+        if (!destination && categoryKey === "other" && sitemapLinkModel) {
+            destination = sitemapLinkModel.href;
+        }
+        if (!destination) {
+            destination = mapSiteUtilityV16Config.baseUrl;
+        }
+
+        var categoryLink = parentDocument.createElement("a");
+        categoryLink.className = categoryButton.className + " rv-category-link";
+        categoryLink.href = destination;
+        categoryLink.textContent = categoryButton.textContent;
+        categoryLink.setAttribute("data-rv-category", categoryKey);
+        categoryLink.setAttribute("aria-expanded", "false");
+        categoryLink.setAttribute("aria-controls", panelId);
+        categoryLink.setAttribute("aria-haspopup", "true");
+        categoryButton.parentNode.replaceChild(categoryLink, categoryButton);
+    });
+}
+
+function registDesktopHoverNavigationV16(parentDocument, desktopNavigation) {
+    var listCategoryLinks = Array.prototype.slice.call(
+        desktopNavigation.querySelectorAll(".rv-category-bar > .rv-category-link")
+    );
+    listCategoryLinks.forEach(function(categoryLink) {
+        var categoryKey = categoryLink.getAttribute("data-rv-category");
+        categoryLink.addEventListener("mouseenter", function() {
+            updateDesktopMenuState(parentDocument, categoryKey, true);
+        });
+        categoryLink.addEventListener("focus", function() {
+            updateDesktopMenuState(parentDocument, categoryKey, true);
+        });
+    });
+
+    desktopNavigation.addEventListener("mouseleave", function() {
+        updateDesktopMenuState(parentDocument, null, false);
+    });
+}
+
+function registMobileHomeCategoryV16(
+    parentDocument,
+    mobileCategories,
+    listUtilityLinks,
+    homeLinkModel
+) {
+    var homeDetails = parentDocument.createElement("details");
+    homeDetails.className = "rv-mobile-category rv-mobile-home-category";
+    var homeSummary = parentDocument.createElement("summary");
+    homeSummary.textContent = mapSiteUtilityV16Config.homeCategoryLabel;
+    homeDetails.appendChild(homeSummary);
+
+    var homeBody = parentDocument.createElement("div");
+    homeBody.className = "rv-mobile-category-body rv-mobile-home-links";
+    listUtilityLinks.forEach(function(linkModel) {
+        homeBody.appendChild(createUtilityAnchorV16(parentDocument, linkModel, "rv-mobile-link"));
+    });
+    homeDetails.appendChild(homeBody);
+    mobileCategories.insertBefore(homeDetails, mobileCategories.firstChild);
+}
+
+function createUtilityAnchorV16(parentDocument, linkModel, className) {
+    var linkElement = parentDocument.createElement("a");
+    linkElement.className = className;
+    linkElement.href = linkModel.href;
+    linkElement.textContent = linkModel.text;
+    if (linkModel.target === "_blank") {
+        linkElement.target = "_blank";
+        linkElement.rel = "noopener";
+    }
+    return linkElement;
 }
 
 window.addEventListener("load", function() {
@@ -130,7 +313,6 @@ window.addEventListener("load", function() {
         return;
     }
 
-    // Navigation creation can finish after its stylesheet load. Observe briefly and apply once ready.
     var parentDocument = parent !== self ? parent.document : null;
     if (!parentDocument || !parentDocument.body || typeof MutationObserver === "undefined") {
         return;
