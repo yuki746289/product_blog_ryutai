@@ -1,0 +1,101 @@
+name: Convert FEM 7.1.2 MathJax
+
+on:
+  push:
+    branches:
+      - develop
+    paths:
+      - '.github/workflows/convert-fem-7-1-2-mathjax.yml'
+      - '.github/scripts/convert-fem-7-1-2-mathjax.py'
+
+permissions:
+  contents: write
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout develop
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - name: Convert formulas
+        run: python3 .github/scripts/convert-fem-7-1-2-mathjax.py
+
+      - name: Static validation
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          text = Path('fem/fem_7_1_2.html').read_bytes().decode('cp932')
+
+          assert 'charset=shift_jis' in text.lower()
+          assert 'tex-mml-chtml.js' in text
+          for n in range(1, 43):
+              assert f'formula-fem-7-1-2-{n:03d}' in text, n
+              src = f'./../img/fem_d_momentum_tri.files/image{n:03d}.png'
+              assert not re.search(r'<img\b[^>]*\bsrc=["\']' + re.escape(src) + r'["\']', text, re.I), src
+
+          for anchor in [
+              'fix-r-fem2d-mom-001','fix-r-fem2d-mom-002','fix-r-fem2d-mom-003',
+              'fix-r-fem2d-mom-004','fix-r-fem2d-mom-005','fix-r-fem2d-mom-006',
+              'fix-r-fem2d-mom-007'
+          ]:
+              assert f'id="{anchor}"' in text, anchor
+
+          # Corrected line integral and its propagated surface-tension coefficient.
+          assert '(p+q+1)!' in text
+          assert '\\int_L L_i\\,dL=\\frac{L}{2}' in text
+          assert '\\frac{K^*}{We}Ln_i\\,\\mathbf b_L' in text
+          assert '\\frac{2K^*}{We}n_i\\int_L' in text  # before line integration
+          assert '\\frac1{4ARe}' in text
+          assert '\\frac{\\delta_{xi}}6' in text
+          assert 'i=1,2,3' not in text
+          print('Static validation passed.')
+          PY
+
+      - name: Browser rendering validation
+        run: |
+          CHROME="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || true)"
+          test -n "$CHROME"
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/fem712-http.log 2>&1 &
+          PID=$!
+          trap 'kill $PID 2>/dev/null || true' EXIT
+          sleep 2
+          mkdir -p /tmp/fem712
+
+          "$CHROME" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage \
+            --window-size=390,1200 --virtual-time-budget=10000 \
+            --dump-dom http://127.0.0.1:8000/fem/fem_7_1_2.html \
+            > /tmp/fem712/mobile-dom.html
+          grep -q '<mjx-container' /tmp/fem712/mobile-dom.html
+          test "$(grep -o '<mjx-container' /tmp/fem712/mobile-dom.html | wc -l)" -ge 42
+
+          "$CHROME" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage \
+            --window-size=390,1200 --virtual-time-budget=10000 \
+            --screenshot=/tmp/fem712/mobile.png \
+            http://127.0.0.1:8000/fem/fem_7_1_2.html
+          "$CHROME" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage \
+            --window-size=1365,1000 --virtual-time-budget=10000 \
+            --screenshot=/tmp/fem712/desktop.png \
+            http://127.0.0.1:8000/fem/fem_7_1_2.html
+          test -s /tmp/fem712/mobile.png
+          test -s /tmp/fem712/desktop.png
+
+      - name: Commit converted page
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add fem/fem_7_1_2.html
+          git commit -m "feat: convert triangular momentum discretization to MathJax"
+          git push origin HEAD:develop
+
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: fem-7-1-2-mathjax
+          path: /tmp/fem712/*.png
+          retention-days: 7
