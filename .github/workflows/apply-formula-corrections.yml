@@ -37,6 +37,25 @@ jobs:
       - name: Apply corrections
         run: python3 .github/scripts/apply-formula-corrections.py
 
+      - name: Replace repeated surface tension formula
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          p = Path('fem/fem_7_1_2.html')
+          text = p.read_bytes().decode('cp932')
+          pat = re.compile(r'<p class="im"[^>]*>\s*<img src="\./\.\./img/fem_d_momentum_tri\.files/image032\.png">\s*</p>', re.I)
+          repl = r'''<div class="math-block">
+          \[
+          +\frac{K^*}{We}\,n_iL
+          \begin{bmatrix}1\\1\end{bmatrix}
+          \]
+          </div>'''
+          text, n = pat.subn(lambda _m: repl, text)
+          assert n == 1, n
+          p.write_bytes(text.encode('cp932'))
+          PY
+
       - name: Validate corrections
         run: |
           python3 - <<'PY'
