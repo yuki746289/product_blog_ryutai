@@ -1,0 +1,92 @@
+name: Convert FEM 6.2.6 MathJax
+
+on:
+  push:
+    branches:
+      - develop
+    paths:
+      - '.github/workflows/convert-fem-6-2-6-mathjax.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout develop
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - name: Convert formulas
+        run: python3 .github/scripts/convert-fem-6-2-6-mathjax.py
+
+      - name: Static validation
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          p = Path('fem/fem_6_2_6.html')
+          text = p.read_bytes().decode('cp932')
+          assert 'charset=shift_jis' in text.lower()
+          assert 'tex-mml-chtml.js' in text
+          assert text.count('class="math-block"') == 12
+          assert text.count('data-source-image="./../img/fem_n_tet.files/image') == 12
+          assert len(re.findall(r'id="formula-fem-6-2-6-\d{3}"', text)) == 12
+          for n in range(21, 33):
+              assert f'fem_n_tet.files/image{n:03d}.png' not in text.replace(
+                  f'data-source-image="./../img/fem_n_tet.files/image{n:03d}.png"', ''
+              )
+          # Basic formula tokens from all four nodes/directions.
+          for token in ['c_{1x}', 'c_{1y}', 'c_{1z}', 'c_{2x}', 'c_{2y}', 'c_{2z}',
+                        'c_{3x}', 'c_{3y}', 'c_{3z}', 'c_{4x}', 'c_{4y}', 'c_{4z}']:
+              assert token in text, token
+          print('Static validation passed.')
+          PY
+
+      - name: Browser rendering validation
+        run: |
+          CHROME="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || true)"
+          test -n "$CHROME"
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/fem626-http.log 2>&1 &
+          PID=$!
+          trap 'kill $PID 2>/dev/null || true' EXIT
+          sleep 2
+          mkdir -p /tmp/fem626
+
+          "$CHROME" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage \
+            --window-size=375,1100 --virtual-time-budget=8000 \
+            --dump-dom \
+            'http://127.0.0.1:8000/fem/fem_6_2_6.html#formula-fem-6-2-6-021' \
+            > /tmp/fem626/mobile-dom.html
+          grep -q '<mjx-container' /tmp/fem626/mobile-dom.html
+          test "$(grep -o '<mjx-container' /tmp/fem626/mobile-dom.html | wc -l)" -ge 12
+
+          "$CHROME" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage \
+            --window-size=375,1100 --virtual-time-budget=8000 \
+            --screenshot=/tmp/fem626/mobile.png \
+            'http://127.0.0.1:8000/fem/fem_6_2_6.html#formula-fem-6-2-6-021'
+          "$CHROME" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage \
+            --window-size=1365,1000 --virtual-time-budget=8000 \
+            --screenshot=/tmp/fem626/desktop.png \
+            'http://127.0.0.1:8000/fem/fem_6_2_6.html#formula-fem-6-2-6-030'
+          test -s /tmp/fem626/mobile.png
+          test -s /tmp/fem626/desktop.png
+
+      - name: Commit converted page
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add fem/fem_6_2_6.html
+          git commit -m "feat: convert tetrahedral shape derivatives to MathJax"
+          git push origin HEAD:develop
+
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: fem-6-2-6-mathjax
+          path: /tmp/fem626/*.png
+          retention-days: 7
