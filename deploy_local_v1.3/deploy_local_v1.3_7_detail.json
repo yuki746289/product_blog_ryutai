@@ -1,0 +1,64 @@
+{
+  "version": "1.3",
+  "summary": "Git Bashで更新済みdevelopをApache htdocs/ryutaiへローカル配備し、HTTP確認後にブラウザ表示する",
+  "features": [
+    {"id":"L101","sourceStepId":"S001","type":"ADD","summary":"Git管理下確認","targetFunction":"checkEnvironment"},
+    {"id":"L102","sourceStepId":"S001","type":"ADD","summary":"developブランチ確認","targetFunction":"checkEnvironment"},
+    {"id":"L103","sourceStepId":"S001","type":"ADD","summary":"dirty警告","targetFunction":"checkEnvironment"},
+    {"id":"L104","sourceStepId":"S001","type":"ADD","summary":"index.html確認","targetFunction":"checkEnvironment"},
+    {"id":"L105","sourceStepId":"S001","type":"ADD","summary":"Apache実体確認","targetFunction":"checkEnvironment"},
+    {"id":"L201","sourceStepId":"S002","type":"ADD","summary":"既存targetDir削除","targetFunction":"updateLocalSite"},
+    {"id":"L202","sourceStepId":"S002","type":"ADD","summary":"targetDir再作成","targetFunction":"updateLocalSite"},
+    {"id":"L203","sourceStepId":"S002","type":"ADD","summary":"開発管理物除外コピー","targetFunction":"updateLocalSite"},
+    {"id":"L204","sourceStepId":"S002","type":"ADD","summary":"コピー後index検証","targetFunction":"updateLocalSite"},
+    {"id":"L205","sourceStepId":"S002","type":"ADD","summary":"配置先ログ","targetFunction":"updateLocalSite"},
+    {"id":"L301","sourceStepId":"S003","type":"ADD","summary":"Apache設定テスト","targetFunction":"updateApacheState"},
+    {"id":"L302","sourceStepId":"S003","type":"ADD","summary":"localhost応答確認","targetFunction":"updateApacheState"},
+    {"id":"L303","sourceStepId":"S003","type":"ADD","summary":"Apache起動","targetFunction":"updateApacheState"},
+    {"id":"L304","sourceStepId":"S003","type":"ADD","summary":"応答リトライ","targetFunction":"updateApacheState"},
+    {"id":"L305","sourceStepId":"S003","type":"ADD","summary":"起動失敗処理","targetFunction":"updateApacheState"},
+    {"id":"L306","sourceStepId":"S003","type":"ADD","summary":"重複起動回避","targetFunction":"updateApacheState"},
+    {"id":"L401","sourceStepId":"S004","type":"ADD","summary":"localUrl HTTP確認","targetFunction":"refreshLocalPreview"},
+    {"id":"L402","sourceStepId":"S004","type":"ADD","summary":"成功URLログ","targetFunction":"refreshLocalPreview"},
+    {"id":"L403","sourceStepId":"S004","type":"ADD","summary":"既定ブラウザ起動","targetFunction":"refreshLocalPreview"},
+    {"id":"L404","sourceStepId":"S004","type":"ADD","summary":"ブラウザ起動失敗警告","targetFunction":"refreshLocalPreview"}
+  ],
+  "functions": [
+    {"id":"F001","type":"ADD","name":"checkEnvironment","description":"リポジトリとApache前提条件を検証"},
+    {"id":"F002","type":"ADD","name":"updateLocalSite","description":"公開先を再作成して静的ファイルをコピー"},
+    {"id":"F003","type":"ADD","name":"updateApacheState","description":"Apache設定確認と必要時起動"},
+    {"id":"F004","type":"ADD","name":"refreshLocalPreview","description":"HTTP疎通確認とブラウザ表示"},
+    {"id":"T001","type":"ADD","name":"writeLog","description":"ログ出力補助"}
+  ],
+  "inputs": [],
+  "outputs": [
+    {"id":"O001","type":"ADD","name":"status","dataType":"integer","description":"S001結果"},
+    {"id":"O002","type":"ADD","name":"status","dataType":"integer","description":"S002結果"},
+    {"id":"O003","type":"ADD","name":"status","dataType":"integer","description":"S003結果"},
+    {"id":"O004","type":"ADD","name":"status","dataType":"integer","description":"S004結果"}
+  ],
+  "variables": [
+    {"id":"V001","type":"ADD","name":"repoRoot","dataType":"string","description":"リポジトリルート"},
+    {"id":"V002","type":"ADD","name":"apacheRoot","dataType":"string","description":"Apacheルート"},
+    {"id":"V003","type":"ADD","name":"targetDir","dataType":"string","description":"公開先"},
+    {"id":"V004","type":"ADD","name":"localUrl","dataType":"string","description":"確認URL"},
+    {"id":"V005","type":"ADD","name":"httpdExe","dataType":"string","description":"httpd.exeパス"},
+    {"id":"V006","type":"ADD","name":"httpdConf","dataType":"string","description":"httpd.confパス"},
+    {"id":"V007","type":"ADD","name":"isOutputLog","dataType":"integer","description":"ログ制御"},
+    {"id":"V008","type":"ADD","name":"openBrowser","dataType":"integer","description":"ブラウザ起動制御"}
+  ],
+  "deleted_items": {"features":[],"functions":[],"inputs":[],"outputs":[],"variables":[]},
+  "constraints": [
+    "Windows + Git Bashで実行",
+    "事前にdevelopをgit pull --ff-only origin develop",
+    "apacheRoot既定値は/c/server/Apache24",
+    "公開先はapacheRoot/htdocs/ryutai",
+    "Apache設定は変更しない",
+    "本番FTPへ接続しない"
+  ],
+  "invariants": [
+    "元サイトファイルの文字コードを変換しない",
+    "htdocs/ryutai以外を削除しない",
+    "release_1.0.0および本番FTPを変更しない"
+  ]
+}
