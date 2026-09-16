@@ -172,7 +172,7 @@
 
 	div#sub-wrapper,
 	div#sub-menu {
-		width: 100%;
+		width: 100% !important;
 		max-width: 100%;
 		box-sizing: border-box;
 	}
@@ -181,9 +181,18 @@
 		padding-top: 10px;
 	}
 
+	/* [L303] [MOD] セクション見出し（広告を含む）の幅・位置を統一 */
 	div.sub-text {
-		width: auto;
-		margin: 20px 12px 0 12px;
+		width: calc(100% - 24px) !important;
+		max-width: calc(100% - 24px);
+		margin: 20px 12px 0 12px !important;
+		box-sizing: border-box;
+	}
+
+	div.sub-text dt {
+		width: 100%;
+		box-sizing: border-box;
+		text-align: center !important;
 	}
 
 	div#sub-menu li {

@@ -23,23 +23,26 @@
 		<p>数式・記述内容に加え、表示や操作性に関する修正記録です。数式・記述の項目はリンクから修正箇所へ直接移動できます。</p>
 		<h2>2026-09-16</h2>
 		<table class="correction-history">
-		<tr><th>ID</th><th>対象</th><th>修正内容</th></tr>
-		<tr><td>R-UI-001</td><td>数式表示</td><td>FEM主要5ページの数式表示をMathJax 4へ更新し、横スクロールを廃止。画面幅に合わせて数式を自動改行する表示へ変更。</td></tr>
-		<tr><td>R-UI-002</td><td>スマートフォンメニュー</td><td>ハンバーガーメニュー内をマウスホイール・タッチで縦スクロールできるよう修正。背景色の境界ずれとモバイル用文字サイズ・レイアウトも補正。</td></tr>
-		<tr><td>R-UI-003</td><td>修正履歴・お知らせ</td><td>トップページの「お知らせ等」に今回の更新内容を追加。修正履歴への導線をフッターから左メニューの「お気に入りに追加」直下へ移動。</td></tr>
-		<tr><td>R-FEM2D-MASS-001</td><td><a href="./fem/fem_7_1_1.html#fix-r-fem2d-mass-001">2D質量収支式</a></td><td>2D三角形要素の重み付き残差の積分領域を V,dV から S,dS へ修正。</td></tr>
-		<tr><td>R-FEM2D-MASS-002</td><td><a href="./fem/fem_7_1_1.html#fix-r-fem2d-mass-002">2D質量収支式</a></td><td>「体積積分の公式」を「三角形要素の面積積分の公式」へ修正。</td></tr>
-		<tr><td>R-FEM2D-MASS-003</td><td><a href="./fem/fem_7_1_1.html#fix-r-fem2d-mass-003">2D質量収支式</a></td><td>積分外へ出せる対象が速度・圧力場そのものではなく節点自由度であることを明記。</td></tr>
-		<tr><td>R-FEM2D-MASS-004</td><td><a href="./fem/fem_7_1_1.html#formula-fem-7-1-1-004">2D質量収支式</a></td><td>本文の「離散化式は、次式とります。」を「離散化式は、次式となります。」へ修正。</td></tr>
-		<tr><td>R-FEM2D-MOM-001</td><td><a href="./fem/fem_7_1_2.html#fix-r-fem2d-mom-001">2D運動量収支式</a></td><td>2D三角形要素の重み付き残差の積分領域を V,dV から S,dS へ修正。</td></tr>
-		<tr><td>R-FEM2D-MOM-002</td><td><a href="./fem/fem_7_1_2.html#fix-r-fem2d-mom-002">2D運動量収支式</a></td><td>速度内挿式末尾の不要な =0 を削除し、Vx,Vy,P の内挿表記を統一。</td></tr>
-		<tr><td>R-FEM2D-MOM-003 / 005</td><td><a href="./fem/fem_7_1_2.html#fix-r-fem2d-mom-003">2D運動量収支式</a></td><td>一次線要素の積分公式を (p+q+1)! に修正し、∫Li dL=L/2 とした。面積積分途中式の V も A に修正。</td></tr>
-		<tr><td>R-FEM2D-MOM-004</td><td><a href="./fem/fem_7_1_2.html#fix-r-fem2d-mom-004">2D運動量収支式</a></td><td>線積分公式の修正に合わせ、表面張力項の係数を 2K*/We から K*/We へ修正し、後続式へ反映。</td></tr>
-		<tr><td>R-FEM2D-MOM-006</td><td><a href="./fem/fem_7_1_2.html#fix-r-fem2d-mom-006">2D運動量収支式</a></td><td>2D方向添字を i=1,2 に修正。</td></tr>
-		<tr><td>R-FEM2D-MOM-007</td><td><a href="./fem/fem_7_1_2.html#fix-r-fem2d-mom-007">2D境界辺ベクトル</a></td><td>境界辺2節点ベクトルから三角形3節点へのアセンブリ写像を補足。</td></tr>
-		<tr><td>R-FEM3D-MOM-001</td><td><a href="./fem/fem_7_2_2.html#fix-r-fem3d-mom-001">3D境界面ベクトル</a></td><td>境界面3節点ベクトルから四面体4節点へのアセンブリ写像を補足し、要素方程式では bS=A<sub>S</sub><sup>T</sup>[1 1 1]<sup>T</sup> を用いて4成分ベクトルとして式中に明示。</td></tr>
-		<tr><td>R-FEM3D-MASS-001</td><td><a href="./fem/fem_7_2_1.html#fix-r-fem3d-mass-001">3D質量収支式</a></td><td>対流項の係数側速度を既知係数として扱う線形化と、節点自由度を積分外へ出す理由を明記。</td></tr>
-		<tr><td>R-TET-N-001</td><td><a href="./fem/fem_6_2_1.html#fix-r-tet-n-001">四面体要素体積</a></td><td>V を正の要素体積として扱う符号規約と節点向きの前提を補足。</td></tr>
+		<tr><th>No.</th><th>修正種類</th><th>対象</th><th>修正内容</th></tr>
+		<tr data-revision-id="R-UI-004"><td>1</td><td>表示改善</td><td>左メニュー・広告見出し</td><td>PC左メニューの右端文字切れを解消し、スマートフォンメニュー内の「広告」を他セクション見出しと同じ幅・中央揃えへ統一。</td></tr>
+		<tr data-revision-id="R-UI-005"><td>2</td><td>操作性改善</td><td>メニューiframe</td><td>PCでは不要なiframe縦スクロールを抑止し、スマートフォンのオフキャンバーメニューでは縦スクロールを維持。</td></tr>
+		<tr data-revision-id="R-UI-006"><td>3</td><td>表示改善</td><td>修正履歴</td><td>修正履歴を No. / 修正種類 / 対象 / 修正内容 の4列へ整理し、内部管理IDを利用者向け表示から除外。</td></tr>
+		<tr data-revision-id="R-UI-001"><td>4</td><td>表示改善</td><td>数式表示</td><td>FEM主要5ページの数式表示をMathJax 4へ更新し、横スクロールを廃止。画面幅に合わせて数式を自動改行する表示へ変更。</td></tr>
+		<tr data-revision-id="R-UI-002"><td>5</td><td>操作性改善</td><td>スマートフォンメニュー</td><td>ハンバーガーメニュー内をマウスホイール・タッチで縦スクロールできるよう修正。背景色の境界ずれとモバイル用文字サイズ・レイアウトも補正。</td></tr>
+		<tr data-revision-id="R-UI-003"><td>6</td><td>表示改善</td><td>修正履歴・お知らせ</td><td>トップページの「お知らせ等」に今回の更新内容を追加。修正履歴への導線をフッターから左メニューの「お気に入りに追加」直下へ移動。</td></tr>
+		<tr data-revision-id="R-FEM2D-MASS-001"><td>7</td><td>数式修正</td><td><a href="./fem/fem_7_1_1.html#fix-r-fem2d-mass-001">2D質量収支式</a></td><td>2D三角形要素の重み付き残差の積分領域を V,dV から S,dS へ修正。</td></tr>
+		<tr data-revision-id="R-FEM2D-MASS-002"><td>8</td><td>誤記修正</td><td><a href="./fem/fem_7_1_1.html#fix-r-fem2d-mass-002">2D質量収支式</a></td><td>「体積積分の公式」を「三角形要素の面積積分の公式」へ修正。</td></tr>
+		<tr data-revision-id="R-FEM2D-MASS-003"><td>9</td><td>補足追加</td><td><a href="./fem/fem_7_1_1.html#fix-r-fem2d-mass-003">2D質量収支式</a></td><td>積分外へ出せる対象が速度・圧力場そのものではなく節点自由度であることを明記。</td></tr>
+		<tr data-revision-id="R-FEM2D-MASS-004"><td>10</td><td>誤記修正</td><td><a href="./fem/fem_7_1_1.html#formula-fem-7-1-1-004">2D質量収支式</a></td><td>本文の「離散化式は、次式とります。」を「離散化式は、次式となります。」へ修正。</td></tr>
+		<tr data-revision-id="R-FEM2D-MOM-001"><td>11</td><td>数式修正</td><td><a href="./fem/fem_7_1_2.html#fix-r-fem2d-mom-001">2D運動量収支式</a></td><td>2D三角形要素の重み付き残差の積分領域を V,dV から S,dS へ修正。</td></tr>
+		<tr data-revision-id="R-FEM2D-MOM-002"><td>12</td><td>数式修正</td><td><a href="./fem/fem_7_1_2.html#fix-r-fem2d-mom-002">2D運動量収支式</a></td><td>速度内挿式末尾の不要な =0 を削除し、Vx,Vy,P の内挿表記を統一。</td></tr>
+		<tr data-revision-id="R-FEM2D-MOM-003 / 005"><td>13</td><td>数式修正</td><td><a href="./fem/fem_7_1_2.html#fix-r-fem2d-mom-003">2D運動量収支式</a></td><td>一次線要素の積分公式を (p+q+1)! に修正し、∫Li dL=L/2 とした。面積積分途中式の V も A に修正。</td></tr>
+		<tr data-revision-id="R-FEM2D-MOM-004"><td>14</td><td>数式修正</td><td><a href="./fem/fem_7_1_2.html#fix-r-fem2d-mom-004">2D運動量収支式</a></td><td>線積分公式の修正に合わせ、表面張力項の係数を 2K*/We から K*/We へ修正し、後続式へ反映。</td></tr>
+		<tr data-revision-id="R-FEM2D-MOM-006"><td>15</td><td>数式修正</td><td><a href="./fem/fem_7_1_2.html#fix-r-fem2d-mom-006">2D運動量収支式</a></td><td>2D方向添字を i=1,2 に修正。</td></tr>
+		<tr data-revision-id="R-FEM2D-MOM-007"><td>16</td><td>補足追加</td><td><a href="./fem/fem_7_1_2.html#fix-r-fem2d-mom-007">2D境界辺ベクトル</a></td><td>境界辺2節点ベクトルから三角形3節点へのアセンブリ写像を補足。</td></tr>
+		<tr data-revision-id="R-FEM3D-MOM-001"><td>17</td><td>補足追加</td><td><a href="./fem/fem_7_2_2.html#fix-r-fem3d-mom-001">3D境界面ベクトル</a></td><td>境界面3節点ベクトルから四面体4節点へのアセンブリ写像を補足し、要素方程式では4成分ベクトルとして式中に明示。</td></tr>
+		<tr data-revision-id="R-FEM3D-MASS-001"><td>18</td><td>補足追加</td><td><a href="./fem/fem_7_2_1.html#fix-r-fem3d-mass-001">3D質量収支式</a></td><td>対流項の係数側速度を既知係数として扱う線形化と、節点自由度を積分外へ出す理由を明記。</td></tr>
+		<tr data-revision-id="R-TET-N-001"><td>19</td><td>補足追加</td><td><a href="./fem/fem_6_2_1.html#fix-r-tet-n-001">四面体要素体積</a></td><td>V を正の要素体積として扱う符号規約と節点向きの前提を補足。</td></tr>
 		</table>
 	</div></div>
 	</div>

@@ -65,9 +65,8 @@
 			if(!parentBody || !parentHeader || !menuIframe)return;
 
 			// [V003][V004][L301] [ADD] モバイルiframeをマウス/タッチでスクロール可能にする
-			var scrollingAttribute = "scrolling";
-			var scrollingValue = "auto";
-			menuIframe.setAttribute(scrollingAttribute, scrollingValue);
+			// [L301] [MOD] viewport幅に応じたscrolling属性を同期
+			refreshMenuScrollingMode(parentWindow, menuIframe);
 
 			// [L006] [ADD] iframeへアクセシビリティ用titleを設定
 			var menuTitle = "サイトメニュー";
@@ -146,6 +145,8 @@
 
 				// [L014] [ADD] 768px以上へ戻った場合は閉じる
 				parentWindow.addEventListener("resize", function(){
+					// [L402] [MOD] resize時もPC/スマホのscrolling属性を同期
+					refreshMenuScrollingMode(parentWindow, menuIframe);
 					var desktopMinWidth = 768;
 					if(parentWindow.innerWidth >= desktopMinWidth){
 						var requestedIsOpen = false;
@@ -163,6 +164,25 @@
 			// [L015] [ADD] 初期状態を閉状態へ同期
 			var initialIsOpen = false;
 			updateMobileMenuState(parentDocument, menuButton, initialIsOpen);
+		}
+
+		// [T001] [ADD] 表示幅に応じてmenu iframeのスクロール方式を更新
+		function refreshMenuScrollingMode(parentWindow, menuIframe){
+
+			// [I004] [ADD] parentWindow: 親ページWindow
+			// [I005] [ADD] menuIframe: 親ページのmenu iframe
+			// [O006] [ADD] 属性更新のみ行い値は返さない
+			if(!parentWindow || !menuIframe)return;
+
+			// [L401] [ADD] 767px以下のみauto、768px以上はno
+			var mobileMaxWidth = 767;
+			var scrollingAttribute = "scrolling"; // [V003] [KEEP]
+			var mobileScrollingValue = "auto";
+			var desktopScrollingValue = "no";
+			var isMobile = parentWindow.innerWidth <= mobileMaxWidth;
+			var scrollingValue = isMobile ? mobileScrollingValue : desktopScrollingValue;
+			menuIframe.setAttribute(scrollingAttribute, scrollingValue);
+			return;
 		}
 
 		// [F003] [ADD] モバイルメニュー開閉状態更新
