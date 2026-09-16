@@ -10,4 +10,4 @@ set -Eeuo pipefail
 scriptDir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 bash "${scriptDir}/deploy_local_v1.3/deploy_local_v1.3.sh"
-bash "${scriptDir}/deploy_old_local_v1.6.sh"
+bash "${scriptDir}/deploy_local_v1.3/deploy_old_local_v1.6.sh"
