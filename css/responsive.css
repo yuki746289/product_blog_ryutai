@@ -4,6 +4,7 @@
  * 前回バージョンとの違い:
  * - [ADD]: mobile-nav-ready / mobile-menu-open によるスマホメニュー表示を追加
  * - [MOD]: レスポンシブ指定を767px以下へ限定し、旧固定幅コンテンツをスマホ画面内へ制約
+ * - [MOD]: [L303] 旧PC用wrapper背景画像をスマホ時に確実に無効化し背景の境界ずれを解消
  * - [DEL]: なし
  */
 
@@ -49,7 +50,8 @@
 
 	div#wrapper,
 	div#sub-wrapper {
-		background-image: none;
+		background-color: #ffffff;
+		background-image: none !important;
 	}
 
 	div#main,
@@ -242,7 +244,7 @@
 	body > div#sub-wrapper {
 		min-height: 100vh;
 		min-height: 100dvh;
-		background-image: none;
+		background-image: none !important;
 	}
 
 	body.mobile-nav-ready.mobile-menu-open div#sub iframe#menu {
