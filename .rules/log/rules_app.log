@@ -91,3 +91,25 @@
 - User requirements for formula display, announcements, history navigation, menu scrolling, background and screenshot review are satisfied.
 - `release_1.0.0` and production FTP remain unchanged.
 - Result: PASS; local review is ready before any explicit production deployment.
+
+2026-09-16 Step6-Step7 detailed design and confirmation (site_navigation/v1.6)
+- Referenced: .rules/rules_common.md, .rules/dev/rules_dev.md, .rules/dev/rules_dev_custom.md, .rules/dev/rules_dev_other.md, rules_app_6_detail.md and rules_app_7_detail_confirm.md.
+- Created site_navigation_v1.6_6_detail.md / .json and integrated site_navigation_v1.6_7_detail.json.
+- Fixed implementation scope to new JS, new CSS and minimal footer script include; menu.html and all article/formula HTML are KEEP.
+- Design result: PASS.
+
+2026-09-16 Step8 implementation (site_navigation/v1.6)
+- Added js/site_navigation_v1_6.js for 8-category PC mega menu, mobile drawer/accordion, utility links and safe fallback.
+- Added css/site_v1_6.css for D Monochrome layout and responsive navigation.
+- Added only the shared JS include and ASCII change header to footer.html.
+- Detected an initial CP932-to-UTF-8 conversion in footer during review; rejected that state and rebuilt footer from the original CP932 bytes using a base64 Git blob.
+- Original footer blob reconstruction matched SHA 2bb96ccd119d3018f5b16d29d7d82cbdce57040c; corrected footer blob is 5c1e51648a79fbab62025590f940297723514f7a.
+- Implementation compare shows only js/site_navigation_v1_6.js, css/site_v1_6.css and footer.html changed.
+- menu.html and representative formula page fem/fem_7_2_2.html retain identical pre/post blob SHA values.
+- Production FTP unchanged.
+
+2026-09-16 Step9 code confirmation (site_navigation/v1.6)
+- Created .document/site_navigation_v1.6/site_navigation_v1.6_9_code_confirm.md.
+- Static scope, traceability, CSS balance, footer encoding and invariant checks: PASS.
+- Browser acceptance at PC 1365px / tablet 768px / mobile 390px is not executable from this environment against the user's localhost and remains pending.
+- Result: HOLD pending local browser and screenshot verification; Step10 not started.
