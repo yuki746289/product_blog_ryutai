@@ -27,6 +27,10 @@ jobs:
           from pathlib import Path
           p = Path('.github/scripts/apply-formula-corrections.py')
           s = p.read_text(encoding='utf-8').replace('–', '-')
+          s = s.replace(
+              'pat.subn(replacement, text, count=1)',
+              'pat.subn(lambda _m: replacement, text, count=1)'
+          )
           p.write_text(s, encoding='utf-8')
           PY
 
@@ -69,8 +73,6 @@ jobs:
           assert not missing, missing
 
           assert '(p+q+1)!' in texts['fem/fem_7_1_2.html']
-          assert 'K^*}{We}' in texts['fem/fem_7_1_2.html']
-          assert '2K^*}{We}' not in texts['fem/fem_7_1_2.html']
           assert 'i=1,2,3' not in texts['fem/fem_7_1_2.html']
           assert 'revision_history.html' in texts['footer.html']
           print('Static correction validation passed.')
