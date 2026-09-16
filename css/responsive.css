@@ -1,9 +1,9 @@
 /**
- * 更新日時: 2026/09/15
+ * 更新日時: 2026/09/16
  * 処理概要: [S001][STYLE001] スマートフォン幅767px以下のレスポンシブ表示とオフキャンバスメニュー
  * 前回バージョンとの違い:
  * - [ADD]: mobile-nav-ready / mobile-menu-open によるスマホメニュー表示を追加
- * - [MOD]: レスポンシブ指定を767px以下へ限定し、PC/タブレットへの影響を除去
+ * - [MOD]: レスポンシブ指定を767px以下へ限定し、旧固定幅コンテンツをスマホ画面内へ制約
  * - [DEL]: なし
  */
 
@@ -39,6 +39,7 @@
 	div#wrapper,
 	div#header,
 	div#main,
+	div#image,
 	div#content,
 	div#footer {
 		width: 100%;
@@ -73,16 +74,22 @@
 
 	div#content-text {
 		width: auto;
+		max-width: calc(100% - 24px);
+		box-sizing: border-box;
 		margin: 20px 12px 10px 12px;
 	}
 
 	div#content-main {
 		width: auto;
+		max-width: calc(100% - 24px);
+		box-sizing: border-box;
 		margin: 0 12px;
 	}
 
 	div#content-attend {
 		width: auto;
+		max-width: calc(100% - 24px);
+		box-sizing: border-box;
 		margin: 20px 12px 0 12px;
 	}
 
