@@ -1,12 +1,13 @@
 # site_navigation v1.6 要件定義書
 
 ## 1. 目的・背景
-[MOD] v1.5で選定したD Monochrome Notesと多層メニュー実動サンプルを、本体サイトへ安全に適用する。約190ページの既存HTMLを個別変更せず、共通 `menu.html` と共通CSS/JavaScriptを利用して移行する。
+[MOD] v1.5で選定したD Monochrome Notesと多層メニュー実動サンプルを、本体サイトへ安全に適用する。約190ページの既存HTMLを個別変更せず、共通 `footer.html` から新JavaScriptを起動し、既存 `menu.html` を読み取り専用のナビデータ源として利用する。
 
 ## 2. 対象範囲
-[MOD] `menu.html`
-[MOD] `css/lib.css`（新共通CSS読込との整合のみ）
-[KEEP] `css/responsive.css`（既存フォールバック。新CSSで必要な上書きを行う）
+[KEEP] `menu.html`（既存リンク階層・旧フォールバックを変更しない）
+[MOD] `footer.html`（新共通JSの読込・起動のみ追加）
+[KEEP] `css/lib.css`（既存CSSは変更せず、新CSSを親ページへ後挿入する）
+[KEEP] `css/responsive.css`（既存フォールバック）
 [ADD] `css/site_v1_6.css`
 [ADD] `js/site_navigation_v1_6.js`
 [KEEP] 各記事HTML・数式画像・本文
@@ -15,6 +16,7 @@
 - 記事URL変更
 - 記事本文の意味内容変更
 - 数式画像・TeX式の内容変更
+- `menu.html` の既存階層ロジックの再構築
 - `*_mathjax_audit.html` の本番公開
 - 外部UIフレームワーク導入
 - 本番FTP反映
@@ -22,7 +24,9 @@
 ## 4. 機能要件
 
 ### [S001][MOD] 共通ナビ初期化
-- `menu.html` iframe読込時、親ページが存在する場合だけ新ナビを初期化する。
+- `footer.html` iframe読込時、親ページが存在する場合だけ新ナビを初期化する。
+- 親ページの `#menu` iframeが読込済みならその `contentDocument` を利用する。
+- 未読込の場合はmenu iframeの `load` 後に初期化する。
 - 親ページへ `css/site_v1_6.css` を1回だけ追加する。
 - 新ナビ初期化成功後にだけ親bodyへ `rv-nav-ready` を付与する。
 
@@ -53,6 +57,7 @@
 
 ### [S006][KEEP] フォールバック
 - 新JSが実行できない場合は従来HTML・従来menu iframeを維持する。
+- `footer.html` がないページは従来表示を維持する。
 - 初期化エラーで本文を削除しない。
 
 ## 5. 非機能要件
@@ -78,7 +83,7 @@
 - [ ] 閉ドロワーへTabフォーカスが入らない。
 - [ ] nestedページから既存リンクが正しいURLへ遷移する。
 - [ ] 数式画像src、TeX式、本文内容にデザイン変更由来の差分がない。
-- [ ] JS失敗時も本文が読める。
+- [ ] 新JS失敗時も本文・旧menuが読める。
 
 ## 8. 未決事項
 なし。デザイン・ナビゲーション案はユーザ選定済み。
