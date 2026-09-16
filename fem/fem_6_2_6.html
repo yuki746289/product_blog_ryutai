@@ -11,17 +11,6 @@
 
 	<title>内挿関数の微分（有限要素法）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
-	<script>
-	window.MathJax = {
-		tex: {inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']]},
-		output: {
-			displayOverflow: 'linebreak',
-			linebreaks: {inline: true, width: '100%', lineleading: 0.2}
-		},
-		chtml: {displayAlign: 'left', displayIndent: '0'}
-	};
-	</script>
-	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id"   value="4">
@@ -60,116 +49,31 @@
 			<br>
 
 			<h2>・内挿関数<span class="ft"><i>N</i></span>の微分まとめ</h2>
-			<p id="formula-conversion-note">数式はMathJaxで表示しています。変換前の数式画像は照合用としてリポジトリ内に保持しています。</p>
 			<p><span class="ft">4</span>面体<span class="ft">1</span>次要素
 					の内挿関数<span class="ft"><i>N</i><sub>i</sub></span>の微分値のまとめを示します。</p>
 			<br>
 			<p>内挿関数<span class="ft"><i>N</i><sub>1</sub></span>の微分値</p>
-			<div class="math-block" id="formula-fem-6-2-6-021" data-source-image="./../img/fem_n_tet.files/image021.png">
-\[
-\frac{\partial N_1}{\partial x}
-=\frac{\partial L_1}{\partial x}
-=\frac{c_{1x}}{6V}
-=\frac{1}{6V}\left(-y_3z_4+z_3y_4+y_2z_4-y_2z_3-z_2y_4+z_2y_3\right)
-\]
-</div>
-			<div class="math-block" id="formula-fem-6-2-6-022" data-source-image="./../img/fem_n_tet.files/image022.png">
-\[
-\frac{\partial N_1}{\partial y}
-=\frac{\partial L_1}{\partial y}
-=\frac{c_{1y}}{6V}
-=\frac{1}{6V}\left(x_3z_4-z_3x_4-x_2z_4+x_2z_3+z_2x_4-z_2x_3\right)
-\]
-</div>
-			<div class="math-block" id="formula-fem-6-2-6-023" data-source-image="./../img/fem_n_tet.files/image023.png">
-\[
-\frac{\partial N_1}{\partial z}
-=\frac{\partial L_1}{\partial z}
-=\frac{c_{1z}}{6V}
-=\frac{1}{6V}\left(-x_3y_4+y_3x_4+x_2y_4-x_2y_3-y_2x_4+y_2x_3\right)
-\]
-</div>
+			<p class="im" style="text-align:left;padding-left:40px;"><img src="./../img/fem_n_tet.files/image021.png"></p>
+			<p class="im" style="text-align:left;padding-left:40px;"><img src="./../img/fem_n_tet.files/image022.png"></p>
+			<p class="im" style="text-align:left;padding-left:40px;"><img src="./../img/fem_n_tet.files/image023.png"></p>
 			<br>
 			<br>
 			<p>内挿関数<span class="ft"><i>N</i><sub>2</sub></span>の微分値</p>
-			<div class="math-block" id="formula-fem-6-2-6-024" data-source-image="./../img/fem_n_tet.files/image024.png">
-\[
-\frac{\partial N_2}{\partial x}
-=\frac{\partial L_2}{\partial x}
-=\frac{c_{2x}}{6V}
-=\frac{1}{6V}\left(y_3z_4-z_3y_4-y_1z_4+y_1z_3+z_1y_4-z_1y_3\right)
-\]
-</div>
-			<div class="math-block" id="formula-fem-6-2-6-025" data-source-image="./../img/fem_n_tet.files/image025.png">
-\[
-\frac{\partial N_2}{\partial y}
-=\frac{\partial L_2}{\partial y}
-=\frac{c_{2y}}{6V}
-=\frac{1}{6V}\left(-x_3z_4+z_3x_4+x_1z_4-x_1z_3-z_1x_4+z_1x_3\right)
-\]
-</div>
-			<div class="math-block" id="formula-fem-6-2-6-026" data-source-image="./../img/fem_n_tet.files/image026.png">
-\[
-\frac{\partial N_2}{\partial z}
-=\frac{\partial L_2}{\partial z}
-=\frac{c_{2z}}{6V}
-=\frac{1}{6V}\left(x_3y_4-y_3x_4-x_1y_4+x_1y_3+y_1x_4-y_1x_3\right)
-\]
-</div>
+			<p class="im" style="text-align:left;padding-left:40px;"><img src="./../img/fem_n_tet.files/image024.png"></p>
+			<p class="im" style="text-align:left;padding-left:40px;"><img src="./../img/fem_n_tet.files/image025.png"></p>
+			<p class="im" style="text-align:left;padding-left:40px;"><img src="./../img/fem_n_tet.files/image026.png"></p>
 			<br>
 			<br>
 			<p>内挿関数<span class="ft"><i>N</i><sub>3</sub></span>の微分値</p>
-			<div class="math-block" id="formula-fem-6-2-6-027" data-source-image="./../img/fem_n_tet.files/image027.png">
-\[
-\frac{\partial N_3}{\partial x}
-=\frac{\partial L_3}{\partial x}
-=\frac{c_{3x}}{6V}
-=\frac{1}{6V}\left(-y_2z_4+z_2y_4+y_1z_4-y_1z_2-z_1y_4+z_1y_2\right)
-\]
-</div>
-			<div class="math-block" id="formula-fem-6-2-6-028" data-source-image="./../img/fem_n_tet.files/image028.png">
-\[
-\frac{\partial N_3}{\partial y}
-=\frac{\partial L_3}{\partial y}
-=\frac{c_{3y}}{6V}
-=\frac{1}{6V}\left(x_2z_4-z_2x_4-x_1z_4+x_1z_2+z_1x_4-z_1x_2\right)
-\]
-</div>
-			<div class="math-block" id="formula-fem-6-2-6-029" data-source-image="./../img/fem_n_tet.files/image029.png">
-\[
-\frac{\partial N_3}{\partial z}
-=\frac{\partial L_3}{\partial z}
-=\frac{c_{3z}}{6V}
-=\frac{1}{6V}\left(-x_2y_4+y_2x_4+x_1y_4-x_1y_2-y_1x_4+y_1x_2\right)
-\]
-</div>
+			<p class="im" style="text-align:left;padding-left:40px;"><img src="./../img/fem_n_tet.files/image027.png"></p>
+			<p class="im" style="text-align:left;padding-left:40px;"><img src="./../img/fem_n_tet.files/image028.png"></p>
+			<p class="im" style="text-align:left;padding-left:40px;"><img src="./../img/fem_n_tet.files/image029.png"></p>
 			<br>
 			<br>
 			<p>内挿関数<span class="ft"><i>N</i><sub>4</sub></span>の微分値</p>
-			<div class="math-block" id="formula-fem-6-2-6-030" data-source-image="./../img/fem_n_tet.files/image030.png">
-\[
-\frac{\partial N_4}{\partial x}
-=\frac{\partial L_4}{\partial x}
-=\frac{c_{4x}}{6V}
-=\frac{1}{6V}\left(y_2z_3-z_2y_3-y_1z_3+y_1z_2+z_1y_3-z_1y_2\right)
-\]
-</div>
-			<div class="math-block" id="formula-fem-6-2-6-031" data-source-image="./../img/fem_n_tet.files/image031.png">
-\[
-\frac{\partial N_4}{\partial y}
-=\frac{\partial L_4}{\partial y}
-=\frac{c_{4y}}{6V}
-=\frac{1}{6V}\left(-x_2z_3+z_2x_3+x_1z_3-x_1z_2-z_1x_3+z_1x_2\right)
-\]
-</div>
-			<div class="math-block" id="formula-fem-6-2-6-032" data-source-image="./../img/fem_n_tet.files/image032.png">
-\[
-\frac{\partial N_4}{\partial z}
-=\frac{\partial L_4}{\partial z}
-=\frac{c_{4z}}{6V}
-=\frac{1}{6V}\left(x_2y_3-y_2x_3-x_1y_3+x_1y_2+y_1x_3-y_1x_2\right)
-\]
-</div>
+			<p class="im" style="text-align:left;padding-left:40px;"><img src="./../img/fem_n_tet.files/image030.png"></p>
+			<p class="im" style="text-align:left;padding-left:40px;"><img src="./../img/fem_n_tet.files/image031.png"></p>
+			<p class="im" style="text-align:left;padding-left:40px;"><img src="./../img/fem_n_tet.files/image032.png"></p>
 			<br>
 
 
