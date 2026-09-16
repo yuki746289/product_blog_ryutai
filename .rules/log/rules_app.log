@@ -18,3 +18,43 @@
 - Referenced: .rules/dev/app/rules_app_3_request.md
 - Created responsive_navigation_v1.1/responsive_navigation_v1.1_3_request.md.
 - No unresolved requirement items remain.
+
+2026-09-15 Step4-Step7 design and design confirmation (responsive_navigation/v1.1)
+- Created basic design, basic-design confirmation, detailed design and integrated detail JSON.
+- Reused existing menu.html iframe as the single navigation source.
+- Kept PC/tablet behavior separate from smartphone-only hamburger behavior.
+- Corrected design summary counts before implementation.
+- Result: PASS.
+
+2026-09-15 Step8 implementation (responsive_navigation/v1.1)
+- Referenced coding rules before code modification.
+- Implemented smartphone hamburger/off-canvas navigation and responsive CSS.
+- Preserved CP932 where applicable.
+- Kept existing disp()/set_height() unchanged.
+- Fixed mobile fixed-width overflow found during browser verification.
+
+2026-09-15 Step9 code confirmation (responsive_navigation/v1.1)
+- Created responsive_navigation_v1.1/responsive_navigation_v1.1_9_code_confirm.md.
+- Verified existing menu links unchanged.
+- Verified disp()/set_height() match release_1.0.0.
+- Verified smartphone closed/open states and 768px+ non-hamburger behavior.
+- Verified representative pages have no unintended page-level horizontal overflow.
+- Result: PASS.
+
+2026-09-16 Formula review and reviewed-page MathJax phase
+- Added .document/CHECKLIST_FORMULA_CONVERSION.md and per-page formula reviews.
+- Corrected documented formula/notation issues after mathematical consistency checks.
+- Added revision_history.html with direct links to corrected locations.
+- Converted reviewed FEM pages fem_6_2_6, fem_7_1_1, fem_7_1_2, fem_7_2_1 and fem_7_2_2 to MathJax.
+- Kept original equation image files for traceability.
+- Full-site formula-image conversion is explicitly NOT complete and is a later phase.
+
+2026-09-16 Step10 final confirmation (responsive_navigation/v1.1) / deployment readiness
+- Referenced: .rules/dev/app/rules_app_10_final_confirm.md
+- Created responsive_navigation_v1.1/responsive_navigation_v1.1_10_final_confirm.md.
+- Predeploy verification run 35051579283 passed static and browser/MathJax checks.
+- Revision-history 13 target anchors verified.
+- Temporary implementation/verification workflows and scripts removed.
+- Created .document/DEPLOY_READINESS_v1.2.md defining the deployable scope and remaining formula-migration work.
+- Production FTP remains unchanged.
+- Result: READY FOR DEPLOYMENT for the explicitly scoped release; deployment itself awaits explicit user approval.
