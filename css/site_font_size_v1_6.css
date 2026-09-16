@@ -56,18 +56,26 @@
     color: #ffffff;
 }
 
+/* Normal is the general web-body baseline: 16px. */
+body.rv-nav-ready.rv-font-normal,
+body.rv-nav-ready.rv-font-normal #content-text,
+body.rv-nav-ready.rv-font-normal #content-main,
+body.rv-nav-ready.rv-font-normal #content-attend {
+    font-size: 16px !important;
+}
+
 body.rv-nav-ready.rv-font-large,
 body.rv-nav-ready.rv-font-large #content-text,
 body.rv-nav-ready.rv-font-large #content-main,
 body.rv-nav-ready.rv-font-large #content-attend {
-    font-size: 17px !important;
+    font-size: 18px !important;
 }
 
 body.rv-nav-ready.rv-font-xlarge,
 body.rv-nav-ready.rv-font-xlarge #content-text,
 body.rv-nav-ready.rv-font-xlarge #content-main,
 body.rv-nav-ready.rv-font-xlarge #content-attend {
-    font-size: 19px !important;
+    font-size: 20px !important;
 }
 
 body.rv-nav-ready.rv-font-large #header h1 a { font-size: 25px !important; }
@@ -89,10 +97,11 @@ body.rv-nav-ready.rv-font-xlarge #content-text h3,
 body.rv-nav-ready.rv-font-xlarge #content-main h3,
 body.rv-nav-ready.rv-font-xlarge #content-attend h3 { font-size: 21px !important; }
 
-body.rv-font-large .rv-category-button { font-size: 15px !important; }
+body.rv-font-normal .rv-category-button { font-size: 14px !important; }
+body.rv-font-large .rv-category-button { font-size: 16px !important; }
 body.rv-font-xlarge .rv-category-button {
     min-height: 54px;
-    font-size: 17px !important;
+    font-size: 18px !important;
     white-space: normal;
     line-height: 1.35;
 }
@@ -123,13 +132,13 @@ body.rv-font-xlarge .rv-utility-navigation { font-size: 16px !important; }
     body.rv-nav-ready.rv-font-large #content-text,
     body.rv-nav-ready.rv-font-large #content-main,
     body.rv-nav-ready.rv-font-large #content-attend {
-        font-size: 16px !important;
+        font-size: 18px !important;
     }
 
     body.rv-nav-ready.rv-font-xlarge,
     body.rv-nav-ready.rv-font-xlarge #content-text,
     body.rv-nav-ready.rv-font-xlarge #content-main,
     body.rv-nav-ready.rv-font-xlarge #content-attend {
-        font-size: 18px !important;
+        font-size: 20px !important;
     }
 }
