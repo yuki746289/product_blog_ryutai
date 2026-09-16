@@ -1,7 +1,15 @@
+@charset "UTF-8";
+
 /**
  * Updated: 2026/09/17
  * Summary: [S007] Font-size selector and three-step type scaling for v1.6.
+ * Also overrides generated navigation symbols with ASCII-only Unicode escapes.
  */
+
+/* Prevent mojibake when legacy pages use Shift_JIS-compatible document encodings. */
+.rv-category-button::after {
+    content: "\2304";
+}
 
 .rv-font-size-control {
     position: absolute;
@@ -104,6 +112,11 @@ body.rv-font-xlarge .rv-utility-navigation { font-size: 16px !important; }
         width: calc(100% - 32px);
         margin: 0 auto 10px;
         justify-content: flex-end;
+    }
+
+    .rv-mobile-category[open] > summary::after,
+    .rv-mobile-subgroup[open] > summary::after {
+        content: "\2212";
     }
 
     body.rv-nav-ready.rv-font-large,
