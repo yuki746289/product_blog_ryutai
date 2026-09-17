@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fem_7_1_1 数式再監査</title>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']]
+      },
+      output: {
+        displayOverflow: 'linebreak',
+        linebreaks: {inline: true, width: '100%', lineleading: 0.2}
+      },
+      chtml: {displayAlign: 'left', displayIndent: '0'}
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 24px;
+      color: #222;
+      background: #f5f5f5;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    main {
+      max-width: 1500px;
+      margin: 0 auto;
+    }
+    .notice {
+      padding: 12px 16px;
+      border: 1px solid #bbb;
+      background: #fff;
+    }
+    .formula-pair {
+      display: grid;
+      grid-template-columns: minmax(320px, 1fr) minmax(420px, 1fr);
+      gap: 16px;
+      margin: 18px 0;
+      padding: 16px;
+      border: 1px solid #ccc;
+      background: #fff;
+    }
+    .formula-pair h2 {
+      grid-column: 1 / -1;
+      margin: 0;
+      font-size: 18px;
+    }
+    .source img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #ddd;
+      background: #fff;
+    }
+    .render {
+      overflow-x: auto;
+    }
+    .ng-note {
+      grid-column: 1 / -1;
+      margin: 0;
+      color: #555;
+    }
+    @media (max-width: 900px) {
+      body {
+        padding: 12px;
+      }
+      .formula-pair {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <h1>fem_7_1_1 数式再監査</h1>
+  <p class="notice">元画像忠実転記の再監査専用ページ。通常サイトからはリンクしない。元画像側に誤記と思われる表記があっても、このページでは訂正せず原文を再現する。</p>
+
+  <section class="formula-pair" id="formula-001">
+    <h2>image001</h2>
+    <div class="source"><img src="../img/fem_d_mass_tri.files/image001.png" alt="image001 元数式"></div>
+    <div class="render">
+\[
+\phi=
+\frac{\partial P}{\partial\tau}
++V_x\frac{\partial P}{\partial x}
++V_y\frac{\partial P}{\partial y}
++\frac{1}{Ma^2}\left(
+\frac{\partial V_x}{\partial X}
++\frac{\partial V_y}{\partial Y}
+\right)=0
+\]
+    </div>
+  </section>
+
+  <section class="formula-pair" id="formula-002">
+    <h2>image002</h2>
+    <div class="source"><img src="../img/fem_d_mass_tri.files/image002.png" alt="image002 元数式"></div>
+    <div class="render">
+\[
+\int_V[N]^T\phi\,dV
+=\int_V
+\begin{bmatrix}N_1\\N_1\\N_3\end{bmatrix}\phi\,dV
+=\int_V
+\begin{bmatrix}0\\0\\0\end{bmatrix}dV
+=\begin{bmatrix}0\\0\\0\end{bmatrix}
+\]
+    </div>
+    <p class="ng-note">原画像どおり第2成分も N1。理論上の修正はこの式の外で扱う。</p>
+  </section>
+
+  <section class="formula-pair" id="formula-003">
+    <h2>image003</h2>
+    <div class="source"><img src="../img/fem_d_mass_tri.files/image003.png" alt="image003 元数式"></div>
+    <div class="render">
+\[
+\begin{aligned}
+V_x
+&=N_1V_{x1}+N_2V_{x2}+N_3V_{x3}\\
+&=\begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}
+\begin{Bmatrix}V_{x1}&V_{x2}&V_{x3}\end{Bmatrix}\\
+&=[N]^T\{V_x\},\\
+V_y&=[N]^T\{V_y\},\\
+P&=[N]^T\{P\}.
+\end{aligned}
+\]
+    </div>
+  </section>
+
+  <section class="formula-pair" id="formula-004">
+    <h2>image004</h2>
+    <div class="source"><img src="../img/fem_d_mass_tri.files/image004.png" alt="image004 元数式"></div>
+    <div class="render">
+\[
+\int_S[N]^T\phi\,dS
+=\int_S[N]^T\left\{
+\frac{\partial P}{\partial\tau}
++V_x\frac{\partial P}{\partial x}
++V_y\frac{\partial P}{\partial y}
++\frac{1}{Ma^2}\left(
+\frac{\partial V_x}{\partial X}
++\frac{\partial V_y}{\partial Y}
+\right)
+\right\}dS
+\]
+    </div>
+  </section>
+
+  <section class="formula-pair" id="formula-005">
+    <h2>image005</h2>
+    <div class="source"><img src="../img/fem_d_mass_tri.files/image005.png" alt="image005 元数式"></div>
+    <div class="render">
+\[
+\begin{aligned}
+={}&\int_S[N]^T\frac{\partial P}{\partial\tau}\,dS
++\int_S[N]^TV_x\frac{\partial P}{\partial X}\,dS
++\int_S[N]^TV_y\frac{\partial P}{\partial Y}\,dS\\
+&+\frac{1}{Ma^2}\int_S[N]^T\frac{\partial V_x}{\partial X}\,dS
++\frac{1}{Ma^2}\int_S[N]^T\frac{\partial V_y}{\partial Y}\,dS
+\end{aligned}
+\]
+    </div>
+  </section>
+
+  <section class="formula-pair" id="formula-006">
+    <h2>image006</h2>
+    <div class="source"><img src="../img/fem_d_mass_tri.files/image006.png" alt="image006 元数式"></div>
+    <div class="render">
+\[
+\begin{aligned}
+={}&\int_S[N]^T[N]dS\,
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+&+V_x\int_S[N]^T\frac{\partial[N]\{P\}^{\Delta\tau+\tau}}{\partial X}dS
++V_y\int_S[N]^T\frac{\partial[N]\{P\}^{\Delta\tau+\tau}}{\partial Y}dS\\
+&+\frac{1}{Ma^2}\int_S[N]^T\frac{\partial[N]\{V_x\}^{\Delta\tau+\tau}}{\partial X}dS
++\frac{1}{Ma^2}\int_S[N]^T\frac{\partial[N]\{V_y\}^{\Delta\tau+\tau}}{\partial Y}dS
+\end{aligned}
+\]
+    </div>
+  </section>
+
+  <section class="formula-pair" id="formula-007">
+    <h2>image007</h2>
+    <div class="source"><img src="../img/fem_d_mass_tri.files/image007.png" alt="image007 元数式"></div>
+    <div class="render">
+\[
+\begin{aligned}
+={}&\int_S[N]^T[N]dS\,
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+&+V_x\int_S[N]^T\frac{\partial[N]}{\partial X}dS\,\{P\}^{\Delta\tau+\tau}
++V_y\int_S[N]^T\frac{\partial[N]}{\partial Y}dS\,\{P\}^{\Delta\tau+\tau}\\
+&+\frac{1}{Ma^2}\int_S[N]^T\frac{\partial[N]}{\partial X}dS\,\{V_x\}^{\Delta\tau+\tau}
++\frac{1}{Ma^2}\int_S[N]^T\frac{\partial[N]}{\partial Y}dS\,\{V_y\}^{\Delta\tau+\tau}
+\end{aligned}
+\]
+    </div>
+  </section>
+
+  <section class="formula-pair" id="formula-008">
+    <h2>image008</h2>
+    <div class="source"><img src="../img/fem_d_mass_tri.files/image008.png" alt="image008 元数式"></div>
+    <div class="render">
+\[
+\begin{aligned}
+={}&\int_S
+\begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}
+\begin{bmatrix}N_1&N_2&N_3\end{bmatrix}dS\,
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+&+V_x\int_S
+\begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}
+\begin{bmatrix}
+\dfrac{\partial N_1}{\partial X}&\dfrac{\partial N_2}{\partial X}&\dfrac{\partial N_3}{\partial X}
+\end{bmatrix}dS\,\{P\}^{\Delta\tau+\tau}\\
+&+V_y\int_S
+\begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}
+\begin{bmatrix}
+\dfrac{\partial N_1}{\partial Y}&\dfrac{\partial N_2}{\partial Y}&\dfrac{\partial N_3}{\partial Y}
+\end{bmatrix}dS\,\{P\}^{\Delta\tau+\tau}\\
+&+\frac{1}{Ma^2}\int_S
+\begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}
+\begin{bmatrix}
+\dfrac{\partial N_1}{\partial X}&\dfrac{\partial N_2}{\partial X}&\dfrac{\partial N_3}{\partial X}
+\end{bmatrix}dS\,\{V_x\}^{\Delta\tau+\tau}\\
+&+\frac{1}{Ma^2}\int_S
+\begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}
+\begin{bmatrix}
+\dfrac{\partial N_1}{\partial Y}&\dfrac{\partial N_2}{\partial Y}&\dfrac{\partial N_3}{\partial Y}
+\end{bmatrix}dS\,\{V_y\}^{\Delta\tau+\tau}
+\end{aligned}
+\]
+    </div>
+  </section>
+
+  <section class="formula-pair" id="formula-009">
+    <h2>image009</h2>
+    <div class="source"><img src="../img/fem_d_mass_tri.files/image009.png" alt="image009 元数式"></div>
+    <div class="render">
+\[
+\begin{aligned}
+={}&\int_S
+\begin{bmatrix}
+N_1N_1&N_1N_2&N_1N_3\\
+N_2N_1&N_2N_2&N_2N_3\\
+N_3N_1&N_3N_2&N_3N_3
+\end{bmatrix}dS\,
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+&+V_x\int_S
+\begin{bmatrix}
+N_1\dfrac{\partial N_1}{\partial X}&N_1\dfrac{\partial N_2}{\partial X}&N_1\dfrac{\partial N_3}{\partial X}\\
+N_2\dfrac{\partial N_1}{\partial X}&N_2\dfrac{\partial N_2}{\partial X}&N_2\dfrac{\partial N_3}{\partial X}\\
+N_3\dfrac{\partial N_1}{\partial X}&N_3\dfrac{\partial N_2}{\partial X}&N_3\dfrac{\partial N_3}{\partial X}
+\end{bmatrix}dS\,\{V_x\}^{\Delta\tau+\tau}\\
+&+V_y\int_S
+\begin{bmatrix}
+N_1\dfrac{\partial N_1}{\partial Y}&N_1\dfrac{\partial N_2}{\partial Y}&N_1\dfrac{\partial N_3}{\partial Y}\\
+N_2\dfrac{\partial N_1}{\partial Y}&N_2\dfrac{\partial N_2}{\partial Y}&N_2\dfrac{\partial N_3}{\partial Y}\\
+N_3\dfrac{\partial N_1}{\partial Y}&N_3\dfrac{\partial N_2}{\partial Y}&N_3\dfrac{\partial N_3}{\partial Y}
+\end{bmatrix}dS\,\{V_y\}^{\Delta\tau+\tau}
+\end{aligned}
+\]
+    </div>
+    <p class="ng-note">対流項末尾の Vx/Vy は元画像表記をそのまま再現。</p>
+  </section>
+
+  <section class="formula-pair" id="formula-010">
+    <h2>image010</h2>
+    <div class="source"><img src="../img/fem_d_mass_tri.files/image010.png" alt="image010 元数式"></div>
+    <div class="render">
+\[
+\begin{aligned}
+&+\frac{1}{Ma^2}\int_S
+\begin{bmatrix}
+N_1\dfrac{\partial N_1}{\partial X}&N_1\dfrac{\partial N_2}{\partial X}&N_1\dfrac{\partial N_3}{\partial X}\\
+N_2\dfrac{\partial N_1}{\partial X}&N_2\dfrac{\partial N_2}{\partial X}&N_2\dfrac{\partial N_3}{\partial X}\\
+N_3\dfrac{\partial N_1}{\partial X}&N_3\dfrac{\partial N_2}{\partial X}&N_3\dfrac{\partial N_3}{\partial X}
+\end{bmatrix}dS\,\{V_x\}^{\Delta\tau+\tau}\\
+&+\frac{1}{Ma^2}\int_S
+\begin{bmatrix}
+N_1\dfrac{\partial N_1}{\partial Y}&N_1\dfrac{\partial N_2}{\partial Y}&N_1\dfrac{\partial N_3}{\partial Y}\\
+N_2\dfrac{\partial N_1}{\partial Y}&N_2\dfrac{\partial N_2}{\partial Y}&N_2\dfrac{\partial N_3}{\partial Y}\\
+N_3\dfrac{\partial N_1}{\partial Y}&N_3\dfrac{\partial N_2}{\partial Y}&N_3\dfrac{\partial N_3}{\partial Y}
+\end{bmatrix}dS\,\{V_y\}^{\Delta\tau+\tau}
+\end{aligned}
+\]
+    </div>
+  </section>
+
+  <section class="formula-pair" id="formula-011">
+    <h2>image011</h2>
+    <div class="source"><img src="../img/fem_d_mass_tri.files/image011.png" alt="image011 元数式"></div>
+    <div class="render">
+\[
+\begin{aligned}
+={}&\int_S
+\begin{bmatrix}
+L_1L_1&L_1L_2&L_1L_3\\
+L_2L_1&L_2L_2&L_2L_3\\
+L_3L_1&L_3L_2&L_3L_3
+\end{bmatrix}dS\,
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+&+V_x\int_S
+\begin{bmatrix}
+L_1\dfrac{\partial L_1}{\partial X}&L_1\dfrac{\partial L_2}{\partial X}&L_1\dfrac{\partial L_3}{\partial X}\\
+L_2\dfrac{\partial L_1}{\partial X}&L_2\dfrac{\partial L_2}{\partial X}&L_2\dfrac{\partial L_3}{\partial X}\\
+L_3\dfrac{\partial L_1}{\partial X}&L_3\dfrac{\partial L_2}{\partial X}&L_3\dfrac{\partial L_3}{\partial X}
+\end{bmatrix}dS\,\{P\}^{\Delta\tau+\tau}\\
+&+V_y\int_S
+\begin{bmatrix}
+L_1\dfrac{\partial L_1}{\partial Y}&L_1\dfrac{\partial L_2}{\partial Y}&L_1\dfrac{\partial L_3}{\partial Y}\\
+L_2\dfrac{\partial L_1}{\partial Y}&L_2\dfrac{\partial L_2}{\partial Y}&L_2\dfrac{\partial L_3}{\partial Y}\\
+L_3\dfrac{\partial L_1}{\partial Y}&L_3\dfrac{\partial L_2}{\partial Y}&L_3\dfrac{\partial L_3}{\partial Y}
+\end{bmatrix}dS\,\{P\}^{\Delta\tau+\tau}\\
+&+\frac{1}{Ma^2}\int_S
+\begin{bmatrix}
+L_1\dfrac{\partial L_1}{\partial X}&L_1\dfrac{\partial L_2}{\partial X}&L_1\dfrac{\partial L_3}{\partial X}\\
+L_2\dfrac{\partial L_1}{\partial X}&L_2\dfrac{\partial L_2}{\partial X}&L_2\dfrac{\partial L_3}{\partial X}\\
+L_3\dfrac{\partial L_1}{\partial X}&L_3\dfrac{\partial L_2}{\partial X}&L_3\dfrac{\partial L_3}{\partial X}
+\end{bmatrix}dS\,\{V_x\}^{\Delta\tau+\tau}\\
+&+\frac{1}{Ma^2}\int_S
+\begin{bmatrix}
+L_1\dfrac{\partial L_1}{\partial Y}&L_1\dfrac{\partial L_2}{\partial Y}&L_1\dfrac{\partial L_3}{\partial Y}\\
+L_2\dfrac{\partial L_1}{\partial Y}&L_2\dfrac{\partial L_2}{\partial Y}&L_2\dfrac{\partial L_3}{\partial Y}\\
+L_3\dfrac{\partial L_1}{\partial Y}&L_3\dfrac{\partial L_2}{\partial Y}&L_3\dfrac{\partial L_3}{\partial Y}
+\end{bmatrix}dS\,\{V_y\}^{\Delta\tau+\tau}
+\end{aligned}
+\]
+    </div>
+  </section>
+
+  <section class="formula-pair" id="formula-012">
+    <h2>image012</h2>
+    <div class="source"><img src="../img/fem_d_mass_tri.files/image012.png" alt="image012 元数式"></div>
+    <div class="render">
+\[
+\begin{aligned}
+={}&\int_S
+\begin{bmatrix}
+L_1L_1&L_1L_2&L_1L_3\\L_2L_1&L_2L_2&L_2L_3\\L_3L_1&L_3L_2&L_3L_3
+\end{bmatrix}dS\,
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+&+V_x\int_S\frac{1}{2A}
+\begin{bmatrix}L_1c_{1x}&L_1c_{2x}&L_1c_{3x}\\L_2c_{1x}&L_2c_{2x}&L_2c_{3x}\\L_3c_{1x}&L_3c_{2x}&L_3c_{3x}\end{bmatrix}
+dS\,\{P\}^{\Delta\tau+\tau}\\
+&+V_y\int_S\frac{1}{2A}
+\begin{bmatrix}L_1c_{1y}&L_1c_{2y}&L_1c_{3y}\\L_2c_{1y}&L_2c_{2y}&L_2c_{3y}\\L_3c_{1y}&L_3c_{2y}&L_3c_{3y}\end{bmatrix}
+dS\,\{P\}^{\Delta\tau+\tau}\\
+&+\frac{1}{Ma^2}\int_S\frac{1}{2A}
+\begin{bmatrix}L_1c_{1x}&L_1c_{2x}&L_1c_{3x}\\L_2c_{1x}&L_2c_{2x}&L_2c_{3x}\\L_3c_{1x}&L_3c_{2x}&L_3c_{3x}\end{bmatrix}
+dS\,\{V_x\}^{\Delta\tau+\tau}3\\
+&+\frac{1}{Ma^2}\int_S\frac{1}{2A}
+\begin{bmatrix}L_1c_{1y}&L_1c_{2y}&L_1c_{3y}\\L_2c_{1y}&L_2c_{2y}&L_2c_{3y}\\L_3c_{1y}&L_3c_{2y}&L_3c_{3y}\end{bmatrix}
+dS\,\{V_y\}^{\Delta\tau+\tau}
+\end{aligned}
+\]
+    </div>
+    <p class="ng-note">Vx項末尾の単独「3」も元画像表記を保持。</p>
+  </section>
+
+  <section class="formula-pair" id="formula-013">
+    <h2>image013</h2>
+    <div class="source"><img src="../img/fem_d_mass_tri.files/image013.png" alt="image013 元数式"></div>
+    <div class="render">
+\[
+\int_S L_1^pL_2^qL_3^r\,dS
+=\frac{p!q!r!}{(p+q+r+2)!}\,2A
+\]
+\[
+\int_S L_iL_j\,dS=
+\begin{cases}
+\dfrac{1!1!}{(1+1+2)!}\,2A=\dfrac{2}{4!}A=\dfrac{1}{12}A &(i\ne j),\\[8pt]
+\dfrac{2!}{(1+1+2)!}\,2A=\dfrac{4}{4!}V=\dfrac{1}{6}A &(i=j)
+\end{cases}
+\]
+\[
+\int_S L_i\,dS
+=\frac{1!}{(1+2)!}\,2A
+=\frac{2}{3!}A
+=\frac{1}{3}A
+\]
+    </div>
+    <p class="ng-note">i=j 側途中の V は元画像表記を保持。</p>
+  </section>
+
+  <section class="formula-pair" id="formula-014">
+    <h2>image014</h2>
+    <div class="source"><img src="../img/fem_d_mass_tri.files/image014.png" alt="image014 元数式"></div>
+    <div class="render">
+\[
+\begin{aligned}
+={}&\frac{A}{12}\begin{bmatrix}2&1&1\\1&2&1\\1&1&2\end{bmatrix}
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+&+V_x\frac{1}{2A}\frac{A}{3}
+\begin{bmatrix}c_{1x}&c_{2x}&c_{3x}\\c_{1x}&c_{2x}&c_{3x}\\c_{1x}&c_{2x}&c_{3x}\end{bmatrix}
+\{P\}^{\Delta\tau+\tau}\\
+&+V_y\frac{1}{2A}\frac{A}{3}
+\begin{bmatrix}c_{1y}&c_{2y}&c_{3y}\\c_{1y}&c_{2y}&c_{3y}\\c_{1y}&c_{2y}&c_{3y}\end{bmatrix}
+\{P\}^{\Delta\tau+\tau}\\
+&+\frac{1}{Ma^2}\frac{1}{2A}\frac{A}{3}
+\begin{bmatrix}c_{1x}&c_{2x}&c_{3x}\\c_{1x}&c_{2x}&c_{3x}\\c_{1x}&c_{2x}&c_{3x}\end{bmatrix}
+\{V_x\}^{\Delta\tau+\tau}\\
+&+\frac{1}{Ma^2}\frac{1}{2A}\frac{A}{3}
+\begin{bmatrix}c_{1y}&c_{2y}&c_{3y}\\c_{1y}&c_{2y}&c_{3y}\\c_{1y}&c_{2y}&c_{3y}\end{bmatrix}
+\{V_y\}^{\Delta\tau+\tau}
+\end{aligned}
+\]
+    </div>
+  </section>
+
+  <section class="formula-pair" id="formula-015">
+    <h2>image015</h2>
+    <div class="source"><img src="../img/fem_d_mass_tri.files/image015.png" alt="image015 元数式"></div>
+    <div class="render">
+\[
+\begin{aligned}
+={}&\frac{A}{12}\begin{bmatrix}2&1&1\\1&2&1\\1&1&2\end{bmatrix}
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+&+V_x\frac{1}{6}
+\begin{bmatrix}c_{1x}&c_{2x}&c_{3x}\\c_{1x}&c_{2x}&c_{3x}\\c_{1x}&c_{2x}&c_{3x}\end{bmatrix}\{P\}^{\Delta\tau+\tau}\\
+&+V_y\frac{1}{6}
+\begin{bmatrix}c_{1y}&c_{2y}&c_{3y}\\c_{1y}&c_{2y}&c_{3y}\\c_{1y}&c_{2y}&c_{3y}\end{bmatrix}\{P\}^{\Delta\tau+\tau}\\
+&+\frac{1}{Ma^2}\frac{1}{6}
+\begin{bmatrix}c_{1x}&c_{2x}&c_{3x}\\c_{1x}&c_{2x}&c_{3x}\\c_{1x}&c_{2x}&c_{3x}\end{bmatrix}\{V_x\}^{\Delta\tau+\tau}\\
+&+\frac{1}{Ma^2}\frac{1}{6}
+\begin{bmatrix}c_{1y}&c_{2y}&c_{3y}\\c_{1y}&c_{2y}&c_{3y}\\c_{1y}&c_{2y}&c_{3y}\end{bmatrix}\{V_y\}^{\Delta\tau+\tau}
+\end{aligned}
+\]
+    </div>
+  </section>
+
+  <section class="formula-pair" id="formula-016">
+    <h2>image016</h2>
+    <div class="source"><img src="../img/fem_d_mass_tri.files/image016.png" alt="image016 元数式"></div>
+    <div class="render">
+\[
+\begin{aligned}
+={}&[C]\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}
++V_x[C_x]\{P\}^{\Delta\tau+\tau}
++V_y[C_y]\{P\}^{\Delta\tau+\tau}\\
+&+\frac{1}{Ma^2}[C_x]\{V_x\}^{\Delta\tau+\tau}
++\frac{1}{Ma^2}[C_y]\{V_y\}^{\Delta\tau+\tau}
+\end{aligned}
+\]
+    </div>
+  </section>
+
+  <section class="formula-pair" id="formula-017">
+    <h2>image017</h2>
+    <div class="source"><img src="../img/fem_d_mass_tri.files/image017.png" alt="image017 元数式"></div>
+    <div class="render">
+\[
+=\begin{bmatrix}0\\0\\0\end{bmatrix}
+\]
+    </div>
+  </section>
+
+  <section class="formula-pair" id="formula-018">
+    <h2>image018</h2>
+    <div class="source"><img src="../img/fem_d_mass_tri.files/image018.png" alt="image018 元数式"></div>
+    <div class="render">
+\[
+[C]\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}
++V_x[C_x]\{P\}^{\Delta\tau+\tau}
++V_y[C_y]\{P\}^{\Delta\tau+\tau}
++\frac{1}{Ma^2}[C_x]\{V_x\}^{\Delta\tau+\tau}
++\frac{1}{Ma^2}[C_y]\{V_y\}^{\Delta\tau+\tau}
+=[0]
+\]
+    </div>
+  </section>
+
+  <section class="formula-pair" id="formula-020">
+    <h2>image020</h2>
+    <div class="source"><img src="../img/fem_d_mass_tri.files/image020.png" alt="image020 元数式"></div>
+    <div class="render">
+\[
+\frac{[C]}{\Delta\tau}\{P\}^{\Delta\tau+\tau}
++V_x[C_x]\{P\}^{\Delta\tau+\tau}
++V_y[C_y]\{P\}^{\Delta\tau+\tau}
++\frac{1}{Ma^2}[C_x]\{V_x\}^{\Delta\tau+\tau}
++\frac{1}{Ma^2}[C_y]\{V_y\}^{\Delta\tau+\tau}
+=\frac{[C]}{\Delta\tau}\{P\}^{\tau}
+\]
+    </div>
+  </section>
+
+  <section class="formula-pair" id="formula-021">
+    <h2>image021</h2>
+    <div class="source"><img src="../img/fem_d_mass_tri.files/image021.png" alt="image021 元数式"></div>
+    <div class="render">
+\[
+\left(
+\frac{[C]}{\Delta\tau}+V_x[C_x]+V_y[C_y]
+\right)\{P\}^{\Delta\tau+\tau}
++\frac{1}{Ma^2}\left(
+[C_x]\{V_x\}^{\Delta\tau+\tau}
++[C_y]\{V_y\}^{\Delta\tau+\tau}
+\right)
+=\frac{[C]}{\Delta\tau}\{P\}^{\tau}
+\]
+    </div>
+  </section>
+</main>
+</body>
+</html>
