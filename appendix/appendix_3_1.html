@@ -12,6 +12,15 @@
 
 	<title>円筒座標（Appendix）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+	<script>
+	window.MathJax={
+		tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},
+		output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+		chtml:{displayAlign:'left',displayIndent:'0'}
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="7">
@@ -57,27 +66,118 @@
 			<h2>円筒座標<span class="ft">(<i>r</i>, </span><span class="fs"><i>q</i></span><span class="ft">, <i>z</i>)</span>
 				⇒直交座標<span class="ft">(<i>x</i>, <i>y</i>, <i>z</i>)</span></h2>
 			<p>円筒座標を直交座標に変換する場合です。変数は下記で表されます。</p>
-			<p class="im"><img src="./../img/appendix_cord_r.files/image003.png"></p>
+			<div class="math-block" id="formula-appendix-3-1-003" data-source-image="./../img/appendix_cord_r.files/image003.png">
+\[
+\left\{
+\begin{aligned}
+x&=r\cos\theta\\
+y&=r\sin\theta\\
+z&=z
+\end{aligned}
+\right.
+\]
+</div>
 			<p class="im"><img src="./../img/appendix_cord_r.files/image004.png"></p>
 			<p>ベクトルの変換は次式となります。</p>
-			<p class="im"><img src="./../img/appendix_cord_r.files/image005.png"></p>
+			<div class="math-block" id="formula-appendix-3-1-005" data-source-image="./../img/appendix_cord_r.files/image005.png">
+\[
+\begin{aligned}
+\vec{\delta}_x&=\vec{\delta}_r(\cos\theta)+\vec{\delta}_\theta(-\sin\theta)+\vec{\delta}_z(0)\\
+\vec{\delta}_y&=\vec{\delta}_r(\sin\theta)+\vec{\delta}_\theta(\cos\theta)+\vec{\delta}_z(0)\\
+\vec{\delta}_z&=\vec{\delta}_r(0)+\vec{\delta}_\theta(0)+\vec{\delta}_z(1)
+\end{aligned}
+\]
+</div>
 			<p>作用素の変換は次式となります。</p>
-			<p class="im"><img src="./../img/appendix_cord_r.files/image006.png"></p>
+			<div class="math-block" id="formula-appendix-3-1-006" data-source-image="./../img/appendix_cord_r.files/image006.png">
+\[
+\begin{aligned}
+\frac{\partial}{\partial x}
+&=(\cos\theta)\frac{\partial}{\partial r}
++\left(\frac{-\sin\theta}{r}\right)\frac{\partial}{\partial\theta}
++(0)\frac{\partial}{\partial z}\\
+\frac{\partial}{\partial y}
+&=(\sin\theta)\frac{\partial}{\partial r}
++\left(\frac{\cos\theta}{r}\right)\frac{\partial}{\partial\theta}
++(0)\frac{\partial}{\partial z}\\
+\frac{\partial}{\partial z}
+&=(0)\frac{\partial}{\partial r}
++(0)\frac{\partial}{\partial\theta}
++(1)\frac{\partial}{\partial z}
+\end{aligned}
+\]
+</div>
 			<br>
 
 			<h2>直交座標<span class="ft">(<i>x</i>, <i>y</i>, <i>z</i>)</span>
 				⇒円筒座標<span class="ft">(<i>r</i>, </span><span class="fs"><i>q</i></span><span class="ft">, <i>z</i>)</span></h2>
 			<p>直交座標を円筒座標に変換する場合です。変数は下記で表されます。</p>
-			<p class="im"><img src="./../img/appendix_cord_r.files/image007.png"></p>
+			<div class="math-block" id="formula-appendix-3-1-007" data-source-image="./../img/appendix_cord_r.files/image007.png">
+\[
+\left\{
+\begin{aligned}
+r&=+\sqrt{x^2+y^2}\\
+\theta&=\tan^{-1}\frac{y}{x}\\
+z&=z
+\end{aligned}
+\right.
+\]
+</div>
 			<p class="im"><img src="./../img/appendix_cord_r.files/image004.png"></p>
 			<p>ベクトルの変換は次式となります。</p>
-			<p class="im"><img src="./../img/appendix_cord_r.files/image008.png"></p>
+			<div class="math-block" id="formula-appendix-3-1-008" data-source-image="./../img/appendix_cord_r.files/image008.png">
+\[
+\begin{aligned}
+\vec{\delta}_r&=\vec{\delta}_x(\cos\theta)+\vec{\delta}_y(\sin\theta)+\vec{\delta}_z(0)\\
+\vec{\delta}_\theta&=\vec{\delta}_x(-\sin\theta)+\vec{\delta}_y(\cos\theta)+\vec{\delta}_z(0)\\
+\vec{\delta}_z&=\vec{\delta}_x(0)+\vec{\delta}_y(0)+\vec{\delta}_z(1)
+\end{aligned}
+\]
+</div>
 			<p>作用素の変換は次式となります。</p>
-			<p class="im"><img src="./../img/appendix_cord_r.files/image009.png"></p>
+			<div class="math-block" id="formula-appendix-3-1-009" data-source-image="./../img/appendix_cord_r.files/image009.png">
+\[
+\begin{aligned}
+\frac{\partial}{\partial r}
+&=(\cos\theta)\frac{\partial}{\partial x}
++(\sin\theta)\frac{\partial}{\partial y}
++(0)\frac{\partial}{\partial z}\\
+\frac{\partial}{\partial\theta}
+&=(-r\sin\theta)\frac{\partial}{\partial x}
++(r\cos\theta)\frac{\partial}{\partial y}
++(0)\frac{\partial}{\partial z}\\
+\frac{\partial}{\partial z}
+&=(0)\frac{\partial}{\partial x}
++(0)\frac{\partial}{\partial y}
++(1)\frac{\partial}{\partial z}
+\end{aligned}
+\]
+</div>
 			<p>また、</p>
-			<p class="im"><img src="./../img/appendix_cord_r.files/image010.png"></p>
+			<div class="math-block" id="formula-appendix-3-1-010" data-source-image="./../img/appendix_cord_r.files/image010.png">
+\[
+\begin{aligned}
+\frac{\partial}{\partial r}\vec{\delta}_r&=0,\qquad
+\frac{\partial}{\partial r}\vec{\delta}_\theta=0,\qquad
+\frac{\partial}{\partial r}\vec{\delta}_z=0\\
+\frac{\partial}{\partial\theta}\vec{\delta}_r&=\vec{\delta}_\theta,\qquad
+\frac{\partial}{\partial\theta}\vec{\delta}_\theta=-\vec{\delta}_r,\qquad
+\frac{\partial}{\partial\theta}\vec{\delta}_z=0\\
+\frac{\partial}{\partial z}\vec{\delta}_r&=0,\qquad
+\frac{\partial}{\partial z}\vec{\delta}_\theta=0,\qquad
+\frac{\partial}{\partial z}\vec{\delta}_z=0
+\end{aligned}
+\]
+</div>
 			<p>従って、</p>
-			<p class="im"><img src="./../img/appendix_cord_r.files/image011.png"></p>
+			<div class="math-block" id="formula-appendix-3-1-011" data-source-image="./../img/appendix_cord_r.files/image011.png">
+\[
+\nabla
+=\vec{\delta}_r\frac{\partial}{\partial r}
++\vec{\delta}_\theta\frac{1}{r}\frac{\partial}{\partial\theta}
++\vec{\delta}_z\frac{\partial}{\partial z}
+\]
+</div>
 			<br>
 
 			<div style="margin-top:10px;"></div>
