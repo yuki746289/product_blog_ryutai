@@ -1,0 +1,122 @@
+name: Consolidate FEM 7.1.2 Pass1 Status
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/consolidate-fem-7-1-2-pass1.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  consolidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - name: Correct batch C and consolidate status
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          def rep(path, old, new, label):
+              p = Path(path)
+              s = p.read_text(encoding='utf-8')
+              if old not in s:
+                  raise SystemExit(f'expected text not found: {label}')
+              p.write_text(s.replace(old, new, 1), encoding='utf-8')
+
+          batch = '.document/formula_reviews/fem_7_1_2_pass1_batch_c.md'
+          rep(batch,
+              '| `image041` | NG | **再転記OK** | 圧力項を `1/Re` の外へ復元。`2K^*/We` を保持 |',
+              '| `image041` | NG | **再転記OK** | 元画像どおり圧力項 `-[H_x]{P}` を `1/Re` の波括弧内に保持。`2K^*/We` を保持 |',
+              'batch c image041 summary')
+          rep(batch,
+              '| `image042` | NG | **再転記OK** | y成分も圧力項を `1/Re` の外へ復元 |',
+              '| `image042` | NG | **再転記OK** | 元画像どおり圧力項 `-[H_y]{P}` を `1/Re` の波括弧内に保持 |',
+              'batch c image042 summary')
+          rep(batch,
+              '&+\\frac1{Re}\\left\\{(2[S_{xx}]+[S_{yy}])\\{V_x\\}^{\\tau+\\Delta\\tau}+[S_{yx}]\\{V_y\\}^{\\tau+\\Delta\\tau}\\right\\}\n-[H_x]\\{P\\}^{\\tau+\\Delta\\tau}\\\\',
+              '&+\\frac1{Re}\\left\\{(2[S_{xx}]+[S_{yy}])\\{V_x\\}^{\\tau+\\Delta\\tau}+[S_{yx}]\\{V_y\\}^{\\tau+\\Delta\\tau}-[H_x]\\{P\\}^{\\tau+\\Delta\\tau}\\right\\}\\\\',
+              'batch c image041 latex')
+          rep(batch,
+              '&+\\frac1{Re}\\left\\{[S_{xy}]\\{V_x\\}^{\\tau+\\Delta\\tau}+([S_{xx}]+2[S_{yy}])\\{V_y\\}^{\\tau+\\Delta\\tau}\\right\\}\n-[H_y]\\{P\\}^{\\tau+\\Delta\\tau}\\\\',
+              '&+\\frac1{Re}\\left\\{[S_{xy}]\\{V_x\\}^{\\tau+\\Delta\\tau}+([S_{xx}]+2[S_{yy}])\\{V_y\\}^{\\tau+\\Delta\\tau}-[H_y]\\{P\\}^{\\tau+\\Delta\\tau}\\right\\}\\\\',
+              'batch c image042 latex')
+          rep(batch,
+              '- `image041`, `image042`: 圧力項は `1/Re` の括弧外にある。',
+              '- `image041`, `image042`: 圧力項は元画像どおり `1/Re` の波括弧内に含まれる。',
+              'batch c important note')
+
+          review = '.document/formula_reviews/fem_7_1_2_review.md'
+          rep(review, '- [ ] 全画像でPass 1完了。', '- [x] 全画像でPass 1完了。', 'review pass1 checkbox')
+          rep(review, '- [ ] 原画像にない一般化・総和記号・略記を導入していない。', '- [x] 原画像にない一般化・総和記号・略記を導入していない。', 'review no-generalization checkbox')
+          rep(review, '- [ ] 行列全成分を照合した。', '- [x] 行列全成分を照合した。', 'review matrices checkbox')
+          rep(review, '- [ ] `image027` の原文積分公式を完全転記した。', '- [x] `image027` の原文積分公式を完全転記した。', 'review image027 checkbox')
+          rep(review, '- [ ] `image032`以降の原画像係数を完全転記した。', '- [x] `image032`以降の原画像係数を完全転記した。', 'review image032 checkbox')
+          rep(review, '- [ ] 誤記候補・標準式は原文と分離した。', '- [x] 誤記候補・標準式は原文と分離した。', 'review separation checkbox')
+          rep(review,
+              '**未完了 / 対応付け42/42、履歴から現候補NG確定5/42、元画像目視Pass 1 = 0/42、Pass 2 = 0/42。通常ページは安全ガード済み。**',
+              '**Pass 1完了 / 対応付け42/42、元画像直接目視・忠実再転記 Pass 1 = 42/42、Pass 2 = 0/42。通常ページは安全ガード済み。**',
+              'review final status')
+          p = Path(review)
+          s = p.read_text(encoding='utf-8')
+          marker = '## 再監査チェック\n'
+          insert = ('## 2026-09-17 元画像直接Pass 1完了\n\n'
+                    'GitHub Actionsで42画像を3バッチに分け、白背景化・4倍拡大・候補式抽出のみを並列化した。'
+                    'Pass/NG判定と忠実転記は元画像を直接目視して実施した。\n\n'
+                    '- `fem_7_1_2_pass1_batch_a.md`: `image001～014` = 14/14\n'
+                    '- `fem_7_1_2_pass1_batch_b.md`: `image015～028` = 14/14\n'
+                    '- `fem_7_1_2_pass1_batch_c.md`: `image029～042` = 14/14\n\n'
+                    '**Pass 1 = 42/42 完了。Pass 2 = 0/42。**\n\n'
+                    '`image041/042` は拡大再確認により、圧力項が `1/Re` の波括弧内に含まれることを確定し、batch C記録を修正した。\n\n')
+          if marker not in s:
+              raise SystemExit('review marker not found')
+          p.write_text(s.replace(marker, insert + marker, 1), encoding='utf-8')
+
+          retrans = '.document/formula_reviews/fem_7_1_2_retranscription.md'
+          rep(retrans, '- 元画像直接目視Pass 1合格: **0/42**', '- 元画像直接目視Pass 1合格: **42/42**', 'retrans pass1 count')
+          rep(retrans, '- 元画像忠実再転記の完全確定: **0/42**', '- 元画像忠実再転記の完全確定: **42/42**', 'retrans exact count')
+          p = Path(retrans)
+          s = p.read_text(encoding='utf-8')
+          s += ('\n## Pass 1完了記録（2026-09-17）\n\n'
+                '`image001～042` を3バッチで直接目視し、全42式の忠実転記を確定した。'
+                '詳細LaTeXは `fem_7_1_2_pass1_batch_a.md` / `batch_b.md` / `batch_c.md` に記録。'
+                '`image041/042` は最終拡大確認で圧力項が `1/Re` の波括弧内にあることを確定済み。\n')
+          p.write_text(s, encoding='utf-8')
+
+          status = '.document/formula_reviews/STRICT_SOURCE_AUDIT_STATUS.md'
+          rep(status,
+              '| 3 | `fem/fem_7_1_2.html` | 42 | 残存11 MathJaxブロックを元画像へガード | `fem/fem_7_1_2_mathjax_audit.html` | **42/42** | 0/42 | 0/42 | 履歴から現候補NG 5/42確定 / 元画像目視待ち |',
+              '| 3 | `fem/fem_7_1_2.html` | 42 | 残存11 MathJaxブロックを元画像へガード | `fem/fem_7_1_2_mathjax_audit.html` | **42/42** | **42/42** | 0/42 | **元画像忠実Pass 1完了 / Pass 2待ち** |',
+              'status page row')
+          rep(status,
+              '|  | **合計** | **143** |  |  | **143/143** | **81/143** | **0/143** | **未完了** |',
+              '|  | **合計** | **143** |  |  | **143/143** | **123/143** | **0/143** | **未完了** |',
+              'status total')
+          p = Path(status)
+          s = p.read_text(encoding='utf-8')
+          marker = '### `fem/fem_7_2_1.html`\n'
+          insert = ('元画像42式をActions前処理3バッチ＋直接目視で再監査し、**Pass 1 = 42/42** を完了した。'
+                    '忠実LaTeXは3つのbatch記録へ分離。既知の誤記候補は原文のまま保持し、修正版は補足扱いとする。\n\n')
+          if marker not in s:
+              raise SystemExit('status section marker not found')
+          p.write_text(s.replace(marker, insert + marker, 1), encoding='utf-8')
+          PY
+
+      - name: Commit consolidated status
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .document/formula_reviews/fem_7_1_2_pass1_batch_c.md \
+                  .document/formula_reviews/fem_7_1_2_review.md \
+                  .document/formula_reviews/fem_7_1_2_retranscription.md \
+                  .document/formula_reviews/STRICT_SOURCE_AUDIT_STATUS.md
+          git diff --cached --check
+          git commit -m 'docs: complete fem 7.1.2 strict pass 1'
+          git push origin HEAD:develop
