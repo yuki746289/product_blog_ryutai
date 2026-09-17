@@ -1,0 +1,64 @@
+{
+  "page": "appendix/appendix_1.html",
+  "source_dir": "img/appendix_equation.files",
+  "canonical_source": "original image",
+  "status": "pass1-transcribed",
+  "formulas": [
+    {
+      "image": "image001.png",
+      "latex": "\\[\n\\left\\{\n\\begin{aligned}\na_1x+b_1y+c_1z&=d_1\\\\\na_2x+b_2y+c_2z&=d_2\\\\\na_3x+b_3y+c_3z&=d_3\n\\end{aligned}\n\\right.\n\\]"
+    },
+    {
+      "image": "image002.png",
+      "latex": "\\[\n\\begin{aligned}\nx&=\\frac{d_1-b_1y-c_1z}{a_1}\\\\\na_2\\frac{d_1-b_1y-c_1z}{a_1}+b_2y+c_2z&=d_2\\\\\na_3\\frac{d_1-b_1y-c_1z}{a_1}+b_3y+c_3z&=d_3\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image003.png",
+      "latex": "\\[\n\\begin{aligned}\na_2d_1-a_2b_1y-c_1a_2z+a_1b_2y+c_2a_1z&=a_1d_2\\\\\na_3d_1-a_3b_1y-c_1a_3z+a_1b_3y+c_3a_1z&=a_1d_3\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image004.png",
+      "latex": "\\[\n\\begin{aligned}\n(a_1b_2-a_2b_1)y+(c_2a_1-c_1a_2)z&=a_1d_2-a_2d_1\\\\\n(a_1b_3-a_3b_1)y+(c_3a_1-c_1a_3)z&=a_1d_3-a_3d_1\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image005.png",
+      "latex": "\\[\n\\begin{aligned}\ny&=\\frac{a_1d_2-a_2d_1}{a_1b_2-a_2b_1}-\\frac{c_2a_1-c_1a_2}{a_1b_2-a_2b_1}z\\\\\ny&=\\frac{a_1d_3-a_3d_1}{a_1b_3-a_3b_1}-\\frac{c_3a_1-c_1a_3}{a_1b_3-a_3b_1}z\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image006.png",
+      "latex": "\\[\n\\left(\n\\frac{c_3a_1-c_1a_3}{a_1b_3-a_3b_1}\n-\\frac{c_2a_1-c_1a_2}{a_1b_2-a_2b_1}\n\\right)z\n=\n\\frac{a_1d_3-a_3d_1}{a_1b_3-a_3b_1}\n-\\frac{a_1d_2-a_2d_1}{a_1b_2-a_2b_1}\n\\]"
+    },
+    {
+      "image": "image007.png",
+      "latex": "\\[\n\\begin{aligned}\nz&=\n\\frac{\n(a_1b_2-a_2b_1)(a_1d_3-a_3d_1)-(a_1b_3-a_3b_1)(a_1d_2-a_2d_1)\n}{\n(a_1b_2-a_2b_1)(c_3a_1-c_1a_3)-(a_1b_3-a_3b_1)(c_2a_1-c_1a_2)\n}\\\\[4pt]\n&=\n\\frac{\na_1a_1b_2d_3+a_2a_3b_1d_1+a_1a_2b_3d_1+a_1a_3b_1d_2-a_1a_3b_2d_1-a_1a_2b_1d_3-a_1a_1b_3d_2-a_2a_3b_1d_1\n}{\na_1a_1b_2c_3+a_2a_3b_1c_1+a_1a_2b_3c_1+a_1a_3b_1c_2-a_1a_3b_2c_1-a_1a_2b_1c_3-a_1a_1b_3c_2-a_2a_3b_1c_1\n}\\\\[4pt]\n&=\n\\frac{\na_1a_1b_2d_3+a_1a_2b_3d_1+a_1a_3b_1d_2-a_1a_3b_2d_1-a_1a_2b_1d_3-a_1a_1b_3d_2\n}{\na_1a_1b_2c_3+a_1a_2b_3c_1+a_1a_3b_1c_2-a_1a_3b_2c_1-a_1a_2b_1c_3-a_1a_1b_3c_2\n}\\\\[4pt]\n&=\n\\frac{\na_1b_2d_3+a_2b_3d_1+a_3b_1d_2-a_3b_2d_1-a_2b_1d_3-a_1b_3d_2\n}{\na_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2\n}\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image008.png",
+      "latex": "\\[\n\\begin{aligned}\n(a_1b_2-a_2b_1)y+(c_2a_1-c_1a_2)z&=a_1d_2-a_2d_1\\\\\n(a_1b_3-a_3b_1)y+(c_3a_1-c_1a_3)z&=a_1d_3-a_3d_1\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image009.png",
+      "latex": "\\[\n\\begin{aligned}\n\\frac{a_1b_2-a_2b_1}{c_2a_1-c_1a_2}y+z&=\\frac{a_1d_2-a_2d_1}{c_2a_1-c_1a_2}\\\\\n\\frac{a_1b_3-a_3b_1}{c_3a_1-c_1a_3}y+z&=\\frac{a_1d_3-a_3d_1}{c_3a_1-c_1a_3}\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image010.png",
+      "latex": "\\[\n\\frac{a_1b_2-a_2b_1}{c_2a_1-c_1a_2}y\n-\\frac{a_1b_3-a_3b_1}{c_3a_1-c_1a_3}y\n=\n\\frac{a_1d_2-a_2d_1}{c_2a_1-c_1a_2}\n-\\frac{a_1d_3-a_3d_1}{c_3a_1-c_1a_3}\n\\]"
+    },
+    {
+      "image": "image011.png",
+      "latex": "\\[\n\\left\\{\n(c_3a_1-c_1a_3)(a_1b_2-a_2b_1)\n-(c_2a_1-c_1a_2)(a_1b_3-a_3b_1)\n\\right\\}y\n=\n(c_3a_1-c_1a_3)(a_1d_2-a_2d_1)\n-(c_2a_1-c_1a_2)(a_1d_3-a_3d_1)\n\\]"
+    },
+    {
+      "image": "image012.png",
+      "latex": "\\[\n\\begin{aligned}\ny&=\n\\frac{\n(c_3a_1-c_1a_3)(a_1d_2-a_2d_1)-(c_2a_1-c_1a_2)(a_1d_3-a_3d_1)\n}{\n(c_3a_1-c_1a_3)(a_1b_2-a_2b_1)-(c_2a_1-c_1a_2)(a_1b_3-a_3b_1)\n}\\\\[4pt]\n&=\n\\frac{\nc_3a_1a_1d_2-c_3a_1a_2d_1-c_1a_3a_1d_2+c_1a_3a_2d_1-c_2a_1a_1d_3+c_2a_1a_3d_1+c_1a_2a_1d_3-c_1a_2a_3d_1\n}{\nc_3a_1a_1b_2-c_3a_1a_2b_1-c_1a_3a_1b_2+c_1a_3a_2b_1-c_2a_1a_1b_3+c_2a_1a_3b_1+c_1a_2a_1b_3-c_1a_2a_3b_1\n}\\\\[4pt]\n&=\n\\frac{\nc_3a_1d_2-c_3a_2d_1-c_1a_3d_2-c_2a_1d_3+c_2a_3d_1+c_1a_2d_3\n}{\nc_3a_1b_2-c_3a_2b_1-c_1a_3b_2-c_2a_1b_3+c_2a_3b_1+c_1a_2b_3\n}\\\\[4pt]\n&=\n\\frac{\na_1d_2c_3+a_2d_3c_1+a_3d_1c_2-a_3d_2c_1-a_2d_1c_3-a_1d_3c_2\n}{\na_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2\n}\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image013.png",
+      "latex": "\\[\n\\begin{aligned}\nx&=\\frac{d_1-b_1y-c_1z}{a_1}\\\\[4pt]\n&=\n\\frac{\n\\begin{aligned}\n&d_1(a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2)\\\\\n&-b_1(a_1d_2c_3+a_2d_3c_1+a_3d_1c_2-a_3d_2c_1-a_2d_1c_3-a_1d_3c_2)\\\\\n&-c_1(a_1b_2d_3+a_2b_3d_1+a_3b_1d_2-a_3b_2d_1-a_2b_1d_3-a_1b_3d_2)\n\\end{aligned}\n}{\na_1(a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2)\n}\\\\[4pt]\n&=\n\\frac{\n\\begin{aligned}\n&a_1b_2c_3d_1+a_2b_3c_1d_1+a_3b_1c_2d_1-a_3b_2c_1d_1-a_2b_1c_3d_1-a_1b_3c_2d_1\\\\\n&-a_1b_1c_3d_2-a_2b_1c_1d_3-a_3b_1c_2d_1+a_3b_1c_1d_2+a_2b_1c_3d_1+a_1b_1c_2d_3\\\\\n&-a_1b_2c_1d_3-a_2b_3c_1d_1-a_3b_1c_1d_2+a_3b_2c_1d_1+a_2b_1c_1d_3+a_1b_3c_1d_2\n\\end{aligned}\n}{\na_1(a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2)\n}\\\\[4pt]\n&=\n\\frac{\nb_1c_2d_3+b_2c_3d_1+b_3c_1d_2-b_3c_2d_1-b_2c_1d_3-b_1c_3d_2\n}{\na_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2\n}\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image014.png",
+      "latex": "\\[\n\\begin{aligned}\nx&=\n\\frac{\nb_1c_2d_3+b_2c_3d_1+b_3c_1d_2-b_3c_2d_1-b_2c_1d_3-b_1c_3d_2\n}{\na_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2\n}\\\\[6pt]\ny&=\n\\frac{\na_1d_2c_3+a_2d_3c_1+a_3d_1c_2-a_3d_2c_1-a_2d_1c_3-a_1d_3c_2\n}{\na_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2\n}\\\\[6pt]\nz&=\n\\frac{\na_1b_2d_3+a_2b_3d_1+a_3b_1d_2-a_3b_2d_1-a_2b_1d_3-a_1b_3d_2\n}{\na_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2\n}\n\\end{aligned}\n\\]"
+    }
+  ]
+}
