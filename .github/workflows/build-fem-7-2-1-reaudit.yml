@@ -54,8 +54,9 @@ jobs:
               if len(opens) != 1:
                   raise SystemExit(f'formula opening tag not unique: {n}, found={len(opens)}')
               opening = opens[0].group(0)
-              expected_img = f'../img/fem_d_mass_tet.files/image{n}.png'
-              if f'data-source-image="{expected_img}"' not in opening:
+              expected_img = f'img/fem_d_mass_tet.files/image{n}.png'
+              src_match = re.search(r'data-source-image="([^"]+)"', opening)
+              if not src_match or not src_match.group(1).endswith(expected_img):
                   raise SystemExit(f'source image mismatch: {n}: {opening}')
               start = opens[0].start()
               body_start = opens[0].end()
@@ -85,8 +86,9 @@ jobs:
               body = built[m.end():close].strip()
               if body != formulas[n].strip():
                   raise SystemExit(f'latex mismatch after build: {n}')
-              expected_img = f'../img/fem_d_mass_tet.files/image{n}.png'
-              if f'data-source-image="{expected_img}"' not in m.group(0):
+              expected_img = f'img/fem_d_mass_tet.files/image{n}.png'
+              src_match = re.search(r'data-source-image="([^"]+)"', m.group(0))
+              if not src_match or not src_match.group(1).endswith(expected_img):
                   raise SystemExit(f'built source image mismatch: {n}')
 
           ids = re.findall(r'id="formula-fem-7-2-1-(\d{3})"', built)
