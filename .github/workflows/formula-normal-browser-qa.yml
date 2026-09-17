@@ -1,0 +1,204 @@
+name: Normal FEM Formula Browser QA
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/formula-normal-browser-qa.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Chromium
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Start local site
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 > /tmp/normal-qa-http.log 2>&1 &
+          echo $! > /tmp/normal-qa-http.pid
+          sleep 1
+
+      - name: Run desktop and mobile QA
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+
+          configs = [
+              {'key':'fem_6_2_6','file':'fem/fem_6_2_6.html','imgdir':'fem_n_tet.files','placements':12,'unique':12},
+              {'key':'fem_7_1_1','file':'fem/fem_7_1_1.html','imgdir':'fem_d_mass_tri.files','placements':20,'unique':20},
+              {'key':'fem_7_1_2','file':'fem/fem_7_1_2.html','imgdir':'fem_d_momentum_tri.files','placements':45,'unique':42},
+              {'key':'fem_7_2_1','file':'fem/fem_7_2_1.html','imgdir':'fem_d_mass_tet.files','placements':20,'unique':20},
+              {'key':'fem_7_2_2','file':'fem/fem_7_2_2.html','imgdir':'fem_d_momentum_tet.files','placements':51,'unique':49},
+          ]
+          viewports = {
+              'desktop': {'width':1440,'height':1000},
+              'mobile': {'width':390,'height':844},
+          }
+          out = Path('normal-browser-qa')
+          out.mkdir(exist_ok=True)
+          results = []
+          failures = []
+
+          with sync_playwright() as p:
+              browser = p.chromium.launch(headless=True)
+              for cfg in configs:
+                  for vp_name, vp in viewports.items():
+                      context = browser.new_context(viewport=vp, device_scale_factor=1)
+                      page = context.new_page()
+                      console_errors = []
+                      page_errors = []
+                      page.on('console', lambda msg, store=console_errors: store.append(msg.text) if msg.type == 'error' else None)
+                      page.on('pageerror', lambda exc, store=page_errors: store.append(str(exc)))
+
+                      url = 'http://127.0.0.1:8000/' + cfg['file']
+                      page.goto(url, wait_until='domcontentloaded', timeout=120000)
+                      page.wait_for_function('() => window.MathJax && MathJax.startup && MathJax.startup.promise', timeout=60000)
+                      page.evaluate('async () => { await MathJax.startup.promise; }')
+                      page.wait_for_timeout(500)
+
+                      blocks = page.locator(f'div.math-block[data-source-image*="{cfg["imgdir"]}/image"]')
+                      block_count = blocks.count()
+                      target_imgs = page.locator(f'img[src*="{cfg["imgdir"]}/image"]')
+                      target_img_count = target_imgs.count()
+                      mjx_count = page.locator(f'div.math-block[data-source-image*="{cfg["imgdir"]}/image"] mjx-container').count()
+                      merror_count = page.locator('mjx-merror').count()
+
+                      block_overflow = []
+                      for i in range(block_count):
+                          el = blocks.nth(i)
+                          dims = el.evaluate('(e)=>({clientWidth:e.clientWidth,scrollWidth:e.scrollWidth,clientHeight:e.clientHeight,scrollHeight:e.scrollHeight})')
+                          if dims['scrollWidth'] > dims['clientWidth'] + 1:
+                              block_overflow.append({'index':i+1,'source':el.get_attribute('data-source-image'),'dims':dims})
+
+                      page_dims = page.evaluate('''() => ({
+                          innerWidth: window.innerWidth,
+                          docClientWidth: document.documentElement.clientWidth,
+                          docScrollWidth: document.documentElement.scrollWidth,
+                          bodyScrollWidth: document.body ? document.body.scrollWidth : 0
+                      })''')
+                      page_overflow = page_dims['docScrollWidth'] > page_dims['docClientWidth'] + 2
+
+                      shot_dir = out / cfg['key']
+                      shot_dir.mkdir(parents=True, exist_ok=True)
+                      page.screenshot(path=str(shot_dir / f'{vp_name}.png'), full_page=True, animations='disabled')
+
+                      row = {
+                          'page': cfg['key'],
+                          'file': cfg['file'],
+                          'viewport': vp_name,
+                          'viewport_size': vp,
+                          'formula_blocks': block_count,
+                          'expected_formula_blocks': cfg['placements'],
+                          'mathjax_containers': mjx_count,
+                          'target_formula_images': target_img_count,
+                          'mathjax_errors': merror_count,
+                          'formula_horizontal_overflow_count': len(block_overflow),
+                          'formula_horizontal_overflow': block_overflow,
+                          'page_horizontal_overflow': page_overflow,
+                          'page_dimensions': page_dims,
+                          'console_errors': console_errors,
+                          'page_errors': page_errors,
+                      }
+                      results.append(row)
+
+                      if block_count != cfg['placements']:
+                          failures.append(f"{cfg['key']} {vp_name}: blocks {block_count}!={cfg['placements']}")
+                      if mjx_count != cfg['placements']:
+                          failures.append(f"{cfg['key']} {vp_name}: MathJax containers {mjx_count}!={cfg['placements']}")
+                      if target_img_count != 0:
+                          failures.append(f"{cfg['key']} {vp_name}: target formula images remain {target_img_count}")
+                      if merror_count != 0:
+                          failures.append(f"{cfg['key']} {vp_name}: mjx-merror count {merror_count}")
+                      if block_overflow:
+                          failures.append(f"{cfg['key']} {vp_name}: formula overflow {len(block_overflow)}")
+                      if page_overflow:
+                          failures.append(
+                              f"{cfg['key']} {vp_name}: page overflow {page_dims['docScrollWidth']} > {page_dims['docClientWidth']}")
+                      if page_errors:
+                          failures.append(f"{cfg['key']} {vp_name}: page errors {page_errors}")
+
+                      print(
+                          f"{cfg['key']} {vp_name}: blocks={block_count}, mjx={mjx_count}, "
+                          f"target_imgs={target_img_count}, merror={merror_count}, "
+                          f"formula_overflow={len(block_overflow)}, page_overflow={page_overflow}")
+                      context.close()
+              browser.close()
+
+          summary = {
+              'results': results,
+              'failures': failures,
+              'status': 'PASS' if not failures else 'FAIL',
+          }
+          (out / 'manifest.json').write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding='utf-8')
+
+          report = Path('.document/formula_reviews/NORMAL_PAGE_BROWSER_QA_20260918.md')
+          lines = [
+              '# Normal Page Browser QA — 2026-09-18',
+              '',
+              f'- Overall: **{summary["status"]}**',
+              '- Browser: Chromium / Playwright',
+              '- Viewports: desktop 1440×1000, mobile 390×844',
+              '',
+              '| Page | Viewport | Blocks | Formula images | MathJax errors | Formula overflow | Page overflow |',
+              '|---|---|---:|---:|---:|---:|---|',
+          ]
+          for r in results:
+              lines.append(
+                  f"| `{r['page']}` | {r['viewport']} | {r['formula_blocks']}/{r['expected_formula_blocks']} | "
+                  f"{r['target_formula_images']} | {r['mathjax_errors']} | "
+                  f"{r['formula_horizontal_overflow_count']} | {'YES' if r['page_horizontal_overflow'] else 'NO'} |")
+          lines += ['', '## Failures', '']
+          if failures:
+              lines += [f'- {x}' for x in failures]
+          else:
+              lines.append('- None.')
+          lines += [
+              '',
+              'Screenshots and the machine-readable manifest are stored in the workflow artifact `normal-fem-browser-qa`.',
+          ]
+          report.write_text('\n'.join(lines) + '\n', encoding='utf-8')
+
+          if failures:
+              print('\nFAILURES:')
+              for x in failures:
+                  print('-', x)
+              raise SystemExit(1)
+          PY
+
+      - name: Commit QA report
+        if: success()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .document/formula_reviews/NORMAL_PAGE_BROWSER_QA_20260918.md
+          if git diff --cached --quiet; then
+            echo 'No report change.'
+          else
+            git commit -m 'docs: record normal FEM browser QA'
+            git push origin HEAD:develop
+          fi
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: normal-fem-browser-qa
+          path: normal-browser-qa
+          retention-days: 7
