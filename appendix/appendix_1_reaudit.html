@@ -3,155 +3,270 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Appendix 1 strict formula re-audit</title>
+<title>appendix_1 strict formula re-audit</title>
 <style>
-body{font-family:sans-serif;margin:20px;line-height:1.5;color:#111}.note{background:#f4f4f4;padding:12px;margin-bottom:20px}.pair{border:1px solid #bbb;margin:0 0 24px;padding:12px}.pair h2{font-size:16px;margin:0 0 10px}.source,.render{overflow-x:auto;padding:10px;background:#fff}.source{border-bottom:1px dashed #aaa}.source img{max-width:none;background:#fff}.render{min-height:50px}.render mjx-container[display="true"]{text-align:left!important;margin:.5em 0!important}
+body{font-family:Arial,"Yu Gothic",sans-serif;margin:20px;color:#111;background:#fff}
+h1{font-size:24px}.note{background:#f3f5f7;padding:12px;margin-bottom:18px}
+.formula-pair{border-top:1px solid #bbb;padding:18px 0 24px}
+.pair-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start}
+.source,.render{min-width:0;overflow-x:auto;padding:10px;border:1px solid #ddd;background:#fff}
+.source img{display:block;max-width:100%;height:auto;margin:auto}
+.render mjx-container[display="true"]{margin:.4em 0!important;text-align:left!important;min-width:max-content}
+@media(max-width:800px){.pair-grid{grid-template-columns:1fr}}
 </style>
+<script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},output:{displayOverflow:"linebreak",linebreaks:{inline:false,width:"100%"}}};</script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
-</head>
-<body>
-<h1>Appendix 1 strict formula re-audit</h1>
-<div class="note">Canonical source is each original PNG. This page is for source-image-to-MathJax visual comparison only. No algebraic simplification or correction is permitted.</div>
-
-<section class="pair" id="formula-001"><h2>image001.png</h2><div class="source"><img src="../img/appendix_equation.files/image001.png" alt="source image001"></div><div class="render">
-\[
-\begin{cases}
-a_1x+b_1y+c_1z=d_1\\
-a_2x+b_2y+c_2z=d_2\\
-a_3x+b_3y+c_3z=d_3
-\end{cases}
-\]
-</div></section>
-
-<section class="pair" id="formula-002"><h2>image002.png</h2><div class="source"><img src="../img/appendix_equation.files/image002.png" alt="source image002"></div><div class="render">
-\[
+</head><body>
+<h1>Appendix 1 strict source-image re-audit</h1>
+<div class="note">Canonical source: original image. No algebraic correction, simplification, or re-ordering is permitted in the transcription.</div>
+<section class="formula-pair" id="formula-001">
+<h2>image001</h2>
+<div class="pair-grid">
+<div class="source"><img src="./../img/appendix_equation.files/image001.png" alt="source image001"></div>
+<div class="render" data-source-image="./../img/appendix_equation.files/image001.png">\[
+\left\{
 \begin{aligned}
-x&=\frac{d_1-b_1y-c_1z}{a_1}\\[4pt]
-a_2\frac{d_1-b_1y-c_1z}{a_1}+b_2y+c_2z&=d_2\\[4pt]
+a_1x+b_1y+c_1z&=d_1\\
+a_2x+b_2y+c_2z&=d_2\\
+a_3x+b_3y+c_3z&=d_3
+\end{aligned}
+\right.
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-002">
+<h2>image002</h2>
+<div class="pair-grid">
+<div class="source"><img src="./../img/appendix_equation.files/image002.png" alt="source image002"></div>
+<div class="render" data-source-image="./../img/appendix_equation.files/image002.png">\[
+\begin{aligned}
+x&=\frac{d_1-b_1y-c_1z}{a_1}\\
+a_2\frac{d_1-b_1y-c_1z}{a_1}+b_2y+c_2z&=d_2\\
 a_3\frac{d_1-b_1y-c_1z}{a_1}+b_3y+c_3z&=d_3
 \end{aligned}
-\]
+\]</div>
 </div></section>
-
-<section class="pair" id="formula-003"><h2>image003.png</h2><div class="source"><img src="../img/appendix_equation.files/image003.png" alt="source image003"></div><div class="render">
-\[
+<section class="formula-pair" id="formula-003">
+<h2>image003</h2>
+<div class="pair-grid">
+<div class="source"><img src="./../img/appendix_equation.files/image003.png" alt="source image003"></div>
+<div class="render" data-source-image="./../img/appendix_equation.files/image003.png">\[
 \begin{aligned}
 a_2d_1-a_2b_1y-c_1a_2z+a_1b_2y+c_2a_1z&=a_1d_2\\
 a_3d_1-a_3b_1y-c_1a_3z+a_1b_3y+c_3a_1z&=a_1d_3
 \end{aligned}
-\]
+\]</div>
 </div></section>
-
-<section class="pair" id="formula-004"><h2>image004.png</h2><div class="source"><img src="../img/appendix_equation.files/image004.png" alt="source image004"></div><div class="render">
-\[
+<section class="formula-pair" id="formula-004">
+<h2>image004</h2>
+<div class="pair-grid">
+<div class="source"><img src="./../img/appendix_equation.files/image004.png" alt="source image004"></div>
+<div class="render" data-source-image="./../img/appendix_equation.files/image004.png">\[
 \begin{aligned}
 (a_1b_2-a_2b_1)y+(c_2a_1-c_1a_2)z&=a_1d_2-a_2d_1\\
 (a_1b_3-a_3b_1)y+(c_3a_1-c_1a_3)z&=a_1d_3-a_3d_1
 \end{aligned}
-\]
+\]</div>
 </div></section>
-
-<section class="pair" id="formula-005"><h2>image005.png</h2><div class="source"><img src="../img/appendix_equation.files/image005.png" alt="source image005"></div><div class="render">
-\[
+<section class="formula-pair" id="formula-005">
+<h2>image005</h2>
+<div class="pair-grid">
+<div class="source"><img src="./../img/appendix_equation.files/image005.png" alt="source image005"></div>
+<div class="render" data-source-image="./../img/appendix_equation.files/image005.png">\[
 \begin{aligned}
-y&=\frac{a_1d_2-a_2d_1}{a_1b_2-a_2b_1}-\frac{c_2a_1-c_1a_2}{a_1b_2-a_2b_1}z\\[6pt]
+y&=\frac{a_1d_2-a_2d_1}{a_1b_2-a_2b_1}-\frac{c_2a_1-c_1a_2}{a_1b_2-a_2b_1}z\\
 y&=\frac{a_1d_3-a_3d_1}{a_1b_3-a_3b_1}-\frac{c_3a_1-c_1a_3}{a_1b_3-a_3b_1}z
 \end{aligned}
-\]
+\]</div>
 </div></section>
-
-<section class="pair" id="formula-006"><h2>image006.png</h2><div class="source"><img src="../img/appendix_equation.files/image006.png" alt="source image006"></div><div class="render">
-\[
-\left(\frac{c_3a_1-c_1a_3}{a_1b_3-a_3b_1}-\frac{c_2a_1-c_1a_2}{a_1b_2-a_2b_1}\right)z
-=\frac{a_1d_3-a_3d_1}{a_1b_3-a_3b_1}-\frac{a_1d_2-a_2d_1}{a_1b_2-a_2b_1}
-\]
+<section class="formula-pair" id="formula-006">
+<h2>image006</h2>
+<div class="pair-grid">
+<div class="source"><img src="./../img/appendix_equation.files/image006.png" alt="source image006"></div>
+<div class="render" data-source-image="./../img/appendix_equation.files/image006.png">\[
+\left(
+\frac{c_3a_1-c_1a_3}{a_1b_3-a_3b_1}
+-\frac{c_2a_1-c_1a_2}{a_1b_2-a_2b_1}
+\right)z
+=
+\frac{a_1d_3-a_3d_1}{a_1b_3-a_3b_1}
+-\frac{a_1d_2-a_2d_1}{a_1b_2-a_2b_1}
+\]</div>
 </div></section>
-
-<section class="pair" id="formula-007"><h2>image007.png</h2><div class="source"><img src="../img/appendix_equation.files/image007.png" alt="source image007"></div><div class="render">
-\[
+<section class="formula-pair" id="formula-007">
+<h2>image007</h2>
+<div class="pair-grid">
+<div class="source"><img src="./../img/appendix_equation.files/image007.png" alt="source image007"></div>
+<div class="render" data-source-image="./../img/appendix_equation.files/image007.png">\[
 \begin{aligned}
-z
-&=\frac{(a_1b_2-a_2b_1)(a_1d_3-a_3d_1)-(a_1b_3-a_3b_1)(a_1d_2-a_2d_1)}{(a_1b_2-a_2b_1)(c_3a_1-c_1a_3)-(a_1b_3-a_3b_1)(c_2a_1-c_1a_2)}\\[8pt]
-&=\frac{a_1a_1b_2d_3+a_2a_3b_1d_1+a_1a_2b_3d_1+a_1a_3b_1d_2-a_1a_3b_2d_1-a_1a_2b_1d_3-a_1a_1b_3d_2-a_2a_3b_1d_1}{a_1a_1b_2c_3+a_2a_3b_1c_1+a_1a_2b_3c_1+a_1a_3b_1c_2-a_1a_3b_2c_1-a_1a_2b_1c_3-a_1a_1b_3c_2-a_2a_3b_1c_1}\\[8pt]
-&=\frac{a_1a_1b_2d_3+a_1a_2b_3d_1+a_1a_3b_1d_2-a_1a_3b_2d_1-a_1a_2b_1d_3-a_1a_1b_3d_2}{a_1a_1b_2c_3+a_1a_2b_3c_1+a_1a_3b_1c_2-a_1a_3b_2c_1-a_1a_2b_1c_3-a_1a_1b_3c_2}\\[8pt]
-&=\frac{a_1b_2d_3+a_2b_3d_1+a_3b_1d_2-a_3b_2d_1-a_2b_1d_3-a_1b_3d_2}{a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2}
+z&=
+\frac{
+(a_1b_2-a_2b_1)(a_1d_3-a_3d_1)-(a_1b_3-a_3b_1)(a_1d_2-a_2d_1)
+}{
+(a_1b_2-a_2b_1)(c_3a_1-c_1a_3)-(a_1b_3-a_3b_1)(c_2a_1-c_1a_2)
+}\\[4pt]
+&=
+\frac{
+a_1a_1b_2d_3+a_2a_3b_1d_1+a_1a_2b_3d_1+a_1a_3b_1d_2-a_1a_3b_2d_1-a_1a_2b_1d_3-a_1a_1b_3d_2-a_2a_3b_1d_1
+}{
+a_1a_1b_2c_3+a_2a_3b_1c_1+a_1a_2b_3c_1+a_1a_3b_1c_2-a_1a_3b_2c_1-a_1a_2b_1c_3-a_1a_1b_3c_2-a_2a_3b_1c_1
+}\\[4pt]
+&=
+\frac{
+a_1a_1b_2d_3+a_1a_2b_3d_1+a_1a_3b_1d_2-a_1a_3b_2d_1-a_1a_2b_1d_3-a_1a_1b_3d_2
+}{
+a_1a_1b_2c_3+a_1a_2b_3c_1+a_1a_3b_1c_2-a_1a_3b_2c_1-a_1a_2b_1c_3-a_1a_1b_3c_2
+}\\[4pt]
+&=
+\frac{
+a_1b_2d_3+a_2b_3d_1+a_3b_1d_2-a_3b_2d_1-a_2b_1d_3-a_1b_3d_2
+}{
+a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2
+}
 \end{aligned}
-\]
+\]</div>
 </div></section>
-
-<section class="pair" id="formula-008"><h2>image008.png</h2><div class="source"><img src="../img/appendix_equation.files/image008.png" alt="source image008"></div><div class="render">
-\[
+<section class="formula-pair" id="formula-008">
+<h2>image008</h2>
+<div class="pair-grid">
+<div class="source"><img src="./../img/appendix_equation.files/image008.png" alt="source image008"></div>
+<div class="render" data-source-image="./../img/appendix_equation.files/image008.png">\[
 \begin{aligned}
 (a_1b_2-a_2b_1)y+(c_2a_1-c_1a_2)z&=a_1d_2-a_2d_1\\
 (a_1b_3-a_3b_1)y+(c_3a_1-c_1a_3)z&=a_1d_3-a_3d_1
 \end{aligned}
-\]
+\]</div>
 </div></section>
-
-<section class="pair" id="formula-009"><h2>image009.png</h2><div class="source"><img src="../img/appendix_equation.files/image009.png" alt="source image009"></div><div class="render">
-\[
+<section class="formula-pair" id="formula-009">
+<h2>image009</h2>
+<div class="pair-grid">
+<div class="source"><img src="./../img/appendix_equation.files/image009.png" alt="source image009"></div>
+<div class="render" data-source-image="./../img/appendix_equation.files/image009.png">\[
 \begin{aligned}
-\frac{a_1b_2-a_2b_1}{c_2a_1-c_1a_2}y+z&=\frac{a_1d_2-a_2d_1}{c_2a_1-c_1a_2}\\[6pt]
+\frac{a_1b_2-a_2b_1}{c_2a_1-c_1a_2}y+z&=\frac{a_1d_2-a_2d_1}{c_2a_1-c_1a_2}\\
 \frac{a_1b_3-a_3b_1}{c_3a_1-c_1a_3}y+z&=\frac{a_1d_3-a_3d_1}{c_3a_1-c_1a_3}
 \end{aligned}
-\]
+\]</div>
 </div></section>
-
-<section class="pair" id="formula-010"><h2>image010.png</h2><div class="source"><img src="../img/appendix_equation.files/image010.png" alt="source image010"></div><div class="render">
-\[
-\frac{a_1b_2-a_2b_1}{c_2a_1-c_1a_2}y-\frac{a_1b_3-a_3b_1}{c_3a_1-c_1a_3}y
-=\frac{a_1d_2-a_2d_1}{c_2a_1-c_1a_2}-\frac{a_1d_3-a_3d_1}{c_3a_1-c_1a_3}
-\]
+<section class="formula-pair" id="formula-010">
+<h2>image010</h2>
+<div class="pair-grid">
+<div class="source"><img src="./../img/appendix_equation.files/image010.png" alt="source image010"></div>
+<div class="render" data-source-image="./../img/appendix_equation.files/image010.png">\[
+\frac{a_1b_2-a_2b_1}{c_2a_1-c_1a_2}y
+-\frac{a_1b_3-a_3b_1}{c_3a_1-c_1a_3}y
+=
+\frac{a_1d_2-a_2d_1}{c_2a_1-c_1a_2}
+-\frac{a_1d_3-a_3d_1}{c_3a_1-c_1a_3}
+\]</div>
 </div></section>
-
-<section class="pair" id="formula-011"><h2>image011.png</h2><div class="source"><img src="../img/appendix_equation.files/image011.png" alt="source image011"></div><div class="render">
-\[
+<section class="formula-pair" id="formula-011">
+<h2>image011</h2>
+<div class="pair-grid">
+<div class="source"><img src="./../img/appendix_equation.files/image011.png" alt="source image011"></div>
+<div class="render" data-source-image="./../img/appendix_equation.files/image011.png">\[
+\left\{
+(c_3a_1-c_1a_3)(a_1b_2-a_2b_1)
+-(c_2a_1-c_1a_2)(a_1b_3-a_3b_1)
+\right\}y
+=
+(c_3a_1-c_1a_3)(a_1d_2-a_2d_1)
+-(c_2a_1-c_1a_2)(a_1d_3-a_3d_1)
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-012">
+<h2>image012</h2>
+<div class="pair-grid">
+<div class="source"><img src="./../img/appendix_equation.files/image012.png" alt="source image012"></div>
+<div class="render" data-source-image="./../img/appendix_equation.files/image012.png">\[
 \begin{aligned}
-\{(c_3a_1-c_1a_3)(a_1b_2-a_2b_1)-(c_2a_1-c_1a_2)(a_1b_3-a_3b_1)\}y\\
-=(c_3a_1-c_1a_3)(a_1d_2-a_2d_1)-(c_2a_1-c_1a_2)(a_1d_3-a_3d_1)
+y&=
+\frac{
+(c_3a_1-c_1a_3)(a_1d_2-a_2d_1)-(c_2a_1-c_1a_2)(a_1d_3-a_3d_1)
+}{
+(c_3a_1-c_1a_3)(a_1b_2-a_2b_1)-(c_2a_1-c_1a_2)(a_1b_3-a_3b_1)
+}\\[4pt]
+&=
+\frac{
+c_3a_1a_1d_2-c_3a_1a_2d_1-c_1a_3a_1d_2+c_1a_3a_2d_1-c_2a_1a_1d_3+c_2a_1a_3d_1+c_1a_2a_1d_3-c_1a_2a_3d_1
+}{
+c_3a_1a_1b_2-c_3a_1a_2b_1-c_1a_3a_1b_2+c_1a_3a_2b_1-c_2a_1a_1b_3+c_2a_1a_3b_1+c_1a_2a_1b_3-c_1a_2a_3b_1
+}\\[4pt]
+&=
+\frac{
+c_3a_1d_2-c_3a_2d_1-c_1a_3d_2-c_2a_1d_3+c_2a_3d_1+c_1a_2d_3
+}{
+c_3a_1b_2-c_3a_2b_1-c_1a_3b_2-c_2a_1b_3+c_2a_3b_1+c_1a_2b_3
+}\\[4pt]
+&=
+\frac{
+a_1d_2c_3+a_2d_3c_1+a_3d_1c_2-a_3d_2c_1-a_2d_1c_3-a_1d_3c_2
+}{
+a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2
+}
 \end{aligned}
-\]
+\]</div>
 </div></section>
-
-<section class="pair" id="formula-012"><h2>image012.png</h2><div class="source"><img src="../img/appendix_equation.files/image012.png" alt="source image012"></div><div class="render">
-\[
+<section class="formula-pair" id="formula-013">
+<h2>image013</h2>
+<div class="pair-grid">
+<div class="source"><img src="./../img/appendix_equation.files/image013.png" alt="source image013"></div>
+<div class="render" data-source-image="./../img/appendix_equation.files/image013.png">\[
 \begin{aligned}
-y
-&=\frac{(c_3a_1-c_1a_3)(a_1d_2-a_2d_1)-(c_2a_1-c_1a_2)(a_1d_3-a_3d_1)}{(c_3a_1-c_1a_3)(a_1b_2-a_2b_1)-(c_2a_1-c_1a_2)(a_1b_3-a_3b_1)}\\[8pt]
-&=\frac{c_3a_1a_1d_2-c_3a_1a_2d_1-c_1a_3a_1d_2+c_1a_3a_2d_1-c_2a_1a_1d_3+c_2a_1a_3d_1+c_1a_2a_1d_3-c_1a_2a_3d_1}{c_3a_1a_1b_2-c_3a_1a_2b_1-c_1a_3a_1b_2+c_1a_3a_2b_1-c_2a_1a_1b_3+c_2a_1a_3b_1+c_1a_2a_1b_3-c_1a_2a_3b_1}\\[8pt]
-&=\frac{c_3a_1d_2-c_3a_2d_1-c_1a_3d_2-c_2a_1d_3+c_2a_3d_1+c_1a_2d_3}{c_3a_1b_2-c_3a_2b_1-c_1a_3b_2-c_2a_1b_3+c_2a_3b_1+c_1a_2b_3}\\[8pt]
-&=\frac{a_1d_2c_3+a_2d_3c_1+a_3d_1c_2-a_3d_2c_1-a_2d_1c_3-a_1d_3c_2}{a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2}
-\end{aligned}
-\]
-</div></section>
-
-<section class="pair" id="formula-013"><h2>image013.png</h2><div class="source"><img src="../img/appendix_equation.files/image013.png" alt="source image013"></div><div class="render">
-\[
+x&=\frac{d_1-b_1y-c_1z}{a_1}\\[4pt]
+&=
+\frac{
 \begin{aligned}
-x&=\frac{d_1-b_1y-c_1z}{a_1}\\[8pt]
-&=\frac{\begin{aligned}d_1(&a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2)\\[-2pt]
-&-b_1(a_1d_2c_3+a_2d_3c_1+a_3d_1c_2-a_3d_2c_1-a_2d_1c_3-a_1d_3c_2)\\[-2pt]
+&d_1(a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2)\\
+&-b_1(a_1d_2c_3+a_2d_3c_1+a_3d_1c_2-a_3d_2c_1-a_2d_1c_3-a_1d_3c_2)\\
 &-c_1(a_1b_2d_3+a_2b_3d_1+a_3b_1d_2-a_3b_2d_1-a_2b_1d_3-a_1b_3d_2)
-\end{aligned}}{a_1(a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2)}\\[10pt]
-&=\frac{\begin{aligned}
+\end{aligned}
+}{
+a_1(a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2)
+}\\[4pt]
+&=
+\frac{
+\begin{aligned}
 &a_1b_2c_3d_1+a_2b_3c_1d_1+a_3b_1c_2d_1-a_3b_2c_1d_1-a_2b_1c_3d_1-a_1b_3c_2d_1\\
 &-a_1b_1c_3d_2-a_2b_1c_1d_3-a_3b_1c_2d_1+a_3b_1c_1d_2+a_2b_1c_3d_1+a_1b_1c_2d_3\\
 &-a_1b_2c_1d_3-a_2b_3c_1d_1-a_3b_1c_1d_2+a_3b_2c_1d_1+a_2b_1c_1d_3+a_1b_3c_1d_2
-\end{aligned}}{a_1(a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2)}\\[10pt]
-&=\frac{b_1c_2d_3+b_2c_3d_1+b_3c_1d_2-b_3c_2d_1-b_2c_1d_3-b_1c_3d_2}{a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2}
 \end{aligned}
-\]
+}{
+a_1(a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2)
+}\\[4pt]
+&=
+\frac{
+b_1c_2d_3+b_2c_3d_1+b_3c_1d_2-b_3c_2d_1-b_2c_1d_3-b_1c_3d_2
+}{
+a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2
+}
+\end{aligned}
+\]</div>
 </div></section>
-
-<section class="pair" id="formula-014"><h2>image014.png</h2><div class="source"><img src="../img/appendix_equation.files/image014.png" alt="source image014"></div><div class="render">
-\[
+<section class="formula-pair" id="formula-014">
+<h2>image014</h2>
+<div class="pair-grid">
+<div class="source"><img src="./../img/appendix_equation.files/image014.png" alt="source image014"></div>
+<div class="render" data-source-image="./../img/appendix_equation.files/image014.png">\[
 \begin{aligned}
-x&=\frac{b_1c_2d_3+b_2c_3d_1+b_3c_1d_2-b_3c_2d_1-b_2c_1d_3-b_1c_3d_2}{a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2}\\[8pt]
-y&=\frac{a_1d_2c_3+a_2d_3c_1+a_3d_1c_2-a_3d_2c_1-a_2d_1c_3-a_1d_3c_2}{a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2}\\[8pt]
-z&=\frac{a_1b_2d_3+a_2b_3d_1+a_3b_1d_2-a_3b_2d_1-a_2b_1d_3-a_1b_3d_2}{a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2}
+x&=
+\frac{
+b_1c_2d_3+b_2c_3d_1+b_3c_1d_2-b_3c_2d_1-b_2c_1d_3-b_1c_3d_2
+}{
+a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2
+}\\[6pt]
+y&=
+\frac{
+a_1d_2c_3+a_2d_3c_1+a_3d_1c_2-a_3d_2c_1-a_2d_1c_3-a_1d_3c_2
+}{
+a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2
+}\\[6pt]
+z&=
+\frac{
+a_1b_2d_3+a_2b_3d_1+a_3b_1d_2-a_3b_2d_1-a_2b_1d_3-a_1b_3d_2
+}{
+a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2
+}
 \end{aligned}
-\]
+\]</div>
 </div></section>
-
-</body>
-</html>
+</body></html>
