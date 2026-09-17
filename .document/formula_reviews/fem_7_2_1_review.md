@@ -1,13 +1,14 @@
 # 数式レビュー: fem/fem_7_2_1.html
 
-更新日: 2026-09-16
+更新日: 2026-09-17
 
 ## 対象
 
 - ページ: `fem/fem_7_2_1.html`
 - タイトル: 質量収支式の離散化（4面体1次要素）
 - 数式画像: `img/fem_d_mass_tet.files/image001.png` ～ `image020.png`
-- 状態: **元画像完全一致の再監査対象**
+- 対象数: 20式
+- 状態: **元画像完全一致の再監査対象 / 対応付け20/20確認済み**
 
 ## 旧レビュー結果の位置づけ
 
@@ -23,6 +24,36 @@
 - 行列を別の略記へ置換したり、項を総和記号へまとめたりしない。
 - 時刻添字、`Ma` 係数、x/y/z各項を元画像と照合する。
 
+## 対応付け確認（2026-09-17）
+
+通常ページは `image001.png`～`image020.png` を順番どおり画像表示している。
+監査候補 `fem_7_2_1_mathjax_audit.html` では、20式すべてに同番号の式IDと `data-source-image` が設定されていることを確認した。
+
+| No. | 元画像 | 監査式ID | 対応付け |
+|---:|---|---|---|
+| 1 | `image001.png` | `formula-fem-7-2-1-001` | OK |
+| 2 | `image002.png` | `formula-fem-7-2-1-002` | OK |
+| 3 | `image003.png` | `formula-fem-7-2-1-003` | OK |
+| 4 | `image004.png` | `formula-fem-7-2-1-004` | OK |
+| 5 | `image005.png` | `formula-fem-7-2-1-005` | OK |
+| 6 | `image006.png` | `formula-fem-7-2-1-006` | OK |
+| 7 | `image007.png` | `formula-fem-7-2-1-007` | OK |
+| 8 | `image008.png` | `formula-fem-7-2-1-008` | OK |
+| 9 | `image009.png` | `formula-fem-7-2-1-009` | OK |
+| 10 | `image010.png` | `formula-fem-7-2-1-010` | OK |
+| 11 | `image011.png` | `formula-fem-7-2-1-011` | OK |
+| 12 | `image012.png` | `formula-fem-7-2-1-012` | OK |
+| 13 | `image013.png` | `formula-fem-7-2-1-013` | OK |
+| 14 | `image014.png` | `formula-fem-7-2-1-014` | OK |
+| 15 | `image015.png` | `formula-fem-7-2-1-015` | OK |
+| 16 | `image016.png` | `formula-fem-7-2-1-016` | OK |
+| 17 | `image017.png` | `formula-fem-7-2-1-017` | OK |
+| 18 | `image018.png` | `formula-fem-7-2-1-018` | OK |
+| 19 | `image019.png` | `formula-fem-7-2-1-019` | OK |
+| 20 | `image020.png` | `formula-fem-7-2-1-020` | OK |
+
+**対応付け結果: 20/20 OK。**
+
 ## 主な補足候補
 
 ### 対流速度の扱い
@@ -37,8 +68,8 @@
 
 ## 再監査チェック
 
-- [ ] `image001`～`image020` を全て確認。
-- [ ] 全MathJax式と元画像を1対1対応。
+- [x] `image001`～`image020` を全て列挙。
+- [x] 全MathJax式と元画像を1対1対応。
 - [ ] 全式でPass 1完了。
 - [ ] 全式でPass 2完了。
 - [ ] 行列全成分を元画像と照合。
@@ -50,4 +81,4 @@
 
 ## 現在の判定
 
-**未完了 / 全20画像を新基準で再監査する。**
+**未完了 / 対応付け20/20、Pass 1 = 0/20、Pass 2 = 0/20。**
