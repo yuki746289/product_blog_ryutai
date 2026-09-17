@@ -1,0 +1,118 @@
+name: Consolidate FEM 7.2.1 Pass1 Status
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/consolidate-fem-7-2-1-pass1.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  consolidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - name: Consolidate review documents
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          def rep(path, old, new, label):
+              p = Path(path)
+              s = p.read_text(encoding='utf-8')
+              if old not in s:
+                  raise SystemExit(f'expected text not found: {label}')
+              p.write_text(s.replace(old, new, 1), encoding='utf-8')
+
+          review = '.document/formula_reviews/fem_7_2_1_review.md'
+          rep(review,
+              '- 状態: **元画像完全一致の再監査対象 / 対応付け20/20 / 現候補18/20式を厳密比較済み**',
+              '- 状態: **元画像完全一致Pass 1完了 / 対応付け20/20 / 忠実再転記20/20**',
+              'review status')
+          rep(review,
+              '| 11 | `image011` | 未 | HOLD | GitHub原画像は存在するが、この実行環境で安定して直接表示できていない |',
+              '| 11 | `image011` | 済 | NG→再転記OK | ActionsでPNG/GIFを復元・8倍拡大し、元画像から完全転記 |',
+              'review image011')
+          rep(review,
+              '| 12 | `image012` | 未 | HOLD | 同上 |',
+              '| 12 | `image012` | 済 | NG→再転記OK | ActionsでPNG/GIFを復元・8倍拡大し、元画像から完全転記 |',
+              'review image012')
+          rep(review,
+              '| 15 | `image015` | 済 | NG | 元画像の先頭に質量行列項があり、その後も複数項が続く。候補は `[C]`, `[C_x]` 等の定義へ要約。画像パレット崩れのため完全転記はHOLD |',
+              '| 15 | `image015` | 済 | NG→再転記OK | PNG/GIFを白背景化して復元。6個の4×4行列項を含む原文式を完全転記 |',
+              'review image015')
+          rep(review,
+              'GIF/PNGのパレット・透過情報が崩れており、式全体の厳密な読み取りは現状保証できない。先頭の質量行列項などから既存候補との不一致自体は判定できるが、**元画像忠実転記は画像復元後までHOLD**とする。',
+              'ActionsでPNG/GIFを白背景化・8倍拡大して復元し、式全体を直接目視した。質量行列項、3つの圧力行列項、3つの速度行列項を元画像どおり完全転記した。原画像上では、この段階の圧力行列3項の前に `V_x,V_y,V_z` は表示されていないため補完しない。',
+              'review image015 paragraph')
+          rep(review,
+              '- 再転記済み: **17/20**\n- HOLD: `image011`, `image012`, `image015`\n- 既存候補を修正するのではなく、元画像から再転記する。\n- 20/20転記後に再転記版のPass 1を改めて行う。',
+              '- 再転記済み: **20/20**\n- HOLD: **0/20**\n- `image011`, `image012`, `image015` は `.document/formula_reviews/fem_7_2_1_hold_resolution.md` に完全転記。\n- 元画像直接目視によるPass 1: **20/20完了**。',
+              'review retranscription status')
+          rep(review,
+              '- 現監査候補の厳密比較: **18/20**\n- 現監査候補のPass 1合格: **0/20**\n- 現監査候補の要修正: **18/20**\n- 未比較: **2/20** (`image011`, `image012`)\n- 元画像忠実再転記: **17/20**\n- 転記HOLD: **3/20** (`image011`, `image012`, `image015`)\n- Pass 2: **0/20**',
+              '- 現監査候補の厳密比較: **20/20**\n- 現監査候補の厳密一致: **0/20**\n- 元画像忠実再転記: **20/20**\n- 元画像直接Pass 1: **20/20**\n- 転記HOLD: **0/20**\n- Pass 2: **0/20**',
+              'review aggregate')
+          for old,new,label in [
+              ('- [ ] 現候補20式のPass 1監査完了（18/20）。','- [x] 現候補20式のPass 1監査完了（20/20）。','check current candidate'),
+              ('- [ ] 元画像忠実版20式の再転記完了（17/20）。','- [x] 元画像忠実版20式の再転記完了（20/20）。','check retrans'),
+              ('- [ ] 再転記版Pass 1合格20/20。','- [x] 再転記版Pass 1合格20/20。','check pass1'),
+              ('- [ ] `image011/012` の元画像直接確認。','- [x] `image011/012` の元画像直接確認。','check 11 12'),
+              ('- [ ] `image015` の画像復元と完全転記。','- [x] `image015` の画像復元と完全転記。','check 15'),
+          ]:
+              rep(review,old,new,label)
+          rep(review,
+              '**未完了 / 対応付け20/20、現候補厳密比較18/20、合格0/20、要修正18/20、再転記17/20、Pass 2=0/20。**',
+              '**Pass 1完了 / 対応付け20/20、現候補厳密比較20/20、元画像忠実再転記20/20、Pass 1=20/20、Pass 2=0/20。**',
+              'review final')
+
+          retrans = '.document/formula_reviews/fem_7_2_1_retranscription.md'
+          rep(retrans,
+              '## image011～image012\n\n**HOLD** — GitHub上の原画像は存在するが、この実行環境でバイナリを安定して直接表示できていないため転記しない。推測による補完は禁止する。',
+              '## image011～image012\n\nHOLD解消。ActionsでPNG/GIFを白背景化・8倍拡大して直接目視し、完全転記した。忠実LaTeX全文は `.document/formula_reviews/fem_7_2_1_hold_resolution.md` を正本とする。**Pass 1 = 2/2 OK**。',
+              'retrans 11 12')
+          rep(retrans,
+              '## image015\n\n**HOLD** — 元GIF/PNGにパレット・透過情報の崩れがあり、先頭の質量行列項など一部は読めるが、式全体を1文字単位で保証できない。既存候補が元画像を大幅に要約しているため不一致判定は可能だが、忠実転記は画像復元後に行う。',
+              '## image015\n\nHOLD解消。ActionsでPNG/GIFを白背景化・8倍拡大して式全体を直接目視し、完全転記した。忠実LaTeX全文は `.document/formula_reviews/fem_7_2_1_hold_resolution.md` を正本とする。**Pass 1 = OK**。',
+              'retrans 15')
+          rep(retrans,
+              '- 現監査候補のPass 1比較: **18/20**\n- 現監査候補の合格: **0/20**\n- 現監査候補の要修正: **18/20**\n- 元画像忠実再転記ドラフト: **17/20**\n- 未転記/HOLD: **3/20** (`image011`, `image012`, `image015`)\n- 再転記版の再Pass 1: 未実施\n- Pass 2: **0/20**',
+              '- 現監査候補のPass 1比較: **20/20**\n- 現監査候補の厳密一致: **0/20**\n- 元画像忠実再転記: **20/20**\n- 未転記/HOLD: **0/20**\n- 再転記版Pass 1: **20/20**\n- Pass 2: **0/20**',
+              'retrans aggregate')
+
+          status = '.document/formula_reviews/STRICT_SOURCE_AUDIT_STATUS.md'
+          rep(status,
+              '| 4 | `fem/fem_7_2_1.html` | 20 | 元画像表示 | `fem/fem_7_2_1_mathjax_audit.html` | **20/20** | 0/20 | 0/20 | 現候補18/20比較済み・18/18 NG / 忠実再転記17/20 / 3式HOLD |',
+              '| 4 | `fem/fem_7_2_1.html` | 20 | 元画像表示 | `fem/fem_7_2_1_mathjax_audit.html` | **20/20** | **20/20** | 0/20 | **元画像忠実Pass 1完了 / Pass 2待ち** |',
+              'status row')
+          rep(status,
+              '|  | **合計** | **143** |  |  | **143/143** | **123/143** | **0/143** | **未完了** |',
+              '|  | **合計** | **143** |  |  | **143/143** | **143/143** | **0/143** | **Pass 1全式完了 / Pass 2待ち** |',
+              'status total')
+          p = Path(status)
+          s = p.read_text(encoding='utf-8')
+          old = ('- 現候補の厳密比較: **18/20**\n- 比較済み18式: **18/18 NG**\n- 元画像忠実再転記: **17/20**\n- HOLD: `image011`, `image012`, `image015`')
+          new = ('- 現候補の厳密比較: **20/20**\n- 現候補の厳密一致: **0/20**\n- 元画像忠実再転記: **20/20**\n- Pass 1: **20/20**\n- HOLD: **0/20**')
+          if old not in s:
+              raise SystemExit('status fem721 narrative not found')
+          s = s.replace(old,new,1)
+          p.write_text(s, encoding='utf-8')
+          PY
+
+      - name: Commit consolidated status
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .document/formula_reviews/fem_7_2_1_review.md \
+                  .document/formula_reviews/fem_7_2_1_retranscription.md \
+                  .document/formula_reviews/STRICT_SOURCE_AUDIT_STATUS.md
+          git diff --cached --check
+          git commit -m 'docs: complete fem 7.2.1 strict pass 1'
+          git push origin HEAD:develop
