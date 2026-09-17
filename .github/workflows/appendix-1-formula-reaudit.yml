@@ -1,0 +1,180 @@
+name: Appendix 1 Formula Reaudit
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.document/formula_reviews/appendix_1_formulas.json'
+      - '.github/workflows/appendix-1-formula-reaudit.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Build strict reaudit page
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from html import escape
+
+          cfg = json.loads(Path('.document/formula_reviews/appendix_1_formulas.json').read_text(encoding='utf-8'))
+          assert len(cfg['formulas']) == 14
+          expected = [f'image{i:03d}.png' for i in range(1,15)]
+          assert [x['image'] for x in cfg['formulas']] == expected
+
+          parts = [
+              '<!doctype html>',
+              '<html lang="ja">',
+              '<head>',
+              '<meta charset="utf-8">',
+              '<meta name="viewport" content="width=device-width, initial-scale=1">',
+              '<title>appendix_1 strict formula re-audit</title>',
+              '<style>',
+              'body{font-family:Arial,"Yu Gothic",sans-serif;margin:20px;color:#111;background:#fff}',
+              'h1{font-size:24px}.note{background:#f3f5f7;padding:12px;margin-bottom:18px}',
+              '.formula-pair{border-top:1px solid #bbb;padding:18px 0 24px}',
+              '.pair-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start}',
+              '.source,.render{min-width:0;overflow-x:auto;padding:10px;border:1px solid #ddd;background:#fff}',
+              '.source img{display:block;max-width:100%;height:auto;margin:auto}',
+              '.render mjx-container[display="true"]{margin:.4em 0!important;text-align:left!important;min-width:max-content}',
+              '@media(max-width:800px){.pair-grid{grid-template-columns:1fr}}',
+              '</style>',
+              '<script>window.MathJax={tex:{inlineMath:[["\\\\(","\\\\)"]],displayMath:[["\\\\[","\\\\]"]]},output:{displayOverflow:"linebreak",linebreaks:{inline:false,width:"100%"}}};</script>',
+              '<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>',
+              '</head><body>',
+              '<h1>Appendix 1 strict source-image re-audit</h1>',
+              '<div class="note">Canonical source: original image. No algebraic correction, simplification, or re-ordering is permitted in the transcription.</div>'
+          ]
+          for item in cfg['formulas']:
+              n = item['image'][5:8]
+              src = f'./../img/appendix_equation.files/{item["image"]}'
+              parts += [
+                  f'<section class="formula-pair" id="formula-{n}">',
+                  f'<h2>image{n}</h2>',
+                  '<div class="pair-grid">',
+                  f'<div class="source"><img src="{src}" alt="source image{n}"></div>',
+                  f'<div class="render" data-source-image="{src}">{item["latex"]}</div>',
+                  '</div></section>'
+              ]
+          parts += ['</body></html>']
+          out = Path('appendix/appendix_1_reaudit.html')
+          out.write_text('\n'.join(parts) + '\n', encoding='utf-8')
+          print('built', out, len(cfg['formulas']))
+          PY
+
+      - name: Install browser tooling
+        run: |
+          pip install playwright pillow
+          python -m playwright install --with-deps chromium
+
+      - name: Start local site
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 > /tmp/appendix-audit-http.log 2>&1 &
+          sleep 1
+
+      - name: Capture source versus MathJax pairs
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from PIL import Image, ImageDraw
+          from playwright.sync_api import sync_playwright
+
+          root = Path.cwd()
+          out = root / 'appendix1-pass2'
+          pairs = out / 'pairs'
+          renders = out / 'renders'
+          sources = out / 'sources'
+          for d in (pairs, renders, sources):
+              d.mkdir(parents=True, exist_ok=True)
+
+          manifest = {'page':'appendix/appendix_1_reaudit.html','formulas':[]}
+          with sync_playwright() as p:
+              browser = p.chromium.launch(headless=True)
+              context = browser.new_context(viewport={'width':1800,'height':1400}, device_scale_factor=1)
+              pg = context.new_page()
+              pg.goto('http://127.0.0.1:8000/appendix/appendix_1_reaudit.html', wait_until='domcontentloaded', timeout=120000)
+              pg.wait_for_function('() => window.MathJax && MathJax.startup && MathJax.startup.promise', timeout=60000)
+              pg.evaluate('async () => { await MathJax.startup.promise; }')
+              pg.wait_for_timeout(500)
+
+              for i in range(1,15):
+                  n=f'{i:03d}'
+                  section=pg.locator(f'section#formula-{n}')
+                  render=section.locator('.render')
+                  source=section.locator('.source img')
+                  if section.count()!=1 or render.count()!=1 or source.count()!=1:
+                      raise RuntimeError(f'image{n}: missing audit pair')
+                  if render.locator('mjx-container').count()<1:
+                      raise RuntimeError(f'image{n}: MathJax did not render')
+                  if render.locator('mjx-merror').count()>0:
+                      raise RuntimeError(f'image{n}: MathJax error')
+                  dims=render.evaluate('(e)=>({clientWidth:e.clientWidth,scrollWidth:e.scrollWidth,clientHeight:e.clientHeight,scrollHeight:e.scrollHeight})')
+                  render_path=renders/f'image{n}.png'
+                  render.screenshot(path=str(render_path), animations='disabled')
+
+                  src_attr=source.get_attribute('src')
+                  src_path=(root/'appendix'/src_attr).resolve()
+                  if not src_path.exists():
+                      raise RuntimeError(f'image{n}: source missing {src_path}')
+                  im=Image.open(src_path).convert('RGBA')
+                  bg=Image.new('RGBA', im.size, 'white'); bg.alpha_composite(im)
+                  src=bg.convert('RGB')
+                  scale=3 if src.width<800 else 2
+                  src=src.resize((src.width*scale,src.height*scale),Image.Resampling.LANCZOS)
+                  src_out=sources/f'image{n}.png'; src.save(src_out)
+
+                  rr=Image.open(render_path).convert('RGB')
+                  margin,label_h,gap=16,28,24
+                  w=max(src.width,rr.width)+margin*2
+                  h=margin+label_h+src.height+gap+label_h+rr.height+margin
+                  canvas=Image.new('RGB',(w,h),'white'); draw=ImageDraw.Draw(canvas)
+                  y=margin; draw.text((margin,y),f'SOURCE image{n}',fill='black'); y+=label_h
+                  canvas.paste(src,(margin,y)); y+=src.height+gap
+                  draw.text((margin,y),f'MATHJAX image{n}',fill='black'); y+=label_h
+                  canvas.paste(rr,(margin,y)); canvas.save(pairs/f'image{n}.png')
+
+                  manifest['formulas'].append({
+                      'image':n,
+                      'source':src_attr,
+                      'horizontal_overflow':dims['scrollWidth']>dims['clientWidth']+1,
+                      'dom_dimensions':dims
+                  })
+              browser.close()
+          manifest['count']=len(manifest['formulas'])
+          (out/'manifest.json').write_text(json.dumps(manifest,indent=2),encoding='utf-8')
+          print('captured',manifest['count'])
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: appendix-1-pass2
+          path: appendix1-pass2
+          retention-days: 7
+
+      - name: Commit reaudit page
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add appendix/appendix_1_reaudit.html
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo 'No reaudit page change.'
+          else
+            git commit -m 'docs: build appendix 1 strict formula reaudit page'
+            git push origin HEAD:develop
+          fi
