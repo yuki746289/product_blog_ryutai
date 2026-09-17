@@ -5,6 +5,7 @@ on:
     branches: [develop]
     paths:
       - '.github/workflows/appendix-2-formula-reaudit.yml'
+      - '.document/formula_reviews/appendix_2_formulas.json'
 
 permissions:
   contents: write
