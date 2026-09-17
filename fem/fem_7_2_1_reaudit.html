@@ -1,0 +1,694 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+	<meta http-equiv="content-style-type" content="text/css">
+
+	<meta name="description" content="有限要素法・流体力学による数値計算サイト。">
+	<meta name="keywords" content="有限要素法,FEM,流体力学,数値計算,メッシュ"> 
+
+	<title>質量収支式の離散化（厳密再監査版）</title>
+	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+	<script>
+	window.MathJax = {
+		tex: {inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']]},
+		output: {
+			displayOverflow: 'linebreak',
+			linebreaks: {inline: true, width: '100%', lineleading: 0.2}
+		},
+		chtml: {displayAlign: 'left', displayIndent: '0'}
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head>
+<body>
+	<input type="hidden" id="menu_id"   value="4">
+	<input type="hidden" id="menu_id_2" value="4_7">
+
+	<div id="wrapper">
+
+	<div id="header">
+		<h1><a href="./../index.html" title="トップページへ">有限要素法・流体力学による数値計算</a></h1>
+
+		<br style="clear:both;">
+		<ul style="margin-left:30px;">
+		<li><a href="./../index.html" title="indexへ">index</a>&gt;</li>
+		<li><a href="./fem.html" title="有限要素法へ">有限要素法</a>&gt;</li>
+		<li><a href="./fem_7.html" title="離散化へ">離散化</a>&gt;</li>
+		<li><a href="./fem_7_2.html" title="4面体1次要素へ">4面体1次要素</a>&gt;</li>
+		<li><a href="./fem_7_2_1.html" title="質量収支式の離散化へ">質量収支式の離散化</a>&gt;</li>
+		</ul>
+		<hr>
+	</div>
+
+	<div id="main" >
+
+	<div id="image">
+		<p>流体力学から数値計算まで</p>
+		<p><img src="./../img/shiki1.gif"></p>
+		<p><img src="./../img/shiki2.gif"></p>
+	</div>
+
+	<div id="content">
+
+		<div id="content-text">
+
+			<h2>広告</h2>
+			<p><iframe src="./../ad.html" width="470" height="60" scrolling="no" frameborder="0"></iframe></p>
+			<br>
+
+			<h2>・質量収支式の離散化</h2>
+			<p id="formula-conversion-note"><strong>厳密再監査版:</strong> 元数式画像とPass 1照合済みの忠実LaTeXをMathJax表示しています。通常公開ページではありません。</p>
+			<p>無次元化した質量収支式は次式となります。</p>
+			<div class="math-block" id="formula-fem-7-2-1-001" data-source-image="./../img/fem_d_mass_tet.files/image001.png">
+\[
+\phi=
+\frac{\partial P}{\partial\tau}
++V_x\frac{\partial P}{\partial x}
++V_y\frac{\partial P}{\partial y}
++V_z\frac{\partial P}{\partial z}
++\frac{1}{Ma^2}\left(
+\frac{\partial V_x}{\partial X}
++\frac{\partial V_y}{\partial Y}
++\frac{\partial V_z}{\partial Z}
+\right)=0
+\]
+</div>
+			<br><br>
+			<p>内挿関数<span class="ft"><i>N<sub>i</sub></i></span>を重み関数に使用すると離散化式は次式となります。</p>
+			<div class="math-block" id="formula-fem-7-2-1-002" data-source-image="./../img/fem_d_mass_tet.files/image002.png">
+\[
+\int_V[N]^T\phi\,dV
+=\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}\phi\,dV
+=\int_V
+\begin{bmatrix}0\\0\\0\\0\end{bmatrix}dV
+=\begin{bmatrix}0\\0\\0\\0\end{bmatrix}
+\]
+</div>
+			<br><br>
+			<p>速度、圧力は、内挿関数<span class="ft"><i>N<sub>i</sub></i></span>を用いてそれぞれ次式で表されます。</p>
+			<div class="math-block" id="formula-fem-7-2-1-003" data-source-image="./../img/fem_d_mass_tet.files/image003.png">
+\[
+\begin{aligned}
+V_x
+&=N_1V_{x1}+N_2V_{x2}+N_3V_{x3}+N_4V_{x4}\\
+&=\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\begin{Bmatrix}V_{x1}&V_{x2}&V_{x3}&V_{x4}\end{Bmatrix}\\
+&=[N]^T\{V_x\},\\
+V_y&=[N]^T\{V_y\},\\
+V_z&=[N]^T\{V_z\},\\
+P&=[N]^T\{P\}.
+\end{aligned}
+\]
+</div>
+			<br><br>
+			<p>離散化式は、次式となります。</p>
+			<div class="math-block" id="formula-fem-7-2-1-004" data-source-image="./../img/fem_d_mass_tet.files/image004.png">
+\[
+\int_V[N]^T\phi\,dV
+=\int_V[N]^T\left\{
+\frac{\partial P}{\partial\tau}
++V_x\frac{\partial P}{\partial x}
++V_y\frac{\partial P}{\partial y}
++V_z\frac{\partial P}{\partial z}
++\frac{1}{Ma^2}\left(
+\frac{\partial V_x}{\partial X}
++\frac{\partial V_y}{\partial Y}
++\frac{\partial V_z}{\partial Z}
+\right)
+\right\}dV
+\]
+</div>
+			<br><br>
+			<p>項ごとに分解して</p>
+			<div class="math-block" id="formula-fem-7-2-1-005" data-source-image="./../img/fem_d_mass_tet.files/image005.png">
+\[
+\begin{aligned}
+={}&\int_V[N]^T\frac{\partial P}{\partial\tau}\,dV
++\int_V[N]^TV_x\frac{\partial P}{\partial X}\,dV
++\int_V[N]^TV_y\frac{\partial P}{\partial Y}\,dV
++\int_V[N]^TV_z\frac{\partial P}{\partial Z}\,dV\\
+&+\frac{1}{Ma^2}\int_V[N]^T\frac{\partial V_x}{\partial X}\,dV
++\frac{1}{Ma^2}\int_V[N]^T\frac{\partial V_y}{\partial Y}\,dV
++\frac{1}{Ma^2}\int_V[N]^T\frac{\partial V_z}{\partial Z}\,dV
+\end{aligned}
+\]
+</div>
+			<br><br>
+			<p>速度、圧力を内挿関数で表示して</p>
+			<div class="math-block" id="formula-fem-7-2-1-006" data-source-image="./../img/fem_d_mass_tet.files/image006.png">
+\[
+\begin{aligned}
+={}&\int_V[N]^T[N]dV\,
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+&+V_x\int_V[N]^T\frac{\partial[N]\{P\}^{\Delta\tau+\tau}}{\partial X}dV
++V_y\int_V[N]^T\frac{\partial[N]\{P\}^{\Delta\tau+\tau}}{\partial Y}dV\\
+&+V_z\int_V[N]^T\frac{\partial[N]\{P\}^{\Delta\tau+\tau}}{\partial Z}dV\\
+&+\frac{1}{Ma^2}\int_V[N]^T\frac{\partial[N]\{V_x\}^{\Delta\tau+\tau}}{\partial X}dV
++\frac{1}{Ma^2}\int_V[N]^T\frac{\partial[N]\{V_y\}^{\Delta\tau+\tau}}{\partial Y}dV\\
+&+\frac{1}{Ma^2}\int_V[N]^T\frac{\partial[N]\{V_z\}^{\Delta\tau+\tau}}{\partial Z}dV
+\end{aligned}
+\]
+</div>
+			<br><br>
+			<p id="fix-r-fem3d-mass-001">形状関数内挿後の節点自由度は積分変数に依存しないため、積分の外に出します。この式変形では、対流項の係数側に現れる <span class="ft"><i>V</i><sub>x</sub>, <i>V</i><sub>y</sub>, <i>V</i><sub>z</sub></span> を既知係数として扱う線形化を前提としています。</p>
+			<div class="math-block" id="formula-fem-7-2-1-007" data-source-image="./../img/fem_d_mass_tet.files/image007.png">
+\[
+\begin{aligned}
+={}&\int_V[N]^T[N]dV\,
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+&+V_x\int_V[N]^T\frac{\partial[N]}{\partial X}dV\,\{P\}^{\Delta\tau+\tau}
++V_y\int_V[N]^T\frac{\partial[N]}{\partial Y}dV\,\{P\}^{\Delta\tau+\tau}\\
+&+V_z\int_V[N]^T\frac{\partial[N]}{\partial Z}dV\,\{P\}^{\Delta\tau+\tau}\\
+&+\frac{1}{Ma^2}\int_V[N]^T\frac{\partial[N]}{\partial X}dV\,\{V_x\}^{\Delta\tau+\tau}
++\frac{1}{Ma^2}\int_V[N]^T\frac{\partial[N]}{\partial Y}dV\,\{V_y\}^{\Delta\tau+\tau}\\
+&+\frac{1}{Ma^2}\int_V[N]^T\frac{\partial[N]}{\partial Z}dV\,\{V_z\}^{\Delta\tau+\tau}
+\end{aligned}
+\]
+</div>
+			<br><br>
+			<p>行列式で表す</p>
+			<div class="math-block" id="formula-fem-7-2-1-008" data-source-image="./../img/fem_d_mass_tet.files/image008.png">
+\[
+\begin{aligned}
+={}&\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\begin{bmatrix}N_1&N_2&N_3&N_4\end{bmatrix}dV\,
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+&+V_x\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\begin{bmatrix}
+\dfrac{\partial N_1}{\partial X}&
+\dfrac{\partial N_2}{\partial X}&
+\dfrac{\partial N_3}{\partial X}&
+\dfrac{\partial N_4}{\partial X}
+\end{bmatrix}dV\,\{P\}^{\Delta\tau+\tau}\\
+&+V_y\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\begin{bmatrix}
+\dfrac{\partial N_1}{\partial Y}&
+\dfrac{\partial N_2}{\partial Y}&
+\dfrac{\partial N_3}{\partial Y}&
+\dfrac{\partial N_4}{\partial Y}
+\end{bmatrix}dV\,\{P\}^{\Delta\tau+\tau}\\
+&+V_z\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\begin{bmatrix}
+\dfrac{\partial N_1}{\partial Z}&
+\dfrac{\partial N_2}{\partial Z}&
+\dfrac{\partial N_3}{\partial Z}&
+\dfrac{\partial N_4}{\partial Z}
+\end{bmatrix}dV\,\{P\}^{\Delta\tau+\tau}\\
+&+\frac1{Ma^2}\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\begin{bmatrix}
+\dfrac{\partial N_1}{\partial X}&
+\dfrac{\partial N_2}{\partial X}&
+\dfrac{\partial N_3}{\partial X}&
+\dfrac{\partial N_4}{\partial X}
+\end{bmatrix}dV\,\{V_x\}^{\Delta\tau+\tau}\\
+&+\frac1{Ma^2}\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\begin{bmatrix}
+\dfrac{\partial N_1}{\partial Y}&
+\dfrac{\partial N_2}{\partial Y}&
+\dfrac{\partial N_3}{\partial Y}&
+\dfrac{\partial N_4}{\partial Y}
+\end{bmatrix}dV\,\{V_y\}^{\Delta\tau+\tau}\\
+&+\frac1{Ma^2}\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\begin{bmatrix}
+\dfrac{\partial N_1}{\partial Z}&
+\dfrac{\partial N_2}{\partial Z}&
+\dfrac{\partial N_3}{\partial Z}&
+\dfrac{\partial N_4}{\partial Z}
+\end{bmatrix}dV\,\{V_z\}^{\Delta\tau+\tau}
+\end{aligned}
+\]
+</div>
+			<br><br>
+			<p>行列を計算する</p>
+			<div class="math-block" id="formula-fem-7-2-1-009" data-source-image="./../img/fem_d_mass_tet.files/image009.png">
+\[
+\begin{aligned}
+={}&\int_V
+\begin{bmatrix}
+N_1N_1&N_1N_2&N_1N_3&N_1N_4\\
+N_2N_1&N_2N_2&N_2N_3&N_2N_4\\
+N_3N_1&N_3N_2&N_3N_3&N_3N_4\\
+N_4N_1&N_4N_2&N_4N_3&N_4N_4
+\end{bmatrix}dV\,
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+&+V_x\int_V
+\begin{bmatrix}
+N_1\dfrac{\partial N_1}{\partial X}&N_1\dfrac{\partial N_2}{\partial X}&N_1\dfrac{\partial N_3}{\partial X}&N_1\dfrac{\partial N_4}{\partial X}\\
+N_2\dfrac{\partial N_1}{\partial X}&N_2\dfrac{\partial N_2}{\partial X}&N_2\dfrac{\partial N_3}{\partial X}&N_2\dfrac{\partial N_4}{\partial X}\\
+N_3\dfrac{\partial N_1}{\partial X}&N_3\dfrac{\partial N_2}{\partial X}&N_3\dfrac{\partial N_3}{\partial X}&N_3\dfrac{\partial N_4}{\partial X}\\
+N_4\dfrac{\partial N_1}{\partial X}&N_4\dfrac{\partial N_2}{\partial X}&N_4\dfrac{\partial N_3}{\partial X}&N_4\dfrac{\partial N_4}{\partial X}
+\end{bmatrix}dV\,\{V_x\}^{\Delta\tau+\tau}\\
+&+V_y\int_V
+\begin{bmatrix}
+N_1\dfrac{\partial N_1}{\partial Y}&N_1\dfrac{\partial N_2}{\partial Y}&N_1\dfrac{\partial N_3}{\partial Y}&N_1\dfrac{\partial N_4}{\partial Y}\\
+N_2\dfrac{\partial N_1}{\partial Y}&N_2\dfrac{\partial N_2}{\partial Y}&N_2\dfrac{\partial N_3}{\partial Y}&N_2\dfrac{\partial N_4}{\partial Y}\\
+N_3\dfrac{\partial N_1}{\partial Y}&N_3\dfrac{\partial N_2}{\partial Y}&N_3\dfrac{\partial N_3}{\partial Y}&N_3\dfrac{\partial N_4}{\partial Y}\\
+N_4\dfrac{\partial N_1}{\partial Y}&N_4\dfrac{\partial N_2}{\partial Y}&N_4\dfrac{\partial N_3}{\partial Y}&N_4\dfrac{\partial N_4}{\partial Y}
+\end{bmatrix}dV\,\{V_y\}^{\Delta\tau+\tau}\\
+&+V_z\int_V
+\begin{bmatrix}
+N_1\dfrac{\partial N_1}{\partial Z}&N_1\dfrac{\partial N_2}{\partial Z}&N_1\dfrac{\partial N_3}{\partial Z}&N_1\dfrac{\partial N_4}{\partial Z}\\
+N_2\dfrac{\partial N_1}{\partial Z}&N_2\dfrac{\partial N_2}{\partial Z}&N_2\dfrac{\partial N_3}{\partial Z}&N_2\dfrac{\partial N_4}{\partial Z}\\
+N_3\dfrac{\partial N_1}{\partial Z}&N_3\dfrac{\partial N_2}{\partial Z}&N_3\dfrac{\partial N_3}{\partial Z}&N_3\dfrac{\partial N_4}{\partial Z}\\
+N_4\dfrac{\partial N_1}{\partial Z}&N_4\dfrac{\partial N_2}{\partial Z}&N_4\dfrac{\partial N_3}{\partial Z}&N_4\dfrac{\partial N_4}{\partial Z}
+\end{bmatrix}dV\,\{V_z\}^{\Delta\tau+\tau}
+\end{aligned}
+\]
+</div>
+			<div class="math-block" id="formula-fem-7-2-1-010" data-source-image="./../img/fem_d_mass_tet.files/image010.png">
+\[
+\begin{aligned}
+&+\frac1{Ma^2}\int_V
+\begin{bmatrix}
+N_1\dfrac{\partial N_1}{\partial X}&N_1\dfrac{\partial N_2}{\partial X}&N_1\dfrac{\partial N_3}{\partial X}&N_1\dfrac{\partial N_4}{\partial X}\\
+N_2\dfrac{\partial N_1}{\partial X}&N_2\dfrac{\partial N_2}{\partial X}&N_2\dfrac{\partial N_3}{\partial X}&N_2\dfrac{\partial N_4}{\partial X}\\
+N_3\dfrac{\partial N_1}{\partial X}&N_3\dfrac{\partial N_2}{\partial X}&N_3\dfrac{\partial N_3}{\partial X}&N_3\dfrac{\partial N_4}{\partial X}\\
+N_4\dfrac{\partial N_1}{\partial X}&N_4\dfrac{\partial N_2}{\partial X}&N_4\dfrac{\partial N_3}{\partial X}&N_4\dfrac{\partial N_4}{\partial X}
+\end{bmatrix}dV\,\{V_x\}^{\Delta\tau+\tau}\\
+&+\frac1{Ma^2}\int_V
+\begin{bmatrix}
+N_1\dfrac{\partial N_1}{\partial Y}&N_1\dfrac{\partial N_2}{\partial Y}&N_1\dfrac{\partial N_3}{\partial Y}&N_1\dfrac{\partial N_4}{\partial Y}\\
+N_2\dfrac{\partial N_1}{\partial Y}&N_2\dfrac{\partial N_2}{\partial Y}&N_2\dfrac{\partial N_3}{\partial Y}&N_2\dfrac{\partial N_4}{\partial Y}\\
+N_3\dfrac{\partial N_1}{\partial Y}&N_3\dfrac{\partial N_2}{\partial Y}&N_3\dfrac{\partial N_3}{\partial Y}&N_3\dfrac{\partial N_4}{\partial Y}\\
+N_4\dfrac{\partial N_1}{\partial Y}&N_4\dfrac{\partial N_2}{\partial Y}&N_4\dfrac{\partial N_3}{\partial Y}&N_4\dfrac{\partial N_4}{\partial Y}
+\end{bmatrix}dV\,\{V_y\}^{\Delta\tau+\tau}\\
+&+\frac1{Ma^2}\int_V
+\begin{bmatrix}
+N_1\dfrac{\partial N_1}{\partial Z}&N_1\dfrac{\partial N_2}{\partial Z}&N_1\dfrac{\partial N_3}{\partial Z}&N_1\dfrac{\partial N_4}{\partial Z}\\
+N_2\dfrac{\partial N_1}{\partial Z}&N_2\dfrac{\partial N_2}{\partial Z}&N_2\dfrac{\partial N_3}{\partial Z}&N_2\dfrac{\partial N_4}{\partial Z}\\
+N_3\dfrac{\partial N_1}{\partial Z}&N_3\dfrac{\partial N_2}{\partial Z}&N_3\dfrac{\partial N_3}{\partial Z}&N_3\dfrac{\partial N_4}{\partial Z}\\
+N_4\dfrac{\partial N_1}{\partial Z}&N_4\dfrac{\partial N_2}{\partial Z}&N_4\dfrac{\partial N_3}{\partial Z}&N_4\dfrac{\partial N_4}{\partial Z}
+\end{bmatrix}dV\,\{V_z\}^{\Delta\tau+\tau}
+\end{aligned}
+\]
+</div>
+			<br><br>
+			<p>内挿関数を形状関数に直す</p>
+			<div class="math-block" id="formula-fem-7-2-1-011" data-source-image="./../img/fem_d_mass_tet.files/image011.png">
+\[
+\begin{aligned}
+={}&\int_V
+\begin{bmatrix}
+L_1L_1&L_1L_2&L_1L_3&L_1L_4\\
+L_2L_1&L_2L_2&L_2L_3&L_2L_4\\
+L_3L_1&L_3L_2&L_3L_3&L_3L_4\\
+L_4L_1&L_4L_2&L_4L_3&L_4L_4
+\end{bmatrix}dV\,
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+&+V_x\int_V
+\begin{bmatrix}
+L_1\dfrac{\partial L_1}{\partial X}&L_1\dfrac{\partial L_2}{\partial X}&L_1\dfrac{\partial L_3}{\partial X}&L_1\dfrac{\partial L_4}{\partial X}\\
+L_2\dfrac{\partial L_1}{\partial X}&L_2\dfrac{\partial L_2}{\partial X}&L_2\dfrac{\partial L_3}{\partial X}&L_2\dfrac{\partial L_4}{\partial X}\\
+L_3\dfrac{\partial L_1}{\partial X}&L_3\dfrac{\partial L_2}{\partial X}&L_3\dfrac{\partial L_3}{\partial X}&L_3\dfrac{\partial L_4}{\partial X}\\
+L_4\dfrac{\partial L_1}{\partial X}&L_4\dfrac{\partial L_2}{\partial X}&L_4\dfrac{\partial L_3}{\partial X}&L_4\dfrac{\partial L_4}{\partial X}
+\end{bmatrix}dV\,\{P\}^{\Delta\tau+\tau}\\
+&+V_y\int_V
+\begin{bmatrix}
+L_1\dfrac{\partial L_1}{\partial Y}&L_1\dfrac{\partial L_2}{\partial Y}&L_1\dfrac{\partial L_3}{\partial Y}&L_1\dfrac{\partial L_4}{\partial Y}\\
+L_2\dfrac{\partial L_1}{\partial Y}&L_2\dfrac{\partial L_2}{\partial Y}&L_2\dfrac{\partial L_3}{\partial Y}&L_2\dfrac{\partial L_4}{\partial Y}\\
+L_3\dfrac{\partial L_1}{\partial Y}&L_3\dfrac{\partial L_2}{\partial Y}&L_3\dfrac{\partial L_3}{\partial Y}&L_3\dfrac{\partial L_4}{\partial Y}\\
+L_4\dfrac{\partial L_1}{\partial Y}&L_4\dfrac{\partial L_2}{\partial Y}&L_4\dfrac{\partial L_3}{\partial Y}&L_4\dfrac{\partial L_4}{\partial Y}
+\end{bmatrix}dV\,\{P\}^{\Delta\tau+\tau}\\
+&+V_z\int_V
+\begin{bmatrix}
+L_1\dfrac{\partial L_1}{\partial Z}&L_1\dfrac{\partial L_2}{\partial Z}&L_1\dfrac{\partial L_3}{\partial Z}&L_1\dfrac{\partial L_4}{\partial Z}\\
+L_2\dfrac{\partial L_1}{\partial Z}&L_2\dfrac{\partial L_2}{\partial Z}&L_2\dfrac{\partial L_3}{\partial Z}&L_2\dfrac{\partial L_4}{\partial Z}\\
+L_3\dfrac{\partial L_1}{\partial Z}&L_3\dfrac{\partial L_2}{\partial Z}&L_3\dfrac{\partial L_3}{\partial Z}&L_3\dfrac{\partial L_4}{\partial Z}\\
+L_4\dfrac{\partial L_1}{\partial Z}&L_4\dfrac{\partial L_2}{\partial Z}&L_4\dfrac{\partial L_3}{\partial Z}&L_4\dfrac{\partial L_4}{\partial Z}
+\end{bmatrix}dV\,\{P\}^{\Delta\tau+\tau}\\
+&+\frac1{Ma^2}\int_V
+\begin{bmatrix}
+L_1\dfrac{\partial L_1}{\partial X}&L_1\dfrac{\partial L_2}{\partial X}&L_1\dfrac{\partial L_3}{\partial X}&L_1\dfrac{\partial L_4}{\partial X}\\
+L_2\dfrac{\partial L_1}{\partial X}&L_2\dfrac{\partial L_2}{\partial X}&L_2\dfrac{\partial L_3}{\partial X}&L_2\dfrac{\partial L_4}{\partial X}\\
+L_3\dfrac{\partial L_1}{\partial X}&L_3\dfrac{\partial L_2}{\partial X}&L_3\dfrac{\partial L_3}{\partial X}&L_3\dfrac{\partial L_4}{\partial X}\\
+L_4\dfrac{\partial L_1}{\partial X}&L_4\dfrac{\partial L_2}{\partial X}&L_4\dfrac{\partial L_3}{\partial X}&L_4\dfrac{\partial L_4}{\partial X}
+\end{bmatrix}dV\,\{V_x\}^{\Delta\tau+\tau}\\
+&+\frac1{Ma^2}\int_V
+\begin{bmatrix}
+L_1\dfrac{\partial L_1}{\partial Y}&L_1\dfrac{\partial L_2}{\partial Y}&L_1\dfrac{\partial L_3}{\partial Y}&L_1\dfrac{\partial L_4}{\partial Y}\\
+L_2\dfrac{\partial L_1}{\partial Y}&L_2\dfrac{\partial L_2}{\partial Y}&L_2\dfrac{\partial L_3}{\partial Y}&L_2\dfrac{\partial L_4}{\partial Y}\\
+L_3\dfrac{\partial L_1}{\partial Y}&L_3\dfrac{\partial L_2}{\partial Y}&L_3\dfrac{\partial L_3}{\partial Y}&L_3\dfrac{\partial L_4}{\partial Y}\\
+L_4\dfrac{\partial L_1}{\partial Y}&L_4\dfrac{\partial L_2}{\partial Y}&L_4\dfrac{\partial L_3}{\partial Y}&L_4\dfrac{\partial L_4}{\partial Y}
+\end{bmatrix}dV\,\{V_y\}^{\Delta\tau+\tau}\\
+&+\frac1{Ma^2}\int_V
+\begin{bmatrix}
+L_1\dfrac{\partial L_1}{\partial Z}&L_1\dfrac{\partial L_2}{\partial Z}&L_1\dfrac{\partial L_3}{\partial Z}&L_1\dfrac{\partial L_4}{\partial Z}\\
+L_2\dfrac{\partial L_1}{\partial Z}&L_2\dfrac{\partial L_2}{\partial Z}&L_2\dfrac{\partial L_3}{\partial Z}&L_2\dfrac{\partial L_4}{\partial Z}\\
+L_3\dfrac{\partial L_1}{\partial Z}&L_3\dfrac{\partial L_2}{\partial Z}&L_3\dfrac{\partial L_3}{\partial Z}&L_3\dfrac{\partial L_4}{\partial Z}\\
+L_4\dfrac{\partial L_1}{\partial Z}&L_4\dfrac{\partial L_2}{\partial Z}&L_4\dfrac{\partial L_3}{\partial Z}&L_4\dfrac{\partial L_4}{\partial Z}
+\end{bmatrix}dV\,\{V_z\}^{\Delta\tau+\tau}
+\end{aligned}
+\]
+</div>
+			<br><br>
+			<p>形状関数の微分値を計算する</p>
+			<div class="math-block" id="formula-fem-7-2-1-012" data-source-image="./../img/fem_d_mass_tet.files/image012.png">
+\[
+\begin{aligned}
+={}&\int_V
+\begin{bmatrix}
+L_1L_1&L_1L_2&L_1L_3&L_1L_4\\
+L_2L_1&L_2L_2&L_2L_3&L_2L_4\\
+L_3L_1&L_3L_2&L_3L_3&L_3L_4\\
+L_4L_1&L_4L_2&L_4L_3&L_4L_4
+\end{bmatrix}dV\,
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+&+V_x\int_V\frac1{6V}
+\begin{bmatrix}
+L_1c_{1x}&L_1c_{2x}&L_1c_{3x}&L_1c_{4x}\\
+L_2c_{1x}&L_2c_{2x}&L_2c_{3x}&L_2c_{4x}\\
+L_3c_{1x}&L_3c_{2x}&L_3c_{3x}&L_3c_{4x}\\
+L_4c_{1x}&L_4c_{2x}&L_4c_{3x}&L_4c_{4x}
+\end{bmatrix}dV\,\{P\}^{\Delta\tau+\tau}\\
+&+V_y\int_V\frac1{6V}
+\begin{bmatrix}
+L_1c_{1y}&L_1c_{2y}&L_1c_{3y}&L_1c_{4y}\\
+L_2c_{1y}&L_2c_{2y}&L_2c_{3y}&L_2c_{4y}\\
+L_3c_{1y}&L_3c_{2y}&L_3c_{3y}&L_3c_{4y}\\
+L_4c_{1y}&L_4c_{2y}&L_4c_{3y}&L_4c_{4y}
+\end{bmatrix}dV\,\{P\}^{\Delta\tau+\tau}\\
+&+V_z\int_V\frac1{6V}
+\begin{bmatrix}
+L_1c_{1z}&L_1c_{2z}&L_1c_{3z}&L_1c_{4z}\\
+L_2c_{1z}&L_2c_{2z}&L_2c_{3z}&L_2c_{4z}\\
+L_3c_{1z}&L_3c_{2z}&L_3c_{3z}&L_3c_{4z}\\
+L_4c_{1z}&L_4c_{2z}&L_4c_{3z}&L_4c_{4z}
+\end{bmatrix}dV\,\{P\}^{\Delta\tau+\tau}\\
+&+\frac1{Ma^2}\int_V\frac1{6V}
+\begin{bmatrix}
+L_1c_{1x}&L_1c_{2x}&L_1c_{3x}&L_1c_{4x}\\
+L_2c_{1x}&L_2c_{2x}&L_2c_{3x}&L_2c_{4x}\\
+L_3c_{1x}&L_3c_{2x}&L_3c_{3x}&L_3c_{4x}\\
+L_4c_{1x}&L_4c_{2x}&L_4c_{3x}&L_4c_{4x}
+\end{bmatrix}dV\,\{V_x\}^{\Delta\tau+\tau}\\
+&+\frac1{Ma^2}\int_V\frac1{6V}
+\begin{bmatrix}
+L_1c_{1y}&L_1c_{2y}&L_1c_{3y}&L_1c_{4y}\\
+L_2c_{1y}&L_2c_{2y}&L_2c_{3y}&L_2c_{4y}\\
+L_3c_{1y}&L_3c_{2y}&L_3c_{3y}&L_3c_{4y}\\
+L_4c_{1y}&L_4c_{2y}&L_4c_{3y}&L_4c_{4y}
+\end{bmatrix}dV\,\{V_y\}^{\Delta\tau+\tau}\\
+&+\frac1{Ma^2}\int_V\frac1{6V}
+\begin{bmatrix}
+L_1c_{1z}&L_1c_{2z}&L_1c_{3z}&L_1c_{4z}\\
+L_2c_{1z}&L_2c_{2z}&L_2c_{3z}&L_2c_{4z}\\
+L_3c_{1z}&L_3c_{2z}&L_3c_{3z}&L_3c_{4z}\\
+L_4c_{1z}&L_4c_{2z}&L_4c_{3z}&L_4c_{4z}
+\end{bmatrix}dV\,\{V_z\}^{\Delta\tau+\tau}
+\end{aligned}
+\]
+</div>
+			<br><br>
+
+			<p>ここで、体積積分の公式より</p>
+			<div class="math-block" id="formula-fem-7-2-1-013" data-source-image="./../img/fem_d_mass_tet.files/image013.png">
+\[
+\int_VL_1^pL_2^qL_3^rL_4^s\,dV
+=\frac{p!q!r!s!}{(p+q+r+s+3)!}\,6V
+\]
+\[
+\int_VL_iL_j\,dV=
+\begin{cases}
+\dfrac{1!1!}{(1+1+3)!}\,6V
+=\dfrac{6}{5!}V
+=\dfrac{1}{20}V,& i\ne j,\\[6pt]
+\dfrac{2!}{(1+1+3)!}\,6V
+=\dfrac{12}{5!}V
+=\dfrac{1}{10}V,& i=j,
+\end{cases}
+\]
+\[
+\int_VL_i\,dV
+=\frac{1!}{(1+3)!}\,6V
+=\frac{6}{4!}V
+=\frac14V
+\]
+</div>
+			<br><br>
+
+			<p>形状関数を積分すると</p>
+			<div class="math-block" id="formula-fem-7-2-1-014" data-source-image="./../img/fem_d_mass_tet.files/image014.png">
+\[
+\begin{aligned}
+={}&\frac{V}{20}
+\begin{bmatrix}
+2&1&1&1\\
+1&2&1&1\\
+1&1&2&1\\
+1&1&1&2
+\end{bmatrix}
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+&+\frac1{6V}\frac{V}{4}
+\begin{bmatrix}
+c_{1x}&c_{2x}&c_{3x}&c_{4x}\\
+c_{1x}&c_{2x}&c_{3x}&c_{4x}\\
+c_{1x}&c_{2x}&c_{3x}&c_{4x}\\
+c_{1x}&c_{2x}&c_{3x}&c_{4x}
+\end{bmatrix}\{P\}^{\Delta\tau+\tau}\\
+&+\frac1{6V}\frac{V}{4}
+\begin{bmatrix}
+c_{1y}&c_{2y}&c_{3y}&c_{4y}\\
+c_{1y}&c_{2y}&c_{3y}&c_{4y}\\
+c_{1y}&c_{2y}&c_{3y}&c_{4y}\\
+c_{1y}&c_{2y}&c_{3y}&c_{4y}
+\end{bmatrix}\{P\}^{\Delta\tau+\tau}\\
+&+\frac1{6V}\frac{V}{4}
+\begin{bmatrix}
+c_{1z}&c_{2z}&c_{3z}&c_{4z}\\
+c_{1z}&c_{2z}&c_{3z}&c_{4z}\\
+c_{1z}&c_{2z}&c_{3z}&c_{4z}\\
+c_{1z}&c_{2z}&c_{3z}&c_{4z}
+\end{bmatrix}\{P\}^{\Delta\tau+\tau}\\
+&+\frac1{Ma^2}\frac1{6V}\frac{V}{4}
+\begin{bmatrix}
+c_{1x}&c_{2x}&c_{3x}&c_{4x}\\
+c_{1x}&c_{2x}&c_{3x}&c_{4x}\\
+c_{1x}&c_{2x}&c_{3x}&c_{4x}\\
+c_{1x}&c_{2x}&c_{3x}&c_{4x}
+\end{bmatrix}\{V_x\}^{\Delta\tau+\tau}\\
+&+\frac1{Ma^2}\frac1{6V}\frac{V}{4}
+\begin{bmatrix}
+c_{1y}&c_{2y}&c_{3y}&c_{4y}\\
+c_{1y}&c_{2y}&c_{3y}&c_{4y}\\
+c_{1y}&c_{2y}&c_{3y}&c_{4y}\\
+c_{1y}&c_{2y}&c_{3y}&c_{4y}
+\end{bmatrix}\{V_y\}^{\Delta\tau+\tau}\\
+&+\frac1{Ma^2}\frac1{6V}\frac{V}{4}
+\begin{bmatrix}
+c_{1z}&c_{2z}&c_{3z}&c_{4z}\\
+c_{1z}&c_{2z}&c_{3z}&c_{4z}\\
+c_{1z}&c_{2z}&c_{3z}&c_{4z}\\
+c_{1z}&c_{2z}&c_{3z}&c_{4z}
+\end{bmatrix}\{V_z\}^{\Delta\tau+\tau}
+\end{aligned}
+\]
+</div>
+			<br><br>
+
+			<p>係数をまとめて</p>
+			<div class="math-block" id="formula-fem-7-2-1-015" data-source-image="./../img/fem_d_mass_tet.files/image015.png">
+\[
+\begin{aligned}
+={}&\frac{V}{20}
+\begin{bmatrix}
+2&1&1&1\\
+1&2&1&1\\
+1&1&2&1\\
+1&1&1&2
+\end{bmatrix}
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+&+\frac1{24}
+\begin{bmatrix}
+c_{1x}&c_{2x}&c_{3x}&c_{4x}\\
+c_{1x}&c_{2x}&c_{3x}&c_{4x}\\
+c_{1x}&c_{2x}&c_{3x}&c_{4x}\\
+c_{1x}&c_{2x}&c_{3x}&c_{4x}
+\end{bmatrix}\{P\}^{\Delta\tau+\tau}\\
+&+\frac1{24}
+\begin{bmatrix}
+c_{1y}&c_{2y}&c_{3y}&c_{4y}\\
+c_{1y}&c_{2y}&c_{3y}&c_{4y}\\
+c_{1y}&c_{2y}&c_{3y}&c_{4y}\\
+c_{1y}&c_{2y}&c_{3y}&c_{4y}
+\end{bmatrix}\{P\}^{\Delta\tau+\tau}\\
+&+\frac1{24}
+\begin{bmatrix}
+c_{1z}&c_{2z}&c_{3z}&c_{4z}\\
+c_{1z}&c_{2z}&c_{3z}&c_{4z}\\
+c_{1z}&c_{2z}&c_{3z}&c_{4z}\\
+c_{1z}&c_{2z}&c_{3z}&c_{4z}
+\end{bmatrix}\{P\}^{\Delta\tau+\tau}\\
+&+\frac1{Ma^2}\frac1{24}
+\begin{bmatrix}
+c_{1x}&c_{2x}&c_{3x}&c_{4x}\\
+c_{1x}&c_{2x}&c_{3x}&c_{4x}\\
+c_{1x}&c_{2x}&c_{3x}&c_{4x}\\
+c_{1x}&c_{2x}&c_{3x}&c_{4x}
+\end{bmatrix}\{V_x\}^{\Delta\tau+\tau}\\
+&+\frac1{Ma^2}\frac1{24}
+\begin{bmatrix}
+c_{1y}&c_{2y}&c_{3y}&c_{4y}\\
+c_{1y}&c_{2y}&c_{3y}&c_{4y}\\
+c_{1y}&c_{2y}&c_{3y}&c_{4y}\\
+c_{1y}&c_{2y}&c_{3y}&c_{4y}
+\end{bmatrix}\{V_y\}^{\Delta\tau+\tau}\\
+&+\frac1{Ma^2}\frac1{24}
+\begin{bmatrix}
+c_{1z}&c_{2z}&c_{3z}&c_{4z}\\
+c_{1z}&c_{2z}&c_{3z}&c_{4z}\\
+c_{1z}&c_{2z}&c_{3z}&c_{4z}\\
+c_{1z}&c_{2z}&c_{3z}&c_{4z}
+\end{bmatrix}\{V_z\}^{\Delta\tau+\tau}
+\end{aligned}
+\]
+</div>
+			<br><br>
+
+			<p>行列式をまとめると</p>
+			<div class="math-block" id="formula-fem-7-2-1-016" data-source-image="./../img/fem_d_mass_tet.files/image016.png">
+\[
+\begin{aligned}
+={}&[C]\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}
++V_x[C_x]\{P\}^{\Delta\tau+\tau}
++V_y[C_y]\{P\}^{\Delta\tau+\tau}
++V_z[C_z]\{P\}^{\Delta\tau+\tau}\\
+&+\frac1{Ma^2}[C_x]\{V_x\}^{\Delta\tau+\tau}
++\frac1{Ma^2}[C_y]\{V_y\}^{\Delta\tau+\tau}
++\frac1{Ma^2}[C_z]\{V_z\}^{\Delta\tau+\tau}
+\end{aligned}
+\]
+</div>
+			<div class="math-block" id="formula-fem-7-2-1-017" data-source-image="./../img/fem_d_mass_tet.files/image017.png">
+\[
+=\begin{bmatrix}0\\0\\0\\0\end{bmatrix}
+\]
+</div>
+			<br><br>
+			<p>最終的に次式が導出されます。</p>
+			<div class="math-block" id="formula-fem-7-2-1-018" data-source-image="./../img/fem_d_mass_tet.files/image018.png">
+\[
+\begin{aligned}
+[C]\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}
+&+V_x[C_x]\{P\}^{\Delta\tau+\tau}
++V_y[C_y]\{P\}^{\Delta\tau+\tau}
++V_z[C_z]\{P\}^{\Delta\tau+\tau}\\
+&+\frac1{Ma^2}[C_x]\{V_x\}^{\Delta\tau+\tau}
++\frac1{Ma^2}[C_y]\{V_y\}^{\Delta\tau+\tau}
++\frac1{Ma^2}[C_z]\{V_z\}^{\Delta\tau+\tau}=0
+\end{aligned}
+\]
+</div>
+			<br><br>
+			<p>既知の項を右辺に移項します。</p>
+			<div class="math-block" id="formula-fem-7-2-1-019" data-source-image="./../img/fem_d_mass_tet.files/image019.png">
+\[
+\begin{aligned}
+\frac{[C]}{\Delta\tau}\{P\}^{\Delta\tau+\tau}
+&+V_x[C_x]\{P\}^{\Delta\tau+\tau}
++V_y[C_y]\{P\}^{\Delta\tau+\tau}
++V_z[C_z]\{P\}^{\Delta\tau+\tau}\\
+&+\frac1{Ma^2}[C_x]\{V_x\}^{\Delta\tau+\tau}
++\frac1{Ma^2}[C_y]\{V_y\}^{\Delta\tau+\tau}
++\frac1{Ma^2}[C_z]\{V_z\}^{\Delta\tau+\tau}
+=\frac{[C]}{\Delta\tau}\{P\}^{\tau}
+\end{aligned}
+\]
+</div>
+			<br><br>
+			<p>行列ごとにまとめると</p>
+			<div class="math-block" id="formula-fem-7-2-1-020" data-source-image="./../img/fem_d_mass_tet.files/image020.png">
+\[
+\begin{aligned}
+\left(
+\frac{[C]}{\Delta\tau}
++V_x[C_x]+V_y[C_y]+V_z[C_z]
+\right)\{P\}^{\Delta\tau+\tau}
+&+\frac1{Ma^2}\left(
+[C_x]\{V_x\}^{\Delta\tau+\tau}
++[C_y]\{V_y\}^{\Delta\tau+\tau}
++[C_z]\{V_z\}^{\Delta\tau+\tau}
+\right)\\
+&=\frac{[C]}{\Delta\tau}\{P\}^{\tau}
+\end{aligned}
+\]
+</div>
+			<br><br>
+
+
+			<div style="margin-top:10px;"></div>
+			<h2>
+				<table><tr>
+				<td style="padding:0px 10px;"><a href="./fem_7_2.html">prev</a></td>
+				<td style="padding:0px 10px;">|</td>
+				<td style="padding:0px 10px;"><a href="./fem_7_2.html">up</a></td>
+				<td style="padding:0px 10px;">|</td>
+				<td style="padding:0px 10px;"><a href="./fem_7_2_2.html">next</a></td>
+				</tr></table>
+			</h2>
+
+			<!-- 広告 -->
+			<p><iframe src="./../questionnaire.html" width="650" height="325" scrolling="yes" frameborder="0"></iframe></p>
+		</div>
+
+	</div>	<!-- id="content" -->
+
+	</div>	<!-- id="main" -->
+
+	<div id="sub">
+		<iframe src="./../menu.html" id="menu" name="menu" width="180" scrolling="no" frameborder="0"></iframe>
+
+		<!-- 広告 -->
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- バナー3（メニュー欄） -->
+		<ins class="adsbygoogle"
+		     style="display:inline-block;width:160px;height:600px"
+		     data-ad-client="ca-pub-4382202381956938"
+		     data-ad-slot="2356729377"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+
+		<!-- ページ別カウンタ -->
+		<!--shinobi1-->
+		<script type="text/javascript" src="http://x7.tuzikaze.com/ufo/10850280M"></script>
+		<noscript><a href="http://x7.tuzikaze.com/bin/gg?10850280M" target="_blank">
+		<img src="http://x7.tuzikaze.com/bin/ll?10850280M" border="0"></a><br>
+		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://www.soudsite.com/">知恵と工夫</a></span></noscript>
+		<!--shinobi2-->
+
+		<div class="sub-text">
+			<dl>
+				<dt>カウンタ</dt>
+				<dd>
+					<!-- shinobi ct2 -->
+					<script type="text/javascript" src="http://ct2.tirirenge.com/sc/1515356"></script>
+					<noscript><a href="http://ct2.tirirenge.com/gg/1515356" target="_blank">
+					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="カウンター" /></a><br />
+					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">ポイント</a></span></noscript>
+					<!-- /shinobi ct2 -->
+					<br>
+				（2011.3.15～）
+				</dd>
+			</dl>
+		</div>
+
+	</div>
+
+	<div id="footer">
+		<iframe id="ft" name="ft" src="./../footer.html" width="100%" scrolling="no" frameborder="0"></iframe>
+	</div>
+
+	</div>	<!-- id="wrapper" -->
+</body>
+</html>
