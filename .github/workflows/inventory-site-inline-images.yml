@@ -1,0 +1,229 @@
+name: Inventory remaining inline images
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/inventory-site-inline-images.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install image reader
+        run: pip install pillow
+
+      - name: Scan normal HTML pages
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from collections import Counter, defaultdict
+          from urllib.parse import unquote
+          from PIL import Image
+          import csv, html, json, re
+
+          root = Path('.')
+          report_dir = Path('.document/formula_reviews')
+          report_dir.mkdir(parents=True, exist_ok=True)
+
+          excluded_suffixes = ('_reaudit.html', '_mathjax_audit.html')
+          excluded_dirs = {'.git', '.document', '.github', 'node_modules'}
+          word_asset_re = re.compile(r'(?:^|/)img/[^"\']+\.files/image\d+\.(?:png|gif|jpe?g)$', re.I)
+          img_tag_re = re.compile(r'<img\b[^>]*\bsrc\s*=\s*["\']([^"\']+)["\'][^>]*>', re.I | re.S)
+          p_im_re = re.compile(r'<p\b[^>]*class=["\'][^"\']*\bim\b[^"\']*["\'][^>]*>.*?</p>', re.I | re.S)
+
+          def read_html(path):
+              data = path.read_bytes()
+              for enc in ('utf-8-sig', 'utf-8', 'cp932'):
+                  try:
+                      return data.decode(enc), enc
+                  except UnicodeDecodeError:
+                      pass
+              return data.decode('cp932', errors='replace'), 'cp932-replace'
+
+          def normalize_src(page, src):
+              src = unquote(html.unescape(src)).split('?', 1)[0].split('#', 1)[0]
+              if re.match(r'^[a-z]+:', src, re.I) or src.startswith('//'):
+                  return None
+              try:
+                  return (page.parent / src).resolve().relative_to(root.resolve())
+              except Exception:
+                  return None
+
+          def dimensions(path):
+              try:
+                  with Image.open(path) as im:
+                      return im.width, im.height, im.format
+              except Exception:
+                  return None, None, None
+
+          rows = []
+          html_pages = []
+          for page in root.rglob('*.html'):
+              parts = set(page.parts)
+              if parts & excluded_dirs:
+                  continue
+              if page.name.endswith(excluded_suffixes):
+                  continue
+              html_pages.append(page)
+
+          for page in sorted(html_pages):
+              text, enc = read_html(page)
+              p_im_spans = []
+              for pm in p_im_re.finditer(text):
+                  p_im_spans.append((pm.start(), pm.end()))
+
+              for m in img_tag_re.finditer(text):
+                  src = m.group(1)
+                  asset = normalize_src(page, src)
+                  if asset is None:
+                      continue
+                  asset_s = asset.as_posix()
+                  if not word_asset_re.search(asset_s):
+                      continue
+                  centered = any(a <= m.start() and m.end() <= b for a, b in p_im_spans)
+                  asset_path = root / asset
+                  exists = asset_path.exists()
+                  w = h = fmt = None
+                  if exists:
+                      w, h, fmt = dimensions(asset_path)
+                  rows.append({
+                      'page': page.as_posix(),
+                      'encoding': enc,
+                      'src': src,
+                      'asset': asset_s,
+                      'exists': exists,
+                      'width': w,
+                      'height': h,
+                      'format': fmt,
+                      'centered_p_im': centered,
+                  })
+
+          # Direct references only: formulas already converted to data-source-image are
+          # intentionally absent from this residual inventory.
+          page_counts = Counter(r['page'] for r in rows)
+          section_counts = Counter(r['page'].split('/', 1)[0] if '/' in r['page'] else '(root)' for r in rows)
+          unique_assets = {r['asset'] for r in rows}
+          missing_assets = [r for r in rows if not r['exists']]
+          centered_count = sum(1 for r in rows if r['centered_p_im'])
+          ext_counts = Counter(Path(r['asset']).suffix.lower() for r in rows)
+
+          # A review priority is not a claim that an image is a formula. It only puts
+          # centered Word-export images first because these are the dominant equation
+          # containers in the source site.
+          for r in rows:
+              r['review_priority'] = 'A' if r['centered_p_im'] else 'B'
+
+          csv_path = report_dir / 'SITE_INLINE_IMAGE_INVENTORY_20260918.csv'
+          fields = ['page','encoding','src','asset','exists','width','height','format','centered_p_im','review_priority']
+          with csv_path.open('w', encoding='utf-8-sig', newline='') as f:
+              wri = csv.DictWriter(f, fieldnames=fields)
+              wri.writeheader()
+              wri.writerows(rows)
+
+          json_path = report_dir / 'SITE_INLINE_IMAGE_INVENTORY_20260918.json'
+          json_path.write_text(json.dumps({
+              'summary': {
+                  'html_pages_scanned': len(html_pages),
+                  'residual_word_image_placements': len(rows),
+                  'unique_assets': len(unique_assets),
+                  'centered_p_im_placements': centered_count,
+                  'missing_assets': len(missing_assets),
+                  'section_counts': dict(section_counts),
+                  'extensions': dict(ext_counts),
+              },
+              'rows': rows,
+          }, ensure_ascii=False, indent=2), encoding='utf-8')
+
+          md = [
+              '# Site Inline Image Inventory — 2026-09-18',
+              '',
+              '## Scope and interpretation',
+              '',
+              '- Scope: normal `.html` pages on `develop`; strict audit/re-audit pages and tooling/docs are excluded.',
+              '- Target: direct `<img>` references to Word-export style assets matching `img/*.files/imageNNN.(png|gif|jpg|jpeg)`.',
+              '- Already converted MathJax formulas referenced only by `data-source-image` are not counted as residual images.',
+              '- Priority A means the image is inside `<p class="im">`; this is a **review priority only**, not an automatic assertion that the image is a formula.',
+              '- Formula/diagram classification must be confirmed visually before conversion.',
+              '',
+              '## Summary',
+              '',
+              f'- HTML pages scanned: **{len(html_pages)}**',
+              f'- Residual inline-image placements: **{len(rows)}**',
+              f'- Unique residual image assets: **{len(unique_assets)}**',
+              f'- Priority A (`p.im`) placements: **{centered_count}**',
+              f'- Missing referenced assets: **{len(missing_assets)}**',
+              '',
+              '### By section',
+              '',
+              '| Section | Placements |',
+              '|---|---:|',
+          ]
+          for section, count in sorted(section_counts.items(), key=lambda x:(-x[1],x[0])):
+              md.append(f'| `{section}` | {count} |')
+
+          md += [
+              '',
+              '### Pages with residual Word-export images',
+              '',
+              '| No. | Page | Placements | Priority A |',
+              '|---:|---|---:|---:|',
+          ]
+          rows_by_page = defaultdict(list)
+          for r in rows:
+              rows_by_page[r['page']].append(r)
+          for i, (page, count) in enumerate(sorted(page_counts.items(), key=lambda x:(-x[1],x[0])), 1):
+              a = sum(1 for r in rows_by_page[page] if r['review_priority']=='A')
+              md.append(f'| {i} | `{page}` | {count} | {a} |')
+
+          md += [
+              '',
+              '## Next step',
+              '',
+              'Review Priority A assets page-by-page against the original images, classify each as formula / diagram / other, and only then start exact LaTeX transcription under the existing strict source-image policy.',
+              '',
+              'Detailed per-image data is stored in:',
+              '- `.document/formula_reviews/SITE_INLINE_IMAGE_INVENTORY_20260918.csv`',
+              '- `.document/formula_reviews/SITE_INLINE_IMAGE_INVENTORY_20260918.json`',
+          ]
+          md_path = report_dir / 'SITE_INLINE_IMAGE_INVENTORY_20260918.md'
+          md_path.write_text('\n'.join(md) + '\n', encoding='utf-8')
+
+          print(f'HTML pages scanned: {len(html_pages)}')
+          print(f'Residual placements: {len(rows)}; unique assets: {len(unique_assets)}; priority A: {centered_count}')
+          print('Sections:', dict(section_counts))
+          print('Top pages:')
+          for page, count in page_counts.most_common(20):
+              a = sum(1 for r in rows_by_page[page] if r['review_priority']=='A')
+              print(f'  {page}: {count} (A={a})')
+          if missing_assets:
+              print('Missing assets:', len(missing_assets))
+          PY
+
+      - name: Commit inventory
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add \
+            .document/formula_reviews/SITE_INLINE_IMAGE_INVENTORY_20260918.md \
+            .document/formula_reviews/SITE_INLINE_IMAGE_INVENTORY_20260918.csv \
+            .document/formula_reviews/SITE_INLINE_IMAGE_INVENTORY_20260918.json
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo 'No inventory change.'
+          else
+            git commit -m 'docs: inventory remaining inline image assets'
+            git push origin HEAD:develop
+          fi
