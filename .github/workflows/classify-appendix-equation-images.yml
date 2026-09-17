@@ -1,0 +1,79 @@
+name: Classify appendix equation images
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/classify-appendix-equation-images.yml'
+
+jobs:
+  contact-sheet:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - run: pip install pillow
+
+      - name: Build review images
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from PIL import Image, ImageDraw, ImageFont, ImageOps
+
+          srcdir = Path('img/appendix_equation.files')
+          out = Path('appendix-equation-review')
+          originals = out / 'originals'
+          enlarged = out / 'enlarged'
+          originals.mkdir(parents=True, exist_ok=True)
+          enlarged.mkdir(parents=True, exist_ok=True)
+
+          files = [srcdir / f'image{i:03d}.png' for i in range(1, 15)]
+          font = ImageFont.load_default()
+          cards = []
+          card_w = 1050
+          for f in files:
+              if not f.exists():
+                  raise SystemExit(f'missing {f}')
+              im = Image.open(f).convert('RGB')
+              white = Image.new('RGB', im.size, 'white')
+              white.paste(im)
+              white.save(originals / f.name)
+
+              scale = max(1, min(4, 900 // max(1, white.width)))
+              large = white.resize((white.width * scale, white.height * scale), Image.Resampling.NEAREST)
+              large = ImageOps.expand(large, border=20, fill='white')
+              large.save(enlarged / f.name)
+
+              header_h = 45
+              inner_w = card_w - 40
+              fit_scale = min(1.0, inner_w / white.width)
+              fit = white.resize((max(1, int(white.width * fit_scale)), max(1, int(white.height * fit_scale))), Image.Resampling.LANCZOS)
+              card_h = header_h + fit.height + 40
+              card = Image.new('RGB', (card_w, card_h), 'white')
+              d = ImageDraw.Draw(card)
+              d.text((20, 14), f.name, fill='black', font=font)
+              card.paste(fit, ((card_w - fit.width)//2, header_h + 10))
+              d.rectangle((0,0,card_w-1,card_h-1), outline='gray')
+              cards.append(card)
+
+          sheet_h = sum(c.height for c in cards) + 20 * (len(cards)-1)
+          sheet = Image.new('RGB', (card_w, sheet_h), 'white')
+          y = 0
+          for c in cards:
+              sheet.paste(c, (0,y))
+              y += c.height + 20
+          sheet.save(out / 'appendix_1_contact_sheet.png')
+          print('created', len(cards), 'review cards')
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: appendix-equation-review
+          path: appendix-equation-review
+          retention-days: 7
