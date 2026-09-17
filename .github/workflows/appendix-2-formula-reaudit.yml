@@ -74,7 +74,11 @@ jobs:
             pg.evaluate('async()=>{await MathJax.startup.promise;}'); pg.wait_for_timeout(500)
             for n in nums:
               sec=pg.locator(f'#formula-{n}'); r=sec.locator('.render'); s=sec.locator('.source img')
-              containers=r.locator('mjx-container').count(); errors=r.locator('mjx-merror')\n              if containers<1 or errors.count()>0:\n                print(f'image{n}: containers={containers}, merror={errors.count()}, text={errors.all_inner_texts()}')\n                print('render text:',r.inner_text())\n                raise RuntimeError(f'image{n} MathJax error')
+              containers=r.locator('mjx-container').count(); errors=r.locator('mjx-merror')
+              if containers<1 or errors.count()>0:
+                print(f'image{n}: containers={containers}, merror={errors.count()}, text={errors.all_inner_texts()}')
+                print('render text:',r.inner_text())
+                raise RuntimeError(f'image{n} MathJax error')
               dims=r.evaluate('(e)=>({clientWidth:e.clientWidth,scrollWidth:e.scrollWidth})')
               rp=out/'renders'/f'image{n}.png'; r.screenshot(path=str(rp),animations='disabled')
               sp=(root/'appendix'/s.get_attribute('src')).resolve(); im=Image.open(sp).convert('RGBA'); bg=Image.new('RGBA',im.size,'white'); bg.alpha_composite(im); src=bg.convert('RGB')
