@@ -7,8 +7,8 @@
 このファイルは `fem/fem_7_2_1.html` の元数式画像を、**数学的な訂正・一般化・簡略化を行わず**LaTeXへ再転記するための作業ドラフトである。
 
 - 通常ページへは未反映。
-- 2026-09-17時点では `image001`～`image006` を直接目視して転記済み。
-- `image007`～`image020` は元画像を直接確認するまで転記しない。
+- 2026-09-17時点では `image001`～`image007` を直接目視して転記済み。
+- `image008`～`image020` は元画像を直接確認するまで転記しない。
 - 原画像側に不自然な表記があっても、この原文転記では勝手に修正しない。
 - 全20式の再転記後、元画像とのPass 1を再実施する。
 - 実ブラウザ上のMathJax描画確認はPass 2として別判定する。
@@ -149,15 +149,35 @@ P&=[N]^T\{P\}.
 \]
 ```
 
-## image007～image020
+## image007
+
+元画像は `image006` から節点自由度を積分外へ出した形。時刻添字は引き続き `\Delta\tau+\tau`。
+
+```latex
+\[
+\begin{aligned}
+={}&
+\int_V[N]^T[N]dV\,
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+&+V_x\int_V[N]^T\frac{\partial[N]}{\partial X}dV\,\{P\}^{\Delta\tau+\tau}
++V_y\int_V[N]^T\frac{\partial[N]}{\partial Y}dV\,\{P\}^{\Delta\tau+\tau}\\
+&+V_z\int_V[N]^T\frac{\partial[N]}{\partial Z}dV\,\{P\}^{\Delta\tau+\tau}\\
+&+\frac{1}{Ma^2}\int_V[N]^T\frac{\partial[N]}{\partial X}dV\,\{V_x\}^{\Delta\tau+\tau}
++\frac{1}{Ma^2}\int_V[N]^T\frac{\partial[N]}{\partial Y}dV\,\{V_y\}^{\Delta\tau+\tau}\\
+&+\frac{1}{Ma^2}\int_V[N]^T\frac{\partial[N]}{\partial Z}dV\,\{V_z\}^{\Delta\tau+\tau}
+\end{aligned}
+\]
+```
+
+## image008～image020
 
 **HOLD** — 元画像を直接表示して1式ずつ照合後に追記する。
 
 ## 現在の状態
 
 - 元画像との対応付け: 20/20
-- 現監査候補のPass 1目視監査: 6/20
+- 現監査候補のPass 1目視監査: 7/20
 - 現監査候補の合格: 0/20
-- 元画像忠実再転記ドラフト: 6/20
+- 元画像忠実再転記ドラフト: 7/20
 - 再転記版の再Pass 1: 未実施
 - Pass 2: 0/20
