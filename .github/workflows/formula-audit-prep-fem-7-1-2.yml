@@ -1,0 +1,86 @@
+name: Formula Audit Prep FEM 7.1.2
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/formula-audit-prep-fem-7-1-2.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - batch: a
+            items: '001,002,003,004,005,006,007,008,009,010,011,012,013,014'
+          - batch: b
+            items: '015,016,017,018,019,020,021,022,023,024,025,026,027,028'
+          - batch: c
+            items: '029,030,031,032,033,034,035,036,037,038,039,040,041,042'
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Pillow
+        run: python -m pip install --disable-pip-version-check pillow
+
+      - name: Build review bundle
+        env:
+          ITEMS: ${{ matrix.items }}
+          BATCH: ${{ matrix.batch }}
+        run: |
+          python - <<'PY'
+          import hashlib
+          import os
+          import re
+          from pathlib import Path
+          from PIL import Image, ImageOps
+
+          items = [x.strip() for x in os.environ['ITEMS'].split(',') if x.strip()]
+          batch = os.environ['BATCH']
+          src_dir = Path('img/fem_d_momentum_tri.files')
+          audit_html = Path('fem/fem_7_1_2_mathjax_audit.html').read_text(encoding='utf-8', errors='replace')
+          out = Path('audit_prep') / f'batch_{batch}'
+          out.mkdir(parents=True, exist_ok=True)
+
+          manifest = [f'# fem_7_1_2 audit prep batch {batch}', '', 'Mechanical preprocessing only. Final Pass/NG requires direct visual audit.', '']
+
+          for n in items:
+              src = src_dir / f'image{n}.png'
+              raw = src.read_bytes()
+              sha = hashlib.sha256(raw).hexdigest()
+              im = Image.open(src).convert('RGBA')
+              bg = Image.new('RGBA', im.size, 'white')
+              bg.alpha_composite(im)
+              rgb = bg.convert('RGB')
+              rgb.save(out / f'image{n}_original_white.png')
+              enlarged = rgb.resize((rgb.width * 4, rgb.height * 4), Image.Resampling.NEAREST)
+              enlarged = ImageOps.expand(enlarged, border=20, fill='white')
+              enlarged.save(out / f'image{n}_x4.png')
+
+              pat = re.compile(r'<div[^>]+id="formula-fem-7-1-2-' + re.escape(n) + r'"[^>]*>(.*?)</div>', re.S)
+              m = pat.search(audit_html)
+              candidate = m.group(1).strip() if m else '[candidate block not found]'
+              (out / f'image{n}_candidate.tex').write_text(candidate + '\n', encoding='utf-8')
+
+              manifest += [f'## image{n}', f'- source: `{src}`', f'- sha256: `{sha}`', f'- size: `{rgb.width}x{rgb.height}`', f'- candidate: `image{n}_candidate.tex`', '']
+
+          (out / 'manifest.md').write_text('\n'.join(manifest), encoding='utf-8')
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fem-7-1-2-audit-prep-${{ matrix.batch }}
+          path: audit_prep/batch_${{ matrix.batch }}
+          if-no-files-found: error
+          retention-days: 7
