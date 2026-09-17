@@ -11,13 +11,18 @@
 
 	<title>質量収支式の離散化（有限要素法）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
 	<script>
 	window.MathJax = {
 		tex: {inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']]},
+		output: {
+			displayOverflow: 'linebreak',
+			linebreaks: {inline: true, width: '100%', lineleading: 0.2}
+		},
 		chtml: {displayAlign: 'left', displayIndent: '0'}
 	};
 	</script>
-	<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id"   value="4">
@@ -57,73 +62,364 @@
 
 			<h2>・質量収支式の離散化</h2>
 			<p>無次元化した質量収支式は次式となります。</p>
-			<p class="im" style="text-align:left;"><img src="./../img/fem_d_mass_tri.files/image001.png"></p>
+			<div class="math-block" id="formula-fem-7-1-1-001" data-source-image="./../img/fem_d_mass_tri.files/image001.png">
+\[
+\phi=
+\frac{\partial P}{\partial\tau}
++V_x\frac{\partial P}{\partial x}
++V_y\frac{\partial P}{\partial y}
++\frac{1}{Ma^2}\left(
+\frac{\partial V_x}{\partial X}
++\frac{\partial V_y}{\partial Y}
+\right)=0
+\]
+</div>
 			<br><br>
 			<p>内挿関数<span class="ft"><i>N<sub>i</sub></i></span>を重み関数に使用すると離散化式は次式となります。</p>
-			<div class="math-block" id="fix-r-fem2d-mass-001">
+			<div class="math-block" id="formula-fem-7-1-1-002" data-source-image="./../img/fem_d_mass_tri.files/image002.png">
 \[
-\int_S [N]^T\phi\,dS
-=\int_S
-\begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}\phi\,dS
-=\int_S
-\begin{bmatrix}0\\0\\0\end{bmatrix}dS
-=\begin{bmatrix}0\\0\\0\end{bmatrix}.
+\int_V[N]^T\phi\,dV
+=\int_V
+\begin{bmatrix}N_1\\N_1\\N_3\end{bmatrix}\phi\,dV
+=\int_V
+\begin{bmatrix}0\\0\\0\end{bmatrix}dV
+=\begin{bmatrix}0\\0\\0\end{bmatrix}
 \]
 </div>
 			<br><br>
 			<p>速度、圧力は、内挿関数<span class="ft"><i>N<sub>i</sub></i></span>を用いてそれぞれ次式で表されます。</p>
-			<p class="im" style="text-align:left;"><img src="./../img/fem_d_mass_tri.files/image003.png"></p>
+			<div class="math-block" id="formula-fem-7-1-1-003" data-source-image="./../img/fem_d_mass_tri.files/image003.png">
+\[
+\begin{aligned}
+V_x
+&=N_1V_{x1}+N_2V_{x2}+N_3V_{x3}\\
+&=\begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}
+\begin{Bmatrix}V_{x1}&V_{x2}&V_{x3}\end{Bmatrix}\\
+&=[N]^T\{V_x\},\\
+V_y&=[N]^T\{V_y\},\\
+P&=[N]^T\{P\}.
+\end{aligned}
+\]
+</div>
 			<br><br>
 			<p>離散化式は、次式とります。</p>
-			<p class="im" style="text-align:left;"><img src="./../img/fem_d_mass_tri.files/image004.png"></p>
+			<div class="math-block" id="formula-fem-7-1-1-004" data-source-image="./../img/fem_d_mass_tri.files/image004.png">
+\[
+\int_S[N]^T\phi\,dS
+=\int_S[N]^T\left\{
+\frac{\partial P}{\partial\tau}
++V_x\frac{\partial P}{\partial x}
++V_y\frac{\partial P}{\partial y}
++\frac{1}{Ma^2}\left(
+\frac{\partial V_x}{\partial X}
++\frac{\partial V_y}{\partial Y}
+\right)
+\right\}dS
+\]
+</div>
 			<br><br>
 			<p>項ごとに分解して</p>
-			<p class="im" style="text-align:left;"><img src="./../img/fem_d_mass_tri.files/image005.png"></p>
+			<div class="math-block" id="formula-fem-7-1-1-005" data-source-image="./../img/fem_d_mass_tri.files/image005.png">
+\[
+\begin{aligned}
+={}&\int_S[N]^T\frac{\partial P}{\partial\tau}\,dS
++\int_S[N]^TV_x\frac{\partial P}{\partial X}\,dS
++\int_S[N]^TV_y\frac{\partial P}{\partial Y}\,dS\\
+&+\frac{1}{Ma^2}\int_S[N]^T\frac{\partial V_x}{\partial X}\,dS
++\frac{1}{Ma^2}\int_S[N]^T\frac{\partial V_y}{\partial Y}\,dS
+\end{aligned}
+\]
+</div>
 			<br><br>
 			<p>速度、圧力を内挿関数で表示して</p>
-			<p class="im" style="text-align:left;"><img src="./../img/fem_d_mass_tri.files/image006.png"></p>
+			<div class="math-block" id="formula-fem-7-1-1-006" data-source-image="./../img/fem_d_mass_tri.files/image006.png">
+\[
+\begin{aligned}
+={}&\int_S[N]^T[N]dS\,
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+&+V_x\int_S[N]^T\frac{\partial[N]\{P\}^{\Delta\tau+\tau}}{\partial X}dS
++V_y\int_S[N]^T\frac{\partial[N]\{P\}^{\Delta\tau+\tau}}{\partial Y}dS\\
+&+\frac{1}{Ma^2}\int_S[N]^T\frac{\partial[N]\{V_x\}^{\Delta\tau+\tau}}{\partial X}dS
++\frac{1}{Ma^2}\int_S[N]^T\frac{\partial[N]\{V_y\}^{\Delta\tau+\tau}}{\partial Y}dS
+\end{aligned}
+\]
+</div>
 			<br><br>
 			<p id="fix-r-fem2d-mass-003">形状関数内挿後の節点自由度は積分変数に依存しないため、積分の外に出します。</p>
-			<p class="im" style="text-align:left;"><img src="./../img/fem_d_mass_tri.files/image007.png"></p>
+			<div class="math-block" id="formula-fem-7-1-1-007" data-source-image="./../img/fem_d_mass_tri.files/image007.png">
+\[
+\begin{aligned}
+={}&\int_S[N]^T[N]dS\,
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+&+V_x\int_S[N]^T\frac{\partial[N]}{\partial X}dS\,\{P\}^{\Delta\tau+\tau}
++V_y\int_S[N]^T\frac{\partial[N]}{\partial Y}dS\,\{P\}^{\Delta\tau+\tau}\\
+&+\frac{1}{Ma^2}\int_S[N]^T\frac{\partial[N]}{\partial X}dS\,\{V_x\}^{\Delta\tau+\tau}
++\frac{1}{Ma^2}\int_S[N]^T\frac{\partial[N]}{\partial Y}dS\,\{V_y\}^{\Delta\tau+\tau}
+\end{aligned}
+\]
+</div>
 			<br><br>
 			<p>行列式で表す</p>
-			<p class="im" style="text-align:left;"><img src="./../img/fem_d_mass_tri.files/image008.png"></p>
+			<div class="math-block" id="formula-fem-7-1-1-008" data-source-image="./../img/fem_d_mass_tri.files/image008.png">
+\[
+\begin{aligned}
+={}&\int_S
+\begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}
+\begin{bmatrix}N_1&N_2&N_3\end{bmatrix}dS\,
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+&+V_x\int_S
+\begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}
+\begin{bmatrix}
+\dfrac{\partial N_1}{\partial X}&\dfrac{\partial N_2}{\partial X}&\dfrac{\partial N_3}{\partial X}
+\end{bmatrix}dS\,\{P\}^{\Delta\tau+\tau}\\
+&+V_y\int_S
+\begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}
+\begin{bmatrix}
+\dfrac{\partial N_1}{\partial Y}&\dfrac{\partial N_2}{\partial Y}&\dfrac{\partial N_3}{\partial Y}
+\end{bmatrix}dS\,\{P\}^{\Delta\tau+\tau}\\
+&+\frac{1}{Ma^2}\int_S
+\begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}
+\begin{bmatrix}
+\dfrac{\partial N_1}{\partial X}&\dfrac{\partial N_2}{\partial X}&\dfrac{\partial N_3}{\partial X}
+\end{bmatrix}dS\,\{V_x\}^{\Delta\tau+\tau}\\
+&+\frac{1}{Ma^2}\int_S
+\begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}
+\begin{bmatrix}
+\dfrac{\partial N_1}{\partial Y}&\dfrac{\partial N_2}{\partial Y}&\dfrac{\partial N_3}{\partial Y}
+\end{bmatrix}dS\,\{V_y\}^{\Delta\tau+\tau}
+\end{aligned}
+\]
+</div>
 			<br><br>
 			<p>行列を計算する</p>
-			<p class="im" style="text-align:left;"><img src="./../img/fem_d_mass_tri.files/image009.png"></p>
-			<p class="im" style="text-align:left;"><img src="./../img/fem_d_mass_tri.files/image010.png"></p>
+			<div class="math-block" id="formula-fem-7-1-1-009" data-source-image="./../img/fem_d_mass_tri.files/image009.png">
+\[
+\begin{aligned}
+={}&\int_S
+\begin{bmatrix}
+N_1N_1&N_1N_2&N_1N_3\\
+N_2N_1&N_2N_2&N_2N_3\\
+N_3N_1&N_3N_2&N_3N_3
+\end{bmatrix}dS\,
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+&+V_x\int_S
+\begin{bmatrix}
+N_1\dfrac{\partial N_1}{\partial X}&N_1\dfrac{\partial N_2}{\partial X}&N_1\dfrac{\partial N_3}{\partial X}\\
+N_2\dfrac{\partial N_1}{\partial X}&N_2\dfrac{\partial N_2}{\partial X}&N_2\dfrac{\partial N_3}{\partial X}\\
+N_3\dfrac{\partial N_1}{\partial X}&N_3\dfrac{\partial N_2}{\partial X}&N_3\dfrac{\partial N_3}{\partial X}
+\end{bmatrix}dS\,\{V_x\}^{\Delta\tau+\tau}\\
+&+V_y\int_S
+\begin{bmatrix}
+N_1\dfrac{\partial N_1}{\partial Y}&N_1\dfrac{\partial N_2}{\partial Y}&N_1\dfrac{\partial N_3}{\partial Y}\\
+N_2\dfrac{\partial N_1}{\partial Y}&N_2\dfrac{\partial N_2}{\partial Y}&N_2\dfrac{\partial N_3}{\partial Y}\\
+N_3\dfrac{\partial N_1}{\partial Y}&N_3\dfrac{\partial N_2}{\partial Y}&N_3\dfrac{\partial N_3}{\partial Y}
+\end{bmatrix}dS\,\{V_y\}^{\Delta\tau+\tau}
+\end{aligned}
+\]
+</div>
+			<div class="math-block" id="formula-fem-7-1-1-010" data-source-image="./../img/fem_d_mass_tri.files/image010.png">
+\[
+\begin{aligned}
+&+\frac{1}{Ma^2}\int_S
+\begin{bmatrix}
+N_1\dfrac{\partial N_1}{\partial X}&N_1\dfrac{\partial N_2}{\partial X}&N_1\dfrac{\partial N_3}{\partial X}\\
+N_2\dfrac{\partial N_1}{\partial X}&N_2\dfrac{\partial N_2}{\partial X}&N_2\dfrac{\partial N_3}{\partial X}\\
+N_3\dfrac{\partial N_1}{\partial X}&N_3\dfrac{\partial N_2}{\partial X}&N_3\dfrac{\partial N_3}{\partial X}
+\end{bmatrix}dS\,\{V_x\}^{\Delta\tau+\tau}\\
+&+\frac{1}{Ma^2}\int_S
+\begin{bmatrix}
+N_1\dfrac{\partial N_1}{\partial Y}&N_1\dfrac{\partial N_2}{\partial Y}&N_1\dfrac{\partial N_3}{\partial Y}\\
+N_2\dfrac{\partial N_1}{\partial Y}&N_2\dfrac{\partial N_2}{\partial Y}&N_2\dfrac{\partial N_3}{\partial Y}\\
+N_3\dfrac{\partial N_1}{\partial Y}&N_3\dfrac{\partial N_2}{\partial Y}&N_3\dfrac{\partial N_3}{\partial Y}
+\end{bmatrix}dS\,\{V_y\}^{\Delta\tau+\tau}
+\end{aligned}
+\]
+</div>
 			<br><br>
 			<p>内挿関数を形状関数に直す</p>
-			<p class="im" style="text-align:left;"><img src="./../img/fem_d_mass_tri.files/image011.png"></p>
+			<div class="math-block" id="formula-fem-7-1-1-011" data-source-image="./../img/fem_d_mass_tri.files/image011.png">
+\[
+\begin{aligned}
+={}&\int_S
+\begin{bmatrix}
+L_1L_1&L_1L_2&L_1L_3\\
+L_2L_1&L_2L_2&L_2L_3\\
+L_3L_1&L_3L_2&L_3L_3
+\end{bmatrix}dS\,
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+&+V_x\int_S
+\begin{bmatrix}
+L_1\dfrac{\partial L_1}{\partial X}&L_1\dfrac{\partial L_2}{\partial X}&L_1\dfrac{\partial L_3}{\partial X}\\
+L_2\dfrac{\partial L_1}{\partial X}&L_2\dfrac{\partial L_2}{\partial X}&L_2\dfrac{\partial L_3}{\partial X}\\
+L_3\dfrac{\partial L_1}{\partial X}&L_3\dfrac{\partial L_2}{\partial X}&L_3\dfrac{\partial L_3}{\partial X}
+\end{bmatrix}dS\,\{P\}^{\Delta\tau+\tau}\\
+&+V_y\int_S
+\begin{bmatrix}
+L_1\dfrac{\partial L_1}{\partial Y}&L_1\dfrac{\partial L_2}{\partial Y}&L_1\dfrac{\partial L_3}{\partial Y}\\
+L_2\dfrac{\partial L_1}{\partial Y}&L_2\dfrac{\partial L_2}{\partial Y}&L_2\dfrac{\partial L_3}{\partial Y}\\
+L_3\dfrac{\partial L_1}{\partial Y}&L_3\dfrac{\partial L_2}{\partial Y}&L_3\dfrac{\partial L_3}{\partial Y}
+\end{bmatrix}dS\,\{P\}^{\Delta\tau+\tau}\\
+&+\frac{1}{Ma^2}\int_S
+\begin{bmatrix}
+L_1\dfrac{\partial L_1}{\partial X}&L_1\dfrac{\partial L_2}{\partial X}&L_1\dfrac{\partial L_3}{\partial X}\\
+L_2\dfrac{\partial L_1}{\partial X}&L_2\dfrac{\partial L_2}{\partial X}&L_2\dfrac{\partial L_3}{\partial X}\\
+L_3\dfrac{\partial L_1}{\partial X}&L_3\dfrac{\partial L_2}{\partial X}&L_3\dfrac{\partial L_3}{\partial X}
+\end{bmatrix}dS\,\{V_x\}^{\Delta\tau+\tau}\\
+&+\frac{1}{Ma^2}\int_S
+\begin{bmatrix}
+L_1\dfrac{\partial L_1}{\partial Y}&L_1\dfrac{\partial L_2}{\partial Y}&L_1\dfrac{\partial L_3}{\partial Y}\\
+L_2\dfrac{\partial L_1}{\partial Y}&L_2\dfrac{\partial L_2}{\partial Y}&L_2\dfrac{\partial L_3}{\partial Y}\\
+L_3\dfrac{\partial L_1}{\partial Y}&L_3\dfrac{\partial L_2}{\partial Y}&L_3\dfrac{\partial L_3}{\partial Y}
+\end{bmatrix}dS\,\{V_y\}^{\Delta\tau+\tau}
+\end{aligned}
+\]
+</div>
 			<br><br>
 			<p>形状関数の微分値を計算する</p>
-			<p class="im" style="text-align:left;"><img src="./../img/fem_d_mass_tri.files/image012.png"></p>
+			<div class="math-block" id="formula-fem-7-1-1-012" data-source-image="./../img/fem_d_mass_tri.files/image012.png">
+\[
+\begin{aligned}
+={}&\int_S
+\begin{bmatrix}
+L_1L_1&L_1L_2&L_1L_3\\L_2L_1&L_2L_2&L_2L_3\\L_3L_1&L_3L_2&L_3L_3
+\end{bmatrix}dS\,
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+&+V_x\int_S\frac{1}{2A}
+\begin{bmatrix}L_1c_{1x}&L_1c_{2x}&L_1c_{3x}\\L_2c_{1x}&L_2c_{2x}&L_2c_{3x}\\L_3c_{1x}&L_3c_{2x}&L_3c_{3x}\end{bmatrix}
+dS\,\{P\}^{\Delta\tau+\tau}\\
+&+V_y\int_S\frac{1}{2A}
+\begin{bmatrix}L_1c_{1y}&L_1c_{2y}&L_1c_{3y}\\L_2c_{1y}&L_2c_{2y}&L_2c_{3y}\\L_3c_{1y}&L_3c_{2y}&L_3c_{3y}\end{bmatrix}
+dS\,\{P\}^{\Delta\tau+\tau}\\
+&+\frac{1}{Ma^2}\int_S\frac{1}{2A}
+\begin{bmatrix}L_1c_{1x}&L_1c_{2x}&L_1c_{3x}\\L_2c_{1x}&L_2c_{2x}&L_2c_{3x}\\L_3c_{1x}&L_3c_{2x}&L_3c_{3x}\end{bmatrix}
+dS\,\{V_x\}^{\Delta\tau+\tau}3\\
+&+\frac{1}{Ma^2}\int_S\frac{1}{2A}
+\begin{bmatrix}L_1c_{1y}&L_1c_{2y}&L_1c_{3y}\\L_2c_{1y}&L_2c_{2y}&L_2c_{3y}\\L_3c_{1y}&L_3c_{2y}&L_3c_{3y}\end{bmatrix}
+dS\,\{V_y\}^{\Delta\tau+\tau}
+\end{aligned}
+\]
+</div>
 			<br><br>
 
 			<p id="fix-r-fem2d-mass-002">ここで、三角形要素の面積積分の公式より</p>
-			<p class="im" style="text-align:left;"><img src="./../img/fem_d_mass_tri.files/image013.png"></p>
+			<div class="math-block" id="formula-fem-7-1-1-013" data-source-image="./../img/fem_d_mass_tri.files/image013.png">
+\[
+\int_S L_1^pL_2^qL_3^r\,dS
+=\frac{p!q!r!}{(p+q+r+2)!}\,2A
+\]
+\[
+\int_S L_iL_j\,dS=
+\begin{cases}
+\dfrac{1!1!}{(1+1+2)!}\,2A=\dfrac{2}{4!}A=\dfrac{1}{12}A &(i\ne j),\\[8pt]
+\dfrac{2!}{(1+1+2)!}\,2A=\dfrac{4}{4!}V=\dfrac{1}{6}A &(i=j)
+\end{cases}
+\]
+\[
+\int_S L_i\,dS
+=\frac{1!}{(1+2)!}\,2A
+=\frac{2}{3!}A
+=\frac{1}{3}A
+\]
+</div>
 			<br><br>
 
 			<p>形状関数を積分すると</p>
-			<p class="im" style="text-align:left;"><img src="./../img/fem_d_mass_tri.files/image014.png"></p>
+			<div class="math-block" id="formula-fem-7-1-1-014" data-source-image="./../img/fem_d_mass_tri.files/image014.png">
+\[
+\begin{aligned}
+={}&\frac{A}{12}\begin{bmatrix}2&1&1\\1&2&1\\1&1&2\end{bmatrix}
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+&+V_x\frac{1}{2A}\frac{A}{3}
+\begin{bmatrix}c_{1x}&c_{2x}&c_{3x}\\c_{1x}&c_{2x}&c_{3x}\\c_{1x}&c_{2x}&c_{3x}\end{bmatrix}
+\{P\}^{\Delta\tau+\tau}\\
+&+V_y\frac{1}{2A}\frac{A}{3}
+\begin{bmatrix}c_{1y}&c_{2y}&c_{3y}\\c_{1y}&c_{2y}&c_{3y}\\c_{1y}&c_{2y}&c_{3y}\end{bmatrix}
+\{P\}^{\Delta\tau+\tau}\\
+&+\frac{1}{Ma^2}\frac{1}{2A}\frac{A}{3}
+\begin{bmatrix}c_{1x}&c_{2x}&c_{3x}\\c_{1x}&c_{2x}&c_{3x}\\c_{1x}&c_{2x}&c_{3x}\end{bmatrix}
+\{V_x\}^{\Delta\tau+\tau}\\
+&+\frac{1}{Ma^2}\frac{1}{2A}\frac{A}{3}
+\begin{bmatrix}c_{1y}&c_{2y}&c_{3y}\\c_{1y}&c_{2y}&c_{3y}\\c_{1y}&c_{2y}&c_{3y}\end{bmatrix}
+\{V_y\}^{\Delta\tau+\tau}
+\end{aligned}
+\]
+</div>
 			<br><br>
 
 			<p>係数をまとめて</p>
-			<p class="im" style="text-align:left;"><img src="./../img/fem_d_mass_tri.files/image015.png"></p>
+			<div class="math-block" id="formula-fem-7-1-1-015" data-source-image="./../img/fem_d_mass_tri.files/image015.png">
+\[
+\begin{aligned}
+={}&\frac{A}{12}\begin{bmatrix}2&1&1\\1&2&1\\1&1&2\end{bmatrix}
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+&+V_x\frac{1}{6}
+\begin{bmatrix}c_{1x}&c_{2x}&c_{3x}\\c_{1x}&c_{2x}&c_{3x}\\c_{1x}&c_{2x}&c_{3x}\end{bmatrix}\{P\}^{\Delta\tau+\tau}\\
+&+V_y\frac{1}{6}
+\begin{bmatrix}c_{1y}&c_{2y}&c_{3y}\\c_{1y}&c_{2y}&c_{3y}\\c_{1y}&c_{2y}&c_{3y}\end{bmatrix}\{P\}^{\Delta\tau+\tau}\\
+&+\frac{1}{Ma^2}\frac{1}{6}
+\begin{bmatrix}c_{1x}&c_{2x}&c_{3x}\\c_{1x}&c_{2x}&c_{3x}\\c_{1x}&c_{2x}&c_{3x}\end{bmatrix}\{V_x\}^{\Delta\tau+\tau}\\
+&+\frac{1}{Ma^2}\frac{1}{6}
+\begin{bmatrix}c_{1y}&c_{2y}&c_{3y}\\c_{1y}&c_{2y}&c_{3y}\\c_{1y}&c_{2y}&c_{3y}\end{bmatrix}\{V_y\}^{\Delta\tau+\tau}
+\end{aligned}
+\]
+</div>
 			<br><br>
 
 			<p>行列式をまとめると</p>
-			<p class="im" style="text-align:left;"><img src="./../img/fem_d_mass_tri.files/image016.png"></p>
-			<p class="im" style="text-align:left;"><img src="./../img/fem_d_mass_tri.files/image017.png"></p>
+			<div class="math-block" id="formula-fem-7-1-1-016" data-source-image="./../img/fem_d_mass_tri.files/image016.png">
+\[
+\begin{aligned}
+={}&[C]\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}
++V_x[C_x]\{P\}^{\Delta\tau+\tau}
++V_y[C_y]\{P\}^{\Delta\tau+\tau}\\
+&+\frac{1}{Ma^2}[C_x]\{V_x\}^{\Delta\tau+\tau}
++\frac{1}{Ma^2}[C_y]\{V_y\}^{\Delta\tau+\tau}
+\end{aligned}
+\]
+</div>
+			<div class="math-block" id="formula-fem-7-1-1-017" data-source-image="./../img/fem_d_mass_tri.files/image017.png">
+\[
+=\begin{bmatrix}0\\0\\0\end{bmatrix}
+\]
+</div>
 			<br><br>
 			<p>最終的に次式が導出されます。</p>
-			<p class="im" style="text-align:left;"><img src="./../img/fem_d_mass_tri.files/image018.png"></p>
+			<div class="math-block" id="formula-fem-7-1-1-018" data-source-image="./../img/fem_d_mass_tri.files/image018.png">
+\[
+[C]\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}
++V_x[C_x]\{P\}^{\Delta\tau+\tau}
++V_y[C_y]\{P\}^{\Delta\tau+\tau}
++\frac{1}{Ma^2}[C_x]\{V_x\}^{\Delta\tau+\tau}
++\frac{1}{Ma^2}[C_y]\{V_y\}^{\Delta\tau+\tau}
+=[0]
+\]
+</div>
 			<br><br>
 			<p>既知の項を右辺に移項します。</p>
-			<p class="im" style="text-align:left;"><img src="./../img/fem_d_mass_tri.files/image020.png"></p>
+			<div class="math-block" id="formula-fem-7-1-1-020" data-source-image="./../img/fem_d_mass_tri.files/image020.png">
+\[
+\frac{[C]}{\Delta\tau}\{P\}^{\Delta\tau+\tau}
++V_x[C_x]\{P\}^{\Delta\tau+\tau}
++V_y[C_y]\{P\}^{\Delta\tau+\tau}
++\frac{1}{Ma^2}[C_x]\{V_x\}^{\Delta\tau+\tau}
++\frac{1}{Ma^2}[C_y]\{V_y\}^{\Delta\tau+\tau}
+=\frac{[C]}{\Delta\tau}\{P\}^{\tau}
+\]
+</div>
 			<br><br>
 			<p>行列ごとにまとめると</p>
-			<p class="im" style="text-align:left;"><img src="./../img/fem_d_mass_tri.files/image021.png"></p>
+			<div class="math-block" id="formula-fem-7-1-1-021" data-source-image="./../img/fem_d_mass_tri.files/image021.png">
+\[
+\left(
+\frac{[C]}{\Delta\tau}+V_x[C_x]+V_y[C_y]
+\right)\{P\}^{\Delta\tau+\tau}
++\frac{1}{Ma^2}\left(
+[C_x]\{V_x\}^{\Delta\tau+\tau}
++[C_y]\{V_y\}^{\Delta\tau+\tau}
+\right)
+=\frac{[C]}{\Delta\tau}\{P\}^{\tau}
+\]
+</div>
 			<br><br>
 
 
