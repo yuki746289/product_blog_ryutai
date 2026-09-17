@@ -1,0 +1,143 @@
+name: Appendix 1 Normal Browser QA
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/appendix-1-normal-browser-qa.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Chromium
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Start local site
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 > /tmp/appendix1-normal-qa-http.log 2>&1 &
+          sleep 1
+
+      - name: Run desktop and mobile QA
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+
+          viewports = {
+              'desktop': {'width':1440,'height':1000},
+              'mobile': {'width':390,'height':844},
+          }
+          out = Path('appendix1-normal-browser-qa')
+          out.mkdir(exist_ok=True)
+          results=[]; failures=[]
+
+          with sync_playwright() as p:
+              browser=p.chromium.launch(headless=True)
+              for name,vp in viewports.items():
+                  context=browser.new_context(viewport=vp, device_scale_factor=1)
+                  page=context.new_page()
+                  page_errors=[]
+                  page.on('pageerror', lambda exc, store=page_errors: store.append(str(exc)))
+                  page.goto('http://127.0.0.1:8000/appendix/appendix_1.html', wait_until='domcontentloaded', timeout=120000)
+                  page.wait_for_function('() => window.MathJax && MathJax.startup && MathJax.startup.promise', timeout=60000)
+                  page.evaluate('async () => { await MathJax.startup.promise; }')
+                  page.wait_for_timeout(500)
+
+                  blocks=page.locator('div.math-block[data-source-image*="appendix_equation.files/image"]')
+                  block_count=blocks.count()
+                  target_imgs=page.locator('img[src*="appendix_equation.files/image"]').count()
+                  merrors=page.locator('mjx-merror').count()
+                  unrendered=[]; local_scroll=[]; uncontained=[]
+
+                  for i in range(block_count):
+                      el=blocks.nth(i)
+                      src=el.get_attribute('data-source-image')
+                      if el.locator('mjx-container').count()<1:
+                          unrendered.append(src)
+                      dims=el.evaluate("(e)=>({clientWidth:e.clientWidth,scrollWidth:e.scrollWidth,overflowX:getComputedStyle(e).overflowX})")
+                      if dims['scrollWidth']>dims['clientWidth']+1:
+                          local_scroll.append({'source':src,'dims':dims})
+                          if name=='desktop' or dims['overflowX'] not in ('auto','scroll'):
+                              uncontained.append({'source':src,'dims':dims})
+
+                  pd=page.evaluate("() => ({clientWidth:document.documentElement.clientWidth,scrollWidth:document.documentElement.scrollWidth})")
+                  page_overflow=pd['scrollWidth']>pd['clientWidth']+2
+                  page.screenshot(path=str(out/f'{name}.png'), full_page=True, animations='disabled')
+
+                  row={
+                      'viewport':name,'formula_blocks':block_count,'target_formula_images':target_imgs,
+                      'mathjax_errors':merrors,'unrendered':unrendered,'local_scroll':local_scroll,
+                      'uncontained':uncontained,'page_overflow':page_overflow,'page_dimensions':pd,
+                      'page_errors':page_errors
+                  }
+                  results.append(row)
+                  if block_count!=14: failures.append(f'{name}: blocks {block_count} != 14')
+                  if target_imgs: failures.append(f'{name}: target formula images remain {target_imgs}')
+                  if merrors: failures.append(f'{name}: MathJax errors {merrors}')
+                  if unrendered: failures.append(f'{name}: unrendered {len(unrendered)}')
+                  if uncontained: failures.append(f'{name}: uncontained formula overflow {len(uncontained)}')
+                  if page_overflow: failures.append(f'{name}: page horizontal overflow')
+                  if page_errors: failures.append(f'{name}: page errors {page_errors}')
+                  print(name, row)
+                  context.close()
+              browser.close()
+
+          summary={'status':'PASS' if not failures else 'FAIL','results':results,'failures':failures}
+          (out/'manifest.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf-8')
+
+          report=Path('.document/formula_reviews/APPENDIX_1_NORMAL_BROWSER_QA_20260918.md')
+          ls=[
+              '# Appendix 1 Normal Browser QA — 2026-09-18','',
+              f'- Overall: **{summary["status"]}**',
+              '- Browser: Chromium / Playwright',
+              '- Viewports: desktop 1440x1000, mobile 390x844',
+              '- Required: 14 MathJax blocks, 0 source formula images, 0 MathJax errors, no page-level horizontal overflow.','',
+              '| Viewport | Blocks | Source images | MathJax errors | Local-scroll formulas | Uncontained overflow | Page overflow |',
+              '|---|---:|---:|---:|---:|---:|---|'
+          ]
+          for r in results:
+              ls.append(f"| {r['viewport']} | {r['formula_blocks']}/14 | {r['target_formula_images']} | {r['mathjax_errors']} | {len(r['local_scroll'])} | {len(r['uncontained'])} | {'YES' if r['page_overflow'] else 'NO'} |")
+          ls += ['', '## Failures', '']
+          ls += [f'- {x}' for x in failures] if failures else ['- None.']
+          ls += ['', '- Production deployment has not been performed.']
+          report.write_text('\n'.join(ls)+'\n',encoding='utf-8')
+          if failures:
+              raise SystemExit(1)
+          PY
+
+      - name: Commit QA report
+        if: success()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .document/formula_reviews/APPENDIX_1_NORMAL_BROWSER_QA_20260918.md
+          if git diff --cached --quiet; then
+            echo 'No report change.'
+          else
+            git commit -m 'docs: record appendix 1 normal browser QA'
+            git push origin HEAD:develop
+          fi
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: appendix-1-normal-browser-qa
+          path: appendix1-normal-browser-qa
+          retention-days: 7
