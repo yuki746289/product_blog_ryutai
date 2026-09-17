@@ -41,112 +41,78 @@ jobs:
           PAGE_KEY: ${{ matrix.page }}
         run: |
           python3 - <<'PY'
-          import json, os, time
+          import json, os
           from pathlib import Path
           from PIL import Image, ImageDraw
           from playwright.sync_api import sync_playwright
 
           page_key = os.environ['PAGE_KEY']
           configs = {
-              'fem_6_2_6': {
-                  'file': 'fem/fem_6_2_6_mathjax_audit.html',
-                  'numbers': [f'{i:03d}' for i in range(21, 33)],
-              },
-              'fem_7_1_1': {
-                  'file': 'fem/fem_7_1_1_reaudit.html',
-                  'numbers': [f'{i:03d}' for i in range(1, 19)] + ['020','021'],
-              },
-              'fem_7_1_2': {
-                  'file': 'fem/fem_7_1_2_reaudit.html',
-                  'numbers': [f'{i:03d}' for i in range(1, 43)],
-              },
-              'fem_7_2_1': {
-                  'file': 'fem/fem_7_2_1_reaudit.html',
-                  'numbers': [f'{i:03d}' for i in range(1, 21)],
-              },
-              'fem_7_2_2': {
-                  'file': 'fem/fem_7_2_2_reaudit.html',
-                  'numbers': [f'{i:03d}' for i in range(1, 50)],
-              },
+              'fem_6_2_6': {'file':'fem/fem_6_2_6_mathjax_audit.html','numbers':[f'{i:03d}' for i in range(21,33)],'mode':'mapped'},
+              'fem_7_1_1': {'file':'fem/fem_7_1_1_reaudit.html','numbers':[f'{i:03d}' for i in range(1,19)]+['020','021'],'mode':'pair'},
+              'fem_7_1_2': {'file':'fem/fem_7_1_2_reaudit.html','numbers':[f'{i:03d}' for i in range(1,43)],'mode':'mapped'},
+              'fem_7_2_1': {'file':'fem/fem_7_2_1_reaudit.html','numbers':[f'{i:03d}' for i in range(1,21)],'mode':'mapped'},
+              'fem_7_2_2': {'file':'fem/fem_7_2_2_reaudit.html','numbers':[f'{i:03d}' for i in range(1,50)],'mode':'mapped'},
           }
-          cfg = configs[page_key]
-          root = Path.cwd()
-          out = root / 'pass2-artifact' / page_key
-          renders = out / 'renders'
-          sources = out / 'sources'
-          pairs = out / 'pairs'
-          for d in (renders, sources, pairs): d.mkdir(parents=True, exist_ok=True)
-
-          manifest = {'page': page_key, 'file': cfg['file'], 'formulas': []}
+          cfg=configs[page_key]
+          root=Path.cwd(); out=root/'pass2-artifact'/page_key
+          renders=out/'renders'; sources=out/'sources'; pairs=out/'pairs'
+          for d in (renders,sources,pairs): d.mkdir(parents=True,exist_ok=True)
+          manifest={'page':page_key,'file':cfg['file'],'formulas':[]}
 
           with sync_playwright() as p:
-              browser = p.chromium.launch(headless=True)
-              context = browser.new_context(viewport={'width': 1800, 'height': 1200}, device_scale_factor=1)
-              pg = context.new_page()
-              url = 'http://127.0.0.1:8000/' + cfg['file']
-              pg.goto(url, wait_until='networkidle', timeout=120000)
-              pg.evaluate('async () => { if (window.MathJax && MathJax.startup && MathJax.startup.promise) await MathJax.startup.promise; }')
-              pg.wait_for_timeout(800)
+              browser=p.chromium.launch(headless=True)
+              context=browser.new_context(viewport={'width':1800,'height':1200},device_scale_factor=1)
+              pg=context.new_page()
+              pg.goto('http://127.0.0.1:8000/'+cfg['file'],wait_until='domcontentloaded',timeout=120000)
+              pg.wait_for_function('() => window.MathJax && MathJax.startup && MathJax.startup.promise',timeout=60000)
+              pg.evaluate('async () => { await MathJax.startup.promise; }')
+              pg.wait_for_timeout(500)
 
               for n in cfg['numbers']:
-                  sel = f'div.math-block[data-source-image$="image{n}.png"]'
-                  loc = pg.locator(sel)
-                  count = loc.count()
-                  if count < 1:
-                      raise RuntimeError(f'{page_key} image{n}: source-mapped math block not found')
-                  el = loc.first
-                  el.scroll_into_view_if_needed()
-                  if el.locator('mjx-container').count() < 1:
-                      raise RuntimeError(f'{page_key} image{n}: MathJax container not rendered')
-                  src_attr = el.get_attribute('data-source-image')
-                  dims = el.evaluate('(e) => ({clientWidth:e.clientWidth, scrollWidth:e.scrollWidth, clientHeight:e.clientHeight, scrollHeight:e.scrollHeight})')
-                  render_path = renders / f'image{n}.png'
-                  el.screenshot(path=str(render_path), animations='disabled')
+                  if cfg['mode']=='pair':
+                      section=pg.locator(f'section#formula-{n}')
+                      if section.count()!=1: raise RuntimeError(f'{page_key} image{n}: audit section count={section.count()}')
+                      render_el=section.locator('.render')
+                      source_img=section.locator('.source img')
+                      if render_el.count()!=1 or source_img.count()!=1: raise RuntimeError(f'{page_key} image{n}: pair children missing')
+                      src_attr=source_img.get_attribute('src')
+                      count=1
+                  else:
+                      loc=pg.locator(f'div.math-block[data-source-image$="image{n}.png"]')
+                      count=loc.count()
+                      if count<1: raise RuntimeError(f'{page_key} image{n}: source-mapped math block not found')
+                      render_el=loc.first
+                      src_attr=render_el.get_attribute('data-source-image')
 
-                  page_dir = (root / cfg['file']).parent
-                  src_path = (page_dir / src_attr).resolve()
-                  if not src_path.exists():
-                      raise RuntimeError(f'{page_key} image{n}: source file missing: {src_path}')
-                  src = Image.open(src_path).convert('RGBA')
-                  white = Image.new('RGBA', src.size, 'white')
-                  white.alpha_composite(src)
-                  source_rgb = white.convert('RGB')
-                  scale = 3 if source_rgb.width < 800 else (2 if source_rgb.width < 1400 else 1)
-                  if scale > 1:
-                      source_rgb = source_rgb.resize((source_rgb.width*scale, source_rgb.height*scale), Image.Resampling.LANCZOS)
-                  source_path = sources / f'image{n}.png'
-                  source_rgb.save(source_path)
+                  render_el.scroll_into_view_if_needed()
+                  if render_el.locator('mjx-container').count()<1: raise RuntimeError(f'{page_key} image{n}: MathJax container not rendered')
+                  dims=render_el.evaluate('(e)=>({clientWidth:e.clientWidth,scrollWidth:e.scrollWidth,clientHeight:e.clientHeight,scrollHeight:e.scrollHeight})')
+                  render_path=renders/f'image{n}.png'
+                  render_el.screenshot(path=str(render_path),animations='disabled')
 
-                  render = Image.open(render_path).convert('RGB')
-                  margin, label_h, gap = 16, 28, 24
-                  width = max(source_rgb.width, render.width) + margin*2
-                  height = label_h + source_rgb.height + gap + label_h + render.height + margin*2
-                  canvas = Image.new('RGB', (width, height), 'white')
-                  draw = ImageDraw.Draw(canvas)
-                  y = margin
-                  draw.text((margin, y), f'SOURCE image{n}', fill='black')
-                  y += label_h
-                  canvas.paste(source_rgb, (margin, y))
-                  y += source_rgb.height + gap
-                  draw.text((margin, y), f'MATHJAX image{n}', fill='black')
-                  y += label_h
-                  canvas.paste(render, (margin, y))
-                  pair_path = pairs / f'image{n}.png'
-                  canvas.save(pair_path)
+                  page_dir=(root/cfg['file']).parent
+                  src_path=(page_dir/src_attr).resolve()
+                  if not src_path.exists(): raise RuntimeError(f'{page_key} image{n}: source file missing: {src_path}')
+                  src=Image.open(src_path).convert('RGBA'); white=Image.new('RGBA',src.size,'white'); white.alpha_composite(src)
+                  source_rgb=white.convert('RGB')
+                  scale=3 if source_rgb.width<800 else (2 if source_rgb.width<1400 else 1)
+                  if scale>1: source_rgb=source_rgb.resize((source_rgb.width*scale,source_rgb.height*scale),Image.Resampling.LANCZOS)
+                  source_rgb.save(sources/f'image{n}.png')
 
-                  manifest['formulas'].append({
-                      'image': n,
-                      'source': src_attr,
-                      'mapped_blocks': count,
-                      'render_dimensions': {'width': render.width, 'height': render.height},
-                      'dom_dimensions': dims,
-                      'horizontal_overflow': dims['scrollWidth'] > dims['clientWidth'] + 1,
-                  })
+                  render=Image.open(render_path).convert('RGB')
+                  margin,label_h,gap=16,28,24
+                  width=max(source_rgb.width,render.width)+margin*2
+                  height=label_h+source_rgb.height+gap+label_h+render.height+margin*2
+                  canvas=Image.new('RGB',(width,height),'white'); draw=ImageDraw.Draw(canvas); y=margin
+                  draw.text((margin,y),f'SOURCE image{n}',fill='black'); y+=label_h; canvas.paste(source_rgb,(margin,y)); y+=source_rgb.height+gap
+                  draw.text((margin,y),f'MATHJAX image{n}',fill='black'); y+=label_h; canvas.paste(render,(margin,y)); canvas.save(pairs/f'image{n}.png')
 
+                  manifest['formulas'].append({'image':n,'source':src_attr,'mapped_blocks':count,'render_dimensions':{'width':render.width,'height':render.height},'dom_dimensions':dims,'horizontal_overflow':dims['scrollWidth']>dims['clientWidth']+1})
               browser.close()
 
-          manifest['count'] = len(manifest['formulas'])
-          (out / 'manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding='utf-8')
+          manifest['count']=len(manifest['formulas'])
+          (out/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf-8')
           print(f'{page_key}: browser captures {manifest["count"]}/{len(cfg["numbers"])}')
           PY
       - uses: actions/upload-artifact@v4
