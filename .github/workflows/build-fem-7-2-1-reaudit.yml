@@ -46,7 +46,8 @@ jobs:
           if missing:
               raise SystemExit(f'missing audited formulas: {missing}')
 
-          src = Path('fem/fem_7_2_1_mathjax_audit.html').read_text(encoding='utf-8')
+          src_path = Path('fem/fem_7_2_1_mathjax_audit.html')
+          src = src_path.read_bytes().decode('cp932')
           html = src
           for n in expected:
               pat = re.compile(
@@ -66,10 +67,9 @@ jobs:
           html = html.replace('<title>質量収支式の離散化（有限要素法）</title>', '<title>質量収支式の離散化（厳密再監査版）</title>', 1)
 
           out = Path('fem/fem_7_2_1_reaudit.html')
-          out.write_text(html, encoding='utf-8')
+          out.write_bytes(html.encode('cp932'))
 
-          # Static verification: every source formula must round-trip exactly.
-          built = out.read_text(encoding='utf-8')
+          built = out.read_bytes().decode('cp932')
           for n in expected:
               pat = re.compile(
                   rf'<div class="math-block" id="formula-fem-7-2-1-{n}" data-source-image="\.\./img/fem_d_mass_tet\.files/image{n}\.png">\n(.*?)\n</div>',
