@@ -40,24 +40,30 @@ jobs:
 
           formulas = extract_formulas('.document/formula_reviews/fem_7_2_1_retranscription.md')
           formulas.update(extract_formulas('.document/formula_reviews/fem_7_2_1_hold_resolution.md'))
-
           expected = [f'{i:03d}' for i in range(1,21)]
           missing = [n for n in expected if n not in formulas]
           if missing:
               raise SystemExit(f'missing audited formulas: {missing}')
 
           src_path = Path('fem/fem_7_2_1_mathjax_audit.html')
-          src = src_path.read_bytes().decode('cp932')
-          html = src
+          html = src_path.read_bytes().decode('cp932')
+
           for n in expected:
-              pat = re.compile(
-                  rf'(<div class="math-block" id="formula-fem-7-2-1-{n}" data-source-image="\.\./img/fem_d_mass_tet\.files/image{n}\.png">).*?(</div>)',
-                  re.S
-              )
-              if len(pat.findall(html)) != 1:
-                  raise SystemExit(f'formula block mapping not unique: {n}')
-              latex = formulas[n]
-              html = pat.sub(lambda m: m.group(1) + '\n' + latex + '\n' + m.group(2), html, count=1)
+              open_pat = re.compile(rf'<div\b[^>]*\bid="formula-fem-7-2-1-{n}"[^>]*>', re.I)
+              opens = list(open_pat.finditer(html))
+              if len(opens) != 1:
+                  raise SystemExit(f'formula opening tag not unique: {n}, found={len(opens)}')
+              opening = opens[0].group(0)
+              expected_img = f'../img/fem_d_mass_tet.files/image{n}.png'
+              if f'data-source-image="{expected_img}"' not in opening:
+                  raise SystemExit(f'source image mismatch: {n}: {opening}')
+              start = opens[0].start()
+              body_start = opens[0].end()
+              close = html.find('</div>', body_start)
+              if close < 0:
+                  raise SystemExit(f'closing div missing: {n}')
+              replacement = opening + '\n' + formulas[n] + '\n</div>'
+              html = html[:start] + replacement + html[close+6:]
 
           html = html.replace(
               '<p id="formula-conversion-note">数式はMathJaxで表示しています。変換前の数式画像は照合用としてリポジトリ内に保持しています。</p>',
@@ -68,18 +74,20 @@ jobs:
 
           out = Path('fem/fem_7_2_1_reaudit.html')
           out.write_bytes(html.encode('cp932'))
-
           built = out.read_bytes().decode('cp932')
+
           for n in expected:
-              pat = re.compile(
-                  rf'<div class="math-block" id="formula-fem-7-2-1-{n}" data-source-image="\.\./img/fem_d_mass_tet\.files/image{n}\.png">\n(.*?)\n</div>',
-                  re.S
-              )
-              m = pat.search(built)
+              open_pat = re.compile(rf'<div\b[^>]*\bid="formula-fem-7-2-1-{n}"[^>]*>', re.I)
+              m = open_pat.search(built)
               if not m:
-                  raise SystemExit(f'built block missing: {n}')
-              if m.group(1).strip() != formulas[n].strip():
+                  raise SystemExit(f'built opening missing: {n}')
+              close = built.find('</div>', m.end())
+              body = built[m.end():close].strip()
+              if body != formulas[n].strip():
                   raise SystemExit(f'latex mismatch after build: {n}')
+              expected_img = f'../img/fem_d_mass_tet.files/image{n}.png'
+              if f'data-source-image="{expected_img}"' not in m.group(0):
+                  raise SystemExit(f'built source image mismatch: {n}')
 
           ids = re.findall(r'id="formula-fem-7-2-1-(\d{3})"', built)
           if ids != expected:
