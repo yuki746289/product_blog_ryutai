@@ -1,13 +1,14 @@
 # 数式レビュー: fem/fem_7_1_1.html
 
-更新日: 2026-09-16
+更新日: 2026-09-17
 
 ## 対象
 
 - ページ: `fem/fem_7_1_1.html`
 - タイトル: 質量収支式の離散化（3角形1次要素）
-- 数式画像: `img/fem_d_mass_tri.files/`（`image001.png`～`image021.png`、欠番あり）
-- 状態: **元画像完全一致の再監査対象**
+- 数式画像: `img/fem_d_mass_tri.files/`（`image001.png`～`image018.png`, `image020.png`, `image021.png`）
+- 対象数: 20式
+- 状態: **元画像完全一致の再監査対象 / 対応付け20/20確認済み**
 
 ## 旧レビュー結果の位置づけ
 
@@ -21,6 +22,45 @@
 - 誤記候補は原文式の下へ補足する。
 - 行列・係数・時刻添字・`Ma` 等を元画像と1文字・1成分単位で照合する。
 
+## 2026-09-17 通常ページ安全確認
+
+通常ページを確認したところ、`image002.png` 相当の式だけがMathJaxのまま残っていた。
+監査台帳の「元画像へ復元済」という記録と実態が一致していなかったため、通常ページの表示時には `js/site_formula_guard_v1_6.js` で `image002.png` を表示する安全ガードを追加した。
+
+- レガシーHTML本体のCP932/Shift_JIS系エンコーディングは変更しない。
+- 監査候補 `fem_7_1_1_mathjax_audit.html` にはガードを適用しない。
+- Pass 1 / Pass 2完了までは通常ページに未確認MathJax式を表示しない。
+
+## 元画像 ↔ 監査候補 対応付け
+
+通常ページの画像出現順と、監査候補の式ID / `data-source-image` を確認した。
+`image019` はこのページの数式対象ではなく、対象は20式である。
+
+| No. | 元画像 | 監査式ID | 対応付け |
+|---:|---|---|---|
+| 1 | `image001.png` | `formula-fem-7-1-1-001` | OK |
+| 2 | `image002.png` | `formula-fem-7-1-1-002` | OK |
+| 3 | `image003.png` | `formula-fem-7-1-1-003` | OK |
+| 4 | `image004.png` | `formula-fem-7-1-1-004` | OK |
+| 5 | `image005.png` | `formula-fem-7-1-1-005` | OK |
+| 6 | `image006.png` | `formula-fem-7-1-1-006` | OK |
+| 7 | `image007.png` | `formula-fem-7-1-1-007` | OK |
+| 8 | `image008.png` | `formula-fem-7-1-1-008` | OK |
+| 9 | `image009.png` | `formula-fem-7-1-1-009` | OK |
+| 10 | `image010.png` | `formula-fem-7-1-1-010` | OK |
+| 11 | `image011.png` | `formula-fem-7-1-1-011` | OK |
+| 12 | `image012.png` | `formula-fem-7-1-1-012` | OK |
+| 13 | `image013.png` | `formula-fem-7-1-1-013` | OK |
+| 14 | `image014.png` | `formula-fem-7-1-1-014` | OK |
+| 15 | `image015.png` | `formula-fem-7-1-1-015` | OK |
+| 16 | `image016.png` | `formula-fem-7-1-1-016` | OK |
+| 17 | `image017.png` | `formula-fem-7-1-1-017` | OK |
+| 18 | `image018.png` | `formula-fem-7-1-1-018` | OK |
+| 19 | `image020.png` | `formula-fem-7-1-1-020` | OK |
+| 20 | `image021.png` | `formula-fem-7-1-1-021` | OK |
+
+**対応付け結果: 20/20 OK。**
+
 ## 主な補足候補
 
 - `image002` と後続式で積分領域記号が異なる可能性。
@@ -31,9 +71,9 @@
 
 ## 再監査チェック
 
-- [ ] `release_1.0.0` の画像出現順を確認。
-- [ ] 欠番・再利用画像を確認。
-- [ ] 全MathJax式と元画像を1対1対応。
+- [x] `release_1.0.0` / 通常ページの画像出現順を確認。
+- [x] 欠番・再利用画像を確認。
+- [x] 全MathJax式と元画像を1対1対応。
 - [ ] 全式でPass 1完了。
 - [ ] 全式でPass 2完了。
 - [ ] `V,dV` / `S,dS` を原画像どおり再現。
@@ -45,4 +85,4 @@
 
 ## 現在の判定
 
-**未完了 / 新基準で全数式を再監査する。**
+**未完了 / 対応付け20/20、Pass 1 = 0/20、Pass 2 = 0/20。**
