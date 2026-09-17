@@ -18,8 +18,8 @@
 | `image038` | NG | **再転記OK** | 原文 `i=1,2,3` と3成分零ベクトルを保持 |
 | `image039` | NG | **再転記OK** | `b_L` を除去し原画像の2成分表面張力項を保持 |
 | `image040` | NG | **再転記OK** | 右辺表面張力係数を原画像どおり復元 |
-| `image041` | NG | **再転記OK** | 圧力項を `1/Re` の外へ復元。`2K^*/We` を保持 |
-| `image042` | NG | **再転記OK** | y成分も圧力項を `1/Re` の外へ復元 |
+| `image041` | NG | **再転記OK** | 元画像どおり圧力項 `-[H_x]{P}` を `1/Re` の波括弧内に保持。`2K^*/We` を保持 |
+| `image042` | NG | **再転記OK** | 元画像どおり圧力項 `-[H_y]{P}` を `1/Re` の波括弧内に保持 |
 
 **batch C: 14/14 Pass 1 OK。**
 
@@ -271,8 +271,7 @@ c_{3y}&c_{3y}&c_{3y}
 \begin{aligned}
 \frac{[C]}{\Delta\tau}\{V_x\}^{\tau+\Delta\tau}
 &+(V_x[C_x]+V_y[C_y])\{V_x\}^{\tau+\Delta\tau}\\
-&+\frac1{Re}\left\{(2[S_{xx}]+[S_{yy}])\{V_x\}^{\tau+\Delta\tau}+[S_{yx}]\{V_y\}^{\tau+\Delta\tau}\right\}
--[H_x]\{P\}^{\tau+\Delta\tau}\\
+&+\frac1{Re}\left\{(2[S_{xx}]+[S_{yy}])\{V_x\}^{\tau+\Delta\tau}+[S_{yx}]\{V_y\}^{\tau+\Delta\tau}-[H_x]\{P\}^{\tau+\Delta\tau}\right\}\\
 ={}&\frac{[C]}{\Delta\tau}\{V_x\}^{\tau}
 -\frac{2K^*}{We}Ln_x\begin{bmatrix}1\\1\end{bmatrix}
 +g_x^*\frac{A}{3}\begin{bmatrix}1\\1\\1\end{bmatrix}
@@ -287,8 +286,7 @@ c_{3y}&c_{3y}&c_{3y}
 \begin{aligned}
 \frac{[C]}{\Delta\tau}\{V_y\}^{\tau+\Delta\tau}
 &+(V_x[C_x]+V_y[C_y])\{V_y\}^{\tau+\Delta\tau}\\
-&+\frac1{Re}\left\{[S_{xy}]\{V_x\}^{\tau+\Delta\tau}+([S_{xx}]+2[S_{yy}])\{V_y\}^{\tau+\Delta\tau}\right\}
--[H_y]\{P\}^{\tau+\Delta\tau}\\
+&+\frac1{Re}\left\{[S_{xy}]\{V_x\}^{\tau+\Delta\tau}+([S_{xx}]+2[S_{yy}])\{V_y\}^{\tau+\Delta\tau}-[H_y]\{P\}^{\tau+\Delta\tau}\right\}\\
 ={}&\frac{[C]}{\Delta\tau}\{V_y\}^{\tau}
 -\frac{2K^*}{We}Ln_y\begin{bmatrix}1\\1\end{bmatrix}
 +g_y^*\frac{A}{3}\begin{bmatrix}1\\1\\1\end{bmatrix}
@@ -300,4 +298,4 @@ c_{3y}&c_{3y}&c_{3y}
 
 - `image038`: 2次元式だが元画像の添字範囲は **`i=1,2,3`**。修正しない。
 - `image032`, `037`～`042`: 元画像の表面張力係数は **`2K^*/We`**。`b_L` を原文式へ導入しない。
-- `image041`, `image042`: 圧力項は `1/Re` の括弧外にある。
+- `image041`, `image042`: 圧力項は元画像どおり `1/Re` の波括弧内に含まれる。
