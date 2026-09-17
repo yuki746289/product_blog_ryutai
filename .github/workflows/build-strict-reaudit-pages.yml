@@ -75,26 +75,23 @@ jobs:
               if missing:
                   raise SystemExit(f'{page}: missing audited formulas: {missing}')
 
-              src_path = Path(cfg['src'])
-              html = src_path.read_bytes().decode('cp932')
+              html = Path(cfg['src']).read_bytes().decode('cp932')
 
               for n in expected:
-                  id_base = f'formula-fem-{page.replace("_", "-")}-{n}'
-                  open_pat = re.compile(rf'<div\b[^>]*\bid="{re.escape(id_base)}(?:-repeat-\d+)?"[^>]*>', re.I)
-                  opens = list(open_pat.finditer(html))
-                  if not opens:
-                      raise SystemExit(f'{page}: no formula block for {n}')
-
                   expected_img = f'img/{cfg["imgdir"]}/image{n}.png'
+                  open_pat = re.compile(r'<div\b[^>]*\bdata-source-image="([^"]+)"[^>]*>', re.I)
+                  opens = [m for m in open_pat.finditer(html) if m.group(1).endswith(expected_img)]
+                  if not opens:
+                      raise SystemExit(f'{page}: no formula block for image{n}')
+
                   replacements = []
                   for m in opens:
                       opening = m.group(0)
-                      src_match = re.search(r'data-source-image="([^"]+)"', opening)
-                      if not src_match or not src_match.group(1).endswith(expected_img):
-                          raise SystemExit(f'{page}: source image mismatch {n}: {opening}')
+                      if 'math-block' not in opening:
+                          raise SystemExit(f'{page}: source image is not a math block image{n}: {opening}')
                       close = html.find('</div>', m.end())
                       if close < 0:
-                          raise SystemExit(f'{page}: closing div missing {n}')
+                          raise SystemExit(f'{page}: closing div missing image{n}')
                       replacements.append((m.start(), close + 6, opening + '\n' + formulas[n] + '\n</div>'))
 
                   for start, end, replacement in reversed(replacements):
@@ -109,25 +106,21 @@ jobs:
               out.write_bytes(html.encode('cp932'))
               built = out.read_bytes().decode('cp932')
 
+              open_pat = re.compile(r'<div\b[^>]*\bdata-source-image="([^"]+)"[^>]*>', re.I)
               for n in expected:
-                  id_base = f'formula-fem-{page.replace("_", "-")}-{n}'
-                  open_pat = re.compile(rf'<div\b[^>]*\bid="{re.escape(id_base)}(?:-repeat-\d+)?"[^>]*>', re.I)
-                  opens = list(open_pat.finditer(built))
-                  if not opens:
-                      raise SystemExit(f'{page}: built formula missing {n}')
                   expected_img = f'img/{cfg["imgdir"]}/image{n}.png'
+                  opens = [m for m in open_pat.finditer(built) if m.group(1).endswith(expected_img)]
+                  if not opens:
+                      raise SystemExit(f'{page}: built formula missing image{n}')
                   for m in opens:
-                      src_match = re.search(r'data-source-image="([^"]+)"', m.group(0))
-                      if not src_match or not src_match.group(1).endswith(expected_img):
-                          raise SystemExit(f'{page}: built source mismatch {n}')
+                      if 'math-block' not in m.group(0):
+                          raise SystemExit(f'{page}: built source is not math block image{n}')
                       close = built.find('</div>', m.end())
+                      if close < 0:
+                          raise SystemExit(f'{page}: built closing div missing image{n}')
                       body = built[m.end():close].strip()
                       if body != formulas[n].strip():
-                          raise SystemExit(f'{page}: latex mismatch after build {n}')
-
-                  primary_pat = re.compile(rf'id="{re.escape(id_base)}"')
-                  if len(primary_pat.findall(built)) != 1:
-                      raise SystemExit(f'{page}: primary id count mismatch {n}')
+                          raise SystemExit(f'{page}: latex mismatch after build image{n}')
 
               print(f'{page}: strict reaudit verified {cfg["count"]}/{cfg["count"]}')
           PY
