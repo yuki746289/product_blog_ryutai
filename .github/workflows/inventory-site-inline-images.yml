@@ -111,25 +111,21 @@ jobs:
                       'centered_p_im': centered,
                   })
 
-          # Direct references only: formulas already converted to data-source-image are
-          # intentionally absent from this residual inventory.
           page_counts = Counter(r['page'] for r in rows)
           section_counts = Counter(r['page'].split('/', 1)[0] if '/' in r['page'] else '(root)' for r in rows)
           unique_assets = {r['asset'] for r in rows}
           missing_assets = [r for r in rows if not r['exists']]
+          missing_by_section = Counter(r['page'].split('/', 1)[0] if '/' in r['page'] else '(root)' for r in missing_assets)
           centered_count = sum(1 for r in rows if r['centered_p_im'])
           ext_counts = Counter(Path(r['asset']).suffix.lower() for r in rows)
 
-          # A review priority is not a claim that an image is a formula. It only puts
-          # centered Word-export images first because these are the dominant equation
-          # containers in the source site.
           for r in rows:
               r['review_priority'] = 'A' if r['centered_p_im'] else 'B'
 
           csv_path = report_dir / 'SITE_INLINE_IMAGE_INVENTORY_20260918.csv'
           fields = ['page','encoding','src','asset','exists','width','height','format','centered_p_im','review_priority']
           with csv_path.open('w', encoding='utf-8-sig', newline='') as f:
-              wri = csv.DictWriter(f, fieldnames=fields)
+              wri = csv.DictWriter(f, fieldnames=fields, lineterminator='\n')
               wri.writeheader()
               wri.writerows(rows)
 
@@ -141,6 +137,7 @@ jobs:
                   'unique_assets': len(unique_assets),
                   'centered_p_im_placements': centered_count,
                   'missing_assets': len(missing_assets),
+                  'missing_by_section': dict(missing_by_section),
                   'section_counts': dict(section_counts),
                   'extensions': dict(ext_counts),
               },
@@ -173,6 +170,23 @@ jobs:
           ]
           for section, count in sorted(section_counts.items(), key=lambda x:(-x[1],x[0])):
               md.append(f'| `{section}` | {count} |')
+
+          if missing_assets:
+              md += [
+                  '',
+                  '### Missing referenced assets',
+                  '',
+                  'These references exist in HTML but the corresponding image file is absent from this repository checkout. They must be recovered or separately verified before formula conversion.',
+                  '',
+                  '| Section | Missing placements |',
+                  '|---|---:|',
+              ]
+              for section, count in sorted(missing_by_section.items(), key=lambda x:(-x[1],x[0])):
+                  md.append(f'| `{section}` | {count} |')
+              md += ['', '<details><summary>Missing asset references</summary>', '']
+              for r in missing_assets:
+                  md.append(f'- `{r["page"]}` → `{r["asset"]}`')
+              md += ['', '</details>']
 
           md += [
               '',
@@ -209,7 +223,7 @@ jobs:
               a = sum(1 for r in rows_by_page[page] if r['review_priority']=='A')
               print(f'  {page}: {count} (A={a})')
           if missing_assets:
-              print('Missing assets:', len(missing_assets))
+              print('Missing assets:', len(missing_assets), 'by section:', dict(missing_by_section))
           PY
 
       - name: Commit inventory
