@@ -59,10 +59,12 @@ jobs:
                   'src': 'fem/fem_7_2_2_mathjax_audit.html',
                   'dst': 'fem/fem_7_2_2_reaudit.html',
                   'docs': [
+                      '.document/formula_reviews/fem_7_2_2_review.md',
                       '.document/formula_reviews/fem_7_2_2_retranscription.md',
                       '.document/formula_reviews/fem_7_2_2_pass1_batch_a.md',
                       '.document/formula_reviews/fem_7_2_2_pass1_batch_b.md',
                       '.document/formula_reviews/fem_7_2_2_pass1_batch_c.md',
+                      '.document/formula_reviews/fem_7_2_2_pass1_supplement.md',
                   ],
               },
           ]
