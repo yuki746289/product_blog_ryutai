@@ -1,0 +1,169 @@
+name: Appendix Coordinate Formula Reaudit
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/appendix-coordinate-formula-reaudit.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    strategy:
+      fail-fast: false
+      matrix:
+        key: [appendix_3_1, appendix_3_2]
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Build strict reaudit page
+        env:
+          KEY: ${{ matrix.key }}
+        run: |
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+
+          key=os.environ['KEY']
+          cfg=json.loads(Path(f'.document/formula_reviews/{key}_formulas.json').read_text(encoding='utf-8'))
+          out_path=Path(f'appendix/{key}_reaudit.html')
+          expected=['003','005','006','007','008','009','010','011']
+          seq=[x['image'][5:8] for x in cfg['formulas']]
+          if seq != expected:
+              raise RuntimeError(f'{key}: formula sequence mismatch {seq}')
+
+          parts=[
+              '<!doctype html><html lang="ja"><head><meta charset="utf-8">',
+              '<meta name="viewport" content="width=device-width,initial-scale=1">',
+              f'<title>{key} strict formula re-audit</title>',
+              '<style>',
+              'body{font-family:Arial,"Yu Gothic",sans-serif;margin:20px;color:#111;background:#fff}',
+              '.formula-pair{border-top:1px solid #bbb;padding:18px 0 24px}',
+              '.pair-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start}',
+              '.source,.render{min-width:0;overflow-x:auto;padding:10px;border:1px solid #ddd;background:#fff}',
+              '.source img{display:block;max-width:100%;height:auto;margin:auto}',
+              '.render mjx-container[display="true"]{margin:.4em 0!important;text-align:left!important;min-width:max-content}',
+              '@media(max-width:800px){.pair-grid{grid-template-columns:1fr}}',
+              '</style>',
+              '<script>window.MathJax={tex:{inlineMath:[["\\\\(","\\\\)"]],displayMath:[["\\\\[","\\\\]"]]},output:{displayOverflow:"linebreak",linebreaks:{inline:false,width:"100%"}}};</script>',
+              '<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>',
+              '</head><body>',
+              f'<h1>{key} strict source-image re-audit</h1>',
+              '<p>Canonical source: original image. No algebraic correction, simplification, or re-ordering.</p>'
+          ]
+          srcdir=cfg['source_dir'].split('/',1)[1]
+          for item in cfg['formulas']:
+              n=item['image'][5:8]
+              src=f'./../img/{srcdir}/{item["image"]}'
+              parts += [
+                  f'<section class="formula-pair" id="formula-{n}">',
+                  f'<h2>image{n}</h2><div class="pair-grid">',
+                  f'<div class="source"><img src="{src}" alt="source image{n}"></div>',
+                  f'<div class="render" data-source-image="{src}">{item["latex"]}</div>',
+                  '</div></section>'
+              ]
+          parts += ['</body></html>']
+          out_path.write_text('\n'.join(parts)+'\n',encoding='utf-8')
+          print(key, 'built', len(cfg['formulas']))
+          PY
+
+      - name: Install browser tooling
+        run: |
+          pip install playwright pillow
+          python -m playwright install --with-deps chromium
+
+      - name: Start local site
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/appendix-coordinate-http.log 2>&1 &
+          sleep 1
+
+      - name: Capture source versus MathJax
+        env:
+          KEY: ${{ matrix.key }}
+        run: |
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          from PIL import Image, ImageDraw
+          from playwright.sync_api import sync_playwright
+
+          key=os.environ['KEY']
+          cfg=json.loads(Path(f'.document/formula_reviews/{key}_formulas.json').read_text(encoding='utf-8'))
+          nums=[x['image'][5:8] for x in cfg['formulas']]
+          root=Path.cwd(); out=root/'coordinate-pass2'/key
+          for sub in ('sources','renders','pairs'):
+              (out/sub).mkdir(parents=True,exist_ok=True)
+          manifest={'page':key,'formulas':[]}
+
+          with sync_playwright() as p:
+              browser=p.chromium.launch(headless=True)
+              ctx=browser.new_context(viewport={'width':1600,'height':1200},device_scale_factor=1)
+              pg=ctx.new_page()
+              pg.goto(f'http://127.0.0.1:8000/appendix/{key}_reaudit.html',wait_until='domcontentloaded',timeout=120000)
+              pg.wait_for_function('() => window.MathJax && MathJax.startup && MathJax.startup.promise',timeout=60000)
+              pg.evaluate('async()=>{await MathJax.startup.promise;}')
+              pg.wait_for_timeout(400)
+              for n in nums:
+                  sec=pg.locator(f'section#formula-{n}')
+                  render=sec.locator('.render'); source=sec.locator('.source img')
+                  if sec.count()!=1 or render.count()!=1 or source.count()!=1:
+                      raise RuntimeError(f'{key} image{n}: pair missing')
+                  if render.locator('mjx-container').count()<1 or render.locator('mjx-merror').count()>0:
+                      raise RuntimeError(f'{key} image{n}: MathJax render error')
+                  dims=render.evaluate('(e)=>({clientWidth:e.clientWidth,scrollWidth:e.scrollWidth})')
+                  rp=out/'renders'/f'image{n}.png'
+                  render.screenshot(path=str(rp),animations='disabled')
+                  src_attr=source.get_attribute('src')
+                  sp=(root/'appendix'/src_attr).resolve()
+                  im=Image.open(sp).convert('RGBA')
+                  white=Image.new('RGBA',im.size,'white'); white.alpha_composite(im)
+                  src=white.convert('RGB')
+                  scale=4 if src.width<700 else 2
+                  src=src.resize((src.width*scale,src.height*scale),Image.Resampling.LANCZOS)
+                  src.save(out/'sources'/f'image{n}.png')
+                  rr=Image.open(rp).convert('RGB')
+                  margin,label,gap=16,28,24
+                  w=max(src.width,rr.width)+2*margin
+                  h=2*margin+2*label+gap+src.height+rr.height
+                  canvas=Image.new('RGB',(w,h),'white'); draw=ImageDraw.Draw(canvas)
+                  y=margin; draw.text((margin,y),f'SOURCE image{n}',fill='black'); y+=label
+                  canvas.paste(src,(margin,y)); y+=src.height+gap
+                  draw.text((margin,y),f'MATHJAX image{n}',fill='black'); y+=label
+                  canvas.paste(rr,(margin,y)); canvas.save(out/'pairs'/f'image{n}.png')
+                  manifest['formulas'].append({'image':n,'horizontal_overflow':dims['scrollWidth']>dims['clientWidth']+1,'dims':dims})
+              browser.close()
+          manifest['count']=len(manifest['formulas'])
+          (out/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf-8')
+          print(key, 'captured', manifest['count'])
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: coordinate-pass2-${{ matrix.key }}
+          path: coordinate-pass2/${{ matrix.key }}
+          retention-days: 7
+
+      - name: Commit reaudit page
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add appendix/${{ matrix.key }}_reaudit.html
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo 'No page change.'
+          else
+            git commit -m "docs: build ${{ matrix.key }} strict reaudit page"
+            git pull --rebase origin develop
+            git push origin HEAD:develop
+          fi
