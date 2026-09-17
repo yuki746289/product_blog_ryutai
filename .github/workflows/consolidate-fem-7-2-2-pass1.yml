@@ -31,39 +31,26 @@ jobs:
           review = Path('.document/formula_reviews/fem_7_2_2_review.md')
           s = review.read_text(encoding='utf-8')
           s = must_replace(s, '- **Pass 1: 16/49**', '- **Pass 1: 49/49**', 'review count')
-          s = must_replace(s,
-              '| `image007` | 未判定 | 未 |  |',
-              '| `image007` | NG | **再転記OK** | 元画像の継続等号・4成分重み関数を復元 |',
-              'review image007')
-          s = must_replace(s,
-              '| `image010` | 未判定 | 未 |  |',
-              '| `image010` | NG | **再転記OK** | 元画像の展開式を復元 |',
-              'review image010')
-          s = must_replace(s,
-              '| `image011`～`image041` | 未判定 | 未 | 31式 |',
-              '| `image011`～`image027` | NG | **再転記OK** | 成分展開・符号・注記を元画像どおり復元 |\n| `image028` | OK | **OK** | 元画像と一致 |\n| `image029`～`image041` | NG | **再転記OK** | 転置・中間等式・成分行列を元画像どおり復元 |',
-              'review image011-041')
-          s = must_replace(s,
-              'Pass 1済み: `001～006`, `008`, `009`, `042～049` = **16式**。',
-              'Pass 1済み: `image001～image049` = **49/49式**。',
-              'review pass list')
-          s = must_replace(s,
-              '現監査候補のNG確定: `004`, `005`, `006`, `008`, `009`, `042～049` = **13式**。',
-              '現監査候補の厳密一致は `image001`, `image002`, `image003`, `image028` の4式。残る **45/49式は忠実再転記または注記復元が必要**。',
-              'review ng count')
+          s = must_replace(s, '| `image007` | 未判定 | 未 |  |', '| `image007` | NG | **再転記OK** | 元画像の継続等号・4成分重み関数を復元 |', 'review image007')
+          s = must_replace(s, '| `image010` | 未判定 | 未 |  |', '| `image010` | NG | **再転記OK** | 元画像の展開式を復元 |', 'review image010')
+          s = must_replace(s, '| `image011`～`image041` | 未判定 | 未 | 31式 |', '| `image011`～`image027` | NG | **再転記OK** | 成分展開・符号・注記を元画像どおり復元 |\n| `image028` | OK | **OK** | 元画像と一致 |\n| `image029`～`image041` | NG | **再転記OK** | 転置・中間等式・成分行列を元画像どおり復元 |', 'review image011-041')
+          s = must_replace(s, 'Pass 1済み: `001～006`, `008`, `009`, `042～049` = **16式**。', 'Pass 1済み: `image001～image049` = **49/49式**。', 'review pass list')
+          s = must_replace(s, '現監査候補のNG確定: `004`, `005`, `006`, `008`, `009`, `042～049` = **13式**。', '現監査候補の厳密一致は `image001`, `image002`, `image003`, `image028` の4式。残る **45/49式は忠実再転記または注記復元が必要**。', 'review ng count')
           marker = '## 旧レビュー結果の扱い'
-          insert = '''## `image007` / `image010`～`image041` 直接目視監査（2026-09-17）
-
-GitHub Actionsは元画像の白背景化・4倍拡大・候補LaTeX抽出だけを並列実行し、Pass/NG判定は元画像の直接目視で実施した。
-
-- `.document/formula_reviews/fem_7_2_2_pass1_batch_a.md`: `007`, `010～017` = 9/9 Pass 1 OK
-- `.document/formula_reviews/fem_7_2_2_pass1_batch_b.md`: `018～029` = 12/12 Pass 1 OK
-- `.document/formula_reviews/fem_7_2_2_pass1_batch_c.md`: `030～041` = 12/12 Pass 1 OK
-- 既存の `001～006`, `008`, `009`, `042～049` = 16/16 Pass 1 OK
-
-**合計: Pass 1 = 49/49 完了。Pass 2 = 0/49。**
-
-'''
+          insert_lines = [
+              '## `image007` / `image010`～`image041` 直接目視監査（2026-09-17）',
+              '',
+              'GitHub Actionsは元画像の白背景化・4倍拡大・候補LaTeX抽出だけを並列実行し、Pass/NG判定は元画像の直接目視で実施した。',
+              '',
+              '- `.document/formula_reviews/fem_7_2_2_pass1_batch_a.md`: `007`, `010～017` = 9/9 Pass 1 OK',
+              '- `.document/formula_reviews/fem_7_2_2_pass1_batch_b.md`: `018～029` = 12/12 Pass 1 OK',
+              '- `.document/formula_reviews/fem_7_2_2_pass1_batch_c.md`: `030～041` = 12/12 Pass 1 OK',
+              '- 既存の `001～006`, `008`, `009`, `042～049` = 16/16 Pass 1 OK',
+              '',
+              '**合計: Pass 1 = 49/49 完了。Pass 2 = 0/49。**',
+              '',
+          ]
+          insert = '\n'.join(insert_lines) + '\n'
           if marker not in s:
               raise SystemExit('review insertion marker not found')
           s = s.replace(marker, insert + marker, 1)
@@ -71,14 +58,8 @@ GitHub Actionsは元画像の白背景化・4倍拡大・候補LaTeX抽出だけ
 
           retrans = Path('.document/formula_reviews/fem_7_2_2_retranscription.md')
           s = retrans.read_text(encoding='utf-8')
-          s = must_replace(s,
-              '- 一般化記法の優先監査対象: **12式**',
-              '- 一般化記法の優先監査対象: **12/12監査完了**',
-              'retrans generalization')
-          s = must_replace(s,
-              '- 元画像直接Pass 1合格: **8/49 (`image042～049`)**',
-              '- 元画像直接Pass 1合格: **49/49**',
-              'retrans pass count')
+          s = must_replace(s, '- 一般化記法の優先監査対象: **12式**', '- 一般化記法の優先監査対象: **12/12監査完了**', 'retrans generalization')
+          s = must_replace(s, '- 元画像直接Pass 1合格: **8/49 (`image042～049`)**', '- 元画像直接Pass 1合格: **49/49**', 'retrans pass count')
           old_tail = '`image042`～`image049` は元画像直接照合と忠実LaTeX再転記まで完了した。次は一般化記法の優先監査対象12式を中心に、残り41式のPass 1を進める。'
           new_tail = '`image001`～`image049` のPass 1は全式完了。`007,010～041` の忠実転記は `fem_7_2_2_pass1_batch_a.md` / `batch_b.md` / `batch_c.md` に記録した。次工程は再監査HTMLへの反映後、Pass 2を49式すべてで実施する。'
           s = must_replace(s, old_tail, new_tail, 'retrans tail')
@@ -89,31 +70,17 @@ GitHub Actionsは元画像の白背景化・4倍拡大・候補LaTeX抽出だけ
           old_row = '| 5 | `fem/fem_7_2_2.html` | 49 | 元画像表示 | `fem/fem_7_2_2_mathjax_audit.html` | **49/49** | **1/49** | 0/49 | 現候補NG 8/49確定 / `image042`忠実再転記Pass 1完了 |'
           new_row = '| 5 | `fem/fem_7_2_2.html` | 49 | 元画像表示 | `fem/fem_7_2_2_mathjax_audit.html` | **49/49** | **49/49** | 0/49 | **元画像忠実Pass 1完了 / 再監査HTML反映・Pass 2待ち** |'
           s = must_replace(s, old_row, new_row, 'status page row')
-          s = must_replace(s,
-              '|  | **合計** | **143** |  |  | **143/143** | **33/143** | **0/143** | **未完了** |',
-              '|  | **合計** | **143** |  |  | **143/143** | **81/143** | **0/143** | **未完了** |',
-              'status total')
-          s = must_replace(s,
-              '`image042` の元画像忠実LaTeXを `.document/formula_reviews/fem_7_2_2_retranscription.md` に固定し、**再転記Pass 1 = 1/49**とした。',
-              '`image042` の元画像忠実LaTeXを `.document/formula_reviews/fem_7_2_2_retranscription.md` に固定した。その後 `image001～041`, `043～049` も直接目視監査し、**Pass 1 = 49/49** を完了した。詳細は `fem_7_2_2_review.md` と3つのPass 1 batch記録に分離している。',
-              'status narrative count')
-          s = must_replace(s,
-              'また、現候補で `\\sum_{a=x,y,z}` 等を用いる12式 (`006`, `008`, `009`, `011`～`015`, `017`, `024`, `032`, `038`) を一般化記法の優先監査対象としている。',
-              '現候補で `\\sum_{a=x,y,z}` 等を用いていた12式 (`006`, `008`, `009`, `011`～`015`, `017`, `024`, `032`, `038`) も全式を直接照合し、元画像どおりの個別展開へ再転記した。',
-              'status generalization paragraph')
-          s = must_replace(s,
-              '3. `fem_7_2_2.html` — 残り48式のPass 1。`043`～`049` の原文3節点境界面項と、一般化記法12式を優先確認する。',
-              '3. `fem_7_2_2.html` — Pass 1は49/49完了。忠実LaTeXを再監査HTMLへ反映し、その後49式のPass 2を実施する。',
-              'status priority')
+          s = must_replace(s, '|  | **合計** | **143** |  |  | **143/143** | **33/143** | **0/143** | **未完了** |', '|  | **合計** | **143** |  |  | **143/143** | **81/143** | **0/143** | **未完了** |', 'status total')
+          s = must_replace(s, '`image042` の元画像忠実LaTeXを `.document/formula_reviews/fem_7_2_2_retranscription.md` に固定し、**再転記Pass 1 = 1/49**とした。', '`image042` の元画像忠実LaTeXを `.document/formula_reviews/fem_7_2_2_retranscription.md` に固定した。その後 `image001～041`, `043～049` も直接目視監査し、**Pass 1 = 49/49** を完了した。詳細は `fem_7_2_2_review.md` と3つのPass 1 batch記録に分離している。', 'status narrative count')
+          s = must_replace(s, 'また、現候補で `\\sum_{a=x,y,z}` 等を用いる12式 (`006`, `008`, `009`, `011`～`015`, `017`, `024`, `032`, `038`) を一般化記法の優先監査対象としている。', '現候補で `\\sum_{a=x,y,z}` 等を用いていた12式 (`006`, `008`, `009`, `011`～`015`, `017`, `024`, `032`, `038`) も全式を直接照合し、元画像どおりの個別展開へ再転記した。', 'status generalization paragraph')
+          s = must_replace(s, '3. `fem_7_2_2.html` — 残り48式のPass 1。`043`～`049` の原文3節点境界面項と、一般化記法12式を優先確認する。', '3. `fem_7_2_2.html` — Pass 1は49/49完了。忠実LaTeXを再監査HTMLへ反映し、その後49式のPass 2を実施する。', 'status priority')
           status.write_text(s, encoding='utf-8')
 
       - name: Commit consolidated status
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add .document/formula_reviews/fem_7_2_2_review.md \
-                  .document/formula_reviews/fem_7_2_2_retranscription.md \
-                  .document/formula_reviews/STRICT_SOURCE_AUDIT_STATUS.md
+          git add .document/formula_reviews/fem_7_2_2_review.md .document/formula_reviews/fem_7_2_2_retranscription.md .document/formula_reviews/STRICT_SOURCE_AUDIT_STATUS.md
           git diff --cached --check
           git commit -m 'docs: consolidate fem 7.2.2 pass 1 completion'
           git push origin HEAD:develop
