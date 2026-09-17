@@ -1,0 +1,141 @@
+name: Build Strict Reaudit Pages
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/build-strict-reaudit-pages.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - name: Build and verify strict reaudit pages
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          def extract_formulas(paths):
+              out = {}
+              for path in paths:
+                  text = Path(path).read_text(encoding='utf-8')
+                  heads = list(re.finditer(r'^#{2,3}\s+`?image(\d{3})`?[^\n]*\n', text, re.M))
+                  for i, m in enumerate(heads):
+                      n = m.group(1)
+                      end = heads[i+1].start() if i+1 < len(heads) else len(text)
+                      sec = text[m.end():end]
+                      cm = re.search(r'```latex\n(.*?)\n```', sec, re.S)
+                      if cm:
+                          out[n] = cm.group(1).strip()
+              return out
+
+          configs = [
+              {
+                  'page': '7_1_2',
+                  'count': 42,
+                  'imgdir': 'fem_d_momentum_tri.files',
+                  'src': 'fem/fem_7_1_2_mathjax_audit.html',
+                  'dst': 'fem/fem_7_1_2_reaudit.html',
+                  'docs': [
+                      '.document/formula_reviews/fem_7_1_2_pass1_batch_a.md',
+                      '.document/formula_reviews/fem_7_1_2_pass1_batch_b.md',
+                      '.document/formula_reviews/fem_7_1_2_pass1_batch_c.md',
+                  ],
+              },
+              {
+                  'page': '7_2_2',
+                  'count': 49,
+                  'imgdir': 'fem_d_momentum_tet.files',
+                  'src': 'fem/fem_7_2_2_mathjax_audit.html',
+                  'dst': 'fem/fem_7_2_2_reaudit.html',
+                  'docs': [
+                      '.document/formula_reviews/fem_7_2_2_retranscription.md',
+                      '.document/formula_reviews/fem_7_2_2_pass1_batch_a.md',
+                      '.document/formula_reviews/fem_7_2_2_pass1_batch_b.md',
+                      '.document/formula_reviews/fem_7_2_2_pass1_batch_c.md',
+                  ],
+              },
+          ]
+
+          for cfg in configs:
+              page = cfg['page']
+              formulas = extract_formulas(cfg['docs'])
+              expected = [f'{i:03d}' for i in range(1, cfg['count'] + 1)]
+              missing = [n for n in expected if n not in formulas]
+              if missing:
+                  raise SystemExit(f'{page}: missing audited formulas: {missing}')
+
+              src_path = Path(cfg['src'])
+              html = src_path.read_bytes().decode('cp932')
+
+              for n in expected:
+                  id_base = f'formula-fem-{page.replace("_", "-")}-{n}'
+                  open_pat = re.compile(rf'<div\b[^>]*\bid="{re.escape(id_base)}(?:-repeat-\d+)?"[^>]*>', re.I)
+                  opens = list(open_pat.finditer(html))
+                  if not opens:
+                      raise SystemExit(f'{page}: no formula block for {n}')
+
+                  expected_img = f'img/{cfg["imgdir"]}/image{n}.png'
+                  replacements = []
+                  for m in opens:
+                      opening = m.group(0)
+                      src_match = re.search(r'data-source-image="([^"]+)"', opening)
+                      if not src_match or not src_match.group(1).endswith(expected_img):
+                          raise SystemExit(f'{page}: source image mismatch {n}: {opening}')
+                      close = html.find('</div>', m.end())
+                      if close < 0:
+                          raise SystemExit(f'{page}: closing div missing {n}')
+                      replacements.append((m.start(), close + 6, opening + '\n' + formulas[n] + '\n</div>'))
+
+                  for start, end, replacement in reversed(replacements):
+                      html = html[:start] + replacement + html[end:]
+
+              html = html.replace(
+                  '<p id="formula-conversion-note">数式はMathJaxで表示しています。変換前の数式画像は照合用としてリポジトリ内に保持しています。</p>',
+                  '<p id="formula-conversion-note"><strong>厳密再監査版:</strong> 元数式画像とPass 1照合済みの忠実LaTeXをMathJax表示しています。通常公開ページではありません。</p>',
+                  1
+              )
+              out = Path(cfg['dst'])
+              out.write_bytes(html.encode('cp932'))
+              built = out.read_bytes().decode('cp932')
+
+              for n in expected:
+                  id_base = f'formula-fem-{page.replace("_", "-")}-{n}'
+                  open_pat = re.compile(rf'<div\b[^>]*\bid="{re.escape(id_base)}(?:-repeat-\d+)?"[^>]*>', re.I)
+                  opens = list(open_pat.finditer(built))
+                  if not opens:
+                      raise SystemExit(f'{page}: built formula missing {n}')
+                  expected_img = f'img/{cfg["imgdir"]}/image{n}.png'
+                  for m in opens:
+                      src_match = re.search(r'data-source-image="([^"]+)"', m.group(0))
+                      if not src_match or not src_match.group(1).endswith(expected_img):
+                          raise SystemExit(f'{page}: built source mismatch {n}')
+                      close = built.find('</div>', m.end())
+                      body = built[m.end():close].strip()
+                      if body != formulas[n].strip():
+                          raise SystemExit(f'{page}: latex mismatch after build {n}')
+
+                  primary_pat = re.compile(rf'id="{re.escape(id_base)}"')
+                  if len(primary_pat.findall(built)) != 1:
+                      raise SystemExit(f'{page}: primary id count mismatch {n}')
+
+              print(f'{page}: strict reaudit verified {cfg["count"]}/{cfg["count"]}')
+          PY
+
+      - name: Commit strict reaudit pages
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add fem/fem_7_1_2_reaudit.html fem/fem_7_2_2_reaudit.html
+          git commit -m 'feat: build remaining strict reaudit pages'
+          git push origin HEAD:develop
