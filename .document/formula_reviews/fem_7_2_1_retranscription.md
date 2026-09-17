@@ -128,9 +128,142 @@ P&=[N]^T\{P\}.
 \]
 ```
 
-## image008～image012
+## image008
 
-**HOLD** — 元画像直接確認後に転記する。
+元画像は行列積を省略せず、7項を明示している。
+
+```latex
+\[
+\begin{aligned}
+={}&\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\begin{bmatrix}N_1&N_2&N_3&N_4\end{bmatrix}dV\,
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+&+V_x\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\begin{bmatrix}
+\dfrac{\partial N_1}{\partial X}&
+\dfrac{\partial N_2}{\partial X}&
+\dfrac{\partial N_3}{\partial X}&
+\dfrac{\partial N_4}{\partial X}
+\end{bmatrix}dV\,\{P\}^{\Delta\tau+\tau}\\
+&+V_y\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\begin{bmatrix}
+\dfrac{\partial N_1}{\partial Y}&
+\dfrac{\partial N_2}{\partial Y}&
+\dfrac{\partial N_3}{\partial Y}&
+\dfrac{\partial N_4}{\partial Y}
+\end{bmatrix}dV\,\{P\}^{\Delta\tau+\tau}\\
+&+V_z\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\begin{bmatrix}
+\dfrac{\partial N_1}{\partial Z}&
+\dfrac{\partial N_2}{\partial Z}&
+\dfrac{\partial N_3}{\partial Z}&
+\dfrac{\partial N_4}{\partial Z}
+\end{bmatrix}dV\,\{P\}^{\Delta\tau+\tau}\\
+&+\frac1{Ma^2}\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\begin{bmatrix}
+\dfrac{\partial N_1}{\partial X}&
+\dfrac{\partial N_2}{\partial X}&
+\dfrac{\partial N_3}{\partial X}&
+\dfrac{\partial N_4}{\partial X}
+\end{bmatrix}dV\,\{V_x\}^{\Delta\tau+\tau}\\
+&+\frac1{Ma^2}\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\begin{bmatrix}
+\dfrac{\partial N_1}{\partial Y}&
+\dfrac{\partial N_2}{\partial Y}&
+\dfrac{\partial N_3}{\partial Y}&
+\dfrac{\partial N_4}{\partial Y}
+\end{bmatrix}dV\,\{V_y\}^{\Delta\tau+\tau}\\
+&+\frac1{Ma^2}\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\begin{bmatrix}
+\dfrac{\partial N_1}{\partial Z}&
+\dfrac{\partial N_2}{\partial Z}&
+\dfrac{\partial N_3}{\partial Z}&
+\dfrac{\partial N_4}{\partial Z}
+\end{bmatrix}dV\,\{V_z\}^{\Delta\tau+\tau}
+\end{aligned}
+\]
+```
+
+## image009
+
+元画像は外積を4×4行列へ展開している。なお、対流3項の末尾は原画像上で `{P}` ではなく `{V_x}`, `{V_y}`, `{V_z}` と記載されているため、そのまま保持する。
+
+```latex
+\[
+\begin{aligned}
+={}&\int_V
+\begin{bmatrix}
+N_1N_1&N_1N_2&N_1N_3&N_1N_4\\
+N_2N_1&N_2N_2&N_2N_3&N_2N_4\\
+N_3N_1&N_3N_2&N_3N_3&N_3N_4\\
+N_4N_1&N_4N_2&N_4N_3&N_4N_4
+\end{bmatrix}dV\,
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+&+V_x\int_V
+\begin{bmatrix}
+N_1\dfrac{\partial N_1}{\partial X}&N_1\dfrac{\partial N_2}{\partial X}&N_1\dfrac{\partial N_3}{\partial X}&N_1\dfrac{\partial N_4}{\partial X}\\
+N_2\dfrac{\partial N_1}{\partial X}&N_2\dfrac{\partial N_2}{\partial X}&N_2\dfrac{\partial N_3}{\partial X}&N_2\dfrac{\partial N_4}{\partial X}\\
+N_3\dfrac{\partial N_1}{\partial X}&N_3\dfrac{\partial N_2}{\partial X}&N_3\dfrac{\partial N_3}{\partial X}&N_3\dfrac{\partial N_4}{\partial X}\\
+N_4\dfrac{\partial N_1}{\partial X}&N_4\dfrac{\partial N_2}{\partial X}&N_4\dfrac{\partial N_3}{\partial X}&N_4\dfrac{\partial N_4}{\partial X}
+\end{bmatrix}dV\,\{V_x\}^{\Delta\tau+\tau}\\
+&+V_y\int_V
+\begin{bmatrix}
+N_1\dfrac{\partial N_1}{\partial Y}&N_1\dfrac{\partial N_2}{\partial Y}&N_1\dfrac{\partial N_3}{\partial Y}&N_1\dfrac{\partial N_4}{\partial Y}\\
+N_2\dfrac{\partial N_1}{\partial Y}&N_2\dfrac{\partial N_2}{\partial Y}&N_2\dfrac{\partial N_3}{\partial Y}&N_2\dfrac{\partial N_4}{\partial Y}\\
+N_3\dfrac{\partial N_1}{\partial Y}&N_3\dfrac{\partial N_2}{\partial Y}&N_3\dfrac{\partial N_3}{\partial Y}&N_3\dfrac{\partial N_4}{\partial Y}\\
+N_4\dfrac{\partial N_1}{\partial Y}&N_4\dfrac{\partial N_2}{\partial Y}&N_4\dfrac{\partial N_3}{\partial Y}&N_4\dfrac{\partial N_4}{\partial Y}
+\end{bmatrix}dV\,\{V_y\}^{\Delta\tau+\tau}\\
+&+V_z\int_V
+\begin{bmatrix}
+N_1\dfrac{\partial N_1}{\partial Z}&N_1\dfrac{\partial N_2}{\partial Z}&N_1\dfrac{\partial N_3}{\partial Z}&N_1\dfrac{\partial N_4}{\partial Z}\\
+N_2\dfrac{\partial N_1}{\partial Z}&N_2\dfrac{\partial N_2}{\partial Z}&N_2\dfrac{\partial N_3}{\partial Z}&N_2\dfrac{\partial N_4}{\partial Z}\\
+N_3\dfrac{\partial N_1}{\partial Z}&N_3\dfrac{\partial N_2}{\partial Z}&N_3\dfrac{\partial N_3}{\partial Z}&N_3\dfrac{\partial N_4}{\partial Z}\\
+N_4\dfrac{\partial N_1}{\partial Z}&N_4\dfrac{\partial N_2}{\partial Z}&N_4\dfrac{\partial N_3}{\partial Z}&N_4\dfrac{\partial N_4}{\partial Z}
+\end{bmatrix}dV\,\{V_z\}^{\Delta\tau+\tau}
+\end{aligned}
+\]
+```
+
+## image010
+
+```latex
+\[
+\begin{aligned}
+&+\frac1{Ma^2}\int_V
+\begin{bmatrix}
+N_1\dfrac{\partial N_1}{\partial X}&N_1\dfrac{\partial N_2}{\partial X}&N_1\dfrac{\partial N_3}{\partial X}&N_1\dfrac{\partial N_4}{\partial X}\\
+N_2\dfrac{\partial N_1}{\partial X}&N_2\dfrac{\partial N_2}{\partial X}&N_2\dfrac{\partial N_3}{\partial X}&N_2\dfrac{\partial N_4}{\partial X}\\
+N_3\dfrac{\partial N_1}{\partial X}&N_3\dfrac{\partial N_2}{\partial X}&N_3\dfrac{\partial N_3}{\partial X}&N_3\dfrac{\partial N_4}{\partial X}\\
+N_4\dfrac{\partial N_1}{\partial X}&N_4\dfrac{\partial N_2}{\partial X}&N_4\dfrac{\partial N_3}{\partial X}&N_4\dfrac{\partial N_4}{\partial X}
+\end{bmatrix}dV\,\{V_x\}^{\Delta\tau+\tau}\\
+&+\frac1{Ma^2}\int_V
+\begin{bmatrix}
+N_1\dfrac{\partial N_1}{\partial Y}&N_1\dfrac{\partial N_2}{\partial Y}&N_1\dfrac{\partial N_3}{\partial Y}&N_1\dfrac{\partial N_4}{\partial Y}\\
+N_2\dfrac{\partial N_1}{\partial Y}&N_2\dfrac{\partial N_2}{\partial Y}&N_2\dfrac{\partial N_3}{\partial Y}&N_2\dfrac{\partial N_4}{\partial Y}\\
+N_3\dfrac{\partial N_1}{\partial Y}&N_3\dfrac{\partial N_2}{\partial Y}&N_3\dfrac{\partial N_3}{\partial Y}&N_3\dfrac{\partial N_4}{\partial Y}\\
+N_4\dfrac{\partial N_1}{\partial Y}&N_4\dfrac{\partial N_2}{\partial Y}&N_4\dfrac{\partial N_3}{\partial Y}&N_4\dfrac{\partial N_4}{\partial Y}
+\end{bmatrix}dV\,\{V_y\}^{\Delta\tau+\tau}\\
+&+\frac1{Ma^2}\int_V
+\begin{bmatrix}
+N_1\dfrac{\partial N_1}{\partial Z}&N_1\dfrac{\partial N_2}{\partial Z}&N_1\dfrac{\partial N_3}{\partial Z}&N_1\dfrac{\partial N_4}{\partial Z}\\
+N_2\dfrac{\partial N_1}{\partial Z}&N_2\dfrac{\partial N_2}{\partial Z}&N_2\dfrac{\partial N_3}{\partial Z}&N_2\dfrac{\partial N_4}{\partial Z}\\
+N_3\dfrac{\partial N_1}{\partial Z}&N_3\dfrac{\partial N_2}{\partial Z}&N_3\dfrac{\partial N_3}{\partial Z}&N_3\dfrac{\partial N_4}{\partial Z}\\
+N_4\dfrac{\partial N_1}{\partial Z}&N_4\dfrac{\partial N_2}{\partial Z}&N_4\dfrac{\partial N_3}{\partial Z}&N_4\dfrac{\partial N_4}{\partial Z}
+\end{bmatrix}dV\,\{V_z\}^{\Delta\tau+\tau}
+\end{aligned}
+\]
+```
+
+## image011～image012
+
+**HOLD** — GitHub上の原画像は存在するが、この実行環境でバイナリを安定して直接表示できていないため転記しない。推測による補完は禁止する。
 
 ## image013
 
@@ -160,9 +293,68 @@ P&=[N]^T\{P\}.
 \]
 ```
 
-## image014～image015
+## image014
 
-**HOLD** — 元画像直接確認後に転記する。
+```latex
+\[
+\begin{aligned}
+={}&\frac{V}{20}
+\begin{bmatrix}
+2&1&1&1\\
+1&2&1&1\\
+1&1&2&1\\
+1&1&1&2
+\end{bmatrix}
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+&+\frac1{6V}\frac{V}{4}
+\begin{bmatrix}
+c_{1x}&c_{2x}&c_{3x}&c_{4x}\\
+c_{1x}&c_{2x}&c_{3x}&c_{4x}\\
+c_{1x}&c_{2x}&c_{3x}&c_{4x}\\
+c_{1x}&c_{2x}&c_{3x}&c_{4x}
+\end{bmatrix}\{P\}^{\Delta\tau+\tau}\\
+&+\frac1{6V}\frac{V}{4}
+\begin{bmatrix}
+c_{1y}&c_{2y}&c_{3y}&c_{4y}\\
+c_{1y}&c_{2y}&c_{3y}&c_{4y}\\
+c_{1y}&c_{2y}&c_{3y}&c_{4y}\\
+c_{1y}&c_{2y}&c_{3y}&c_{4y}
+\end{bmatrix}\{P\}^{\Delta\tau+\tau}\\
+&+\frac1{6V}\frac{V}{4}
+\begin{bmatrix}
+c_{1z}&c_{2z}&c_{3z}&c_{4z}\\
+c_{1z}&c_{2z}&c_{3z}&c_{4z}\\
+c_{1z}&c_{2z}&c_{3z}&c_{4z}\\
+c_{1z}&c_{2z}&c_{3z}&c_{4z}
+\end{bmatrix}\{P\}^{\Delta\tau+\tau}\\
+&+\frac1{Ma^2}\frac1{6V}\frac{V}{4}
+\begin{bmatrix}
+c_{1x}&c_{2x}&c_{3x}&c_{4x}\\
+c_{1x}&c_{2x}&c_{3x}&c_{4x}\\
+c_{1x}&c_{2x}&c_{3x}&c_{4x}\\
+c_{1x}&c_{2x}&c_{3x}&c_{4x}
+\end{bmatrix}\{V_x\}^{\Delta\tau+\tau}\\
+&+\frac1{Ma^2}\frac1{6V}\frac{V}{4}
+\begin{bmatrix}
+c_{1y}&c_{2y}&c_{3y}&c_{4y}\\
+c_{1y}&c_{2y}&c_{3y}&c_{4y}\\
+c_{1y}&c_{2y}&c_{3y}&c_{4y}\\
+c_{1y}&c_{2y}&c_{3y}&c_{4y}
+\end{bmatrix}\{V_y\}^{\Delta\tau+\tau}\\
+&+\frac1{Ma^2}\frac1{6V}\frac{V}{4}
+\begin{bmatrix}
+c_{1z}&c_{2z}&c_{3z}&c_{4z}\\
+c_{1z}&c_{2z}&c_{3z}&c_{4z}\\
+c_{1z}&c_{2z}&c_{3z}&c_{4z}\\
+c_{1z}&c_{2z}&c_{3z}&c_{4z}
+\end{bmatrix}\{V_z\}^{\Delta\tau+\tau}
+\end{aligned}
+\]
+```
+
+## image015
+
+**HOLD** — 元GIF/PNGにパレット・透過情報の崩れがあり、先頭の質量行列項など一部は読めるが、式全体を1文字単位で保証できない。既存候補が元画像を大幅に要約しているため不一致判定は可能だが、忠実転記は画像復元後に行う。
 
 ## image016
 
@@ -243,9 +435,10 @@ P&=[N]^T\{P\}.
 ## 現在の状態
 
 - 元画像との対応付け: **20/20**
-- 現監査候補のPass 1目視監査: **13/20**
+- 現監査候補のPass 1比較: **18/20**
 - 現監査候補の合格: **0/20**
-- 元画像忠実再転記ドラフト: **13/20**
-- 未転記: **7/20** (`image008～012`, `image014～015`)
+- 現監査候補の要修正: **18/20**
+- 元画像忠実再転記ドラフト: **17/20**
+- 未転記/HOLD: **3/20** (`image011`, `image012`, `image015`)
 - 再転記版の再Pass 1: 未実施
 - Pass 2: **0/20**
