@@ -1,10 +1,9 @@
 <!--
  Updated: 2026/09/17
- Summary: [S001][S007][S008][S009][S010] Load the v1.6 shared navigation, font-size controls, one-row Home-menu refinements and top-page cleanup while preserving the existing footer behavior.
+ Summary: [S001][S007][S008][S009][S010] Load the v1.6 shared navigation, font-size controls, one-row Home-menu refinements, top-page cleanup and strict formula guard while preserving the existing footer behavior.
  Differences from previous version:
- - [MOD]: Refresh shared script versions after readability/top-page updates.
- - [MOD]: Use two-space indentation.
- - [KEEP]: UTF-8 declaration and existing Init() behavior.
+ - [ADD]: Load ./js/site_formula_guard_v1_6.js before the utility menu is revealed.
+ - [KEEP]: UTF-8 declaration, shared v1.6 UI scripts and existing Init() behavior.
  - [DEL]: None.
 -->
 
@@ -24,6 +23,7 @@
   <script type="text/javascript" charset="UTF-8" src="./js/site_navigation_v1_6.js?v=20260917c"></script>
   <script type="text/javascript" charset="UTF-8" src="./js/site_font_size_v1_6.js?v=20260917f"></script>
   <script type="text/javascript" charset="UTF-8" src="./js/site_home_cleanup_v1_6.js?v=20260917b"></script>
+  <script type="text/javascript" charset="UTF-8" src="./js/site_formula_guard_v1_6.js?v=20260917a"></script>
   <script type="text/javascript" charset="UTF-8" src="./js/site_utility_v1_6.js?v=20260917d"></script>
 
   <script type="text/javascript">
