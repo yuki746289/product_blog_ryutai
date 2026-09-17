@@ -1,0 +1,133 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>appendix_3_2 strict formula re-audit</title>
+<style>
+body{font-family:Arial,"Yu Gothic",sans-serif;margin:20px;color:#111;background:#fff}
+.formula-pair{border-top:1px solid #bbb;padding:18px 0 24px}
+.pair-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start}
+.source,.render{min-width:0;overflow-x:auto;padding:10px;border:1px solid #ddd;background:#fff}
+.source img{display:block;max-width:100%;height:auto;margin:auto}
+.render mjx-container[display="true"]{margin:.4em 0!important;text-align:left!important;min-width:max-content}
+@media(max-width:800px){.pair-grid{grid-template-columns:1fr}}
+</style>
+<script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},output:{displayOverflow:"linebreak",linebreaks:{inline:false,width:"100%"}}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head><body>
+<h1>appendix_3_2 strict source-image re-audit</h1>
+<p>Canonical source: original image. No algebraic correction, simplification, or re-ordering.</p>
+<section class="formula-pair" id="formula-003">
+<h2>image003</h2><div class="pair-grid">
+<div class="source"><img src="./../img/appendix_cord_s.files/image003.png" alt="source image003"></div>
+<div class="render" data-source-image="./../img/appendix_cord_s.files/image003.png">\[
+\left\{
+\begin{aligned}
+x&=r\sin\theta\cos\phi\\
+y&=r\sin\theta\sin\phi\\
+z&=r\cos\theta
+\end{aligned}
+\right.
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-005">
+<h2>image005</h2><div class="pair-grid">
+<div class="source"><img src="./../img/appendix_cord_s.files/image005.png" alt="source image005"></div>
+<div class="render" data-source-image="./../img/appendix_cord_s.files/image005.png">\[
+\begin{aligned}
+\vec{\delta}_x&=\vec{\delta}_r(\sin\theta\cos\phi)+\vec{\delta}_\theta(\cos\theta\cos\phi)+\vec{\delta}_\phi(-\sin\phi)\\
+\vec{\delta}_y&=\vec{\delta}_r(\sin\theta\sin\phi)+\vec{\delta}_\theta(\cos\theta\sin\phi)+\vec{\delta}_\phi(\cos\phi)\\
+\vec{\delta}_z&=\vec{\delta}_r(\cos\theta)+\vec{\delta}_\theta(-\sin\theta)+\vec{\delta}_\phi(0)
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-006">
+<h2>image006</h2><div class="pair-grid">
+<div class="source"><img src="./../img/appendix_cord_s.files/image006.png" alt="source image006"></div>
+<div class="render" data-source-image="./../img/appendix_cord_s.files/image006.png">\[
+\begin{aligned}
+\frac{\partial}{\partial x}
+&=(\sin\theta\cos\phi)\frac{\partial}{\partial r}
++\left(\frac{\cos\theta\cos\phi}{r}\right)\frac{\partial}{\partial\theta}
++\left(\frac{-\sin\phi}{r\sin\theta}\right)\frac{\partial}{\partial\phi}\\
+\frac{\partial}{\partial y}
+&=(\sin\theta\sin\phi)\frac{\partial}{\partial r}
++\left(\frac{\cos\theta\sin\phi}{r}\right)\frac{\partial}{\partial\theta}
++\left(\frac{\cos\phi}{r\sin\theta}\right)\frac{\partial}{\partial\phi}\\
+\frac{\partial}{\partial z}
+&=(\cos\theta)\frac{\partial}{\partial r}
++\left(\frac{-\sin\theta}{r}\right)\frac{\partial}{\partial\theta}
++(0)\frac{\partial}{\partial\phi}
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-007">
+<h2>image007</h2><div class="pair-grid">
+<div class="source"><img src="./../img/appendix_cord_s.files/image007.png" alt="source image007"></div>
+<div class="render" data-source-image="./../img/appendix_cord_s.files/image007.png">\[
+\left\{
+\begin{aligned}
+r&=+\sqrt{x^2+y^2+z^2}\\
+\theta&=\tan^{-1}\left(\frac{\sqrt{x^2+y^2}}{z}\right)\\
+\phi&=\tan^{-1}\left(\frac{y}{x}\right)
+\end{aligned}
+\right.
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-008">
+<h2>image008</h2><div class="pair-grid">
+<div class="source"><img src="./../img/appendix_cord_s.files/image008.png" alt="source image008"></div>
+<div class="render" data-source-image="./../img/appendix_cord_s.files/image008.png">\[
+\begin{aligned}
+\vec{\delta}_r&=\vec{\delta}_x(\sin\theta\cos\phi)+\vec{\delta}_y(\sin\theta\sin\phi)+\vec{\delta}_z(\cos\theta)\\
+\vec{\delta}_\theta&=\vec{\delta}_x(\cos\theta\cos\phi)+\vec{\delta}_y(\cos\theta\sin\phi)+\vec{\delta}_z(-\sin\theta)\\
+\vec{\delta}_\phi&=\vec{\delta}_x(-\sin\phi)+\vec{\delta}_y(\cos\phi)+\vec{\delta}_z(0)
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-009">
+<h2>image009</h2><div class="pair-grid">
+<div class="source"><img src="./../img/appendix_cord_s.files/image009.png" alt="source image009"></div>
+<div class="render" data-source-image="./../img/appendix_cord_s.files/image009.png">\[
+\begin{aligned}
+\frac{\partial}{\partial r}
+&=\sin\theta\cos\phi\frac{\partial}{\partial x}
++\sin\theta\sin\phi\frac{\partial}{\partial y}
++\cos\theta\frac{\partial}{\partial z}\\
+\frac{\partial}{\partial\theta}
+&=r\cos\theta\cos\phi\frac{\partial}{\partial x}
++r\cos\theta\sin\phi\frac{\partial}{\partial y}
+-r\sin\theta\frac{\partial}{\partial z}\\
+\frac{\partial}{\partial\phi}
+&=-r\sin\theta\sin\phi\frac{\partial}{\partial x}
++r\sin\theta\cos\phi\frac{\partial}{\partial y}
++(0)\frac{\partial}{\partial z}
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-010">
+<h2>image010</h2><div class="pair-grid">
+<div class="source"><img src="./../img/appendix_cord_s.files/image010.png" alt="source image010"></div>
+<div class="render" data-source-image="./../img/appendix_cord_s.files/image010.png">\[
+\begin{aligned}
+\frac{\partial}{\partial r}\vec{\delta}_r&=0,\qquad
+\frac{\partial}{\partial r}\vec{\delta}_\theta=0,\qquad
+\frac{\partial}{\partial r}\vec{\delta}_\phi=0\\
+\frac{\partial}{\partial\theta}\vec{\delta}_r&=\vec{\delta}_\theta,\qquad
+\frac{\partial}{\partial\theta}\vec{\delta}_\theta=-\vec{\delta}_r,\qquad
+\frac{\partial}{\partial\theta}\vec{\delta}_\phi=0\\
+\frac{\partial}{\partial\phi}\vec{\delta}_r&=\vec{\delta}_\phi(\sin\theta),\qquad
+\frac{\partial}{\partial\phi}\vec{\delta}_\theta=\vec{\delta}_\phi(\cos\theta),\qquad
+\frac{\partial}{\partial\phi}\vec{\delta}_\phi=-\vec{\delta}_r(\sin\theta)-\vec{\delta}_\theta(\cos\theta)
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-011">
+<h2>image011</h2><div class="pair-grid">
+<div class="source"><img src="./../img/appendix_cord_s.files/image011.png" alt="source image011"></div>
+<div class="render" data-source-image="./../img/appendix_cord_s.files/image011.png">\[
+\nabla
+=\vec{\delta}_r\frac{\partial}{\partial r}
++\vec{\delta}_\theta\frac{1}{r}\frac{\partial}{\partial\theta}
++\vec{\delta}_\phi\frac{1}{r\sin\theta}\frac{\partial}{\partial\phi}
+\]</div>
+</div></section>
+</body></html>
