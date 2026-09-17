@@ -1,0 +1,102 @@
+name: Consolidate Formula Pass2 Status
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/consolidate-formula-pass2.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  consolidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+      - name: Update strict audit status
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          p=Path('.document/formula_reviews/STRICT_SOURCE_AUDIT_STATUS.md')
+          s=p.read_text(encoding='utf-8')
+          s=s.replace('更新日: 2026-09-17','更新日: 2026-09-18',1)
+
+          start=s.index('## 主要5ページ 再監査状況')
+          marker='`fem/fem_6_2_1.html`'
+          after=s.index(marker,start)
+          table='''## 主要5ページ 再監査状況
+
+| No. | 通常ページ | 元画像数 | 通常ページ状態 | 有効監査候補 | 対応付け | Pass 1 | Pass 2 | 判定 |
+|---:|---|---:|---|---|---:|---:|---:|---|
+| 1 | `fem/fem_6_2_6.html` | 12 | 元画像表示 | `fem/fem_6_2_6_mathjax_audit.html` | **12/12** | **12/12** | **12/12** | **Pass 1 / Pass 2 完了** |
+| 2 | `fem/fem_7_1_1.html` | 20 | 認証済みLaTeX反映前 | `fem/fem_7_1_1_reaudit.html` | **20/20** | **20/20** | **20/20** | **Pass 1 / Pass 2 完了** |
+| 3 | `fem/fem_7_1_2.html` | 42 | 認証済みLaTeX反映前 | `fem/fem_7_1_2_reaudit.html` | **42/42** | **42/42** | **42/42** | **Pass 1 / Pass 2 完了** |
+| 4 | `fem/fem_7_2_1.html` | 20 | 元画像表示 | `fem/fem_7_2_1_reaudit.html` | **20/20** | **20/20** | **20/20** | **Pass 1 / Pass 2 完了** |
+| 5 | `fem/fem_7_2_2.html` | 49 | 元画像表示 | `fem/fem_7_2_2_reaudit.html` | **49/49** | **49/49** | **49/49** | **Pass 1 / Pass 2 完了** |
+|  | **合計** | **143** |  |  | **143/143** | **143/143** | **143/143** | **主要5ページ厳密監査完了** |
+
+'''
+          s=s[:start]+table+s[after:]
+
+          s=s.replace(
+              'Pass 2は実ブラウザ上のMathJax描画を元画像と目視比較するため、まだ0/20。通常ページは元画像表示を維持する。',
+              '2026-09-18にChromium上のMathJax実描画を元画像と20式すべて目視比較し、**Pass 2 = 20/20 OK**。',
+              1
+          )
+
+          stale='''- HOLD: **0/20**
+- `image015` はパレット/透過情報が崩れており、完全転記を保証できないためHOLD。
+- `image011`, `image012` はこの実行環境で原画像を安定して直接表示できずHOLD。'''
+          resolved='''- HOLD: **0/20**
+- `image011`, `image012`, `image015` は元画像を白背景化・8倍拡大して再確認し、HOLDを解消した。'''
+          s=s.replace(stale,resolved,1)
+
+          pass2_section='''## 2026-09-18 Pass 2 実ブラウザ監査
+
+GitHub Actions run `35283846226` でChromium + MathJaxの実描画を5ページ並列取得した。各式について元画像とブラウザ描画を並べた比較画像を作成し、143式すべてを式単位で目視確認した。
+
+- `fem_6_2_6`: **12/12 OK**
+- `fem_7_1_1`: **20/20 OK**
+- `fem_7_1_2`: **42/42 OK**
+- `fem_7_2_1`: **20/20 OK**
+- `fem_7_2_2`: **49/49 OK**
+- 合計: **143/143 OK**
+- 横方向オーバーフロー: **0/143**
+
+詳細な監査方法と結果は `.document/formula_reviews/PASS2_BROWSER_AUDIT_20260918.md` を正本とする。
+
+'''
+          if '## 2026-09-18 Pass 2 実ブラウザ監査' not in s:
+              pos=s.index('## 次の優先順')
+              s=s[:pos]+pass2_section+s[pos:]
+
+          new_priority='''## 次の優先順
+
+1. Pass 1 / Pass 2認証済みLaTeXを主要5通常ページへ反映する。
+2. 通常ページとしてPC幅・スマホ幅で、数式折返し、余白、説明文との位置関係、ナビゲーションを確認する。
+3. 主要5ページ以外を含むサイト全体の数式画像インベントリを完成させ、同じ厳密手順で順次MathJax化する。
+4. 全体QA完了後にのみ本番FTP反映を検討する。
+
+## ページ監査手順'''
+          s=re.sub(r'## 次の優先順\n.*?## ページ監査手順',new_priority,s,flags=re.S)
+
+          p.write_text(s,encoding='utf-8')
+          PY
+      - name: Verify status values
+        run: |
+          grep -F '**143/143** | **143/143** | **143/143**' .document/formula_reviews/STRICT_SOURCE_AUDIT_STATUS.md
+          grep -F '## 2026-09-18 Pass 2 実ブラウザ監査' .document/formula_reviews/STRICT_SOURCE_AUDIT_STATUS.md
+          grep -F 'PASS2_BROWSER_AUDIT_20260918.md' .document/formula_reviews/STRICT_SOURCE_AUDIT_STATUS.md
+      - name: Commit consolidated status
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .document/formula_reviews/STRICT_SOURCE_AUDIT_STATUS.md
+          git commit -m 'docs: complete strict browser pass2 audit'
+          git push origin HEAD:develop
