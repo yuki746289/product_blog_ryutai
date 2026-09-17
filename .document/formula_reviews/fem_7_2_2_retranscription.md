@@ -37,13 +37,13 @@ MathJax変換前の本文には、境界三角形で得られる3節点表面力
 | 元画像 | 現監査候補 | 不一致理由 | Pass 1 |
 |---|---|---|---|
 | `image042` | NG確定 | 原画像の面局所3節点表面張力項を `b_S` を用いる4節点要素ベクトルへ変更 | **再転記Pass 1 OK** |
-| `image043` | NG確定 | 原画像で省略されていた面→要素写像を `b_S` として式本体へ追加 | 未実施 |
-| `image044` | NG確定 | 同上 | 未実施 |
-| `image045` | NG確定 | 同上 | 未実施 |
-| `image046` | NG確定 | 同上 | 未実施 |
-| `image047` | NG確定 | x成分最終式へ `b_S` を組み込み、原画像の局所境界面項から変更 | 未実施 |
-| `image048` | NG確定 | y成分最終式へ `b_S` を組み込み、原画像の局所境界面項から変更 | 未実施 |
-| `image049` | NG確定 | z成分最終式へ `b_S` を組み込み、原画像の局所境界面項から変更 | 未実施 |
+| `image043` | NG確定 | 原画像で省略されていた面→要素写像を `b_S` として式本体へ追加 | **再転記Pass 1 OK** |
+| `image044` | NG確定 | 同上 | **再転記Pass 1 OK** |
+| `image045` | NG確定 | 同上 | **再転記Pass 1 OK** |
+| `image046` | NG確定 | 同上 | **再転記Pass 1 OK** |
+| `image047` | NG確定 | x成分最終式へ `b_S` を組み込み、原画像の局所境界面項から変更 | **再転記Pass 1 OK** |
+| `image048` | NG確定 | y成分最終式へ `b_S` を組み込み、原画像の局所境界面項から変更 | **再転記Pass 1 OK** |
+| `image049` | NG確定 | z成分最終式へ `b_S` を組み込み、原画像の局所境界面項から変更 | **再転記Pass 1 OK** |
 
 **履歴証拠による現候補NG確定: 8/49 (`042`～`049`)。**
 
@@ -81,6 +81,192 @@ MathJax変換前の本文には、境界三角形で得られる3節点表面力
 
 したがって現監査候補 `formula-fem-7-2-2-042` はNG、上記再転記は**Pass 1 = OK**とする。
 
+## `image043`～`image049` 直接目視再転記（2026-09-17）
+
+GIF/PNG元画像を直接表示して、項順、添字、時刻上付き、符号、係数、列ベクトル成分数を照合した。
+
+### `image043`
+
+原画像は先頭が `=` で始まる。x/y/z各項を個別に並べ、表面張力は3成分、重力は4成分の列ベクトルである。
+
+```latex
+\[
+\begin{aligned}
+={}&[C]\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}
++V_x[C_x]\{V_i\}+V_y[C_y]\{V_i\}+V_z[C_z]\{V_i\}\\
+&+\frac{1}{Re}[S_{xx}]\{V_i\}+\frac{1}{Re}[S_{xi}]\{V_x\}-\delta_{xi}[H_x]\{P\}\\
+&+\frac{1}{Re}[S_{yy}]\{V_i\}+\frac{1}{Re}[S_{yi}]\{V_y\}-\delta_{yi}[H_y]\{P\}\\
+&+\frac{1}{Re}[S_{zz}]\{V_i\}+\frac{1}{Re}[S_{zi}]\{V_z\}-\delta_{zi}[H_z]\{P\}\\
+&+\frac{2K^*}{3We}n_iS
+\begin{bmatrix}1\\1\\1\end{bmatrix}
+-g_i^*\frac{V}{4}
+\begin{bmatrix}1\\1\\1\\1\end{bmatrix},
+\qquad (i=1,2,3)
+\end{aligned}
+\]
+```
+
+**Pass 1 = OK**。
+
+### `image044`
+
+原画像は係数行列ごとにまとめた式で、先頭が `=`。末尾は4成分零ベクトルへ等置される。
+
+```latex
+\[
+\begin{aligned}
+={}&[C]\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}
++(V_x[C_x]+V_y[C_y]+V_z[C_z])\{V_i\}\\
+&+\frac{1}{Re}([S_{xx}]+[S_{yy}]+[S_{zz}])\{V_i\}\\
+&+\frac{1}{Re}\left([S_{xi}]\{V_x\}+[S_{yi}]\{V_y\}+[S_{zi}]\{V_z\}\right)\\
+&-(\delta_{xi}[H_x]+\delta_{yi}[H_y]+\delta_{zi}[H_z])\{P\}\\
+&+\frac{2K^*}{3We}n_iS
+\begin{bmatrix}1\\1\\1\end{bmatrix}
+-g_i^*\frac{V}{4}
+\begin{bmatrix}1\\1\\1\\1\end{bmatrix}
+\qquad (i=1,2,3)\\
+={}&\begin{bmatrix}0\\0\\0\\0\end{bmatrix}
+\end{aligned}
+\]
+```
+
+**Pass 1 = OK**。
+
+### `image045`
+
+原画像は `image044` の式を先頭の継続等号なしで記載し、4成分零ベクトルへ等置している。
+
+```latex
+\[
+\begin{aligned}
+&[C]\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}
++(V_x[C_x]+V_y[C_y]+V_z[C_z])\{V_i\}\\
+&+\frac{1}{Re}([S_{xx}]+[S_{yy}]+[S_{zz}])\{V_i\}\\
+&+\frac{1}{Re}\left([S_{xi}]\{V_x\}+[S_{yi}]\{V_y\}+[S_{zi}]\{V_z\}\right)\\
+&-(\delta_{xi}[H_x]+\delta_{yi}[H_y]+\delta_{zi}[H_z])\{P\}\\
+&+\frac{2K^*}{3We}n_iS
+\begin{bmatrix}1\\1\\1\end{bmatrix}
+-g_i^*\frac{V}{4}
+\begin{bmatrix}1\\1\\1\\1\end{bmatrix}
+=\begin{bmatrix}0\\0\\0\\0\end{bmatrix},
+\qquad (i=1,2,3)
+\end{aligned}
+\]
+```
+
+**Pass 1 = OK**。
+
+### `image046`
+
+既知項を右辺へ移項した式。未知速度・圧力には `\tau+\Delta\tau`、右辺の既知速度には `\tau` が付く。表面張力は右辺で負、重力は正。
+
+```latex
+\[
+\begin{aligned}
+\frac{[C]}{\Delta\tau}\{V_i\}^{\tau+\Delta\tau}
+&+(V_x[C_x]+V_y[C_y]+V_z[C_z])\{V_i\}^{\tau+\Delta\tau}\\
+&+\frac{1}{Re}([S_{xx}]+[S_{yy}]+[S_{zz}])\{V_i\}^{\tau+\Delta\tau}\\
+&+\frac{1}{Re}\left([S_{xi}]\{V_x\}^{\tau+\Delta\tau}
++[S_{yi}]\{V_y\}^{\tau+\Delta\tau}
++[S_{zi}]\{V_z\}^{\tau+\Delta\tau}\right)\\
+&-(\delta_{xi}[H_x]+\delta_{yi}[H_y]+\delta_{zi}[H_z])\{P\}^{\tau+\Delta\tau}\\
+={}&\frac{[C]}{\Delta\tau}\{V_i\}^{\tau}
+-\frac{2K^*}{3We}n_iS
+\begin{bmatrix}1\\1\\1\end{bmatrix}
++g_i^*\frac{V}{4}
+\begin{bmatrix}1\\1\\1\\1\end{bmatrix},
+\qquad (i=1,2,3)
+\end{aligned}
+\]
+```
+
+**Pass 1 = OK**。
+
+### `image047`
+
+x方向成分。粘性項の交差成分は `[S_{yx}]`, `[S_{zx}]`。圧力項 `-[H_x]\{P\}` は `1/Re` の括弧外にある。
+
+```latex
+\[
+\begin{aligned}
+\frac{[C]}{\Delta\tau}\{V_x\}^{\tau+\Delta\tau}
+&+(V_x[C_x]+V_y[C_y]+V_z[C_z])\{V_x\}^{\tau+\Delta\tau}\\
+&+\frac{1}{Re}\left\{
+(2[S_{xx}]+[S_{yy}]+[S_{zz}])\{V_x\}^{\tau+\Delta\tau}
++[S_{yx}]\{V_y\}^{\tau+\Delta\tau}
++[S_{zx}]\{V_z\}^{\tau+\Delta\tau}
+\right\}\\
+&-[H_x]\{P\}^{\tau+\Delta\tau}\\
+={}&\frac{[C]}{\Delta\tau}\{V_x\}^{\tau}
+-\frac{2K^*}{3We}n_xS
+\begin{bmatrix}1\\1\\1\end{bmatrix}
++g_x^*\frac{V}{4}
+\begin{bmatrix}1\\1\\1\\1\end{bmatrix}
+\end{aligned}
+\]
+```
+
+**Pass 1 = OK**。
+
+### `image048`
+
+y方向成分。粘性項の交差成分は `[S_{xy}]`, `[S_{zy}]`。圧力項は `1/Re` の括弧外。
+
+```latex
+\[
+\begin{aligned}
+\frac{[C]}{\Delta\tau}\{V_y\}^{\tau+\Delta\tau}
+&+(V_x[C_x]+V_y[C_y]+V_z[C_z])\{V_y\}^{\tau+\Delta\tau}\\
+&+\frac{1}{Re}\left\{
+[S_{xy}]\{V_x\}^{\tau+\Delta\tau}
++([S_{xx}]+2[S_{yy}]+[S_{zz}])\{V_y\}^{\tau+\Delta\tau}
++[S_{zy}]\{V_z\}^{\tau+\Delta\tau}
+\right\}\\
+&-[H_y]\{P\}^{\tau+\Delta\tau}\\
+={}&\frac{[C]}{\Delta\tau}\{V_y\}^{\tau}
+-\frac{2K^*}{3We}n_yS
+\begin{bmatrix}1\\1\\1\end{bmatrix}
++g_y^*\frac{V}{4}
+\begin{bmatrix}1\\1\\1\\1\end{bmatrix}
+\end{aligned}
+\]
+```
+
+**Pass 1 = OK**。
+
+### `image049`
+
+z方向成分。粘性項の交差成分は `[S_{xz}]`, `[S_{yz}]`。圧力項は `1/Re` の括弧外。
+
+```latex
+\[
+\begin{aligned}
+\frac{[C]}{\Delta\tau}\{V_z\}^{\tau+\Delta\tau}
+&+(V_x[C_x]+V_y[C_y]+V_z[C_z])\{V_z\}^{\tau+\Delta\tau}\\
+&+\frac{1}{Re}\left\{
+[S_{xz}]\{V_x\}^{\tau+\Delta\tau}
++[S_{yz}]\{V_y\}^{\tau+\Delta\tau}
++([S_{xx}]+[S_{yy}]+2[S_{zz}])\{V_z\}^{\tau+\Delta\tau}
+\right\}\\
+&-[H_z]\{P\}^{\tau+\Delta\tau}\\
+={}&\frac{[C]}{\Delta\tau}\{V_z\}^{\tau}
+-\frac{2K^*}{3We}n_zS
+\begin{bmatrix}1\\1\\1\end{bmatrix}
++g_z^*\frac{V}{4}
+\begin{bmatrix}1\\1\\1\\1\end{bmatrix},
+\qquad (i=1,2,3)
+\end{aligned}
+\]
+```
+
+**Pass 1 = OK**。
+
+### 直接照合で追加確認した現候補の不一致
+
+`b_S` の混入だけでなく、`image047`～`image049` の現候補は圧力項を `1/Re` の括弧内へ入れていた。原画像では圧力項は粘性項の `1/Re` とは別項である。
+
+したがって `image042`～`image049` は、原画像直接照合後の忠実再転記として **8/8 Pass 1 OK** とする。
+
 ## 一般化記法の優先監査対象
 
 現監査候補では以下の画像対応式に `\sum_{a=x,y,z}` 等の一般化が導入されている。
@@ -114,7 +300,7 @@ MathJax変換前の本文には、境界三角形で得られる3節点表面力
 - 元画像との対応付け: **49/49**
 - 履歴から現候補NG確定: **8/49 (`image042～049`)**
 - 一般化記法の優先監査対象: **12式**
-- 元画像直接Pass 1合格: **1/49 (`image042`)**
+- 元画像直接Pass 1合格: **8/49 (`image042～049`)**
 - Pass 2: **0/49**
 
-`image042` は直接目視と再転記LaTeXの照合まで完了した。`image043～049` は履歴上NG確定だが、原文LaTeXの確定は各元画像の直接照合後に行う。
+`image042`～`image049` は元画像直接照合と忠実LaTeX再転記まで完了した。次は一般化記法の優先監査対象12式を中心に、残り41式のPass 1を進める。
