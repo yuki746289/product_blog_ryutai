@@ -1,0 +1,1198 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+	<meta http-equiv="content-style-type" content="text/css">
+
+	<meta name="description" content="有限要素法・流体力学による数値計算サイト。">
+	<meta name="keywords" content="有限要素法,FEM,流体力学,数値計算,メッシュ"> 
+
+	<title>運動量収支式の離散化（有限要素法）</title>
+	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+	<script>
+	window.MathJax = {
+		tex: {inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']]},
+		output: {
+			displayOverflow: 'linebreak',
+			linebreaks: {inline: true, width: '100%', lineleading: 0.2}
+		},
+		chtml: {displayAlign: 'left', displayIndent: '0'}
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head>
+<body>
+	<input type="hidden" id="menu_id"   value="4">
+	<input type="hidden" id="menu_id_2" value="4_7">
+
+	<div id="wrapper">
+
+	<div id="header">
+		<h1><a href="./../index.html" title="トップページへ">有限要素法・流体力学による数値計算</a></h1>
+
+		<br style="clear:both;">
+		<ul style="margin-left:30px;">
+		<li><a href="./../index.html" title="indexへ">index</a>&gt;</li>
+		<li><a href="./fem.html" title="有限要素法へ">有限要素法</a>&gt;</li>
+		<li><a href="./fem_7.html" title="離散化へ">離散化</a>&gt;</li>
+		<li><a href="./fem_7_2.html" title="4面体1次要素へ">4面体1次要素</a>&gt;</li>
+		<li><a href="./fem_7_2_2.html" title="運動量収支式の離散化へ">運動量収支式の離散化</a>&gt;</li>
+		</ul>
+		<hr>
+	</div>
+
+	<div id="main" >
+
+	<div id="image">
+		<p>流体力学から数値計算まで</p>
+		<p><img src="./../img/shiki1.gif"></p>
+		<p><img src="./../img/shiki2.gif"></p>
+	</div>
+
+	<div id="content">
+
+		<div id="content-text">
+
+			<h2>広告</h2>
+			<p><iframe src="./../ad.html" width="470" height="60" scrolling="no" frameborder="0"></iframe></p>
+			<br>
+
+			<h2>・運動量収支式の離散化</h2>
+			<p id="formula-conversion-note"><strong>厳密再監査版:</strong> 元数式画像とPass 1照合済みの忠実LaTeXをMathJax表示しています。通常公開ページではありません。</p>
+			<p><span class="ft"><i>x</i>, <i>y</i>, <i>z</i></span>軸方向の無次元化した運動量収支式は次式となります。</p>
+			<div class="math-block" id="formula-fem-7-2-2-001" data-source-image="./../img/fem_d_momentum_tet.files/image001.png">
+\[
+\phi_x=\frac{\partial V_x}{\partial\tau}
++V_x\frac{\partial V_x}{\partial X}
++V_y\frac{\partial V_x}{\partial Y}
++V_z\frac{\partial V_x}{\partial Z}
+-\frac{\partial\sigma^*_{xx}}{\partial X}
+-\frac{\partial\sigma^*_{yx}}{\partial Y}
+-\frac{\partial\sigma^*_{zx}}{\partial Z}
+-g_x^*=0
+\]
+</div>
+			<div class="math-block" id="formula-fem-7-2-2-002" data-source-image="./../img/fem_d_momentum_tet.files/image002.png">
+\[
+\phi_y=\frac{\partial V_y}{\partial\tau}
++V_x\frac{\partial V_y}{\partial X}
++V_y\frac{\partial V_y}{\partial Y}
++V_z\frac{\partial V_y}{\partial Z}
+-\frac{\partial\sigma^*_{xy}}{\partial X}
+-\frac{\partial\sigma^*_{yy}}{\partial Y}
+-\frac{\partial\sigma^*_{zy}}{\partial Z}
+-g_y^*=0
+\]
+</div>
+			<div class="math-block" id="formula-fem-7-2-2-003" data-source-image="./../img/fem_d_momentum_tet.files/image003.png">
+\[
+\phi_z=\frac{\partial V_z}{\partial\tau}
++V_x\frac{\partial V_z}{\partial X}
++V_y\frac{\partial V_z}{\partial Y}
++V_z\frac{\partial V_z}{\partial Z}
+-\frac{\partial\sigma^*_{xz}}{\partial X}
+-\frac{\partial\sigma^*_{yz}}{\partial Y}
+-\frac{\partial\sigma^*_{zz}}{\partial Z}
+-g_z^*=0
+\]
+</div>
+			<br><br>
+			<p>内挿関数<span class="ft"><i>N<sub>i</sub></i></span>を重み関数に使用すると離散化式は次式となります。</p>
+			<div class="math-block" id="formula-fem-7-2-2-004" data-source-image="./../img/fem_d_momentum_tet.files/image004.png">
+\[
+\int_V
+\begin{bmatrix}
+N_1\\N_2\\N_3\\N_4
+\end{bmatrix}
+\phi_i\,dV
+=
+\int_V
+\begin{bmatrix}
+0\\0\\0\\0
+\end{bmatrix}
+dV
+=
+\begin{bmatrix}
+0\\0\\0\\0
+\end{bmatrix}
+\]
+</div>
+			<br><br>
+			<p>速度、圧力は、内挿関数<span class="ft"><i>N<sub>i</sub></i></span>を用いてそれぞれ次式で表されます。</p>
+			<div class="math-block" id="formula-fem-7-2-2-005" data-source-image="./../img/fem_d_momentum_tet.files/image005.png">
+\[
+\begin{aligned}
+V_x={}&N_1V_{x,1}+N_2V_{x,2}+N_3V_{x,3}+N_4V_{x,4}\\
+={}&
+\begin{bmatrix}N_1&N_2&N_3&N_4\end{bmatrix}
+\begin{bmatrix}V_{x,1}\\V_{x,2}\\V_{x,3}\\V_{x,4}\end{bmatrix}
+=[N]\{V_x\},\\[4pt]
+V_y={}&N_1V_{y,1}+N_2V_{y,2}+N_3V_{y,3}+N_4V_{y,4},\\
+V_z={}&N_1V_{z,1}+N_2V_{z,2}+N_3V_{z,3}+N_4V_{z,4},\\
+P={}&N_1P_{x,1}+N_2P_{x,2}+N_3P_{x,3}+N_4P_{x,4}
+\end{aligned}
+\]
+</div>
+			<br><br>
+			<p><span class="ft"><i>i</i></span>軸方向の離散化式は、次式となります。</p>
+			<div class="math-block" id="formula-fem-7-2-2-006" data-source-image="./../img/fem_d_momentum_tet.files/image006.png">
+\[
+\begin{aligned}
+&\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\left(
+\frac{\partial V_i}{\partial\tau}
++V_x\frac{\partial V_i}{\partial X}
++V_y\frac{\partial V_i}{\partial Y}
++V_z\frac{\partial V_i}{\partial Z}
+-\frac{\partial\sigma^*_{xi}}{\partial X}
+-\frac{\partial\sigma^*_{yi}}{\partial Y}
+-\frac{\partial\sigma^*_{zi}}{\partial Z}
+-g_i^*
+\right)dV\\
+={}&\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial V_i}{\partial\tau}dV
++V_x\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial V_i}{\partial X}dV
++V_y\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial V_i}{\partial Y}dV\\
+&+V_z\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial V_i}{\partial Z}dV
+-\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial\sigma^*_{xi}}{\partial X}dV
+-\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial\sigma^*_{yi}}{\partial Y}dV\\
+&-\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial\sigma^*_{zi}}{\partial Z}dV
+-\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+g_i^*dV
+\end{aligned}
+\]
+</div>
+			<br><br>
+			<p>展開すると</p>
+			<div class="math-block" id="formula-fem-7-2-2-007" data-source-image="./../img/fem_d_momentum_tet.files/image007.png">
+\[
+\begin{aligned}
+={}&\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial V_i}{\partial\tau}\,dV\\
+&+V_x\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial V_i}{\partial X}\,dV
++V_y\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial V_i}{\partial Y}\,dV\\
+&+V_z\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial V_i}{\partial Z}\,dV
+-\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial\sigma^*_{xi}}{\partial X}\,dV\\
+&-\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial\sigma^*_{yi}}{\partial Y}\,dV
+-\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial\sigma^*_{zi}}{\partial Z}\,dV\\
+&-\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+g_i^*\,dV
+\end{aligned}
+\]
+</div><br>
+			<div class="math-block" id="formula-fem-7-2-2-008" data-source-image="./../img/fem_d_momentum_tet.files/image008.png">
+\[
+\begin{aligned}
+={}&\int_V[N]^T\frac{\partial V_i}{\partial\tau}dV\\
+&+V_x\int_V[N]^T\frac{\partial V_i}{\partial X}dV
++V_y\int_V[N]^T\frac{\partial V_i}{\partial Y}dV
++V_z\int_V[N]^T\frac{\partial V_i}{\partial Z}dV\\
+&-\int_V[N]^T\frac{\partial\sigma^*_{xi}}{\partial X}dV
+-\int_V[N]^T\frac{\partial\sigma^*_{yi}}{\partial Y}dV
+-\int_V[N]^T\frac{\partial\sigma^*_{zi}}{\partial Z}dV\\
+&-\int_V[N]^Tg_i^*dV
+\end{aligned}
+\]
+</div><br>
+			<p>グリーン・ガウスの定理より</p>
+			<div class="math-block" id="formula-fem-7-2-2-009" data-source-image="./../img/fem_d_momentum_tet.files/image009.png">
+\[
+\begin{aligned}
+={}&\int_V[N]^T
+\frac{[N](\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau})}{\Delta\tau}dV\\
+&+V_x\int_V[N]^T\frac{\partial[N]\{V_i\}}{\partial X}dV
++V_y\int_V[N]^T\frac{\partial[N]\{V_i\}}{\partial Y}dV
++V_z\int_V[N]^T\frac{\partial[N]\{V_i\}}{\partial Z}dV\\
+&-\int_S[N]^T\sigma^*_{xi}n_xdS
++\int_V\left[\frac{\partial N}{\partial X}\right]^T\sigma^*_{xi}dV\\
+&-\int_S[N]^T\sigma^*_{yi}n_ydS
++\int_V\left[\frac{\partial N}{\partial Y}\right]^T\sigma^*_{yi}dV\\
+&-\int_S[N]^T\sigma^*_{zi}n_zdS
++\int_V\left[\frac{\partial N}{\partial Z}\right]^T\sigma^*_{zi}dV\\
+&-\int_V[N]^Tg_i^*dV
+\end{aligned}
+\]
+</div><br>
+			<p>界面に作用する応力をまとめると</p>
+			<div class="math-block" id="formula-fem-7-2-2-010" data-source-image="./../img/fem_d_momentum_tet.files/image010.png">
+\[
+\begin{aligned}
+={}&\int_V[N]^T[N]dV\,
+\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}\\
+&+V_x\int_V[N]^T\left[\frac{\partial N}{\partial X}\right]dV\{V_i\}
++V_y\int_V[N]^T\left[\frac{\partial N}{\partial Y}\right]dV\{V_i\}
++V_z\int_V[N]^T\left[\frac{\partial N}{\partial Z}\right]dV\{V_i\}\\
+&+\int_V\left[\frac{\partial N}{\partial X}\right]^T\sigma^*_{xi}dV
++\int_V\left[\frac{\partial N}{\partial Y}\right]^T\sigma^*_{yi}dV
++\int_V\left[\frac{\partial N}{\partial Z}\right]^T\sigma^*_{zi}dV\\
+&-\int_S[N]^T\left(\sigma^*_{xi}n_x+\sigma^*_{yi}n_y+\sigma^*_{zi}n_z\right)dS
+-\int_V[N]^Tg_i^*dV
+\end{aligned}
+\]
+</div><br>
+			<p>応力を展開して</p>
+			<div class="math-block" id="formula-fem-7-2-2-011" data-source-image="./../img/fem_d_momentum_tet.files/image011.png">
+\[
+\begin{aligned}
+={}&\int_V[N]^T[N]dV\,
+\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}\\
+&+V_x\int_V[N]^T\left[\frac{\partial N}{\partial X}\right]dV\{V_i\}
++V_y\int_V[N]^T\left[\frac{\partial N}{\partial Y}\right]dV\{V_i\}
++V_z\int_V[N]^T\left[\frac{\partial N}{\partial Z}\right]dV\{V_i\}\\
+&+\int_V\left[\frac{\partial N}{\partial X}\right]^T
+\left\{-\delta_{xi}P+\frac{1}{Re}\left(\frac{\partial V_i}{\partial X}+\frac{\partial V_x}{\partial X_i}\right)\right\}dV\\
+&+\int_V\left[\frac{\partial N}{\partial Y}\right]^T
+\left\{-\delta_{yi}P+\frac{1}{Re}\left(\frac{\partial V_i}{\partial Y}+\frac{\partial V_y}{\partial X_i}\right)\right\}dV\\
+&+\int_V\left[\frac{\partial N}{\partial Z}\right]^T
+\left\{-\delta_{zi}P+\frac{1}{Re}\left(\frac{\partial V_i}{\partial Z}+\frac{\partial V_z}{\partial X_i}\right)\right\}dV\\
+&-\frac{2K^*}{We}n_i\int_S[N]^T dS
+-\int_V[N]^Tg_i^*dV
+\end{aligned}
+\]
+</div><br>
+			<div class="math-block" id="formula-fem-7-2-2-012" data-source-image="./../img/fem_d_momentum_tet.files/image012.png">
+\[
+\begin{aligned}
+={}&\int_V[N]^T[N]dV\,
+\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}\\
+&+V_x\int_V[N]^T\left[\frac{\partial N}{\partial X}\right]dV\{V_i\}
++V_y\int_V[N]^T\left[\frac{\partial N}{\partial Y}\right]dV\{V_i\}
++V_z\int_V[N]^T\left[\frac{\partial N}{\partial Z}\right]dV\{V_i\}\\
+&+\int_V\left[\frac{\partial N}{\partial X}\right]^T
+\left\{-\delta_{xi}P+\frac{1}{Re}\left(\frac{\partial V_i}{\partial X}+\frac{\partial V_x}{\partial X_i}\right)\right\}dV\\
+&+\int_V\left[\frac{\partial N}{\partial Y}\right]^T
+\left\{-\delta_{yi}P+\frac{1}{Re}\left(\frac{\partial V_i}{\partial Y}+\frac{\partial V_y}{\partial X_i}\right)\right\}dV\\
+&+\int_V\left[\frac{\partial N}{\partial Z}\right]^T
+\left\{-\delta_{zi}P+\frac{1}{Re}\left(\frac{\partial V_i}{\partial Z}+\frac{\partial V_z}{\partial X_i}\right)\right\}dV\\
+&-\frac{2K^*}{We}n_i\int_S[N]^T dS
+-\int_V[N]^Tg_i^*dV
+\end{aligned}
+\]
+</div><br>
+			<p>項ごとに分解して</p>
+			<div class="math-block" id="formula-fem-7-2-2-013" data-source-image="./../img/fem_d_momentum_tet.files/image013.png">
+\[
+\begin{aligned}
+={}&\int_V[N]^T[N]dV\,
+\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}\\
+&+V_x\int_V[N]^T\left[\frac{\partial N}{\partial X}\right]dV\{V_i\}
++V_y\int_V[N]^T\left[\frac{\partial N}{\partial Y}\right]dV\{V_i\}
++V_z\int_V[N]^T\left[\frac{\partial N}{\partial Z}\right]dV\{V_i\}\\
+&+\frac1{Re}\int_V\left[\frac{\partial N}{\partial X}\right]^T\frac{\partial V_i}{\partial X}dV
++\frac1{Re}\int_V\left[\frac{\partial N}{\partial X}\right]^T\frac{\partial V_x}{\partial X_i}dV
+-\int_V\left[\frac{\partial N}{\partial X}\right]^T\delta_{xi}P\,dV\\
+&+\frac1{Re}\int_V\left[\frac{\partial N}{\partial Y}\right]^T\frac{\partial V_i}{\partial Y}dV
++\frac1{Re}\int_V\left[\frac{\partial N}{\partial Y}\right]^T\frac{\partial V_y}{\partial X_i}dV
+-\int_V\left[\frac{\partial N}{\partial Y}\right]^T\delta_{yi}P\,dV\\
+&+\frac1{Re}\int_V\left[\frac{\partial N}{\partial Z}\right]^T\frac{\partial V_i}{\partial Z}dV
++\frac1{Re}\int_V\left[\frac{\partial N}{\partial Z}\right]^T\frac{\partial V_z}{\partial X_i}dV
+-\int_V\left[\frac{\partial N}{\partial Z}\right]^T\delta_{zi}P\,dV\\
+&+\frac{2K^*}{We}n_i\int_S[N]^T dS
+-g_i^*\int_V[N]^T dV
+\end{aligned}
+\]
+</div><br>
+			<p>速度、圧力を内挿関数で表示して</p>
+			<div class="math-block" id="formula-fem-7-2-2-014" data-source-image="./../img/fem_d_momentum_tet.files/image014.png">
+\[
+\begin{aligned}
+={}&\int_V[N]^T[N]dV\,
+\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}\\
+&+V_x\int_V[N]^T\left[\frac{\partial N}{\partial X}\right]dV\{V_i\}
++V_y\int_V[N]^T\left[\frac{\partial N}{\partial Y}\right]dV\{V_i\}
++V_z\int_V[N]^T\left[\frac{\partial N}{\partial Z}\right]dV\{V_i\}\\
+&+\frac1{Re}\int_V\left[\frac{\partial N}{\partial X}\right]^T
+\frac{\partial[N]\{V_i\}}{\partial X}dV
++\frac1{Re}\int_V\left[\frac{\partial N}{\partial X}\right]^T
+\frac{\partial[N]\{V_x\}}{\partial X_i}dV
+-\delta_{xi}\int_V\left[\frac{\partial N}{\partial X}\right]^T[N]\{P\}dV\\
+&+\frac1{Re}\int_V\left[\frac{\partial N}{\partial Y}\right]^T
+\frac{\partial[N]\{V_i\}}{\partial Y}dV
++\frac1{Re}\int_V\left[\frac{\partial N}{\partial Y}\right]^T
+\frac{\partial[N]\{V_y\}}{\partial X_i}dV
+-\delta_{yi}\int_V\left[\frac{\partial N}{\partial Y}\right]^T[N]\{P\}dV\\
+&+\frac1{Re}\int_V\left[\frac{\partial N}{\partial Z}\right]^T
+\frac{\partial[N]\{V_i\}}{\partial Z}dV
++\frac1{Re}\int_V\left[\frac{\partial N}{\partial Z}\right]^T
+\frac{\partial[N]\{V_z\}}{\partial X_i}dV
+-\delta_{zi}\int_V\left[\frac{\partial N}{\partial Z}\right]^T[N]\{P\}dV\\
+&+\frac{2K^*}{We}n_i\int_S[N]^T dS
+-g_i^*\int_V[N]^T dV
+\end{aligned}
+\]
+</div><br>
+			<p>形状関数内挿後の節点自由度は積分変数に依存しないため、積分の外に出します。</p>
+			<div class="math-block" id="formula-fem-7-2-2-015" data-source-image="./../img/fem_d_momentum_tet.files/image015.png">
+\[
+\begin{aligned}
+={}&\int_V[N]^T[N]dV\,
+\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}\\
+&+V_x\int_V[N]^T\left[\frac{\partial N}{\partial X}\right]dV\{V_i\}
++V_y\int_V[N]^T\left[\frac{\partial N}{\partial Y}\right]dV\{V_i\}
++V_z\int_V[N]^T\left[\frac{\partial N}{\partial Z}\right]dV\{V_i\}\\
+&+\frac1{Re}\int_V\left[\frac{\partial N}{\partial X}\right]^T\left[\frac{\partial N}{\partial X}\right]dV\{V_i\}
++\frac1{Re}\int_V\left[\frac{\partial N}{\partial X}\right]^T\left[\frac{\partial N}{\partial X_i}\right]dV\{V_x\}
+-\delta_{xi}\int_V\left[\frac{\partial N}{\partial X}\right]^T[N]dV\{P\}\\
+&+\frac1{Re}\int_V\left[\frac{\partial N}{\partial Y}\right]^T\left[\frac{\partial N}{\partial Y}\right]dV\{V_i\}
++\frac1{Re}\int_V\left[\frac{\partial N}{\partial Y}\right]^T\left[\frac{\partial N}{\partial X_i}\right]dV\{V_y\}
+-\delta_{yi}\int_V\left[\frac{\partial N}{\partial Y}\right]^T[N]dV\{P\}\\
+&+\frac1{Re}\int_V\left[\frac{\partial N}{\partial Z}\right]^T\left[\frac{\partial N}{\partial Z}\right]dV\{V_i\}
++\frac1{Re}\int_V\left[\frac{\partial N}{\partial Z}\right]^T\left[\frac{\partial N}{\partial X_i}\right]dV\{V_z\}
+-\delta_{zi}\int_V\left[\frac{\partial N}{\partial Z}\right]^T[N]dV\{P\}\\
+&+\frac{2K^*}{We}n_i\int_S[N]^T dS
+-g_i^*\int_V[N]^T dV,
+\qquad (i=1,2,3)
+\end{aligned}
+\]
+</div><br>
+
+			<p>行列式で表す</p>
+			<div class="math-block" id="formula-fem-7-2-2-016" data-source-image="./../img/fem_d_momentum_tet.files/image016.png">
+\[
+=\int_V
+\begin{bmatrix}
+N_1N_1&N_1N_2&N_1N_3&N_1N_4\\
+N_2N_1&N_2N_2&N_2N_3&N_2N_4\\
+N_3N_1&N_3N_2&N_3N_3&N_3N_4\\
+N_4N_1&N_4N_2&N_4N_3&N_4N_4
+\end{bmatrix}
+dV\,
+\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}
+\]
+</div><br>
+			<p>対流項</p>
+			<div class="math-block" id="formula-fem-7-2-2-017" data-source-image="./../img/fem_d_momentum_tet.files/image017.png">
+\[
+\begin{aligned}
+&+V_x\int_V
+\begin{bmatrix}
+N_1\frac{\partial N_1}{\partial X}&N_1\frac{\partial N_2}{\partial X}&N_1\frac{\partial N_3}{\partial X}&N_1\frac{\partial N_4}{\partial X}\\
+N_2\frac{\partial N_1}{\partial X}&N_2\frac{\partial N_2}{\partial X}&N_2\frac{\partial N_3}{\partial X}&N_2\frac{\partial N_4}{\partial X}\\
+N_3\frac{\partial N_1}{\partial X}&N_3\frac{\partial N_2}{\partial X}&N_3\frac{\partial N_3}{\partial X}&N_3\frac{\partial N_4}{\partial X}\\
+N_4\frac{\partial N_1}{\partial X}&N_4\frac{\partial N_2}{\partial X}&N_4\frac{\partial N_3}{\partial X}&N_4\frac{\partial N_4}{\partial X}
+\end{bmatrix}dV\{V_i\}\\
+&+V_y\int_V
+\begin{bmatrix}
+N_1\frac{\partial N_1}{\partial Y}&N_1\frac{\partial N_2}{\partial Y}&N_1\frac{\partial N_3}{\partial Y}&N_1\frac{\partial N_4}{\partial Y}\\
+N_2\frac{\partial N_1}{\partial Y}&N_2\frac{\partial N_2}{\partial Y}&N_2\frac{\partial N_3}{\partial Y}&N_2\frac{\partial N_4}{\partial Y}\\
+N_3\frac{\partial N_1}{\partial Y}&N_3\frac{\partial N_2}{\partial Y}&N_3\frac{\partial N_3}{\partial Y}&N_3\frac{\partial N_4}{\partial Y}\\
+N_4\frac{\partial N_1}{\partial Y}&N_4\frac{\partial N_2}{\partial Y}&N_4\frac{\partial N_3}{\partial Y}&N_4\frac{\partial N_4}{\partial Y}
+\end{bmatrix}dV\{V_i\}\\
+&+V_z\int_V
+\begin{bmatrix}
+N_1\frac{\partial N_1}{\partial Z}&N_1\frac{\partial N_2}{\partial Z}&N_1\frac{\partial N_3}{\partial Z}&N_1\frac{\partial N_4}{\partial Z}\\
+N_2\frac{\partial N_1}{\partial Z}&N_2\frac{\partial N_2}{\partial Z}&N_2\frac{\partial N_3}{\partial Z}&N_2\frac{\partial N_4}{\partial Z}\\
+N_3\frac{\partial N_1}{\partial Z}&N_3\frac{\partial N_2}{\partial Z}&N_3\frac{\partial N_3}{\partial Z}&N_3\frac{\partial N_4}{\partial Z}\\
+N_4\frac{\partial N_1}{\partial Z}&N_4\frac{\partial N_2}{\partial Z}&N_4\frac{\partial N_3}{\partial Z}&N_4\frac{\partial N_4}{\partial Z}
+\end{bmatrix}dV\{V_i\}
+\end{aligned}
+\]
+</div><br>
+			<p><span class="ft"><i>x</i></span>軸方向の粘性項と圧力項</p>
+			<div class="math-block" id="formula-fem-7-2-2-018" data-source-image="./../img/fem_d_momentum_tet.files/image018.png">
+\[
+\begin{aligned}
+&+\frac1{Re}\int_V
+\begin{bmatrix}
+\frac{\partial N_1}{\partial X}\frac{\partial N_1}{\partial X}&\frac{\partial N_1}{\partial X}\frac{\partial N_2}{\partial X}&\frac{\partial N_1}{\partial X}\frac{\partial N_3}{\partial X}&\frac{\partial N_1}{\partial X}\frac{\partial N_4}{\partial X}\\
+\frac{\partial N_2}{\partial X}\frac{\partial N_1}{\partial X}&\frac{\partial N_2}{\partial X}\frac{\partial N_2}{\partial X}&\frac{\partial N_2}{\partial X}\frac{\partial N_3}{\partial X}&\frac{\partial N_2}{\partial X}\frac{\partial N_4}{\partial X}\\
+\frac{\partial N_3}{\partial X}\frac{\partial N_1}{\partial X}&\frac{\partial N_3}{\partial X}\frac{\partial N_2}{\partial X}&\frac{\partial N_3}{\partial X}\frac{\partial N_3}{\partial X}&\frac{\partial N_3}{\partial X}\frac{\partial N_4}{\partial X}\\
+\frac{\partial N_4}{\partial X}\frac{\partial N_1}{\partial X}&\frac{\partial N_4}{\partial X}\frac{\partial N_2}{\partial X}&\frac{\partial N_4}{\partial X}\frac{\partial N_3}{\partial X}&\frac{\partial N_4}{\partial X}\frac{\partial N_4}{\partial X}
+\end{bmatrix}dV\{V_i\}\\
+&+\frac1{Re}\int_V
+\begin{bmatrix}
+\frac{\partial N_1}{\partial X}\frac{\partial N_1}{\partial X_i}&\frac{\partial N_1}{\partial X}\frac{\partial N_2}{\partial X_i}&\frac{\partial N_1}{\partial X}\frac{\partial N_3}{\partial X_i}&\frac{\partial N_1}{\partial X}\frac{\partial N_4}{\partial X_i}\\
+\frac{\partial N_2}{\partial X}\frac{\partial N_1}{\partial X_i}&\frac{\partial N_2}{\partial X}\frac{\partial N_2}{\partial X_i}&\frac{\partial N_2}{\partial X}\frac{\partial N_3}{\partial X_i}&\frac{\partial N_2}{\partial X}\frac{\partial N_4}{\partial X_i}\\
+\frac{\partial N_3}{\partial X}\frac{\partial N_1}{\partial X_i}&\frac{\partial N_3}{\partial X}\frac{\partial N_2}{\partial X_i}&\frac{\partial N_3}{\partial X}\frac{\partial N_3}{\partial X_i}&\frac{\partial N_3}{\partial X}\frac{\partial N_4}{\partial X_i}\\
+\frac{\partial N_4}{\partial X}\frac{\partial N_1}{\partial X_i}&\frac{\partial N_4}{\partial X}\frac{\partial N_2}{\partial X_i}&\frac{\partial N_4}{\partial X}\frac{\partial N_3}{\partial X_i}&\frac{\partial N_4}{\partial X}\frac{\partial N_4}{\partial X_i}
+\end{bmatrix}dV\{V_x\}\\
+&-\delta_{xi}\int_V
+\begin{bmatrix}
+\frac{\partial N_1}{\partial X}N_1&\frac{\partial N_1}{\partial X}N_2&\frac{\partial N_1}{\partial X}N_3&\frac{\partial N_1}{\partial X}N_4\\
+\frac{\partial N_2}{\partial X}N_1&\frac{\partial N_2}{\partial X}N_2&\frac{\partial N_2}{\partial X}N_3&\frac{\partial N_2}{\partial X}N_4\\
+\frac{\partial N_3}{\partial X}N_1&\frac{\partial N_3}{\partial X}N_2&\frac{\partial N_3}{\partial X}N_3&\frac{\partial N_3}{\partial X}N_4\\
+\frac{\partial N_4}{\partial X}N_1&\frac{\partial N_4}{\partial X}N_2&\frac{\partial N_4}{\partial X}N_3&\frac{\partial N_4}{\partial X}N_4
+\end{bmatrix}dV\{P\}
+\end{aligned}
+\]
+</div><br>
+			<p><span class="ft"><i>y</i></span>軸方向の粘性項と圧力項</p>
+			<div class="math-block" id="formula-fem-7-2-2-019" data-source-image="./../img/fem_d_momentum_tet.files/image019.png">
+\[
+\begin{aligned}
+&+\frac1{Re}\int_V
+\begin{bmatrix}
+\frac{\partial N_1}{\partial Y}\frac{\partial N_1}{\partial Y}&\frac{\partial N_1}{\partial Y}\frac{\partial N_2}{\partial Y}&\frac{\partial N_1}{\partial Y}\frac{\partial N_3}{\partial Y}&\frac{\partial N_1}{\partial Y}\frac{\partial N_4}{\partial Y}\\
+\frac{\partial N_2}{\partial Y}\frac{\partial N_1}{\partial Y}&\frac{\partial N_2}{\partial Y}\frac{\partial N_2}{\partial Y}&\frac{\partial N_2}{\partial Y}\frac{\partial N_3}{\partial Y}&\frac{\partial N_2}{\partial Y}\frac{\partial N_4}{\partial Y}\\
+\frac{\partial N_3}{\partial Y}\frac{\partial N_1}{\partial Y}&\frac{\partial N_3}{\partial Y}\frac{\partial N_2}{\partial Y}&\frac{\partial N_3}{\partial Y}\frac{\partial N_3}{\partial Y}&\frac{\partial N_3}{\partial Y}\frac{\partial N_4}{\partial Y}\\
+\frac{\partial N_4}{\partial Y}\frac{\partial N_1}{\partial Y}&\frac{\partial N_4}{\partial Y}\frac{\partial N_2}{\partial Y}&\frac{\partial N_4}{\partial Y}\frac{\partial N_3}{\partial Y}&\frac{\partial N_4}{\partial Y}\frac{\partial N_4}{\partial Y}
+\end{bmatrix}dV\{V_i\}\\
+&+\frac1{Re}\int_V
+\begin{bmatrix}
+\frac{\partial N_1}{\partial Y}\frac{\partial N_1}{\partial X_i}&\frac{\partial N_1}{\partial Y}\frac{\partial N_2}{\partial X_i}&\frac{\partial N_1}{\partial Y}\frac{\partial N_3}{\partial X_i}&\frac{\partial N_1}{\partial Y}\frac{\partial N_4}{\partial X_i}\\
+\frac{\partial N_2}{\partial Y}\frac{\partial N_1}{\partial X_i}&\frac{\partial N_2}{\partial Y}\frac{\partial N_2}{\partial X_i}&\frac{\partial N_2}{\partial Y}\frac{\partial N_3}{\partial X_i}&\frac{\partial N_2}{\partial Y}\frac{\partial N_4}{\partial X_i}\\
+\frac{\partial N_3}{\partial Y}\frac{\partial N_1}{\partial X_i}&\frac{\partial N_3}{\partial Y}\frac{\partial N_2}{\partial X_i}&\frac{\partial N_3}{\partial Y}\frac{\partial N_3}{\partial X_i}&\frac{\partial N_3}{\partial Y}\frac{\partial N_4}{\partial X_i}\\
+\frac{\partial N_4}{\partial Y}\frac{\partial N_1}{\partial X_i}&\frac{\partial N_4}{\partial Y}\frac{\partial N_2}{\partial X_i}&\frac{\partial N_4}{\partial Y}\frac{\partial N_3}{\partial X_i}&\frac{\partial N_4}{\partial Y}\frac{\partial N_4}{\partial X_i}
+\end{bmatrix}dV\{V_y\}\\
+&-\delta_{yi}\int_V
+\begin{bmatrix}
+\frac{\partial N_1}{\partial Y}N_1&\frac{\partial N_1}{\partial Y}N_2&\frac{\partial N_1}{\partial Y}N_3&\frac{\partial N_1}{\partial Y}N_4\\
+\frac{\partial N_2}{\partial Y}N_1&\frac{\partial N_2}{\partial Y}N_2&\frac{\partial N_2}{\partial Y}N_3&\frac{\partial N_2}{\partial Y}N_4\\
+\frac{\partial N_3}{\partial Y}N_1&\frac{\partial N_3}{\partial Y}N_2&\frac{\partial N_3}{\partial Y}N_3&\frac{\partial N_3}{\partial Y}N_4\\
+\frac{\partial N_4}{\partial Y}N_1&\frac{\partial N_4}{\partial Y}N_2&\frac{\partial N_4}{\partial Y}N_3&\frac{\partial N_4}{\partial Y}N_4
+\end{bmatrix}dV\{P\}
+\end{aligned}
+\]
+</div><br>
+			<p><span class="ft"><i>z</i></span>軸方向の粘性項と圧力項</p>
+			<div class="math-block" id="formula-fem-7-2-2-020" data-source-image="./../img/fem_d_momentum_tet.files/image020.png">
+\[
+\begin{aligned}
+&+\frac1{Re}\int_V
+\begin{bmatrix}
+\dfrac{\partial N_1}{\partial Z}\dfrac{\partial N_1}{\partial Z}&\dfrac{\partial N_1}{\partial Z}\dfrac{\partial N_2}{\partial Z}&\dfrac{\partial N_1}{\partial Z}\dfrac{\partial N_3}{\partial Z}&\dfrac{\partial N_1}{\partial Z}\dfrac{\partial N_4}{\partial Z}\\
+\dfrac{\partial N_2}{\partial Z}\dfrac{\partial N_1}{\partial Z}&\dfrac{\partial N_2}{\partial Z}\dfrac{\partial N_2}{\partial Z}&\dfrac{\partial N_2}{\partial Z}\dfrac{\partial N_3}{\partial Z}&\dfrac{\partial N_2}{\partial Z}\dfrac{\partial N_4}{\partial Z}\\
+\dfrac{\partial N_3}{\partial Z}\dfrac{\partial N_1}{\partial Z}&\dfrac{\partial N_3}{\partial Z}\dfrac{\partial N_2}{\partial Z}&\dfrac{\partial N_3}{\partial Z}\dfrac{\partial N_3}{\partial Z}&\dfrac{\partial N_3}{\partial Z}\dfrac{\partial N_4}{\partial Z}\\
+\dfrac{\partial N_4}{\partial Z}\dfrac{\partial N_1}{\partial Z}&\dfrac{\partial N_4}{\partial Z}\dfrac{\partial N_2}{\partial Z}&\dfrac{\partial N_4}{\partial Z}\dfrac{\partial N_3}{\partial Z}&\dfrac{\partial N_4}{\partial Z}\dfrac{\partial N_4}{\partial Z}
+\end{bmatrix}dV\{V_i\}\\
+&+\frac1{Re}\int_V
+\begin{bmatrix}
+\dfrac{\partial N_1}{\partial Z}\dfrac{\partial N_1}{\partial X_i}&\dfrac{\partial N_1}{\partial Z}\dfrac{\partial N_2}{\partial X_i}&\dfrac{\partial N_1}{\partial Z}\dfrac{\partial N_3}{\partial X_i}&\dfrac{\partial N_1}{\partial Z}\dfrac{\partial N_4}{\partial X_i}\\
+\dfrac{\partial N_2}{\partial Z}\dfrac{\partial N_1}{\partial X_i}&\dfrac{\partial N_2}{\partial Z}\dfrac{\partial N_2}{\partial X_i}&\dfrac{\partial N_2}{\partial Z}\dfrac{\partial N_3}{\partial X_i}&\dfrac{\partial N_2}{\partial Z}\dfrac{\partial N_4}{\partial X_i}\\
+\dfrac{\partial N_3}{\partial Z}\dfrac{\partial N_1}{\partial X_i}&\dfrac{\partial N_3}{\partial Z}\dfrac{\partial N_2}{\partial X_i}&\dfrac{\partial N_3}{\partial Z}\dfrac{\partial N_3}{\partial X_i}&\dfrac{\partial N_3}{\partial Z}\dfrac{\partial N_4}{\partial X_i}\\
+\dfrac{\partial N_4}{\partial Z}\dfrac{\partial N_1}{\partial X_i}&\dfrac{\partial N_4}{\partial Z}\dfrac{\partial N_2}{\partial X_i}&\dfrac{\partial N_4}{\partial Z}\dfrac{\partial N_3}{\partial X_i}&\dfrac{\partial N_4}{\partial Z}\dfrac{\partial N_4}{\partial X_i}
+\end{bmatrix}dV\{V_z\}\\
+&-\delta_{zi}\int_V
+\begin{bmatrix}
+\dfrac{\partial N_1}{\partial Z}N_1&\dfrac{\partial N_1}{\partial Z}N_2&\dfrac{\partial N_1}{\partial Z}N_3&\dfrac{\partial N_1}{\partial Z}N_4\\
+\dfrac{\partial N_2}{\partial Z}N_1&\dfrac{\partial N_2}{\partial Z}N_2&\dfrac{\partial N_2}{\partial Z}N_3&\dfrac{\partial N_2}{\partial Z}N_4\\
+\dfrac{\partial N_3}{\partial Z}N_1&\dfrac{\partial N_3}{\partial Z}N_2&\dfrac{\partial N_3}{\partial Z}N_3&\dfrac{\partial N_3}{\partial Z}N_4\\
+\dfrac{\partial N_4}{\partial Z}N_1&\dfrac{\partial N_4}{\partial Z}N_2&\dfrac{\partial N_4}{\partial Z}N_3&\dfrac{\partial N_4}{\partial Z}N_4
+\end{bmatrix}dV\{P\}
+\end{aligned}
+\]
+</div><br>
+			<p>表面張力項</p>
+			<div class="math-block" id="formula-fem-7-2-2-021" data-source-image="./../img/fem_d_momentum_tet.files/image021.png">
+\[
++\frac{2K^*}{We}n_i\int_S
+\begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}dS
+\]
+</div><br>
+			<p>重力項</p>
+			<div class="math-block" id="formula-fem-7-2-2-022" data-source-image="./../img/fem_d_momentum_tet.files/image022.png">
+\[
+-g_i^*\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}dV
+\qquad (i=1,2,3)
+\]
+</div><br>
+
+			<p>内挿関数を形状関数に直す</p>
+			<div class="math-block" id="formula-fem-7-2-2-023" data-source-image="./../img/fem_d_momentum_tet.files/image023.png">
+\[
+=\int_V
+\begin{bmatrix}
+L_1L_1&L_1L_2&L_1L_3&L_1L_4\\
+L_2L_1&L_2L_2&L_2L_3&L_2L_4\\
+L_3L_1&L_3L_2&L_3L_3&L_3L_4\\
+L_4L_1&L_4L_2&L_4L_3&L_4L_4
+\end{bmatrix}dV\,
+\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}
+\]
+</div><br>
+			<p>対流項</p>
+			<div class="math-block" id="formula-fem-7-2-2-024" data-source-image="./../img/fem_d_momentum_tet.files/image024.png">
+\[
+\begin{aligned}
+&+V_x\int_V\frac1{6V}
+\begin{bmatrix}
+L_1c_{1x}&L_1c_{2x}&L_1c_{3x}&L_1c_{4x}\\
+L_2c_{1x}&L_2c_{2x}&L_2c_{3x}&L_2c_{4x}\\
+L_3c_{1x}&L_3c_{2x}&L_3c_{3x}&L_3c_{4x}\\
+L_4c_{1x}&L_4c_{2x}&L_4c_{3x}&L_4c_{4x}
+\end{bmatrix}dV\{V_i\}\\
+&+V_y\int_V\frac1{6V}
+\begin{bmatrix}
+L_1c_{1y}&L_1c_{2y}&L_1c_{3y}&L_1c_{4y}\\
+L_2c_{1y}&L_2c_{2y}&L_2c_{3y}&L_2c_{4y}\\
+L_3c_{1y}&L_3c_{2y}&L_3c_{3y}&L_3c_{4y}\\
+L_4c_{1y}&L_4c_{2y}&L_4c_{3y}&L_4c_{4y}
+\end{bmatrix}dV\{V_i\}\\
+&+V_z\int_V\frac1{6V}
+\begin{bmatrix}
+L_1c_{1z}&L_1c_{2z}&L_1c_{3z}&L_1c_{4z}\\
+L_2c_{1z}&L_2c_{2z}&L_2c_{3z}&L_2c_{4z}\\
+L_3c_{1z}&L_3c_{2z}&L_3c_{3z}&L_3c_{4z}\\
+L_4c_{1z}&L_4c_{2z}&L_4c_{3z}&L_4c_{4z}
+\end{bmatrix}dV\{V_i\}
+\end{aligned}
+\]
+</div><br>
+			<p><span class="ft"><i>x</i></span>軸方向の粘性項と圧力項</p>
+			<div class="math-block" id="formula-fem-7-2-2-025" data-source-image="./../img/fem_d_momentum_tet.files/image025.png">
+\[
+\begin{aligned}
+&+\frac1{Re}\int_V\frac1{36V^2}
+\begin{bmatrix}
+c_{1x}c_{1x}&c_{1x}c_{2x}&c_{1x}c_{3x}&c_{1x}c_{4x}\\
+c_{2x}c_{1x}&c_{2x}c_{2x}&c_{2x}c_{3x}&c_{2x}c_{4x}\\
+c_{3x}c_{1x}&c_{3x}c_{2x}&c_{3x}c_{3x}&c_{3x}c_{4x}\\
+c_{4x}c_{1x}&c_{4x}c_{2x}&c_{4x}c_{3x}&c_{4x}c_{4x}
+\end{bmatrix}dV\{V_i\}\\
+&+\frac1{Re}\int_V\frac1{36V^2}
+\begin{bmatrix}
+c_{1x}c_{1i}&c_{1x}c_{2i}&c_{1x}c_{3i}&c_{1x}c_{4i}\\
+c_{2x}c_{1i}&c_{2x}c_{2i}&c_{2x}c_{3i}&c_{2x}c_{4i}\\
+c_{3x}c_{1i}&c_{3x}c_{2i}&c_{3x}c_{3i}&c_{3x}c_{4i}\\
+c_{4x}c_{1i}&c_{4x}c_{2i}&c_{4x}c_{3i}&c_{4x}c_{4i}
+\end{bmatrix}dV\{V_x\}\\
+&-\delta_{xi}\int_V\frac1{6V}
+\begin{bmatrix}
+c_{1x}L_1&c_{1x}L_2&c_{1x}L_3&c_{1x}L_4\\
+c_{2x}L_1&c_{2x}L_2&c_{2x}L_3&c_{2x}L_4\\
+c_{3x}L_1&c_{3x}L_2&c_{3x}L_3&c_{3x}L_4\\
+c_{4x}L_1&c_{4x}L_2&c_{4x}L_3&c_{4x}L_4
+\end{bmatrix}dV\{P\}
+\end{aligned}
+\]
+</div><br>
+			<p><span class="ft"><i>y</i></span>軸方向の粘性項と圧力項</p>
+			<div class="math-block" id="formula-fem-7-2-2-026" data-source-image="./../img/fem_d_momentum_tet.files/image026.png">
+\[
+\begin{aligned}
+&+\frac1{Re}\int_V\frac1{36V^2}
+\begin{bmatrix}
+c_{1y}c_{1y}&c_{1y}c_{2y}&c_{1y}c_{3y}&c_{1y}c_{4y}\\
+c_{2y}c_{1y}&c_{2y}c_{2y}&c_{2y}c_{3y}&c_{2y}c_{4y}\\
+c_{3y}c_{1y}&c_{3y}c_{2y}&c_{3y}c_{3y}&c_{3y}c_{4y}\\
+c_{4y}c_{1y}&c_{4y}c_{2y}&c_{4y}c_{3y}&c_{4y}c_{4y}
+\end{bmatrix}dV\{V_i\}\\
+&+\frac1{Re}\int_V\frac1{36V^2}
+\begin{bmatrix}
+c_{1y}c_{1i}&c_{1y}c_{2i}&c_{1y}c_{3i}&c_{1y}c_{4i}\\
+c_{2y}c_{1i}&c_{2y}c_{2i}&c_{2y}c_{3i}&c_{2y}c_{4i}\\
+c_{3y}c_{1i}&c_{3y}c_{2i}&c_{3y}c_{3i}&c_{3y}c_{4i}\\
+c_{4y}c_{1i}&c_{4y}c_{2i}&c_{4y}c_{3i}&c_{4y}c_{4i}
+\end{bmatrix}dV\{V_y\}\\
+&-\delta_{yi}\int_V\frac1{6V}
+\begin{bmatrix}
+c_{1y}L_1&c_{1y}L_2&c_{1y}L_3&c_{1y}L_4\\
+c_{2y}L_1&c_{2y}L_2&c_{2y}L_3&c_{2y}L_4\\
+c_{3y}L_1&c_{3y}L_2&c_{3y}L_3&c_{3y}L_4\\
+c_{4y}L_1&c_{4y}L_2&c_{4y}L_3&c_{4y}L_4
+\end{bmatrix}dV\{P\}
+\end{aligned}
+\]
+</div><br>
+			<p><span class="ft"><i>z</i></span>軸方向の粘性項と圧力項</p>
+			<div class="math-block" id="formula-fem-7-2-2-027" data-source-image="./../img/fem_d_momentum_tet.files/image027.png">
+\[
+\begin{aligned}
+&+\frac1{Re}\int_V\frac1{36V^2}
+\begin{bmatrix}
+c_{1z}c_{1z}&c_{1z}c_{2z}&c_{1z}c_{3z}&c_{1z}c_{4z}\\
+c_{2z}c_{1z}&c_{2z}c_{2z}&c_{2z}c_{3z}&c_{2z}c_{4z}\\
+c_{3z}c_{1z}&c_{3z}c_{2z}&c_{3z}c_{3z}&c_{3z}c_{4z}\\
+c_{4z}c_{1z}&c_{4z}c_{2z}&c_{4z}c_{3z}&c_{4z}c_{4z}
+\end{bmatrix}dV\{V_i\}\\
+&+\frac1{Re}\int_V\frac1{36V^2}
+\begin{bmatrix}
+c_{1z}c_{1i}&c_{1z}c_{2i}&c_{1z}c_{3i}&c_{1z}c_{4i}\\
+c_{2z}c_{1i}&c_{2z}c_{2i}&c_{2z}c_{3i}&c_{2z}c_{4i}\\
+c_{3z}c_{1i}&c_{3z}c_{2i}&c_{3z}c_{3i}&c_{3z}c_{4i}\\
+c_{4z}c_{1i}&c_{4z}c_{2i}&c_{4z}c_{3i}&c_{4z}c_{4i}
+\end{bmatrix}dV\{V_z\}\\
+&-\delta_{zi}\int_V\frac1{6V}
+\begin{bmatrix}
+c_{1z}L_1&c_{1z}L_2&c_{1z}L_3&c_{1z}L_4\\
+c_{2z}L_1&c_{2z}L_2&c_{2z}L_3&c_{2z}L_4\\
+c_{3z}L_1&c_{3z}L_2&c_{3z}L_3&c_{3z}L_4\\
+c_{4z}L_1&c_{4z}L_2&c_{4z}L_3&c_{4z}L_4
+\end{bmatrix}dV\{P\}
+\end{aligned}
+\]
+</div><br>
+			<p>表面張力項</p>
+			<div class="math-block" id="formula-fem-7-2-2-028" data-source-image="./../img/fem_d_momentum_tet.files/image028.png">
+\[
++\frac{2K^*}{We}n_i\int_S
+\begin{bmatrix}L_1\\L_2\\L_3\end{bmatrix}dS
+\]
+</div><br>
+			<p>重力項</p>
+			<div class="math-block" id="formula-fem-7-2-2-029" data-source-image="./../img/fem_d_momentum_tet.files/image029.png">
+\[
+-g_i^*\int_V
+\begin{bmatrix}L_1\\L_2\\L_3\\L_4\end{bmatrix}^{T}dV
+\qquad (i=1,2,3)
+\]
+</div><br>
+
+			<p>ここで、面積積分、体積積分の公式より</p>
+			<div class="math-block" id="formula-fem-7-2-2-030" data-source-image="./../img/fem_d_momentum_tet.files/image030.png">
+\[
+\int_V L_1^pL_2^qL_3^rL_4^s\,dV
+=\frac{p!q!r!s!}{(p+q+r+s+3)!}\,6V
+\]
+
+\[
+\int_VL_iL_j\,dV
+=\begin{cases}
+\displaystyle
+\frac{1!1!}{(1+1+3)!}\,6V
+=\frac{6}{5!}V
+=\frac{1}{20}V & (i\ne j),\\[6pt]
+\displaystyle
+\frac{2!}{(1+1+3)!}\,6V
+=\frac{12}{5!}V
+=\frac{1}{10}V & (i=j)
+\end{cases}
+\]
+
+\[
+\int_VL_i\,dV
+=\frac{1!}{(1+3)!}\,6V
+=\frac{6}{4!}V
+=\frac14V
+\]
+
+\[
+\int_SL_1^pL_2^qL_3^r\,dS
+=\frac{p!q!r!}{(p+q+r+2)!}\,2S
+\]
+
+\[
+\int_SL_i\,dS
+=\frac{1!}{(1+2)!}\,2S
+=\frac13S
+\]
+</div><br>
+
+			<p>形状関数を積分すると</p>
+			<div class="math-block" id="formula-fem-7-2-2-031" data-source-image="./../img/fem_d_momentum_tet.files/image031.png">
+\[
+=\frac1{20}V
+\begin{bmatrix}
+2&1&1&1\\
+1&2&1&1\\
+1&1&2&1\\
+1&1&1&2
+\end{bmatrix}
+\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}
+\]
+</div><br>
+			<p>対流項</p>
+			<div class="math-block" id="formula-fem-7-2-2-032" data-source-image="./../img/fem_d_momentum_tet.files/image032.png">
+\[
+\begin{aligned}
+&+V_x\frac1{6V}\frac{V}{4}
+\begin{bmatrix}
+c_{1x}&c_{2x}&c_{3x}&c_{4x}\\
+c_{1x}&c_{2x}&c_{3x}&c_{4x}\\
+c_{1x}&c_{2x}&c_{3x}&c_{4x}\\
+c_{1x}&c_{2x}&c_{3x}&c_{4x}
+\end{bmatrix}\{V_i\}\\
+&+V_y\frac1{6V}\frac{V}{4}
+\begin{bmatrix}
+c_{1y}&c_{2y}&c_{3y}&c_{4y}\\
+c_{1y}&c_{2y}&c_{3y}&c_{4y}\\
+c_{1y}&c_{2y}&c_{3y}&c_{4y}\\
+c_{1y}&c_{2y}&c_{3y}&c_{4y}
+\end{bmatrix}\{V_i\}\\
+&+V_z\frac1{6V}\frac{V}{4}
+\begin{bmatrix}
+c_{1z}&c_{2z}&c_{3z}&c_{4z}\\
+c_{1z}&c_{2z}&c_{3z}&c_{4z}\\
+c_{1z}&c_{2z}&c_{3z}&c_{4z}\\
+c_{1z}&c_{2z}&c_{3z}&c_{4z}
+\end{bmatrix}\{V_i\}
+\end{aligned}
+\]
+</div><br>
+			<p><span class="ft"><i>x</i></span>軸方向の粘性項と圧力項</p>
+			<div class="math-block" id="formula-fem-7-2-2-033" data-source-image="./../img/fem_d_momentum_tet.files/image033.png">
+\[
+\begin{aligned}
+&+\frac1{Re}\frac1{36V^2}V
+\begin{bmatrix}
+c_{1x}c_{1x}&c_{1x}c_{2x}&c_{1x}c_{3x}&c_{1x}c_{4x}\\
+c_{2x}c_{1x}&c_{2x}c_{2x}&c_{2x}c_{3x}&c_{2x}c_{4x}\\
+c_{3x}c_{1x}&c_{3x}c_{2x}&c_{3x}c_{3x}&c_{3x}c_{4x}\\
+c_{4x}c_{1x}&c_{4x}c_{2x}&c_{4x}c_{3x}&c_{4x}c_{4x}
+\end{bmatrix}\{V_i\}\\
+&+\frac1{Re}\frac1{36V^2}V
+\begin{bmatrix}
+c_{1x}c_{1i}&c_{1x}c_{2i}&c_{1x}c_{3i}&c_{1x}c_{4i}\\
+c_{2x}c_{1i}&c_{2x}c_{2i}&c_{2x}c_{3i}&c_{2x}c_{4i}\\
+c_{3x}c_{1i}&c_{3x}c_{2i}&c_{3x}c_{3i}&c_{3x}c_{4i}\\
+c_{4x}c_{1i}&c_{4x}c_{2i}&c_{4x}c_{3i}&c_{4x}c_{4i}
+\end{bmatrix}\{V_x\}\\
+&-\delta_{xi}\frac1{6V}\frac{V}{4}
+\begin{bmatrix}
+c_{1x}&c_{1x}&c_{1x}&c_{1x}\\
+c_{2x}&c_{2x}&c_{2x}&c_{2x}\\
+c_{3x}&c_{3x}&c_{3x}&c_{3x}\\
+c_{4x}&c_{4x}&c_{4x}&c_{4x}
+\end{bmatrix}\{P\}
+\end{aligned}
+\]
+</div><br>
+			<p><span class="ft"><i>y</i></span>軸方向の粘性項と圧力項</p>
+			<div class="math-block" id="formula-fem-7-2-2-034" data-source-image="./../img/fem_d_momentum_tet.files/image034.png">
+\[
+\begin{aligned}
+&+\frac1{Re}\frac1{36V^2}V
+\begin{bmatrix}
+c_{1y}c_{1y}&c_{1y}c_{2y}&c_{1y}c_{3y}&c_{1y}c_{4y}\\
+c_{2y}c_{1y}&c_{2y}c_{2y}&c_{2y}c_{3y}&c_{2y}c_{4y}\\
+c_{3y}c_{1y}&c_{3y}c_{2y}&c_{3y}c_{3y}&c_{3y}c_{4y}\\
+c_{4y}c_{1y}&c_{4y}c_{2y}&c_{4y}c_{3y}&c_{4y}c_{4y}
+\end{bmatrix}\{V_i\}\\
+&+\frac1{Re}\frac1{36V^2}V
+\begin{bmatrix}
+c_{1y}c_{1i}&c_{1y}c_{2i}&c_{1y}c_{3i}&c_{1y}c_{4i}\\
+c_{2y}c_{1i}&c_{2y}c_{2i}&c_{2y}c_{3i}&c_{2y}c_{4i}\\
+c_{3y}c_{1i}&c_{3y}c_{2i}&c_{3y}c_{3i}&c_{3y}c_{4i}\\
+c_{4y}c_{1i}&c_{4y}c_{2i}&c_{4y}c_{3i}&c_{4y}c_{4i}
+\end{bmatrix}\{V_y\}\\
+&-\delta_{yi}\frac1{6V}\frac{V}{4}
+\begin{bmatrix}
+c_{1y}&c_{1y}&c_{1y}&c_{1y}\\
+c_{2y}&c_{2y}&c_{2y}&c_{2y}\\
+c_{3y}&c_{3y}&c_{3y}&c_{3y}\\
+c_{4y}&c_{4y}&c_{4y}&c_{4y}
+\end{bmatrix}\{P\}
+\end{aligned}
+\]
+</div><br>
+			<p><span class="ft"><i>z</i></span>軸方向の粘性項と圧力項</p>
+			<div class="math-block" id="formula-fem-7-2-2-035" data-source-image="./../img/fem_d_momentum_tet.files/image035.png">
+\[
+\begin{aligned}
+&+\frac1{Re}\frac1{36V^2}V
+\begin{bmatrix}
+c_{1z}c_{1z}&c_{1z}c_{2z}&c_{1z}c_{3z}&c_{1z}c_{4z}\\
+c_{2z}c_{1z}&c_{2z}c_{2z}&c_{2z}c_{3z}&c_{2z}c_{4z}\\
+c_{3z}c_{1z}&c_{3z}c_{2z}&c_{3z}c_{3z}&c_{3z}c_{4z}\\
+c_{4z}c_{1z}&c_{4z}c_{2z}&c_{4z}c_{3z}&c_{4z}c_{4z}
+\end{bmatrix}\{V_i\}\\
+&+\frac1{Re}\frac1{36V^2}V
+\begin{bmatrix}
+c_{1z}c_{1i}&c_{1z}c_{2i}&c_{1z}c_{3i}&c_{1z}c_{4i}\\
+c_{2z}c_{1i}&c_{2z}c_{2i}&c_{2z}c_{3i}&c_{2z}c_{4i}\\
+c_{3z}c_{1i}&c_{3z}c_{2i}&c_{3z}c_{3i}&c_{3z}c_{4i}\\
+c_{4z}c_{1i}&c_{4z}c_{2i}&c_{4z}c_{3i}&c_{4z}c_{4i}
+\end{bmatrix}\{V_z\}\\
+&-\delta_{zi}\frac1{6V}\frac{V}{4}
+\begin{bmatrix}
+c_{1z}&c_{1z}&c_{1z}&c_{1z}\\
+c_{2z}&c_{2z}&c_{2z}&c_{2z}\\
+c_{3z}&c_{3z}&c_{3z}&c_{3z}\\
+c_{4z}&c_{4z}&c_{4z}&c_{4z}
+\end{bmatrix}\{P\}
+\end{aligned}
+\]
+</div><br>
+			<p>表面張力項</p>
+			<div class="math-block" id="formula-fem-7-2-2-036" data-source-image="./../img/fem_d_momentum_tet.files/image036.png">
+\[
++\frac{2K^*}{We}n_i\frac{S}{3}
+\begin{bmatrix}1\\1\\1\end{bmatrix}
+\]
+</div><br>
+			<p>重力項</p>
+			<div class="math-block" id="formula-fem-7-2-2-037" data-source-image="./../img/fem_d_momentum_tet.files/image037.png">
+\[
+-g_i^*\frac{V}{4}
+\begin{bmatrix}1\\1\\1\\1\end{bmatrix}
+\qquad(i=1,2,3)
+\]
+</div><br>
+			<div class="correction-note" id="fix-r-fem3d-mom-001">
+				境界三角形で得られる3節点の表面力ベクトルは、要素方程式へ加算するときに境界面の節点番号から四面体4節点へ写像します。面局所ベクトルを \(\mathbf f_S\) とすると、要素ベクトルは \(\mathbf f_e=A_S^T\mathbf f_S\) です。以下では \(\mathbf b_S=A_S^T[1\;1\;1]^T\) を用いてこの写像を式中に明示します。例えば境界面が要素節点1-2-3なら \(\mathbf b_S=[1\;1\;1\;0]^T\) です。
+			</div>
+
+			<p>係数をまとめて</p>
+			<div class="math-block" id="formula-fem-7-2-2-031-repeat-2" data-source-image="./../img/fem_d_momentum_tet.files/image031.png">
+\[
+=\frac1{20}V
+\begin{bmatrix}
+2&1&1&1\\
+1&2&1&1\\
+1&1&2&1\\
+1&1&1&2
+\end{bmatrix}
+\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}
+\]
+</div><br>
+			<p>対流項</p>
+			<div class="math-block" id="formula-fem-7-2-2-038" data-source-image="./../img/fem_d_momentum_tet.files/image038.png">
+\[
+\begin{aligned}
+&+V_x\frac1{24}
+\begin{bmatrix}
+c_{1x}&c_{2x}&c_{3x}&c_{4x}\\
+c_{1x}&c_{2x}&c_{3x}&c_{4x}\\
+c_{1x}&c_{2x}&c_{3x}&c_{4x}\\
+c_{1x}&c_{2x}&c_{3x}&c_{4x}
+\end{bmatrix}\{V_i\}\\
+&+V_y\frac1{24}
+\begin{bmatrix}
+c_{1y}&c_{2y}&c_{3y}&c_{4y}\\
+c_{1y}&c_{2y}&c_{3y}&c_{4y}\\
+c_{1y}&c_{2y}&c_{3y}&c_{4y}\\
+c_{1y}&c_{2y}&c_{3y}&c_{4y}
+\end{bmatrix}\{V_i\}\\
+&+V_z\frac1{24}
+\begin{bmatrix}
+c_{1z}&c_{2z}&c_{3z}&c_{4z}\\
+c_{1z}&c_{2z}&c_{3z}&c_{4z}\\
+c_{1z}&c_{2z}&c_{3z}&c_{4z}\\
+c_{1z}&c_{2z}&c_{3z}&c_{4z}
+\end{bmatrix}\{V_i\}
+\end{aligned}
+\]
+</div><br>
+			<p><span class="ft"><i>x</i></span>軸方向の粘性項と圧力項</p>
+			<div class="math-block" id="formula-fem-7-2-2-039" data-source-image="./../img/fem_d_momentum_tet.files/image039.png">
+\[
+\begin{aligned}
+&+\frac1{Re}\frac1{36V}
+\begin{bmatrix}
+c_{1x}c_{1x}&c_{1x}c_{2x}&c_{1x}c_{3x}&c_{1x}c_{4x}\\
+c_{2x}c_{1x}&c_{2x}c_{2x}&c_{2x}c_{3x}&c_{2x}c_{4x}\\
+c_{3x}c_{1x}&c_{3x}c_{2x}&c_{3x}c_{3x}&c_{3x}c_{4x}\\
+c_{4x}c_{1x}&c_{4x}c_{2x}&c_{4x}c_{3x}&c_{4x}c_{4x}
+\end{bmatrix}\{V_i\}\\
+&+\frac1{Re}\frac1{36V}
+\begin{bmatrix}
+c_{1x}c_{1i}&c_{1x}c_{2i}&c_{1x}c_{3i}&c_{1x}c_{4i}\\
+c_{2x}c_{1i}&c_{2x}c_{2i}&c_{2x}c_{3i}&c_{2x}c_{4i}\\
+c_{3x}c_{1i}&c_{3x}c_{2i}&c_{3x}c_{3i}&c_{3x}c_{4i}\\
+c_{4x}c_{1i}&c_{4x}c_{2i}&c_{4x}c_{3i}&c_{4x}c_{4i}
+\end{bmatrix}\{V_x\}\\
+&-\delta_{xi}\frac1{24}
+\begin{bmatrix}
+c_{1x}&c_{1x}&c_{1x}&c_{1x}\\
+c_{2x}&c_{2x}&c_{2x}&c_{2x}\\
+c_{3x}&c_{3x}&c_{3x}&c_{3x}\\
+c_{4x}&c_{4x}&c_{4x}&c_{4x}
+\end{bmatrix}\{P\}
+\end{aligned}
+\]
+</div><br>
+			<p><span class="ft"><i>y</i></span>軸方向の粘性項と圧力項</p>
+			<div class="math-block" id="formula-fem-7-2-2-040" data-source-image="./../img/fem_d_momentum_tet.files/image040.png">
+\[
+\begin{aligned}
+&+\frac1{Re}\frac1{36V}
+\begin{bmatrix}
+c_{1y}c_{1y}&c_{1y}c_{2y}&c_{1y}c_{3y}&c_{1y}c_{4y}\\
+c_{2y}c_{1y}&c_{2y}c_{2y}&c_{2y}c_{3y}&c_{2y}c_{4y}\\
+c_{3y}c_{1y}&c_{3y}c_{2y}&c_{3y}c_{3y}&c_{3y}c_{4y}\\
+c_{4y}c_{1y}&c_{4y}c_{2y}&c_{4y}c_{3y}&c_{4y}c_{4y}
+\end{bmatrix}\{V_i\}\\
+&+\frac1{Re}\frac1{36V}
+\begin{bmatrix}
+c_{1y}c_{1i}&c_{1y}c_{2i}&c_{1y}c_{3i}&c_{1y}c_{4i}\\
+c_{2y}c_{1i}&c_{2y}c_{2i}&c_{2y}c_{3i}&c_{2y}c_{4i}\\
+c_{3y}c_{1i}&c_{3y}c_{2i}&c_{3y}c_{3i}&c_{3y}c_{4i}\\
+c_{4y}c_{1i}&c_{4y}c_{2i}&c_{4y}c_{3i}&c_{4y}c_{4i}
+\end{bmatrix}\{V_y\}\\
+&-\delta_{yi}\frac1{24}
+\begin{bmatrix}
+c_{1y}&c_{1y}&c_{1y}&c_{1y}\\
+c_{2y}&c_{2y}&c_{2y}&c_{2y}\\
+c_{3y}&c_{3y}&c_{3y}&c_{3y}\\
+c_{4y}&c_{4y}&c_{4y}&c_{4y}
+\end{bmatrix}\{P\}
+\end{aligned}
+\]
+</div><br>
+			<p><span class="ft"><i>z</i></span>軸方向の粘性項と圧力項</p>
+			<div class="math-block" id="formula-fem-7-2-2-041" data-source-image="./../img/fem_d_momentum_tet.files/image041.png">
+\[
+\begin{aligned}
+&+\frac1{Re}\frac1{36V}
+\begin{bmatrix}
+c_{1z}c_{1z}&c_{1z}c_{2z}&c_{1z}c_{3z}&c_{1z}c_{4z}\\
+c_{2z}c_{1z}&c_{2z}c_{2z}&c_{2z}c_{3z}&c_{2z}c_{4z}\\
+c_{3z}c_{1z}&c_{3z}c_{2z}&c_{3z}c_{3z}&c_{3z}c_{4z}\\
+c_{4z}c_{1z}&c_{4z}c_{2z}&c_{4z}c_{3z}&c_{4z}c_{4z}
+\end{bmatrix}\{V_i\}\\
+&+\frac1{Re}\frac1{36V}
+\begin{bmatrix}
+c_{1z}c_{1i}&c_{1z}c_{2i}&c_{1z}c_{3i}&c_{1z}c_{4i}\\
+c_{2z}c_{1i}&c_{2z}c_{2i}&c_{2z}c_{3i}&c_{2z}c_{4i}\\
+c_{3z}c_{1i}&c_{3z}c_{2i}&c_{3z}c_{3i}&c_{3z}c_{4i}\\
+c_{4z}c_{1i}&c_{4z}c_{2i}&c_{4z}c_{3i}&c_{4z}c_{4i}
+\end{bmatrix}\{V_z\}\\
+&-\delta_{zi}\frac1{24}
+\begin{bmatrix}
+c_{1z}&c_{1z}&c_{1z}&c_{1z}\\
+c_{2z}&c_{2z}&c_{2z}&c_{2z}\\
+c_{3z}&c_{3z}&c_{3z}&c_{3z}\\
+c_{4z}&c_{4z}&c_{4z}&c_{4z}
+\end{bmatrix}\{P\}
+\end{aligned}
+\]
+</div><br>
+			<p>表面張力項</p>
+			<div class="math-block" id="formula-fem-7-2-2-042" data-source-image="./../img/fem_d_momentum_tet.files/image042.png">
+\[
++\frac{2K^*}{3We}n_iS
+\begin{bmatrix}
+1\\
+1\\
+1
+\end{bmatrix}
+\]
+</div><br>
+			<p>重力項</p>
+			<div class="math-block" id="formula-fem-7-2-2-037-repeat-2" data-source-image="./../img/fem_d_momentum_tet.files/image037.png">
+\[
+-g_i^*\frac{V}{4}
+\begin{bmatrix}1\\1\\1\\1\end{bmatrix}
+\qquad(i=1,2,3)
+\]
+</div><br>
+
+			<p>行列式をまとめると</p>
+			<div class="math-block" id="formula-fem-7-2-2-043" data-source-image="./../img/fem_d_momentum_tet.files/image043.png">
+\[
+\begin{aligned}
+={}&[C]\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}
++V_x[C_x]\{V_i\}+V_y[C_y]\{V_i\}+V_z[C_z]\{V_i\}\\
+&+\frac{1}{Re}[S_{xx}]\{V_i\}+\frac{1}{Re}[S_{xi}]\{V_x\}-\delta_{xi}[H_x]\{P\}\\
+&+\frac{1}{Re}[S_{yy}]\{V_i\}+\frac{1}{Re}[S_{yi}]\{V_y\}-\delta_{yi}[H_y]\{P\}\\
+&+\frac{1}{Re}[S_{zz}]\{V_i\}+\frac{1}{Re}[S_{zi}]\{V_z\}-\delta_{zi}[H_z]\{P\}\\
+&+\frac{2K^*}{3We}n_iS
+\begin{bmatrix}1\\1\\1\end{bmatrix}
+-g_i^*\frac{V}{4}
+\begin{bmatrix}1\\1\\1\\1\end{bmatrix},
+\qquad (i=1,2,3)
+\end{aligned}
+\]
+</div><br>
+
+			<p>行列ごとにまとめると</p>
+			<div class="math-block" id="formula-fem-7-2-2-044" data-source-image="./../img/fem_d_momentum_tet.files/image044.png">
+\[
+\begin{aligned}
+={}&[C]\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}
++(V_x[C_x]+V_y[C_y]+V_z[C_z])\{V_i\}\\
+&+\frac{1}{Re}([S_{xx}]+[S_{yy}]+[S_{zz}])\{V_i\}\\
+&+\frac{1}{Re}\left([S_{xi}]\{V_x\}+[S_{yi}]\{V_y\}+[S_{zi}]\{V_z\}\right)\\
+&-(\delta_{xi}[H_x]+\delta_{yi}[H_y]+\delta_{zi}[H_z])\{P\}\\
+&+\frac{2K^*}{3We}n_iS
+\begin{bmatrix}1\\1\\1\end{bmatrix}
+-g_i^*\frac{V}{4}
+\begin{bmatrix}1\\1\\1\\1\end{bmatrix}
+\qquad (i=1,2,3)\\
+={}&\begin{bmatrix}0\\0\\0\\0\end{bmatrix}
+\end{aligned}
+\]
+</div><br>
+
+			<p>最終的に次式が導出されます。</p>
+			<div class="math-block" id="formula-fem-7-2-2-045" data-source-image="./../img/fem_d_momentum_tet.files/image045.png">
+\[
+\begin{aligned}
+&[C]\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}
++(V_x[C_x]+V_y[C_y]+V_z[C_z])\{V_i\}\\
+&+\frac{1}{Re}([S_{xx}]+[S_{yy}]+[S_{zz}])\{V_i\}\\
+&+\frac{1}{Re}\left([S_{xi}]\{V_x\}+[S_{yi}]\{V_y\}+[S_{zi}]\{V_z\}\right)\\
+&-(\delta_{xi}[H_x]+\delta_{yi}[H_y]+\delta_{zi}[H_z])\{P\}\\
+&+\frac{2K^*}{3We}n_iS
+\begin{bmatrix}1\\1\\1\end{bmatrix}
+-g_i^*\frac{V}{4}
+\begin{bmatrix}1\\1\\1\\1\end{bmatrix}
+=\begin{bmatrix}0\\0\\0\\0\end{bmatrix},
+\qquad (i=1,2,3)
+\end{aligned}
+\]
+</div><br>
+
+			<p>既知の項を右辺に移項します。</p>
+			<div class="math-block" id="formula-fem-7-2-2-046" data-source-image="./../img/fem_d_momentum_tet.files/image046.png">
+\[
+\begin{aligned}
+\frac{[C]}{\Delta\tau}\{V_i\}^{\tau+\Delta\tau}
+&+(V_x[C_x]+V_y[C_y]+V_z[C_z])\{V_i\}^{\tau+\Delta\tau}\\
+&+\frac{1}{Re}([S_{xx}]+[S_{yy}]+[S_{zz}])\{V_i\}^{\tau+\Delta\tau}\\
+&+\frac{1}{Re}\left([S_{xi}]\{V_x\}^{\tau+\Delta\tau}
++[S_{yi}]\{V_y\}^{\tau+\Delta\tau}
++[S_{zi}]\{V_z\}^{\tau+\Delta\tau}\right)\\
+&-(\delta_{xi}[H_x]+\delta_{yi}[H_y]+\delta_{zi}[H_z])\{P\}^{\tau+\Delta\tau}\\
+={}&\frac{[C]}{\Delta\tau}\{V_i\}^{\tau}
+-\frac{2K^*}{3We}n_iS
+\begin{bmatrix}1\\1\\1\end{bmatrix}
++g_i^*\frac{V}{4}
+\begin{bmatrix}1\\1\\1\\1\end{bmatrix},
+\qquad (i=1,2,3)
+\end{aligned}
+\]
+</div><br>
+
+			<p><span class="ft"><i>x</i></span>軸方向の成分は次式となります。</p>
+			<div class="math-block" id="formula-fem-7-2-2-047" data-source-image="./../img/fem_d_momentum_tet.files/image047.png">
+\[
+\begin{aligned}
+\frac{[C]}{\Delta\tau}\{V_x\}^{\tau+\Delta\tau}
+&+(V_x[C_x]+V_y[C_y]+V_z[C_z])\{V_x\}^{\tau+\Delta\tau}\\
+&+\frac{1}{Re}\left\{
+(2[S_{xx}]+[S_{yy}]+[S_{zz}])\{V_x\}^{\tau+\Delta\tau}
++[S_{yx}]\{V_y\}^{\tau+\Delta\tau}
++[S_{zx}]\{V_z\}^{\tau+\Delta\tau}
+\right\}\\
+&-[H_x]\{P\}^{\tau+\Delta\tau}\\
+={}&\frac{[C]}{\Delta\tau}\{V_x\}^{\tau}
+-\frac{2K^*}{3We}n_xS
+\begin{bmatrix}1\\1\\1\end{bmatrix}
++g_x^*\frac{V}{4}
+\begin{bmatrix}1\\1\\1\\1\end{bmatrix}
+\end{aligned}
+\]
+</div><br>
+			<p><span class="ft"><i>y</i></span>軸方向の成分は次式となります。</p>
+			<div class="math-block" id="formula-fem-7-2-2-048" data-source-image="./../img/fem_d_momentum_tet.files/image048.png">
+\[
+\begin{aligned}
+\frac{[C]}{\Delta\tau}\{V_y\}^{\tau+\Delta\tau}
+&+(V_x[C_x]+V_y[C_y]+V_z[C_z])\{V_y\}^{\tau+\Delta\tau}\\
+&+\frac{1}{Re}\left\{
+[S_{xy}]\{V_x\}^{\tau+\Delta\tau}
++([S_{xx}]+2[S_{yy}]+[S_{zz}])\{V_y\}^{\tau+\Delta\tau}
++[S_{zy}]\{V_z\}^{\tau+\Delta\tau}
+\right\}\\
+&-[H_y]\{P\}^{\tau+\Delta\tau}\\
+={}&\frac{[C]}{\Delta\tau}\{V_y\}^{\tau}
+-\frac{2K^*}{3We}n_yS
+\begin{bmatrix}1\\1\\1\end{bmatrix}
++g_y^*\frac{V}{4}
+\begin{bmatrix}1\\1\\1\\1\end{bmatrix}
+\end{aligned}
+\]
+</div><br>
+			<p><span class="ft"><i>z</i></span>軸方向の成分は次式となります。</p>
+			<div class="math-block" id="formula-fem-7-2-2-049" data-source-image="./../img/fem_d_momentum_tet.files/image049.png">
+\[
+\begin{aligned}
+\frac{[C]}{\Delta\tau}\{V_z\}^{\tau+\Delta\tau}
+&+(V_x[C_x]+V_y[C_y]+V_z[C_z])\{V_z\}^{\tau+\Delta\tau}\\
+&+\frac{1}{Re}\left\{
+[S_{xz}]\{V_x\}^{\tau+\Delta\tau}
++[S_{yz}]\{V_y\}^{\tau+\Delta\tau}
++([S_{xx}]+[S_{yy}]+2[S_{zz}])\{V_z\}^{\tau+\Delta\tau}
+\right\}\\
+&-[H_z]\{P\}^{\tau+\Delta\tau}\\
+={}&\frac{[C]}{\Delta\tau}\{V_z\}^{\tau}
+-\frac{2K^*}{3We}n_zS
+\begin{bmatrix}1\\1\\1\end{bmatrix}
++g_z^*\frac{V}{4}
+\begin{bmatrix}1\\1\\1\\1\end{bmatrix},
+\qquad (i=1,2,3)
+\end{aligned}
+\]
+</div><br>
+			<br>
+
+
+			<div style="margin-top:10px;"></div>
+			<h2>
+				<table><tr>
+				<td style="padding:0px 10px;"><a href="./fem_7_2_1.html">prev</a></td>
+				<td style="padding:0px 10px;">|</td>
+				<td style="padding:0px 10px;"><a href="./fem_7_2.html">up</a></td>
+				<td style="padding:0px 10px;">|</td>
+				<td style="padding:0px 10px;"><a href="./fem_8.html">next</a></td>
+				</tr></table>
+			</h2>
+
+			<!-- 広告 -->
+			<p><iframe src="./../questionnaire.html" width="650" height="325" scrolling="yes" frameborder="0"></iframe></p>
+		</div>
+
+	</div>	<!-- id="content" -->
+
+	</div>	<!-- id="main" -->
+
+	<div id="sub">
+		<iframe src="./../menu.html" id="menu" name="menu" width="180" scrolling="no" frameborder="0"></iframe>
+
+		<!-- 広告 -->
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- バナー3（メニュー欄） -->
+		<ins class="adsbygoogle"
+		     style="display:inline-block;width:160px;height:600px"
+		     data-ad-client="ca-pub-4382202381956938"
+		     data-ad-slot="2356729377"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+
+		<!-- ページ別カウンタ -->
+		<!--shinobi1-->
+		<script type="text/javascript" src="http://x7.tuzikaze.com/ufo/10850280M"></script>
+		<noscript><a href="http://x7.tuzikaze.com/bin/gg?10850280M" target="_blank">
+		<img src="http://x7.tuzikaze.com/bin/ll?10850280M" border="0"></a><br>
+		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://www.soudsite.com/">知恵と工夫</a></span></noscript>
+		<!--shinobi2-->
+
+		<div class="sub-text">
+			<dl>
+				<dt>カウンタ</dt>
+				<dd>
+					<!-- shinobi ct2 -->
+					<script type="text/javascript" src="http://ct2.tirirenge.com/sc/1515356"></script>
+					<noscript><a href="http://ct2.tirirenge.com/gg/1515356" target="_blank">
+					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="カウンター" /></a><br />
+					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">ポイント</a></span></noscript>
+					<!-- /shinobi ct2 -->
+					<br>
+				（2011.3.15～）
+				</dd>
+			</dl>
+		</div>
+
+	</div>
+
+	<div id="footer">
+		<iframe id="ft" name="ft" src="./../footer.html" width="100%" scrolling="no" frameborder="0"></iframe>
+	</div>
+
+	</div>	<!-- id="wrapper" -->
+</body>
+</html>
