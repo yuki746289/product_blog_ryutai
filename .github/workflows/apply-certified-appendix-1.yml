@@ -43,19 +43,7 @@ jobs:
               text = re.sub(r'\s*<script\b[^>]*src=["\'][^"\']*mathjax[^"\']*["\'][^>]*>\s*</script>', '', text, flags=re.I|re.S)
               return text
 
-          mathjax4 = '''
-\t<script>
-\twindow.MathJax = {
-\t\ttex: {inlineMath: [['\\\\(', '\\\\)']], displayMath: [['\\\\[', '\\\\]']]},
-\t\toutput: {
-\t\t\tdisplayOverflow: 'linebreak',
-\t\t\tlinebreaks: {inline: true, width: '100%', lineleading: 0.2}
-\t\t},
-\t\tchtml: {displayAlign: 'left', displayIndent: '0'}
-\t};
-\t</script>
-\t<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
-'''
+          mathjax4 = "\n\t<script>\n\twindow.MathJax = {\n\t\ttex: {inlineMath: [['\\\\(', '\\\\)']], displayMath: [['\\\\[', '\\\\]']]},\n\t\toutput: {\n\t\t\tdisplayOverflow: 'linebreak',\n\t\t\tlinebreaks: {inline: true, width: '100%', lineleading: 0.2}\n\t\t},\n\t\tchtml: {displayAlign: 'left', displayIndent: '0'}\n\t};\n\t</script>\n\t<script defer src=\"https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js\"></script>\n"
 
           def standardize_mathjax(text):
               text = strip_mathjax(text)
