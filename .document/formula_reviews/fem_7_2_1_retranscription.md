@@ -1,21 +1,18 @@
 # 元画像忠実転記ドラフト: fem/fem_7_2_1.html
 
 作成日: 2026-09-17
+更新日: 2026-09-17
 
 ## 位置づけ
 
-このファイルは `fem/fem_7_2_1.html` の元数式画像を、**数学的な訂正・一般化・簡略化を行わず**LaTeXへ再転記するための作業ドラフトである。
+`fem/fem_7_2_1.html` の元数式画像を、**数学的な訂正・一般化・簡略化を行わず**LaTeXへ再転記する作業ドラフト。
 
 - 通常ページへは未反映。
-- 2026-09-17時点では `image001`～`image007` を直接目視して転記済み。
-- `image008`～`image020` は元画像を直接確認するまで転記しない。
-- 原画像側に不自然な表記があっても、この原文転記では勝手に修正しない。
-- 全20式の再転記後、元画像とのPass 1を再実施する。
-- 実ブラウザ上のMathJax描画確認はPass 2として別判定する。
+- 元画像を直接目視できた式だけ転記する。
+- 原画像側に不自然な表記があっても原文転記では修正しない。
+- 全20式の転記後にPass 1を再実施し、その後実ブラウザPass 2を行う。
 
 ## image001
-
-元画像は、圧力の対流項が小文字 `x/y/z`、速度の発散項が大文字 `X/Y/Z`。
 
 ```latex
 \[
@@ -34,46 +31,26 @@
 
 ## image002
 
-元画像は零ベクトルを積分する途中段階も明示している。
-
 ```latex
 \[
 \int_V[N]^T\phi\,dV
-=
-\int_V
-\begin{bmatrix}
-N_1\\N_2\\N_3\\N_4
-\end{bmatrix}
-\phi\,dV
-=
-\int_V
-\begin{bmatrix}
-0\\0\\0\\0
-\end{bmatrix}
-dV
-=
-\begin{bmatrix}
-0\\0\\0\\0
-\end{bmatrix}
+=\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}\phi\,dV
+=\int_V
+\begin{bmatrix}0\\0\\0\\0\end{bmatrix}dV
+=\begin{bmatrix}0\\0\\0\\0\end{bmatrix}
 \]
 ```
 
 ## image003
-
-元画像は `V_x` のみ節点値まで展開し、その後 `V_y`, `V_z`, `P` は `[N]^T` 表記としている。
 
 ```latex
 \[
 \begin{aligned}
 V_x
 &=N_1V_{x1}+N_2V_{x2}+N_3V_{x3}+N_4V_{x4}\\
-&=
-\begin{bmatrix}
-N_1\\N_2\\N_3\\N_4
-\end{bmatrix}
-\begin{Bmatrix}
-V_{x1}&V_{x2}&V_{x3}&V_{x4}
-\end{Bmatrix}\\
+&=\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\begin{Bmatrix}V_{x1}&V_{x2}&V_{x3}&V_{x4}\end{Bmatrix}\\
 &=[N]^T\{V_x\},\\
 V_y&=[N]^T\{V_y\},\\
 V_z&=[N]^T\{V_z\},\\
@@ -84,13 +61,10 @@ P&=[N]^T\{P\}.
 
 ## image004
 
-元画像は圧力対流項が小文字 `x/y/z`、速度発散項が大文字 `X/Y/Z`。式内部は波括弧で囲まれている。
-
 ```latex
 \[
 \int_V[N]^T\phi\,dV
-=
-\int_V[N]^T\left\{
+=\int_V[N]^T\left\{
 \frac{\partial P}{\partial\tau}
 +V_x\frac{\partial P}{\partial x}
 +V_y\frac{\partial P}{\partial y}
@@ -106,13 +80,10 @@ P&=[N]^T\{P\}.
 
 ## image005
 
-元画像は前式からの継続として先頭が単独 `=`。この段階では空間微分は大文字 `X/Y/Z`。
-
 ```latex
 \[
 \begin{aligned}
-={}&
-\int_V[N]^T\frac{\partial P}{\partial\tau}\,dV
+={}&\int_V[N]^T\frac{\partial P}{\partial\tau}\,dV
 +\int_V[N]^TV_x\frac{\partial P}{\partial X}\,dV
 +\int_V[N]^TV_y\frac{\partial P}{\partial Y}\,dV
 +\int_V[N]^TV_z\frac{\partial P}{\partial Z}\,dV\\
@@ -125,39 +96,27 @@ P&=[N]^T\{P\}.
 
 ## image006
 
-元画像の時刻添字は `\Delta\tau+\tau` の順序。先頭は前式から続く単独 `=`。
-
 ```latex
 \[
 \begin{aligned}
-={}&
-\int_V[N]^T[N]dV\,
+={}&\int_V[N]^T[N]dV\,
 \frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
-&+V_x\int_V[N]^T
-\frac{\partial[N]\{P\}^{\Delta\tau+\tau}}{\partial X}dV
-+V_y\int_V[N]^T
-\frac{\partial[N]\{P\}^{\Delta\tau+\tau}}{\partial Y}dV\\
-&+V_z\int_V[N]^T
-\frac{\partial[N]\{P\}^{\Delta\tau+\tau}}{\partial Z}dV\\
-&+\frac{1}{Ma^2}\int_V[N]^T
-\frac{\partial[N]\{V_x\}^{\Delta\tau+\tau}}{\partial X}dV
-+\frac{1}{Ma^2}\int_V[N]^T
-\frac{\partial[N]\{V_y\}^{\Delta\tau+\tau}}{\partial Y}dV\\
-&+\frac{1}{Ma^2}\int_V[N]^T
-\frac{\partial[N]\{V_z\}^{\Delta\tau+\tau}}{\partial Z}dV
+&+V_x\int_V[N]^T\frac{\partial[N]\{P\}^{\Delta\tau+\tau}}{\partial X}dV
++V_y\int_V[N]^T\frac{\partial[N]\{P\}^{\Delta\tau+\tau}}{\partial Y}dV\\
+&+V_z\int_V[N]^T\frac{\partial[N]\{P\}^{\Delta\tau+\tau}}{\partial Z}dV\\
+&+\frac{1}{Ma^2}\int_V[N]^T\frac{\partial[N]\{V_x\}^{\Delta\tau+\tau}}{\partial X}dV
++\frac{1}{Ma^2}\int_V[N]^T\frac{\partial[N]\{V_y\}^{\Delta\tau+\tau}}{\partial Y}dV\\
+&+\frac{1}{Ma^2}\int_V[N]^T\frac{\partial[N]\{V_z\}^{\Delta\tau+\tau}}{\partial Z}dV
 \end{aligned}
 \]
 ```
 
 ## image007
 
-元画像は `image006` から節点自由度を積分外へ出した形。時刻添字は引き続き `\Delta\tau+\tau`。
-
 ```latex
 \[
 \begin{aligned}
-={}&
-\int_V[N]^T[N]dV\,
+={}&\int_V[N]^T[N]dV\,
 \frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
 &+V_x\int_V[N]^T\frac{\partial[N]}{\partial X}dV\,\{P\}^{\Delta\tau+\tau}
 +V_y\int_V[N]^T\frac{\partial[N]}{\partial Y}dV\,\{P\}^{\Delta\tau+\tau}\\
@@ -169,15 +128,124 @@ P&=[N]^T\{P\}.
 \]
 ```
 
-## image008～image020
+## image008～image012
 
-**HOLD** — 元画像を直接表示して1式ずつ照合後に追記する。
+**HOLD** — 元画像直接確認後に転記する。
+
+## image013
+
+元画像では最終結果だけでなく階乗計算の途中式も表示されている。
+
+```latex
+\[
+\int_VL_1^pL_2^qL_3^rL_4^s\,dV
+=\frac{p!q!r!s!}{(p+q+r+s+3)!}\,6V
+\]
+\[
+\int_VL_iL_j\,dV=
+\begin{cases}
+\dfrac{1!1!}{(1+1+3)!}\,6V
+=\dfrac{6}{5!}V
+=\dfrac{1}{20}V,& i\ne j,\\[6pt]
+\dfrac{2!}{(1+1+3)!}\,6V
+=\dfrac{12}{5!}V
+=\dfrac{1}{10}V,& i=j,
+\end{cases}
+\]
+\[
+\int_VL_i\,dV
+=\frac{1!}{(1+3)!}\,6V
+=\frac{6}{4!}V
+=\frac14V
+\]
+```
+
+## image014～image015
+
+**HOLD** — 元画像直接確認後に転記する。
+
+## image016
+
+```latex
+\[
+\begin{aligned}
+={}&[C]\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}
++V_x[C_x]\{P\}^{\Delta\tau+\tau}
++V_y[C_y]\{P\}^{\Delta\tau+\tau}
++V_z[C_z]\{P\}^{\Delta\tau+\tau}\\
+&+\frac1{Ma^2}[C_x]\{V_x\}^{\Delta\tau+\tau}
++\frac1{Ma^2}[C_y]\{V_y\}^{\Delta\tau+\tau}
++\frac1{Ma^2}[C_z]\{V_z\}^{\Delta\tau+\tau}
+\end{aligned}
+\]
+```
+
+## image017
+
+```latex
+\[
+=\begin{bmatrix}0\\0\\0\\0\end{bmatrix}
+\]
+```
+
+## image018
+
+```latex
+\[
+\begin{aligned}
+[C]\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}
+&+V_x[C_x]\{P\}^{\Delta\tau+\tau}
++V_y[C_y]\{P\}^{\Delta\tau+\tau}
++V_z[C_z]\{P\}^{\Delta\tau+\tau}\\
+&+\frac1{Ma^2}[C_x]\{V_x\}^{\Delta\tau+\tau}
++\frac1{Ma^2}[C_y]\{V_y\}^{\Delta\tau+\tau}
++\frac1{Ma^2}[C_z]\{V_z\}^{\Delta\tau+\tau}=0
+\end{aligned}
+\]
+```
+
+## image019
+
+```latex
+\[
+\begin{aligned}
+\frac{[C]}{\Delta\tau}\{P\}^{\Delta\tau+\tau}
+&+V_x[C_x]\{P\}^{\Delta\tau+\tau}
++V_y[C_y]\{P\}^{\Delta\tau+\tau}
++V_z[C_z]\{P\}^{\Delta\tau+\tau}\\
+&+\frac1{Ma^2}[C_x]\{V_x\}^{\Delta\tau+\tau}
++\frac1{Ma^2}[C_y]\{V_y\}^{\Delta\tau+\tau}
++\frac1{Ma^2}[C_z]\{V_z\}^{\Delta\tau+\tau}
+=\frac{[C]}{\Delta\tau}\{P\}^{\tau}
+\end{aligned}
+\]
+```
+
+## image020
+
+```latex
+\[
+\begin{aligned}
+\left(
+\frac{[C]}{\Delta\tau}
++V_x[C_x]+V_y[C_y]+V_z[C_z]
+\right)\{P\}^{\Delta\tau+\tau}
+&+\frac1{Ma^2}\left(
+[C_x]\{V_x\}^{\Delta\tau+\tau}
++[C_y]\{V_y\}^{\Delta\tau+\tau}
++[C_z]\{V_z\}^{\Delta\tau+\tau}
+\right)\\
+&=\frac{[C]}{\Delta\tau}\{P\}^{\tau}
+\end{aligned}
+\]
+```
 
 ## 現在の状態
 
-- 元画像との対応付け: 20/20
-- 現監査候補のPass 1目視監査: 7/20
-- 現監査候補の合格: 0/20
-- 元画像忠実再転記ドラフト: 7/20
+- 元画像との対応付け: **20/20**
+- 現監査候補のPass 1目視監査: **13/20**
+- 現監査候補の合格: **0/20**
+- 元画像忠実再転記ドラフト: **13/20**
+- 未転記: **7/20** (`image008～012`, `image014～015`)
 - 再転記版の再Pass 1: 未実施
-- Pass 2: 0/20
+- Pass 2: **0/20**
