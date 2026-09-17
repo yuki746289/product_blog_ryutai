@@ -28,10 +28,13 @@
     return;
   }
 
+  var parentBody = parentDocument.body;
   var contentMain = parentDocument.getElementById("content-main");
-  if (!contentMain) {
+  if (!parentBody || !contentMain) {
     return;
   }
+
+  parentBody.classList.add("rv-top-page-v16");
 
   function selectHeading(sectionLabel) {
     var headings = Array.prototype.slice.call(contentMain.querySelectorAll("h2"));
