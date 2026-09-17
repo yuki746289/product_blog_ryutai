@@ -1,0 +1,156 @@
+name: Apply certified Appendix 1 formulas
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/apply-certified-appendix-1.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - name: Apply certified formula blocks only
+        run: |
+          python3 - <<'PY'
+          import json, re
+          from pathlib import Path
+
+          normal_path = Path('appendix/appendix_1.html')
+          data_path = Path('.document/formula_reviews/appendix_1_formulas.json')
+          audit_path = Path('.document/formula_reviews/APPENDIX_1_FORMULA_AUDIT_20260918.md')
+          imgdir = 'appendix_equation.files'
+
+          if not audit_path.exists():
+              raise RuntimeError('Certification report is missing')
+
+          cfg = json.loads(data_path.read_text(encoding='utf-8'))
+          expected = [f'{i:03d}' for i in range(1,15)]
+          got_seq = [x['image'][5:8] for x in cfg['formulas']]
+          if got_seq != expected:
+              raise RuntimeError(f'Certified sequence mismatch: {got_seq}')
+
+          def strip_mathjax(text):
+              text = re.sub(r'\s*<script>\s*window\.MathJax\s*=\s*\{.*?</script>', '', text, flags=re.I|re.S)
+              text = re.sub(r'\s*<script\b[^>]*src=["\'][^"\']*mathjax[^"\']*["\'][^>]*>\s*</script>', '', text, flags=re.I|re.S)
+              return text
+
+          mathjax4 = '''
+\t<script>
+\twindow.MathJax = {
+\t\ttex: {inlineMath: [['\\\\(', '\\\\)']], displayMath: [['\\\\[', '\\\\]']]},
+\t\toutput: {
+\t\t\tdisplayOverflow: 'linebreak',
+\t\t\tlinebreaks: {inline: true, width: '100%', lineleading: 0.2}
+\t\t},
+\t\tchtml: {displayAlign: 'left', displayIndent: '0'}
+\t};
+\t</script>
+\t<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+'''
+
+          def standardize_mathjax(text):
+              text = strip_mathjax(text)
+              if '</head>' not in text:
+                  raise RuntimeError('Missing </head>')
+              return text.replace('</head>', mathjax4 + '</head>', 1)
+
+          pat = re.compile(
+              r'(?P<block><div\b(?=[^>]*class=["\'][^"\']*\bmath-block\b[^"\']*["\'])(?=[^>]*data-source-image=["\'][^"\']*appendix_equation\.files/image(?P<bnum>\d{3})\.png["\'])[^>]*>.*?</div>)'
+              r'|'
+              r'(?P<img><p\b[^>]*class=["\'][^"\']*\bim\b[^"\']*["\'][^>]*>\s*'
+              r'<img\b[^>]*src=["\'][^"\']*appendix_equation\.files/image(?P<inum>\d{3})\.png["\'][^>]*>\s*</p>)',
+              flags=re.I|re.S)
+
+          def guard(text):
+              text = strip_mathjax(text)
+              text = pat.sub('<FORMULA/>', text)
+              return re.sub(r'\s+', ' ', text).strip()
+
+          original = normal_path.read_bytes().decode('cp932')
+          before = guard(original)
+          placements = list(pat.finditer(original))
+          seq = [(m.group('inum') or m.group('bnum')) for m in placements]
+          if seq != expected:
+              raise RuntimeError(f'Normal page formula placement sequence mismatch: {seq}')
+
+          blocks = []
+          for item in cfg['formulas']:
+              n = item['image'][5:8]
+              blocks.append(
+                  f'<div class="math-block" id="formula-appendix-1-{n}" '
+                  f'data-source-image="./../img/{imgdir}/image{n}.png">\n'
+                  f'{item["latex"]}\n</div>'
+              )
+
+          pos = [0]
+          def repl(_m):
+              i = pos[0]
+              pos[0] += 1
+              return blocks[i]
+
+          applied = pat.sub(repl, original)
+          applied = standardize_mathjax(applied)
+
+          if guard(applied) != before:
+              raise RuntimeError('Non-formula article content changed; aborting')
+
+          mapped = re.findall(
+              r'data-source-image=["\'][^"\']*appendix_equation\.files/image(\d{3})\.png["\']',
+              applied, flags=re.I)
+          if mapped != expected:
+              raise RuntimeError(f'Mapped formula sequence mismatch: {mapped}')
+
+          leftovers = re.findall(
+              r'<img\b[^>]*src=["\'][^"\']*appendix_equation\.files/image(\d{3})\.png["\'][^>]*>',
+              applied, flags=re.I)
+          if leftovers:
+              raise RuntimeError(f'Target formula images remain: {leftovers}')
+
+          if 'mathjax@4/tex-mml-chtml.js' not in applied:
+              raise RuntimeError('MathJax 4 loader missing')
+          if "displayOverflow: 'linebreak'" not in applied:
+              raise RuntimeError('MathJax overflow configuration missing')
+
+          normal_path.write_bytes(applied.encode('cp932'))
+
+          report = Path('.document/formula_reviews/APPENDIX_1_NORMAL_APPLY_RESULT.md')
+          report.write_text(
+              '# Appendix 1 Normal Page Apply Result\n\n'
+              '- Page: appendix/appendix_1.html\n'
+              '- Certified source formulas: 14 / 14\n'
+              '- Replaced target formula image placements: 14 / 14\n'
+              '- Target formula image tags remaining: 0\n'
+              '- Non-formula content guard: PASS\n'
+              '- Public-page encoding: CP932 / Shift_JIS preserved\n'
+              '- MathJax: v4 with line breaking support\n'
+              '- Production deployment: not performed\n',
+              encoding='utf-8'
+          )
+          print('appendix_1 normal apply: PASS 14/14')
+          PY
+
+      - name: Validate diff
+        run: |
+          git diff --stat
+          git diff --check
+
+      - name: Commit normal-page application
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add appendix/appendix_1.html .document/formula_reviews/APPENDIX_1_NORMAL_APPLY_RESULT.md
+          if git diff --cached --quiet; then
+            echo 'No changes.'
+          else
+            git commit -m 'feat: apply certified MathJax formulas to appendix 1'
+            git push origin HEAD:develop
+          fi
