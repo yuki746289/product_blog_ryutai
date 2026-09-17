@@ -32,7 +32,7 @@
     },
     {
       "image": "image007.png",
-      "latex": "\\[\n\\begin{aligned}\nx&=\\frac{b_1c_2d_3+b_2c_3d_1+b_3c_1d_2-b_3c_2d_1-b_2c_1d_3-b_1c_3d_2}\n{a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2}\\\\[6pt]\ny&=\\frac{a_1d_2c_3+a_2d_3c_1+a_3d_1c_2-a_3d_2c_1-a_2d_1c_3-a_1d_3c_2}\n{a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2}\\\\[6pt]\nz&=\\frac{a_1b_2d_3+a_2b_3d_1+a_3b_1d_2-a_3b_2d_1-a_2b_1d_3-a_1b_3d_2}\n{a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\nx&=\\frac{b_1c_2d_3+b_2c_3d_1+b_3c_1d_2-b_3c_2d_1-b_2c_1d_3-b_1c_3d_2}\n{a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2}\\\\\ny&=\\frac{a_1d_2c_3+a_2d_3c_1+a_3d_1c_2-a_3d_2c_1-a_2d_1c_3-a_1d_3c_2}\n{a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2}\\\\\nz&=\\frac{a_1b_2d_3+a_2b_3d_1+a_3b_1d_2-a_3b_2d_1-a_2b_1d_3-a_1b_3d_2}\n{a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2}\n\\end{aligned}\n\\]"
     },
     {
       "image": "image008.png",
