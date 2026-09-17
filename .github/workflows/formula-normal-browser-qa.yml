@@ -76,17 +76,34 @@ jobs:
 
                       blocks = page.locator(f'div.math-block[data-source-image*="{cfg["imgdir"]}/image"]')
                       block_count = blocks.count()
-                      target_imgs = page.locator(f'img[src*="{cfg["imgdir"]}/image"]')
-                      target_img_count = target_imgs.count()
-                      mjx_count = page.locator(f'div.math-block[data-source-image*="{cfg["imgdir"]}/image"] mjx-container').count()
+                      target_img_count = page.locator(f'img[src*="{cfg["imgdir"]}/image"]').count()
                       merror_count = page.locator('mjx-merror').count()
 
+                      unrendered = []
                       block_overflow = []
+                      uncontained_overflow = []
                       for i in range(block_count):
                           el = blocks.nth(i)
-                          dims = el.evaluate('(e)=>({clientWidth:e.clientWidth,scrollWidth:e.scrollWidth,clientHeight:e.clientHeight,scrollHeight:e.scrollHeight})')
+                          source = el.get_attribute('data-source-image')
+                          mjx_in_block = el.locator('mjx-container').count()
+                          if mjx_in_block < 1:
+                              unrendered.append({'index':i+1,'source':source})
+
+                          dims = el.evaluate('''(e)=>({
+                              clientWidth:e.clientWidth,
+                              scrollWidth:e.scrollWidth,
+                              clientHeight:e.clientHeight,
+                              scrollHeight:e.scrollHeight,
+                              overflowX:getComputedStyle(e).overflowX
+                          })''')
                           if dims['scrollWidth'] > dims['clientWidth'] + 1:
-                              block_overflow.append({'index':i+1,'source':el.get_attribute('data-source-image'),'dims':dims})
+                              item = {'index':i+1,'source':source,'dims':dims}
+                              block_overflow.append(item)
+                              # Desktop must fit without local scrolling. On mobile, an
+                              # irreducibly wide matrix is acceptable only when it is
+                              # contained by the formula block itself.
+                              if vp_name == 'desktop' or dims['overflowX'] not in ('auto', 'scroll'):
+                                  uncontained_overflow.append(item)
 
                       page_dims = page.evaluate('''() => ({
                           innerWidth: window.innerWidth,
@@ -107,11 +124,13 @@ jobs:
                           'viewport_size': vp,
                           'formula_blocks': block_count,
                           'expected_formula_blocks': cfg['placements'],
-                          'mathjax_containers': mjx_count,
+                          'unrendered_formula_blocks': unrendered,
                           'target_formula_images': target_img_count,
                           'mathjax_errors': merror_count,
-                          'formula_horizontal_overflow_count': len(block_overflow),
+                          'locally_scrollable_formula_count': len(block_overflow),
                           'formula_horizontal_overflow': block_overflow,
+                          'uncontained_formula_overflow_count': len(uncontained_overflow),
+                          'uncontained_formula_overflow': uncontained_overflow,
                           'page_horizontal_overflow': page_overflow,
                           'page_dimensions': page_dims,
                           'console_errors': console_errors,
@@ -121,14 +140,14 @@ jobs:
 
                       if block_count != cfg['placements']:
                           failures.append(f"{cfg['key']} {vp_name}: blocks {block_count}!={cfg['placements']}")
-                      if mjx_count != cfg['placements']:
-                          failures.append(f"{cfg['key']} {vp_name}: MathJax containers {mjx_count}!={cfg['placements']}")
+                      if unrendered:
+                          failures.append(f"{cfg['key']} {vp_name}: unrendered formula blocks {len(unrendered)}")
                       if target_img_count != 0:
                           failures.append(f"{cfg['key']} {vp_name}: target formula images remain {target_img_count}")
                       if merror_count != 0:
                           failures.append(f"{cfg['key']} {vp_name}: mjx-merror count {merror_count}")
-                      if block_overflow:
-                          failures.append(f"{cfg['key']} {vp_name}: formula overflow {len(block_overflow)}")
+                      if uncontained_overflow:
+                          failures.append(f"{cfg['key']} {vp_name}: uncontained formula overflow {len(uncontained_overflow)}")
                       if page_overflow:
                           failures.append(
                               f"{cfg['key']} {vp_name}: page overflow {page_dims['docScrollWidth']} > {page_dims['docClientWidth']}")
@@ -136,9 +155,10 @@ jobs:
                           failures.append(f"{cfg['key']} {vp_name}: page errors {page_errors}")
 
                       print(
-                          f"{cfg['key']} {vp_name}: blocks={block_count}, mjx={mjx_count}, "
+                          f"{cfg['key']} {vp_name}: blocks={block_count}, unrendered={len(unrendered)}, "
                           f"target_imgs={target_img_count}, merror={merror_count}, "
-                          f"formula_overflow={len(block_overflow)}, page_overflow={page_overflow}")
+                          f"local_scroll={len(block_overflow)}, uncontained={len(uncontained_overflow)}, "
+                          f"page_overflow={page_overflow}")
                       context.close()
               browser.close()
 
@@ -156,15 +176,17 @@ jobs:
               f'- Overall: **{summary["status"]}**',
               '- Browser: Chromium / Playwright',
               '- Viewports: desktop 1440×1000, mobile 390×844',
+              '- Mobile policy: MathJax line breaking first; irreducibly wide matrices may scroll inside `.math-block`, but the page itself must never overflow horizontally.',
               '',
-              '| Page | Viewport | Blocks | Formula images | MathJax errors | Formula overflow | Page overflow |',
-              '|---|---|---:|---:|---:|---:|---|',
+              '| Page | Viewport | Blocks | Unrendered | Formula images | MathJax errors | Local-scroll formulas | Uncontained overflow | Page overflow |',
+              '|---|---|---:|---:|---:|---:|---:|---:|---|',
           ]
           for r in results:
               lines.append(
                   f"| `{r['page']}` | {r['viewport']} | {r['formula_blocks']}/{r['expected_formula_blocks']} | "
-                  f"{r['target_formula_images']} | {r['mathjax_errors']} | "
-                  f"{r['formula_horizontal_overflow_count']} | {'YES' if r['page_horizontal_overflow'] else 'NO'} |")
+                  f"{len(r['unrendered_formula_blocks'])} | {r['target_formula_images']} | {r['mathjax_errors']} | "
+                  f"{r['locally_scrollable_formula_count']} | {r['uncontained_formula_overflow_count']} | "
+                  f"{'YES' if r['page_horizontal_overflow'] else 'NO'} |")
           lines += ['', '## Failures', '']
           if failures:
               lines += [f'- {x}' for x in failures]
