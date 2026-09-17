@@ -12,6 +12,18 @@
 
 	<title>連立方程式の解（Appendix）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+	<script>
+	window.MathJax = {
+		tex: {inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']]},
+		output: {
+			displayOverflow: 'linebreak',
+			linebreaks: {inline: true, width: '100%', lineleading: 0.2}
+		},
+		chtml: {displayAlign: 'left', displayIndent: '0'}
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="7">
@@ -48,39 +60,233 @@
 
 			<h2>連立方程式の解</h2>
 			<p>連立方程式の解を示します。数値計算で用いられることがあります。</p>
-			<p class="im"><img src="./../img/appendix_equation.files/image001.png"></p>
+			<div class="math-block" id="formula-appendix-1-001" data-source-image="./../img/appendix_equation.files/image001.png">
+\[
+\left\{
+\begin{aligned}
+a_1x+b_1y+c_1z&=d_1\\
+a_2x+b_2y+c_2z&=d_2\\
+a_3x+b_3y+c_3z&=d_3
+\end{aligned}
+\right.
+\]
+</div>
 			<p><span class="ft"><i>x</i></span>を代入する。</p>
-			<p class="im"><img src="./../img/appendix_equation.files/image002.png"></p>
+			<div class="math-block" id="formula-appendix-1-002" data-source-image="./../img/appendix_equation.files/image002.png">
+\[
+\begin{aligned}
+x&=\frac{d_1-b_1y-c_1z}{a_1}\\
+a_2\frac{d_1-b_1y-c_1z}{a_1}+b_2y+c_2z&=d_2\\
+a_3\frac{d_1-b_1y-c_1z}{a_1}+b_3y+c_3z&=d_3
+\end{aligned}
+\]
+</div>
 			<p><span class="ft"><i>a</i><sub>1</sub></span>をかける。</p>
-			<p class="im"><img src="./../img/appendix_equation.files/image003.png"></p>
+			<div class="math-block" id="formula-appendix-1-003" data-source-image="./../img/appendix_equation.files/image003.png">
+\[
+\begin{aligned}
+a_2d_1-a_2b_1y-c_1a_2z+a_1b_2y+c_2a_1z&=a_1d_2\\
+a_3d_1-a_3b_1y-c_1a_3z+a_1b_3y+c_3a_1z&=a_1d_3
+\end{aligned}
+\]
+</div>
 			<p>項を整理する。</p>
-			<p class="im"><img src="./../img/appendix_equation.files/image004.png"></p>
+			<div class="math-block" id="formula-appendix-1-004" data-source-image="./../img/appendix_equation.files/image004.png">
+\[
+\begin{aligned}
+(a_1b_2-a_2b_1)y+(c_2a_1-c_1a_2)z&=a_1d_2-a_2d_1\\
+(a_1b_3-a_3b_1)y+(c_3a_1-c_1a_3)z&=a_1d_3-a_3d_1
+\end{aligned}
+\]
+</div>
 			<p><span class="ft"><i>y</i></span>について解く。</p>
-			<p class="im"><img src="./../img/appendix_equation.files/image005.png"></p>
+			<div class="math-block" id="formula-appendix-1-005" data-source-image="./../img/appendix_equation.files/image005.png">
+\[
+\begin{aligned}
+y&=\frac{a_1d_2-a_2d_1}{a_1b_2-a_2b_1}-\frac{c_2a_1-c_1a_2}{a_1b_2-a_2b_1}z\\
+y&=\frac{a_1d_3-a_3d_1}{a_1b_3-a_3b_1}-\frac{c_3a_1-c_1a_3}{a_1b_3-a_3b_1}z
+\end{aligned}
+\]
+</div>
 			<p>代入する。</p>
-			<p class="im"><img src="./../img/appendix_equation.files/image006.png"></p>
+			<div class="math-block" id="formula-appendix-1-006" data-source-image="./../img/appendix_equation.files/image006.png">
+\[
+\left(
+\frac{c_3a_1-c_1a_3}{a_1b_3-a_3b_1}
+-\frac{c_2a_1-c_1a_2}{a_1b_2-a_2b_1}
+\right)z
+=
+\frac{a_1d_3-a_3d_1}{a_1b_3-a_3b_1}
+-\frac{a_1d_2-a_2d_1}{a_1b_2-a_2b_1}
+\]
+</div>
 			<p><span class="ft"><i>z</i></span>を計算する。</p>
-			<p class="im"><img src="./../img/appendix_equation.files/image007.png"></p>
+			<div class="math-block" id="formula-appendix-1-007" data-source-image="./../img/appendix_equation.files/image007.png">
+\[
+\begin{aligned}
+z&=
+\frac{
+(a_1b_2-a_2b_1)(a_1d_3-a_3d_1)-(a_1b_3-a_3b_1)(a_1d_2-a_2d_1)
+}{
+(a_1b_2-a_2b_1)(c_3a_1-c_1a_3)-(a_1b_3-a_3b_1)(c_2a_1-c_1a_2)
+}\\[4pt]
+&=
+\frac{
+a_1a_1b_2d_3+a_2a_3b_1d_1+a_1a_2b_3d_1+a_1a_3b_1d_2-a_1a_3b_2d_1-a_1a_2b_1d_3-a_1a_1b_3d_2-a_2a_3b_1d_1
+}{
+a_1a_1b_2c_3+a_2a_3b_1c_1+a_1a_2b_3c_1+a_1a_3b_1c_2-a_1a_3b_2c_1-a_1a_2b_1c_3-a_1a_1b_3c_2-a_2a_3b_1c_1
+}\\[4pt]
+&=
+\frac{
+a_1a_1b_2d_3+a_1a_2b_3d_1+a_1a_3b_1d_2-a_1a_3b_2d_1-a_1a_2b_1d_3-a_1a_1b_3d_2
+}{
+a_1a_1b_2c_3+a_1a_2b_3c_1+a_1a_3b_1c_2-a_1a_3b_2c_1-a_1a_2b_1c_3-a_1a_1b_3c_2
+}\\[4pt]
+&=
+\frac{
+a_1b_2d_3+a_2b_3d_1+a_3b_1d_2-a_3b_2d_1-a_2b_1d_3-a_1b_3d_2
+}{
+a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2
+}
+\end{aligned}
+\]
+</div>
 			<br>
 			<br>
 			<p>次に<span class="ft"><i>y</i></span>を計算する。</p>
-			<p class="im"><img src="./../img/appendix_equation.files/image008.png"></p>
+			<div class="math-block" id="formula-appendix-1-008" data-source-image="./../img/appendix_equation.files/image008.png">
+\[
+\begin{aligned}
+(a_1b_2-a_2b_1)y+(c_2a_1-c_1a_2)z&=a_1d_2-a_2d_1\\
+(a_1b_3-a_3b_1)y+(c_3a_1-c_1a_3)z&=a_1d_3-a_3d_1
+\end{aligned}
+\]
+</div>
 			<p><span class="ft"><i>z</i></span>の係数で割る。</p>
-			<p class="im"><img src="./../img/appendix_equation.files/image009.png"></p>
+			<div class="math-block" id="formula-appendix-1-009" data-source-image="./../img/appendix_equation.files/image009.png">
+\[
+\begin{aligned}
+\frac{a_1b_2-a_2b_1}{c_2a_1-c_1a_2}y+z&=\frac{a_1d_2-a_2d_1}{c_2a_1-c_1a_2}\\
+\frac{a_1b_3-a_3b_1}{c_3a_1-c_1a_3}y+z&=\frac{a_1d_3-a_3d_1}{c_3a_1-c_1a_3}
+\end{aligned}
+\]
+</div>
 			<p>代入する</p>
-			<p class="im"><img src="./../img/appendix_equation.files/image010.png"></p>
+			<div class="math-block" id="formula-appendix-1-010" data-source-image="./../img/appendix_equation.files/image010.png">
+\[
+\frac{a_1b_2-a_2b_1}{c_2a_1-c_1a_2}y
+-\frac{a_1b_3-a_3b_1}{c_3a_1-c_1a_3}y
+=
+\frac{a_1d_2-a_2d_1}{c_2a_1-c_1a_2}
+-\frac{a_1d_3-a_3d_1}{c_3a_1-c_1a_3}
+\]
+</div>
 			<p>項を整理する。</p>
-			<p class="im"><img src="./../img/appendix_equation.files/image011.png"></p>
+			<div class="math-block" id="formula-appendix-1-011" data-source-image="./../img/appendix_equation.files/image011.png">
+\[
+\left\{
+(c_3a_1-c_1a_3)(a_1b_2-a_2b_1)
+-(c_2a_1-c_1a_2)(a_1b_3-a_3b_1)
+\right\}y
+=
+(c_3a_1-c_1a_3)(a_1d_2-a_2d_1)
+-(c_2a_1-c_1a_2)(a_1d_3-a_3d_1)
+\]
+</div>
 			<p><span class="ft"><i>y</i></span>を計算する。</p>
-			<p class="im"><img src="./../img/appendix_equation.files/image012.png"></p>
+			<div class="math-block" id="formula-appendix-1-012" data-source-image="./../img/appendix_equation.files/image012.png">
+\[
+\begin{aligned}
+y&=
+\frac{
+(c_3a_1-c_1a_3)(a_1d_2-a_2d_1)-(c_2a_1-c_1a_2)(a_1d_3-a_3d_1)
+}{
+(c_3a_1-c_1a_3)(a_1b_2-a_2b_1)-(c_2a_1-c_1a_2)(a_1b_3-a_3b_1)
+}\\[4pt]
+&=
+\frac{
+c_3a_1a_1d_2-c_3a_1a_2d_1-c_1a_3a_1d_2+c_1a_3a_2d_1-c_2a_1a_1d_3+c_2a_1a_3d_1+c_1a_2a_1d_3-c_1a_2a_3d_1
+}{
+c_3a_1a_1b_2-c_3a_1a_2b_1-c_1a_3a_1b_2+c_1a_3a_2b_1-c_2a_1a_1b_3+c_2a_1a_3b_1+c_1a_2a_1b_3-c_1a_2a_3b_1
+}\\[4pt]
+&=
+\frac{
+c_3a_1d_2-c_3a_2d_1-c_1a_3d_2-c_2a_1d_3+c_2a_3d_1+c_1a_2d_3
+}{
+c_3a_1b_2-c_3a_2b_1-c_1a_3b_2-c_2a_1b_3+c_2a_3b_1+c_1a_2b_3
+}\\[4pt]
+&=
+\frac{
+a_1d_2c_3+a_2d_3c_1+a_3d_1c_2-a_3d_2c_1-a_2d_1c_3-a_1d_3c_2
+}{
+a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2
+}
+\end{aligned}
+\]
+</div>
 			<br>
 			<br>
 			<p>次に<span class="ft"><i>x</i></span>を計算する。</p>
-			<p class="im"><img src="./../img/appendix_equation.files/image013.png"></p>
+			<div class="math-block" id="formula-appendix-1-013" data-source-image="./../img/appendix_equation.files/image013.png">
+\[
+\begin{aligned}
+x&=\frac{d_1-b_1y-c_1z}{a_1}\\[4pt]
+&=
+\frac{
+\begin{aligned}
+&d_1(a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2)\\
+&-b_1(a_1d_2c_3+a_2d_3c_1+a_3d_1c_2-a_3d_2c_1-a_2d_1c_3-a_1d_3c_2)\\
+&-c_1(a_1b_2d_3+a_2b_3d_1+a_3b_1d_2-a_3b_2d_1-a_2b_1d_3-a_1b_3d_2)
+\end{aligned}
+}{
+a_1(a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2)
+}\\[4pt]
+&=
+\frac{
+\begin{aligned}
+&a_1b_2c_3d_1+a_2b_3c_1d_1+a_3b_1c_2d_1-a_3b_2c_1d_1-a_2b_1c_3d_1-a_1b_3c_2d_1\\
+&-a_1b_1c_3d_2-a_2b_1c_1d_3-a_3b_1c_2d_1+a_3b_1c_1d_2+a_2b_1c_3d_1+a_1b_1c_2d_3\\
+&-a_1b_2c_1d_3-a_2b_3c_1d_1-a_3b_1c_1d_2+a_3b_2c_1d_1+a_2b_1c_1d_3+a_1b_3c_1d_2
+\end{aligned}
+}{
+a_1(a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2)
+}\\[4pt]
+&=
+\frac{
+b_1c_2d_3+b_2c_3d_1+b_3c_1d_2-b_3c_2d_1-b_2c_1d_3-b_1c_3d_2
+}{
+a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2
+}
+\end{aligned}
+\]
+</div>
 			<br>
 			<br>
 			<p>まとめると次式となります。</p>
-			<p class="im"><img src="./../img/appendix_equation.files/image014.png"></p>
+			<div class="math-block" id="formula-appendix-1-014" data-source-image="./../img/appendix_equation.files/image014.png">
+\[
+\begin{aligned}
+x&=
+\frac{
+b_1c_2d_3+b_2c_3d_1+b_3c_1d_2-b_3c_2d_1-b_2c_1d_3-b_1c_3d_2
+}{
+a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2
+}\\[6pt]
+y&=
+\frac{
+a_1d_2c_3+a_2d_3c_1+a_3d_1c_2-a_3d_2c_1-a_2d_1c_3-a_1d_3c_2
+}{
+a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2
+}\\[6pt]
+z&=
+\frac{
+a_1b_2d_3+a_2b_3d_1+a_3b_1d_2-a_3b_2d_1-a_2b_1d_3-a_1b_3d_2
+}{
+a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-a_2b_1c_3-a_1b_3c_2
+}
+\end{aligned}
+\]
+</div>
 			<p>分母が<span class="ft">0</span>となる場合は計算できません。</p>
 			<br>
 
