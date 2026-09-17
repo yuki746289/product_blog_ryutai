@@ -1,0 +1,90 @@
+name: Appendix Coordinate Normal Browser QA
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/appendix-coordinate-normal-browser-qa.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install Chromium
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Start server
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/acqa-http.log 2>&1 &
+          sleep 1
+      - name: QA
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+          specs=[('appendix_3_1','appendix_cord_r.files'),('appendix_3_2','appendix_cord_s.files')]
+          vps={'desktop':{'width':1440,'height':1000},'mobile':{'width':390,'height':844}}
+          out=Path('appendix-coordinate-normal-qa'); out.mkdir(exist_ok=True)
+          rows=[]; failures=[]
+          with sync_playwright() as p:
+            b=p.chromium.launch(headless=True)
+            for key,imgdir in specs:
+              for vn,vp in vps.items():
+                ctx=b.new_context(viewport=vp,device_scale_factor=1); pg=ctx.new_page(); errs=[]; pg.on('pageerror',lambda exc,s=errs:s.append(str(exc)))
+                pg.goto(f'http://127.0.0.1:8000/appendix/{key}.html',wait_until='domcontentloaded',timeout=120000)
+                pg.wait_for_function('() => window.MathJax && MathJax.startup && MathJax.startup.promise',timeout=60000); pg.evaluate('async()=>{await MathJax.startup.promise;}'); pg.wait_for_timeout(400)
+                blocks=pg.locator(f'div.math-block[data-source-image*="{imgdir}/image"]'); bc=blocks.count(); merror=pg.locator('mjx-merror').count()
+                target_imgs=sum(pg.locator(f'img[src*="{imgdir}/image{n}.png"]').count() for n in ['003','005','006','007','008','009','010','011'])
+                diagrams={n:pg.locator(f'img[src*="{imgdir}/image{n}.png"]').count() for n in ['001','002','004']}
+                unrendered=[]; local=[]; uncontained=[]
+                for i in range(bc):
+                  el=blocks.nth(i); src=el.get_attribute('data-source-image')
+                  if el.locator('mjx-container').count()<1: unrendered.append(src)
+                  dims=el.evaluate("e=>({clientWidth:e.clientWidth,scrollWidth:e.scrollWidth,overflowX:getComputedStyle(e).overflowX})")
+                  if dims['scrollWidth']>dims['clientWidth']+1:
+                    local.append(src)
+                    if vn=='desktop' or dims['overflowX'] not in ('auto','scroll'): uncontained.append(src)
+                pd=pg.evaluate("()=>({clientWidth:document.documentElement.clientWidth,scrollWidth:document.documentElement.scrollWidth})"); po=pd['scrollWidth']>pd['clientWidth']+2
+                sd=out/key; sd.mkdir(parents=True,exist_ok=True); pg.screenshot(path=str(sd/f'{vn}.png'),full_page=True,animations='disabled')
+                row={'page':key,'viewport':vn,'blocks':bc,'source_formula_images':target_imgs,'diagrams':diagrams,'merror':merror,'unrendered':unrendered,'local_scroll':local,'uncontained':uncontained,'page_overflow':po,'page_errors':errs}; rows.append(row)
+                if bc!=8: failures.append(f'{key} {vn}: blocks={bc}')
+                if target_imgs!=0: failures.append(f'{key} {vn}: formula images={target_imgs}')
+                if diagrams!={'001':1,'002':1,'004':2}: failures.append(f'{key} {vn}: diagrams={diagrams}')
+                if merror or unrendered or uncontained or po or errs: failures.append(f'{key} {vn}: render/layout failure')
+                ctx.close()
+            b.close()
+          status='PASS' if not failures else 'FAIL'; (out/'manifest.json').write_text(json.dumps({'status':status,'rows':rows,'failures':failures},ensure_ascii=False,indent=2),encoding='utf-8')
+          report=Path('.document/formula_reviews/APPENDIX_COORDINATE_NORMAL_BROWSER_QA_20260918.md')
+          L=['# Appendix Coordinate Normal Browser QA — 2026-09-18','',f'- Overall: **{status}**','- Viewports: desktop 1440x1000; mobile 390x844','- Formula target: 8 blocks per page; diagrams image001/image002/image004 remain 1/1/2 placements.','', '| Page | Viewport | Blocks | Formula images | MathJax errors | Local-scroll | Uncontained | Page overflow | Diagrams preserved |','|---|---|---:|---:|---:|---:|---:|---|---|']
+          for r in rows:
+            L.append(f"| {r['page']} | {r['viewport']} | {r['blocks']}/8 | {r['source_formula_images']} | {r['merror']} | {len(r['local_scroll'])} | {len(r['uncontained'])} | {'YES' if r['page_overflow'] else 'NO'} | {r['diagrams']} |")
+          L += ['', '## Failures',''] + ([f'- {x}' for x in failures] if failures else ['- None.']) + ['', '- Production deployment has not been performed.']
+          report.write_text('\n'.join(L)+'\n',encoding='utf-8')
+          if failures: raise SystemExit(1)
+          PY
+      - name: Commit report
+        if: success()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .document/formula_reviews/APPENDIX_COORDINATE_NORMAL_BROWSER_QA_20260918.md
+          if ! git diff --cached --quiet; then git commit -m 'docs: record appendix coordinate browser QA'; git pull --rebase origin develop; git push origin HEAD:develop; fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: appendix-coordinate-normal-qa
+          path: appendix-coordinate-normal-qa
+          retention-days: 7
