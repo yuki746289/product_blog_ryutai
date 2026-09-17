@@ -1,0 +1,102 @@
+name: Appendix 1 strict formula browser capture
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/appendix-1-pass2-capture.yml'
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install capture dependencies
+        run: |
+          pip install playwright pillow
+          python -m playwright install --with-deps chromium
+
+      - name: Start local server
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/http.log 2>&1 &
+          sleep 1
+
+      - name: Capture source-render pairs
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from PIL import Image, ImageOps, ImageDraw
+          from playwright.sync_api import sync_playwright
+          import json
+
+          out = Path('appendix-1-pass2')
+          out.mkdir(exist_ok=True)
+          rows=[]
+          with sync_playwright() as p:
+              browser=p.chromium.launch(headless=True)
+              page=browser.new_page(viewport={'width':1900,'height':1200}, device_scale_factor=1)
+              page.goto('http://127.0.0.1:8000/appendix/appendix_1_reaudit.html', wait_until='domcontentloaded', timeout=120000)
+              page.wait_for_function('() => window.MathJax && MathJax.startup && MathJax.startup.promise', timeout=60000)
+              page.evaluate('async()=>{await MathJax.startup.promise;}')
+              page.wait_for_timeout(500)
+
+              for i in range(1,15):
+                  n=f'{i:03d}'
+                  sec=page.locator(f'#formula-{n}')
+                  if sec.count()!=1:
+                      raise RuntimeError(f'formula-{n} section count={sec.count()}')
+                  src=sec.locator('.source img')
+                  render=sec.locator('.render')
+                  if src.count()!=1 or render.count()!=1:
+                      raise RuntimeError(f'formula-{n} source/render missing')
+                  if render.locator('mjx-merror').count():
+                      raise RuntimeError(f'formula-{n} MathJax error')
+                  if render.locator('mjx-container').count()<1:
+                      raise RuntimeError(f'formula-{n} did not render')
+
+                  src_path=out/f'image{n}_source.png'
+                  rnd_path=out/f'image{n}_render.png'
+                  src.screenshot(path=str(src_path), animations='disabled')
+                  render.screenshot(path=str(rnd_path), animations='disabled')
+
+                  a=Image.open(src_path).convert('RGB')
+                  b=Image.open(rnd_path).convert('RGB')
+                  margin=24
+                  label_h=34
+                  w=max(a.width,b.width)+margin*2
+                  h=label_h+a.height+margin+label_h+b.height+margin
+                  canvas=Image.new('RGB',(w,h),'white')
+                  d=ImageDraw.Draw(canvas)
+                  d.text((margin,10),f'image{n} ORIGINAL',fill='black')
+                  canvas.paste(a,(margin,label_h))
+                  y=label_h+a.height+margin
+                  d.text((margin,y),f'image{n} MATHJAX',fill='black')
+                  canvas.paste(b,(margin,y+label_h))
+                  pair=out/f'image{n}_pair.png'
+                  canvas.save(pair)
+
+                  dims=render.evaluate('(e)=>({clientWidth:e.clientWidth,scrollWidth:e.scrollWidth})')
+                  rows.append({'image':n,'merror':0,'rendered':True,'clientWidth':dims['clientWidth'],'scrollWidth':dims['scrollWidth'],'overflow':dims['scrollWidth']>dims['clientWidth']+1})
+
+              page.screenshot(path=str(out/'full_page.png'), full_page=True, animations='disabled')
+              browser.close()
+
+          (out/'manifest.json').write_text(json.dumps(rows,indent=2),encoding='utf-8')
+          if any(r['overflow'] for r in rows):
+              print('NOTE: wide audit render(s):', [r['image'] for r in rows if r['overflow']])
+          print('Captured',len(rows),'source-render pairs')
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: appendix-1-pass2
+          path: appendix-1-pass2
+          retention-days: 7
