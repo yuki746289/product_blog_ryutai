@@ -1,0 +1,104 @@
+@charset "UTF-8";
+
+/**
+ * Updated: 2026/09/17
+ * Summary: Improve text-link visibility, menu readability, renewal notice styling, and top-page footer spacing.
+ */
+
+body.rv-nav-ready #content-main p a,
+body.rv-nav-ready #content-main li a,
+body.rv-nav-ready #content-text p a,
+body.rv-nav-ready #content-text li a {
+  color: #315d78 !important;
+  font-weight: 600;
+  text-decoration: underline !important;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+body.rv-nav-ready #content-main p a:hover,
+body.rv-nav-ready #content-main p a:focus,
+body.rv-nav-ready #content-main li a:hover,
+body.rv-nav-ready #content-main li a:focus,
+body.rv-nav-ready #content-text p a:hover,
+body.rv-nav-ready #content-text p a:focus,
+body.rv-nav-ready #content-text li a:hover,
+body.rv-nav-ready #content-text li a:focus {
+  color: #183f58 !important;
+  background: #f2f5f6;
+}
+
+.rv-renewal-notice {
+  margin: 24px 0 34px;
+  padding: 16px 18px;
+  border-left: 3px solid #707477;
+  background: #f7f7f5;
+}
+
+body.rv-nav-ready .rv-renewal-notice h3 {
+  margin: 0 0 8px !important;
+  font-size: 17px !important;
+  font-weight: 700;
+}
+
+body.rv-nav-ready .rv-renewal-notice p {
+  margin-bottom: 0 !important;
+}
+
+body.rv-top-page-v16 #content-main {
+  margin-bottom: 0 !important;
+}
+
+body.rv-top-page-v16 #footer {
+  margin-top: 24px !important;
+}
+
+body.rv-font-normal .rv-mega-heading > a,
+body.rv-font-normal .rv-mega-group h3,
+body.rv-font-normal .rv-nav-list a {
+  font-size: 14px !important;
+}
+
+body.rv-font-large .rv-mega-heading > a,
+body.rv-font-large .rv-mega-group h3,
+body.rv-font-large .rv-nav-list a {
+  font-size: 16px !important;
+}
+
+body.rv-font-xlarge .rv-mega-heading > a,
+body.rv-font-xlarge .rv-mega-group h3,
+body.rv-font-xlarge .rv-nav-list a {
+  font-size: 18px !important;
+}
+
+@media (max-width: 767px) {
+  body.rv-nav-ready .rv-mobile-category > summary {
+    font-size: 16px !important;
+  }
+
+  body.rv-nav-ready .rv-mobile-home-link,
+  body.rv-nav-ready .rv-mobile-link,
+  body.rv-nav-ready .rv-mobile-subgroup-body > a,
+  body.rv-nav-ready .rv-mobile-subgroup > summary,
+  body.rv-nav-ready .rv-mobile-home-links .rv-mobile-link {
+    font-size: 14px !important;
+  }
+
+  body.rv-nav-ready.rv-font-large .rv-mobile-category > summary,
+  body.rv-nav-ready.rv-font-large .rv-mobile-home-link,
+  body.rv-nav-ready.rv-font-large .rv-mobile-link,
+  body.rv-nav-ready.rv-font-large .rv-mobile-subgroup-body > a,
+  body.rv-nav-ready.rv-font-large .rv-mobile-subgroup > summary,
+  body.rv-nav-ready.rv-font-large .rv-mobile-home-links .rv-mobile-link {
+    font-size: 16px !important;
+  }
+
+  body.rv-nav-ready.rv-font-xlarge .rv-mobile-category > summary,
+  body.rv-nav-ready.rv-font-xlarge .rv-mobile-home-link,
+  body.rv-nav-ready.rv-font-xlarge .rv-mobile-link,
+  body.rv-nav-ready.rv-font-xlarge .rv-mobile-subgroup-body > a,
+  body.rv-nav-ready.rv-font-xlarge .rv-mobile-subgroup > summary,
+  body.rv-nav-ready.rv-font-xlarge .rv-mobile-home-links .rv-mobile-link {
+    font-size: 18px !important;
+  }
+}
