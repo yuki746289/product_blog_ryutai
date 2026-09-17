@@ -8,7 +8,7 @@
 - タイトル: 運動量収支式の離散化（4面体1次要素）
 - 数式画像: `img/fem_d_momentum_tet.files/image001.png` ～ `image049.png`
 - 対象数: 49式
-- 状態: **元画像完全一致の再監査対象 / 対応付け49/49確認済み / Pass 1 = 8/49**
+- 状態: **元画像完全一致の再監査対象 / 対応付け49/49確認済み / Pass 1 = 11/49**
 
 ## 2026-09-16 方針変更
 
@@ -44,6 +44,105 @@ Git履歴を確認すると、MathJax変換前の本文には境界三角形で�
 初回MathJax変換 `9a02677ad86ce8d4670233999e943b1d20b5d8f8` では、この省略をやめて `\mathbf b_S=A_S^T[1\;1\;1]^T` を導入し、`image042`～`image049` に対応する式本体へ組み込んでいる。
 
 したがって、現監査候補の `image042`～`image049` 対応式は原画像忠実基準では**8/8 NG確定**とする。理論的に有用な写像説明は原文式とは別の補足へ分離する。
+
+## `image006` / `image008` / `image009` 直接目視結果
+
+元PNG/GIFを直接表示し、現監査候補と比較した。3式とも現監査候補では原画像にない総和記号化・成分統合・式変形が行われていたため、候補式はNGとした。以下の忠実再転記を **Pass 1 OK** とする。
+
+### `image006`
+
+原画像は、重み関数を4成分列ベクトルのまま明示し、x/y/z各方向の対流項・応力項を個別に記載している。現候補の `\sum_{a=x,y,z}` は原画像に存在しない。
+
+```latex
+\[
+\begin{aligned}
+&\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\left(
+\frac{\partial V_i}{\partial\tau}
++V_x\frac{\partial V_i}{\partial X}
++V_y\frac{\partial V_i}{\partial Y}
++V_z\frac{\partial V_i}{\partial Z}
+-\frac{\partial\sigma^*_{xi}}{\partial X}
+-\frac{\partial\sigma^*_{yi}}{\partial Y}
+-\frac{\partial\sigma^*_{zi}}{\partial Z}
+-g_i^*
+\right)dV\\
+={}&\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial V_i}{\partial\tau}dV
++V_x\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial V_i}{\partial X}dV
++V_y\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial V_i}{\partial Y}dV\\
+&+V_z\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial V_i}{\partial Z}dV
+-\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial\sigma^*_{xi}}{\partial X}dV
+-\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial\sigma^*_{yi}}{\partial Y}dV\\
+&-\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial\sigma^*_{zi}}{\partial Z}dV
+-\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+g_i^*dV
+\end{aligned}
+\]
+```
+
+**Pass 1 = OK**。
+
+### `image008`
+
+原画像は時間微分をまだ差分化しておらず、x/y/z各方向の対流項・応力項を個別に記載している。現候補にある時間差分式と `\sum` は原画像にない。
+
+```latex
+\[
+\begin{aligned}
+={}&\int_V[N]^T\frac{\partial V_i}{\partial\tau}dV\\
+&+V_x\int_V[N]^T\frac{\partial V_i}{\partial X}dV
++V_y\int_V[N]^T\frac{\partial V_i}{\partial Y}dV
++V_z\int_V[N]^T\frac{\partial V_i}{\partial Z}dV\\
+&-\int_V[N]^T\frac{\partial\sigma^*_{xi}}{\partial X}dV
+-\int_V[N]^T\frac{\partial\sigma^*_{yi}}{\partial Y}dV
+-\int_V[N]^T\frac{\partial\sigma^*_{zi}}{\partial Z}dV\\
+&-\int_V[N]^Tg_i^*dV
+\end{aligned}
+\]
+```
+
+**Pass 1 = OK**。
+
+### `image009`
+
+原画像は時間項を節点速度の差分で表し、Green-Gauss適用後の表面積分・体積積分を x/y/z ごとに個別記載している。現候補の総和記号化および3方向の表面項統合は原画像にない。
+
+```latex
+\[
+\begin{aligned}
+={}&\int_V[N]^T
+\frac{[N](\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau})}{\Delta\tau}dV\\
+&+V_x\int_V[N]^T\frac{\partial[N]\{V_i\}}{\partial X}dV
++V_y\int_V[N]^T\frac{\partial[N]\{V_i\}}{\partial Y}dV
++V_z\int_V[N]^T\frac{\partial[N]\{V_i\}}{\partial Z}dV\\
+&-\int_S[N]^T\sigma^*_{xi}n_xdS
++\int_V\left[\frac{\partial N}{\partial X}\right]^T\sigma^*_{xi}dV\\
+&-\int_S[N]^T\sigma^*_{yi}n_ydS
++\int_V\left[\frac{\partial N}{\partial Y}\right]^T\sigma^*_{yi}dV\\
+&-\int_S[N]^T\sigma^*_{zi}n_zdS
++\int_V\left[\frac{\partial N}{\partial Z}\right]^T\sigma^*_{zi}dV\\
+&-\int_V[N]^Tg_i^*dV
+\end{aligned}
+\]
+```
+
+**Pass 1 = OK**。
 
 ## `image042` 直接目視結果
 
@@ -139,6 +238,7 @@ Git履歴を確認すると、MathJax変換前の本文には境界三角形で�
 - [x] `release_1.0.0` / 通常ページの画像出現順を確認。
 - [x] 監査候補の全49式と元画像を1対1対応。
 - [x] `image001`～`image049` で欠番・重複・再利用を確認。
+- [x] `image006`, `image008`, `image009` を元画像直接照合し、忠実再転記Pass 1完了。
 - [x] `image042`～`image049` を元画像直接照合し、忠実再転記Pass 1完了。
 - [ ] 全画像でPass 1を完了。
 - [ ] 全画像でPass 2を完了。
@@ -151,6 +251,6 @@ Git履歴を確認すると、MathJax変換前の本文には境界三角形で�
 
 ## 現在の判定
 
-**未完了 / 対応付け49/49、現候補NG確定8/49、忠実再転記Pass 1 = 8/49 (`image042～049`)、Pass 2 = 0/49。**
+**未完了 / 対応付け49/49、現候補NG確定11/49、忠実再転記Pass 1 = 11/49 (`image006`, `image008`, `image009`, `image042～049`)、Pass 2 = 0/49。**
 
-次は `image006`, `008`, `009`, `011`～`015`, `017`, `024`, `032`, `038` の一般化記法12式を優先して直接照合する。
+次は `image011`～`image015`, `image017`, `image024`, `image032`, `image038` の一般化記法9式を優先して直接照合し、その後 `image001`～`image005`, `image007`, `image010` 等を番号順に埋める。
