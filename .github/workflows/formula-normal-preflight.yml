@@ -1,0 +1,63 @@
+name: Formula Normal Page Preflight
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/formula-normal-preflight.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+      - name: Inspect target normal pages
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          configs=[
+            ('fem_6_2_6','fem_d_dndx_tet.files',[f'{i:03d}' for i in range(21,33)]),
+            ('fem_7_1_1','fem_d_mass_tri.files',[f'{i:03d}' for i in range(1,19)]+['020','021']),
+            ('fem_7_1_2','fem_d_momentum_tri.files',[f'{i:03d}' for i in range(1,43)]),
+            ('fem_7_2_1','fem_d_mass_tet.files',[f'{i:03d}' for i in range(1,21)]),
+            ('fem_7_2_2','fem_d_momentum_tet.files',[f'{i:03d}' for i in range(1,50)]),
+          ]
+          lines=['# 通常ページ 数式反映 preflight','', '更新日: 2026-09-18','']
+          total_img=total_math=0
+          for page,imgdir,nums in configs:
+            path=Path('fem')/(page+'.html')
+            raw=path.read_bytes()
+            enc='utf-8'
+            try: text=raw.decode('utf-8')
+            except UnicodeDecodeError:
+              enc='cp932'; text=raw.decode('cp932')
+            lines += [f'## {page}', '', f'- encoding: `{enc}`', f'- expected unique source images: **{len(nums)}**', f'- MathJax loader: **{"yes" if "tex-mml-chtml.js" in text else "no"}**', f'- formula guard script: **{"yes" if "site_formula_guard_v1_6.js" in text else "no"}**', '', '| image | img tag | math block | total mapped |', '|---|---:|---:|---:|']
+            page_img=page_math=0
+            for n in nums:
+              pat=rf'(?:\.\./)?img/{re.escape(imgdir)}/image{n}\.(?:png|gif)'
+              img_count=len(re.findall(r'<img\b[^>]*src=["\'][^"\']*'+pat+r'[^"\']*["\'][^>]*>',text,re.I))
+              math_count=0
+              for m in re.finditer(r'<div\b[^>]*class=["\'][^"\']*math-block[^"\']*["\'][^>]*>',text,re.I):
+                tag=m.group(0)
+                if re.search(r'data-source-image=["\'][^"\']*'+pat+r'[^"\']*["\']',tag,re.I): math_count+=1
+              page_img+=img_count; page_math+=math_count
+              lines.append(f'| image{n} | {img_count} | {math_count} | {img_count+math_count} |')
+            total_img+=page_img; total_math+=page_math
+            lines += ['', f'- image tag occurrences: **{page_img}**', f'- mapped MathJax block occurrences: **{page_math}**', f'- mapped occurrences total: **{page_img+page_math}**', '']
+          lines += ['## 集計','',f'- image tag occurrences: **{total_img}**',f'- mapped MathJax block occurrences: **{total_math}**',f'- total mapped occurrences: **{total_img+total_math}**','']
+          Path('.document/formula_reviews/NORMAL_PAGE_APPLY_PREFLIGHT.md').write_text('\n'.join(lines),encoding='utf-8')
+          PY
+      - name: Commit preflight report
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .document/formula_reviews/NORMAL_PAGE_APPLY_PREFLIGHT.md
+          git commit -m 'docs: inspect normal page formula mappings'
+          git push origin HEAD:develop
