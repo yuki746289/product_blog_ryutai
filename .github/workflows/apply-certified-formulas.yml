@@ -26,8 +26,6 @@ jobs:
           import re
           from collections import Counter
 
-          ROOT = Path('.')
-
           def read_auto(path):
               data = Path(path).read_bytes()
               for enc in ('utf-8-sig', 'utf-8', 'cp932'):
@@ -43,14 +41,6 @@ jobs:
           def write_cp932(path, text):
               Path(path).write_bytes(text.encode('cp932'))
 
-          def remove_audit_note(text):
-              text, n = re.subn(
-                  r'\s*<p\s+id=["\']formula-conversion-note["\'][^>]*>.*?</p>',
-                  '', text, flags=re.I | re.S)
-              if n != 1:
-                  raise RuntimeError(f'Expected one formula-conversion-note, got {n}')
-              return text
-
           def strip_mathjax_head(text):
               text = re.sub(
                   r'\s*<script>\s*window\.MathJax\s*=\s*\{.*?</script>',
@@ -60,32 +50,13 @@ jobs:
                   '', text, flags=re.I | re.S)
               return text
 
-          def skeleton(text, imgdir):
-              text = re.sub(
-                  r'\s*<p\s+id=["\']formula-conversion-note["\'][^>]*>.*?</p>',
-                  '', text, flags=re.I | re.S)
+          MATHJAX4 = '''\n\t<script>\n\twindow.MathJax = {\n\t\ttex: {inlineMath: [['\\\\(', '\\\\)']], displayMath: [['\\\\[', '\\\\]']]},\n\t\toutput: {\n\t\t\tdisplayOverflow: 'linebreak',\n\t\t\tlinebreaks: {inline: true, width: '100%', lineleading: 0.2}\n\t\t},\n\t\tchtml: {displayAlign: 'left', displayIndent: '0'}\n\t};\n\t</script>\n\t<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>\n'''
+
+          def standardize_mathjax(text):
               text = strip_mathjax_head(text)
-              text = re.sub(
-                  r'<div\b(?=[^>]*class=["\'][^"\']*\bmath-block\b[^"\']*["\'])[^>]*>.*?</div>',
-                  '<FORMULA/>', text, flags=re.I | re.S)
-              text = re.sub(
-                  rf'<p\b[^>]*class=["\'][^"\']*\bim\b[^"\']*["\'][^>]*>\s*'
-                  rf'<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image\d{{3}}\.png["\'][^>]*>\s*</p>',
-                  '<FORMULA/>', text, flags=re.I | re.S)
-              # Formatting differences from the generator are irrelevant here;
-              # compare all non-formula markup/text token-for-token after whitespace collapse.
-              return re.sub(r'\s+', ' ', text).strip()
-
-          def formula_image_counts(text, imgdir):
-              nums = re.findall(
-                  rf'data-source-image=["\'][^"\']*{re.escape(imgdir)}/image(\d{{3}})\.png["\']',
-                  text, flags=re.I)
-              return Counter(nums)
-
-          def remaining_img_tags(text, imgdir):
-              return re.findall(
-                  rf'<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image(\d{{3}})\.png["\'][^>]*>',
-                  text, flags=re.I)
+              if '</head>' not in text:
+                  raise RuntimeError('Missing </head>')
+              return text.replace('</head>', MATHJAX4 + '</head>', 1)
 
           def expected_counts(nums, repeats=None):
               c = Counter(nums)
@@ -93,142 +64,179 @@ jobs:
                   c[n] += 1
               return c
 
-          clone_specs = [
+          def placement_pattern(imgdir):
+              return re.compile(
+                  r'(?P<block><div\b(?=[^>]*class=["\'][^"\']*\bmath-block\b[^"\']*["\'])[^>]*>.*?</div>)'
+                  r'|'
+                  rf'(?P<img><p\b[^>]*class=["\'][^"\']*\bim\b[^"\']*["\'][^>]*>\s*'
+                  rf'<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image(?P<num>\d{{3}})\.png["\'][^>]*>\s*</p>)',
+                  flags=re.I | re.S)
+
+          def extract_standard_certified(path, imgdir):
+              text, _ = read_auto(path)
+              pat = re.compile(
+                  r'<div\b(?=[^>]*class=["\'][^"\']*\bmath-block\b[^"\']*["\'])'
+                  rf'(?=[^>]*data-source-image=["\'][^"\']*{re.escape(imgdir)}/image(?P<num>\d{{3}})\.png["\'])'
+                  r'[^>]*>.*?</div>',
+                  flags=re.I | re.S)
+              out = []
+              for m in pat.finditer(text):
+                  out.append((m.group('num'), m.group(0)))
+              if not out:
+                  raise RuntimeError(f'No certified blocks found in {path}')
+              return out
+
+          def extract_711_certified(path, imgdir):
+              text, _ = read_auto(path)
+              out = []
+              for m in re.finditer(
+                  r'<section\b[^>]*id=["\']formula-(\d{3})["\'][^>]*>.*?'
+                  r'<div\s+class=["\']render["\']>\s*(.*?)\s*</div>.*?</section>',
+                  text, flags=re.I | re.S):
+                  n, body = m.group(1), m.group(2).strip()
+                  block = (
+                      f'<div class="math-block" id="formula-fem-7-1-1-{n}" '
+                      f'data-source-image="./../img/{imgdir}/image{n}.png">\n'
+                      f'{body}\n</div>'
+                  )
+                  out.append((n, block))
+              return out
+
+          def structure_guard(text, imgdir):
+              text = strip_mathjax_head(text)
+              text = placement_pattern(imgdir).sub('<FORMULA/>', text)
+              return re.sub(r'\s+', ' ', text).strip()
+
+          def source_counts(text, imgdir):
+              return Counter(re.findall(
+                  rf'data-source-image=["\'][^"\']*{re.escape(imgdir)}/image(\d{{3}})\.png["\']',
+                  text, flags=re.I))
+
+          def remaining_img_tags(text, imgdir):
+              return re.findall(
+                  rf'<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image(\d{{3}})\.png["\'][^>]*>',
+                  text, flags=re.I)
+
+          def apply_page(normal_path, imgdir, certified, expected):
+              normal = read_cp932(normal_path)
+              before_guard = structure_guard(normal, imgdir)
+              pat = placement_pattern(imgdir)
+              placements = list(pat.finditer(normal))
+
+              cert_nums = [n for n, _ in certified]
+              if len(placements) != len(certified):
+                  raise RuntimeError(
+                      f'{normal_path}: placement count {len(placements)} != certified {len(certified)}; '
+                      f'certified sequence={cert_nums}')
+
+              # Anchored image positions must agree with the certified sequence. Legacy
+              # MathJax blocks have no source-image metadata, so their identity is resolved
+              # by their position between these image anchors.
+              for i, (m, (cert_n, _)) in enumerate(zip(placements, certified), start=1):
+                  known = m.group('num')
+                  if known is None and m.group('block'):
+                      dm = re.search(
+                          rf'data-source-image=["\'][^"\']*{re.escape(imgdir)}/image(\d{{3}})\.png["\']',
+                          m.group('block'), flags=re.I)
+                      known = dm.group(1) if dm else None
+                  if known is not None and known != cert_n:
+                      raise RuntimeError(
+                          f'{normal_path}: formula position {i} anchor image{known} '
+                          f'!= certified image{cert_n}')
+
+              idx = 0
+              def repl(_m):
+                  nonlocal idx
+                  block = certified[idx][1]
+                  idx += 1
+                  return block
+
+              applied = pat.sub(repl, normal)
+              applied = standardize_mathjax(applied)
+
+              if structure_guard(applied, imgdir) != before_guard:
+                  raise RuntimeError(f'{normal_path}: non-formula content changed; aborting')
+
+              got = source_counts(applied, imgdir)
+              if got != expected:
+                  raise RuntimeError(f'{normal_path}: source occurrence mismatch got={got}, expected={expected}')
+
+              leftovers = remaining_img_tags(applied, imgdir)
+              if leftovers:
+                  raise RuntimeError(f'{normal_path}: target formula images remain {leftovers}')
+              if 'mathjax@4/tex-mml-chtml.js' not in applied or 'mathjax@3/' in applied:
+                  raise RuntimeError(f'{normal_path}: MathJax loader validation failed')
+              if "displayOverflow: 'linebreak'" not in applied:
+                  raise RuntimeError(f'{normal_path}: MathJax linebreak config missing')
+
+              write_cp932(normal_path, applied)
+              return sum(got.values()), len(got), cert_nums
+
+          specs = [
               {
                   'normal': 'fem/fem_6_2_6.html',
                   'strict': 'fem/fem_6_2_6_mathjax_audit.html',
                   'imgdir': 'fem_n_tet.files',
                   'expected': expected_counts([f'{i:03d}' for i in range(21, 33)]),
+                  'kind': 'standard',
+              },
+              {
+                  'normal': 'fem/fem_7_1_1.html',
+                  'strict': 'fem/fem_7_1_1_reaudit.html',
+                  'imgdir': 'fem_d_mass_tri.files',
+                  'expected': expected_counts([f'{i:03d}' for i in range(1, 19)] + ['020', '021']),
+                  'kind': '711',
               },
               {
                   'normal': 'fem/fem_7_1_2.html',
                   'strict': 'fem/fem_7_1_2_reaudit.html',
                   'imgdir': 'fem_d_momentum_tri.files',
                   'expected': expected_counts([f'{i:03d}' for i in range(1, 43)], ['028', '032', '033']),
+                  'kind': 'standard',
               },
               {
                   'normal': 'fem/fem_7_2_1.html',
                   'strict': 'fem/fem_7_2_1_reaudit.html',
                   'imgdir': 'fem_d_mass_tet.files',
                   'expected': expected_counts([f'{i:03d}' for i in range(1, 21)]),
+                  'kind': 'standard',
               },
               {
                   'normal': 'fem/fem_7_2_2.html',
                   'strict': 'fem/fem_7_2_2_reaudit.html',
                   'imgdir': 'fem_d_momentum_tet.files',
                   'expected': expected_counts([f'{i:03d}' for i in range(1, 50)], ['031', '037']),
+                  'kind': 'standard',
               },
           ]
 
           results = []
+          for spec in specs:
+              if spec['kind'] == '711':
+                  certified = extract_711_certified(spec['strict'], spec['imgdir'])
+                  expected_seq = [f'{i:03d}' for i in range(1, 19)] + ['020', '021']
+                  if [n for n, _ in certified] != expected_seq:
+                      raise RuntimeError(f"{spec['strict']}: sequence mismatch {[n for n, _ in certified]}")
+                  image002 = dict(certified)['002']
+                  if r'\begin{bmatrix}N_1\\N_1\\N_3\end{bmatrix}' not in image002:
+                      raise RuntimeError('fem_7_1_1 image002 N1,N1,N3 source guard failed')
+              else:
+                  certified = extract_standard_certified(spec['strict'], spec['imgdir'])
 
-          for spec in clone_specs:
-              normal = read_cp932(spec['normal'])
-              strict, _ = read_auto(spec['strict'])
-
-              if skeleton(normal, spec['imgdir']) != skeleton(strict, spec['imgdir']):
+              cert_count = Counter(n for n, _ in certified)
+              if cert_count != spec['expected']:
                   raise RuntimeError(
-                      f"Non-formula structure differs between {spec['normal']} and {spec['strict']}; aborting")
+                      f"{spec['strict']}: certified occurrence mismatch got={cert_count}, expected={spec['expected']}")
 
-              applied = remove_audit_note(strict)
-              got = formula_image_counts(applied, spec['imgdir'])
-              if got != spec['expected']:
-                  raise RuntimeError(
-                      f"Certified occurrence mismatch for {spec['normal']}: got={got}, expected={spec['expected']}")
-              leftovers = remaining_img_tags(applied, spec['imgdir'])
-              if leftovers:
-                  raise RuntimeError(f"Target formula images remain in {spec['normal']}: {leftovers}")
-              if 'mathjax@4/tex-mml-chtml.js' not in applied:
-                  raise RuntimeError(f"MathJax 4 loader missing in {spec['strict']}")
-              if "displayOverflow: 'linebreak'" not in applied:
-                  raise RuntimeError(f"MathJax linebreak config missing in {spec['strict']}")
+              occ, uniq, seq = apply_page(
+                  spec['normal'], spec['imgdir'], certified, spec['expected'])
+              results.append((spec['normal'], occ, uniq))
+              print(f"{spec['normal']}: PASS placements={occ}, unique={uniq}")
 
-              write_cp932(spec['normal'], applied)
-              results.append((spec['normal'], sum(got.values()), len(got)))
-
-          # fem_7_1_1 is a dedicated side-by-side audit page, not a clone of the public page.
-          normal_path = 'fem/fem_7_1_1.html'
-          audit_path = 'fem/fem_7_1_1_reaudit.html'
-          imgdir = 'fem_d_mass_tri.files'
-          normal = read_cp932(normal_path)
-          audit, _ = read_auto(audit_path)
-
-          sections = {}
-          for m in re.finditer(
-              r'<section\b[^>]*id=["\']formula-(\d{3})["\'][^>]*>.*?'
-              r'<div\s+class=["\']render["\']>\s*(.*?)\s*</div>.*?</section>',
-              audit, flags=re.I | re.S):
-              n, body = m.group(1), m.group(2).strip()
-              sections[n] = body
-
-          expected_711 = [f'{i:03d}' for i in range(1, 19)] + ['020', '021']
-          if set(sections) != set(expected_711) or len(sections) != 20:
-              raise RuntimeError(f'fem_7_1_1 certified extraction mismatch: {sorted(sections)}')
-
-          def block(n):
-              return (
-                  f'<div class="math-block" id="formula-fem-7-1-1-{n}" '
-                  f'data-source-image="./../img/{imgdir}/image{n}.png">\n'
-                  f'{sections[n]}\n</div>'
-              )
-
-          # Replace the one legacy MathJax correction occupying the image002 position.
-          normal, n_old = re.subn(
-              r'<div\b(?=[^>]*class=["\'][^"\']*\bmath-block\b[^"\']*["\'])'
-              r'(?=[^>]*id=["\']fix-r-fem2d-mass-001["\'])[^>]*>.*?</div>',
-              block('002'), normal, count=1, flags=re.I | re.S)
-          if n_old != 1:
-              raise RuntimeError(f'fem_7_1_1 image002 legacy block count={n_old}, expected=1')
-
-          direct_seen = []
-          def repl_direct(m):
-              n = m.group(1)
-              direct_seen.append(n)
-              if n not in sections:
-                  raise RuntimeError(f'Unexpected fem_7_1_1 image {n}')
-              return block(n)
-
-          normal, n_direct = re.subn(
-              rf'<p\b[^>]*class=["\'][^"\']*\bim\b[^"\']*["\'][^>]*>\s*'
-              rf'<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image(\d{{3}})\.png["\'][^>]*>\s*</p>',
-              repl_direct, normal, flags=re.I | re.S)
-
-          expected_direct = Counter(n for n in expected_711 if n != '002')
-          if n_direct != 19 or Counter(direct_seen) != expected_direct:
-              raise RuntimeError(
-                  f'fem_7_1_1 direct mapping mismatch: count={n_direct}, seen={Counter(direct_seen)}')
-
-          # Standardize only the MathJax head setup; leave all article content untouched.
-          normal = strip_mathjax_head(normal)
-          mathjax4 = '''\n\t<script>\n\twindow.MathJax = {\n\t\ttex: {inlineMath: [['\\\\(', '\\\\)']], displayMath: [['\\\\[', '\\\\]']]},\n\t\toutput: {\n\t\t\tdisplayOverflow: 'linebreak',\n\t\t\tlinebreaks: {inline: true, width: '100%', lineleading: 0.2}\n\t\t},\n\t\tchtml: {displayAlign: 'left', displayIndent: '0'}\n\t};\n\t</script>\n\t<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>\n'''
-          normal = normal.replace('</head>', mathjax4 + '</head>', 1)
-
-          got711 = formula_image_counts(normal, imgdir)
-          exp711 = expected_counts(expected_711)
-          if got711 != exp711:
-              raise RuntimeError(f'fem_7_1_1 occurrence mismatch: got={got711}, expected={exp711}')
-          leftovers = remaining_img_tags(normal, imgdir)
-          if leftovers:
-              raise RuntimeError(f'fem_7_1_1 target formula images remain: {leftovers}')
-          if 'mathjax@4/tex-mml-chtml.js' not in normal or 'mathjax@3/' in normal:
-              raise RuntimeError('fem_7_1_1 MathJax loader standardization failed')
-
-          # Explicitly guard the known source-oddity in image002: N1,N1,N3 must remain unchanged.
-          if r'\begin{bmatrix}N_1\\N_1\\N_3\end{bmatrix}' not in sections['002']:
-              raise RuntimeError('fem_7_1_1 image002 source-faithful N1,N1,N3 guard failed')
-
-          write_cp932(normal_path, normal)
-          results.append((normal_path, sum(got711.values()), len(got711)))
-
-          # Final cross-page validation after writes.
-          total_occ = 0
-          total_unique = 0
-          for path, occ, uniq in results:
-              reread = read_cp932(path)
-              if 'mathjax@4/tex-mml-chtml.js' not in reread:
-                  raise RuntimeError(f'MathJax 4 missing after write: {path}')
-              total_occ += occ
-              total_unique += uniq
+          total_occ = sum(x[1] for x in results)
+          total_unique = sum(x[2] for x in results)
+          if total_occ != 148 or total_unique != 143:
+              raise RuntimeError(f'Global count mismatch placements={total_occ}, unique={total_unique}')
 
           report = Path('.document/formula_reviews/NORMAL_PAGE_APPLY_RESULT.md')
           lines = [
@@ -236,6 +244,8 @@ jobs:
               '',
               '- Branch: `develop`',
               '- Source policy: audited source-image-faithful LaTeX only',
+              '- Replacement scope: formula placements and MathJax head setup only',
+              '- Non-formula content guard: PASS on all five pages',
               '- Encoding of public pages: CP932 / Shift_JIS preserved',
               '- MathJax: v4, display overflow line breaking enabled',
               '',
@@ -254,9 +264,7 @@ jobs:
               'Next: browser QA on desktop/mobile before production deployment.',
           ]
           report.write_text('\n'.join(lines) + '\n', encoding='utf-8')
-
-          print('\n'.join(f'{p}: placements={o}, unique={u}' for p, o, u in results))
-          print(f'TOTAL placements={total_occ}, unique={total_unique}')
+          print(f'TOTAL: PASS placements={total_occ}, unique={total_unique}')
           PY
 
       - name: Show diff summary
