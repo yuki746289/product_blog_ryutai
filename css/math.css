@@ -1,8 +1,9 @@
 /**
- * 更新日時: 2026/09/16
- * 処理概要: [S001] MathJax数式を横スクロールなしでコンテナ幅内に表示する。
+ * 更新日時: 2026/09/18
+ * 処理概要: [S001] MathJax数式をレスポンシブ表示し、画面幅を超える行列・長式は数式領域内でスクロール可能にする。
  * 前回バージョンとの違い:
- * - [MOD]: [L101] 横スクロール指定とmin-width:max-contentを廃止。
+ * - [MOD]: 767px以下では、折り返せない数式だけを.math-block内の横スクロールに閉じ込め、ページ全体の横はみ出しを防止。
+ * - [KEEP]: MathJaxの自動改行を優先し、PCでは従来どおり横スクロールなし。
  */
 /* MathJax and correction-history styles */
 .math-block {
@@ -10,6 +11,7 @@
 	overflow: visible;
 	margin: 12px 0 18px 0;
 	padding: 4px 0;
+	box-sizing: border-box;
 }
 
 .math-block mjx-container[display="true"] {
@@ -57,6 +59,19 @@
 }
 
 @media screen and (max-width: 767px) {
+	/*
+	 * MathJax 4のlinebreakで分割できない行列・aligned式は、式そのものを縮小・改変せず
+	 * 数式ブロック内だけ横スクロールさせる。これにより本文ページ幅はviewport内に保つ。
+	 */
+	.math-block {
+		width: 100%;
+		max-width: 100%;
+		overflow-x: auto;
+		overflow-y: hidden;
+		overscroll-behavior-x: contain;
+		-webkit-overflow-scrolling: touch;
+	}
+
 	.correction-history {
 		display: block;
 		overflow-x: auto;
