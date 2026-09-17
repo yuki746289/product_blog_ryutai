@@ -1,0 +1,39 @@
+name: Formula Audit Prep FEM 7.2.2 Missing
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/formula-audit-prep-fem-7-2-2-missing.yml'
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - run: pip install pillow
+      - name: Normalize and enlarge source images
+        run: |
+          python - <<'PY'
+          from PIL import Image
+          from pathlib import Path
+          out = Path('audit-prep-fem722-missing')
+          out.mkdir(exist_ok=True)
+          srcdir = Path('img/fem_d_momentum_tet.files')
+          for n in ('020','025','026','027'):
+              p = srcdir / f'image{n}.png'
+              im = Image.open(p).convert('RGBA')
+              bg = Image.new('RGBA', im.size, 'white')
+              bg.alpha_composite(im)
+              rgb = bg.convert('RGB')
+              rgb.resize((rgb.width*8, rgb.height*8)).save(out / f'image{n}_x8.png')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fem-7-2-2-missing-audit-prep
+          path: audit-prep-fem722-missing
+          retention-days: 7
