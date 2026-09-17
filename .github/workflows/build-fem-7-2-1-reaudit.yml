@@ -1,0 +1,97 @@
+name: Build FEM 7.2.1 Reaudit
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/build-fem-7-2-1-reaudit.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - name: Build strict reaudit HTML from audited LaTeX
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          def extract_formulas(path):
+              text = Path(path).read_text(encoding='utf-8')
+              heads = list(re.finditer(r'^## image(\d{3})(?:[^\n]*)\n', text, re.M))
+              out = {}
+              for i,m in enumerate(heads):
+                  n = m.group(1)
+                  end = heads[i+1].start() if i+1 < len(heads) else len(text)
+                  sec = text[m.end():end]
+                  cm = re.search(r'```latex\n(.*?)\n```', sec, re.S)
+                  if cm:
+                      out[n] = cm.group(1).strip()
+              return out
+
+          formulas = extract_formulas('.document/formula_reviews/fem_7_2_1_retranscription.md')
+          formulas.update(extract_formulas('.document/formula_reviews/fem_7_2_1_hold_resolution.md'))
+
+          expected = [f'{i:03d}' for i in range(1,21)]
+          missing = [n for n in expected if n not in formulas]
+          if missing:
+              raise SystemExit(f'missing audited formulas: {missing}')
+
+          src = Path('fem/fem_7_2_1_mathjax_audit.html').read_text(encoding='utf-8')
+          html = src
+          for n in expected:
+              pat = re.compile(
+                  rf'(<div class="math-block" id="formula-fem-7-2-1-{n}" data-source-image="\.\./img/fem_d_mass_tet\.files/image{n}\.png">).*?(</div>)',
+                  re.S
+              )
+              if len(pat.findall(html)) != 1:
+                  raise SystemExit(f'formula block mapping not unique: {n}')
+              latex = formulas[n]
+              html = pat.sub(lambda m: m.group(1) + '\n' + latex + '\n' + m.group(2), html, count=1)
+
+          html = html.replace(
+              '<p id="formula-conversion-note">数式はMathJaxで表示しています。変換前の数式画像は照合用としてリポジトリ内に保持しています。</p>',
+              '<p id="formula-conversion-note"><strong>厳密再監査版:</strong> 元数式画像とPass 1照合済みの忠実LaTeXをMathJax表示しています。通常公開ページではありません。</p>',
+              1
+          )
+          html = html.replace('<title>質量収支式の離散化（有限要素法）</title>', '<title>質量収支式の離散化（厳密再監査版）</title>', 1)
+
+          out = Path('fem/fem_7_2_1_reaudit.html')
+          out.write_text(html, encoding='utf-8')
+
+          # Static verification: every source formula must round-trip exactly.
+          built = out.read_text(encoding='utf-8')
+          for n in expected:
+              pat = re.compile(
+                  rf'<div class="math-block" id="formula-fem-7-2-1-{n}" data-source-image="\.\./img/fem_d_mass_tet\.files/image{n}\.png">\n(.*?)\n</div>',
+                  re.S
+              )
+              m = pat.search(built)
+              if not m:
+                  raise SystemExit(f'built block missing: {n}')
+              if m.group(1).strip() != formulas[n].strip():
+                  raise SystemExit(f'latex mismatch after build: {n}')
+
+          ids = re.findall(r'id="formula-fem-7-2-1-(\d{3})"', built)
+          if ids != expected:
+              raise SystemExit(f'formula id order mismatch: {ids}')
+          print('Strict reaudit HTML: 20/20 formula blocks verified')
+          PY
+
+      - name: Commit reaudit HTML
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add fem/fem_7_2_1_reaudit.html
+          git diff --cached --check
+          git commit -m 'feat: build strict fem 7.2.1 reaudit page'
+          git push origin HEAD:develop
