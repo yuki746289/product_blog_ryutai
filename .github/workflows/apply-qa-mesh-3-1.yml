@@ -1,0 +1,305 @@
+# Created: 2026-09-19T07:20:00+09:00
+name: Apply and QA Mesh 3_1
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/apply-qa-mesh-3-1.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply_qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Apply certified formulas
+        run: |
+          python3 - <<'PY'
+          import json,re
+          from pathlib import Path
+
+          page=Path('mesh/mesh_3_1.html')
+          cfg=json.loads(Path('.document/formula_reviews/mesh_3_1_formulas.json').read_text(encoding='utf-8'))
+          imgdir='mesh_node_buble.files'
+
+          display=[x for x in cfg['formulas'] if x.get('mode','display')!='inline']
+          inline=[x for x in cfg['formulas'] if x.get('mode')=='inline']
+          dnums=[x['image'][5:8] for x in display]
+          inums=[x['image'][5:8] for x in inline]
+          retained=['001','002','003','007','008','011','016','017','018','019']
+
+          if dnums!=['006','009','010','014','015']:
+              raise RuntimeError(f'display sequence {dnums}')
+          if inums!=['004','005','012','013']:
+              raise RuntimeError(f'inline sequence {inums}')
+
+          bynum={x['image'][5:8]:x for x in cfg['formulas']}
+
+          mathjax4="""
+          <script>
+          window.MathJax={
+            output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+            chtml:{displayAlign:'left',displayIndent:'0'}
+          };
+          </script>
+          <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+          """
+
+          raw=page.read_bytes()
+          enc=None
+          for candidate in ('cp932','utf-8'):
+              try:
+                  original=raw.decode(candidate)
+                  enc=candidate
+                  break
+              except UnicodeDecodeError:
+                  pass
+          if enc is None:
+              raise RuntimeError('encoding failed')
+
+          def strip_mathjax(text):
+              text=re.sub(r'\s*<script>\s*window\.MathJax\s*=\s*\{.*?</script>','',text,flags=re.I|re.S)
+              text=re.sub(r'\s*<script\b[^>]*src=["\'][^"\']*mathjax[^"\']*["\'][^>]*>\s*</script>','',text,flags=re.I|re.S)
+              return text
+
+          dalt='|'.join(dnums)
+          ialt='|'.join(inums)
+
+          dp=re.compile(
+              rf'(?P<block><div\b(?=[^>]*class=["\'][^"\']*\bmath-block\b[^"\']*["\'])(?=[^>]*data-source-image=["\'][^"\']*{re.escape(imgdir)}/image(?P<bnum>{dalt})\.png["\'])[^>]*>.*?</div>)'
+              rf'|(?P<img><p\b(?=[^>]*class=["\'][^"\']*\bim\b[^"\']*["\'])[^>]*>\s*<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image(?P<inum>{dalt})\.png["\'][^>]*>\s*</p>)',
+              flags=re.I|re.S)
+
+          ip=re.compile(
+              rf'(?P<span><span\b(?=[^>]*class=["\'][^"\']*\bmath-inline\b[^"\']*["\'])(?=[^>]*data-source-image=["\'][^"\']*{re.escape(imgdir)}/image(?P<snum>{ialt})\.png["\'])[^>]*>.*?</span>)'
+              rf'|(?P<img><img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image(?P<inum>{ialt})\.png["\'][^>]*>)',
+              flags=re.I|re.S)
+
+          def skeleton(text):
+              text=strip_mathjax(text)
+              text=dp.sub('<DISPLAY_FORMULA/>',text)
+              text=ip.sub('<INLINE_FORMULA/>',text)
+              return re.sub(r'\s+',' ',text).strip()
+
+          before=skeleton(original)
+          dfound=[m.group('inum') or m.group('bnum') for m in dp.finditer(original)]
+          ifound=[m.group('inum') or m.group('snum') for m in ip.finditer(original)]
+          if dfound!=dnums:
+              raise RuntimeError(f'display source sequence {dfound} != {dnums}')
+          if ifound!=inums:
+              raise RuntimeError(f'inline source sequence {ifound} != {inums}')
+
+          dpos=[0]
+          def drepl(_m):
+              n=dnums[dpos[0]]
+              dpos[0]+=1
+              return (
+                  f'<div class="math-block" id="formula-mesh-3-1-{n}" '
+                  f'data-source-image="./../img/{imgdir}/image{n}.png">\n'
+                  f'{bynum[n]["latex"]}\n</div>'
+              )
+
+          ipos=[0]
+          def irepl(_m):
+              n=inums[ipos[0]]
+              ipos[0]+=1
+              return (
+                  f'<span class="math-inline" id="formula-mesh-3-1-{n}" '
+                  f'data-source-image="./../img/{imgdir}/image{n}.png">'
+                  f'{bynum[n]["latex"]}</span>'
+              )
+
+          applied=dp.sub(drepl,original)
+          applied=ip.sub(irepl,applied)
+          applied=strip_mathjax(applied)
+
+          if '</head>' not in applied:
+              raise RuntimeError('missing </head>')
+          applied=applied.replace('</head>',mathjax4+'</head>',1)
+
+          if skeleton(applied)!=before:
+              raise RuntimeError('non-formula content changed')
+
+          dmapped=re.findall(
+              rf'<div\b[^>]*class=["\'][^"\']*\bmath-block\b[^"\']*["\'][^>]*data-source-image=["\'][^"\']*{re.escape(imgdir)}/image(\d{{3}})\.png["\']',
+              applied,flags=re.I)
+          imapped=re.findall(
+              rf'<span\b[^>]*class=["\'][^"\']*\bmath-inline\b[^"\']*["\'][^>]*data-source-image=["\'][^"\']*{re.escape(imgdir)}/image(\d{{3}})\.png["\']',
+              applied,flags=re.I)
+          if dmapped!=dnums:
+              raise RuntimeError(f'display mapped {dmapped} != {dnums}')
+          if imapped!=inums:
+              raise RuntimeError(f'inline mapped {imapped} != {inums}')
+
+          alt='|'.join(dnums+inums)
+          leftovers=re.findall(
+              rf'<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image(?:{alt})\.png["\'][^>]*>',
+              applied,flags=re.I)
+          if leftovers:
+              raise RuntimeError(f'target formula images remain {len(leftovers)}')
+
+          for n in retained:
+              ext='jpg' if int(n)>=16 else 'png'
+              count=len(re.findall(
+                  rf'<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image{n}\.{ext}["\'][^>]*>',
+                  applied,flags=re.I))
+              if count!=1:
+                  raise RuntimeError(f'retained image{n}.{ext} count {count} != 1')
+
+          page.write_bytes(applied.encode(enc))
+          Path('.document/formula_reviews/MESH_3_1_NORMAL_APPLY_RESULT.md').write_text(
+              '# Mesh 3_1 Normal Apply Result\n\n'
+              '- Certified formulas applied: **9 / 9**\n'
+              '- Display formulas: **5**\n'
+              '- Inline formulas: **4**\n'
+              '- Target formula image tags remaining: **0**\n'
+              '- Retained diagram / graph / result images: **10**\n'
+              '- Mixed image012/image013 labels preserved as existing HTML text: **PASS**\n'
+              '- Non-formula content guard: **PASS**\n'
+              '- MathJax: v4\n'
+              '- Production deployment: not performed.\n',
+              encoding='utf-8')
+          print('PASS display=5 inline=4 retained=10 encoding='+enc)
+          PY
+
+      - name: Install Chromium
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Browser QA
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/mesh31-qa-http.log 2>&1 &
+          sleep 1
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+
+          file='mesh/mesh_3_1.html'
+          imgdir='mesh_node_buble.files'
+          viewports={'desktop':{'width':1440,'height':1000},'mobile':{'width':390,'height':844}}
+          out=Path('mesh-3-1-normal-qa')
+          out.mkdir(exist_ok=True)
+          results=[]
+          failures=[]
+
+          with sync_playwright() as p:
+              browser=p.chromium.launch(headless=True)
+              for vp_name,vp in viewports.items():
+                  ctx=browser.new_context(viewport=vp,device_scale_factor=1)
+                  page=ctx.new_page()
+                  page_errors=[]
+                  page.on('pageerror',lambda exc,store=page_errors:store.append(str(exc)))
+                  page.goto('http://127.0.0.1:8000/'+file,wait_until='domcontentloaded',timeout=120000)
+                  page.wait_for_function('() => window.MathJax && MathJax.startup && MathJax.startup.promise',timeout=60000)
+                  page.evaluate('async()=>{await MathJax.startup.promise;}')
+                  page.wait_for_timeout(500)
+
+                  blocks=page.locator(f'div.math-block[data-source-image*="{imgdir}/image"]')
+                  inlines=page.locator(f'span.math-inline[data-source-image*="{imgdir}/image"]')
+                  bc,ic=blocks.count(),inlines.count()
+                  retained=page.locator(f'img[src*="{imgdir}/image"]').count()
+                  merror=page.locator('mjx-merror').count()
+                  unrendered=0
+                  local_scroll=0
+                  uncontained=0
+
+                  for loc in (blocks,inlines):
+                      for i in range(loc.count()):
+                          el=loc.nth(i)
+                          if el.locator('mjx-container').count()<1:
+                              unrendered+=1
+                          dims=el.evaluate('(e)=>({clientWidth:e.clientWidth,scrollWidth:e.scrollWidth,overflowX:getComputedStyle(e).overflowX})')
+                          if dims['scrollWidth']>dims['clientWidth']+1:
+                              local_scroll+=1
+                              if vp_name=='desktop' or dims['overflowX'] not in ('auto','scroll'):
+                                  uncontained+=1
+
+                  pd=page.evaluate('() => ({cw:document.documentElement.clientWidth,sw:document.documentElement.scrollWidth})')
+                  page_overflow=pd['sw']>pd['cw']+2
+
+                  shotdir=out/vp_name
+                  shotdir.mkdir(parents=True,exist_ok=True)
+                  page.screenshot(path=str(shotdir/'full.png'),full_page=True,animations='disabled')
+
+                  row={
+                      'viewport':vp_name,'display':bc,'inline':ic,'retained':retained,
+                      'mathjax_errors':merror,'unrendered':unrendered,'local_scroll':local_scroll,
+                      'uncontained':uncontained,'page_overflow':page_overflow,'page_errors':page_errors
+                  }
+                  results.append(row)
+
+                  if bc!=5: failures.append(f'{vp_name}: display {bc} != 5')
+                  if ic!=4: failures.append(f'{vp_name}: inline {ic} != 4')
+                  if retained!=10: failures.append(f'{vp_name}: retained {retained} != 10')
+                  if merror: failures.append(f'{vp_name}: MathJax errors {merror}')
+                  if unrendered: failures.append(f'{vp_name}: unrendered {unrendered}')
+                  if uncontained: failures.append(f'{vp_name}: uncontained overflow {uncontained}')
+                  if page_overflow: failures.append(f'{vp_name}: page overflow')
+                  if page_errors: failures.append(f'{vp_name}: page errors {page_errors}')
+                  ctx.close()
+
+              browser.close()
+
+          status='PASS' if not failures else 'FAIL'
+          (out/'manifest.json').write_text(json.dumps({'status':status,'results':results,'failures':failures},ensure_ascii=False,indent=2),encoding='utf-8')
+
+          lines=[
+              '# Mesh 3_1 Normal Browser QA — 2026-09-19','',
+              f'- Overall: **{status}**',
+              '- Browser: Chromium / Playwright',
+              '- Viewports: desktop 1440×1000, mobile 390×844',
+              '- Expected display formulas: 5',
+              '- Expected inline formulas: 4',
+              '- Expected retained source images: 10',
+              '- Production deployment: not performed.','',
+              '| Viewport | Display | Inline | Retained | MathJax errors | Unrendered | Local scroll | Uncontained | Page overflow |',
+              '|---|---:|---:|---:|---:|---:|---:|---:|---|'
+          ]
+          for r in results:
+              lines.append(
+                  f"| {r['viewport']} | {r['display']}/5 | {r['inline']}/4 | {r['retained']}/10 | "
+                  f"{r['mathjax_errors']} | {r['unrendered']} | {r['local_scroll']} | "
+                  f"{r['uncontained']} | {'YES' if r['page_overflow'] else 'NO'} |")
+          lines += ['', '## Failures', '']
+          lines += [f'- {x}' for x in failures] if failures else ['- None.']
+
+          Path('.document/formula_reviews/MESH_3_1_NORMAL_BROWSER_QA_20260919.md').write_text('\n'.join(lines)+'\n',encoding='utf-8')
+          if failures:
+              raise SystemExit(1)
+          PY
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mesh-3-1-normal-qa
+          path: mesh-3-1-normal-qa
+          retention-days: 7
+
+      - name: Commit applied page and QA
+        if: success()
+        run: |
+          git diff --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add mesh/mesh_3_1.html .document/formula_reviews/MESH_3_1_NORMAL_APPLY_RESULT.md .document/formula_reviews/MESH_3_1_NORMAL_BROWSER_QA_20260919.md
+          git commit -m 'feat: apply and verify mesh 3_1 formulas'
+          for attempt in 1 2 3 4 5; do
+            git pull --rebase origin develop
+            if git push origin HEAD:develop; then exit 0; fi
+            if [ "$attempt" -eq 5 ]; then exit 1; fi
+            sleep 2
+          done
