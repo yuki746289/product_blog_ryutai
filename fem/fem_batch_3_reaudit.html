@@ -1,0 +1,180 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FEM batch 3 strict formula re-audit</title>
+<style>body{font-family:Arial,"Yu Gothic",sans-serif;margin:20px}.formula-pair{border-top:1px solid #bbb;padding:18px 0}.pair-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}.source,.render{min-width:0;overflow-x:auto;padding:10px;border:1px solid #ddd}.source img{display:block;max-width:100%;height:auto;margin:auto}.render mjx-container[display="true"]{margin:.4em 0!important;text-align:left!important}@media(max-width:900px){.pair-grid{grid-template-columns:1fr}}</style>
+<script>window.MathJax={output:{displayOverflow:"linebreak",linebreaks:{inline:false,width:"100%"}}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head><body><h1>FEM Batch 3 strict source-image re-audit</h1>
+<h2>fem/fem_2_2.html</h2>
+<section class="formula-pair" id="formula-fem_2_2-010"><h3>fem_2_2-010</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_tri.files/image010.png" alt="source fem_2_2-010"></div>
+<div class="render" data-source-image="./../img/fem_tri.files/image010.png">\[
+\phi(x,y)=\alpha+\beta x+\gamma y+\xi x^2+\eta xy+\zeta y^2
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-fem_2_2-011"><h3>fem_2_2-011</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_tri.files/image011.png" alt="source fem_2_2-011"></div>
+<div class="render" data-source-image="./../img/fem_tri.files/image011.png">\[
+\left\{
+\begin{aligned}
+\phi_1&=\alpha+\beta x_1+\gamma y_1+\xi x_1^2+\eta x_1y_1+\zeta y_1^2\\
+\phi_2&=\alpha+\beta x_2+\gamma y_2+\xi x_2^2+\eta x_2y_2+\zeta y_2^2\\
+\phi_3&=\alpha+\beta x_3+\gamma y_3+\xi x_3^2+\eta x_3y_3+\zeta y_3^2\\
+\phi_4&=\alpha+\beta x_4+\gamma y_4+\xi x_4^2+\eta x_4y_4+\zeta y_4^2\\
+\phi_5&=\alpha+\beta x_5+\gamma y_5+\xi x_5^2+\eta x_5y_5+\zeta y_5^2\\
+\phi_6&=\alpha+\beta x_6+\gamma y_6+\xi x_6^2+\eta x_6y_6+\zeta y_6^2
+\end{aligned}
+\right.
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-fem_2_2-012"><h3>fem_2_2-012</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_tri.files/image012.png" alt="source fem_2_2-012"></div>
+<div class="render" data-source-image="./../img/fem_tri.files/image012.png">\[
+\begin{aligned}
+\phi(x,y)
+&=N_1\phi_1+N_2\phi_2+N_3\phi_3+N_4\phi_4+N_5\phi_5+N_6\phi_6\\
+&=L_1(2L_1-1)\phi_1+L_2(2L_2-1)\phi_2+L_3(2L_3-1)\phi_3\\
+&\quad+4L_1L_2\phi_4+4L_2L_3\phi_5+4L_3L_1\phi_6
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-fem_2_2-013"><h3>fem_2_2-013</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_tri.files/image013.png" alt="source fem_2_2-013"></div>
+<div class="render" data-source-image="./../img/fem_tri.files/image013.png">\[
+\begin{aligned}
+N_1&=L_1(2L_1-1)\\
+N_2&=L_2(2L_2-1)\\
+N_3&=L_3(2L_3-1)\\
+N_4&=4L_1L_2\\
+N_5&=4L_2L_3\\
+N_6&=4L_3L_1
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-fem_2_2-014"><h3>fem_2_2-014</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_tri.files/image014.png" alt="source fem_2_2-014"></div>
+<div class="render" data-source-image="./../img/fem_tri.files/image014.png">\[
+\sum_{i=1}^{6}N_i=1
+\]</div>
+</div></section>
+<h2>fem/fem_6_1_1.html</h2>
+<section class="formula-pair" id="formula-fem_6_1_1-002"><h3>fem_6_1_1-002</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_n_tri.files/image002.png" alt="source fem_6_1_1-002"></div>
+<div class="render" data-source-image="./../img/fem_n_tri.files/image002.png">\[
+\begin{aligned}
+S&=\frac{1}{2}\det
+\begin{pmatrix}
+1&x_1&y_1\\
+1&x_2&y_2\\
+1&x_3&y_3
+\end{pmatrix}\\
+&=\frac{1}{2}
+(x_2y_3-y_2x_3-x_1y_3+x_1y_2+y_1x_3-y_1x_2)
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-fem_6_1_1-003"><h3>fem_6_1_1-003</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_n_tri.files/image003.png" alt="source fem_6_1_1-003"></div>
+<div class="render" data-source-image="./../img/fem_n_tri.files/image003.png">\[
+\begin{aligned}
+a_{11}&=1,\ a_{12}=x_1,\ a_{13}=y_1\\
+a_{21}&=1,\ a_{22}=x_2,\ a_{23}=y_2\\
+a_{31}&=1,\ a_{32}=x_3,\ a_{33}=y_3
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-fem_6_1_1-004"><h3>fem_6_1_1-004</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_n_tri.files/image004.png" alt="source fem_6_1_1-004"></div>
+<div class="render" data-source-image="./../img/fem_n_tri.files/image004.png">\[
+\begin{aligned}
+S_1&=\frac{1}{2}\det
+\begin{pmatrix}
+1&x&y\\
+1&x_2&y_2\\
+1&x_3&y_3
+\end{pmatrix}\\
+&=\frac{1}{2}
+(x_2y_3-y_2x_3-xy_3+xy_2+yx_3-yx_2)
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-fem_6_1_1-005"><h3>fem_6_1_1-005</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_n_tri.files/image005.png" alt="source fem_6_1_1-005"></div>
+<div class="render" data-source-image="./../img/fem_n_tri.files/image005.png">\[
+\begin{aligned}
+S_2&=\frac{1}{2}\det
+\begin{pmatrix}
+1&x_1&y_1\\
+1&x&y\\
+1&x_3&y_3
+\end{pmatrix}\\
+&=\frac{1}{2}
+(xy_3-yx_3-x_1y_3+x_1y+y_1x_3-y_1x)
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-fem_6_1_1-006"><h3>fem_6_1_1-006</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_n_tri.files/image006.png" alt="source fem_6_1_1-006"></div>
+<div class="render" data-source-image="./../img/fem_n_tri.files/image006.png">\[
+\begin{aligned}
+S_3&=\frac{1}{2}\det
+\begin{pmatrix}
+1&x_1&y_1\\
+1&x_2&y_2\\
+1&x&y
+\end{pmatrix}\\
+&=\frac{1}{2}
+(x_2y-y_2x-x_1y+x_1y_2+y_1x-y_1x_2)
+\end{aligned}
+\]</div>
+</div></section>
+<h2>fem/fem_6_1_5.html</h2>
+<section class="formula-pair" id="formula-fem_6_1_5-013"><h3>fem_6_1_5-013</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_n_tri.files/image013.png" alt="source fem_6_1_5-013"></div>
+<div class="render" data-source-image="./../img/fem_n_tri.files/image013.png">\[
+c_{1x}=\frac{\partial N_1}{\partial x}
+=\frac{\partial L_1}{\partial x}
+=\frac{1}{2S}(-y_3+y_2)
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-fem_6_1_5-014"><h3>fem_6_1_5-014</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_n_tri.files/image014.png" alt="source fem_6_1_5-014"></div>
+<div class="render" data-source-image="./../img/fem_n_tri.files/image014.png">\[
+c_{1y}=\frac{\partial N_1}{\partial y}
+=\frac{\partial L_1}{\partial y}
+=\frac{1}{2S}(x_3-x_2)
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-fem_6_1_5-015"><h3>fem_6_1_5-015</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_n_tri.files/image015.png" alt="source fem_6_1_5-015"></div>
+<div class="render" data-source-image="./../img/fem_n_tri.files/image015.png">\[
+c_{2x}=\frac{\partial N_2}{\partial x}
+=\frac{\partial L_2}{\partial x}
+=\frac{1}{2S}(y_3-y_1)
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-fem_6_1_5-016"><h3>fem_6_1_5-016</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_n_tri.files/image016.png" alt="source fem_6_1_5-016"></div>
+<div class="render" data-source-image="./../img/fem_n_tri.files/image016.png">\[
+c_{2y}=\frac{\partial N_2}{\partial y}
+=\frac{\partial L_2}{\partial y}
+=\frac{1}{2S}(-x_3+x_1)
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-fem_6_1_5-017"><h3>fem_6_1_5-017</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_n_tri.files/image017.png" alt="source fem_6_1_5-017"></div>
+<div class="render" data-source-image="./../img/fem_n_tri.files/image017.png">\[
+c_{3x}=\frac{\partial N_3}{\partial x}
+=\frac{\partial L_3}{\partial x}
+=\frac{1}{2S}(-y_2+y_1)
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-fem_6_1_5-018"><h3>fem_6_1_5-018</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_n_tri.files/image018.png" alt="source fem_6_1_5-018"></div>
+<div class="render" data-source-image="./../img/fem_n_tri.files/image018.png">\[
+c_{3y}=\frac{\partial N_3}{\partial y}
+=\frac{\partial L_3}{\partial y}
+=\frac{1}{2S}(x_2-x_1)
+\]</div>
+</div></section>
+</body></html>
