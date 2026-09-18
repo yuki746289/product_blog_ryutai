@@ -17,8 +17,23 @@ Source-visible Japanese force labels and formula structure are preserved.
 
 ## Pass 2 — browser MathJax comparison
 
-Status: **pending batch workflow artifact review**
+- Batch workflow run: **35354438203**
+- Artifact: `hydronamics-11-small-pass2`
+- Artifact id: **10551365242**
+- Result: **1 / 1 PASS**
+- MathJax rendering errors: **0**
+- Formula-level horizontal overflow: **0 / 1**
+- Source image vs MathJax rendering: **PASS**
 
 ## Certification
 
-Not yet certified for normal-page application until Pass 2 is complete.
+| Check | Result |
+|---|---|
+| Formula targets | 1 |
+| Diagram retained | 0 |
+| Pass 1 | **1 / 1 PASS** |
+| Pass 2 | **1 / 1 PASS** |
+| MathJax errors | **0** |
+| Production deployment | Not performed |
+
+**オーネソルジュ数の式は通常ページ反映可能として認証済みです。**
