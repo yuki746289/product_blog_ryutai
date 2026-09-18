@@ -11,6 +11,14 @@
 
 	<title>物理量の分類（物理）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+<script>
+window.MathJax={
+  output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+  chtml:{displayAlign:'left',displayIndent:'0'}
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="2">
@@ -95,11 +103,23 @@
 			<h2>・ベクトル量</h2>
 			<p>オーダー<span class="ft">1</span>の物理量。大きさと向きを持つ。単位ベクトルとその係数で表されます。</p>
 			<p>例：方向ベクトル
-							<img src="./../img/physics_q_category.files/image002.png"><span class="ft">[m]</span>、速度
-							<img src="./../img/physics_q_category.files/image003.png"><span class="ft">[m/s]</span></p>
-			<p class="im"><img src="./../img/physics_q_category.files/image004.png"></p>
+							<span class="math-inline" id="formula-physics-4-002" data-source-image="./../img/physics_q_category.files/image002.png">\(\vec{r}\)</span><span class="ft">[m]</span>、速度
+							<span class="math-inline" id="formula-physics-4-003" data-source-image="./../img/physics_q_category.files/image003.png">\(\vec{v}\)</span><span class="ft">[m/s]</span></p>
+			<div class="math-block" id="formula-physics-4-004" data-source-image="./../img/physics_q_category.files/image004.png">
+\[
+\begin{aligned}
+\vec{v}
+&=\sum_{i=3}^{3}\vec{\delta}_{i}v_i\\
+&=\vec{\delta}_{x}v_x+\vec{\delta}_{y}v_i+\vec{\delta}_{z}v_z
+\end{aligned}
+\]
+</div>
 			<p>大きさは絶対値で表されます。</p>
-			<p class="im"><img src="./../img/physics_q_category.files/image005.png"></p>
+			<div class="math-block" id="formula-physics-4-005" data-source-image="./../img/physics_q_category.files/image005.png">
+\[
+\left|\vec{v}\right|=\sqrt{v_x^2+v_y^2+v_z^2}
+\]
+</div>
 			<p class="im"><img src="./../img/physics_q_category.files/image006.png"></p>
 			<br>
 			<br>
@@ -110,8 +130,19 @@
 							<span class="ft"><i>j</i></span> 方向の成分を表現する。例えば、
 							<span class="ft"><b><i>x</i>, <i>y</i>, <i>z</i></span>面にそれぞれ働く摩擦力の
 							<span class="ft"><i>x</i>, <i>y</i>, <i>z</i></span>成分</b>を表現できる。</span></p>
-			<p>例：剪断応力<img src="./../img/physics_q_category.files/image007.png"><span class="ft">[N/m<sup>2</sup>]</span></p>
-			<p class="im"><img src="./../img/physics_q_category.files/image008.png"></p>
+			<p>例：剪断応力<span class="math-inline" id="formula-physics-4-007" data-source-image="./../img/physics_q_category.files/image007.png">\(\vec{\tau}\)</span><span class="ft">[N/m<sup>2</sup>]</span></p>
+			<div class="math-block" id="formula-physics-4-008" data-source-image="./../img/physics_q_category.files/image008.png">
+\[
+\begin{aligned}
+\vec{\tau}
+&=\sum_{i=0}^{3}\sum_{j=0}^{3}\vec{\delta}_{i}\vec{\delta}_{j}\tau_{ij}\\
+&=\sum_{i=0}^{3}\vec{\delta}_{i}\left(\vec{\delta}_{x}\tau_{ix}+\vec{\delta}_{y}\tau_{iy}+\vec{\delta}_{z}\tau_{iz}\right)\\
+&=\vec{\delta}_{x}\vec{\delta}_{x}\tau_{xx}+\vec{\delta}_{x}\vec{\delta}_{y}\tau_{xy}+\vec{\delta}_{x}\vec{\delta}_{z}\tau_{xz}\\
+&\quad+\vec{\delta}_{y}\vec{\delta}_{x}\tau_{yx}+\vec{\delta}_{y}\vec{\delta}_{y}\tau_{yy}+\vec{\delta}_{y}\vec{\delta}_{z}\tau_{yz}\\
+&\quad+\vec{\delta}_{z}\vec{\delta}_{x}\tau_{zx}+\vec{\delta}_{z}\vec{\delta}_{y}\tau_{zy}+\vec{\delta}_{z}\vec{\delta}_{z}\tau_{zz}
+\end{aligned}
+\]
+</div>
 			<p class="im"><img src="./../img/physics_q_category.files/image009.png"></p>
 			<br>
 
