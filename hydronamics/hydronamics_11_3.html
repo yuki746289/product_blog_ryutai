@@ -11,6 +11,14 @@
 
 	<title>オーネソルジュ数（無次元数）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+<script>
+window.MathJax={
+  output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+  chtml:{displayAlign:'left',displayIndent:'0'}
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="3">
@@ -49,7 +57,16 @@
 
 			<h2>オーネソルジュ数</h2>
 			<p>粘性力、表面張力、慣性力の釣り合いを表す無次元数</p>
-			<p class="im"><img src="./../img/hydronamics_d_oh.files/image001.png"></p>
+			<div class="math-block" id="formula-hydronamics-11-3-001" data-source-image="./../img/hydronamics_d_oh.files/image001.png">
+\[
+\begin{aligned}
+Oh
+&=\frac{F_{\text{粘性力}}}{\sqrt{F_{\text{表面張力}/2}F_{\text{慣性力}}}}\\
+&=\frac{\mu vx}{\sqrt{\gamma x\rho x^2v^2}}\\
+&=\frac{\mu}{\sqrt{\gamma x\rho}}
+\end{aligned}
+\]
+</div>
 			<p>オーネソルジュ数には、代表速度が含まれていません。数値解析で初速が
 					<span class="ft">0</span>の場合に使用されることがあります。</p>
 			<br>

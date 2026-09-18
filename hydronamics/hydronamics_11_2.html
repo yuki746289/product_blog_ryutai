@@ -11,6 +11,14 @@
 
 	<title>ウェーバー数（無次元数）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+<script>
+window.MathJax={
+  output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+  chtml:{displayAlign:'left',displayIndent:'0'}
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="3">
@@ -49,7 +57,16 @@
 
 			<h2>ウェーバー数</h2>
 			<p>慣性力と表面張力の釣り合いを表す無次元数。</p>
-			<p class="im"><img src="./../img/hydronamics_d_we.files/image001.png"></p>
+			<div class="math-block" id="formula-hydronamics-11-2-001" data-source-image="./../img/hydronamics_d_we.files/image001.png">
+\[
+\begin{aligned}
+We
+&=\frac{F_{\text{慣性力}}}{F_{\text{表面張力}/2}}\\
+&=\frac{\rho x^2v^2}{\gamma x}\\
+&=\frac{\rho xv^2}{\gamma}
+\end{aligned}
+\]
+</div>
 			<p>解析を行う場合は、界面の節点に値が用いられます。</p>
 			<p><iframe width="560" height="315" src="https://www.youtube.com/embed/engtlqzQWWw" frameborder="0" allowfullscreen></iframe></p>
 			<br>

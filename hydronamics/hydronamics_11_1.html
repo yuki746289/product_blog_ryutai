@@ -11,6 +11,14 @@
 
 	<title>レイノルズ数（無次元数）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+<script>
+window.MathJax={
+  output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+  chtml:{displayAlign:'left',displayIndent:'0'}
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="3">
@@ -49,7 +57,16 @@
 
 			<h2>レイノルズ数</h2>
 			<p>慣性力と粘性力の釣り合いを示す無次元数。値が大きい程、相対的に慣性力の影響が大きくなります。</p>
-			<p class="im"><img src="./../img/hydronamics_d_re.files/image001.png"></p>
+			<div class="math-block" id="formula-hydronamics-11-1-001" data-source-image="./../img/hydronamics_d_re.files/image001.png">
+\[
+\begin{aligned}
+Re
+&=\frac{F_{\text{慣性力}}}{F_{\text{粘性力}}}\\
+&=\frac{\rho x^2v^2}{\mu vx}\\
+&=\frac{\rho xv}{\mu}
+\end{aligned}
+\]
+</div>
 			<p><span class="ft"><i>Re</i>数の大小で、流れは層流、乱流に分けられます。</p>
 			<!--
 			<p><span class="ft"><i>Re</i> < 4000 </span>層流</p>
