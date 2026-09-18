@@ -1,0 +1,108 @@
+name: FEM 4 Mixed Image Reaudit
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/fem-4-mixed-image-reaudit.yml'
+      - '.document/formula_reviews/fem_4_image002_mixed.json'
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Build audit page
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          cfg=json.loads(Path('.document/formula_reviews/fem_4_image002_mixed.json').read_text(encoding='utf-8'))
+          rules=''.join(f'<p class="rule">\\({x}\\)</p>' for x in cfg['rules'])
+          src='./../img/fem_tri_area.files/image002.png'
+          html=f'''<!doctype html><html lang="ja"><head><meta charset="utf-8">
+          <meta name="viewport" content="width=device-width,initial-scale=1">
+          <style>
+          body{{font-family:"Yu Gothic",Meiryo,sans-serif;margin:20px}}
+          .pair{{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}}
+          .source,.render{{min-width:0;border:1px solid #ccc;padding:14px;overflow-x:auto}}
+          .source img{{max-width:100%;height:auto;display:block;margin:auto}}
+          .render p{{margin:.5em 0}} .rule{{font-size:1.05rem}}
+          @media(max-width:800px){{.pair{{grid-template-columns:1fr}}}}
+          </style>
+          <script>window.MathJax={{output:{{displayOverflow:"linebreak",linebreaks:{{inline:true,width:"100%"}}}}}};</script>
+          <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+          </head><body>
+          <h1>FEM 4 image002 mixed text re-audit</h1>
+          <div class="pair">
+          <div class="source"><img src="{src}"></div>
+          <div class="render" data-source-image="{src}">
+          <div class="display">{cfg['display_formula']}</div>
+          <p>{cfg['prose']}</p>
+          {rules}
+          </div></div></body></html>'''
+          Path('fem/fem_4_image002_reaudit.html').write_text(html,encoding='utf-8')
+          PY
+      - name: Install browser
+        run: |
+          pip install playwright pillow
+          python -m playwright install --with-deps chromium
+      - name: Start server
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/fem4mix-http.log 2>&1 &
+          sleep 1
+      - name: Capture
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from PIL import Image,ImageDraw
+          from playwright.sync_api import sync_playwright
+
+          out=Path('fem-4-mixed-pass2'); out.mkdir(exist_ok=True)
+          with sync_playwright() as p:
+            b=p.chromium.launch(headless=True)
+            ctx=b.new_context(viewport={'width':1500,'height':1000},device_scale_factor=1)
+            pg=ctx.new_page()
+            pg.goto('http://127.0.0.1:8000/fem/fem_4_image002_reaudit.html',wait_until='domcontentloaded',timeout=120000)
+            pg.wait_for_function('() => window.MathJax && MathJax.startup && MathJax.startup.promise',timeout=60000)
+            pg.evaluate('async()=>{await MathJax.startup.promise;}'); pg.wait_for_timeout(400)
+            r=pg.locator('.render')
+            if r.locator('mjx-container').count()<5 or r.locator('mjx-merror').count():
+              raise RuntimeError('mixed render MathJax error')
+            dims=r.evaluate('(e)=>({clientWidth:e.clientWidth,scrollWidth:e.scrollWidth})')
+            r.screenshot(path=str(out/'render.png'),animations='disabled')
+            src=pg.locator('.source img')
+            src.screenshot(path=str(out/'source.png'),animations='disabled')
+            pg.screenshot(path=str(out/'pair.png'),full_page=True,animations='disabled')
+            manifest={'mathjax_errors':r.locator('mjx-merror').count(),'containers':r.locator('mjx-container').count(),
+                      'horizontal_overflow':dims['scrollWidth']>dims['clientWidth']+1}
+            (out/'manifest.json').write_text(json.dumps(manifest,indent=2),encoding='utf-8')
+            b.close()
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fem-4-mixed-pass2
+          path: fem-4-mixed-pass2
+          retention-days: 7
+      - name: Commit audit page
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add fem/fem_4_image002_reaudit.html
+          git diff --cached --check
+          if ! git diff --cached --quiet; then
+            git commit -m 'docs: build FEM 4 mixed re-audit page'
+            git pull --rebase origin develop
+            git push origin HEAD:develop
+          fi
