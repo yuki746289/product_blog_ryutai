@@ -1,0 +1,213 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>remaining heat strict formula re-audit</title>
+<style>body{font-family:Arial,"Yu Gothic",sans-serif;margin:20px}.formula-pair{border-top:1px solid #bbb;padding:18px 0}.pair-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}.source,.render{min-width:0;overflow-x:auto;padding:10px;border:1px solid #ddd}.source img{display:block;max-width:100%;height:auto;margin:auto}.render mjx-container[display="true"]{margin:.4em 0!important;text-align:left!important}@media(max-width:800px){.pair-grid{grid-template-columns:1fr}}</style>
+<script>window.MathJax={output:{displayOverflow:"linebreak",linebreaks:{inline:false,width:"100%"}}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head><body><h1>Remaining Heat strict source-image re-audit</h1>
+<h2>heat/heat_3.html</h2>
+<section class="formula-pair" id="formula-heat_3-001"><h3>heat_3 image001</h3><div class="pair-grid">
+<div class="source"><img src="./../img/heat_flux.files/image001.png" alt="source heat_3-001"></div>
+<div class="render" data-source-image="./../img/heat_flux.files/image001.png">\[
+q=-k\frac{dT}{dx}
+\]</div>
+</div></section>
+<h2>heat/heat_4_1.html</h2>
+<section class="formula-pair" id="formula-heat_4_1-002"><h3>heat_4_1 image002</h3><div class="pair-grid">
+<div class="source"><img src="./../img/heat_conduction.files/image002.png" alt="source heat_4_1-002"></div>
+<div class="render" data-source-image="./../img/heat_conduction.files/image002.png">\[
+\begin{aligned}
+q&=-k\lim_{\Delta x\to 0}\frac{T_2-T_1}{\Delta x}\\
+&=-k\frac{dT}{dx}
+\end{aligned}
+\]</div>
+</div></section>
+<h2>heat/heat_4_2.html</h2>
+<section class="formula-pair" id="formula-heat_4_2-002"><h3>heat_4_2 image002</h3><div class="pair-grid">
+<div class="source"><img src="./../img/heat_convection.files/image002.png" alt="source heat_4_2-002"></div>
+<div class="render" data-source-image="./../img/heat_convection.files/image002.png">\[
+q=-h(T_2-T_1)
+\]</div>
+</div></section>
+<h2>heat/heat_4_3.html</h2>
+<section class="formula-pair" id="formula-heat_4_3-002"><h3>heat_4_3 image002</h3><div class="pair-grid">
+<div class="source"><img src="./../img/heat_emission.files/image002.png" alt="source heat_4_3-002"></div>
+<div class="render" data-source-image="./../img/heat_emission.files/image002.png">\[
+q=-\sigma(T_2^4-T_1^4)
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-heat_4_3-003"><h3>heat_4_3 image003</h3><div class="pair-grid">
+<div class="source"><img src="./../img/heat_emission.files/image003.png" alt="source heat_4_3-003"></div>
+<div class="render" data-source-image="./../img/heat_emission.files/image003.png">\[
+\sigma=5.669\times10^{-8}
+\]</div>
+</div></section>
+<h2>heat/heat_5_1.html</h2>
+<section class="formula-pair" id="formula-heat_5_1-002"><h3>heat_5_1 image002</h3><div class="pair-grid">
+<div class="source"><img src="./../img/heat_eq_accumulation.files/image002.png" alt="source heat_5_1-002"></div>
+<div class="render" data-source-image="./../img/heat_eq_accumulation.files/image002.png">\[
+Q=\rho C_p\frac{T_{t+\Delta t}-T_t}{\Delta t}\Delta x\Delta y\Delta z
+\]</div>
+</div></section>
+<h2>heat/heat_5_2.html</h2>
+<section class="formula-pair" id="formula-heat_5_2-002"><h3>heat_5_2 image002</h3><div class="pair-grid">
+<div class="source"><img src="./../img/heat_eq_convection.files/image002.png" alt="source heat_5_2-002"></div>
+<div class="render" data-source-image="./../img/heat_eq_convection.files/image002.png">\[
+\begin{aligned}
+Q_{in}
+&=C_p(F_xT|_x+F_yT|_y+F_zT|_z)\\
+&=C_p\left(\rho\Delta y\Delta z\,v_xT|_x+\rho\Delta z\Delta x\,v_yT|_y+\rho\Delta x\Delta y\,v_zT|_z\right)\\
+&=\rho C_p\left(\Delta y\Delta z\,v_xT|_x+\Delta z\Delta x\,v_yT|_y+\Delta x\Delta y\,v_zT|_z\right)
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-heat_5_2-003"><h3>heat_5_2 image003</h3><div class="pair-grid">
+<div class="source"><img src="./../img/heat_eq_convection.files/image003.png" alt="source heat_5_2-003"></div>
+<div class="render" data-source-image="./../img/heat_eq_convection.files/image003.png">\[
+\begin{aligned}
+Q_{out}
+&=-C_p(F_xT|_{x+\Delta x}+F_yT|_{y+\Delta y}+F_zT|_{z+\Delta z})\\
+&=-C_p\left(\rho\Delta y\Delta z\,v_xT|_{x+\Delta x}+\rho\Delta z\Delta x\,v_yT|_{y+\Delta y}+\rho\Delta x\Delta y\,v_zT|_{z+\Delta z}\right)\\
+&=-\rho C_p\left(\Delta y\Delta z\,v_xT|_{x+\Delta x}+\Delta z\Delta x\,v_yT|_{y+\Delta y}+\Delta x\Delta y\,v_zT|_{z+\Delta z}\right)
+\end{aligned}
+\]</div>
+</div></section>
+<h2>heat/heat_5_3.html</h2>
+<section class="formula-pair" id="formula-heat_5_3-002"><h3>heat_5_3 image002</h3><div class="pair-grid">
+<div class="source"><img src="./../img/heat_eq_conduction.files/image002.png" alt="source heat_5_3-002"></div>
+<div class="render" data-source-image="./../img/heat_eq_conduction.files/image002.png">\[
+\begin{aligned}
+Q_{in}
+&=\Delta y\Delta z\,q_x+\Delta z\Delta x\,q_y+\Delta x\Delta y\,q_z\\
+&=-\Delta y\Delta z\,k\left.\frac{dT}{dx}\right|_x
+-\Delta z\Delta x\,k\left.\frac{dT}{dy}\right|_y
+-\Delta x\Delta y\,k\left.\frac{dT}{dz}\right|_z
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-heat_5_3-003"><h3>heat_5_3 image003</h3><div class="pair-grid">
+<div class="source"><img src="./../img/heat_eq_conduction.files/image003.png" alt="source heat_5_3-003"></div>
+<div class="render" data-source-image="./../img/heat_eq_conduction.files/image003.png">\[
+\begin{aligned}
+Q_{out}
+&=-\Delta y\Delta z\,q_{x+\Delta x}
+-\Delta z\Delta x\,q_{y+\Delta y}
+-\Delta x\Delta y\,q_{z+\Delta z}\\
+&=\Delta y\Delta z\,k\left.\frac{dT}{dx}\right|_{x+\Delta x}
++\Delta z\Delta x\,k\left.\frac{dT}{dy}\right|_{y+\Delta y}
++\Delta x\Delta y\,k\left.\frac{dT}{dz}\right|_{z+\Delta z}
+\end{aligned}
+\]</div>
+</div></section>
+<h2>heat/heat_5_4.html</h2>
+<section class="formula-pair" id="formula-heat_5_4-002"><h3>heat_5_4 image002</h3><div class="pair-grid">
+<div class="source"><img src="./../img/heat_eq_derivation.files/image002.png" alt="source heat_5_4-002"></div>
+<div class="render" data-source-image="./../img/heat_eq_derivation.files/image002.png">\[
+\begin{aligned}
+\rho C_p\frac{T_{t+\Delta t}-T_t}{\Delta t}\Delta x\Delta y\Delta z
+={}&\rho C_p\left(
+\Delta y\Delta z\,v_xT|_x
++\Delta z\Delta x\,v_yT|_y
++\Delta x\Delta y\,v_zT|_z
+\right)\\
+&-\rho C_p\left(
+\Delta y\Delta z\,v_xT|_{x+\Delta x}
++\Delta z\Delta x\,v_yT|_{y+\Delta y}
++\Delta x\Delta y\,v_zT|_{z+\Delta z}
+\right)\\
+&-\Delta y\Delta z\,k\left.\frac{dT}{dx}\right|_x
+-\Delta z\Delta x\,k\left.\frac{dT}{dy}\right|_y
+-\Delta x\Delta y\,k\left.\frac{dT}{dz}\right|_z\\
+&+\Delta y\Delta z\,k\left.\frac{dT}{dx}\right|_{x+\Delta x}
++\Delta z\Delta x\,k\left.\frac{dT}{dy}\right|_{y+\Delta y}
++\Delta x\Delta y\,k\left.\frac{dT}{dz}\right|_{z+\Delta z}
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-heat_5_4-003"><h3>heat_5_4 image003</h3><div class="pair-grid">
+<div class="source"><img src="./../img/heat_eq_derivation.files/image003.png" alt="source heat_5_4-003"></div>
+<div class="render" data-source-image="./../img/heat_eq_derivation.files/image003.png">\[
+\begin{aligned}
+\rho C_p\frac{T_{t+\Delta t}-T_t}{\Delta t}
+={}&\rho C_p\left(
+\frac{v_x|_xT|_x}{\Delta x}
++\frac{v_y|_yT|_x}{\Delta y}
++\frac{v_z|_zT|_x}{\Delta z}
+\right)\\
+&-\rho C_p\left(
+\frac{v_x|_{x+\Delta x}T|_{x+\Delta x}}{\Delta x}
++\frac{v_y|_{y+\Delta y}T|_{x+\Delta x}}{\Delta y}
++\frac{v_z|_{z+\Delta z}T|_{x+\Delta x}}{\Delta z}
+\right)\\
+&-k\frac{\left.\frac{dT}{dx}\right|_x}{\Delta x}
+-k\frac{\left.\frac{dT}{dx}\right|_y}{\Delta y}
+-k\frac{\left.\frac{dT}{dx}\right|_z}{\Delta z}\\
+&+k\frac{\left.\frac{dT}{dx}\right|_{x+\Delta x}}{\Delta x}
++k\frac{\left.\frac{dT}{dx}\right|_{y+\Delta y}}{\Delta y}
++k\frac{\left.\frac{dT}{dx}\right|_{z+\Delta z}}{\Delta z}
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-heat_5_4-004"><h3>heat_5_4 image004</h3><div class="pair-grid">
+<div class="source"><img src="./../img/heat_eq_derivation.files/image004.png" alt="source heat_5_4-004"></div>
+<div class="render" data-source-image="./../img/heat_eq_derivation.files/image004.png">\[
+\begin{aligned}
+\rho C_p\frac{T_{t+\Delta t}-T_t}{\Delta t}
+&+\rho C_p\left(
+\frac{v_x|_{x+\Delta x}T|_{x+\Delta x}-v_x|_xT|_x}{\Delta x}
+\right)\\
+&+\rho C_p\left(
+\frac{v_y|_{y+\Delta y}T|_{y+\Delta y}-v_y|_yT|_y}{\Delta y}
+\right)\\
+&+\rho C_p\left(
+\frac{v_z|_{z+\Delta z}T|_{x+\Delta x}-v_z|_zT|_z}{\Delta z}
+\right)\\
+&=k\left(
+\frac{\left.\frac{dT}{dx}\right|_{x+\Delta x}-\left.\frac{dT}{dx}\right|_x}{\Delta x}
++\frac{\left.\frac{dT}{dy}\right|_{y+\Delta y}-\left.\frac{dT}{dy}\right|_y}{\Delta y}
++\frac{\left.\frac{dT}{dz}\right|_{z+\Delta z}-\left.\frac{dT}{dz}\right|_z}{\Delta z}
+\right)
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-heat_5_4-005"><h3>heat_5_4 image005</h3><div class="pair-grid">
+<div class="source"><img src="./../img/heat_eq_derivation.files/image005.png" alt="source heat_5_4-005"></div>
+<div class="render" data-source-image="./../img/heat_eq_derivation.files/image005.png">\[
+\rho C_p\left\{
+\frac{dT}{dt}
++\frac{d(v_xT)}{dx}
++\frac{d(v_yT)}{dy}
++\frac{d(v_zT)}{dz}
+\right\}
+=
+k\left(
+\frac{d^2T}{d^2x}
++\frac{d^2T}{d^2y}
++\frac{d^2T}{d^2z}
+\right)
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-heat_5_4-006"><h3>heat_5_4 image006</h3><div class="pair-grid">
+<div class="source"><img src="./../img/heat_eq_derivation.files/image006.png" alt="source heat_5_4-006"></div>
+<div class="render" data-source-image="./../img/heat_eq_derivation.files/image006.png">\[
+\rho C_p\left(
+\frac{dT}{dt}
++v_x\frac{dT}{dx}
++v_y\frac{dT}{dy}
++v_z\frac{dT}{dz}
+\right)
+=
+k\left(
+\frac{d^2T}{d^2x}
++\frac{d^2T}{d^2y}
++\frac{d^2T}{d^2z}
+\right)
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-heat_5_4-007"><h3>heat_5_4 image007</h3><div class="pair-grid">
+<div class="source"><img src="./../img/heat_eq_derivation.files/image007.png" alt="source heat_5_4-007"></div>
+<div class="render" data-source-image="./../img/heat_eq_derivation.files/image007.png">\[
+\rho C_p\frac{DT}{Dt}=k\Delta T
+\]</div>
+</div></section>
+</body></html>
