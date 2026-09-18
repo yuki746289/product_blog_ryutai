@@ -25,8 +25,17 @@ Transcription:
 
 ## Pass 2
 
-Status: **Pending**
+Result: **5 / 5 PASS**
+
+- Final workflow run: **35406325865**
+- Artifact: `column-2-pass2`
+- Artifact id: **10572875026**
+- MathJax errors: **0**
+- Unrendered formulas: **0**
+- Browser page errors: **0**
+
+Initial Pass 2 run **35406153509** exposed one source-symbol mismatch in `image003`: `\\fallingdotseq` did not match the source glyph. The transcription was corrected to `\\cong`, then the full five-formula Pass 2 was rerun. Final result: 5/5 source/render matches.
 
 Normal-page application is prohibited until Pass 2 is complete.
 
-**Column 2 is not yet certified for normal-page application.**
+**Column 2 is certified for normal-page application.**
