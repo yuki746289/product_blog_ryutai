@@ -1,9 +1,9 @@
 {
   "summary": {
     "html_pages_scanned": 205,
-    "residual_word_image_placements": 187,
-    "unique_assets": 185,
-    "centered_p_im_placements": 179,
+    "residual_word_image_placements": 178,
+    "unique_assets": 176,
+    "centered_p_im_placements": 170,
     "missing_assets": 49,
     "missing_by_section": {
       "mps": 49
@@ -15,12 +15,12 @@
       "fem": 33,
       "heat": 8,
       "hydronamics": 21,
-      "mesh": 44,
+      "mesh": 35,
       "mps": 49,
       "physics": 16
     },
     "extensions": {
-      ".png": 134,
+      ".png": 125,
       ".jpg": 4,
       ".gif": 49
     }
@@ -1042,114 +1042,6 @@
       "exists": true,
       "width": 390,
       "height": 386,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "mesh/mesh_2.html",
-      "encoding": "cp932",
-      "src": "./../img/mesh_curvature.files/image002.png",
-      "asset": "img/mesh_curvature.files/image002.png",
-      "exists": true,
-      "width": 307,
-      "height": 29,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "mesh/mesh_2.html",
-      "encoding": "cp932",
-      "src": "./../img/mesh_curvature.files/image003.png",
-      "asset": "img/mesh_curvature.files/image003.png",
-      "exists": true,
-      "width": 288,
-      "height": 65,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "mesh/mesh_2.html",
-      "encoding": "cp932",
-      "src": "./../img/mesh_curvature.files/image004.png",
-      "asset": "img/mesh_curvature.files/image004.png",
-      "exists": true,
-      "width": 584,
-      "height": 181,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "mesh/mesh_2.html",
-      "encoding": "cp932",
-      "src": "./../img/mesh_curvature.files/image005.png",
-      "asset": "img/mesh_curvature.files/image005.png",
-      "exists": true,
-      "width": 476,
-      "height": 96,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "mesh/mesh_2.html",
-      "encoding": "cp932",
-      "src": "./../img/mesh_curvature.files/image006.png",
-      "asset": "img/mesh_curvature.files/image006.png",
-      "exists": true,
-      "width": 476,
-      "height": 95,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "mesh/mesh_2.html",
-      "encoding": "cp932",
-      "src": "./../img/mesh_curvature.files/image007.png",
-      "asset": "img/mesh_curvature.files/image007.png",
-      "exists": true,
-      "width": 474,
-      "height": 91,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "mesh/mesh_2.html",
-      "encoding": "cp932",
-      "src": "./../img/mesh_curvature.files/image008.png",
-      "asset": "img/mesh_curvature.files/image008.png",
-      "exists": true,
-      "width": 449,
-      "height": 256,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "mesh/mesh_2.html",
-      "encoding": "cp932",
-      "src": "./../img/mesh_curvature.files/image009.png",
-      "asset": "img/mesh_curvature.files/image009.png",
-      "exists": true,
-      "width": 547,
-      "height": 399,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "mesh/mesh_2.html",
-      "encoding": "cp932",
-      "src": "./../img/mesh_curvature.files/image010.png",
-      "asset": "img/mesh_curvature.files/image010.png",
-      "exists": true,
-      "width": 399,
-      "height": 397,
       "format": "PNG",
       "centered_p_im": true,
       "review_priority": "A"
