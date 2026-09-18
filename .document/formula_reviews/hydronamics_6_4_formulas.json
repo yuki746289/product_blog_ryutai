@@ -1,0 +1,45 @@
+{
+  "page": "hydronamics/hydronamics_6_4.html",
+  "image_dir": "img/hydronamics_f_gravity.files",
+  "canonical_source": "original source images",
+  "retained_diagrams": [
+    "image001.png"
+  ],
+  "transcription_assist": {
+    "source": "HP.7z / 流体力学_力の種類_重力.doc",
+    "method": "Word/Equation Editor candidate + canonical source-image verification",
+    "verified_date": "2026-09-18",
+    "source_image_is_canonical": true
+  },
+  "source_notation_notes": [
+    "image003 preserves the source-visible duplicated plus sign before the z-component.",
+    "image002 is an inline gravity-vector symbol."
+  ],
+  "formulas": [
+    {
+      "image": "image002.png",
+      "latex": "\\(\\vec g\\)",
+      "mode": "inline"
+    },
+    {
+      "image": "image003.png",
+      "latex": "\\[\n\\begin{aligned}\n\\vec g&=\\vec\\delta_x g_x+\\vec\\delta_y g_y++\\vec\\delta_z g_z\\\\\n|\\vec g|&\\simeq 9.81\\,[\\mathrm{m/s^2}]\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image004.png",
+      "latex": "\\[\n\\begin{aligned}\n[\\mathrm{m/s^2}]\n&=\\left[\\frac{\\mathrm{kg}\\cdot\\mathrm{m/s^2}}{\\mathrm{kg}}\\right]\\\\\n&=[\\mathrm{N/kg}]\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image005.png",
+      "latex": "\\[\nF_x=\\rho\\Delta x\\Delta y\\Delta z\\,g_x\n\\]"
+    },
+    {
+      "image": "image006.png",
+      "latex": "\\[\nF_y=\\rho\\Delta x\\Delta y\\Delta z\\,g_y\n\\]"
+    },
+    {
+      "image": "image007.png",
+      "latex": "\\[\nF_z=\\rho\\Delta x\\Delta y\\Delta z\\,g_z\n\\]"
+    }
+  ]
+}
