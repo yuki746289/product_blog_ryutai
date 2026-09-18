@@ -10,15 +10,15 @@
 
 Result: **1 / 1 PASS**
 
-Transcription data:
-- `.document/formula_reviews/hydronamics_5_formulas.json`
-
-Source-visible limit, numerator order, and differential notation are preserved.
-
 ## Pass 2 — browser MathJax comparison
 
-Status: **pending workflow artifact review**
+- Workflow run: **35350484772**
+- Artifact: `hydronamics-5-pass2`
+- Artifact id: **10549882741**
+- Result: **1 / 1 PASS**
+- MathJax rendering errors: **0**
+- Formula-level horizontal overflow: **0 / 1**
 
 ## Certification
 
-Not yet certified for normal-page application until Pass 2 is complete.
+**Hydronamics 5 formula is certified for application to the normal page.**
