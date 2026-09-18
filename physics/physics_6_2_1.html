@@ -11,6 +11,14 @@
 
 	<title>クロネッカーのデルタ（物理）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+<script>
+window.MathJax={
+  output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+  chtml:{displayAlign:'left',displayIndent:'0'}
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="2">
@@ -52,12 +60,36 @@
 				<span class="fs"><i>d</i></span><span class="ft"><i><sub>ij</sub></i></span></h2>
 			<p>クロネッカーのデルタ<span class="ft">(Kronecker delta)</span>は次式で定義される記号です。
 				内積計算などに使用されます。</p>
-			<p class="im"><img src="./../img/physics_c_inner.files/image001.png"></p>
+			<div class="math-block" id="formula-physics-6-2-1-001" data-source-image="./../img/physics_c_inner.files/image001.png">
+\[
+\delta_{ij}=\begin{cases}0&(i\neq j)\\1&(i=j)\end{cases}
+\]
+</div>
 			<p>内積計算はこの記号を用いて下記で定義されます。</p>
-			<p class="im"><img src="./../img/physics_c_inner.files/image002.png"></p>
-			<p class="im"><img src="./../img/physics_c_inner.files/image003.png"></p>
+			<div class="math-block" id="formula-physics-6-2-1-002" data-source-image="./../img/physics_c_inner.files/image002.png">
+\[(\vec{\delta}_{i}\cdot\vec{\delta}_{j})=\delta_{ij}\]
+</div>
+			<div class="math-block" id="formula-physics-6-2-1-003" data-source-image="./../img/physics_c_inner.files/image003.png">
+\[
+\begin{aligned}
+[\vec{\delta}_{i}\cdot\vec{\delta}_{j}\vec{\delta}_{k}]
+&=(\vec{\delta}_{i}\cdot\vec{\delta}_{j})\vec{\delta}_{k}\\
+&=\delta_{ij}\vec{\delta}_{k}
+\end{aligned}
+\]
+</div>
 			<p>これは、内積の定義から説明されます。</p>
-			<p class="im"><img src="./../img/physics_c_inner.files/image004.png"></p>
+			<div class="math-block" id="formula-physics-6-2-1-004" data-source-image="./../img/physics_c_inner.files/image004.png">
+\[
+\begin{aligned}
+\delta_{ij}
+&=(\vec{\delta}_{i}\cdot\vec{\delta}_{j})\\
+&=|\vec{\delta}_{i}|\,|\vec{\delta}_{j}|\cos\theta\\
+&=\cos\theta\\
+&=\begin{cases}\cos\dfrac{\pi}{2}&(i\neq j)\\\cos0&(i=j)\end{cases}
+\end{aligned}
+\]
+</div>
 			<p class="im"><img src="./../img/physics_c_inner.files/image005.png"></p>
 			<p>つまり、<span class="ft">2</span>つの単位ベクトルが直交するか
 				平行になるかを表す便利な記号です。</p>
