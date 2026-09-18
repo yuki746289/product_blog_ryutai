@@ -11,6 +11,14 @@
 
 	<title>(∇・ベクトル)　発散（物理）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+<script>
+window.MathJax={
+  output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+  chtml:{displayAlign:'left',displayIndent:'0'}
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="2">
@@ -50,19 +58,32 @@
 
 			<h2>(∇・ベクトル)　発散</h2>
 			<p>微分作用素とベクトルの内積は次式となります。</p>
-			<p class="im"><img src="./../img/physics_c_inner.files/image009.png"></p>
+			<div class="math-block" id="formula-physics-6-2-3-009" data-source-image="./../img/physics_c_inner.files/image009.png">
+\[
+\begin{aligned}
+(\nabla\cdot\vec{v})
+&=\left(\sum_{i=0}^{3}\vec{\delta}_{i}\frac{\partial}{\partial x_i}\cdot\sum_{j=0}^{3}\vec{\delta}_{j}v_j\right)\\
+&=\sum_{i=0}^{3}\sum_{j=0}^{3}\left(\vec{\delta}_{i}\frac{\partial}{\partial x_i}\cdot\vec{\delta}_{j}v_j\right)\\
+&=\sum_{i=0}^{3}\sum_{j=0}^{3}(\vec{\delta}_{i}\cdot\vec{\delta}_{j})\frac{\partial}{\partial x_i}v_j\\
+&=\sum_{i=0}^{3}\sum_{j=0}^{3}\delta_{ij}\frac{\partial v_j}{\partial x_i}\\
+&=\frac{\partial v_x}{\partial x}+\frac{\partial v_y}{\partial y}+\frac{\partial v_z}{\partial z}
+\end{aligned}
+\]
+</div>
 			<p>上記の項のオーダーは、</p>
 			<p class="im"><span class="ft">(</span>微分作用素・ベクトル<span class="ft">) = (1 - 2 + 1) = 0</span></p>
 			<p>と計算されるので、スカラー量になります。この物理量は発散と呼ばれ、微小領域への流入・流出量を表しています。</p>
 			<p class="im"><img src="./../img/physics_c_inner.files/image010.png">　　
 								<img src="./../img/physics_c_inner.files/image011.png"></p>
-			<p class="im"><img src="./../img/physics_c_inner.files/image012.png"> →微小領域へ物理量が流出した</p>
-			<p class="im"><img src="./../img/physics_c_inner.files/image013.png"> →微小領域への流入・流出は無い</p>
-			<p class="im"><img src="./../img/physics_c_inner.files/image014.png"> →微小領域へ物理量が流入した</p>
+			<p class="im"><span class="math-inline" id="formula-physics-6-2-3-012" data-source-image="./../img/physics_c_inner.files/image012.png">\((\nabla\cdot\vec{v})<0\)</span> →微小領域へ物理量が流出した</p>
+			<p class="im"><span class="math-inline" id="formula-physics-6-2-3-013" data-source-image="./../img/physics_c_inner.files/image013.png">\((\nabla\cdot\vec{v})=0\)</span> →微小領域への流入・流出は無い</p>
+			<p class="im"><span class="math-inline" id="formula-physics-6-2-3-014" data-source-image="./../img/physics_c_inner.files/image014.png">\((\nabla\cdot\vec{v})>0\)</span> →微小領域へ物理量が流入した</p>
 			<p>上記からわかるように発散とは<span class="ft"><i>x</i>, <i>y</i>, <i>z</i></span>
 							軸方向の勾配の和であり、<span class="ft">0</span>の場合は、平らなので流入・流出は無いと解釈できます。
 							また、下記が成り立ちます。</p>
-			<p class="im"><img src="./../img/physics_c_inner.files/image015.png"></p>
+			<div class="math-block" id="formula-physics-6-2-3-015" data-source-image="./../img/physics_c_inner.files/image015.png">
+\[(\nabla\cdot\vec{v})\neq(\vec{v}\cdot\nabla)\]
+</div>
 			<br>
 
 			<div style="margin-top:10px;"></div>
