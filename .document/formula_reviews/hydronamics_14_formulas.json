@@ -17,11 +17,13 @@
     },
     {
       "image": "image005.png",
-      "latex": "\\[\ndA=-n_x\\,dy\\,dz\n\\]"
+      "latex": "\\(dA=-n_x\\,dy\\,dz\\)",
+      "mode": "inline"
     },
     {
       "image": "image006.png",
-      "latex": "\\[\ndA=+n_x\\,dy\\,dz\n\\]"
+      "latex": "\\(dA=+n_x\\,dy\\,dz\\)",
+      "mode": "inline"
     },
     {
       "image": "image007.png",
