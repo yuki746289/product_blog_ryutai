@@ -5,6 +5,8 @@ Created: 2026-09-18T23:59:30+09:00
 ## Scope
 
 - Formula targets: **6**
+  - Display: **3**
+  - Inline: **3**
 - Retained diagram: **1**
 - Canonical source: original HP images
 
