@@ -104,7 +104,7 @@ jobs:
 
           with sync_playwright() as p:
             b=p.chromium.launch(headless=True)
-            ctx=b.new_context(viewport={'width':2200,'height':1800},device_scale_factor=1)
+            ctx=b.new_context(viewport={'width':2400,'height':1800},device_scale_factor=1)
             pg=ctx.new_page()
             pg.goto('http://127.0.0.1:8000/fem/fem_batch_2_reaudit.html',wait_until='domcontentloaded',timeout=120000)
             pg.wait_for_function('() => window.MathJax && MathJax.startup && MathJax.startup.promise',timeout=60000)
@@ -118,7 +118,8 @@ jobs:
               merrors=r.locator('mjx-merror').count()
               if containers<1 or merrors:
                 print(ident,'containers',containers,'merror',merrors)
-                if merrors: print(r.locator('mjx-merror').all_inner_texts())
+                if merrors:
+                  print(r.locator('mjx-merror').all_inner_texts())
                 raise RuntimeError(f'{ident} MathJax error')
 
               dims=r.evaluate('(e)=>({clientWidth:e.clientWidth,scrollWidth:e.scrollWidth})')
