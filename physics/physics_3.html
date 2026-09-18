@@ -11,6 +11,14 @@
 
 	<title>単位ベクトル（物理）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+<script>
+window.MathJax={
+  output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+  chtml:{displayAlign:'left',displayIndent:'0'}
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="2">
@@ -49,17 +57,23 @@
 			<p>単位ベクトルとは、<span class="ft"><i>x</i>, <i>y</i>, <i>z</i></span>軸方向の
 				長さ<span class="ft">1</span>のベクトルです。それらのベクトルは垂直に交わっています。</p>
 			<p class="im"><img src="./../img/physics_vector.files/image001.png"></p>
-			<p class="im"><img src="./../img/physics_vector.files/image002.png"><span class="ft"> :<i>x</i></span>軸方向の単位ベクトル。</p>
-			<p class="im"><img src="./../img/physics_vector.files/image003.png"><span class="ft"> :<i>y</i></span>軸方向の単位ベクトル。</p>
-			<p class="im"><img src="./../img/physics_vector.files/image004.png"><span class="ft"> :<i>z</i></span>軸方向の単位ベクトル。</p>
+			<p class="im"><span class="math-inline" id="formula-physics-3-002" data-source-image="./../img/physics_vector.files/image002.png">\(\vec{\delta}_{x}\)</span><span class="ft"> :<i>x</i></span>軸方向の単位ベクトル。</p>
+			<p class="im"><span class="math-inline" id="formula-physics-3-003" data-source-image="./../img/physics_vector.files/image003.png">\(\vec{\delta}_{y}\)</span><span class="ft"> :<i>y</i></span>軸方向の単位ベクトル。</p>
+			<p class="im"><span class="math-inline" id="formula-physics-3-004" data-source-image="./../img/physics_vector.files/image004.png">\(\vec{\delta}_{z}\)</span><span class="ft"> :<i>z</i></span>軸方向の単位ベクトル。</p>
 			<p>また、</p>
-			<p class="im"><img src="./../img/physics_vector.files/image005.png"></p>
+			<div class="math-block" id="formula-physics-3-005" data-source-image="./../img/physics_vector.files/image005.png">
+\[\left|\vec{\delta}_{x}\right|=\left|\vec{\delta}_{y}\right|=\left|\vec{\delta}_{z}\right|=1\]
+</div>
 			<br>
 			<p>ベクトル量は、単位ベクトルとその係数で表現されます。</p>
-			<p class="im"><img src="./../img/physics_vector.files/image006.png"></p>
+			<div class="math-block" id="formula-physics-3-006" data-source-image="./../img/physics_vector.files/image006.png">
+\[\vec{v}=\vec{\delta}_{x}p+\vec{\delta}_{y}q+\vec{\delta}_{z}r\]
+</div>
 			<br>
 			<p>また、大きさは次式となります。</p>
-			<p class="im"><img src="./../img/physics_vector.files/image007.png"></p>
+			<div class="math-block" id="formula-physics-3-007" data-source-image="./../img/physics_vector.files/image007.png">
+\[\left|\vec{v}\right|=\sqrt{p^2+q^2+r^2}\]
+</div>
 			<br>
 
 
