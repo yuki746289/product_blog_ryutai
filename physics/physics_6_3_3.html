@@ -11,6 +11,11 @@
 
 	<title>[∇×ベクトル]（物理）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+<script>
+window.MathJax={output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},chtml:{displayAlign:'left',displayIndent:'0'}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="2">
@@ -50,7 +55,20 @@
 
 			<h2>[∇×ベクトル]</h2>
 			<p>微分作用素とベクトルの外積は次式となります。</p>
-			<p class="im"><img src="./../img/physics_c_cross.files/image005.png"></p>
+			<div class="math-block" id="formula-physics-6-3-3-005" data-source-image="./../img/physics_c_cross.files/image005.png">
+\[
+\begin{aligned}
+[\nabla\times\vec{v}]
+&=\left[\sum_{i=0}^{3}\vec{\delta}_{i}\frac{\partial}{\partial x_i}\times\sum_{j=0}^{3}\vec{\delta}_{j}v_j\right]\\
+&=\sum_{i=0}^{3}\sum_{j=0}^{3}\left[\vec{\delta}_{i}\frac{\partial}{\partial x_i}\times\vec{\delta}_{j}v_j\right]\\
+&=\sum_{i=0}^{3}\sum_{j=0}^{3}[\vec{\delta}_{i}\times\vec{\delta}_{j}]\frac{\partial}{\partial x_i}v_j\\
+&=\sum_{i=0}^{3}\sum_{j=0}^{3}\sum_{k=0}^{3}\varepsilon_{ijk}\vec{\delta}_{k}\frac{\partial v_j}{\partial x_i}\\
+&=\varepsilon_{123}\vec{\delta}_{z}\frac{\partial v_y}{\partial x_x}+\varepsilon_{231}\vec{\delta}_{x}\frac{\partial v_z}{\partial x_y}+\varepsilon_{312}\vec{\delta}_{y}\frac{\partial v_x}{\partial x_z}\\
+&\quad+\varepsilon_{321}\vec{\delta}_{x}\frac{\partial v_y}{\partial x_z}+\varepsilon_{213}\vec{\delta}_{z}\frac{\partial v_x}{\partial x_y}+\varepsilon_{132}\vec{\delta}_{y}\frac{\partial v_z}{\partial x_x}\\
+&=\vec{\delta}_{x}\left(\frac{\partial v_z}{\partial x_y}-\frac{\partial v_y}{\partial x_z}\right)+\vec{\delta}_{y}\left(\frac{\partial v_x}{\partial x_z}-\frac{\partial v_z}{\partial x_x}\right)+\vec{\delta}_{z}\left(\frac{\partial v_y}{\partial x_x}-\frac{\partial v_x}{\partial x_y}\right)
+\end{aligned}
+\]
+</div>
 			<p>微分作用素とベクトルの外積は、渦度と呼ばれます。
 				これは、台風や海の渦巻きの様に回転に対して垂直方向のベクトルを表しています。
 				「回転+垂直方向」=「らせん状」の運動になります。</p>
