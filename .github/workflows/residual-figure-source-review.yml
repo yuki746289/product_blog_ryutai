@@ -1,0 +1,90 @@
+# Created: 2026-09-19T09:15:00+09:00
+name: Residual Figure Source Review
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/residual-figure-source-review.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Build source review sheets
+        run: |
+          pip install pillow
+          python3 - <<'PY'
+          import json, math
+          from pathlib import Path
+          from PIL import Image,ImageDraw,ImageOps
+
+          inventory=json.loads(Path('.document/formula_reviews/SITE_INLINE_IMAGE_INVENTORY_20260918.json').read_text(encoding='utf-8'))
+          sections=('fem','heat','appendix')
+          out=Path('residual-figure-source-review')
+          out.mkdir(exist_ok=True)
+
+          for section in sections:
+              rows=[r for r in inventory['rows'] if r['page'].startswith(section+'/') and r['exists']]
+              meta=[]
+              for idx,row in enumerate(rows,1):
+                  p=Path(row['asset'])
+                  im=Image.open(p).convert('RGBA')
+                  bg=Image.new('RGBA',im.size,'white'); bg.alpha_composite(im)
+                  rgb=bg.convert('RGB')
+                  safe=(row['page'].replace('/','__')+'__'+p.name)
+                  rgb.save(out/f'{section}__{idx:03d}__{safe}')
+                  meta.append({'index':idx,'page':row['page'],'asset':row['asset'],'width':rgb.width,'height':rgb.height})
+
+              (out/f'{section}-manifest.json').write_text(json.dumps(meta,ensure_ascii=False,indent=2),encoding='utf-8')
+
+              chunk_size=10
+              for chunk_no,start in enumerate(range(0,len(rows),chunk_size),1):
+                  chunk=rows[start:start+chunk_size]
+                  cells=[]
+                  for offset,row in enumerate(chunk):
+                      idx=start+offset+1
+                      p=Path(row['asset'])
+                      im=Image.open(p).convert('RGBA')
+                      bg=Image.new('RGBA',im.size,'white'); bg.alpha_composite(im)
+                      im=bg.convert('RGB')
+                      maxw,maxh=500,400
+                      scale=min(1,maxw/im.width,maxh/im.height)
+                      if scale<1:
+                          im=im.resize((max(1,int(im.width*scale)),max(1,int(im.height*scale))),Image.Resampling.LANCZOS)
+                      cell=Image.new('RGB',(560,470),'white')
+                      d=ImageDraw.Draw(cell)
+                      label1=f'{idx:03d} {row["page"]}'
+                      label2=row['asset']
+                      d.text((10,8),label1,fill='black')
+                      d.text((10,26),label2,fill='black')
+                      x=(560-im.width)//2
+                      y=58+(400-im.height)//2
+                      cell.paste(im,(x,y))
+                      cells.append(cell)
+
+                  cols=2
+                  rows_n=math.ceil(len(cells)/cols)
+                  sheet=Image.new('RGB',(cols*560,rows_n*470),'white')
+                  for i,cell in enumerate(cells):
+                      sheet.paste(cell,((i%cols)*560,(i//cols)*470))
+                  sheet.save(out/f'{section}-contact-{chunk_no:02d}.png')
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: residual-figure-source-review
+          path: residual-figure-source-review
+          retention-days: 7
