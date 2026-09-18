@@ -46,7 +46,7 @@ jobs:
           ]
           for item in cfg['formulas']:
             n=item['image'][5:8]
-            src=f'./../img/heat_discretization_tetra.files/{item["image"]}'
+            src=f'./../img/heat_discretization_tet.files/{item["image"]}'
             parts += [
               f'<section class="formula-pair" id="formula-{n}"><h2>image{n}</h2><div class="pair-grid">',
               f'<div class="source"><img src="{src}" alt="source image{n}"></div>',
