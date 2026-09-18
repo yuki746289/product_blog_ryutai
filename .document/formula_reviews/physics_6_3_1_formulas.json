@@ -1,11 +1,13 @@
 {
-  "created_at":"2026-09-19T06:45:00+09:00",
-  "page":"physics/physics_6_3_1.html",
-  "image_dir":"img/physics_c_cross.files",
-  "canonical_source":"original source images",
-  "retained_diagrams":[],
-  "formulas":[{
-    "image":"image001.png",
-    "latex":"\\[\n\\begin{cases}\n\\varepsilon_{ijk}=1&(ijk=123,\,231,\,312)\\\\\n\\varepsilon_{ijk}=-1&(ijk=321,\,213,\,132)\\\\\n\\varepsilon_{ijk}=0&(i=j,\,j=k,\,k=i)\n\\end{cases}\n\\]"
-  }]
+  "created_at": "2026-09-19T06:45:00+09:00",
+  "page": "physics/physics_6_3_1.html",
+  "image_dir": "img/physics_c_cross.files",
+  "canonical_source": "original source images",
+  "retained_diagrams": [],
+  "formulas": [
+    {
+      "image": "image001.png",
+      "latex": "\\[\n\\begin{cases}\n\\varepsilon_{ijk}=1&(ijk=123,231,312)\\\\\n\\varepsilon_{ijk}=-1&(ijk=321,213,132)\\\\\n\\varepsilon_{ijk}=0&(i=j,j=k,k=i)\n\\end{cases}\n\\]"
+    }
+  ]
 }
