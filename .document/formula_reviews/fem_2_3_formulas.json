@@ -1,6 +1,6 @@
 {
   "page": "fem/fem_2_3.html",
-  "image_dir": "img/fem_tet.files",
+  "image_dir": "img/fem_tetra.files",
   "canonical_source": "original source images",
   "retained_diagrams": [
     "image001.png",
@@ -27,8 +27,5 @@
       "image": "image006.png",
       "latex": "\\[\n\\begin{aligned}\nN_1&=L_1,\\qquad N_2=L_2,\\qquad N_3=L_3,\\qquad N_4=L_4\\\\\nN_1+N_2+N_3+N_4&=1\n\\end{aligned}\n\\]"
     }
-  ],
-  "source_notation_notes": [
-    "image004 visibly writes phi(x,y), not phi(x,y,z); source notation is preserved verbatim."
   ]
 }
