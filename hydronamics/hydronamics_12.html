@@ -11,6 +11,14 @@
 
 	<title>無次元化（流体力学）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+<script>
+window.MathJax={
+  output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+  chtml:{displayAlign:'left',displayIndent:'0'}
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="3">
@@ -58,16 +66,32 @@
 					は代表速度でです。</p>
 			<br>
 			<p>座標の無次元化</p>
-			<p class="im"><img src="./../img/hydronamics_dimensionless.files/image001.png"></p>
+			<div class="math-block" id="formula-hydronamics-12-001" data-source-image="./../img/hydronamics_dimensionless.files/image001.png">
+\[
+X=\frac{x}{x_0},\quad Y=\frac{y}{x_0},\quad Z=\frac{z}{x_0}
+\]
+</div>
 			<br>
 			<p>速度の無次元化</p>
-			<p class="im"><img src="./../img/hydronamics_dimensionless.files/image002.png"></p>
+			<div class="math-block" id="formula-hydronamics-12-002" data-source-image="./../img/hydronamics_dimensionless.files/image002.png">
+\[
+V_x=\frac{v_x}{v_0},\quad V_y=\frac{v_y}{v_0},\quad V_z=\frac{v_z}{v_0}
+\]
+</div>
 			<br>
 			<p>圧力の無次元化</p><br>
-			<p class="im"><img src="./../img/hydronamics_dimensionless.files/image003.png"></p>
+			<div class="math-block" id="formula-hydronamics-12-003" data-source-image="./../img/hydronamics_dimensionless.files/image003.png">
+\[
+P=\frac{p}{\rho v_0^2}
+\]
+</div>
 			<br>
 			<p>時間の無次元化</p>
-			<p class="im"><img src="./../img/hydronamics_dimensionless.files/image004.png"></p>
+			<div class="math-block" id="formula-hydronamics-12-004" data-source-image="./../img/hydronamics_dimensionless.files/image004.png">
+\[
+\tau=\frac{v_0}{x_0}t
+\]
+</div>
 			<br>
 
 
