@@ -159,6 +159,29 @@ Appendixの数式画像について、元画像を正本として分類・再転
 - `.document/formula_reviews/APPENDIX_COORDINATE_FORMULA_AUDIT_20260918.md`
 - `.document/formula_reviews/APPENDIX_COORDINATE_NORMAL_BROWSER_QA_20260918.md`
 
+## 2026-09-18 Heat 7 監査・通常ページ反映
+
+熱伝導の離散化ページ `heat_7_1.html` / `heat_7_2.html` について、元画像を正本として分類・再転記・Pass 1 / Pass 2・通常ページ反映・PC/スマホQAを実施した。
+
+- `heat_7_1.html`: **33式 完了**
+  - Pass 2 final run: **35292202973**
+  - desktop: 33/33 blocks, formula images 0, MathJax errors 0, page overflowなし
+  - mobile: 33/33 blocks, formula images 0, MathJax errors 0, local-scroll 7, uncontained 0, page overflowなし
+- `heat_7_2.html`: **32式 完了**
+  - Pass 2 final run: **35293474594**
+  - normal QA run: **35294686097**
+  - desktop: 32/32 blocks, formula images 0, MathJax errors 0, page overflowなし
+  - mobile: 32/32 blocks, formula images 0, MathJax errors 0, local-scroll 12, uncontained 0, page overflowなし
+  - `image014` のY方向行列内にある source-visible な `N_4 ∂N_2/∂Z` は、理論上の修正を行わず元画像どおり保持した。
+- Heat 7 数式合計: **65式 完了**
+- 本番FTP反映は未実施。
+
+詳細:
+- `.document/formula_reviews/HEAT_7_1_FORMULA_AUDIT_20260918.md`
+- `.document/formula_reviews/HEAT_7_1_NORMAL_BROWSER_QA_20260918.md`
+- `.document/formula_reviews/HEAT_7_2_FORMULA_AUDIT_20260918.md`
+- `.document/formula_reviews/HEAT_7_2_NORMAL_BROWSER_QA_20260918.md`
+
 ## 次の優先順
 
 1. サイト全体の残存画像を「数式 / 図 / 混在画像」に分類する。
@@ -198,7 +221,8 @@ Appendixの数式画像について、元画像を正本として分類・再転
 
 - 主要FEM 5ページ: **143/143 Pass 1・Pass 2完了、通常ページ反映・PC/スマホQA完了**
 - Appendix: **41式完了、通常ページ反映・PC/スマホQA完了**
-- 厳密監査・通常ページ化まで完了した数式: **184式**
+- Heat 7: **65式完了、通常ページ反映・PC/スマホQA完了**
+- 厳密監査・通常ページ化まで完了した数式: **249式**
 - 残存画像は数式とは限らないため、今後はページ単位で分類してから数式のみ変換する。
 - MPS欠損GIF参照は別タスクとして扱う。
 - 本番FTP反映は未実施。
