@@ -11,6 +11,11 @@
 
 	<title>[ベクトル×ベクトル]（物理）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+<script>
+window.MathJax={output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},chtml:{displayAlign:'left',displayIndent:'0'}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="2">
@@ -50,10 +55,27 @@
 
 			<h2>[ベクトル×ベクトル]</h2>
 			<p>ベクトルとベクトルの外積は次式となります。</p>
-			<p class="im"><img src="./../img/physics_c_cross.files/image002.png"></p>
+			<div class="math-block" id="formula-physics-6-3-2-002" data-source-image="./../img/physics_c_cross.files/image002.png">
+\[
+\begin{aligned}
+[\vec{v}\times\vec{w}]
+&=\left[\sum_{i=0}^{3}\vec{\delta}_{i}v_i\times\sum_{j=0}^{3}\vec{\delta}_{j}w_j\right]\\
+&=\left[\sum_{i=0}^{3}\sum_{j=0}^{3}\vec{\delta}_{i}v_i\times\vec{\delta}_{j}w_j\right]\\
+&=\sum_{i=0}^{3}\sum_{j=0}^{3}[\vec{\delta}_{i}\times\vec{\delta}_{j}]v_iw_j\\
+&=\sum_{i=0}^{3}\sum_{j=0}^{3}\sum_{k=0}^{3}\varepsilon_{ijk}\vec{\delta}_{k}v_iw_j\\
+&=\varepsilon_{123}\vec{\delta}_{z}v_xw_y+\varepsilon_{231}\vec{\delta}_{x}v_yw_z+\varepsilon_{312}\vec{\delta}_{y}v_zw_x\\
+&\quad+\varepsilon_{321}\vec{\delta}_{x}v_zw_y+\varepsilon_{213}\vec{\delta}_{z}v_yw_x+\varepsilon_{132}\vec{\delta}_{y}v_xw_z\\
+&=\vec{\delta}_{x}(v_yw_z-v_zw_y)+\vec{\delta}_{y}(v_zw_x-v_xw_z)+\vec{\delta}_{z}(v_xw_y-v_yw_x)
+\end{aligned}
+\]
+</div>
 			<p>ベクトルとベクトルの外積の成分は、<span class="ft">2</span>つのベクトルで表される
 					平行四辺形の面積を表しています。次の様にも表されます。</p>
-			<p class="im"><img src="./../img/physics_c_cross.files/image003.png"></p>
+			<div class="math-block" id="formula-physics-6-3-2-003" data-source-image="./../img/physics_c_cross.files/image003.png">
+\[
+[\vec{v}\times\vec{w}]=( |\vec{v}|\,|\vec{w}|\sin\theta )\vec{n}
+\]
+</div>
 			<p>従って、<span class="ft">2</span>つのベクトルが平行の時は、
 					外積は<span class="ft">0</span>になります。</p>
 			<p class="im"><img src="./../img/physics_c_cross.files/image004.png"></p>
