@@ -4,7 +4,7 @@
   "image_dir": "img/fem_tri_area.files",
   "canonical_source": "original source image",
   "display_formula": "\\[\n\\det A=\n\\sum_{\\sigma\\in\\sigma_n}\n\\varepsilon(\\sigma)\na_{1\\sigma(1)}a_{2\\sigma(2)}\\cdots a_{n\\sigma(n)}\n\\]",
-  "prose": "ε(σ)を σ∈σ_n の符号とすると",
+  "prose": "\\(\\varepsilon(\\sigma)\\)を \\(\\sigma\\in\\sigma_n\\) の符号とすると",
   "rules": [
     "(1)\\ \\varepsilon(\\tau\\sigma)=\\varepsilon(\\sigma)\\varepsilon(\\tau)",
     "(2)\\ \\varepsilon(1)=1",
