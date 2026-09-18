@@ -1,9 +1,9 @@
 {
   "summary": {
     "html_pages_scanned": 205,
-    "residual_word_image_placements": 278,
-    "unique_assets": 276,
-    "centered_p_im_placements": 263,
+    "residual_word_image_placements": 274,
+    "unique_assets": 272,
+    "centered_p_im_placements": 259,
     "missing_assets": 49,
     "missing_by_section": {
       "mps": 49
@@ -14,13 +14,13 @@
       "counting": 2,
       "fem": 33,
       "heat": 8,
-      "hydronamics": 54,
+      "hydronamics": 50,
       "mesh": 53,
       "mps": 49,
       "physics": 65
     },
     "extensions": {
-      ".png": 225,
+      ".png": 221,
       ".jpg": 4,
       ".gif": 49
     }
@@ -1121,59 +1121,11 @@
     {
       "page": "hydronamics/hydronamics_9_1.html",
       "encoding": "cp932",
-      "src": "./../img/hydronamics_shear_velocity.files/image002.png",
-      "asset": "img/hydronamics_shear_velocity.files/image002.png",
-      "exists": true,
-      "width": 148,
-      "height": 122,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "hydronamics/hydronamics_9_1.html",
-      "encoding": "cp932",
-      "src": "./../img/hydronamics_shear_velocity.files/image003.png",
-      "asset": "img/hydronamics_shear_velocity.files/image003.png",
-      "exists": true,
-      "width": 182,
-      "height": 66,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "hydronamics/hydronamics_9_1.html",
-      "encoding": "cp932",
       "src": "./../img/hydronamics_shear_velocity.files/image004.png",
       "asset": "img/hydronamics_shear_velocity.files/image004.png",
       "exists": true,
       "width": 206,
       "height": 134,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "hydronamics/hydronamics_9_1.html",
-      "encoding": "cp932",
-      "src": "./../img/hydronamics_shear_velocity.files/image005.png",
-      "asset": "img/hydronamics_shear_velocity.files/image005.png",
-      "exists": true,
-      "width": 161,
-      "height": 61,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "hydronamics/hydronamics_9_1.html",
-      "encoding": "cp932",
-      "src": "./../img/hydronamics_shear_velocity.files/image006.png",
-      "asset": "img/hydronamics_shear_velocity.files/image006.png",
-      "exists": true,
-      "width": 116,
-      "height": 119,
       "format": "PNG",
       "centered_p_im": true,
       "review_priority": "A"
