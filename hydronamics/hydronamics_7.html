@@ -11,6 +11,14 @@
 
 	<title>収支式の導出（流体力学）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+<script>
+window.MathJax={
+  output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+  chtml:{displayAlign:'left',displayIndent:'0'}
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="3">
@@ -48,7 +56,16 @@
 			<h2>収支式の導出</h2>
 			<p>下図の様な微小領域に作用する応力、体積力の収支を取ることで、運動量収支式が導出されます。</p>
 			<p class="im"><img src="./../img/hydronamics_e_derivation.files/image001.png"></p>
-			<p class="im"><img src="./../img/hydronamics_e_derivation.files/image002.png"></p>
+			<div class="math-block" id="formula-hydronamics-7-002" data-source-image="./../img/hydronamics_e_derivation.files/image002.png">
+\[
+\frac{[\text{蓄積した運動量}]}{\Delta t}
+=
+\Delta A\times\left(
+[\text{応力}]_{\text{流入}}-[\text{応力}]_{\text{流出}}
+\right)
++\Delta V\times[\text{体積力}]
+\]
+</div>
 			<br>
 
 
