@@ -1156,6 +1156,27 @@ FEM batches 1–3 / FEM 5後に残っていた未分類20画像を分類し、�
 - `.document/formula_reviews/PHYSICS_6_3_2_FORMULA_AUDIT_20260919.md`
 - `.document/formula_reviews/PHYSICS_6_3_2_NORMAL_BROWSER_QA_20260919.md`
 
+
+## 2026-09-19 Physics 6_3_3 監査・通常ページ反映
+
+`physics/physics_6_3_3.html` の `[∇×ベクトル]` ページを元HP画像正本で処理した。
+
+- 分類対象: **2画像**
+  - 表示数式: **1**（image005）
+  - 図・混在図: **1**（image006 を維持）
+- Pass 1: **1/1**
+- Pass 2 workflow run: **35399816850**
+- Pass 2: **1/1**
+- Apply + Normal browser QA run: **35400023306**
+- desktop/mobile: display 1/1、retained image 1/1、MathJax errors 0、unrendered 0、uncontained 0、page overflowなし
+- Levi-Civita 記号、成分順、符号、`x_x/x_y/x_z` を元画像どおり保持。
+- 本番FTP反映は未実施。
+
+詳細:
+- `.document/formula_reviews/PHYSICS_6_3_3_IMAGE_CLASSIFICATION_20260919.md`
+- `.document/formula_reviews/PHYSICS_6_3_3_FORMULA_AUDIT_20260919.md`
+- `.document/formula_reviews/PHYSICS_6_3_3_NORMAL_BROWSER_QA_20260919.md`
+
 ## 次の優先順
 
 1. サイト全体の残存画像を「数式 / 図 / 混在画像」に分類する。
@@ -1219,6 +1240,7 @@ FEM batches 1–3 / FEM 5後に残っていた未分類20画像を分類し、�
 - Physics 6_2_5: **1式完了、PC/スマホQA完了**
 - Physics 6_2_6: **1式完了、PC/スマホQA完了**
 - Physics 6_2_7: **1式完了、PC/スマホQA完了**
+- Physics 6_3_3: **1式完了、図・混在図1件は画像維持、PC/スマホQA完了**
 - Physics 6_3_1: **1式完了、PC/スマホQA完了**
 - Physics 6_3_2: **2式完了、図1件は画像維持、PC/スマホQA完了**\n- 厳密監査・通常ページ化まで完了した数式・数式テキスト: **529件**
 - 残存画像は数式とは限らないため、今後はページ単位で分類してから数式のみ変換する。
