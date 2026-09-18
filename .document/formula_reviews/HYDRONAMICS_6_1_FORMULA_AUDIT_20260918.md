@@ -2,7 +2,7 @@
 
 ## Scope
 
-- Formula / mixed-text targets: **7**
+- Formula targets: **7**
 - Retained diagrams: **1**
 - Canonical source: original HP images
 - Word source is transcription assistance only.
@@ -14,7 +14,7 @@ Result: **7 / 7 PASS**
 Transcription data:
 - `.document/formula_reviews/hydronamics_6_1_formulas.json`
 
-Source-visible term order, signs, subscripts, evaluation-position bars, and the Japanese explanatory text inside `image002` are preserved.
+`image002` is a mixed text/math image. Its source-visible `ここで、m=...` and `ここで、v_x=...` clauses are retained inside the MathJax transcription rather than omitted.
 
 ## Pass 2 — browser MathJax comparison
 
