@@ -1,0 +1,46 @@
+{
+  "created_at": "2026-09-18T23:47:03+09:00",
+  "page": "physics/physics_4.html",
+  "image_dir": "img/physics_q_category.files",
+  "canonical_source": "original source images",
+  "retained_diagrams": [
+    "image001.png",
+    "image006.png",
+    "image009.png"
+  ],
+  "transcription_assist": {
+    "source": "original HP images",
+    "method": "direct source-image transcription; Word source is not available in the current working context",
+    "verified_date": "2026-09-18",
+    "source_image_is_canonical": true
+  },
+  "formulas": [
+    {
+      "image": "image002.png",
+      "latex": "\\(\\vec{r}\\)",
+      "mode": "inline"
+    },
+    {
+      "image": "image003.png",
+      "latex": "\\(\\vec{v}\\)",
+      "mode": "inline"
+    },
+    {
+      "image": "image004.png",
+      "latex": "\\[\n\\begin{aligned}\n\\vec{v}\n&=\\sum_{i=3}^{3}\\vec{\\delta}_{i}v_i\\\\\n&=\\vec{\\delta}_{x}v_x+\\vec{\\delta}_{y}v_i+\\vec{\\delta}_{z}v_z\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image005.png",
+      "latex": "\\[\n\\left|\\vec{v}\\right|=\\sqrt{v_x^2+v_y^2+v_z^2}\n\\]"
+    },
+    {
+      "image": "image007.png",
+      "latex": "\\(\\vec{\\tau}\\)",
+      "mode": "inline"
+    },
+    {
+      "image": "image008.png",
+      "latex": "\\[\n\\begin{aligned}\n\\vec{\\tau}\n&=\\sum_{i=0}^{3}\\sum_{j=0}^{3}\\vec{\\delta}_{i}\\vec{\\delta}_{j}\\tau_{ij}\\\\\n&=\\sum_{i=0}^{3}\\vec{\\delta}_{i}\\left(\\vec{\\delta}_{x}\\tau_{ix}+\\vec{\\delta}_{y}\\tau_{iy}+\\vec{\\delta}_{z}\\tau_{iz}\\right)\\\\\n&=\\vec{\\delta}_{x}\\vec{\\delta}_{x}\\tau_{xx}+\\vec{\\delta}_{x}\\vec{\\delta}_{y}\\tau_{xy}+\\vec{\\delta}_{x}\\vec{\\delta}_{z}\\tau_{xz}\\\\\n&\\quad+\\vec{\\delta}_{y}\\vec{\\delta}_{x}\\tau_{yx}+\\vec{\\delta}_{y}\\vec{\\delta}_{y}\\tau_{yy}+\\vec{\\delta}_{y}\\vec{\\delta}_{z}\\tau_{yz}\\\\\n&\\quad+\\vec{\\delta}_{z}\\vec{\\delta}_{x}\\tau_{zx}+\\vec{\\delta}_{z}\\vec{\\delta}_{y}\\tau_{zy}+\\vec{\\delta}_{z}\\vec{\\delta}_{z}\\tau_{zz}\n\\end{aligned}\n\\]"
+    }
+  ]
+}
