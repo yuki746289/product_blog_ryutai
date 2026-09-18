@@ -11,9 +11,9 @@
 ## Summary
 
 - HTML pages scanned: **205**
-- Residual inline-image placements: **198**
-- Unique residual image assets: **196**
-- Priority A (`p.im`) placements: **188**
+- Residual inline-image placements: **196**
+- Unique residual image assets: **194**
+- Priority A (`p.im`) placements: **186**
 - Missing referenced assets: **49**
 
 ### By section
@@ -24,7 +24,7 @@
 | `mps` | 49 |
 | `fem` | 33 |
 | `hydronamics` | 21 |
-| `physics` | 18 |
+| `physics` | 16 |
 | `appendix` | 9 |
 | `heat` | 8 |
 | `column` | 5 |
@@ -124,44 +124,43 @@ These references exist in HTML but the corresponding image file is absent from t
 | 26 | `mps/mps_5.html` | 2 | 2 |
 | 27 | `mps/mps_6_1.html` | 2 | 2 |
 | 28 | `physics/physics_6_2_3.html` | 2 | 2 |
-| 29 | `physics/physics_6_3_3.html` | 2 | 2 |
-| 30 | `appendix/appendix_2.html` | 1 | 1 |
-| 31 | `counting/counting_1.html` | 1 | 1 |
-| 32 | `counting/counting_2.html` | 1 | 1 |
-| 33 | `fem/fem.html` | 1 | 1 |
-| 34 | `fem/fem_10.html` | 1 | 1 |
-| 35 | `fem/fem_2_2.html` | 1 | 1 |
-| 36 | `fem/fem_6_1_1.html` | 1 | 1 |
-| 37 | `fem/fem_6_2_1.html` | 1 | 1 |
-| 38 | `fem/fem_8_1.html` | 1 | 1 |
-| 39 | `heat/heat_4_1.html` | 1 | 1 |
-| 40 | `heat/heat_4_2.html` | 1 | 1 |
-| 41 | `heat/heat_4_3.html` | 1 | 1 |
-| 42 | `heat/heat_5.html` | 1 | 1 |
-| 43 | `heat/heat_5_1.html` | 1 | 1 |
-| 44 | `heat/heat_5_2.html` | 1 | 1 |
-| 45 | `heat/heat_5_3.html` | 1 | 1 |
-| 46 | `heat/heat_5_4.html` | 1 | 1 |
-| 47 | `hydronamics/hydronamics_10.html` | 1 | 1 |
-| 48 | `hydronamics/hydronamics_10_2.html` | 1 | 1 |
-| 49 | `hydronamics/hydronamics_4.html` | 1 | 1 |
-| 50 | `hydronamics/hydronamics_5.html` | 1 | 1 |
-| 51 | `hydronamics/hydronamics_6_1.html` | 1 | 1 |
-| 52 | `hydronamics/hydronamics_6_2.html` | 1 | 1 |
-| 53 | `hydronamics/hydronamics_6_3.html` | 1 | 1 |
-| 54 | `hydronamics/hydronamics_6_4.html` | 1 | 1 |
-| 55 | `hydronamics/hydronamics_7.html` | 1 | 1 |
-| 56 | `hydronamics/hydronamics_9_2.html` | 1 | 1 |
-| 57 | `hydronamics/hydronamics_9_4.html` | 1 | 1 |
-| 58 | `hydronamics/hydronamics_9_5.html` | 1 | 1 |
-| 59 | `mps/mps_1.html` | 1 | 1 |
-| 60 | `mps/mps_2.html` | 1 | 1 |
-| 61 | `physics/physics_1.html` | 1 | 1 |
-| 62 | `physics/physics_3.html` | 1 | 1 |
-| 63 | `physics/physics_6_2_1.html` | 1 | 1 |
-| 64 | `physics/physics_6_2_2.html` | 1 | 1 |
-| 65 | `physics/physics_6_3_2.html` | 1 | 1 |
-| 66 | `physics/physics_7.html` | 1 | 1 |
+| 29 | `appendix/appendix_2.html` | 1 | 1 |
+| 30 | `counting/counting_1.html` | 1 | 1 |
+| 31 | `counting/counting_2.html` | 1 | 1 |
+| 32 | `fem/fem.html` | 1 | 1 |
+| 33 | `fem/fem_10.html` | 1 | 1 |
+| 34 | `fem/fem_2_2.html` | 1 | 1 |
+| 35 | `fem/fem_6_1_1.html` | 1 | 1 |
+| 36 | `fem/fem_6_2_1.html` | 1 | 1 |
+| 37 | `fem/fem_8_1.html` | 1 | 1 |
+| 38 | `heat/heat_4_1.html` | 1 | 1 |
+| 39 | `heat/heat_4_2.html` | 1 | 1 |
+| 40 | `heat/heat_4_3.html` | 1 | 1 |
+| 41 | `heat/heat_5.html` | 1 | 1 |
+| 42 | `heat/heat_5_1.html` | 1 | 1 |
+| 43 | `heat/heat_5_2.html` | 1 | 1 |
+| 44 | `heat/heat_5_3.html` | 1 | 1 |
+| 45 | `heat/heat_5_4.html` | 1 | 1 |
+| 46 | `hydronamics/hydronamics_10.html` | 1 | 1 |
+| 47 | `hydronamics/hydronamics_10_2.html` | 1 | 1 |
+| 48 | `hydronamics/hydronamics_4.html` | 1 | 1 |
+| 49 | `hydronamics/hydronamics_5.html` | 1 | 1 |
+| 50 | `hydronamics/hydronamics_6_1.html` | 1 | 1 |
+| 51 | `hydronamics/hydronamics_6_2.html` | 1 | 1 |
+| 52 | `hydronamics/hydronamics_6_3.html` | 1 | 1 |
+| 53 | `hydronamics/hydronamics_6_4.html` | 1 | 1 |
+| 54 | `hydronamics/hydronamics_7.html` | 1 | 1 |
+| 55 | `hydronamics/hydronamics_9_2.html` | 1 | 1 |
+| 56 | `hydronamics/hydronamics_9_4.html` | 1 | 1 |
+| 57 | `hydronamics/hydronamics_9_5.html` | 1 | 1 |
+| 58 | `mps/mps_1.html` | 1 | 1 |
+| 59 | `mps/mps_2.html` | 1 | 1 |
+| 60 | `physics/physics_1.html` | 1 | 1 |
+| 61 | `physics/physics_3.html` | 1 | 1 |
+| 62 | `physics/physics_6_2_1.html` | 1 | 1 |
+| 63 | `physics/physics_6_2_2.html` | 1 | 1 |
+| 64 | `physics/physics_6_3_2.html` | 1 | 1 |
+| 65 | `physics/physics_6_3_3.html` | 1 | 1 |
 
 ## Next step
 
