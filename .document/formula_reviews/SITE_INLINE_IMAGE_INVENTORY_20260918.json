@@ -1,9 +1,9 @@
 {
   "summary": {
     "html_pages_scanned": 205,
-    "residual_word_image_placements": 232,
-    "unique_assets": 230,
-    "centered_p_im_placements": 220,
+    "residual_word_image_placements": 226,
+    "unique_assets": 224,
+    "centered_p_im_placements": 214,
     "missing_assets": 49,
     "missing_by_section": {
       "mps": 49
@@ -17,10 +17,10 @@
       "hydronamics": 21,
       "mesh": 53,
       "mps": 49,
-      "physics": 52
+      "physics": 46
     },
     "extensions": {
-      ".png": 179,
+      ".png": 173,
       ".jpg": 4,
       ".gif": 49
     }
@@ -2266,78 +2266,6 @@
       "exists": true,
       "width": 204,
       "height": 186,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "physics/physics_3.html",
-      "encoding": "cp932",
-      "src": "./../img/physics_vector.files/image002.png",
-      "asset": "img/physics_vector.files/image002.png",
-      "exists": true,
-      "width": 28,
-      "height": 39,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "physics/physics_3.html",
-      "encoding": "cp932",
-      "src": "./../img/physics_vector.files/image003.png",
-      "asset": "img/physics_vector.files/image003.png",
-      "exists": true,
-      "width": 28,
-      "height": 45,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "physics/physics_3.html",
-      "encoding": "cp932",
-      "src": "./../img/physics_vector.files/image004.png",
-      "asset": "img/physics_vector.files/image004.png",
-      "exists": true,
-      "width": 28,
-      "height": 38,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "physics/physics_3.html",
-      "encoding": "cp932",
-      "src": "./../img/physics_vector.files/image005.png",
-      "asset": "img/physics_vector.files/image005.png",
-      "exists": true,
-      "width": 179,
-      "height": 53,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "physics/physics_3.html",
-      "encoding": "cp932",
-      "src": "./../img/physics_vector.files/image006.png",
-      "asset": "img/physics_vector.files/image006.png",
-      "exists": true,
-      "width": 193,
-      "height": 46,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "physics/physics_3.html",
-      "encoding": "cp932",
-      "src": "./../img/physics_vector.files/image007.png",
-      "asset": "img/physics_vector.files/image007.png",
-      "exists": true,
-      "width": 184,
-      "height": 45,
       "format": "PNG",
       "centered_p_im": true,
       "review_priority": "A"
