@@ -1,0 +1,44 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mesh 2 strict formula re-audit</title>
+<style>body{font-family:Arial,"Yu Gothic",sans-serif;margin:20px}.formula-pair{border-top:1px solid #bbb;padding:18px 0}.pair-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}.source,.render{min-width:0;overflow-x:auto;padding:10px;border:1px solid #ddd}.source img{display:block;max-width:100%;height:auto;margin:auto}.render mjx-container[display="true"]{margin:.4em 0!important;text-align:left!important}@media(max-width:900px){.pair-grid{grid-template-columns:1fr}}</style>
+<script>window.MathJax={output:{displayOverflow:"linebreak",linebreaks:{inline:false,width:"100%"}}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head><body><h1>Mesh 2 strict source-image re-audit</h1>
+<section class="formula-pair" id="formula-mesh_2-002"><h3>mesh_2-002</h3><div class="pair-grid">
+<div class="source"><img src="./../img/mesh_curvature.files/image002.png" alt="source mesh_2-002"></div>
+<div class="render" data-source-image="./../img/mesh_curvature.files/image002.png">\[(x-x_c)^2+(y-y_c)^2+(z-z_c)^2-r^2=0\]</div>
+</div></section>
+<section class="formula-pair" id="formula-mesh_2-003"><h3>mesh_2-003</h3><div class="pair-grid">
+<div class="source"><img src="./../img/mesh_curvature.files/image003.png" alt="source mesh_2-003"></div>
+<div class="render" data-source-image="./../img/mesh_curvature.files/image003.png">\[\begin{aligned}r^2&=(x_1-x_c)^2+(y_1-y_c)^2+(z_1-z_c)^2\\&=r_0^2\end{aligned}\]</div>
+</div></section>
+<section class="formula-pair" id="formula-mesh_2-004"><h3>mesh_2-004</h3><div class="pair-grid">
+<div class="source"><img src="./../img/mesh_curvature.files/image004.png" alt="source mesh_2-004"></div>
+<div class="render" data-source-image="./../img/mesh_curvature.files/image004.png">\[\begin{aligned}\chi(x_c,y_c,z_c)&=\sum_{i=1}^{n}\left\{(x_i-x_c)^2+(y_i-y_c)^2+(z_i-z_c)^2-r_0^2\right\}^2\\&=\sum_{i=1}^{n}\left\{(x-x_c)^2+(y-y_c)^2+(z-z_c)^2-(x_1-x_c)^2-(y_1-y_c)^2-(z_1-z_c)^2\right\}^2\\&=\sum_{i=1}^{n}\left\{2(x_1-x)x_c+2(y_1-y)y_c+2(z_1-z)z_c+x^2-x_1^2+y^2-y_1^2+z^2-z_1^2\right\}^2\\&=0\end{aligned}\]</div>
+</div></section>
+<section class="formula-pair" id="formula-mesh_2-005"><h3>mesh_2-005</h3><div class="pair-grid">
+<div class="source"><img src="./../img/mesh_curvature.files/image005.png" alt="source mesh_2-005"></div>
+<div class="render" data-source-image="./../img/mesh_curvature.files/image005.png">\[\begin{aligned}\left.\frac{\partial\chi}{\partial x_c}\right|_{y_c,z_c}&=\sum_{i=1}^{n}4(x_1-x_i)\left\{2(x_1-x_i)x_c+2(y_1-y_i)y_c+2(z_1-z_i)z_c+x_i^2-x_1^2+y_i^2-y_1^2+z_i^2-z_1^2\right\}\\&=0\end{aligned}\]</div>
+</div></section>
+<section class="formula-pair" id="formula-mesh_2-006"><h3>mesh_2-006</h3><div class="pair-grid">
+<div class="source"><img src="./../img/mesh_curvature.files/image006.png" alt="source mesh_2-006"></div>
+<div class="render" data-source-image="./../img/mesh_curvature.files/image006.png">\[\begin{aligned}\left.\frac{\partial\chi}{\partial y_c}\right|_{z_c,x_c}&=\sum_{i=1}^{n}4(y_1-y_i)\left\{2(x_1-x_i)x_c+2(y_1-y_i)y_c+2(z_1-z_i)z_c+x_i^2-x_1^2+y_i^2-y_1^2+z_i^2-z_1^2\right\}\\&=0\end{aligned}\]</div>
+</div></section>
+<section class="formula-pair" id="formula-mesh_2-007"><h3>mesh_2-007</h3><div class="pair-grid">
+<div class="source"><img src="./../img/mesh_curvature.files/image007.png" alt="source mesh_2-007"></div>
+<div class="render" data-source-image="./../img/mesh_curvature.files/image007.png">\[\begin{aligned}\left.\frac{\partial\chi}{\partial z_c}\right|_{x_c,y_c}&=\sum_{i=1}^{n}4(z_1-z_i)\left\{2(x_1-x_i)x_c+2(y_1-y_i)y_c+2(z_1-z_i)z_c+x_i^2-x_1^2+y_i^2-y_1^2+z_i^2-z_1^2\right\}\\&=0\end{aligned}\]</div>
+</div></section>
+<section class="formula-pair" id="formula-mesh_2-008"><h3>mesh_2-008</h3><div class="pair-grid">
+<div class="source"><img src="./../img/mesh_curvature.files/image008.png" alt="source mesh_2-008"></div>
+<div class="render" data-source-image="./../img/mesh_curvature.files/image008.png">\[\left\{\begin{aligned}\sum_{i=1}^{n}4(x_1-x_i)\left\{2(x_1-x_i)x_c+2(y_1-y_i)y_c+2(z_1-z_i)z_c+x_i^2-x_1^2+y_i^2-y_1^2+z_i^2-z_1^2\right\}&=0\\\sum_{i=1}^{n}4(y_1-y_i)\left\{2(x_1-x_i)x_c+2(y_1-y_i)y_c+2(z_1-z_i)z_c+x_i^2-x_1^2+y_i^2-y_1^2+z_i^2-z_1^2\right\}&=0\\\sum_{i=1}^{n}4(z_1-z_i)\left\{2(x_1-x_i)x_c+2(y_1-y_i)y_c+2(z_1-z_i)z_c+x_i^2-x_1^2+y_i^2-y_1^2+z_i^2-z_1^2\right\}&=0\end{aligned}\right.\]</div>
+</div></section>
+<section class="formula-pair" id="formula-mesh_2-009"><h3>mesh_2-009</h3><div class="pair-grid">
+<div class="source"><img src="./../img/mesh_curvature.files/image009.png" alt="source mesh_2-009"></div>
+<div class="render" data-source-image="./../img/mesh_curvature.files/image009.png">\[\left\{\begin{aligned}x_c\sum_{i=1}^{n}(x_1-x_i)(x_1-x_i)+y_c\sum_{i=1}^{n}(x_1-x_i)(y_1-y_i)+z_c\sum_{i=1}^{n}(x_1-x_i)(z_1-z_i)&=-\frac{1}{2}\sum_{i=1}^{n}(x_1-x_i)\left\{x_i^2-x_1^2+y_i^2-y_1^2+z_i^2-z_1^2\right\}\\x_c\sum_{i=1}^{n}(y_1-y_i)(x_1-x_i)+y_c\sum_{i=1}^{n}(y_1-y_i)(y_1-y_i)+z_c\sum_{i=1}^{n}(y_1-y_i)(z_1-z_i)&=-\frac{1}{2}\sum_{i=1}^{n}(y_1-y_i)\left\{x_i^2-x_1^2+y_i^2-y_1^2+z_i^2-z_1^2\right\}\\x_c\sum_{i=1}^{n}(z_1-z_i)(x_1-x_i)+y_c\sum_{i=1}^{n}(z_1-z_i)(y_1-y_i)+z_c\sum_{i=1}^{n}(z_1-z_i)(z_1-z_i)&=-\frac{1}{2}\sum_{i=1}^{n}(z_1-z_i)\left\{x_i^2-x_1^2+y_i^2-y_1^2+z_i^2-z_1^2\right\}\end{aligned}\right.\]</div>
+</div></section>
+<section class="formula-pair" id="formula-mesh_2-010"><h3>mesh_2-010</h3><div class="pair-grid">
+<div class="source"><img src="./../img/mesh_curvature.files/image010.png" alt="source mesh_2-010"></div>
+<div class="render" data-source-image="./../img/mesh_curvature.files/image010.png">\[\begin{aligned}\vec{n}&=\vec{\delta}_x n_x+\vec{\delta}_y n_y+\vec{\delta}_z n_z\\n_x&=\frac{x_1-x_c}{r_0}\\n_y&=\frac{y_1-y_c}{r_0}\\n_z&=\frac{z_1-z_c}{r_0}\\r_0&=\sqrt{(x_1-x_c)^2+(y_1-y_c)^2+(z_1-z_c)^2}\end{aligned}\]</div>
+</div></section>
+</body></html>
