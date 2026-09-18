@@ -129,9 +129,7 @@ jobs:
           if leftovers:
               raise RuntimeError(f'target images remain {len(leftovers)}')
 
-          diagram_count=len(re.findall(
-              rf'<img\\b[^>]*src=["\\'][^"\\']*{re.escape(imgdir)}/image001\\.png["\\'][^>]*>',
-              applied,flags=re.I))
+          diagram_count=applied.count(f'src="./../img/{imgdir}/image001.png"')
           if diagram_count != 1:
               raise RuntimeError(f'diagram count {diagram_count} != 1')
 
