@@ -1,0 +1,59 @@
+{
+  "page": "hydronamics/hydronamics_14.html",
+  "image_dir": "img/hydronamics_gauss.files",
+  "canonical_source": "original source images",
+  "retained_diagrams": [
+    "image001.png",
+    "image002.png"
+  ],
+  "formulas": [
+    {
+      "image": "image003.png",
+      "latex": "\\[\n\\iiint_{\\Delta V}\\frac{\\partial\\phi}{\\partial x}\\,dx\\,dy\\,dz\n=\n\\iint(\\phi\\,dy\\,dz)_R-\\iint(\\phi\\,dy\\,dz)_L\n\\]"
+    },
+    {
+      "image": "image004.png",
+      "latex": "\\[\n\\vec n=\\vec\\delta_x n_x+\\vec\\delta_y n_y+\\vec\\delta_z n_z\n\\]"
+    },
+    {
+      "image": "image005.png",
+      "latex": "\\[\ndA=-n_x\\,dy\\,dz\n\\]"
+    },
+    {
+      "image": "image006.png",
+      "latex": "\\[\ndA=+n_x\\,dy\\,dz\n\\]"
+    },
+    {
+      "image": "image007.png",
+      "latex": "\\[\n\\begin{aligned}\n\\iiint_{\\Delta V}\\frac{\\partial\\phi}{\\partial x}\\,dx\\,dy\\,dz\n&=\\iint(\\phi\\,dy\\,dz)_R-\\iint(\\phi\\,dy\\,dz)_L\\\\\n&=\\iint\\{\\phi(+n_x\\,dA)\\}_R-\\iint\\{\\phi(-n_x\\,dA)\\}_L\\\\\n&=\\iint(\\phi n_x\\,dA)_R+\\iint(\\phi n_x\\,dA)_L\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image008.png",
+      "latex": "\\[\n\\begin{aligned}\n\\iiint_V\\frac{\\partial\\phi}{\\partial x}\\,dx\\,dy\\,dz\n&=\\iint_R\\phi n_x\\,dA+\\iint_L\\phi n_x\\,dA\\\\\n&=\\oiint_S\\phi n_x\\,dA\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image009.png",
+      "latex": "\\[\n\\iiint_V\\frac{\\partial\\phi}{\\partial y}\\,dV\n=\n\\oiint_S\\phi n_y\\,dA\n\\]"
+    },
+    {
+      "image": "image010.png",
+      "latex": "\\[\n\\iiint_V\\frac{\\partial\\phi}{\\partial z}\\,dV\n=\n\\oiint_S\\phi n_z\\,dA\n\\]"
+    },
+    {
+      "image": "image011.png",
+      "latex": "\\[\n\\iiint_V\\nabla\\phi\\,dV\n=\n\\oiint_S\\phi\\vec n\\,dA\n\\]"
+    },
+    {
+      "image": "image012.png",
+      "latex": "\\[\n\\iiint_V\\frac{\\partial(uv)}{\\partial x_i}\\,dV\n=\n\\oiint_S(uv)n_i\\,dA\n\\]"
+    },
+    {
+      "image": "image013.png",
+      "latex": "\\[\n\\iiint_Vu\\frac{\\partial v}{\\partial x_i}\\,dV\n+\n\\iiint_V\\frac{\\partial u}{\\partial x_i}v\\,dV\n=\n\\oiint_Suvn_i\\,dA\n\\]"
+    },
+    {
+      "image": "image014.png",
+      "latex": "\\[\n\\iiint_Vu\\frac{\\partial v}{\\partial x_i}\\,dV\n=\n\\oiint_Suvn_i\\,dA\n-\n\\iiint_V\\frac{\\partial u}{\\partial x_i}v\\,dV\n\\]"
+    }
+  ]
+}
