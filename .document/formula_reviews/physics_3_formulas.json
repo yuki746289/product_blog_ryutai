@@ -1,0 +1,21 @@
+{
+  "created_at": "2026-09-18T23:59:30+09:00",
+  "page": "physics/physics_3.html",
+  "image_dir": "img/physics_vector.files",
+  "canonical_source": "original source images",
+  "retained_diagrams": ["image001.png"],
+  "transcription_assist": {
+    "source": "original HP images",
+    "method": "direct source-image transcription; Word source is not available in the current working context",
+    "verified_date": "2026-09-18",
+    "source_image_is_canonical": true
+  },
+  "formulas": [
+    {"image":"image002.png","latex":"\\[\\vec{\\delta}_{x}\\]"},
+    {"image":"image003.png","latex":"\\[\\vec{\\delta}_{y}\\]"},
+    {"image":"image004.png","latex":"\\[\\vec{\\delta}_{z}\\]"},
+    {"image":"image005.png","latex":"\\[\\left|\\vec{\\delta}_{x}\\right|=\\left|\\vec{\\delta}_{y}\\right|=\\left|\\vec{\\delta}_{z}\\right|=1\\]"},
+    {"image":"image006.png","latex":"\\[\\vec{v}=\\vec{\\delta}_{x}p+\\vec{\\delta}_{y}q+\\vec{\\delta}_{z}r\\]"},
+    {"image":"image007.png","latex":"\\[\\left|\\vec{v}\\right|=\\sqrt{p^2+q^2+r^2}\\]"}
+  ]
+}
