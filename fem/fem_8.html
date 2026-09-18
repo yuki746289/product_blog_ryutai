@@ -11,6 +11,14 @@
 
 	<title>境界条件（有限要素法）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+	<script>
+	window.MathJax={
+		output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+		chtml:{displayAlign:'left',displayIndent:'0'}
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id"   value="4">
@@ -63,8 +71,16 @@
 					応力の単位は、速度や圧力の微分値に係数を掛けた項と同じになります。つまり、物理量の微分値です。</p>
 			<p>また、境界節点に吹き流しの条件（物理量の勾配ゼロ）を与える場合があります。
 					例えば、解析領域を途中で区切る場合は、境界節点に下記の条件を与える場合があります。
-					<p class="im"><img src="./../img/fem_bd.files/image001.png"></p>
-					<p class="im"><img src="./../img/fem_bd.files/image002.png"></p>
+					<div class="math-block" id="formula-fem_8-001" data-source-image="./../img/fem_bd.files/image001.png">
+\[
+\frac{\partial v_i}{\partial x_i}=0
+\]
+</div>
+					<div class="math-block" id="formula-fem_8-002" data-source-image="./../img/fem_bd.files/image002.png">
+\[
+\frac{\partial p}{\partial x_i}=0
+\]
+</div>
 			</p>
 			<p>これには、配管の流れを解析する時に解析領域を途中で区切る場合などが当てはまります。</p>
 			<p>第<span class="ft">3</span>種境界条件とは、界面の節点に物理量とその微分値を与える条件になります。</p>

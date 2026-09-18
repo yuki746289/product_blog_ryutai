@@ -11,6 +11,14 @@
 
 	<title>内挿関数の微分（有限要素法）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+	<script>
+	window.MathJax={
+		output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+		chtml:{displayAlign:'left',displayIndent:'0'}
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id"   value="4">
@@ -54,11 +62,35 @@
 			<br>
 			<br>
 			<p><span class="ft"><i>x</i></span>微分</p>
-			<p class="im"><img src="./../img/fem_n_tri.files/image007.png"></p>
+			<div class="math-block" id="formula-fem_6_1_2-007" data-source-image="./../img/fem_n_tri.files/image007.png">
+\[
+\begin{aligned}
+\frac{\partial N_1}{\partial x}
+&=\frac{\partial L_1}{\partial x}
+=\frac{\partial(S_1/S)}{\partial x}
+=\frac{1}{S}\frac{\partial S_1}{\partial x}\\
+&=\frac{1}{S}\frac{\partial}{\partial x}\frac{1}{2}
+(x_2y_3-y_2x_3-xy_3+xy_2+yx_3-yx_2)\\
+&=\frac{1}{2S}(-y_3+y_2)
+\end{aligned}
+\]
+</div>
 			<br>
 			<br>
 			<p><span class="ft"><i>y</i></span>微分</p>
-			<p class="im"><img src="./../img/fem_n_tri.files/image008.png"></p>
+			<div class="math-block" id="formula-fem_6_1_2-008" data-source-image="./../img/fem_n_tri.files/image008.png">
+\[
+\begin{aligned}
+\frac{\partial N_1}{\partial y}
+&=\frac{\partial L_1}{\partial y}
+=\frac{\partial(S_1/S)}{\partial y}
+=\frac{1}{S}\frac{\partial S_1}{\partial y}\\
+&=\frac{1}{S}\frac{\partial}{\partial y}\frac{1}{2}
+(x_2y_3-y_2x_3-xy_3+xy_2+yx_3-yx_2)\\
+&=\frac{1}{2S}(x_3-x_2)
+\end{aligned}
+\]
+</div>
 			<br>
 			<br>
 

@@ -11,6 +11,14 @@
 
 	<title>要素の積分（有限要素法）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+	<script>
+	window.MathJax={
+		output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+		chtml:{displayAlign:'left',displayIndent:'0'}
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="4">
@@ -49,11 +57,23 @@
 			<p>要素の積分には下記の公式が用いられます。</p>
 			<br>
 			<p><span class="ft">3</span>角形要素<p>
-			<p class="im"><img src="./../img/fem_integrate.files/image001.png"></p>
+			<div class="math-block" id="formula-fem_3-001" data-source-image="./../img/fem_integrate.files/image001.png">
+\[
+\int_S L_1^pL_2^qL_3^r\,dS
+=
+\frac{p!q!r!}{(p+q+r+2)!}\,2S
+\]
+</div>
 			<p>ここで、<span class="ft"><i>S</i></span>は要素の面積です。</p>
 			<br>
 			<p><span class="ft">4</span>面体要素<p>
-			<p class="im"><img src="./../img/fem_integrate.files/image002.png"></p>
+			<div class="math-block" id="formula-fem_3-002" data-source-image="./../img/fem_integrate.files/image002.png">
+\[
+\int_V L_1^pL_2^qL_3^rL_4^s\,dV
+=
+\frac{p!q!r!s!}{(p+q+r+s+3)!}\,6V
+\]
+</div>
 			<p>ここで、<span class="ft"><i>V</i></span>は要素の体積です。</p>
 			<br>
 
