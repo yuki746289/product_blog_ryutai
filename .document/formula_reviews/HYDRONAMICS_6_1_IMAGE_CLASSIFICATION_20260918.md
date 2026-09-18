@@ -8,23 +8,17 @@
 
 | Classification | Count |
 |---|---:|
-| Formula / mixed formula-text | **7** |
+| Formula / mixed formula | **7** |
 | Diagram | **1** |
 | Total | **8** |
 
 ## Retained diagram
 
-- `image001.png`: control-volume / inertia-force schematic.
+- `image001.png`: control-volume force diagram; graphical information is essential.
 
 ## Formula targets
 
-- `image002.png`: mixed Japanese explanatory text + formula sequence
-- `image003.png`–`image008.png`: formulas
+- `image002.png`: mixed Japanese explanatory text + equations. Reconstructed as MathJax with source-visible Japanese `ここで、` clauses.
+- `image003.png`–`image008.png`: display formulas.
 
-## Source policy
-
-Word original `流体力学_力の種類_慣性力.doc` is used as transcription assistance only. Original HP images are canonical.
-
-For `image002`, the source-visible Japanese text (`ここで、m=...`, `ここで、v_x=...`) is retained rather than discarded.
-
-Production deployment has not been performed.
+Word original `流体力学_力の種類_慣性力.doc` is used as transcription assistance. Original HP images are canonical.
