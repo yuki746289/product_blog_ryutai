@@ -24,8 +24,8 @@
 
 Word original `流体力学_力の種類_粘性力.doc` is used as transcription assistance only. Original HP images are canonical.
 
-Notable conversion issue:
-- LibreOffice/Pandoc damages some `ΔzΔx` products. These terms are restored from the source images.
+Notable source-visible irregularity:
+- In `image002.png`–`image007.png`, the middle product is visibly `ΔzxΔz`. It is preserved exactly rather than normalized to the theoretically expected `ΔzΔx`.
 - Source-visible stress subscripts and evaluation-position bars are retained without theoretical correction.
 
 Production deployment has not been performed.
