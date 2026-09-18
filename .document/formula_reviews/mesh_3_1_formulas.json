@@ -1,0 +1,21 @@
+{
+  "created_at":"2026-09-19T07:12:00+09:00",
+  "page":"mesh/mesh_3_1.html",
+  "image_dir":"img/mesh_node_buble.files",
+  "canonical_source":"original source images",
+  "retained_images":[
+    "image001.png","image002.png","image003.png","image007.png","image008.png",
+    "image011.png","image016.jpg","image017.jpg","image018.jpg","image019.jpg"
+  ],
+  "formulas":[
+    {"image":"image004.png","latex":"\\(\\vec{p}_{1}\\)","mode":"inline"},
+    {"image":"image005.png","latex":"\\(\\vec{p}_{2}\\)","mode":"inline"},
+    {"image":"image006.png","latex":"\\[\\begin{aligned}\\vec{F}_{12}&=-\\vec{F}_{21}\\\\&=w\\!\\left(\\frac{|\\vec{p}_{2}-\\vec{p}_{1}|}{r_{2}+r_{1}}\\right)\\frac{\\vec{p}_{2}-\\vec{p}_{1}}{|\\vec{p}_{2}-\\vec{p}_{2}|}\\end{aligned}\\]"},
+    {"image":"image009.png","latex":"\\[\\vec{F}=\\sum_{i=1}^{n}w\\!\\left(\\frac{|\\vec{p}-\\vec{p}_{i}|}{r+r_{i}}\\right)\\frac{\\vec{p}-\\vec{p}_{i}}{|\\vec{p}-\\vec{p}_{i}|}\\]"},
+    {"image":"image010.png","latex":"\\[\\begin{aligned}\\vec{r}&=cr\\frac{\\vec{F}}{|\\vec{F}|}\\\\&=cr\\frac{1}{|\\vec{F}|}\\sum_{i=1}^{n}w\\!\\left(\\frac{|\\vec{p}-\\vec{p}_{i}|}{r+r_{i}}\\right)\\frac{\\vec{p}-\\vec{p}_{i}}{|\\vec{p}-\\vec{p}_{i}|}\\end{aligned}\\]"},
+    {"image":"image012.png","latex":"\\(n(r_i)>8\\)","mode":"inline","mixed_text_note":"source image also contains Japanese label; existing HTML already contains 節点削除："},
+    {"image":"image013.png","latex":"\\(n(r_i)<5\\)","mode":"inline","mixed_text_note":"source image also contains Japanese label; existing HTML already contains 節点追加："},
+    {"image":"image014.png","latex":"\\[r=\\frac{\\displaystyle\\sum_{i=1}^{n}w(|\\vec{p}-\\vec{p}_{i}|)r_i}{\\displaystyle\\sum_{i=1}^{n}w(|\\vec{p}-\\vec{p}_{i}|)}\\]"},
+    {"image":"image015.png","latex":"\\[w(d)=\\frac{1}{d+10^{-3}}\\]"}
+  ]
+}
