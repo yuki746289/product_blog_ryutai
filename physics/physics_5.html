@@ -11,6 +11,14 @@
 
 	<title>作用素の種類（物理）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+<script>
+window.MathJax={
+  output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+  chtml:{displayAlign:'left',displayIndent:'0'}
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="2">
@@ -50,14 +58,30 @@
 			<br>
 			<p>・ナブラ作用素</p>
 			<p>オーダー<span class="ft">1</span>の作用素。
-							<img src="./../img/physics_operator.files/image003.png">で表されます。
+							<span class="math-inline" id="formula-physics-5-003" data-source-image="./../img/physics_operator.files/image003.png">\(\nabla\)</span>で表されます。
 							ナブラは<span class="ft">1</span>回微分の作用素です。</p>
-			<p class="im"><img src="./../img/physics_operator.files/image004.png"></p>
+			<div class="math-block" id="formula-physics-5-004" data-source-image="./../img/physics_operator.files/image004.png">
+\[
+\begin{aligned}
+\nabla
+&=\sum_{i=0}^{3}\vec{\delta}_{i}\frac{\partial}{\partial x_i}\\
+&=\vec{\delta}_{x}\frac{\partial}{\partial x}+\vec{\delta}_{y}\frac{\partial}{\partial y}+\vec{\delta}_{z}\frac{\partial}{\partial z}
+\end{aligned}
+\]
+</div>
 			<p>・ラプラシアン作用素</p>
 			<p>オーダー<span class="ft">0</span>の作用素。
-							<img src="./../img/physics_operator.files/image001.png">で表されます。
+							<span class="math-inline" id="formula-physics-5-001" data-source-image="./../img/physics_operator.files/image001.png">\(\Delta\)</span>で表されます。
 							ラプラシアンは<span class="ft">2</span>回微分の作用素です。</p>
-			<p class="im"><img src="./../img/physics_operator.files/image002.png"></p>
+			<div class="math-block" id="formula-physics-5-002" data-source-image="./../img/physics_operator.files/image002.png">
+\[
+\begin{aligned}
+\Delta
+&=\sum_{i=0}^{3}\frac{\partial^2}{\partial x_i^2}\\
+&=\frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial y^2}+\frac{\partial^2}{\partial z^2}
+\end{aligned}
+\]
+</div>
 			<br>
 
 			<div style="margin-top:10px;"></div>
