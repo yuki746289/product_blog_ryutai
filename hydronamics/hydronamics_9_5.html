@@ -11,6 +11,14 @@
 
 	<title>剪断成分の値（流体力学）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+<script>
+window.MathJax={
+  output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+  chtml:{displayAlign:'left',displayIndent:'0'}
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="3">
@@ -51,13 +59,57 @@
 			<p>下図より剪断速度を導出します。</p>
 			<p class="im"><img src="./../img/hydronamics_shear_value.files/image001.png"></p>
 			<p><span class="fs"><i>Da</i></span><span class="ft">[rad]</span>は次式となります。</p>
-			<p class="im"><img src="./../img/hydronamics_shear_value.files/image002.png"></p>
+			<div class="math-block" id="formula-hydronamics-9-5-002" data-source-image="./../img/hydronamics_shear_value.files/image002.png">
+\[
+\begin{aligned}
+\Delta\alpha &\cong \tan\Delta\alpha\\
+&=\frac{\frac{\partial v_y}{\partial x}\Delta x\Delta t}
+{\Delta x+\frac{\partial v_x}{\partial x}\Delta x\Delta t}\\
+&=\frac{\frac{\partial v_y}{\partial x}}
+{\frac{1}{\Delta t}+\frac{\partial v_x}{\partial x}}
+\end{aligned}
+\]
+</div>
 			<p>また、<span class="fs"><i>Db</i></span><span class="ft">[rad]</span>は次式となります。</p>
-			<p class="im"><img src="./../img/hydronamics_shear_value.files/image003.png"></p>
+			<div class="math-block" id="formula-hydronamics-9-5-003" data-source-image="./../img/hydronamics_shear_value.files/image003.png">
+\[
+\begin{aligned}
+\Delta\beta &\cong \tan\Delta\beta\\
+&=\frac{\frac{\partial v_x}{\partial y}\Delta y\Delta t}
+{\Delta y+\frac{\partial v_y}{\partial y}\Delta y\Delta t}\\
+&=\frac{\frac{\partial v_x}{\partial y}}
+{\frac{1}{\Delta t}+\frac{\partial v_y}{\partial y}}
+\end{aligned}
+\]
+</div>
 			<p>従って、<span class="ft"><i>xy</i></span>面の剪断速度<span class="fs"><i>g</i></span>
 					<span class="ft"><i><sub>z</sub></i></span><span class="ft"> [m/s]</span>
 					は次式となります。</p>
-			<p class="im"><img src="./../img/hydronamics_shear_value.files/image004.png"></p>
+			<div class="math-block" id="formula-hydronamics-9-5-004" data-source-image="./../img/hydronamics_shear_value.files/image004.png">
+\[
+\begin{aligned}
+\gamma_z
+&=\lim_{\Delta t\to0}\frac{\Delta\alpha+\Delta\beta}{\Delta t}\\
+&=\lim_{\Delta t\to0}\frac{1}{\Delta t}
+\left(
+\frac{\frac{\partial v_y}{\partial x}}
+{\frac{1}{\Delta t}+\frac{\partial v_x}{\partial x}}
++
+\frac{\frac{\partial v_x}{\partial y}}
+{\frac{1}{\Delta t}+\frac{\partial v_y}{\partial y}}
+\right)\\
+&=\lim_{\Delta t\to0}
+\left(
+\frac{\frac{\partial v_y}{\partial x}}
+{1+\frac{\partial v_x}{\partial x}\Delta t}
++
+\frac{\frac{\partial v_x}{\partial y}}
+{1+\frac{\partial v_y}{\partial y}\Delta t}
+\right)\\
+&=\frac{\partial v_y}{\partial x}+\frac{\partial v_x}{\partial y}
+\end{aligned}
+\]
+</div>
 			<p>同様に、
 					<span class="ft"><i>yz</i></span>面
 					<span class="ft">, <i>zx</i></span>面の剪断速度
@@ -66,9 +118,24 @@
 					<span class="ft"><i><sub>z</sub></i></span>
 					<span class="ft">[m/s]</span>
 					は次式となります。</p>
-			<p class="im"><img src="./../img/hydronamics_shear_value.files/image005.png"></p>
+			<div class="math-block" id="formula-hydronamics-9-5-005" data-source-image="./../img/hydronamics_shear_value.files/image005.png">
+\[
+\begin{aligned}
+\gamma_y&=\frac{\partial v_y}{\partial z}+\frac{\partial v_z}{\partial y}\\
+\gamma_z&=\frac{\partial v_y}{\partial z}+\frac{\partial v_z}{\partial y}
+\end{aligned}
+\]
+</div>
 			<p>従って、</p>
-			<p class="im"><img src="./../img/hydronamics_shear_value.files/image006.png"></p>
+			<div class="math-block" id="formula-hydronamics-9-5-006" data-source-image="./../img/hydronamics_shear_value.files/image006.png">
+\[
+\begin{aligned}
+\tau_{xy}&=\tau_{yx}=-\mu\left(\frac{\partial v_x}{\partial y}+\frac{\partial v_y}{\partial x}\right)\\
+\tau_{yz}&=\tau_{zx}=-\mu\left(\frac{\partial v_y}{\partial z}+\frac{\partial v_z}{\partial y}\right)\\
+\tau_{zx}&=\tau_{yz}=-\mu\left(\frac{\partial v_z}{\partial x}+\frac{\partial v_x}{\partial z}\right)
+\end{aligned}
+\]
+</div>
 			<br>
 
 
