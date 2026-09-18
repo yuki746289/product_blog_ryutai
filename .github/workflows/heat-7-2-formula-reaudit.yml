@@ -1,0 +1,166 @@
+name: Heat 7-2 Formula Reaudit
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/heat-7-2-formula-reaudit.yml'
+      - '.document/formula_reviews/heat_7_2_formulas.json'
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Build strict page
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          cfg=json.loads(Path('.document/formula_reviews/heat_7_2_formulas.json').read_text(encoding='utf-8'))
+          expected=[f'{i:03d}' for i in range(1,33)]
+          seq=[x['image'][5:8] for x in cfg['formulas']]
+          if seq!=expected:
+              raise RuntimeError(f'sequence mismatch: {seq}')
+          parts=[
+            '<!doctype html><html lang="ja"><head><meta charset="utf-8">',
+            '<meta name="viewport" content="width=device-width,initial-scale=1">',
+            '<title>heat_7_2 strict formula re-audit</title>',
+            '<style>body{font-family:Arial,"Yu Gothic",sans-serif;margin:20px}.formula-pair{border-top:1px solid #bbb;padding:18px 0}.pair-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}.source,.render{min-width:0;overflow-x:auto;padding:10px;border:1px solid #ddd}.source img{display:block;max-width:100%;height:auto;margin:auto}.render mjx-container[display="true"]{margin:.4em 0!important;text-align:left!important}@media(max-width:800px){.pair-grid{grid-template-columns:1fr}}</style>',
+            '<script>window.MathJax={output:{displayOverflow:"linebreak",linebreaks:{inline:false,width:"100%"}}};</script>',
+            '<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>',
+            '</head><body><h1>Heat 7-2 strict source-image re-audit</h1>',
+            '<p>Canonical formula source is the original image. Mathematical equivalence is not sufficient; notation, sign, term order, indices and coefficients must match.</p>'
+          ]
+          for item in cfg['formulas']:
+            n=item['image'][5:8]
+            src=f'./../img/heat_discretization_tetra.files/{item["image"]}'
+            parts += [
+              f'<section class="formula-pair" id="formula-{n}"><h2>image{n}</h2><div class="pair-grid">',
+              f'<div class="source"><img src="{src}" alt="source image{n}"></div>',
+              f'<div class="render" data-source-image="{src}">{item["latex"]}</div>',
+              '</div></section>'
+            ]
+          parts += ['</body></html>']
+          Path('heat/heat_7_2_reaudit.html').write_text('\n'.join(parts)+'\n',encoding='utf-8')
+          PY
+
+      - name: Install browser
+        run: |
+          pip install playwright pillow
+          python -m playwright install --with-deps chromium
+
+      - name: Start server
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/h72-http.log 2>&1 &
+          sleep 1
+
+      - name: Capture pairs
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from PIL import Image,ImageDraw
+          from playwright.sync_api import sync_playwright
+
+          root=Path.cwd()
+          out=root/'heat-7-2-pass2'
+          for s in ('sources','renders','pairs'):
+              (out/s).mkdir(parents=True,exist_ok=True)
+          nums=[f'{i:03d}' for i in range(1,34)]
+          manifest={'formulas':[],'count':0}
+
+          with sync_playwright() as p:
+            b=p.chromium.launch(headless=True)
+            ctx=b.new_context(viewport={'width':1900,'height':1500},device_scale_factor=1)
+            pg=ctx.new_page()
+            pg.goto('http://127.0.0.1:8000/heat/heat_7_2_reaudit.html',
+                    wait_until='domcontentloaded',timeout=120000)
+            pg.wait_for_function(
+              '() => window.MathJax && MathJax.startup && MathJax.startup.promise',
+              timeout=60000)
+            pg.evaluate('async()=>{await MathJax.startup.promise;}')
+            pg.wait_for_timeout(500)
+
+            for n in nums:
+              sec=pg.locator(f'#formula-{n}')
+              r=sec.locator('.render')
+              s=sec.locator('.source img')
+              containers=r.locator('mjx-container').count()
+              errors=r.locator('mjx-merror')
+              if containers<1 or errors.count()>0:
+                print(f'image{n}: containers={containers}, merror={errors.count()}, text={errors.all_inner_texts()}')
+                print('render text:',r.inner_text())
+                raise RuntimeError(f'image{n} MathJax error')
+
+              dims=r.evaluate('(e)=>({clientWidth:e.clientWidth,scrollWidth:e.scrollWidth})')
+              rp=out/'renders'/f'image{n}.png'
+              r.screenshot(path=str(rp),animations='disabled')
+
+              sp=(root/'heat'/s.get_attribute('src')).resolve()
+              im=Image.open(sp).convert('RGBA')
+              bg=Image.new('RGBA',im.size,'white')
+              bg.alpha_composite(im)
+              src=bg.convert('RGB')
+              scale=4 if src.width<700 else 2
+              src=src.resize((src.width*scale,src.height*scale),Image.Resampling.LANCZOS)
+              src.save(out/'sources'/f'image{n}.png')
+
+              rr=Image.open(rp).convert('RGB')
+              margin,label,gap=16,28,24
+              w=max(src.width,rr.width)+2*margin
+              h=2*margin+2*label+gap+src.height+rr.height
+              canvas=Image.new('RGB',(w,h),'white')
+              d=ImageDraw.Draw(canvas)
+              y=margin
+              d.text((margin,y),f'SOURCE image{n}',fill='black')
+              y+=label
+              canvas.paste(src,(margin,y))
+              y+=src.height+gap
+              d.text((margin,y),f'MATHJAX image{n}',fill='black')
+              y+=label
+              canvas.paste(rr,(margin,y))
+              canvas.save(out/'pairs'/f'image{n}.png')
+
+              manifest['formulas'].append({
+                'image':n,
+                'horizontal_overflow':dims['scrollWidth']>dims['clientWidth']+1,
+                'dims':dims
+              })
+
+            b.close()
+
+          manifest['count']=len(manifest['formulas'])
+          (out/'manifest.json').write_text(
+            json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf-8')
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: heat-7-2-pass2
+          path: heat-7-2-pass2
+          retention-days: 7
+
+      - name: Commit strict page
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add heat/heat_7_2_reaudit.html
+          git diff --cached --check
+          if ! git diff --cached --quiet; then
+            git commit -m 'docs: build heat 7-1 strict reaudit page'
+            git pull --rebase origin develop
+            git push origin HEAD:develop
+          fi
