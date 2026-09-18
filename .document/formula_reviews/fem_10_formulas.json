@@ -12,11 +12,11 @@
     },
     {
       "image": "image002.png",
-      "latex": "\\[\n\\begin{aligned}\n\\frac{[C]}{\\Delta\\tau}\\{V_x\\}^{\\tau+\\Delta\\tau}\n&+\\left(V_x[C_x]+V_y[C_y]+V_z[C_z]\\right)\\{V_x\\}^{\\tau+\\Delta\\tau}\\\\\n&+\\frac{1}{Re}\\left\\{\n\\left(2[S_{xx}]+[S_{yy}]+[S_{zz}]\\right)\\{V_x\\}^{\\tau+\\Delta\\tau}\n+[S_{xy}]\\{V_y\\}^{\\tau+\\Delta\\tau}\n+[S_{xz}]\\{V_z\\}^{\\tau+\\Delta\\tau}\n+[C_x]\\{P\\}^{\\tau+\\Delta\\tau}\n\\right\\}\\\\\n&=\n\\frac{[C]}{\\Delta\\tau}\\{V_x\\}^{\\tau}\n+\\frac{2K^*}{We}n_x\n\\begin{bmatrix}1\\\\1\\\\1\\end{bmatrix}\\frac{S}{3}\n+g_x^*\n\\begin{bmatrix}1\\\\1\\\\1\\\\1\\end{bmatrix}\\frac{V}{4}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\frac{[C]}{\\Delta\\tau}\\{V_x\\}^{\\tau+\\Delta\\tau}\n&+\\left(V_x[C_x]+V_y[C_y]+V_z[C_z]\\right)\\{V_x\\}^{\\tau+\\Delta\\tau}\\\\\n&+\\frac{1}{Re}\\left\\{\n\\left(2[S_{xx}]+[S_{yy}]+[S_{zz}]\\right)\\{V_x\\}^{\\tau+\\Delta\\tau}\n+[S_{yx}]\\{V_y\\}^{\\tau+\\Delta\\tau}\n+[S_{zx}]\\{V_z\\}^{\\tau+\\Delta\\tau}\n+[C_x]\\{P\\}^{\\tau+\\Delta\\tau}\n\\right\\}\\\\\n&=\n\\frac{[C]}{\\Delta\\tau}\\{V_x\\}^{\\tau}\n+\\frac{2K^*}{We}n_x\n\\begin{bmatrix}1\\\\1\\\\1\\end{bmatrix}\\frac{S}{3}\n+g_x^*\n\\begin{bmatrix}1\\\\1\\\\1\\\\1\\end{bmatrix}\\frac{V}{4}\n\\end{aligned}\n\\]"
     },
     {
       "image": "image003.png",
-      "latex": "\\[\n\\begin{aligned}\n\\frac{[C]}{\\Delta\\tau}\\{V_y\\}^{\\tau+\\Delta\\tau}\n&+\\left(V_x[C_x]+V_y[C_y]+V_z[C_z]\\right)\\{V_y\\}^{\\tau+\\Delta\\tau}\\\\\n&+\\frac{1}{Re}\\left\\{\n[S_{xy}]\\{V_x\\}^{\\tau+\\Delta\\tau}\n+\\left([S_{xx}]+2[S_{yy}]+[S_{zz}]\\right)\\{V_y\\}^{\\tau+\\Delta\\tau}\n+[S_{yz}]\\{V_z\\}^{\\tau+\\Delta\\tau}\n+[C_y]\\{P\\}^{\\tau+\\Delta\\tau}\n\\right\\}\\\\\n&=\n\\frac{[C]}{\\Delta\\tau}\\{V_y\\}^{\\tau}\n+\\frac{2K^*}{We}n_y\n\\begin{bmatrix}1\\\\1\\\\1\\end{bmatrix}\\frac{S}{3}\n+g_y^*\n\\begin{bmatrix}1\\\\1\\\\1\\\\1\\end{bmatrix}\\frac{V}{4}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\frac{[C]}{\\Delta\\tau}\\{V_y\\}^{\\tau+\\Delta\\tau}\n&+\\left(V_x[C_x]+V_y[C_y]+V_z[C_z]\\right)\\{V_y\\}^{\\tau+\\Delta\\tau}\\\\\n&+\\frac{1}{Re}\\left\\{\n[S_{xy}]\\{V_x\\}^{\\tau+\\Delta\\tau}\n+\\left([S_{xx}]+2[S_{yy}]+[S_{zz}]\\right)\\{V_y\\}^{\\tau+\\Delta\\tau}\n+[S_{zy}]\\{V_z\\}^{\\tau+\\Delta\\tau}\n+[C_y]\\{P\\}^{\\tau+\\Delta\\tau}\n\\right\\}\\\\\n&=\n\\frac{[C]}{\\Delta\\tau}\\{V_y\\}^{\\tau}\n+\\frac{2K^*}{We}n_y\n\\begin{bmatrix}1\\\\1\\\\1\\end{bmatrix}\\frac{S}{3}\n+g_y^*\n\\begin{bmatrix}1\\\\1\\\\1\\\\1\\end{bmatrix}\\frac{V}{4}\n\\end{aligned}\n\\]"
     },
     {
       "image": "image004.png",
