@@ -12,6 +12,15 @@ Transcription: `.document/formula_reviews/physics_7_formulas.json`
 
 ## Pass 2
 
-Status: **Pending**
+Result: **1 / 1 PASS**
 
-**Physics 7 is not yet certified for normal-page application.**
+- Workflow run: **35400194522**
+- Artifact: `physics-7-pass2`
+- Artifact id: **10568914161**
+- MathJax errors: **0**
+- Unrendered formulas: **0**
+- Browser page errors: **0**
+
+The source/render pair was visually inspected. The Laplacian, vector mark, nabla operators, inner product, nested cross products, parentheses, square brackets, and subtraction sign match the source.
+
+**Physics 7 is certified for normal-page application.**
