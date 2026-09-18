@@ -11,6 +11,14 @@
 
 	<title>剪断速度（流体力学）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+<script>
+window.MathJax={
+  output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+  chtml:{displayAlign:'left',displayIndent:'0'}
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="3">
@@ -52,15 +60,40 @@
 			<p class="im"><img src="./../img/hydronamics_shear_velocity.files/image001.png"></p>
 			<p>上図を用いて剪断速度<span class="fs"><i>g</i></span><span class="ft">[1/s]</span>
 					は、次式で表されます。</p>
-			<p class="im"><img src="./../img/hydronamics_shear_velocity.files/image002.png"><p>
+			<div class="math-block" id="formula-hydronamics-9-1-002" data-source-image="./../img/hydronamics_shear_velocity.files/image002.png">
+\[
+\begin{aligned}
+\gamma&=\lim_{\Delta x\to0}\frac{v_2-v_1}{\Delta x}\\
+&=\frac{dv}{dx}
+\end{aligned}
+\]
+</div>
 			<p>剪断速度は、距離に対する速度勾配なので、単位は次の様に解釈できます。</p>
-			<p class="im"><img src="./../img/hydronamics_shear_velocity.files/image003.png"></p>
+			<div class="math-block" id="formula-hydronamics-9-1-003" data-source-image="./../img/hydronamics_shear_velocity.files/image003.png">
+\[
+\frac{\text{速度}[\mathrm{m/s}]}{\text{距離}[\mathrm{m}]}
+=[\mathrm{1/s}]
+\]
+</div>
 			<p>次に剪断速度を回転運動から導出してみます。この場合は角速度を用います。</p>
 			<p class="im"><img src="./../img/hydronamics_shear_velocity.files/image004.png"></p>
 			<p>面積の収支から</p>
-			<p class="im"><img src="./../img/hydronamics_shear_velocity.files/image005.png"></p>
+			<div class="math-block" id="formula-hydronamics-9-1-005" data-source-image="./../img/hydronamics_shear_velocity.files/image005.png">
+\[
+\frac{1}{2}rv\Delta t
+=
+\frac{\Delta\theta}{2\pi}\pi r^2
+\]
+</div>
 			<p>剪断速度<span class="fs"><i>g</i></span><span class="ft">[1/s]</span>は</p>
-			<p class="im"><img src="./../img/hydronamics_shear_velocity.files/image006.png"></p>
+			<div class="math-block" id="formula-hydronamics-9-1-006" data-source-image="./../img/hydronamics_shear_velocity.files/image006.png">
+\[
+\begin{aligned}
+\gamma&=\lim_{\Delta t\to0}\frac{\Delta\theta}{\Delta t}\\
+&=\frac{v}{r}
+\end{aligned}
+\]
+</div>
 			<br>
 
 
