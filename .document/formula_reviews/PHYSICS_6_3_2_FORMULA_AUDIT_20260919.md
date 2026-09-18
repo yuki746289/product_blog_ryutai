@@ -13,6 +13,14 @@ Transcription: `.document/formula_reviews/physics_6_3_2_formulas.json`
 
 ## Pass 2
 
-Status: **Pending**
+Result: **2 / 2 PASS**
 
-**Physics 6_3_2 is not yet certified for normal-page application.**
+- Workflow run: **35398683088**
+- Artifact: `physics-6-3-2-pass2`
+- Artifact id: **10569851815**
+- MathJax errors: **0**
+- Unrendered formulas: **0**
+
+Both source/render pairs were visually inspected. Cross-product expansion order, epsilon indices/signs, component terms, vector marks, absolute-value bars, sine/theta, and n-vector match the source.
+
+**Physics 6_3_2 is certified for normal-page application.**
