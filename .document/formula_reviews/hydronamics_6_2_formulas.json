@@ -1,0 +1,44 @@
+{
+  "page": "hydronamics/hydronamics_6_2.html",
+  "image_dir": "img/hydronamics_f_viscous.files",
+  "canonical_source": "original source images",
+  "retained_diagrams": [
+    "image001.png"
+  ],
+  "transcription_assist": {
+    "source": "HP.7z / 流体力学_力の種類_粘性力.doc",
+    "method": "Word/Equation Editor candidate + canonical source-image verification",
+    "verified_date": "2026-09-18",
+    "source_image_is_canonical": true
+  },
+  "source_notation_notes": [
+    "LibreOffice/Pandoc corrupts some ΔzΔx products; those terms are restored from the source images.",
+    "All source-visible stress subscripts and evaluation-position bars are preserved without theoretical correction."
+  ],
+  "formulas": [
+    {
+      "image": "image002.png",
+      "latex": "\\[\nF_{\\mid x}\n=\n\\Delta y\\Delta z\\,\\tau_{xx\\mid x}\n+\\Delta z\\Delta x\\,\\tau_{yx\\mid y}\n+\\Delta x\\Delta y\\,\\tau_{zx\\mid z}\n\\]"
+    },
+    {
+      "image": "image003.png",
+      "latex": "\\[\nF_{\\mid x+\\Delta x}\n=\n-\\Delta y\\Delta z\\,\\tau_{xx\\mid x+\\Delta x}\n-\\Delta z\\Delta x\\,\\tau_{yx\\mid y+\\Delta y}\n-\\Delta x\\Delta y\\,\\tau_{zx\\mid z+\\Delta z}\n\\]"
+    },
+    {
+      "image": "image004.png",
+      "latex": "\\[\nF_{\\mid y}\n=\n\\Delta y\\Delta z\\,\\tau_{yx\\mid x}\n+\\Delta z\\Delta x\\,\\tau_{yy\\mid y}\n+\\Delta x\\Delta y\\,\\tau_{zy\\mid z}\n\\]"
+    },
+    {
+      "image": "image005.png",
+      "latex": "\\[\nF_{\\mid y+\\Delta y}\n=\n-\\Delta y\\Delta z\\,\\tau_{xy\\mid x+\\Delta x}\n-\\Delta z\\Delta x\\,\\tau_{yy\\mid y+\\Delta y}\n-\\Delta x\\Delta y\\,\\tau_{zy\\mid z+\\Delta z}\n\\]"
+    },
+    {
+      "image": "image006.png",
+      "latex": "\\[\nF_{\\mid z}\n=\n\\Delta y\\Delta z\\,\\tau_{yz\\mid x}\n+\\Delta z\\Delta x\\,\\tau_{yz\\mid y}\n+\\Delta x\\Delta y\\,\\tau_{zz\\mid z}\n\\]"
+    },
+    {
+      "image": "image007.png",
+      "latex": "\\[\nF_{\\mid z+\\Delta z}\n=\n-\\Delta y\\Delta z\\,\\tau_{xz\\mid x+\\Delta x}\n-\\Delta z\\Delta x\\,\\tau_{yz\\mid y+\\Delta y}\n-\\Delta x\\Delta y\\,\\tau_{zz\\mid z+\\Delta z}\n\\]"
+    }
+  ]
+}
