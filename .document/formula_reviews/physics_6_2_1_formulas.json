@@ -1,0 +1,31 @@
+{
+  "created_at": "2026-09-19T00:36:00+09:00",
+  "page": "physics/physics_6_2_1.html",
+  "image_dir": "img/physics_c_inner.files",
+  "canonical_source": "original source images",
+  "retained_diagrams": ["image005.png"],
+  "transcription_assist": {
+    "source": "original HP images",
+    "method": "direct source-image transcription",
+    "verified_date": "2026-09-19",
+    "source_image_is_canonical": true
+  },
+  "formulas": [
+    {
+      "image": "image001.png",
+      "latex": "\\[\n\\delta_{ij}=\\begin{cases}0&(i\\neq j)\\\\1&(i=j)\\end{cases}\n\\]"
+    },
+    {
+      "image": "image002.png",
+      "latex": "\\[(\\vec{\\delta}_{i}\\cdot\\vec{\\delta}_{j})=\\delta_{ij}\\]"
+    },
+    {
+      "image": "image003.png",
+      "latex": "\\[\n\\begin{aligned}\n[\\vec{\\delta}_{i}\\cdot\\vec{\\delta}_{j}\\vec{\\delta}_{k}]\n&=(\\vec{\\delta}_{i}\\cdot\\vec{\\delta}_{j})\\vec{\\delta}_{k}\\\\\n&=\\delta_{ij}\\vec{\\delta}_{k}\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image004.png",
+      "latex": "\\[\n\\begin{aligned}\n\\delta_{ij}\n&=(\\vec{\\delta}_{i}\\cdot\\vec{\\delta}_{j})\\\\\n&=|\\vec{\\delta}_{i}|\\,|\\vec{\\delta}_{j}|\\cos\\theta\\\\\n&=\\cos\\theta\\\\\n&=\\begin{cases}\\cos\\dfrac{\\pi}{2}&(i\\neq j)\\\\\\cos0&(i=j)\\end{cases}\n\\end{aligned}\n\\]"
+    }
+  ]
+}
