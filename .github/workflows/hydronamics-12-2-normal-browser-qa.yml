@@ -40,13 +40,11 @@ jobs:
           from pathlib import Path
           from playwright.sync_api import sync_playwright
 
-          file='hydronamics/hydronamics_12_2.html'
-          imgdir='hydronamics_dimensionless.files'
+          cfg={'key':'hydronamics_12_2','file':'hydronamics/hydronamics_12_2.html',
+               'imgdir':'hydronamics_dimensionless.files','display':6,'inline':2,'diagrams':0}
           viewports={'desktop':{'width':1440,'height':1000},'mobile':{'width':390,'height':844}}
-          out=Path('hydronamics-12-2-normal-qa')
-          out.mkdir(exist_ok=True)
-          results=[]
-          failures=[]
+          out=Path('hydronamics-12-2-normal-qa'); out.mkdir(exist_ok=True)
+          results=[]; failures=[]
 
           with sync_playwright() as p:
             browser=p.chromium.launch(headless=True)
@@ -55,22 +53,17 @@ jobs:
               page=ctx.new_page()
               page_errors=[]
               page.on('pageerror',lambda exc,store=page_errors:store.append(str(exc)))
-              page.goto('http://127.0.0.1:8000/'+file,wait_until='domcontentloaded',timeout=120000)
+              page.goto('http://127.0.0.1:8000/'+cfg['file'],wait_until='domcontentloaded',timeout=120000)
               page.wait_for_function('() => window.MathJax && MathJax.startup && MathJax.startup.promise',timeout=60000)
               page.evaluate('async()=>{await MathJax.startup.promise;}')
               page.wait_for_timeout(500)
 
-              blocks=page.locator(f'div.math-block[data-source-image*="{imgdir}/image"]')
-              inlines=page.locator(f'span.math-inline[data-source-image*="{imgdir}/image"]')
-              block_count=blocks.count()
-              inline_count=inlines.count()
-              img_count=page.locator(f'img[src*="{imgdir}/image"]').count()
+              db=page.locator(f'div.math-block[data-source-image*="{cfg["imgdir"]}/image"]')
+              ib=page.locator(f'span.math-inline[data-source-image*="{cfg["imgdir"]}/image"]')
+              dc,ic=db.count(),ib.count()
               merror=page.locator('mjx-merror').count()
-              unrendered=0
-              local_scroll=0
-              uncontained=0
-
-              for loc in (blocks,inlines):
+              unrendered=0; local_scroll=0; uncontained=0
+              for loc in (db,ib):
                 for i in range(loc.count()):
                   el=loc.nth(i)
                   if el.locator('mjx-container').count()<1:
@@ -81,25 +74,21 @@ jobs:
                     if vp_name=='desktop' or dims['overflowX'] not in ('auto','scroll'):
                       uncontained+=1
 
+              img_count=page.locator(f'img[src*="{cfg["imgdir"]}/image"]').count()
               pd=page.evaluate('() => ({cw:document.documentElement.clientWidth,sw:document.documentElement.scrollWidth})')
               page_overflow=pd['sw']>pd['cw']+2
-              shotdir=out/vp_name
-              shotdir.mkdir(parents=True,exist_ok=True)
+
+              shotdir=out/vp_name; shotdir.mkdir(parents=True,exist_ok=True)
               page.screenshot(path=str(shotdir/'full.png'),full_page=True,animations='disabled')
 
-              row={
-                'viewport':vp_name,
-                'display':block_count,'expected_display':6,
-                'inline':inline_count,'expected_inline':2,
-                'retained_images':img_count,'expected_retained_images':0,
-                'mathjax_errors':merror,'unrendered':unrendered,
-                'local_scroll':local_scroll,'uncontained':uncontained,
-                'page_overflow':page_overflow,'page_errors':page_errors
-              }
+              row={'viewport':vp_name,'display':dc,'inline':ic,'expected_display':6,'expected_inline':2,
+                   'image_tags':img_count,'expected_diagrams':0,'mathjax_errors':merror,
+                   'unrendered':unrendered,'local_scroll':local_scroll,'uncontained':uncontained,
+                   'page_overflow':page_overflow,'page_errors':page_errors}
               results.append(row)
-              if block_count!=6: failures.append(f'{vp_name}: display {block_count} != 6')
-              if inline_count!=2: failures.append(f'{vp_name}: inline {inline_count} != 2')
-              if img_count!=0: failures.append(f'{vp_name}: formula images remain {img_count}')
+              if dc!=6: failures.append(f'{vp_name}: display {dc} != 6')
+              if ic!=2: failures.append(f'{vp_name}: inline {ic} != 2')
+              if img_count!=0: failures.append(f'{vp_name}: target image tags {img_count} != 0')
               if merror: failures.append(f'{vp_name}: MathJax errors {merror}')
               if unrendered: failures.append(f'{vp_name}: unrendered {unrendered}')
               if uncontained: failures.append(f'{vp_name}: uncontained overflow {uncontained}')
@@ -118,17 +107,16 @@ jobs:
             f'- Overall: **{status}**',
             '- Browser: Chromium / Playwright',
             '- Viewports: desktop 1440×1000, mobile 390×844',
-            '- Expected display formulas: 6',
-            '- Expected inline formulas: 2',
-            '- Expected retained images from this Word-export directory: 0',
+            '- Expected formulas: display 6 + inline 2 = 8',
+            '- Expected retained diagrams: 0',
             '- Production deployment: not performed.','',
-            '| Viewport | Display | Inline | Residual images | MathJax errors | Unrendered | Local scroll | Uncontained | Page overflow |',
+            '| Viewport | Display | Inline | Formula images | MathJax errors | Unrendered | Local scroll | Uncontained | Page overflow |',
             '|---|---:|---:|---:|---:|---:|---:|---:|---|'
           ]
           for r in results:
             lines.append(
               f"| {r['viewport']} | {r['display']}/{r['expected_display']} | "
-              f"{r['inline']}/{r['expected_inline']} | {r['retained_images']} | "
+              f"{r['inline']}/{r['expected_inline']} | {r['image_tags']}/0 | "
               f"{r['mathjax_errors']} | {r['unrendered']} | {r['local_scroll']} | "
               f"{r['uncontained']} | {'YES' if r['page_overflow'] else 'NO'} |")
           lines += ['', '## Failures', '']
