@@ -135,12 +135,37 @@ GitHub Actions run `35283846226` でChromium + MathJaxの実描画を5ページ�
 - 横方向オーバーフロー: **0/143**
 
 詳細な監査方法と結果は `.document/formula_reviews/PASS2_BROWSER_AUDIT_20260918.md` を正本とする。
+## 2026-09-18 Appendix 監査・通常ページ反映
+
+Appendixの数式画像について、元画像を正本として分類・再転記・Pass 1 / Pass 2・通常ページ反映・PC/スマホQAを実施した。
+
+- `appendix_1.html`: **14式 完了**
+- `appendix_2.html`: **11式 完了**
+  - `image001.png` は数式単体ではなく球の幾何図＋式の混在画像のため画像維持。
+  - Pass 2 workflow run: **35288931238**
+  - 通常ページQA workflow run: **35290873659**
+  - desktop: 11/11 blocks, formula images 0, MathJax errors 0, page overflowなし
+  - mobile: 11/11 blocks, formula images 0, MathJax errors 0, local-scroll 7, uncontained 0, page overflowなし
+- `appendix_3_1.html`: **8式 完了**
+- `appendix_3_2.html`: **8式 完了**
+- Appendix数式合計: **41式 完了**
+- 図・混在画像は数式化せず保持。
+- 本番FTP反映は未実施。
+
+詳細:
+- `.document/formula_reviews/APPENDIX_1_FORMULA_AUDIT_20260918.md`
+- `.document/formula_reviews/APPENDIX_2_FORMULA_AUDIT_20260918.md`
+- `.document/formula_reviews/APPENDIX_2_NORMAL_BROWSER_QA_20260918.md`
+- `.document/formula_reviews/APPENDIX_COORDINATE_FORMULA_AUDIT_20260918.md`
+- `.document/formula_reviews/APPENDIX_COORDINATE_NORMAL_BROWSER_QA_20260918.md`
+
 ## 次の優先順
 
-1. Pass 1 / Pass 2認証済みLaTeXを主要5通常ページへ反映する。
-2. 通常ページとしてPC幅・スマホ幅で、数式折返し、余白、説明文との位置関係、ナビゲーションを確認する。
-3. 主要5ページ以外を含むサイト全体の数式画像インベントリを完成させ、同じ厳密手順で順次MathJax化する。
-4. 全体QA完了後にのみ本番FTP反映を検討する。
+1. サイト全体の残存画像を「数式 / 図 / 混在画像」に分類する。
+2. 数式画像だけを、元画像正本のPass 1 → ブラウザPass 2 → 通常ページ反映 → PC/スマホQAの順で処理する。
+3. 次の高密度候補として heat 系、残存FEM、fluid、physics を順次処理する。
+4. MPSの欠損GIF参照は、数式変換と切り分けて元ファイルの所在・復元可否を調査する。
+5. 全体QA完了後にのみ本番FTP反映を検討する。
 
 ## ページ監査手順
 
@@ -169,6 +194,11 @@ GitHub Actions run `35283846226` でChromium + MathJaxの実描画を5ページ�
 
 ## 現在の判定
 
-**サイト全体: 未完了 / 再監査中**
+**サイト全体: 未完了 / 数式画像のサイト全体展開中**
 
-主要5ページ143式について元画像と監査候補の対応付けは143/143完了。正式なPass 1合格は**33/143**、Pass 2は0/143。通常ページは元数式画像表示を優先し、MathJax再反映は各ページのPass 1 / Pass 2完了後に行う。
+- 主要FEM 5ページ: **143/143 Pass 1・Pass 2完了、通常ページ反映・PC/スマホQA完了**
+- Appendix: **41式完了、通常ページ反映・PC/スマホQA完了**
+- 厳密監査・通常ページ化まで完了した数式: **184式**
+- 残存画像は数式とは限らないため、今後はページ単位で分類してから数式のみ変換する。
+- MPS欠損GIF参照は別タスクとして扱う。
+- 本番FTP反映は未実施。
