@@ -11,6 +11,14 @@
 
 	<title>4面体要素の体積（有限要素法）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+	<script>
+	window.MathJax={
+		output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+		chtml:{displayAlign:'left',displayIndent:'0'}
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="4">
@@ -47,15 +55,132 @@
 
 			<h2>・<span class="ft">4<span>面体要素の体積</h2>
 			<p><span class="ft">4</span>面体要素の面積は次式となります。<p>
-			<p class="im"><img src="./../img/fem_tet_vol.files/image001.png"></p>
+			<div class="math-block" id="formula-fem-5-001" data-source-image="./../img/fem_tet_vol.files/image001.png">
+\[
+V=\frac{1}{6}
+\begin{vmatrix}
+1&x_1&y_1&z_1\\
+1&x_2&y_2&z_2\\
+1&x_3&y_3&z_3\\
+1&x_4&y_4&z_4
+\end{vmatrix}
+\]
+</div>
 			<p>行列式は下記で計算されます。</p>
-			<p class="im"><img src="./../img/fem_tet_vol.files/image002.png"></p>
-			<p class="im"><img src="./../img/fem_tet_vol.files/image003.png"></p>
-			<p class="im"><img src="./../img/fem_tet_vol.files/image004.png"></p>
-			<p class="im"><img src="./../img/fem_tet_vol.files/image005.png"></p>
+			<section class="math-block formula-rich" id="formula-fem-5-002" data-source-image="./../img/fem_tet_vol.files/image002.png">
+<div class="formula-rich-inner">
+\[
+\det A=\sum_{\sigma\in\sigma_n}\varepsilon(\sigma)
+a_{1\sigma(1)}a_{2\sigma(2)}\cdots a_{n\sigma(n)}
+\]
+<p>\(\varepsilon(\sigma)\)を \(\sigma\in\sigma_n\) の符号とすると</p>
+<p>(1) \(\varepsilon(\tau\sigma)=\varepsilon(\sigma)\varepsilon(\tau)\)</p>
+<p>(2) \(\varepsilon(1)=1\)</p>
+<p>(3) \(\varepsilon(\sigma^{-1})=\varepsilon(\sigma)\)</p>
+<p>(4) \(\rho\) が互換であれば \(\varepsilon(\rho)=-1\)</p>
+</div>
+</section>
+			<div class="math-block" id="formula-fem-5-003" data-source-image="./../img/fem_tet_vol.files/image003.png">
+\[
+\begin{aligned}
+\det
+\begin{pmatrix}
+a_{11}&a_{12}&a_{13}&a_{14}\\
+a_{21}&a_{22}&a_{23}&a_{24}\\
+a_{31}&a_{32}&a_{33}&a_{34}\\
+a_{43}&a_{42}&a_{43}&a_{44}
+\end{pmatrix}
+&=\sum_{\sigma\in\sigma_4}\varepsilon(\sigma)
+a_{1\sigma(1)}a_{2\sigma(2)}a_{3\sigma(3)}a_{4\sigma(4)}\\
+&=\sum_{\sigma\in\sigma_4}\varepsilon
+\begin{pmatrix}1&2&3&4\\\sigma(1)&\sigma(2)&\sigma(3)&\sigma(4)\end{pmatrix}
+a_{1\sigma(1)}a_{2\sigma(2)}a_{3\sigma(3)}a_{4\sigma(4)}\\
+&=\varepsilon\begin{pmatrix}1&2&3&4\\1&2&3&4\end{pmatrix}a_{11}a_{22}a_{33}a_{44}+\varepsilon\begin{pmatrix}1&2&3&4\\1&2&4&3\end{pmatrix}a_{11}a_{22}a_{34}a_{43}\\
+&\quad+\varepsilon\begin{pmatrix}1&2&3&4\\1&3&2&4\end{pmatrix}a_{11}a_{23}a_{32}a_{44}+\varepsilon\begin{pmatrix}1&2&3&4\\1&3&4&2\end{pmatrix}a_{11}a_{23}a_{34}a_{42}\\
+&\quad+\varepsilon\begin{pmatrix}1&2&3&4\\1&4&2&3\end{pmatrix}a_{11}a_{24}a_{32}a_{43}+\varepsilon\begin{pmatrix}1&2&3&4\\1&4&3&2\end{pmatrix}a_{11}a_{24}a_{33}a_{42}\\
+&\quad+\varepsilon\begin{pmatrix}1&2&3&4\\2&1&3&4\end{pmatrix}a_{12}a_{21}a_{33}a_{44}+\varepsilon\begin{pmatrix}1&2&3&4\\2&1&4&3\end{pmatrix}a_{12}a_{21}a_{34}a_{43}\\
+&\quad+\varepsilon\begin{pmatrix}1&2&3&4\\2&3&1&4\end{pmatrix}a_{12}a_{23}a_{31}a_{44}+\varepsilon\begin{pmatrix}1&2&3&4\\2&3&4&1\end{pmatrix}a_{12}a_{23}a_{34}a_{41}\\
+&\quad+\varepsilon\begin{pmatrix}1&2&3&4\\2&4&1&3\end{pmatrix}a_{12}a_{24}a_{31}a_{43}+\varepsilon\begin{pmatrix}1&2&3&4\\2&4&3&1\end{pmatrix}a_{12}a_{24}a_{33}a_{41}\\
+&\quad+\varepsilon\begin{pmatrix}1&2&3&4\\3&1&2&4\end{pmatrix}a_{13}a_{21}a_{32}a_{44}+\varepsilon\begin{pmatrix}1&2&3&4\\3&1&4&2\end{pmatrix}a_{13}a_{21}a_{34}a_{42}\\
+&\quad+\varepsilon\begin{pmatrix}1&2&3&4\\3&2&1&4\end{pmatrix}a_{13}a_{22}a_{31}a_{44}+\varepsilon\begin{pmatrix}1&2&3&4\\3&2&4&1\end{pmatrix}a_{13}a_{22}a_{34}a_{41}\\
+&\quad+\varepsilon\begin{pmatrix}1&2&3&4\\3&4&1&2\end{pmatrix}a_{13}a_{24}a_{31}a_{42}+\varepsilon\begin{pmatrix}1&2&3&4\\3&4&2&1\end{pmatrix}a_{13}a_{24}a_{32}a_{41}\\
+&\quad+\varepsilon\begin{pmatrix}1&2&3&4\\4&1&2&3\end{pmatrix}a_{14}a_{21}a_{32}a_{43}+\varepsilon\begin{pmatrix}1&2&3&4\\4&1&3&2\end{pmatrix}a_{14}a_{21}a_{33}a_{42}\\
+&\quad+\varepsilon\begin{pmatrix}1&2&3&4\\4&2&1&3\end{pmatrix}a_{14}a_{22}a_{31}a_{43}+\varepsilon\begin{pmatrix}1&2&3&4\\4&2&3&1\end{pmatrix}a_{14}a_{22}a_{33}a_{41}\\
+&\quad+\varepsilon\begin{pmatrix}1&2&3&4\\4&3&1&2\end{pmatrix}a_{14}a_{23}a_{31}a_{42}+\varepsilon\begin{pmatrix}1&2&3&4\\4&3&2&1\end{pmatrix}a_{14}a_{23}a_{32}a_{41}\\
+\end{aligned}
+\]
+</div>
+			<div class="math-block" id="formula-fem-5-004" data-source-image="./../img/fem_tet_vol.files/image004.png">
+\[
+\begin{aligned}
+=\varepsilon\begin{pmatrix}1&2&3&4\\1&2&3&4\end{pmatrix}a_{11}a_{22}a_{33}a_{44}+\varepsilon\left((34)\begin{pmatrix}1&2&3&4\\1&2&3&4\end{pmatrix}\right)a_{11}a_{22}a_{34}a_{43}\\
+&\quad+\varepsilon\left((23)\begin{pmatrix}1&2&3&4\\1&2&3&4\end{pmatrix}\right)a_{11}a_{23}a_{32}a_{44}+\varepsilon\left((23)(34)\begin{pmatrix}1&2&3&4\\1&2&3&4\end{pmatrix}\right)a_{11}a_{23}a_{34}a_{42}\\
+&\quad+\varepsilon\left((24)(34)\begin{pmatrix}1&2&3&4\\1&2&3&4\end{pmatrix}\right)a_{11}a_{24}a_{32}a_{43}+\varepsilon\left((24)\begin{pmatrix}1&2&3&4\\1&2&3&4\end{pmatrix}\right)a_{11}a_{24}a_{33}a_{42}\\
+&\quad+\varepsilon\left((12)\begin{pmatrix}1&2&3&4\\1&2&3&4\end{pmatrix}\right)a_{12}a_{21}a_{33}a_{44}+\varepsilon\left((12)(34)\begin{pmatrix}1&2&3&4\\1&2&3&4\end{pmatrix}\right)a_{12}a_{21}a_{34}a_{43}\\
+&\quad+\varepsilon\left((12)(23)\begin{pmatrix}1&2&3&4\\1&2&3&4\end{pmatrix}\right)a_{12}a_{23}a_{31}a_{44}+\varepsilon\left((12)(23)(34)\begin{pmatrix}1&2&3&4\\1&2&3&4\end{pmatrix}\right)a_{12}a_{23}a_{34}a_{41}\\
+&\quad+\varepsilon\left((12)(24)(34)\begin{pmatrix}1&2&3&4\\1&2&3&4\end{pmatrix}\right)a_{12}a_{24}a_{31}a_{43}+\varepsilon\left((12)(24)\begin{pmatrix}1&2&3&4\\1&2&3&4\end{pmatrix}\right)a_{12}a_{24}a_{33}a_{41}\\
+&\quad+\varepsilon\left((13)(23)\begin{pmatrix}1&2&3&4\\1&2&3&4\end{pmatrix}\right)a_{13}a_{21}a_{32}a_{44}+\varepsilon\left((13)(23)(34)\begin{pmatrix}1&2&3&4\\1&2&3&4\end{pmatrix}\right)a_{13}a_{21}a_{34}a_{42}\\
+&\quad+\varepsilon\left((13)\begin{pmatrix}1&2&3&4\\1&2&3&4\end{pmatrix}\right)a_{13}a_{22}a_{31}a_{44}+\varepsilon\left((13)(34)\begin{pmatrix}1&2&3&4\\1&2&3&4\end{pmatrix}\right)a_{13}a_{22}a_{34}a_{41}\\
+&\quad+\varepsilon\left((13)(24)\begin{pmatrix}1&2&3&4\\1&2&3&4\end{pmatrix}\right)a_{13}a_{24}a_{31}a_{42}+\varepsilon\left((13)(24)(34)\begin{pmatrix}1&2&3&4\\1&2&3&4\end{pmatrix}\right)a_{13}a_{24}a_{32}a_{41}\\
+&\quad+\varepsilon\left((14)(24)(34)\begin{pmatrix}1&2&3&4\\1&2&3&4\end{pmatrix}\right)a_{14}a_{21}a_{32}a_{43}+\varepsilon\left((14)(24)\begin{pmatrix}1&2&3&4\\1&2&3&4\end{pmatrix}\right)a_{14}a_{21}a_{33}a_{42}\\
+&\quad+\varepsilon\left((14)(34)\begin{pmatrix}1&2&3&4\\1&2&3&4\end{pmatrix}\right)a_{14}a_{22}a_{31}a_{43}+\varepsilon\left((14)\begin{pmatrix}1&2&3&4\\1&2&3&4\end{pmatrix}\right)a_{14}a_{22}a_{33}a_{41}\\
+&\quad+\varepsilon\left((14)(23)(34)\begin{pmatrix}1&2&3&4\\1&2&3&4\end{pmatrix}\right)a_{14}a_{23}a_{31}a_{42}+\varepsilon\left((14)(23)\begin{pmatrix}1&2&3&4\\1&2&3&4\end{pmatrix}\right)a_{14}a_{23}a_{32}a_{41}\\
+\end{aligned}
+\]
+</div>
+			<div class="math-block" id="formula-fem-5-005" data-source-image="./../img/fem_tet_vol.files/image005.png">
+\[
+\begin{aligned}
+=(-1)^{0}a_{11}a_{22}a_{33}a_{44}+(-1)^{1}a_{11}a_{22}a_{34}a_{43}+(-1)^{1}a_{11}a_{23}a_{32}a_{44}\\
+&\quad+(-1)^{2}a_{11}a_{23}a_{34}a_{42}+(-1)^{2}a_{11}a_{24}a_{32}a_{43}+(-1)^{1}a_{11}a_{24}a_{33}a_{42}\\
+&\quad+(-1)^{1}a_{12}a_{21}a_{33}a_{44}+(-1)^{2}a_{12}a_{21}a_{34}a_{43}+(-1)^{2}a_{12}a_{23}a_{31}a_{44}\\
+&\quad+(-1)^{3}a_{12}a_{23}a_{34}a_{41}+(-1)^{3}a_{12}a_{24}a_{31}a_{43}+(-1)^{2}a_{12}a_{24}a_{33}a_{41}\\
+&\quad+(-1)^{2}a_{13}a_{21}a_{32}a_{44}+(-1)^{3}a_{13}a_{21}a_{34}a_{42}+(-1)^{1}a_{13}a_{22}a_{31}a_{44}\\
+&\quad+(-1)^{2}a_{13}a_{22}a_{34}a_{41}+(-1)^{2}a_{13}a_{24}a_{31}a_{42}+(-1)^{3}a_{13}a_{24}a_{32}a_{41}\\
+&\quad+(-1)^{3}a_{14}a_{21}a_{32}a_{43}+(-1)^{2}a_{14}a_{21}a_{33}a_{42}+(-1)^{2}a_{14}a_{22}a_{31}a_{43}\\
+&\quad+(-1)^{1}a_{14}a_{22}a_{33}a_{41}+(-1)^{3}a_{14}a_{23}a_{31}a_{42}+(-1)^{2}a_{14}a_{23}a_{32}a_{41}\\
+\\[-2pt]
+=a_{11}a_{22}a_{33}a_{44}-a_{11}a_{22}a_{34}a_{43}-a_{11}a_{23}a_{32}a_{44}\\
+&\quad+a_{11}a_{23}a_{34}a_{42}+a_{11}a_{24}a_{32}a_{43}-a_{11}a_{24}a_{33}a_{42}\\
+&\quad-a_{12}a_{21}a_{33}a_{44}+a_{12}a_{21}a_{34}a_{43}+a_{12}a_{23}a_{31}a_{44}\\
+&\quad-a_{12}a_{23}a_{34}a_{41}-a_{12}a_{24}a_{31}a_{43}+a_{12}a_{24}a_{33}a_{41}\\
+&\quad+a_{13}a_{21}a_{32}a_{44}-a_{13}a_{21}a_{34}a_{42}-a_{13}a_{22}a_{31}a_{44}\\
+&\quad+a_{13}a_{22}a_{34}a_{41}+a_{13}a_{24}a_{31}a_{42}-a_{13}a_{24}a_{32}a_{41}\\
+&\quad-a_{14}a_{21}a_{32}a_{43}+a_{14}a_{21}a_{33}a_{42}+a_{14}a_{22}a_{31}a_{43}\\
+&\quad-a_{14}a_{22}a_{33}a_{41}-a_{14}a_{23}a_{31}a_{42}+a_{14}a_{23}a_{32}a_{41}\\
+\end{aligned}
+\]
+</div>
 			<p>従って、<span class="ft">4</span>面体の体積<span class="ft"><i>V</i></span>は、<p>
-			<p class="im"><img src="./../img/fem_tet_vol.files/image006.png"></p>
-			<p class="im"><img src="./../img/fem_tet_vol.files/image007.png"></p>
+			<div class="math-block" id="formula-fem-5-006" data-source-image="./../img/fem_tet_vol.files/image006.png">
+\[
+\begin{aligned}
+V&=\frac{1}{6}\det
+\begin{pmatrix}
+1&x_1&y_1&z_1\\
+1&x_2&y_2&z_2\\
+1&x_3&y_3&z_3\\
+1&x_4&y_4&z_4
+\end{pmatrix}\\
+&=\frac{1}{6}\Big(
+x_2y_3z_4-x_2z_3y_4-y_2x_3z_4+y_2z_3x_4+z_2x_3y_4-z_2y_3x_4\\
+&\qquad-x_1y_3z_4+x_1z_3y_4+x_1y_2z_4-x_1y_2z_3-x_1z_2y_4+x_1z_2y_3\\
+&\qquad+y_1x_3z_4-y_1z_3x_4-y_1x_2z_4+y_1x_2z_3+y_1z_2x_4-y_1z_2x_3\\
+&\qquad-z_1x_3y_4+z_1y_3x_4+z_1x_2y_4-z_1x_2y_3-z_1y_2x_4+z_1y_2x_3
+\Big)
+\end{aligned}
+\]
+</div>
+			<div class="math-block" id="formula-fem-5-007" data-source-image="./../img/fem_tet_vol.files/image007.png">
+\[
+\begin{aligned}
+&a_{11}=1,\ a_{12}=x_1,\ a_{13}=y_1,\ a_{14}=z_1\\
+&a_{21}=1,\ a_{22}=x_2,\ a_{23}=y_2,\ a_{24}=z_2\\
+&a_{31}=1,\ a_{32}=x_3,\ a_{33}=y_3,\ a_{34}=z_3\\
+&a_{41}=1,\ a_{42}=x_4,\ a_{43}=y_4,\ a_{44}=z_4
+\end{aligned}
+\]
+</div>
 			<br>
 
 
