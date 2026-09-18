@@ -1,0 +1,37 @@
+# Created: 2026-09-18T23:59:00+09:00
+name: Capture Physics source images
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/capture-physics-source-images.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - name: Stage Physics source images
+        run: |
+          mkdir -p physics-source-images
+          find img -maxdepth 1 -type d -name 'physics*.files' -print0 | while IFS= read -r -d '' d; do
+            mkdir -p "physics-source-images/$d"
+            cp -a "$d/." "physics-source-images/$d/"
+          done
+          count=$(find physics-source-images -type f | wc -l)
+          echo "captured files: $count"
+          test "$count" -gt 0
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: physics-source-images
+          path: physics-source-images
+          retention-days: 7
