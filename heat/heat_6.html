@@ -12,6 +12,14 @@
 
 	<title>無次元化（伝熱工学）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+	<script>
+	window.MathJax={
+		output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+		chtml:{displayAlign:'left',displayIndent:'0'}
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="9">
@@ -57,35 +65,107 @@
 					は代表速度です。</p>
 			<br>
 			<p>座標の無次元化</p>
-			<p class="im"><img src="./../img/heat_dimensionless.files/image001.png"></p>
+			<div class="math-block" id="formula-heat-6-001" data-source-image="./../img/heat_dimensionless.files/image001.png">
+\[
+X=\frac{x}{x_0},\quad Y=\frac{y}{x_0},\quad Z=\frac{z}{x_0}
+\]
+</div>
 			<br>
 			<p>速度の無次元化</p>
-			<p class="im"><img src="./../img/heat_dimensionless.files/image002.png"></p>
+			<div class="math-block" id="formula-heat-6-002" data-source-image="./../img/heat_dimensionless.files/image002.png">
+\[
+V_x=\frac{v_x}{v_0},\quad V_y=\frac{v_y}{v_0},\quad V_z=\frac{v_z}{v_0}
+\]
+</div>
 			<br>
 			<p>温度の無次元化</p><br>
-			<p class="im"><img src="./../img/heat_dimensionless.files/image003.png"></p>
+			<div class="math-block" id="formula-heat-6-003" data-source-image="./../img/heat_dimensionless.files/image003.png">
+\[
+\Theta=\frac{T-T_0}{T_1-T_0}
+\]
+</div>
 			<br>
 			<p>時間の無次元化</p>
-			<p class="im"><img src="./../img/heat_dimensionless.files/image004.png"></p>
+			<div class="math-block" id="formula-heat-6-004" data-source-image="./../img/heat_dimensionless.files/image004.png">
+\[
+\tau=\frac{v_0}{x_0}t
+\]
+</div>
 			<br>
 
 			<h2>熱収支式の無次元化</h2>
 			<p>無次元化前</p>
-			<p class="im"><img src="./../img/heat_dimensionless.files/image005.png"></p>
-			<p>ここで、<img src="./../img/heat_dimensionless.files/image006.png"><span class="ft">[N/m<sup>2</sup>s]</span>
+			<div class="math-block" id="formula-heat-6-005" data-source-image="./../img/heat_dimensionless.files/image005.png">
+\[
+\rho C_p\frac{DT}{Dt}=-(\nabla\cdot\vec q)
+\]
+</div>
+			<p>ここで、<span class="math-inline" id="formula-heat-6-006" data-source-image="./../img/heat_dimensionless.files/image006.png">\(\vec q\)</span><span class="ft">[N/m<sup>2</sup>s]</span>
 					は熱流束で、</p>
-			<p class="im"><img src="./../img/heat_dimensionless.files/image007.png"></p>
+			<div class="math-block" id="formula-heat-6-007" data-source-image="./../img/heat_dimensionless.files/image007.png">
+\[
+\vec q=-k\left(
+\vec\delta_x\frac{\partial T}{\partial x}
++\vec\delta_y\frac{\partial T}{\partial y}
++\vec\delta_z\frac{\partial T}{\partial z}
+\right)
+\]
+</div>
 			<p>成分表示すると</p>
-			<p class="im"><img src="./../img/heat_dimensionless.files/image008.png"></p>
+			<div class="math-block" id="formula-heat-6-008" data-source-image="./../img/heat_dimensionless.files/image008.png">
+\[
+\rho C_p\left(
+\frac{\partial T}{\partial t}
++v_x\frac{\partial T}{\partial x}
++v_y\frac{\partial T}{\partial y}
++v_z\frac{\partial T}{\partial z}
+\right)
+=
+k\left(
+\frac{\partial^2T}{\partial x^2}
++\frac{\partial^2T}{\partial y^2}
++\frac{\partial^2T}{\partial z^2}
+\right)
+\]
+</div>
 			<br>
 			<p>無次元化後</p>
-			<p class="im"><img src="./../img/heat_dimensionless.files/image009.png"></p>
-			<p>ここで、<img src="./../img/heat_dimensionless.files/image010.png">[-]は熱流束で、</p>
-			<p class="im"><img src="./../img/heat_dimensionless.files/image011.png"></p>
+			<div class="math-block" id="formula-heat-6-009" data-source-image="./../img/heat_dimensionless.files/image009.png">
+\[
+\frac{D\Theta}{D\tau}=-(\nabla\cdot\vec q^{*})
+\]
+</div>
+			<p>ここで、<span class="math-inline" id="formula-heat-6-010" data-source-image="./../img/heat_dimensionless.files/image010.png">\(\vec q^{*}\)</span>[-]は熱流束で、</p>
+			<div class="math-block" id="formula-heat-6-011" data-source-image="./../img/heat_dimensionless.files/image011.png">
+\[
+\vec q^{*}=-\frac{1}{Pe}\left(
+\vec\delta_x\frac{\partial T}{\partial x}
++\vec\delta_y\frac{\partial T}{\partial y}
++\vec\delta_z\frac{\partial T}{\partial z}
+\right)
+\]
+</div>
 			<p>成分表示すると</p>
-			<p class="im"><img src="./../img/heat_dimensionless.files/image012.png"></p>
+			<div class="math-block" id="formula-heat-6-012" data-source-image="./../img/heat_dimensionless.files/image012.png">
+\[
+\frac{\partial\Theta}{\partial\tau}
++V_x\frac{\partial\Theta}{\partial X}
++V_y\frac{\partial\Theta}{\partial Y}
++V_z\frac{\partial\Theta}{\partial Z}
+=
+\frac{1}{Pe}\left(
+\frac{\partial^2\Theta}{\partial X^2}
++\frac{\partial^2\Theta}{\partial Y^2}
++\frac{\partial^2\Theta}{\partial Z^2}
+\right)
+\]
+</div>
 			<p>また、</p>
-			<p class="im"><img src="./../img/heat_dimensionless.files/image013.png"></p>
+			<div class="math-block" id="formula-heat-6-013" data-source-image="./../img/heat_dimensionless.files/image013.png">
+\[
+Pe=\frac{\rho C_p v_0 x_0}{k}
+\]
+</div>
 			<p>ペクレ数<span class="ft"><i>Pe</i></span>は、対流伝熱と伝導伝熱の比を表しています。</p>
 			<br>
 
