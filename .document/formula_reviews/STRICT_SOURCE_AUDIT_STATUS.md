@@ -1100,6 +1100,24 @@ FEM batches 1–3 / FEM 5後に残っていた未分類20画像を分類し、�
 - `.document/formula_reviews/PHYSICS_6_2_6_FORMULA_AUDIT_20260919.md`
 - `.document/formula_reviews/PHYSICS_6_2_6_NORMAL_BROWSER_QA_20260919.md`
 
+
+## 2026-09-19 Physics 6_2_7 監査・通常ページ反映
+
+`physics/physics_6_2_7.html` の内積からの角度計算ページを元HP画像正本で処理した。
+
+- 数式: **1**
+- Pass 1: **1/1**
+- Pass 2 workflow run: **35397972814**
+- Pass 2: **1/1**
+- Apply + Normal browser QA run: **35398100172**
+- desktop/mobile: display 1/1、MathJax errors 0、unrendered 0、uncontained 0、page overflowなし
+- `∴`、`cos^{-1}`、ベクトル絶対値を元画像どおり保持。
+- 本番FTP反映は未実施。
+
+詳細:
+- `.document/formula_reviews/PHYSICS_6_2_7_FORMULA_AUDIT_20260919.md`
+- `.document/formula_reviews/PHYSICS_6_2_7_NORMAL_BROWSER_QA_20260919.md`
+
 ## 次の優先順
 
 1. サイト全体の残存画像を「数式 / 図 / 混在画像」に分類する。
@@ -1161,7 +1179,8 @@ FEM batches 1–3 / FEM 5後に残っていた未分類20画像を分類し、�
 - Physics 6_2_2: **2式完了、図1件は画像維持、PC/スマホQA完了**
 - Physics 6_2_4: **2式完了、PC/スマホQA完了**
 - Physics 6_2_5: **1式完了、PC/スマホQA完了**
-- Physics 6_2_6: **1式完了、PC/スマホQA完了**\n- 厳密監査・通常ページ化まで完了した数式・数式テキスト: **525件**
+- Physics 6_2_6: **1式完了、PC/スマホQA完了**
+- Physics 6_2_7: **1式完了、PC/スマホQA完了**\n- 厳密監査・通常ページ化まで完了した数式・数式テキスト: **526件**
 - 残存画像は数式とは限らないため、今後はページ単位で分類してから数式のみ変換する。
 - MPS欠損GIF参照は別タスクとして扱う。
 - 本番FTP反映は未実施。
