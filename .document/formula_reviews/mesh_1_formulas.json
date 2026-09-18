@@ -1,0 +1,29 @@
+{
+  "created_at":"2026-09-19T08:31:00+09:00",
+  "page":"mesh/mesh_1.html",
+  "image_dir":"img/mesh_approximation.files",
+  "canonical_source":"original source images",
+  "retained_diagrams":["image001.png"],
+  "formulas":[
+    {
+      "image":"image002.png",
+      "latex":"\\[\\begin{aligned}\\chi(a,b)&=\\sum_{i=1}^{n}\\{y_i-f(x_i)\\}^2\\\\&=\\sum_{i=1}^{n}\\{y_i-(a+bx_i)\\}^2\\\\&=\\sum_{i=1}^{n}(y_i-a-bx_i)^2\\\\&=\\sum_{i=1}^{n}\\{(a+bx_i-y_i)a+(a+bx_i-y_i)bx_i-(a+bx_i-y_i)y_i\\}\\\\&=\\sum_{i=1}^{n}(a^2+x_iab-y_ia+x_iab+x_i^2b^2-x_iy_ib-y_ia-x_iy_ib+y_i^2)\\\\&=\\sum_{i=1}^{n}(a^2+2x_iab+x_i^2b^2-2y_ia-2x_iy_ib+y_i^2)\\\\&=na^2+2ab\\sum_{i=1}^{n}x_i+b^2\\sum_{i=1}^{n}x_i^2-2a\\sum_{i=1}^{n}y_i-2b\\sum_{i=1}^{n}x_iy_i+\\sum_{i=1}^{n}y_i^2\\end{aligned}\\]"
+    },
+    {
+      "image":"image003.png",
+      "latex":"\\[\\begin{aligned}\\frac{\\partial\\chi(a,b)}{\\partial a}&=0\\\\\\frac{\\partial\\chi(a,b)}{\\partial b}&=0\\end{aligned}\\]"
+    },
+    {
+      "image":"image004.png",
+      "latex":"\\[\\begin{aligned}\\frac{\\partial\\chi(a,b)}{\\partial a}&=2na+2b\\sum_{i=1}^{n}x_i-2\\sum_{i=1}^{n}y_i\\\\&=0\\end{aligned}\\]"
+    },
+    {
+      "image":"image005.png",
+      "latex":"\\[\\begin{aligned}\\frac{\\partial\\chi(a,b)}{\\partial b}&=2a\\sum_{i=1}^{n}x_i+2b\\sum_{i=1}^{n}x_i^2-2\\sum_{i=1}^{n}x_iy_i\\\\&=0\\end{aligned}\\]"
+    },
+    {
+      "image":"image006.png",
+      "latex":"\\[\\left\\{\\begin{aligned}na+b\\sum_{i=1}^{n}x_i-\\sum_{i=1}^{n}y_i&=0\\\\a\\sum_{i=1}^{n}x_i+b\\sum_{i=1}^{n}x_i^2-\\sum_{i=1}^{n}x_iy_i&=0\\end{aligned}\\right.\\]"
+    }
+  ]
+}
