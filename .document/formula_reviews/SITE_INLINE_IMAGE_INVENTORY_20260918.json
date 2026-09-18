@@ -1,9 +1,9 @@
 {
   "summary": {
     "html_pages_scanned": 205,
-    "residual_word_image_placements": 296,
-    "unique_assets": 294,
-    "centered_p_im_placements": 280,
+    "residual_word_image_placements": 290,
+    "unique_assets": 288,
+    "centered_p_im_placements": 274,
     "missing_assets": 49,
     "missing_by_section": {
       "mps": 49
@@ -14,13 +14,13 @@
       "counting": 2,
       "fem": 33,
       "heat": 8,
-      "hydronamics": 72,
+      "hydronamics": 66,
       "mesh": 53,
       "mps": 49,
       "physics": 65
     },
     "extensions": {
-      ".png": 243,
+      ".png": 237,
       ".jpg": 4,
       ".gif": 49
     }
@@ -1054,78 +1054,6 @@
       "exists": true,
       "width": 436,
       "height": 434,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "hydronamics/hydronamics_6_2.html",
-      "encoding": "cp932",
-      "src": "./../img/hydronamics_f_viscous.files/image002.png",
-      "asset": "img/hydronamics_f_viscous.files/image002.png",
-      "exists": true,
-      "width": 382,
-      "height": 35,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "hydronamics/hydronamics_6_2.html",
-      "encoding": "cp932",
-      "src": "./../img/hydronamics_f_viscous.files/image003.png",
-      "asset": "img/hydronamics_f_viscous.files/image003.png",
-      "exists": true,
-      "width": 496,
-      "height": 37,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "hydronamics/hydronamics_6_2.html",
-      "encoding": "cp932",
-      "src": "./../img/hydronamics_f_viscous.files/image004.png",
-      "asset": "img/hydronamics_f_viscous.files/image004.png",
-      "exists": true,
-      "width": 384,
-      "height": 33,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "hydronamics/hydronamics_6_2.html",
-      "encoding": "cp932",
-      "src": "./../img/hydronamics_f_viscous.files/image005.png",
-      "asset": "img/hydronamics_f_viscous.files/image005.png",
-      "exists": true,
-      "width": 496,
-      "height": 37,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "hydronamics/hydronamics_6_2.html",
-      "encoding": "cp932",
-      "src": "./../img/hydronamics_f_viscous.files/image006.png",
-      "asset": "img/hydronamics_f_viscous.files/image006.png",
-      "exists": true,
-      "width": 378,
-      "height": 35,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "hydronamics/hydronamics_6_2.html",
-      "encoding": "cp932",
-      "src": "./../img/hydronamics_f_viscous.files/image007.png",
-      "asset": "img/hydronamics_f_viscous.files/image007.png",
-      "exists": true,
-      "width": 493,
-      "height": 34,
       "format": "PNG",
       "centered_p_im": true,
       "review_priority": "A"
