@@ -345,6 +345,35 @@ Pass 2目視で `fem_10/image002`, `image003` の非対角添字差異を検出�
 - `.document/formula_reviews/FEM_BATCH_4_FORMULA_AUDIT_20260918.md`
 - `.document/formula_reviews/FEM_BATCH_4_NORMAL_BROWSER_QA_20260918.md`
 
+## 2026-09-18 Remaining FEM 監査・通常ページ反映
+
+FEM batches 1–3 / FEM 5後に残っていた未分類20画像を分類し、数学コンテンツ11件を厳密監査・通常ページ化した。
+
+- 分類対象: **20画像**
+  - 純数式: **10**
+  - 日本語本文＋数式: **1**
+  - 図・模式図・混在図: **9**（画像維持）
+- 対象ページ:
+  - `fem_3.html`: 2式
+  - `fem_6_1_2.html`: 2式
+  - `fem_6_1_3.html`: 2式
+  - `fem_6_1_4.html`: 2式
+  - `fem_8.html`: 2式
+  - `fem_4.html`: HTML本文＋MathJax 1件
+- Pass 1: **11/11**
+- Pass 2 run: **35318416381**
+- Pass 2: **11/11**
+- Normal browser QA run: **35318974319**
+- desktop/mobile: MathJax errors 0、uncontained 0、page overflowなし
+- mobile local-scroll: fem_6_1_2=2, fem_6_1_3=2, fem_6_1_4=2
+- source-visibleな中間式の `∂/∂x` 表記（fem_6_1_3/image010, fem_6_1_4/image012）は修正せず保持。
+- 本番FTP反映は未実施。
+
+詳細:
+- `.document/formula_reviews/REMAINING_FEM_IMAGE_CLASSIFICATION_20260918.md`
+- `.document/formula_reviews/REMAINING_FEM_FORMULA_AUDIT_20260918.md`
+- `.document/formula_reviews/REMAINING_FEM_NORMAL_BROWSER_QA_20260918.md`
+
 ## 次の優先順
 
 1. サイト全体の残存画像を「数式 / 図 / 混在画像」に分類する。
@@ -392,7 +421,9 @@ Pass 2目視で `fem_10/image002`, `image003` の非対角添字差異を検出�
 - FEM Batch 2 immediate: **16式完了、図5件は画像維持、PC/スマホQA完了**
 - FEM Batch 3: **16式完了、図8件は画像維持、PC/スマホQA完了**
 - FEM 5: **7件完了（純MathJax 6 + HTML本文＋MathJax 1）、PC/スマホQA完了**
-- 厳密監査・通常ページ化まで完了した数式・数式テキスト: **340件**
+- Remaining FEM: **11件完了（純MathJax 10 + HTML本文＋MathJax 1）、PC/スマホQA完了**
+- **FEMカテゴリの既知数式画像は変換完了**
+- 厳密監査・通常ページ化まで完了した数式・数式テキスト: **351件**
 - 残存画像は数式とは限らないため、今後はページ単位で分類してから数式のみ変換する。
 - MPS欠損GIF参照は別タスクとして扱う。
 - 本番FTP反映は未実施。
