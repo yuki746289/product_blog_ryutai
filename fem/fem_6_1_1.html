@@ -11,6 +11,14 @@
 
 	<title>内挿関数の微分（有限要素法）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+	<script>
+	window.MathJax={
+		output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+		chtml:{displayAlign:'left',displayIndent:'0'}
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id"   value="4">
@@ -51,15 +59,75 @@
 			<h2>・<span class="ft">3</span>角形要素の面積</h2>
 			<p class="im"><img src="./../img/fem_n_tri.files/image001.png"></p>
 			<p><span class="ft">3</span>角形要素の面積を示します。</p>
-			<p class="im"><img src="./../img/fem_n_tri.files/image002.png"></p>
+			<div class="math-block" id="formula-fem-6-1-1-002" data-source-image="./../img/fem_n_tri.files/image002.png">
+\[
+\begin{aligned}
+S&=\frac{1}{2}\det
+\begin{pmatrix}
+1&x_1&y_1\\
+1&x_2&y_2\\
+1&x_3&y_3
+\end{pmatrix}\\
+&=\frac{1}{2}
+(x_2y_3-y_2x_3-x_1y_3+x_1y_2+y_1x_3-y_1x_2)
+\end{aligned}
+\]
+</div>
 			<p>ここで、</p>
-			<p class="im"><img src="./../img/fem_n_tri.files/image003.png"></p>
+			<div class="math-block" id="formula-fem-6-1-1-003" data-source-image="./../img/fem_n_tri.files/image003.png">
+\[
+\begin{aligned}
+a_{11}&=1,\ a_{12}=x_1,\ a_{13}=y_1\\
+a_{21}&=1,\ a_{22}=x_2,\ a_{23}=y_2\\
+a_{31}&=1,\ a_{32}=x_3,\ a_{33}=y_3
+\end{aligned}
+\]
+</div>
 			<p>同様に</p>
-			<p class="im" style="text-align:left;padding-left:40px;"><img src="./../img/fem_n_tri.files/image004.png"></p>
+			<div class="math-block" id="formula-fem-6-1-1-004" data-source-image="./../img/fem_n_tri.files/image004.png">
+\[
+\begin{aligned}
+S_1&=\frac{1}{2}\det
+\begin{pmatrix}
+1&x&y\\
+1&x_2&y_2\\
+1&x_3&y_3
+\end{pmatrix}\\
+&=\frac{1}{2}
+(x_2y_3-y_2x_3-xy_3+xy_2+yx_3-yx_2)
+\end{aligned}
+\]
+</div>
 			<br>
-			<p class="im" style="text-align:left;padding-left:40px;"><img src="./../img/fem_n_tri.files/image005.png"></p>
+			<div class="math-block" id="formula-fem-6-1-1-005" data-source-image="./../img/fem_n_tri.files/image005.png">
+\[
+\begin{aligned}
+S_2&=\frac{1}{2}\det
+\begin{pmatrix}
+1&x_1&y_1\\
+1&x&y\\
+1&x_3&y_3
+\end{pmatrix}\\
+&=\frac{1}{2}
+(xy_3-yx_3-x_1y_3+x_1y+y_1x_3-y_1x)
+\end{aligned}
+\]
+</div>
 			<br>
-			<p class="im" style="text-align:left;padding-left:40px;"><img src="./../img/fem_n_tri.files/image006.png"></p>
+			<div class="math-block" id="formula-fem-6-1-1-006" data-source-image="./../img/fem_n_tri.files/image006.png">
+\[
+\begin{aligned}
+S_3&=\frac{1}{2}\det
+\begin{pmatrix}
+1&x_1&y_1\\
+1&x_2&y_2\\
+1&x&y
+\end{pmatrix}\\
+&=\frac{1}{2}
+(x_2y-y_2x-x_1y+x_1y_2+y_1x-y_1x_2)
+\end{aligned}
+\]
+</div>
 			<br>
 
 

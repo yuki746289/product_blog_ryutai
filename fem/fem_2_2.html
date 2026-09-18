@@ -11,6 +11,14 @@
 
 	<title>3角形要素（有限要素法）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+	<script>
+	window.MathJax={
+		output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+		chtml:{displayAlign:'left',displayIndent:'0'}
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id"   value="4">
@@ -52,17 +60,58 @@
 			<br>
 			<p>次に<span class="ft">3</span>角形<span class="ft">2</span>次要素の場合は、
 					物理量<span class="fs"><i>f</i></span>は次式となります。</p>
-			<p class="im"><img src="./../img/fem_tri.files/image010.png"></p>
+			<div class="math-block" id="formula-fem-2-2-010" data-source-image="./../img/fem_tri.files/image010.png">
+\[
+\phi(x,y)=\alpha+\beta x+\gamma y+\xi x^2+\eta xy+\zeta y^2
+\]
+</div>
 			<p>未知数は<span class="ft">6</span>個で、要素の<span class="ft">6</span>
 					個の節点から<span class="ft">6</span>元<span class="ft">1</span>
 					次方程式を解くことになります。</p>
-			<p class="im"><img src="./../img/fem_tri.files/image011.png"></p>
+			<div class="math-block" id="formula-fem-2-2-011" data-source-image="./../img/fem_tri.files/image011.png">
+\[
+\left\{
+\begin{aligned}
+\phi_1&=\alpha+\beta x_1+\gamma y_1+\xi x_1^2+\eta x_1y_1+\zeta y_1^2\\
+\phi_2&=\alpha+\beta x_2+\gamma y_2+\xi x_2^2+\eta x_2y_2+\zeta y_2^2\\
+\phi_3&=\alpha+\beta x_3+\gamma y_3+\xi x_3^2+\eta x_3y_3+\zeta y_3^2\\
+\phi_4&=\alpha+\beta x_4+\gamma y_4+\xi x_4^2+\eta x_4y_4+\zeta y_4^2\\
+\phi_5&=\alpha+\beta x_5+\gamma y_5+\xi x_5^2+\eta x_5y_5+\zeta y_5^2\\
+\phi_6&=\alpha+\beta x_6+\gamma y_6+\xi x_6^2+\eta x_6y_6+\zeta y_6^2
+\end{aligned}
+\right.
+\]
+</div>
 			<p>これを解くと次式が得られます。</p>
-			<p class="im"><img src="./../img/fem_tri.files/image012.png"></p>
+			<div class="math-block" id="formula-fem-2-2-012" data-source-image="./../img/fem_tri.files/image012.png">
+\[
+\begin{aligned}
+\phi(x,y)
+&=N_1\phi_1+N_2\phi_2+N_3\phi_3+N_4\phi_4+N_5\phi_5+N_6\phi_6\\
+&=L_1(2L_1-1)\phi_1+L_2(2L_2-1)\phi_2+L_3(2L_3-1)\phi_3\\
+&\quad+4L_1L_2\phi_4+4L_2L_3\phi_5+4L_3L_1\phi_6
+\end{aligned}
+\]
+</div>
 			<p>ここで、内挿関数は次式で定義されます。</p>
-			<p class="im"><img src="./../img/fem_tri.files/image013.png"></p>
+			<div class="math-block" id="formula-fem-2-2-013" data-source-image="./../img/fem_tri.files/image013.png">
+\[
+\begin{aligned}
+N_1&=L_1(2L_1-1)\\
+N_2&=L_2(2L_2-1)\\
+N_3&=L_3(2L_3-1)\\
+N_4&=4L_1L_2\\
+N_5&=4L_2L_3\\
+N_6&=4L_3L_1
+\end{aligned}
+\]
+</div>
 			<p>また、</p>
-			<p class="im"><img src="./../img/fem_tri.files/image014.png"></p>
+			<div class="math-block" id="formula-fem-2-2-014" data-source-image="./../img/fem_tri.files/image014.png">
+\[
+\sum_{i=1}^{6}N_i=1
+\]
+</div>
 			<br>
 
 

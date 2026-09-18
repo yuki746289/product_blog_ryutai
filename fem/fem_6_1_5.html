@@ -11,6 +11,14 @@
 
 	<title>内挿関数の微分（有限要素法）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+	<script>
+	window.MathJax={
+		output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+		chtml:{displayAlign:'left',displayIndent:'0'}
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id"   value="4">
@@ -53,18 +61,54 @@
 					の内挿関数<span class="ft"><i>N</i><sub>i</sub></span>の微分値のまとめを示します。</p>
 			<br>
 			<p>内挿関数<span class="ft"><i>N</i><sub>1</sub></span>の微分値</p>
-			<p class="im" style="text-align:left;padding-left:40px;"><img src="./../img/fem_n_tri.files/image013.png"></p>
-			<p class="im" style="text-align:left;padding-left:40px;"><img src="./../img/fem_n_tri.files/image014.png"></p>
+			<div class="math-block" id="formula-fem-6-1-5-013" data-source-image="./../img/fem_n_tri.files/image013.png">
+\[
+c_{1x}=\frac{\partial N_1}{\partial x}
+=\frac{\partial L_1}{\partial x}
+=\frac{1}{2S}(-y_3+y_2)
+\]
+</div>
+			<div class="math-block" id="formula-fem-6-1-5-014" data-source-image="./../img/fem_n_tri.files/image014.png">
+\[
+c_{1y}=\frac{\partial N_1}{\partial y}
+=\frac{\partial L_1}{\partial y}
+=\frac{1}{2S}(x_3-x_2)
+\]
+</div>
 			<br>
 			<br>
 			<p>内挿関数<span class="ft"><i>N</i><sub>2</sub></span>の微分値</p>
-			<p class="im" style="text-align:left;padding-left:40px;"><img src="./../img/fem_n_tri.files/image015.png"></p>
-			<p class="im" style="text-align:left;padding-left:40px;"><img src="./../img/fem_n_tri.files/image016.png"></p>
+			<div class="math-block" id="formula-fem-6-1-5-015" data-source-image="./../img/fem_n_tri.files/image015.png">
+\[
+c_{2x}=\frac{\partial N_2}{\partial x}
+=\frac{\partial L_2}{\partial x}
+=\frac{1}{2S}(y_3-y_1)
+\]
+</div>
+			<div class="math-block" id="formula-fem-6-1-5-016" data-source-image="./../img/fem_n_tri.files/image016.png">
+\[
+c_{2y}=\frac{\partial N_2}{\partial y}
+=\frac{\partial L_2}{\partial y}
+=\frac{1}{2S}(-x_3+x_1)
+\]
+</div>
 			<br>
 			<br>
 			<p>内挿関数<span class="ft"><i>N</i><sub>3</sub></span>の微分値</p>
-			<p class="im" style="text-align:left;padding-left:40px;"><img src="./../img/fem_n_tri.files/image017.png"></p>
-			<p class="im" style="text-align:left;padding-left:40px;"><img src="./../img/fem_n_tri.files/image018.png"></p>
+			<div class="math-block" id="formula-fem-6-1-5-017" data-source-image="./../img/fem_n_tri.files/image017.png">
+\[
+c_{3x}=\frac{\partial N_3}{\partial x}
+=\frac{\partial L_3}{\partial x}
+=\frac{1}{2S}(-y_2+y_1)
+\]
+</div>
+			<div class="math-block" id="formula-fem-6-1-5-018" data-source-image="./../img/fem_n_tri.files/image018.png">
+\[
+c_{3y}=\frac{\partial N_3}{\partial y}
+=\frac{\partial L_3}{\partial y}
+=\frac{1}{2S}(x_2-x_1)
+\]
+</div>
 			<br>
 			<br>
 
