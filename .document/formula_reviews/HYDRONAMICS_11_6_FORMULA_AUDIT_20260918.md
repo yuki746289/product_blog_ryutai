@@ -4,7 +4,7 @@
 
 - Formula targets: **2**
 - Retained diagrams: **0**
-- Canonical source: original HP images.
+- Canonical source: original HP images
 
 ## Pass 1 — source image to LaTeX
 
@@ -13,16 +13,12 @@ Result: **2 / 2 PASS**
 Transcription data:
 - `.document/formula_reviews/hydronamics_11_6_formulas.json`
 
+Source-visible variable case, fraction structure, partial-derivative notation, and inequality are preserved.
+
 ## Pass 2 — browser MathJax comparison
 
-- Workflow run: **35349495411**
-- Artifact: `hydronamics-11-6-pass2`
-- Artifact id: **10548686812**
-- Result: **2 / 2 PASS**
-- MathJax rendering errors: **0**
-- Formula-level horizontal overflow: **0 / 2**
-- Source image vs MathJax rendering: **2 / 2 PASS**
+Status: **pending workflow artifact review**
 
 ## Certification
 
-**Hydronamics 11_6 formulas are certified for application to the normal page.**
+Not yet certified for normal-page application until Pass 2 is complete.
