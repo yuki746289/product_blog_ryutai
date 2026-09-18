@@ -2,7 +2,7 @@
   "page": "heat/heat_7_1.html",
   "image_dir": "img/heat_discretization_tri.files",
   "canonical_source": "original source images",
-  "status": "Pass 1 transcription candidate; requires browser Pass 2",
+  "status": "Pass 1 source comparison corrected; browser Pass 2 rerun required",
   "formulas": [
     {
       "image": "image001.png",
@@ -78,7 +78,7 @@
     },
     {
       "image": "image019.png",
-      "latex": "\\[\n\\begin{aligned}\n&+\\frac{1}{Pe}\\int_S\\frac{1}{4A^2}A\n\\begin{bmatrix}\nc_{1x}c_{1x}&c_{1x}c_{2x}&c_{1x}c_{3x}\\\\\nc_{2x}c_{1x}&c_{2x}c_{2x}&c_{2x}c_{3x}\\\\\nc_{3x}c_{1x}&c_{3x}c_{2x}&c_{3x}c_{3x}\n\\end{bmatrix}\ndS\\{\\Theta\\}\\\\\n&+\\frac{1}{Pe}\\int_S\\frac{1}{4A^2}A\n\\begin{bmatrix}\nc_{1y}c_{1y}&c_{1y}c_{2y}&c_{1y}c_{3y}\\\\\nc_{2y}c_{1y}&c_{2y}c_{2y}&c_{2y}c_{3y}\\\\\nc_{3y}c_{1y}&c_{3y}c_{2y}&c_{3y}c_{3y}\n\\end{bmatrix}\ndS\\{\\Theta\\}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n&+\\frac{1}{Pe}\\int_S\\frac{1}{4A^2}\n\\begin{bmatrix}\nc_{1x}c_{1x}&c_{1x}c_{2x}&c_{1x}c_{3x}\\\\\nc_{2x}c_{1x}&c_{2x}c_{2x}&c_{2x}c_{3x}\\\\\nc_{3x}c_{1x}&c_{3x}c_{2x}&c_{3x}c_{3x}\n\\end{bmatrix}\ndS\\{\\Theta\\}\\\\\n&+\\frac{1}{Pe}\\int_S\\frac{1}{4A^2}\n\\begin{bmatrix}\nc_{1y}c_{1y}&c_{1y}c_{2y}&c_{1y}c_{3y}\\\\\nc_{2y}c_{1y}&c_{2y}c_{2y}&c_{2y}c_{3y}\\\\\nc_{3y}c_{1y}&c_{3y}c_{2y}&c_{3y}c_{3y}\n\\end{bmatrix}\ndS\\{\\Theta\\}\n\\end{aligned}\n\\]"
     },
     {
       "image": "image020.png",
@@ -86,7 +86,7 @@
     },
     {
       "image": "image021.png",
-      "latex": "\\[\n\\begin{aligned}\n\\int_S L_1^pL_2^qL_3^r\\,dS\n&=\\frac{p!q!r!}{(p+q+r+2)!}\\,2A\\\\\n\\int_S L_iL_j\\,dS\n&=\n\\begin{cases}\n\\displaystyle\\frac{1!1!}{(1+1+2)!}\\,2A\n=\\frac{2}{4!}A\n=\\frac{1}{12}A &(i\\ne j)\\\\\n\\displaystyle\\frac{2!}{(1+1+2)!}\\,2A\n=\\frac{4}{4!}A\n=\\frac{1}{6}A &(i=j)\n\\end{cases}\\\\\n\\int_S L_i\\,dS\n&=\\frac{1!}{(1+2)!}\\,2A\n=\\frac{2}{3!}A\n=\\frac{1}{3}A\\\\\n\\int_L L_1^pL_2^q\\,dL\n&=\\frac{p!q!}{(p+q)!}L\\\\\n\\int_L L_i\\,dL\n&=\\frac{1}{1!}L=L\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\int_S L_1^pL_2^qL_3^r\\,dS\n&=\\frac{p!q!r!}{(p+q+r+2)!}\\,2A\\\\\n\\int_S L_iL_j\\,dS\n&=\n\\begin{cases}\n\\displaystyle\\frac{1!1!}{(1+1+2)!}\\,2A\n=\\frac{2}{4!}A\n=\\frac{1}{12}A &(i\\ne j)\\\\\n\\displaystyle\\frac{2!}{(1+1+2)!}\\,2A\n=\\frac{4}{4!}V\n=\\frac{1}{6}A &(i=j)\n\\end{cases}\\\\\n\\int_S L_i\\,dS\n&=\\frac{1!}{(1+2)!}\\,2A\n=\\frac{2}{3!}A\n=\\frac{1}{3}A\\\\\n\\int_L L_1^pL_2^q\\,dL\n&=\\frac{p!q!}{(p+q)!}L\\\\\n\\int_L L_i\\,dL\n&=\\frac{1}{1!}L=L\n\\end{aligned}\n\\]"
     },
     {
       "image": "image022.png",
