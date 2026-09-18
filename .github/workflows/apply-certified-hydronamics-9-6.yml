@@ -92,22 +92,22 @@ jobs:
             if re.search(rf'<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image{n}\.png["\'][^>]*>',applied,flags=re.I):
               raise RuntimeError(f'image{n}: target image remains')
 
-          remaining_dir_images=len(re.findall(
+          residual_dir_images=len(re.findall(
               rf'<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image\d{{3}}\.png["\'][^>]*>',
               applied,flags=re.I))
-          if remaining_dir_images != 0:
-            raise RuntimeError(f'residual directory images {remaining_dir_images} != 0')
+          if residual_dir_images != 0:
+            raise RuntimeError(f'residual image count {residual_dir_images} != 0')
 
           page.write_bytes(applied.encode(enc))
           Path('.document/formula_reviews/HYDRONAMICS_9_6_NORMAL_APPLY_RESULT.md').write_text(
             '# Hydronamics 9_6 Normal Apply Result\n\n'
             '- Certified formulas applied: **5 / 5**\n'
             '- Target formula image tags remaining: **0**\n'
-            '- Retained diagrams: **0**\n'
+            '- No retained diagram images.\n'
             '- Non-formula content guard: **PASS**\n'
             '- MathJax: v4\n'
             '- Production deployment: not performed.\n',encoding='utf-8')
-          print('PASS formulas=5 diagrams=0 encoding='+enc)
+          print('PASS formulas=5 diagram=0 encoding='+enc)
           PY
       - name: Validate and commit
         run: |
