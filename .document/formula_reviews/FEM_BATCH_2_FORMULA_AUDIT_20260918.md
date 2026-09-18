@@ -11,7 +11,7 @@ Immediate strict-conversion subset from FEM batch 2:
 | `fem/fem_8_2_1.html` | 5 | 2 |
 | **Total** | **16** | **5** |
 
-`fem_5.html` is handled separately because its mathematical images include dense determinant expansions and Japanese explanatory prose.
+`fem_5.html` is handled separately because its mathematical images include Japanese explanatory prose together with formulas.
 
 Classification reference:
 `.document/formula_reviews/FEM_BATCH_2_IMAGE_CLASSIFICATION_20260918.md`
@@ -27,17 +27,29 @@ Transcription data:
 - `.document/formula_reviews/fem_6_2_1_formulas.json`
 - `.document/formula_reviews/fem_8_2_1_formulas.json`
 
-Source-visible notation is preserved even where it is unusual. In particular, `fem_2_3/image004.png` visibly writes `φ(x,y)` on a 3-D tetrahedral interpolation page; it is preserved verbatim rather than silently changed to `φ(x,y,z)`.
+Source-visible notation and term ordering are preserved. In particular:
+
+- `fem_2_3/image004.png` visibly writes `φ(x,y)` on a 3-D tetrahedral interpolation page; it is preserved verbatim.
+- `fem_6_2_1/image002,image004–007` retain the source's expanded determinant term order.
+- `fem_8_2_1` retains vector arrows, starred quantities, `γ`, `K^*`, `We`, and `Oh^2` as shown.
 
 ## Pass 2 — browser MathJax comparison
 
-- Workflow run: **35314818685**
+- Final workflow run: **35316425328**
 - Artifact: `fem-batch-2-pass2`
-- Artifact id: **10534324596**
+- Artifact id: **10534847985**
 - Result: **16 / 16 PASS**
 - MathJax rendering errors: **0**
 - Formula-level horizontal overflow: **0 / 16**
 - Source image vs MathJax rendering: **16 / 16 visually checked and PASS**
+
+Earlier failed runs in this phase were caused by temporary source-directory metadata names. The actual source directories were corrected to:
+
+- `img/fem_tet.files`
+- `img/fem_n_tet.files`
+- `img/fem_bd_2.files`
+
+No mathematical content was changed by that correction.
 
 ## Diagram policy
 
@@ -58,4 +70,4 @@ Retained unchanged:
 | Audit horizontal overflow | **0 / 16** |
 | Production deployment | Not performed |
 
-**The immediate FEM batch 2 formula set is certified for application to the normal pages.**
+**The FEM batch 2 immediate formula set is certified for application to the normal pages.**
