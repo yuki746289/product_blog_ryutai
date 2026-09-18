@@ -1,0 +1,224 @@
+# Created: 2026-09-19T08:10:00+09:00
+name: Apply and QA Mesh 2
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/apply-qa-mesh-2.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply_qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Apply certified formulas
+        run: |
+          python3 - <<'PY'
+          import json,re
+          from pathlib import Path
+
+          page=Path('mesh/mesh_2.html')
+          cfg=json.loads(Path('.document/formula_reviews/mesh_2_formulas.json').read_text(encoding='utf-8'))
+          imgdir='mesh_curvature.files'
+          nums=[x['image'][5:8] for x in cfg['formulas']]
+          if nums!=['002','003','004','005','006','007','008','009','010']:
+              raise RuntimeError(f'unexpected formula sequence {nums}')
+          bynum={x['image'][5:8]:x for x in cfg['formulas']}
+
+          raw=page.read_bytes()
+          enc=None
+          for candidate in ('cp932','utf-8'):
+              try:
+                  original=raw.decode(candidate); enc=candidate; break
+              except UnicodeDecodeError:
+                  pass
+          if enc is None:
+              raise RuntimeError('encoding failed')
+
+          mathjax4="""
+          <script>
+          window.MathJax={
+            output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+            chtml:{displayAlign:'left',displayIndent:'0'}
+          };
+          </script>
+          <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+          """
+
+          def strip_mathjax(text):
+              text=re.sub(r'\s*<script>\s*window\.MathJax\s*=\s*\{.*?</script>','',text,flags=re.I|re.S)
+              text=re.sub(r'\s*<script\b[^>]*src=["\'][^"\']*mathjax[^"\']*["\'][^>]*>\s*</script>','',text,flags=re.I|re.S)
+              return text
+
+          alt='|'.join(nums)
+          pat=re.compile(
+              rf'(?P<block><div\b(?=[^>]*class=["\'][^"\']*\bmath-block\b[^"\']*["\'])(?=[^>]*data-source-image=["\'][^"\']*{re.escape(imgdir)}/image(?P<bnum>{alt})\.png["\'])[^>]*>.*?</div>)'
+              rf'|(?P<img><p\b(?=[^>]*class=["\'][^"\']*\bim\b[^"\']*["\'])[^>]*>\s*<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image(?P<inum>{alt})\.png["\'][^>]*>\s*</p>)',
+              flags=re.I|re.S)
+
+          def skeleton(text):
+              return re.sub(r'\s+',' ',pat.sub('<FORMULA/>',strip_mathjax(text))).strip()
+
+          before=skeleton(original)
+          found=[m.group('inum') or m.group('bnum') for m in pat.finditer(original)]
+          if found!=nums:
+              raise RuntimeError(f'source sequence {found} != {nums}')
+
+          pos=[0]
+          def repl(_m):
+              n=nums[pos[0]]; pos[0]+=1
+              return f'<div class="math-block" id="formula-mesh-2-{n}" data-source-image="./../img/{imgdir}/image{n}.png">\n{bynum[n]["latex"]}\n</div>'
+
+          applied=pat.sub(repl,original)
+          applied=strip_mathjax(applied)
+          if '</head>' not in applied:
+              raise RuntimeError('missing </head>')
+          applied=applied.replace('</head>',mathjax4+'</head>',1)
+
+          if skeleton(applied)!=before:
+              raise RuntimeError('non-formula content changed')
+
+          mapped=re.findall(
+              rf'<div\b[^>]*class=["\'][^"\']*\bmath-block\b[^"\']*["\'][^>]*data-source-image=["\'][^"\']*{re.escape(imgdir)}/image(\d{{3}})\.png["\']',
+              applied,flags=re.I)
+          if mapped!=nums:
+              raise RuntimeError(f'mapped {mapped} != {nums}')
+
+          if re.findall(rf'<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image(?:{alt})\.png["\'][^>]*>',applied,flags=re.I):
+              raise RuntimeError('target formula image remains')
+
+          diagram_count=len(re.findall(
+              rf'<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image001\.png["\'][^>]*>',
+              applied,flags=re.I))
+          if diagram_count!=1:
+              raise RuntimeError(f'retained diagram count {diagram_count} != 1')
+
+          page.write_bytes(applied.encode(enc))
+          Path('.document/formula_reviews/MESH_2_NORMAL_APPLY_RESULT.md').write_text(
+              '# Mesh 2 Normal Apply Result\n\n'
+              '- Certified formulas applied: **9 / 9**\n'
+              '- Display formulas: **9**\n'
+              '- Target formula image tags remaining: **0**\n'
+              '- Retained diagram: **1**\n'
+              '- Non-formula content guard: **PASS**\n'
+              '- Production deployment: not performed.\n',
+              encoding='utf-8')
+          PY
+
+      - name: Install Chromium
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Browser QA
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/mesh2qa.log 2>&1 &
+          sleep 1
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+
+          file='mesh/mesh_2.html'
+          imgdir='mesh_curvature.files'
+          out=Path('mesh-2-normal-qa'); out.mkdir(exist_ok=True)
+          results=[]; failures=[]
+
+          with sync_playwright() as p:
+              browser=p.chromium.launch(headless=True)
+              for name,vp in {'desktop':{'width':1440,'height':1000},'mobile':{'width':390,'height':844}}.items():
+                  ctx=browser.new_context(viewport=vp,device_scale_factor=1)
+                  pg=ctx.new_page(); errs=[]
+                  pg.on('pageerror',lambda e,s=errs:s.append(str(e)))
+                  pg.goto('http://127.0.0.1:8000/'+file,wait_until='domcontentloaded',timeout=120000)
+                  pg.wait_for_function('() => window.MathJax && MathJax.startup && MathJax.startup.promise',timeout=60000)
+                  pg.evaluate('async()=>{await MathJax.startup.promise;}')
+                  pg.wait_for_timeout(500)
+
+                  blocks=pg.locator(f'div.math-block[data-source-image*="{imgdir}/image"]')
+                  bc=blocks.count()
+                  retained=pg.locator(f'img[src*="{imgdir}/image001.png"]').count()
+                  merror=pg.locator('mjx-merror').count()
+                  unrendered=0; local_scroll=0; uncontained=0
+                  for i in range(bc):
+                      el=blocks.nth(i)
+                      if el.locator('mjx-container').count()<1:
+                          unrendered+=1
+                      dims=el.evaluate('(e)=>({cw:e.clientWidth,sw:e.scrollWidth,ox:getComputedStyle(e).overflowX})')
+                      if dims['sw']>dims['cw']+1:
+                          local_scroll+=1
+                          if dims['ox'] not in ('auto','scroll'):
+                              uncontained+=1
+
+                  pd=pg.evaluate('() => ({cw:document.documentElement.clientWidth,sw:document.documentElement.scrollWidth})')
+                  po=pd['sw']>pd['cw']+2
+                  (out/name).mkdir(parents=True,exist_ok=True)
+                  pg.screenshot(path=str(out/name/'full.png'),full_page=True,animations='disabled')
+
+                  row={'viewport':name,'display':bc,'retained':retained,'mathjax_errors':merror,'unrendered':unrendered,'local_scroll':local_scroll,'uncontained':uncontained,'page_overflow':po,'page_errors':errs}
+                  results.append(row)
+                  if bc!=9: failures.append(f'{name}: display {bc} != 9')
+                  if retained!=1: failures.append(f'{name}: retained {retained} != 1')
+                  if merror: failures.append(f'{name}: MathJax errors {merror}')
+                  if unrendered: failures.append(f'{name}: unrendered {unrendered}')
+                  if uncontained: failures.append(f'{name}: uncontained {uncontained}')
+                  if po: failures.append(f'{name}: page overflow')
+                  if errs: failures.append(f'{name}: page errors {errs}')
+                  ctx.close()
+              browser.close()
+
+          status='PASS' if not failures else 'FAIL'
+          (out/'manifest.json').write_text(json.dumps({'status':status,'results':results,'failures':failures},ensure_ascii=False,indent=2),encoding='utf-8')
+          report=Path('.document/formula_reviews/MESH_2_NORMAL_BROWSER_QA_20260919.md')
+          lines=[
+              '# Mesh 2 Normal Browser QA — 2026-09-19','',
+              f'- Overall: **{status}**',
+              '- Browser: Chromium / Playwright',
+              '- Viewports: desktop 1440×1000, mobile 390×844',
+              '- Expected display formulas: 9',
+              '- Expected retained diagram: 1',
+              '- Production deployment: not performed.','',
+              '| Viewport | Display | Retained | MathJax errors | Unrendered | Local scroll | Uncontained | Page overflow |',
+              '|---|---:|---:|---:|---:|---:|---:|---|'
+          ]
+          for r in results:
+              lines.append(f"| {r['viewport']} | {r['display']}/9 | {r['retained']}/1 | {r['mathjax_errors']} | {r['unrendered']} | {r['local_scroll']} | {r['uncontained']} | {'YES' if r['page_overflow'] else 'NO'} |")
+          lines += ['', '## Failures', '']
+          lines += [f'- {x}' for x in failures] if failures else ['- None.']
+          report.write_text('\n'.join(lines)+'\n',encoding='utf-8')
+          if failures:
+              raise SystemExit(failures)
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mesh-2-normal-qa
+          path: mesh-2-normal-qa
+          retention-days: 7
+
+      - name: Commit applied page and QA
+        run: |
+          git diff --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add mesh/mesh_2.html .document/formula_reviews/MESH_2_NORMAL_APPLY_RESULT.md .document/formula_reviews/MESH_2_NORMAL_BROWSER_QA_20260919.md
+          git commit -m 'feat: apply and verify mesh 2 formulas'
+          for attempt in 1 2 3 4 5; do
+            git pull --rebase origin develop
+            if git push origin HEAD:develop; then exit 0; fi
+            if [ "$attempt" -eq 5 ]; then exit 1; fi
+            sleep 2
+          done
