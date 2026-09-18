@@ -11,6 +11,14 @@
 
 	<title>四則演算（物理）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+<script>
+window.MathJax={
+  output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+  chtml:{displayAlign:'left',displayIndent:'0'}
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="2">
@@ -59,9 +67,31 @@
 			<!-- 加算、乗算 -->
 			<h2>・加算、乗算</h2>
 			<p>ベクトルの計算</p>
-			<p class="im"><img src="./../img/physics_c_four_operator.files/image001.png"></p>
+			<div class="math-block" id="formula-physics-6-1-001" data-source-image="./../img/physics_c_four_operator.files/image001.png">
+\[
+\begin{aligned}
+\vec{v}+s\vec{w}
+&=\sum_{i=3}^{3}\vec{\delta}_{i}v_i+s\sum_{i=3}^{3}\vec{\delta}_{i}w_i\\
+&=\sum_{i=3}^{3}\vec{\delta}_{i}v_i+\sum_{i=3}^{3}\vec{\delta}_{i}sw_i\\
+&=\sum_{i=3}^{3}\vec{\delta}_{i}(v_i+sw_i)\\
+&=\vec{\delta}_{x}(v_x+sw_x)+\vec{\delta}_{y}(v_y+sw_y)+\vec{\delta}_{z}(v_z+sw_z)
+\end{aligned}
+\]
+</div>
 			<p>テンソルの計算</p>
-			<p class="im"><img src="./../img/physics_c_four_operator.files/image002.png"></p>
+			<div class="math-block" id="formula-physics-6-1-002" data-source-image="./../img/physics_c_four_operator.files/image002.png">
+\[
+\begin{aligned}
+\vec{\tau}+s\vec{\sigma}
+&=\sum_{i=0}^{3}\sum_{j=0}^{3}\vec{\delta}_{i}\vec{\delta}_{j}\tau_{ij}+s\sum_{i=0}^{3}\sum_{j=0}^{3}\vec{\delta}_{i}\vec{\delta}_{j}\sigma_{ij}\\
+&=\sum_{i=0}^{3}\sum_{j=0}^{3}\vec{\delta}_{i}\vec{\delta}_{j}\tau_{ij}+\sum_{i=0}^{3}\sum_{j=0}^{3}\vec{\delta}_{i}\vec{\delta}_{j}s\sigma_{ij}\\
+&=\sum_{i=0}^{3}\sum_{j=0}^{3}\vec{\delta}_{i}\vec{\delta}_{j}(\tau_{ij}+s\sigma_{ij})\\
+&=\vec{\delta}_{x}\vec{\delta}_{x}(\tau_{xx}+s\sigma_{xx})+\vec{\delta}_{x}\vec{\delta}_{y}(\tau_{xy}+s\sigma_{xy})+\vec{\delta}_{x}\vec{\delta}_{z}(\tau_{xz}+s\sigma_{xz})\\
+&\quad+\vec{\delta}_{y}\vec{\delta}_{x}(\tau_{yx}+s\sigma_{yx})+\vec{\delta}_{y}\vec{\delta}_{y}(\tau_{yy}+s\sigma_{yy})+\vec{\delta}_{y}\vec{\delta}_{z}(\tau_{yz}+s\sigma_{yz})\\
+&\quad+\vec{\delta}_{z}\vec{\delta}_{x}(\tau_{zx}+s\sigma_{zx})+\vec{\delta}_{z}\vec{\delta}_{y}(\tau_{zy}+s\sigma_{zy})+\vec{\delta}_{z}\vec{\delta}_{z}(\tau_{zz}+s\sigma_{zz})
+\end{aligned}
+\]
+</div>
 			<p>減算も同様に計算できます。</p>
 			<br>
 
@@ -69,11 +99,46 @@
 			<!-- 微分作用素を含む場合 -->
 			<h2>・微分作用素を含む場合</h2>
 			<p>スカラーの微分</p>
-			<p class="im"><img src="./../img/physics_c_four_operator.files/image003.png"></p>
+			<div class="math-block" id="formula-physics-6-1-003" data-source-image="./../img/physics_c_four_operator.files/image003.png">
+\[
+\begin{aligned}
+\nabla s
+&=\sum_{i=0}^{3}\vec{\delta}_{i}\frac{\partial}{\partial x_i}s\\
+&=\sum_{i=0}^{3}\vec{\delta}_{i}\frac{\partial s}{\partial x_i}\\
+&=\vec{\delta}_{x}\frac{\partial s}{\partial x}+\vec{\delta}_{y}\frac{\partial s}{\partial y}+\vec{\delta}_{z}\frac{\partial s}{\partial z}
+\end{aligned}
+\]
+</div>
 			<p>ベクトルの微分</p>
-			<p class="im"><img src="./../img/physics_c_four_operator.files/image004.png"></p>
+			<div class="math-block" id="formula-physics-6-1-004" data-source-image="./../img/physics_c_four_operator.files/image004.png">
+\[
+\begin{aligned}
+\nabla\vec{v}
+&=\sum_{i=0}^{3}\vec{\delta}_{i}\frac{\partial}{\partial x_i}\sum_{j=0}^{3}\vec{\delta}_{j}v_j\\
+&=\sum_{i=0}^{3}\sum_{j=0}^{3}\vec{\delta}_{i}\frac{\partial}{\partial x_i}\vec{\delta}_{j}v_j\\
+&=\sum_{i=0}^{3}\sum_{j=0}^{3}\vec{\delta}_{i}\frac{\partial(\vec{\delta}_{j}v_j)}{\partial x_i}\\
+&=\sum_{i=0}^{3}\sum_{j=0}^{3}\vec{\delta}_{i}\vec{\delta}_{j}\frac{\partial v_j}{\partial x_i}\\
+&=\vec{\delta}_{x}\vec{\delta}_{x}\frac{\partial v_x}{\partial x}+\vec{\delta}_{x}\vec{\delta}_{y}\frac{\partial v_y}{\partial x}+\vec{\delta}_{x}\vec{\delta}_{z}\frac{\partial v_z}{\partial x}\\
+&\quad+\vec{\delta}_{y}\vec{\delta}_{x}\frac{\partial v_x}{\partial y}+\vec{\delta}_{y}\vec{\delta}_{y}\frac{\partial v_y}{\partial y}+\vec{\delta}_{y}\vec{\delta}_{z}\frac{\partial v_z}{\partial y}\\
+&\quad+\vec{\delta}_{z}\vec{\delta}_{x}\frac{\partial v_x}{\partial z}+\vec{\delta}_{z}\vec{\delta}_{y}\frac{\partial v_y}{\partial z}+\vec{\delta}_{z}\vec{\delta}_{z}\frac{\partial v_z}{\partial z}
+\end{aligned}
+\]
+</div>
 			<p>ベクトルのラプラシアン</p>
-			<p class="im"><img src="./../img/physics_c_four_operator.files/image005.png"></p>
+			<div class="math-block" id="formula-physics-6-1-005" data-source-image="./../img/physics_c_four_operator.files/image005.png">
+\[
+\begin{aligned}
+\Delta\vec{v}
+&=\sum_{i=0}^{3}\frac{\partial^2}{\partial x_i^2}\sum_{j=0}^{3}\vec{\delta}_{j}v_j\\
+&=\sum_{i=0}^{3}\sum_{j=0}^{3}\frac{\partial^2}{\partial x_i^2}\vec{\delta}_{j}v_j\\
+&=\sum_{i=0}^{3}\sum_{j=0}^{3}\vec{\delta}_{j}\frac{\partial^2 v_j}{\partial x_i^2}\\
+&=\sum_{j=0}^{3}\vec{\delta}_{j}\left(\frac{\partial^2 v_j}{\partial x^2}+\frac{\partial^2 v_j}{\partial y^2}+\frac{\partial^2 v_j}{\partial z^2}\right)\\
+&=\vec{\delta}_{x}\left(\frac{\partial^2 v_x}{\partial x^2}+\frac{\partial^2 v_x}{\partial y^2}+\frac{\partial^2 v_x}{\partial z^2}\right)\\
+&\quad+\vec{\delta}_{y}\left(\frac{\partial^2 v_y}{\partial x^2}+\frac{\partial^2 v_y}{\partial y^2}+\frac{\partial^2 v_y}{\partial z^2}\right)\\
+&\quad+\vec{\delta}_{z}\left(\frac{\partial^2 v_z}{\partial x^2}+\frac{\partial^2 v_z}{\partial y^2}+\frac{\partial^2 v_z}{\partial z^2}\right)
+\end{aligned}
+\]
+</div>
 			<br>
 
 			<div style="margin-top:10px;"></div>
