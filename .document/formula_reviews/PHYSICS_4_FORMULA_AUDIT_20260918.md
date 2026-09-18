@@ -25,11 +25,19 @@ Source-visible nonstandard notation is intentionally preserved:
 - `image004.png`: middle term `\\vec{\\delta}_y v_i`
 - `image008.png`: summation bounds `i=0..3`, `j=0..3`
 
-## Pass 2 — browser MathJax comparison
+## Pass 2 — source image to browser MathJax
 
-Status: **Pending**
+Result: **6 / 6 PASS**
 
-Normal-page application is prohibited until Pass 2 is complete.
+- Workflow run: **35358712499**
+- Artifact: `physics-4-pass2`
+- Artifact id: **10553611379**
+- MathJax errors: **0**
+- Unrendered formulas: **0**
+- Pair-page horizontal overflow: **0 / 6**
+- Browser page errors: **0**
+
+All six source/render pairs were inspected visually after the workflow completed. The MathJax transcription matches the source-visible symbols, indices, summation bounds, term order, signs, and parentheses.
 
 ## Diagram policy
 
@@ -45,7 +53,8 @@ Retain unchanged:
 | Formula targets | 6 |
 | Retained images | 3 |
 | Pass 1 | **6 / 6 PASS** |
-| Pass 2 | Pending |
+| Pass 2 | **6 / 6 PASS** |
+| MathJax errors | **0** |
 | Production deployment | Not performed |
 
-**Physics 4 is not yet certified for normal-page application.**
+**Physics 4 is certified for normal-page application.**
