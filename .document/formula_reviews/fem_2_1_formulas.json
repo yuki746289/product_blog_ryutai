@@ -1,0 +1,35 @@
+{
+  "page": "fem/fem_2_1.html",
+  "image_dir": "img/fem_tri.files",
+  "canonical_source": "original source images",
+  "retained_diagrams": [
+    "image001.png",
+    "image008.png"
+  ],
+  "formulas": [
+    {
+      "image": "image002.png",
+      "latex": "\\[\n\\phi(x,y)=\\alpha+\\beta x+\\gamma y\n\\]"
+    },
+    {
+      "image": "image003.png",
+      "latex": "\\[\n\\left\\{\n\\begin{aligned}\n\\phi_1&=\\alpha+\\beta x_1+\\gamma y_1\\\\\n\\phi_2&=\\alpha+\\beta x_2+\\gamma y_2\\\\\n\\phi_3&=\\alpha+\\beta x_3+\\gamma y_3\n\\end{aligned}\n\\right.\n\\]"
+    },
+    {
+      "image": "image004.png",
+      "latex": "\\[\n\\begin{aligned}\n\\alpha&=(x_2y_3-x_3y_2)\\phi_1+(x_3y_1-x_1y_3)\\phi_2+(x_1y_2-x_2y_1)\\phi_3\\\\\n\\beta&=(y_2-y_3)\\phi_1+(y_3-y_1)\\phi_2+(y_1-y_2)\\phi_3\\\\\n\\gamma&=(x_3-x_2)\\phi_1+(x_1-x_3)\\phi_2+(x_2-x_1)\\phi_3\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image005.png",
+      "latex": "\\[\n\\begin{aligned}\n\\phi(x,y)&=N_1\\phi_1+N_2\\phi_2+N_3\\phi_3\\\\\n&=L_1\\phi_1+L_2\\phi_2+L_3\\phi_3\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image006.png",
+      "latex": "\\[\nL_1=\\frac{A_1}{A},\\quad\nL_2=\\frac{A_2}{A},\\quad\nL_3=\\frac{A_3}{A}\n\\]"
+    },
+    {
+      "image": "image007.png",
+      "latex": "\\[\n\\begin{aligned}\nN_1&=L_1,\\qquad N_2=L_2,\\qquad N_3=L_3\\\\\nN_1+N_2+N_3&=1\n\\end{aligned}\n\\]"
+    }
+  ]
+}
