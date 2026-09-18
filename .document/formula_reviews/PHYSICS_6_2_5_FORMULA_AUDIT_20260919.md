@@ -16,8 +16,17 @@ Transcription: `.document/formula_reviews/physics_6_2_5_formulas.json`
 
 ## Pass 2
 
-Status: **Pending**
+Result: **1 / 1 PASS**
+
+- Workflow run: **35396671534**
+- Artifact: `physics-6-2-5-pass2`
+- Artifact id: **10568152072**
+- MathJax errors: **0**
+- Unrendered formulas: **0**
+- Browser page errors: **0**
+
+The source/render pair was visually inspected. The source-visible first-order partial symbols over squared-coordinate denominators are preserved exactly.
 
 Normal-page application is prohibited until Pass 2 is complete.
 
-**Physics 6_2_5 is not yet certified for normal-page application.**
+**Physics 6_2_5 is certified for normal-page application.**
