@@ -1,0 +1,191 @@
+# Created: 2026-09-18T23:54:00+09:00
+name: Apply certified Physics 4 formulas
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/apply-certified-physics-4.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - name: Apply certified formulas only
+        run: |
+          python3 - <<'PY'
+          import json,re
+          from pathlib import Path
+
+          page=Path('physics/physics_4.html')
+          cfg=json.loads(Path('.document/formula_reviews/physics_4_formulas.json').read_text(encoding='utf-8'))
+          imgdir='physics_q_category.files'
+
+          display=[x for x in cfg['formulas'] if x.get('mode','display')!='inline']
+          inline=[x for x in cfg['formulas'] if x.get('mode')=='inline']
+          dnums=[x['image'][5:8] for x in display]
+          inums=[x['image'][5:8] for x in inline]
+          diagram_nums=['001','006','009']
+
+          if dnums!=['004','005','008']:
+              raise RuntimeError(f'display sequence {dnums}')
+          if inums!=['002','003','007']:
+              raise RuntimeError(f'inline sequence {inums}')
+
+          bynum={x['image'][5:8]:x for x in cfg['formulas']}
+
+          mathjax4 = """
+          <script>
+          window.MathJax={
+            output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+            chtml:{displayAlign:'left',displayIndent:'0'}
+          };
+          </script>
+          <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+          """
+
+          raw=page.read_bytes()
+          enc=None
+          for candidate in ('cp932','utf-8'):
+              try:
+                  original=raw.decode(candidate)
+                  enc=candidate
+                  break
+              except UnicodeDecodeError:
+                  pass
+          if enc is None:
+              raise RuntimeError('encoding failed')
+
+          def strip_mathjax(text):
+              text=re.sub(r'\s*<script>\s*window\.MathJax\s*=\s*\{.*?</script>','',text,flags=re.I|re.S)
+              text=re.sub(r'\s*<script\b[^>]*src=["\'][^"\']*mathjax[^"\']*["\'][^>]*>\s*</script>','',text,flags=re.I|re.S)
+              return text
+
+          dalt='|'.join(dnums)
+          ialt='|'.join(inums)
+
+          dp=re.compile(
+              rf'(?P<block><div\b(?=[^>]*class=["\'][^"\']*\bmath-block\b[^"\']*["\'])(?=[^>]*data-source-image=["\'][^"\']*{re.escape(imgdir)}/image(?P<bnum>{dalt})\.png["\'])[^>]*>.*?</div>)'
+              rf'|(?P<img><p\b(?=[^>]*class=["\'][^"\']*\bim\b[^"\']*["\'])[^>]*>\s*<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image(?P<inum>{dalt})\.png["\'][^>]*>\s*</p>)',
+              flags=re.I|re.S)
+
+          ip=re.compile(
+              rf'(?P<span><span\b(?=[^>]*class=["\'][^"\']*\bmath-inline\b[^"\']*["\'])(?=[^>]*data-source-image=["\'][^"\']*{re.escape(imgdir)}/image(?P<snum>{ialt})\.png["\'])[^>]*>.*?</span>)'
+              rf'|(?P<img><img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image(?P<inum>{ialt})\.png["\'][^>]*>)',
+              flags=re.I|re.S)
+
+          def skeleton(text):
+              text=strip_mathjax(text)
+              text=dp.sub('<DISPLAY_FORMULA/>',text)
+              text=ip.sub('<INLINE_FORMULA/>',text)
+              return re.sub(r'\s+',' ',text).strip()
+
+          before=skeleton(original)
+
+          dfound=[m.group('inum') or m.group('bnum') for m in dp.finditer(original)]
+          ifound=[m.group('inum') or m.group('snum') for m in ip.finditer(original)]
+          if dfound!=dnums:
+              raise RuntimeError(f'display source sequence {dfound} != {dnums}')
+          if ifound!=inums:
+              raise RuntimeError(f'inline source sequence {ifound} != {inums}')
+
+          dpos=[0]
+          def drepl(_m):
+              n=dnums[dpos[0]]
+              dpos[0]+=1
+              return (
+                  f'<div class="math-block" id="formula-physics-4-{n}" '
+                  f'data-source-image="./../img/{imgdir}/image{n}.png">\n'
+                  f'{bynum[n]["latex"]}\n</div>'
+              )
+
+          ipos=[0]
+          def irepl(_m):
+              n=inums[ipos[0]]
+              ipos[0]+=1
+              return (
+                  f'<span class="math-inline" id="formula-physics-4-{n}" '
+                  f'data-source-image="./../img/{imgdir}/image{n}.png">'
+                  f'{bynum[n]["latex"]}</span>'
+              )
+
+          applied=dp.sub(drepl,original)
+          applied=ip.sub(irepl,applied)
+          applied=strip_mathjax(applied)
+
+          if '</head>' not in applied:
+              raise RuntimeError('missing </head>')
+          applied=applied.replace('</head>',mathjax4+'</head>',1)
+
+          if skeleton(applied)!=before:
+              raise RuntimeError('non-formula content changed')
+
+          dmapped=re.findall(
+              rf'<div\b[^>]*class=["\'][^"\']*\bmath-block\b[^"\']*["\'][^>]*data-source-image=["\'][^"\']*{re.escape(imgdir)}/image(\d{{3}})\.png["\']',
+              applied,flags=re.I)
+          imapped=re.findall(
+              rf'<span\b[^>]*class=["\'][^"\']*\bmath-inline\b[^"\']*["\'][^>]*data-source-image=["\'][^"\']*{re.escape(imgdir)}/image(\d{{3}})\.png["\']',
+              applied,flags=re.I)
+
+          if dmapped!=dnums:
+              raise RuntimeError(f'display mapped {dmapped} != {dnums}')
+          if imapped!=inums:
+              raise RuntimeError(f'inline mapped {imapped} != {inums}')
+
+          alt='|'.join(dnums+inums)
+          leftovers=re.findall(
+              rf'<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image(?:{alt})\.png["\'][^>]*>',
+              applied,flags=re.I)
+          if leftovers:
+              raise RuntimeError(f'target formula images remain {len(leftovers)}')
+
+          diagram_counts={}
+          for dn in diagram_nums:
+              diagram_counts[dn]=len(re.findall(
+                  rf'<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image{dn}\.png["\'][^>]*>',
+                  applied,flags=re.I))
+          expected={dn:1 for dn in diagram_nums}
+          if diagram_counts!=expected:
+              raise RuntimeError(f'diagram counts {diagram_counts} != {expected}')
+
+          page.write_bytes(applied.encode(enc))
+          Path('.document/formula_reviews/PHYSICS_4_NORMAL_APPLY_RESULT.md').write_text(
+              '# Physics 4 Normal Apply Result\n\n'
+              '- Certified formulas applied: **6 / 6**\n'
+              '- Display formulas: **3**\n'
+              '- Inline formulas: **3**\n'
+              '- Target formula image tags remaining: **0**\n'
+              '- Retained diagrams / mixed illustrations: **3**\n'
+              '- Non-formula content guard: **PASS**\n'
+              '- MathJax: v4\n'
+              '- Production deployment: not performed.\n',
+              encoding='utf-8')
+          print('PASS display=3 inline=3 diagrams=3 encoding='+enc)
+          PY
+
+      - name: Validate and commit
+        run: |
+          git diff --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add physics/physics_4.html .document/formula_reviews/PHYSICS_4_NORMAL_APPLY_RESULT.md
+          git commit -m 'feat: apply certified physics 4 formulas'
+          for attempt in 1 2 3 4 5; do
+            git pull --rebase origin develop
+            if git push origin HEAD:develop; then
+              exit 0
+            fi
+            if [ "$attempt" -eq 5 ]; then
+              exit 1
+            fi
+            sleep 2
+          done
