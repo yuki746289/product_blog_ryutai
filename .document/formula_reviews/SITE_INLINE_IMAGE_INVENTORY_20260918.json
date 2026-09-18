@@ -1,9 +1,9 @@
 {
   "summary": {
     "html_pages_scanned": 205,
-    "residual_word_image_placements": 260,
-    "unique_assets": 258,
-    "centered_p_im_placements": 245,
+    "residual_word_image_placements": 256,
+    "unique_assets": 254,
+    "centered_p_im_placements": 241,
     "missing_assets": 49,
     "missing_by_section": {
       "mps": 49
@@ -14,13 +14,13 @@
       "counting": 2,
       "fem": 33,
       "heat": 8,
-      "hydronamics": 36,
+      "hydronamics": 32,
       "mesh": 53,
       "mps": 49,
       "physics": 65
     },
     "extensions": {
-      ".png": 207,
+      ".png": 203,
       ".jpg": 4,
       ".gif": 49
     }
@@ -850,54 +850,6 @@
       "exists": true,
       "width": 71,
       "height": 56,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "hydronamics/hydronamics_12.html",
-      "encoding": "cp932",
-      "src": "./../img/hydronamics_dimensionless.files/image001.png",
-      "asset": "img/hydronamics_dimensionless.files/image001.png",
-      "exists": true,
-      "width": 246,
-      "height": 59,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "hydronamics/hydronamics_12.html",
-      "encoding": "cp932",
-      "src": "./../img/hydronamics_dimensionless.files/image002.png",
-      "asset": "img/hydronamics_dimensionless.files/image002.png",
-      "exists": true,
-      "width": 253,
-      "height": 64,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "hydronamics/hydronamics_12.html",
-      "encoding": "cp932",
-      "src": "./../img/hydronamics_dimensionless.files/image003.png",
-      "asset": "img/hydronamics_dimensionless.files/image003.png",
-      "exists": true,
-      "width": 90,
-      "height": 58,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "hydronamics/hydronamics_12.html",
-      "encoding": "cp932",
-      "src": "./../img/hydronamics_dimensionless.files/image004.png",
-      "asset": "img/hydronamics_dimensionless.files/image004.png",
-      "exists": true,
-      "width": 80,
-      "height": 61,
       "format": "PNG",
       "centered_p_im": true,
       "review_priority": "A"
