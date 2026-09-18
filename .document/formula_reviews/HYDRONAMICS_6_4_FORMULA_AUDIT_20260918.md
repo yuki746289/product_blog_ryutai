@@ -20,8 +20,30 @@ Source-visible vector notation, units, term order, and the duplicated plus sign 
 
 ## Pass 2 — browser MathJax comparison
 
-Status: **pending workflow artifact review**
+- Workflow run: **35342276962**
+- Artifact: `hydronamics-6-4-pass2`
+- Artifact id: **10545358761**
+- Result: **6 / 6 PASS**
+- MathJax rendering errors: **0**
+- Formula-level horizontal overflow: **0 / 6**
+- Source image vs MathJax rendering: **6 / 6 visually checked and PASS**
+
+## Diagram policy
+
+Retained unchanged:
+- `image001.png`
 
 ## Certification
 
-Not yet certified for normal-page application until Pass 2 is complete.
+| Check | Result |
+|---|---|
+| Formula targets | 6 |
+| Display / inline | 5 / 1 |
+| Diagram retained | 1 |
+| Pass 1 | **6 / 6 PASS** |
+| Pass 2 | **6 / 6 PASS** |
+| MathJax errors | **0** |
+| Audit horizontal overflow | **0 / 6** |
+| Production deployment | Not performed |
+
+**Hydronamics 6_4 formulas are certified for application to the normal page.**
