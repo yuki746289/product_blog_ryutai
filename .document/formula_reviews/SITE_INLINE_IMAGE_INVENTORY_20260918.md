@@ -11,16 +11,16 @@
 ## Summary
 
 - HTML pages scanned: **205**
-- Residual inline-image placements: **245**
-- Unique residual image assets: **243**
-- Priority A (`p.im`) placements: **230**
+- Residual inline-image placements: **238**
+- Unique residual image assets: **236**
+- Priority A (`p.im`) placements: **223**
 - Missing referenced assets: **49**
 
 ### By section
 
 | Section | Placements |
 |---|---:|
-| `physics` | 65 |
+| `physics` | 58 |
 | `mesh` | 53 |
 | `mps` | 49 |
 | `fem` | 33 |
@@ -99,19 +99,19 @@ These references exist in HTML but the corresponding image file is absent from t
 | 1 | `mps/mps_6_2.html` | 22 | 22 |
 | 2 | `mesh/mesh_3_1.html` | 19 | 17 |
 | 3 | `mps/mps_3.html` | 12 | 8 |
-| 4 | `physics/physics_2.html` | 12 | 12 |
-| 5 | `mesh/mesh_2.html` | 10 | 10 |
-| 6 | `mesh/mesh_5.html` | 9 | 9 |
-| 7 | `mps/mps_4.html` | 9 | 7 |
-| 8 | `physics/physics_4.html` | 9 | 6 |
-| 9 | `fem/fem_13.html` | 8 | 8 |
-| 10 | `physics/physics_3.html` | 7 | 7 |
-| 11 | `physics/physics_6_2_3.html` | 7 | 7 |
-| 12 | `fem/fem_1.html` | 6 | 6 |
-| 13 | `mesh/mesh_1.html` | 6 | 6 |
-| 14 | `column/column_2.html` | 5 | 5 |
-| 15 | `fem/fem_12.html` | 5 | 3 |
-| 16 | `mesh/mesh_3_2.html` | 5 | 5 |
+| 4 | `mesh/mesh_2.html` | 10 | 10 |
+| 5 | `mesh/mesh_5.html` | 9 | 9 |
+| 6 | `mps/mps_4.html` | 9 | 7 |
+| 7 | `physics/physics_4.html` | 9 | 6 |
+| 8 | `fem/fem_13.html` | 8 | 8 |
+| 9 | `physics/physics_3.html` | 7 | 7 |
+| 10 | `physics/physics_6_2_3.html` | 7 | 7 |
+| 11 | `fem/fem_1.html` | 6 | 6 |
+| 12 | `mesh/mesh_1.html` | 6 | 6 |
+| 13 | `column/column_2.html` | 5 | 5 |
+| 14 | `fem/fem_12.html` | 5 | 3 |
+| 15 | `mesh/mesh_3_2.html` | 5 | 5 |
+| 16 | `physics/physics_2.html` | 5 | 5 |
 | 17 | `physics/physics_6_1.html` | 5 | 5 |
 | 18 | `physics/physics_6_2_1.html` | 5 | 5 |
 | 19 | `appendix/appendix_3_1.html` | 4 | 4 |
