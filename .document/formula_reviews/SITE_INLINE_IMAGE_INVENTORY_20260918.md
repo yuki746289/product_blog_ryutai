@@ -11,17 +11,17 @@
 ## Summary
 
 - HTML pages scanned: **205**
-- Residual inline-image placements: **196**
-- Unique residual image assets: **194**
-- Priority A (`p.im`) placements: **186**
+- Residual inline-image placements: **187**
+- Unique residual image assets: **185**
+- Priority A (`p.im`) placements: **179**
 - Missing referenced assets: **49**
 
 ### By section
 
 | Section | Placements |
 |---|---:|
-| `mesh` | 53 |
 | `mps` | 49 |
+| `mesh` | 44 |
 | `fem` | 33 |
 | `hydronamics` | 21 |
 | `physics` | 16 |
@@ -97,9 +97,9 @@ These references exist in HTML but the corresponding image file is absent from t
 | No. | Page | Placements | Priority A |
 |---:|---|---:|---:|
 | 1 | `mps/mps_6_2.html` | 22 | 22 |
-| 2 | `mesh/mesh_3_1.html` | 19 | 17 |
-| 3 | `mps/mps_3.html` | 12 | 8 |
-| 4 | `mesh/mesh_2.html` | 10 | 10 |
+| 2 | `mps/mps_3.html` | 12 | 8 |
+| 3 | `mesh/mesh_2.html` | 10 | 10 |
+| 4 | `mesh/mesh_3_1.html` | 10 | 10 |
 | 5 | `mesh/mesh_5.html` | 9 | 9 |
 | 6 | `mps/mps_4.html` | 9 | 7 |
 | 7 | `fem/fem_13.html` | 8 | 8 |

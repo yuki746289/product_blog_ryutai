@@ -1,9 +1,9 @@
 {
   "summary": {
     "html_pages_scanned": 205,
-    "residual_word_image_placements": 196,
-    "unique_assets": 194,
-    "centered_p_im_placements": 186,
+    "residual_word_image_placements": 187,
+    "unique_assets": 185,
+    "centered_p_im_placements": 179,
     "missing_assets": 49,
     "missing_by_section": {
       "mps": 49
@@ -15,12 +15,12 @@
       "fem": 33,
       "heat": 8,
       "hydronamics": 21,
-      "mesh": 53,
+      "mesh": 44,
       "mps": 49,
       "physics": 16
     },
     "extensions": {
-      ".png": 143,
+      ".png": 134,
       ".jpg": 4,
       ".gif": 49
     }
@@ -1193,42 +1193,6 @@
     {
       "page": "mesh/mesh_3_1.html",
       "encoding": "cp932",
-      "src": "./../img/mesh_node_buble.files/image004.png",
-      "asset": "img/mesh_node_buble.files/image004.png",
-      "exists": true,
-      "width": 20,
-      "height": 23,
-      "format": "PNG",
-      "centered_p_im": false,
-      "review_priority": "B"
-    },
-    {
-      "page": "mesh/mesh_3_1.html",
-      "encoding": "cp932",
-      "src": "./../img/mesh_node_buble.files/image005.png",
-      "asset": "img/mesh_node_buble.files/image005.png",
-      "exists": true,
-      "width": 22,
-      "height": 23,
-      "format": "PNG",
-      "centered_p_im": false,
-      "review_priority": "B"
-    },
-    {
-      "page": "mesh/mesh_3_1.html",
-      "encoding": "cp932",
-      "src": "./../img/mesh_node_buble.files/image006.png",
-      "asset": "img/mesh_node_buble.files/image006.png",
-      "exists": true,
-      "width": 257,
-      "height": 124,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "mesh/mesh_3_1.html",
-      "encoding": "cp932",
       "src": "./../img/mesh_node_buble.files/image007.png",
       "asset": "img/mesh_node_buble.files/image007.png",
       "exists": true,
@@ -1253,83 +1217,11 @@
     {
       "page": "mesh/mesh_3_1.html",
       "encoding": "cp932",
-      "src": "./../img/mesh_node_buble.files/image009.png",
-      "asset": "img/mesh_node_buble.files/image009.png",
-      "exists": true,
-      "width": 255,
-      "height": 72,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "mesh/mesh_3_1.html",
-      "encoding": "cp932",
-      "src": "./../img/mesh_node_buble.files/image010.png",
-      "asset": "img/mesh_node_buble.files/image010.png",
-      "exists": true,
-      "width": 308,
-      "height": 172,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "mesh/mesh_3_1.html",
-      "encoding": "cp932",
       "src": "./../img/mesh_node_buble.files/image011.png",
       "asset": "img/mesh_node_buble.files/image011.png",
       "exists": true,
       "width": 160,
       "height": 171,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "mesh/mesh_3_1.html",
-      "encoding": "cp932",
-      "src": "./../img/mesh_node_buble.files/image012.png",
-      "asset": "img/mesh_node_buble.files/image012.png",
-      "exists": true,
-      "width": 156,
-      "height": 27,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "mesh/mesh_3_1.html",
-      "encoding": "cp932",
-      "src": "./../img/mesh_node_buble.files/image013.png",
-      "asset": "img/mesh_node_buble.files/image013.png",
-      "exists": true,
-      "width": 156,
-      "height": 28,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "mesh/mesh_3_1.html",
-      "encoding": "cp932",
-      "src": "./../img/mesh_node_buble.files/image014.png",
-      "asset": "img/mesh_node_buble.files/image014.png",
-      "exists": true,
-      "width": 189,
-      "height": 130,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "mesh/mesh_3_1.html",
-      "encoding": "cp932",
-      "src": "./../img/mesh_node_buble.files/image015.png",
-      "asset": "img/mesh_node_buble.files/image015.png",
-      "exists": true,
-      "width": 155,
-      "height": 62,
       "format": "PNG",
       "centered_p_im": true,
       "review_priority": "A"
