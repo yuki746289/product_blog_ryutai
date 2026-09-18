@@ -226,6 +226,32 @@ Heat 6 / Heat 7以外に残っていた24画像を分類し、数式16件を厳�
 - `.document/formula_reviews/REMAINING_HEAT_FORMULA_AUDIT_20260918.md`
 - `.document/formula_reviews/REMAINING_HEAT_NORMAL_BROWSER_QA_20260918.md`
 
+## 2026-09-18 FEM Batch 1 監査・通常ページ反映
+
+残存FEMの高密度4ページ34画像を分類した。
+
+- `fem/fem_11_1.html`: 11数式 / 0図 → **11式完了**
+- `fem/fem_13.html`: 0数式 / 8図 → 全件画像維持
+- `fem/fem_2_1.html`: 6数式 / 2図 → **6式完了**
+- `fem/fem_10.html`: 6数式 / 1図 → **6式完了**
+- Batch formula total: **23式**
+- Pass 1: **23/23**
+- Pass 2 final run: **35311609362**
+- Pass 2: **23/23**
+- Normal browser QA run: **35311908407**
+- desktop: 全3対象ページ PASS、MathJax errors 0、page overflowなし
+- mobile: 全3対象ページ PASS、uncontained 0、page overflowなし
+- `fem_10` mobile local-scroll: 3
+- retained diagrams: fem_2_1=image001/image008, fem_10=image005, fem_13=8画像
+- 本番FTP反映は未実施。
+
+Pass 2目視で `fem_10/image002`, `image003` の非対角添字差異を検出し、元画像どおり `S_yx / S_zx / S_zy` へ修正して再監査した。
+
+詳細:
+- `.document/formula_reviews/FEM_BATCH_1_IMAGE_CLASSIFICATION_20260918.md`
+- `.document/formula_reviews/FEM_BATCH_1_FORMULA_AUDIT_20260918.md`
+- `.document/formula_reviews/FEM_BATCH_1_NORMAL_BROWSER_QA_20260918.md`
+
 ## 次の優先順
 
 1. サイト全体の残存画像を「数式 / 図 / 混在画像」に分類する。
@@ -269,7 +295,8 @@ Heat 6 / Heat 7以外に残っていた24画像を分類し、数式16件を厳�
 - Heat 6: **13式完了、通常ページ反映・PC/スマホQA完了**
 - Remaining Heat: **16式完了、図8件は画像維持、PC/スマホQA完了**
 - **Heatカテゴリの既知数式画像は変換完了**
-- 厳密監査・通常ページ化まで完了した数式: **278式**
+- FEM Batch 1: **23式完了、対象3ページPC/スマホQA完了**
+- 厳密監査・通常ページ化まで完了した数式: **301式**
 - 残存画像は数式とは限らないため、今後はページ単位で分類してから数式のみ変換する。
 - MPS欠損GIF参照は別タスクとして扱う。
 - 本番FTP反映は未実施。
