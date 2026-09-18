@@ -1,9 +1,9 @@
 {
   "summary": {
     "html_pages_scanned": 205,
-    "residual_word_image_placements": 256,
-    "unique_assets": 254,
-    "centered_p_im_placements": 241,
+    "residual_word_image_placements": 254,
+    "unique_assets": 252,
+    "centered_p_im_placements": 239,
     "missing_assets": 49,
     "missing_by_section": {
       "mps": 49
@@ -14,13 +14,13 @@
       "counting": 2,
       "fem": 33,
       "heat": 8,
-      "hydronamics": 32,
+      "hydronamics": 30,
       "mesh": 53,
       "mps": 49,
       "physics": 65
     },
     "extensions": {
-      ".png": 203,
+      ".png": 201,
       ".jpg": 4,
       ".gif": 49
     }
@@ -826,30 +826,6 @@
       "exists": true,
       "width": 141,
       "height": 317,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "hydronamics/hydronamics_11_6.html",
-      "encoding": "cp932",
-      "src": "./../img/hydronamics_d_ma.files/image001.png",
-      "asset": "img/hydronamics_d_ma.files/image001.png",
-      "exists": true,
-      "width": 79,
-      "height": 55,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "hydronamics/hydronamics_11_6.html",
-      "encoding": "cp932",
-      "src": "./../img/hydronamics_d_ma.files/image002.png",
-      "asset": "img/hydronamics_d_ma.files/image002.png",
-      "exists": true,
-      "width": 71,
-      "height": 56,
       "format": "PNG",
       "centered_p_im": true,
       "review_priority": "A"
