@@ -1,0 +1,48 @@
+{
+  "page": "hydronamics/hydronamics_6_1.html",
+  "image_dir": "img/hydronamics_f_driving.files",
+  "canonical_source": "original source images",
+  "retained_diagrams": [
+    "image001.png"
+  ],
+  "transcription_assist": {
+    "source": "HP.7z / 流体力学_力の種類_慣性力.doc",
+    "method": "Word/Equation Editor candidate + canonical source-image verification",
+    "verified_date": "2026-09-18",
+    "source_image_is_canonical": true
+  },
+  "source_notation_notes": [
+    "image002 is a mixed Japanese-text + formula image; Japanese explanatory text is retained inside MathJax text.",
+    "Source-visible vertical-bar position notation is retained with \\mid."
+  ],
+  "formulas": [
+    {
+      "image": "image002.png",
+      "latex": "\\[\n\\begin{aligned}\nF_{\\mid x}\n&=ma\\\\\n&=(w_x+w_y+w_z)\\Delta t\n\\left.\\frac{dv}{dt}\\right|_x\n\\qquad\n\\text{ここで、 }m=(w_x+w_y+w_z)\\Delta t\\\\\n&=(w_x+w_y+w_z)\n\\left.\\frac{dv}{dt}\\right|_x\\Delta t\\\\\n&=(w_x+w_y+w_z)v_{x\\mid x}\n\\qquad\n\\text{ここで、 }v_x=\n\\left.\\frac{dv}{dt}\\right|_x\\Delta t\\\\\n&=\\rho(\\Delta y\\Delta z v_x+\\Delta z\\Delta x v_y+\\Delta x\\Delta y v_z)\nv_{x\\mid x}\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image003.png",
+      "latex": "\\[\n\\begin{aligned}\nw_x&=\\rho\\Delta y\\Delta z v_x\\\\\nw_y&=\\rho\\Delta z\\Delta x v_y\\\\\nw_z&=\\rho\\Delta x\\Delta y v_z\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image004.png",
+      "latex": "\\[\nF_{\\mid x+\\Delta x}\n=\n-\\rho(\\Delta y\\Delta z v_x+\\Delta z\\Delta x v_y+\\Delta x\\Delta y v_z)\nv_{x\\mid x+\\Delta x}\n\\]"
+    },
+    {
+      "image": "image005.png",
+      "latex": "\\[\nF_{\\mid y}\n=\n\\rho(\\Delta y\\Delta z v_x+\\Delta z\\Delta x v_y+\\Delta x\\Delta y v_z)\nv_{y\\mid y}\n\\]"
+    },
+    {
+      "image": "image006.png",
+      "latex": "\\[\nF_{\\mid y+\\Delta y}\n=\n-\\rho(\\Delta y\\Delta z v_x+\\Delta z\\Delta x v_y+\\Delta x\\Delta y v_z)\nv_{y\\mid y+\\Delta y}\n\\]"
+    },
+    {
+      "image": "image007.png",
+      "latex": "\\[\nF_{\\mid z}\n=\n\\rho(\\Delta y\\Delta z v_x+\\Delta z\\Delta x v_y+\\Delta x\\Delta y v_z)\nv_{z\\mid z}\n\\]"
+    },
+    {
+      "image": "image008.png",
+      "latex": "\\[\nF_{\\mid z+\\Delta z}\n=\n-\\rho(\\Delta y\\Delta z v_x+\\Delta z\\Delta x v_y+\\Delta x\\Delta y v_z)\nv_{z\\mid z+\\Delta z}\n\\]"
+    }
+  ]
+}
