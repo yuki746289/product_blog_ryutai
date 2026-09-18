@@ -26,24 +26,21 @@ jobs:
 
           defs=[
             {
-              'key':'fem_2_3',
-              'page':'fem/fem_2_3.html',
+              'key':'fem_2_3','page':'fem/fem_2_3.html',
               'json':'.document/formula_reviews/fem_2_3_formulas.json',
               'imgdir':'fem_tet.files',
               'targets':['002','003','004','005','006'],
               'diagrams':['001','007']
             },
             {
-              'key':'fem_6_2_1',
-              'page':'fem/fem_6_2_1.html',
+              'key':'fem_6_2_1','page':'fem/fem_6_2_1.html',
               'json':'.document/formula_reviews/fem_6_2_1_formulas.json',
               'imgdir':'fem_n_tet.files',
               'targets':['002','003','004','005','006','007'],
               'diagrams':['001']
             },
             {
-              'key':'fem_8_2_1',
-              'page':'fem/fem_8_2_1.html',
+              'key':'fem_8_2_1','page':'fem/fem_8_2_1.html',
               'json':'.document/formula_reviews/fem_8_2_1_formulas.json',
               'imgdir':'fem_bd_2.files',
               'targets':['002','003','004','005','006'],
@@ -60,8 +57,7 @@ jobs:
 
           def add_mathjax(text):
               text=strip_mathjax(text)
-              if '</head>' not in text:
-                  raise RuntimeError('missing </head>')
+              if '</head>' not in text: raise RuntimeError('missing </head>')
               return text.replace('</head>',mathjax4+'</head>',1)
 
           summary=[]
@@ -84,10 +80,13 @@ jobs:
                   return re.sub(r'\s+',' ',pat.sub('<FORMULA/>',strip_mathjax(text))).strip()
 
               raw=page.read_bytes()
-              try:
-                  original=raw.decode('cp932'); enc='cp932'
-              except UnicodeDecodeError:
-                  original=raw.decode('utf-8'); enc='utf-8'
+              enc=None
+              for candidate in ('cp932','utf-8'):
+                  try:
+                      original=raw.decode(candidate); enc=candidate; break
+                  except UnicodeDecodeError:
+                      pass
+              if enc is None: raise RuntimeError(f'{page}: decode failed')
 
               before=guard(original)
               matches=list(pat.finditer(original))
@@ -101,13 +100,12 @@ jobs:
                   n=d['targets'][pos[0]]
                   pos[0]+=1
                   return (
-                      f'<div class="math-block" id="formula-{d["key"].replace("_","-")}-{n}" '
-                      f'data-source-image="./../img/{imgdir}/image{n}.png">\n'
-                      f'{bynum[n]["latex"]}\n</div>'
+                    f'<div class="math-block" id="formula-{d["key"].replace("_","-")}-{n}" '
+                    f'data-source-image="./../img/{imgdir}/image{n}.png">\n'
+                    f'{bynum[n]["latex"]}\n</div>'
                   )
 
               applied=add_mathjax(pat.sub(repl,original))
-
               if guard(applied)!=before:
                   raise RuntimeError(f"{d['key']}: non-formula content changed")
 
@@ -115,19 +113,19 @@ jobs:
                   rf'data-source-image=["\'][^"\']*{re.escape(imgdir)}/image(\d{{3}})\.png["\']',
                   applied,flags=re.I)
               if mapped!=d['targets']:
-                  raise RuntimeError(f"{d['key']}: mapped mismatch {mapped}")
+                  raise RuntimeError(f"{d['key']}: mapped sequence mismatch {mapped}")
 
               leftovers=re.findall(
                   rf'<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image(?:{alt})\.png["\'][^>]*>',
                   applied,flags=re.I)
               if leftovers:
-                  raise RuntimeError(f"{d['key']}: formula images remain {len(leftovers)}")
+                  raise RuntimeError(f"{d['key']}: target formula images remain {len(leftovers)}")
 
               diag_counts={}
               for n in d['diagrams']:
                   c=len(re.findall(
-                      rf'<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image{n}\.png["\'][^>]*>',
-                      applied,flags=re.I))
+                    rf'<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image{n}\.png["\'][^>]*>',
+                    applied,flags=re.I))
                   if c!=1:
                       raise RuntimeError(f"{d['key']}: diagram image{n} count {c} != 1")
                   diag_counts[n]=c
@@ -135,21 +133,20 @@ jobs:
               page.write_bytes(applied.encode(enc))
               summary.append((d['page'],len(d['targets']),enc,diag_counts))
 
-          total=sum(x[1] for x in summary)
-          if total!=16:
-              raise RuntimeError(f'total formulas {total} != 16')
+          if sum(x[1] for x in summary)!=16:
+              raise RuntimeError('unexpected total')
 
           report=Path('.document/formula_reviews/FEM_BATCH_2_NORMAL_APPLY_RESULT.md')
           lines=[
-              '# FEM Batch 2 Normal Apply Result','',
-              '- Certified formulas applied: **16 / 16**',
-              '- Target formula image tags remaining: **0**',
-              '- Classified diagram assets preserved unchanged.',
-              '- Non-formula content guards: **PASS**',
-              '- MathJax: v4',
-              '- Production deployment: not performed.','',
-              '| Page | Formulas | Encoding | Preserved diagrams |',
-              '|---|---:|---|---|'
+            '# FEM Batch 2 Normal Apply Result','',
+            '- Certified formulas applied: **16 / 16**',
+            '- Target formula image tags remaining: **0**',
+            '- Classified diagram assets preserved unchanged.',
+            '- Non-formula content guards: **PASS**',
+            '- MathJax: v4',
+            '- Production deployment: not performed.','',
+            '| Page | Formulas | Encoding | Preserved diagrams |',
+            '|---|---:|---|---|'
           ]
           for page,count,enc,diags in summary:
               ds=', '.join(f'image{k}' for k in diags) if diags else '-'
