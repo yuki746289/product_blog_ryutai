@@ -33,8 +33,18 @@ Transcription:
 
 ## Pass 2
 
-Status: **Pending**
+Result: **9 / 9 PASS**
+
+- Workflow run: **35400903542**
+- Artifact: `mesh-3-1-pass2`
+- Artifact id: **10570805617**
+- MathJax errors: **0**
+- Unrendered formulas: **0**
+- Pair-page horizontal overflow: **0 / 9**
+- Browser page errors: **0**
+
+All nine source/render pairs were visually inspected. Vector marks, indices, sums, signs, fraction structures, inequalities, `10^{-3}`, and the source-visible `|p_2-p_2|` denominator match the source.
 
 Normal-page application is prohibited until Pass 2 is complete.
 
-**Mesh 3_1 is not yet certified for normal-page application.**
+**Mesh 3_1 is certified for normal-page application.**
