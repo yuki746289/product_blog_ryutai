@@ -1,0 +1,44 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mesh 3_1 strict formula re-audit</title>
+<style>body{font-family:Arial,"Yu Gothic",sans-serif;margin:20px}.formula-pair{border-top:1px solid #bbb;padding:18px 0}.pair-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}.source,.render{min-width:0;overflow-x:auto;padding:10px;border:1px solid #ddd}.source img{display:block;max-width:100%;height:auto;margin:auto}.render mjx-container[display="true"]{margin:.4em 0!important;text-align:left!important}@media(max-width:900px){.pair-grid{grid-template-columns:1fr}}</style>
+<script>window.MathJax={output:{displayOverflow:"linebreak",linebreaks:{inline:false,width:"100%"}}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head><body><h1>Mesh 3_1 strict source-image re-audit</h1>
+<section class="formula-pair" id="formula-mesh_3_1-004"><h3>mesh_3_1-004</h3><div class="pair-grid">
+<div class="source"><img src="./../img/mesh_node_buble.files/image004.png" alt="source mesh_3_1-004"></div>
+<div class="render" data-source-image="./../img/mesh_node_buble.files/image004.png">\(\vec{p}_{1}\)</div>
+</div></section>
+<section class="formula-pair" id="formula-mesh_3_1-005"><h3>mesh_3_1-005</h3><div class="pair-grid">
+<div class="source"><img src="./../img/mesh_node_buble.files/image005.png" alt="source mesh_3_1-005"></div>
+<div class="render" data-source-image="./../img/mesh_node_buble.files/image005.png">\(\vec{p}_{2}\)</div>
+</div></section>
+<section class="formula-pair" id="formula-mesh_3_1-006"><h3>mesh_3_1-006</h3><div class="pair-grid">
+<div class="source"><img src="./../img/mesh_node_buble.files/image006.png" alt="source mesh_3_1-006"></div>
+<div class="render" data-source-image="./../img/mesh_node_buble.files/image006.png">\[\begin{aligned}\vec{F}_{12}&=-\vec{F}_{21}\\&=w\!\left(\frac{|\vec{p}_{2}-\vec{p}_{1}|}{r_{2}+r_{1}}\right)\frac{\vec{p}_{2}-\vec{p}_{1}}{|\vec{p}_{2}-\vec{p}_{2}|}\end{aligned}\]</div>
+</div></section>
+<section class="formula-pair" id="formula-mesh_3_1-009"><h3>mesh_3_1-009</h3><div class="pair-grid">
+<div class="source"><img src="./../img/mesh_node_buble.files/image009.png" alt="source mesh_3_1-009"></div>
+<div class="render" data-source-image="./../img/mesh_node_buble.files/image009.png">\[\vec{F}=\sum_{i=1}^{n}w\!\left(\frac{|\vec{p}-\vec{p}_{i}|}{r+r_{i}}\right)\frac{\vec{p}-\vec{p}_{i}}{|\vec{p}-\vec{p}_{i}|}\]</div>
+</div></section>
+<section class="formula-pair" id="formula-mesh_3_1-010"><h3>mesh_3_1-010</h3><div class="pair-grid">
+<div class="source"><img src="./../img/mesh_node_buble.files/image010.png" alt="source mesh_3_1-010"></div>
+<div class="render" data-source-image="./../img/mesh_node_buble.files/image010.png">\[\begin{aligned}\vec{r}&=cr\frac{\vec{F}}{|\vec{F}|}\\&=cr\frac{1}{|\vec{F}|}\sum_{i=1}^{n}w\!\left(\frac{|\vec{p}-\vec{p}_{i}|}{r+r_{i}}\right)\frac{\vec{p}-\vec{p}_{i}}{|\vec{p}-\vec{p}_{i}|}\end{aligned}\]</div>
+</div></section>
+<section class="formula-pair" id="formula-mesh_3_1-012"><h3>mesh_3_1-012</h3><div class="pair-grid">
+<div class="source"><img src="./../img/mesh_node_buble.files/image012.png" alt="source mesh_3_1-012"></div>
+<div class="render" data-source-image="./../img/mesh_node_buble.files/image012.png">\(n(r_i)>8\)</div>
+</div></section>
+<section class="formula-pair" id="formula-mesh_3_1-013"><h3>mesh_3_1-013</h3><div class="pair-grid">
+<div class="source"><img src="./../img/mesh_node_buble.files/image013.png" alt="source mesh_3_1-013"></div>
+<div class="render" data-source-image="./../img/mesh_node_buble.files/image013.png">\(n(r_i)<5\)</div>
+</div></section>
+<section class="formula-pair" id="formula-mesh_3_1-014"><h3>mesh_3_1-014</h3><div class="pair-grid">
+<div class="source"><img src="./../img/mesh_node_buble.files/image014.png" alt="source mesh_3_1-014"></div>
+<div class="render" data-source-image="./../img/mesh_node_buble.files/image014.png">\[r=\frac{\displaystyle\sum_{i=1}^{n}w(|\vec{p}-\vec{p}_{i}|)r_i}{\displaystyle\sum_{i=1}^{n}w(|\vec{p}-\vec{p}_{i}|)}\]</div>
+</div></section>
+<section class="formula-pair" id="formula-mesh_3_1-015"><h3>mesh_3_1-015</h3><div class="pair-grid">
+<div class="source"><img src="./../img/mesh_node_buble.files/image015.png" alt="source mesh_3_1-015"></div>
+<div class="render" data-source-image="./../img/mesh_node_buble.files/image015.png">\[w(d)=\frac{1}{d+10^{-3}}\]</div>
+</div></section>
+</body></html>
