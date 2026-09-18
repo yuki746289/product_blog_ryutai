@@ -1,0 +1,139 @@
+name: Apply certified FEM batch 4 formulas
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/apply-certified-fem-batch-4.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - name: Apply certified formulas only
+        run: |
+          python3 - <<'PY'
+          import json,re
+          from pathlib import Path
+
+          cfg=json.loads(Path('.document/formula_reviews/fem_batch_4_formulas.json').read_text(encoding='utf-8'))
+
+          mathjax4 = "\n\t<script>\n\twindow.MathJax={\n\t\toutput:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},\n\t\tchtml:{displayAlign:'left',displayIndent:'0'}\n\t};\n\t</script>\n\t<script defer src=\"https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js\"></script>\n"
+
+          def strip_mathjax(text):
+              text=re.sub(r'\s*<script>\s*window\.MathJax\s*=\s*\{.*?</script>','',text,flags=re.I|re.S)
+              text=re.sub(r'\s*<script\b[^>]*src=["\'][^"\']*mathjax[^"\']*["\'][^>]*>\s*</script>','',text,flags=re.I|re.S)
+              return text
+
+          def add_mathjax(text):
+              text=strip_mathjax(text)
+              if '</head>' not in text: raise RuntimeError('missing </head>')
+              return text.replace('</head>',mathjax4+'</head>',1)
+
+          summary=[]
+          for pdef in cfg['pages']:
+              page=Path(pdef['page'])
+              key=page.stem
+              imgdir=pdef['image_dir'].split('/',1)[1]
+              targets=[x['image'][5:8] for x in pdef['formulas']]
+              diagrams=[x[5:8] for x in pdef.get('retained_diagrams',[])]
+              mixed=[x[5:8] for x in pdef.get('retained_mixed',[])]
+              alt='|'.join(targets)
+
+              pat=re.compile(
+                  rf'(?P<block><div\b(?=[^>]*class=["\'][^"\']*\bmath-block\b[^"\']*["\'])(?=[^>]*data-source-image=["\'][^"\']*{re.escape(imgdir)}/image(?P<bnum>{alt})\.png["\'])[^>]*>.*?</div>)'
+                  rf'|(?P<img><p\b(?=[^>]*class=["\'][^"\']*\bim\b[^"\']*["\'])[^>]*>\s*<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image(?P<inum>{alt})\.png["\'][^>]*>\s*</p>)',
+                  flags=re.I|re.S)
+
+              def guard(text):
+                  return re.sub(r'\s+',' ',pat.sub('<FORMULA/>',strip_mathjax(text))).strip()
+
+              raw=page.read_bytes()
+              try:
+                  original=raw.decode('cp932'); enc='cp932'
+              except UnicodeDecodeError:
+                  original=raw.decode('utf-8'); enc='utf-8'
+
+              before=guard(original)
+              matches=list(pat.finditer(original))
+              found=[m.group('inum') or m.group('bnum') for m in matches]
+              if found!=targets:
+                  raise RuntimeError(f'{page}: sequence mismatch {found} != {targets}')
+
+              bynum={x['image'][5:8]:x for x in pdef['formulas']}
+              pos=[0]
+              def repl(_m):
+                  n=targets[pos[0]]; pos[0]+=1
+                  return (
+                      f'<div class="math-block" id="formula-{key.replace("_","-")}-{n}" '
+                      f'data-source-image="./../img/{imgdir}/image{n}.png">\n'
+                      f'{bynum[n]["latex"]}\n</div>'
+                  )
+
+              applied=add_mathjax(pat.sub(repl,original))
+              if guard(applied)!=before:
+                  raise RuntimeError(f'{page}: non-formula content changed')
+
+              mapped=re.findall(
+                  rf'data-source-image=["\'][^"\']*{re.escape(imgdir)}/image(\d{{3}})\.png["\']',
+                  applied,flags=re.I)
+              if mapped!=targets:
+                  raise RuntimeError(f'{page}: mapped mismatch {mapped}')
+
+              leftovers=re.findall(
+                  rf'<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image(?:{alt})\.png["\'][^>]*>',
+                  applied,flags=re.I)
+              if leftovers:
+                  raise RuntimeError(f'{page}: formula images remain {len(leftovers)}')
+
+              retained={}
+              for n in diagrams+mixed:
+                  c=len(re.findall(
+                      rf'<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image{n}\.png["\'][^>]*>',
+                      applied,flags=re.I))
+                  if c!=1:
+                      raise RuntimeError(f'{page}: retained image{n} count {c} != 1')
+                  retained[n]=c
+
+              page.write_bytes(applied.encode(enc))
+              summary.append((page.as_posix(),len(targets),enc,retained))
+
+          if sum(x[1] for x in summary)!=19:
+              raise RuntimeError('formula total mismatch')
+
+          report=Path('.document/formula_reviews/FEM_BATCH_4_NORMAL_APPLY_RESULT.md')
+          lines=[
+              '# FEM Batch 4 Normal Apply Result','',
+              '- Certified formulas applied: **19 / 19**',
+              '- Target formula image tags remaining: **0**',
+              '- Classified diagrams/mixed text assets preserved unchanged.',
+              '- Non-formula content guards: **PASS**',
+              '- MathJax: v4',
+              '- Production deployment: not performed.','',
+              '| Page | Formulas | Encoding | Preserved assets |',
+              '|---|---:|---|---|'
+          ]
+          for page,count,enc,retained in summary:
+              ds=', '.join(f'image{k}' for k in retained) if retained else '-'
+              lines.append(f'| `{page}` | {count} | {enc} | {ds} |')
+          report.write_text('\n'.join(lines)+'\n',encoding='utf-8')
+          print('FEM batch 4 PASS formulas=19 pages=6')
+          PY
+
+      - name: Validate and commit
+        run: |
+          git diff --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add fem/fem_4.html fem/fem_9.html fem/fem_6_2_2.html fem/fem_6_2_3.html fem/fem_6_2_4.html fem/fem_6_2_5.html \
+                  .document/formula_reviews/FEM_BATCH_4_NORMAL_APPLY_RESULT.md
+          git commit -m 'feat: apply certified FEM batch 4 formulas'
+          git push origin HEAD:develop
