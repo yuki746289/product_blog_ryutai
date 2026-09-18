@@ -12,6 +12,14 @@
 
 	<title>収支式の導出（伝熱工学）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+	<script>
+	window.MathJax={
+		output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+		chtml:{displayAlign:'left',displayIndent:'0'}
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="9">
@@ -50,20 +58,118 @@
 			<h2>収支式の導出</h2>
 			<p class="im"><img src="./../img/heat_eq_derivation.files/image001.png"></p>
 			<p>流入・流出する熱流量の収支を取ると、収支式は、次式で表されます。</p>
-			<p class="im"><img src="./../img/heat_eq_derivation.files/image002.png"></p>
+			<div class="math-block" id="formula-heat_5_4-002" data-source-image="./../img/heat_eq_derivation.files/image002.png">
+\[
+\begin{aligned}
+\rho C_p\frac{T_{t+\Delta t}-T_t}{\Delta t}\Delta x\Delta y\Delta z
+={}&\rho C_p\left(
+\Delta y\Delta z\,v_xT|_x
++\Delta z\Delta x\,v_yT|_y
++\Delta x\Delta y\,v_zT|_z
+\right)\\
+&-\rho C_p\left(
+\Delta y\Delta z\,v_xT|_{x+\Delta x}
++\Delta z\Delta x\,v_yT|_{y+\Delta y}
++\Delta x\Delta y\,v_zT|_{z+\Delta z}
+\right)\\
+&-\Delta y\Delta z\,k\left.\frac{dT}{dx}\right|_x
+-\Delta z\Delta x\,k\left.\frac{dT}{dy}\right|_y
+-\Delta x\Delta y\,k\left.\frac{dT}{dz}\right|_z\\
+&+\Delta y\Delta z\,k\left.\frac{dT}{dx}\right|_{x+\Delta x}
++\Delta z\Delta x\,k\left.\frac{dT}{dy}\right|_{y+\Delta y}
++\Delta x\Delta y\,k\left.\frac{dT}{dz}\right|_{z+\Delta z}
+\end{aligned}
+\]
+</div>
 			<p>これは、<span class="ft"><i>x</i></span>軸方向の収支を表してます。
 				両辺を<i><span class="fs">D</span><span class="ft">x</span>
 								 <span class="fs">D</span><span class="ft">y</span>
 								 <span class="fs">D</span><span class="ft">z</span></i>で割ると</p>
-			<p class="im"><img src="./../img/heat_eq_derivation.files/image003.png"></p>
+			<div class="math-block" id="formula-heat_5_4-003" data-source-image="./../img/heat_eq_derivation.files/image003.png">
+\[
+\begin{aligned}
+\rho C_p\frac{T_{t+\Delta t}-T_t}{\Delta t}
+={}&\rho C_p\left(
+\frac{v_x|_xT|_x}{\Delta x}
++\frac{v_y|_yT|_x}{\Delta y}
++\frac{v_z|_zT|_x}{\Delta z}
+\right)\\
+&-\rho C_p\left(
+\frac{v_x|_{x+\Delta x}T|_{x+\Delta x}}{\Delta x}
++\frac{v_y|_{y+\Delta y}T|_{x+\Delta x}}{\Delta y}
++\frac{v_z|_{z+\Delta z}T|_{x+\Delta x}}{\Delta z}
+\right)\\
+&-k\frac{\left.\frac{dT}{dx}\right|_x}{\Delta x}
+-k\frac{\left.\frac{dT}{dx}\right|_y}{\Delta y}
+-k\frac{\left.\frac{dT}{dx}\right|_z}{\Delta z}\\
+&+k\frac{\left.\frac{dT}{dx}\right|_{x+\Delta x}}{\Delta x}
++k\frac{\left.\frac{dT}{dx}\right|_{y+\Delta y}}{\Delta y}
++k\frac{\left.\frac{dT}{dx}\right|_{z+\Delta z}}{\Delta z}
+\end{aligned}
+\]
+</div>
 			<p>整理して</p>
-			<p class="im"><img src="./../img/heat_eq_derivation.files/image004.png"></p>
+			<div class="math-block" id="formula-heat_5_4-004" data-source-image="./../img/heat_eq_derivation.files/image004.png">
+\[
+\begin{aligned}
+\rho C_p\frac{T_{t+\Delta t}-T_t}{\Delta t}
+&+\rho C_p\left(
+\frac{v_x|_{x+\Delta x}T|_{x+\Delta x}-v_x|_xT|_x}{\Delta x}
+\right)\\
+&+\rho C_p\left(
+\frac{v_y|_{y+\Delta y}T|_{y+\Delta y}-v_y|_yT|_y}{\Delta y}
+\right)\\
+&+\rho C_p\left(
+\frac{v_z|_{z+\Delta z}T|_{x+\Delta x}-v_z|_zT|_z}{\Delta z}
+\right)\\
+&=k\left(
+\frac{\left.\frac{dT}{dx}\right|_{x+\Delta x}-\left.\frac{dT}{dx}\right|_x}{\Delta x}
++\frac{\left.\frac{dT}{dy}\right|_{y+\Delta y}-\left.\frac{dT}{dy}\right|_y}{\Delta y}
++\frac{\left.\frac{dT}{dz}\right|_{z+\Delta z}-\left.\frac{dT}{dz}\right|_z}{\Delta z}
+\right)
+\end{aligned}
+\]
+</div>
 			<p><i><span class="fs">D</span><span class="ft">x</span></i> → 0とすると</p>
-			<p class="im"><img src="./../img/heat_eq_derivation.files/image005.png"></p>
+			<div class="math-block" id="formula-heat_5_4-005" data-source-image="./../img/heat_eq_derivation.files/image005.png">
+\[
+\rho C_p\left\{
+\frac{dT}{dt}
++\frac{d(v_xT)}{dx}
++\frac{d(v_yT)}{dy}
++\frac{d(v_zT)}{dz}
+\right\}
+=
+k\left(
+\frac{d^2T}{d^2x}
++\frac{d^2T}{d^2y}
++\frac{d^2T}{d^2z}
+\right)
+\]
+</div>
 			<p>従って、</p>
-			<p class="im"><img src="./../img/heat_eq_derivation.files/image006.png"></p>
+			<div class="math-block" id="formula-heat_5_4-006" data-source-image="./../img/heat_eq_derivation.files/image006.png">
+\[
+\rho C_p\left(
+\frac{dT}{dt}
++v_x\frac{dT}{dx}
++v_y\frac{dT}{dy}
++v_z\frac{dT}{dz}
+\right)
+=
+k\left(
+\frac{d^2T}{d^2x}
++\frac{d^2T}{d^2y}
++\frac{d^2T}{d^2z}
+\right)
+\]
+</div>
 			<p>ベクトル表示すると</p>
-			<p class="im"><img src="./../img/heat_eq_derivation.files/image007.png"></p>
+			<div class="math-block" id="formula-heat_5_4-007" data-source-image="./../img/heat_eq_derivation.files/image007.png">
+\[
+\rho C_p\frac{DT}{Dt}=k\Delta T
+\]
+</div>
 			<p>上式は、熱伝導率が一定の場合です。</p>
 			<br>
 

@@ -12,6 +12,14 @@
 
 	<title>対流伝熱（伝熱工学）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+	<script>
+	window.MathJax={
+		output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+		chtml:{displayAlign:'left',displayIndent:'0'}
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="9">
@@ -51,9 +59,27 @@
 			<p class="im"><img src="./../img/heat_eq_convection.files/image001.png"></p>
 			<p>対流によって流入・流出する熱流量<span class="ft"><i>Qin, Qout</i>[J/s]</span>は、次式で表されます。</p>
 			<p>流入</p>
-			<p class="im"><img src="./../img/heat_eq_convection.files/image002.png"></p>
+			<div class="math-block" id="formula-heat_5_2-002" data-source-image="./../img/heat_eq_convection.files/image002.png">
+\[
+\begin{aligned}
+Q_{in}
+&=C_p(F_xT|_x+F_yT|_y+F_zT|_z)\\
+&=C_p\left(\rho\Delta y\Delta z\,v_xT|_x+\rho\Delta z\Delta x\,v_yT|_y+\rho\Delta x\Delta y\,v_zT|_z\right)\\
+&=\rho C_p\left(\Delta y\Delta z\,v_xT|_x+\Delta z\Delta x\,v_yT|_y+\Delta x\Delta y\,v_zT|_z\right)
+\end{aligned}
+\]
+</div>
 			<p>流出</p>
-			<p class="im"><img src="./../img/heat_eq_convection.files/image003.png"></p>
+			<div class="math-block" id="formula-heat_5_2-003" data-source-image="./../img/heat_eq_convection.files/image003.png">
+\[
+\begin{aligned}
+Q_{out}
+&=-C_p(F_xT|_{x+\Delta x}+F_yT|_{y+\Delta y}+F_zT|_{z+\Delta z})\\
+&=-C_p\left(\rho\Delta y\Delta z\,v_xT|_{x+\Delta x}+\rho\Delta z\Delta x\,v_yT|_{y+\Delta y}+\rho\Delta x\Delta y\,v_zT|_{z+\Delta z}\right)\\
+&=-\rho C_p\left(\Delta y\Delta z\,v_xT|_{x+\Delta x}+\Delta z\Delta x\,v_yT|_{y+\Delta y}+\Delta x\Delta y\,v_zT|_{z+\Delta z}\right)
+\end{aligned}
+\]
+</div>
 			<p>ここで、<span class="ft"><i>Fx, Fy, Fz</i>[kg/s]</span>は、
 				それぞれ<span class="ft"><i>x, y, z</i></span>軸方向の質量流量を表しています。</p>
 			<br>

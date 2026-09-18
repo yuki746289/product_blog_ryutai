@@ -12,6 +12,14 @@
 
 	<title>熱流束（伝熱工学）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+	<script>
+	window.MathJax={
+		output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+		chtml:{displayAlign:'left',displayIndent:'0'}
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="9">
@@ -52,7 +60,11 @@
 				簡易的に言えば、熱が伝わる勢いを表しています。
 				流束とは、「単位面積・単位時間当たりの」を意味しています。
 				伝導伝熱による熱流束は、熱伝導度<span class="ft"><i>k</i>[J/m・K・s]</span>を用いて次式で定義されます。</p>
-			<p class="im"><img src="./../img/heat_flux.files/image001.png"></p>
+			<div class="math-block" id="formula-heat_3-001" data-source-image="./../img/heat_flux.files/image001.png">
+\[
+q=-k\frac{dT}{dx}
+\]
+</div>
 			<p>これをフーリエの法則と言います。</p>
 			<br>
 

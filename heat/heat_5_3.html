@@ -12,6 +12,14 @@
 
 	<title>“`“±“`”Mi“`”MHŠwj</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+	<script>
+	window.MathJax={
+		output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+		chtml:{displayAlign:'left',displayIndent:'0'}
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="9">
@@ -51,9 +59,31 @@
 			<p class="im"><img src="./../img/heat_eq_conduction.files/image001.png"></p>
 			<p>“`“±“`”M‚É‚æ‚Á‚Ä—¬“üE—¬o‚·‚é”M—¬—Ê<span class="ft"><i>Q</i>in, <i>Q</i>out[J/s]</span>‚ÍAŸ®‚Å•\‚³‚ê‚Ü‚·B</p>
 			<p>—¬“ü</p>
-			<p class="im"><img src="./../img/heat_eq_conduction.files/image002.png"></p>
+			<div class="math-block" id="formula-heat_5_3-002" data-source-image="./../img/heat_eq_conduction.files/image002.png">
+\[
+\begin{aligned}
+Q_{in}
+&=\Delta y\Delta z\,q_x+\Delta z\Delta x\,q_y+\Delta x\Delta y\,q_z\\
+&=-\Delta y\Delta z\,k\left.\frac{dT}{dx}\right|_x
+-\Delta z\Delta x\,k\left.\frac{dT}{dy}\right|_y
+-\Delta x\Delta y\,k\left.\frac{dT}{dz}\right|_z
+\end{aligned}
+\]
+</div>
 			<p>—¬o</p>
-			<p class="im"><img src="./../img/heat_eq_conduction.files/image003.png"></p>
+			<div class="math-block" id="formula-heat_5_3-003" data-source-image="./../img/heat_eq_conduction.files/image003.png">
+\[
+\begin{aligned}
+Q_{out}
+&=-\Delta y\Delta z\,q_{x+\Delta x}
+-\Delta z\Delta x\,q_{y+\Delta y}
+-\Delta x\Delta y\,q_{z+\Delta z}\\
+&=\Delta y\Delta z\,k\left.\frac{dT}{dx}\right|_{x+\Delta x}
++\Delta z\Delta x\,k\left.\frac{dT}{dy}\right|_{y+\Delta y}
++\Delta x\Delta y\,k\left.\frac{dT}{dz}\right|_{z+\Delta z}
+\end{aligned}
+\]
+</div>
 			<p>‚±‚±‚ÅA<span class="ft"><i>k</i>[J/mEKEs]</span>‚ÍA”M“`“±—¦‚ğ•\‚µ‚Ä‚¢‚Ü‚·B</p>
 			<br>
 
