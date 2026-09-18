@@ -1,0 +1,142 @@
+name: Remaining Heat Formula Reaudit
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/remaining-heat-formula-reaudit.yml'
+      - '.document/formula_reviews/remaining_heat_formulas.json'
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Build strict page
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          cfg=json.loads(Path('.document/formula_reviews/remaining_heat_formulas.json').read_text(encoding='utf-8'))
+          parts=[
+            '<!doctype html><html lang="ja"><head><meta charset="utf-8">',
+            '<meta name="viewport" content="width=device-width,initial-scale=1">',
+            '<title>remaining heat strict formula re-audit</title>',
+            '<style>body{font-family:Arial,"Yu Gothic",sans-serif;margin:20px}.formula-pair{border-top:1px solid #bbb;padding:18px 0}.pair-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}.source,.render{min-width:0;overflow-x:auto;padding:10px;border:1px solid #ddd}.source img{display:block;max-width:100%;height:auto;margin:auto}.render mjx-container[display="true"]{margin:.4em 0!important;text-align:left!important}@media(max-width:800px){.pair-grid{grid-template-columns:1fr}}</style>',
+            '<script>window.MathJax={output:{displayOverflow:"linebreak",linebreaks:{inline:false,width:"100%"}}};</script>',
+            '<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>',
+            '</head><body><h1>Remaining Heat strict source-image re-audit</h1>'
+          ]
+          count=0
+          for page in cfg['pages']:
+            pkey=Path(page['page']).stem
+            imgdir=page['image_dir'].split('/',1)[1]
+            parts.append(f'<h2>{page["page"]}</h2>')
+            for item in page['formulas']:
+              n=item['image'][5:8]
+              src=f'./../img/{imgdir}/{item["image"]}'
+              ident=f'{pkey}-{n}'
+              parts += [
+                f'<section class="formula-pair" id="formula-{ident}"><h3>{pkey} image{n}</h3><div class="pair-grid">',
+                f'<div class="source"><img src="{src}" alt="source {ident}"></div>',
+                f'<div class="render" data-source-image="{src}">{item["latex"]}</div>',
+                '</div></section>'
+              ]
+              count+=1
+          if count!=16: raise RuntimeError(count)
+          parts += ['</body></html>']
+          Path('heat/remaining_heat_reaudit.html').write_text('\n'.join(parts)+'\n',encoding='utf-8')
+          PY
+
+      - name: Install browser
+        run: |
+          pip install playwright pillow
+          python -m playwright install --with-deps chromium
+
+      - name: Start server
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/rh-http.log 2>&1 &
+          sleep 1
+
+      - name: Capture pairs
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from PIL import Image,ImageDraw
+          from playwright.sync_api import sync_playwright
+
+          cfg=json.loads(Path('.document/formula_reviews/remaining_heat_formulas.json').read_text(encoding='utf-8'))
+          root=Path.cwd(); out=root/'remaining-heat-pass2'
+          for s in ('sources','renders','pairs'): (out/s).mkdir(parents=True,exist_ok=True)
+          manifest={'formulas':[]}
+          specs=[]
+          for page in cfg['pages']:
+            pkey=Path(page['page']).stem
+            for item in page['formulas']:
+              n=item['image'][5:8]
+              specs.append((pkey,n,f'{pkey}-{n}'))
+
+          with sync_playwright() as p:
+            b=p.chromium.launch(headless=True)
+            ctx=b.new_context(viewport={'width':1900,'height':1500},device_scale_factor=1)
+            pg=ctx.new_page()
+            pg.goto('http://127.0.0.1:8000/heat/remaining_heat_reaudit.html',wait_until='domcontentloaded',timeout=120000)
+            pg.wait_for_function('() => window.MathJax && MathJax.startup && MathJax.startup.promise',timeout=60000)
+            pg.evaluate('async()=>{await MathJax.startup.promise;}'); pg.wait_for_timeout(500)
+
+            for pkey,n,ident in specs:
+              sec=pg.locator(f'#formula-{ident}')
+              r=sec.locator('.render'); simg=sec.locator('.source img')
+              if r.locator('mjx-container').count()<1 or r.locator('mjx-merror').count()>0:
+                raise RuntimeError(f'{ident} MathJax error')
+              dims=r.evaluate('(e)=>({clientWidth:e.clientWidth,scrollWidth:e.scrollWidth})')
+              rp=out/'renders'/f'{ident}.png'; r.screenshot(path=str(rp),animations='disabled')
+              sp=(root/'heat'/simg.get_attribute('src')).resolve()
+              im=Image.open(sp).convert('RGBA'); bg=Image.new('RGBA',im.size,'white'); bg.alpha_composite(im); src=bg.convert('RGB')
+              scale=4 if src.width<800 else 2
+              src=src.resize((src.width*scale,src.height*scale),Image.Resampling.LANCZOS)
+              src.save(out/'sources'/f'{ident}.png')
+              rr=Image.open(rp).convert('RGB'); margin,label,gap=16,28,24
+              w=max(src.width,rr.width)+2*margin; h=2*margin+2*label+gap+src.height+rr.height
+              canvas=Image.new('RGB',(w,h),'white'); d=ImageDraw.Draw(canvas); y=margin
+              d.text((margin,y),f'SOURCE {ident}',fill='black'); y+=label; canvas.paste(src,(margin,y)); y+=src.height+gap
+              d.text((margin,y),f'MATHJAX {ident}',fill='black'); y+=label; canvas.paste(rr,(margin,y))
+              canvas.save(out/'pairs'/f'{ident}.png')
+              manifest['formulas'].append({'id':ident,'horizontal_overflow':dims['scrollWidth']>dims['clientWidth']+1,'dims':dims})
+            b.close()
+
+          manifest['count']=len(manifest['formulas'])
+          (out/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf-8')
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: remaining-heat-pass2
+          path: remaining-heat-pass2
+          retention-days: 7
+
+      - name: Commit strict page
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add heat/remaining_heat_reaudit.html
+          git diff --cached --check
+          if ! git diff --cached --quiet; then
+            git commit -m 'docs: build remaining heat strict reaudit page'
+            git pull --rebase origin develop
+            git push origin HEAD:develop
+          fi
