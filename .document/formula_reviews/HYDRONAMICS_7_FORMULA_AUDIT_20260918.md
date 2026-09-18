@@ -17,8 +17,19 @@ The Japanese labels `蓄積した運動量`, `応力`, `流入`, `流出`, and `
 
 ## Pass 2 — browser MathJax comparison
 
-Status: **pending workflow artifact review**
+- Workflow run: **35353789977**
+- Artifact: `hydronamics-7-pass2`
+- Artifact id: **10550553976**
+- Result: **1 / 1 PASS**
+- MathJax rendering errors: **0**
+- Formula-level horizontal overflow: **0 / 1**
+- Source image vs MathJax rendering: **1 / 1 visually checked and PASS**
+
+## Diagram policy
+
+Retained unchanged:
+- `image001.png`
 
 ## Certification
 
-Not yet certified for normal-page application until Pass 2 is complete.
+**Hydronamics 7 formula is certified for application to the normal page.**
