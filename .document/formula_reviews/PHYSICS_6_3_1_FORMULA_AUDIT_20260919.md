@@ -12,6 +12,14 @@ Transcription: `.document/formula_reviews/physics_6_3_1_formulas.json`
 
 ## Pass 2
 
-Status: **Pending**
+Result: **1 / 1 PASS**
 
-**Physics 6_3_1 is not yet certified for normal-page application.**
+- Workflow run: **35398319350**
+- Artifact: `physics-6-3-1-pass2`
+- Artifact id: **10570270948**
+- MathJax errors: **0**
+- Unrendered formulas: **0**
+
+The source/render pair was visually inspected. The three epsilon cases, permutation order, signs, and equality conditions match the source.
+
+**Physics 6_3_1 is certified for normal-page application.**
