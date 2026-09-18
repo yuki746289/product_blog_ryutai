@@ -1,0 +1,37 @@
+# Created: 2026-09-19T07:05:00+09:00
+name: Capture Mesh source images
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/capture-mesh-source-images.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - name: Stage Mesh source images
+        run: |
+          mkdir -p mesh-source-images/img
+          find img -maxdepth 1 -type d -name 'mesh*.files' -print0 | while IFS= read -r -d '' d; do
+            mkdir -p "mesh-source-images/$d"
+            cp -a "$d/." "mesh-source-images/$d/"
+          done
+          count=$(find mesh-source-images -type f | wc -l)
+          echo "captured files: $count"
+          test "$count" -gt 0
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mesh-source-images
+          path: mesh-source-images
+          retention-days: 7
