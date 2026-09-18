@@ -12,6 +12,15 @@ Transcription: `.document/formula_reviews/physics_6_2_6_formulas.json`
 
 ## Pass 2
 
-Status: **Pending**
+Result: **1 / 1 PASS**
 
-**Physics 6_2_6 is not yet certified for normal-page application.**
+- Workflow run: **35397639029**
+- Artifact: `physics-6-2-6-pass2`
+- Artifact id: **10568108832**
+- MathJax errors: **0**
+- Unrendered formulas: **0**
+- Browser page errors: **0**
+
+The source/render pair was visually inspected. The material derivative expansion and source-visible final `x_x/x_y/x_z` coordinate subscripts match exactly.
+
+**Physics 6_2_6 is certified for normal-page application.**
