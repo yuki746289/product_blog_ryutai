@@ -11,6 +11,14 @@
 
 	<title>4面体要素（有限要素法）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+	<script>
+	window.MathJax={
+		output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+		chtml:{displayAlign:'left',displayIndent:'0'}
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id"   value="4">
@@ -53,7 +61,11 @@
 			<p>上図の様に<span class="ft"><i>xyz</i></span>座標に<span class="ft">1</span>
 					つの<span class="ft">4</span>面体要素を考える。<span class="ft">1</span>
 					次要素の場合は、物理量<span class="fs"><i>f</i></span>は次式となります。</p>
-			<p class="im"><img src="./../img/fem_tet.files/image002.png"></p>
+			<div class="math-block" id="formula-fem-2-3-002" data-source-image="./../img/fem_tet.files/image002.png">
+\[
+\phi(x,y,z)=\alpha+\beta x+\gamma y+\xi z
+\]
+</div>
 			<p>ここで、
 					<span class="fs"><i>a</i></span><span class="ft">, </span>
 					<span class="fs"><i>b</i></span><span class="ft">, </span>
@@ -61,17 +73,49 @@
 					<span class="fs"><i>h</i></span><span>は未知数です。
 					これら<span class="ft">4</span>つの未知数を
 					<span class="ft">4</span>つの節点の物理量から計算します。</p>
-			<p class="im"><img src="./../img/fem_tet.files/image003.png"></p>
+			<div class="math-block" id="formula-fem-2-3-003" data-source-image="./../img/fem_tet.files/image003.png">
+\[
+\left\{
+\begin{aligned}
+\phi_1&=\alpha+\beta x_1+\gamma y_1+\xi z_1\\
+\phi_2&=\alpha+\beta x_2+\gamma y_2+\xi z_2\\
+\phi_3&=\alpha+\beta x_3+\gamma y_3+\xi z_3\\
+\phi_4&=\alpha+\beta x_4+\gamma y_4+\xi z_4
+\end{aligned}
+\right.
+\]
+</div>
 			<p>この連立方程式の解を物理量<span class="fs"><i>f</i></span>
 					の式に代入すると次式が得られます。</p>
-			<p class="im"><img src="./../img/fem_tet.files/image004.png"></p>
+			<div class="math-block" id="formula-fem-2-3-004" data-source-image="./../img/fem_tet.files/image004.png">
+\[
+\begin{aligned}
+\phi(x,y)&=N_1\phi_1+N_2\phi_2+N_3\phi_3+N_4\phi_4\\
+&=L_1\phi_1+L_2\phi_2+L_3\phi_3+L_4\phi_4
+\end{aligned}
+\]
+</div>
 			<br>
 			<p>ここで、
 					<span class="ft"><i>L</i><sub>1</sub>, <i>L</i><sub>2</sub>, <i>L</i><sub>3</sub>[-]</span>
 					は形状関数と呼ばれ次式で定義されます。</p>
-			<p class="im"><img src="./../img/fem_tet.files/image005.png"></p>
+			<div class="math-block" id="formula-fem-2-3-005" data-source-image="./../img/fem_tet.files/image005.png">
+\[
+L_1=\frac{V_1}{V},\quad
+L_2=\frac{V_2}{V},\quad
+L_3=\frac{V_3}{V},\quad
+L_4=\frac{V_4}{V}
+\]
+</div>
 			<p>また、内挿関数は次式で定義されます。</p>
-			<p class="im"><img src="./../img/fem_tet.files/image006.png"></p>
+			<div class="math-block" id="formula-fem-2-3-006" data-source-image="./../img/fem_tet.files/image006.png">
+\[
+\begin{aligned}
+N_1&=L_1,\qquad N_2=L_2,\qquad N_3=L_3,\qquad N_4=L_4\\
+N_1+N_2+N_3+N_4&=1
+\end{aligned}
+\]
+</div>
 			<p>つまり、物理量は体積比で決まっていることがわかります。</p>
 			<p class="im"><img src="./../img/fem_tet.files/image007.png"></p>
 			<br>

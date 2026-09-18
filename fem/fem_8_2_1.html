@@ -11,6 +11,14 @@
 
 	<title>表面張力（有限要素法）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+	<script>
+	window.MathJax={
+		output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+		chtml:{displayAlign:'left',displayIndent:'0'}
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id"   value="4">
@@ -53,13 +61,81 @@
 			<p>無次元化した表面張力は次式となる。界面の法線方向の応力を表しています。</p>
 			<p><span class="ft"><i>n<sub>x</sub></i>, <i>n<sub>y</sub></i>, <i>n<sub>z</sub></i></span>は、法線ベクトルの
 					方向余弦、<span class="ft"><i>K</i></span>は曲率を表しています。</p>
-			<p class="im"><img src="./../img/fem_bd_2.files/image002.png"></p><br>
+			<div class="math-block" id="formula-fem-8-2-1-002" data-source-image="./../img/fem_bd_2.files/image002.png">
+\[
+\begin{aligned}
+[\vec n^{*}\cdot\vec\sigma^{*}]
+&=
+\left[
+\sum_{i=1}^{3}\vec\delta_i n_i
+\cdot
+\sum_{j=1}^{3}\sum_{k=1}^{3}\vec\delta_j\vec\delta_k\sigma_{jk}^{*}
+\right]\\
+&=
+\sum_{i=1}^{3}\sum_{j=1}^{3}\sum_{k=1}^{3}
+[\vec\delta_i\cdot\vec\delta_j\vec\delta_k]n_i\sigma_{jk}^{*}\\
+&=
+\sum_{i=1}^{3}\sum_{j=1}^{3}\sum_{k=1}^{3}
+\delta_{ij}\vec\delta_k n_i\sigma_{jk}^{*}\\
+&=
+\sum_{i=1}^{3}\sum_{k=1}^{3}
+\vec\delta_k n_i\sigma_{ik}^{*}
+\qquad(\because i=j)\\
+&=
+\sum_{k=1}^{3}\vec\delta_k\sum_{i=1}^{3}n_i\sigma_{ik}^{*}\\
+&=
+\sum_{k=1}^{3}\vec\delta_k
+(n_x\sigma_{xk}^{*}+n_y\sigma_{yk}^{*}+n_z\sigma_{zk}^{*})\\
+&=
+\vec\delta_x(n_x\sigma_{xx}^{*}+n_y\sigma_{yx}^{*}+n_z\sigma_{zx}^{*})\\
+&\quad+
+\vec\delta_y(n_x\sigma_{xy}^{*}+n_y\sigma_{yy}^{*}+n_z\sigma_{zy}^{*})\\
+&\quad+
+\vec\delta_z(n_x\sigma_{xz}^{*}+n_y\sigma_{yz}^{*}+n_z\sigma_{zz}^{*})\\
+&=
+\vec\delta_x\frac{-2K^{*}}{We}n_x
++\vec\delta_y\frac{-2K^{*}}{We}n_y
++\vec\delta_z\frac{-2K^{*}}{We}n_z
+\end{aligned}
+\]
+</div><br>
 			<p>ここで、表面張力はLaplaceの式より</p>
-			<p class="im"><img src="./../img/fem_bd_2.files/image003.png"></p><br>
-			<p class="im"><img src="./../img/fem_bd_2.files/image004.png"></p><br>
+			<div class="math-block" id="formula-fem-8-2-1-003" data-source-image="./../img/fem_bd_2.files/image003.png">
+\[
+[\vec n\cdot\vec\sigma]=-2\gamma K\vec n
+\]
+</div><br>
+			<div class="math-block" id="formula-fem-8-2-1-004" data-source-image="./../img/fem_bd_2.files/image004.png">
+\[
+P_{bd}=2\gamma K
+\]
+</div><br>
 			<p>無次元化すると</p>
-			<p class="im"><img src="./../img/fem_bd_2.files/image005.png"></p><br>
-			<p class="im"><img src="./../img/fem_bd_2.files/image006.png"></p><br>
+			<div class="math-block" id="formula-fem-8-2-1-005" data-source-image="./../img/fem_bd_2.files/image005.png">
+\[
+\begin{aligned}
+[\vec n\cdot\vec\sigma^{*}]
+&=-\frac{2\gamma K^{*}}{\rho v_0^{2}x_0}\vec n\\
+&=-\frac{2K^{*}}{We}\vec n\\
+&=
+\vec\delta_x\frac{-2K^{*}}{We}n_x
++\vec\delta_y\frac{-2K^{*}}{We}n_y
++\vec\delta_z\frac{-2K^{*}}{We}n_z
+\end{aligned}
+\]
+</div><br>
+			<div class="math-block" id="formula-fem-8-2-1-006" data-source-image="./../img/fem_bd_2.files/image006.png">
+\[
+\begin{aligned}
+P_{bd}^{*}
+&=\frac{P_{bd}}{\rho v_0^{2}}\\
+&=\frac{2\gamma K}{\rho v_0^{2}}\\
+&=\frac{2\gamma K^{*}}{\rho v_0^{2}x_0}\\
+&=\frac{2K^{*}}{We}\\
+&=\frac{2K^{*}}{Oh^{2}}
+\end{aligned}
+\]
+</div><br>
 			<p><span class="ft">4</span>面体<span class="ft">1</span>次要素の場合は、下図の様に与えられます。</p>
 			<p class="im"><img src="./../img/fem_bd_2.files/image007.png"></p><br>
 			<br>

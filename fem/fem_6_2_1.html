@@ -11,6 +11,14 @@
 
 	<title>内挿関数の微分（有限要素法）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+	<script>
+	window.MathJax={
+		output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+		chtml:{displayAlign:'left',displayIndent:'0'}
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id"   value="4">
@@ -52,17 +60,116 @@
 			<p class="im"><img src="./../img/fem_n_tet.files/image001.png"></p>
 			<p><span class="ft">4</span>面体要素の体積を示します。</p>
 			<p class="correction-note" id="fix-r-tet-n-001">以降の式で <span class="ft"><i>V</i></span> は正の要素体積を表します。節点順序によって体積行列式が負になる場合は、絶対値を用いるか、正の向きになるよう節点順序を統一します。</p>
-			<p class="im"><img src="./../img/fem_n_tet.files/image002.png"></p>
+			<div class="math-block" id="formula-fem-6-2-1-002" data-source-image="./../img/fem_n_tet.files/image002.png">
+\[
+\begin{aligned}
+V&=\frac{1}{6}\det
+\begin{pmatrix}
+1&x_1&y_1&z_1\\
+1&x_2&y_2&z_2\\
+1&x_3&y_3&z_3\\
+1&x_4&y_4&z_4
+\end{pmatrix}\\
+&=\frac{1}{6}\bigl(
+x_2y_3z_4-x_2z_3y_4-y_2x_3z_4+y_2z_3x_4+z_2x_3y_4-z_2y_3x_4\\
+&\qquad-x_1y_3z_4+x_1z_3y_4+x_1y_2z_4-x_1y_2z_3-x_1z_2y_4+x_1z_2y_3\\
+&\qquad+y_1x_3z_4-y_1z_3x_4-y_1x_2z_4+y_1x_2z_3+y_1z_2x_4-y_1z_2x_3\\
+&\qquad-z_1x_3y_4+z_1y_3x_4+z_1x_2y_4-z_1x_2y_3-z_1y_2x_4+z_1y_2x_3
+\bigr)
+\end{aligned}
+\]
+</div>
 			<p>ここで、</p>
-			<p class="im"><img src="./../img/fem_n_tet.files/image003.png"></p>
+			<div class="math-block" id="formula-fem-6-2-1-003" data-source-image="./../img/fem_n_tet.files/image003.png">
+\[
+\begin{aligned}
+a_{11}&=1,\ a_{12}=x_1,\ a_{13}=y_1,\ a_{14}=z_1\\
+a_{21}&=1,\ a_{22}=x_2,\ a_{23}=y_2,\ a_{24}=z_2\\
+a_{31}&=1,\ a_{32}=x_3,\ a_{33}=y_3,\ a_{34}=z_3\\
+a_{41}&=1,\ a_{42}=x_4,\ a_{43}=y_4,\ a_{44}=z_4
+\end{aligned}
+\]
+</div>
 			<p>同様に</p>
-			<p class="im" style="text-align:left;padding-left:40px;"><img src="./../img/fem_n_tet.files/image004.png"></p>
+			<div class="math-block" id="formula-fem-6-2-1-004" data-source-image="./../img/fem_n_tet.files/image004.png">
+\[
+\begin{aligned}
+V_1&=\frac{1}{6}\det
+\begin{pmatrix}
+1&x&y&z\\
+1&x_2&y_2&z_2\\
+1&x_3&y_3&z_3\\
+1&x_4&y_4&z_4
+\end{pmatrix}\\
+&=\frac{1}{6}\bigl(
+x_2y_3z_4-x_2z_3y_4-y_2x_3z_4+y_2z_3x_4+z_2x_3y_4-z_2y_3x_4\\
+&\qquad-xy_3z_4+xz_3y_4+xy_2z_4-xy_2z_3-xz_2y_4+xz_2y_3\\
+&\qquad+yx_3z_4-yz_3x_4-yx_2z_4+yx_2z_3+yz_2x_4-yz_2x_3\\
+&\qquad-zx_3y_4+zy_3x_4+zx_2y_4-zx_2y_3-zy_2x_4+zy_2x_3
+\bigr)
+\end{aligned}
+\]
+</div>
 			<br>
-			<p class="im" style="text-align:left;padding-left:40px;"><img src="./../img/fem_n_tet.files/image005.png"></p>
+			<div class="math-block" id="formula-fem-6-2-1-005" data-source-image="./../img/fem_n_tet.files/image005.png">
+\[
+\begin{aligned}
+V_2&=\frac{1}{6}\det
+\begin{pmatrix}
+1&x_1&y_1&z_1\\
+1&x&y&z\\
+1&x_3&y_3&z_3\\
+1&x_4&y_4&z_4
+\end{pmatrix}\\
+&=\frac{1}{6}\bigl(
+xy_3z_4-xz_3y_4-yx_3z_4+yz_3x_4+zx_3y_4-zy_3x_4\\
+&\qquad-x_1y_3z_4+x_1z_3y_4+x_1yz_4-x_1yz_3-x_1zy_4+x_1zy_3\\
+&\qquad+y_1x_3z_4-y_1z_3x_4-y_1xz_4+y_1xz_3+y_1zx_4-y_1zx_3\\
+&\qquad-z_1x_3y_4+z_1y_3x_4+z_1xy_4-z_1xy_3-z_1yx_4+z_1yx_3
+\bigr)
+\end{aligned}
+\]
+</div>
 			<br>
-			<p class="im" style="text-align:left;padding-left:40px;"><img src="./../img/fem_n_tet.files/image006.png"></p>
+			<div class="math-block" id="formula-fem-6-2-1-006" data-source-image="./../img/fem_n_tet.files/image006.png">
+\[
+\begin{aligned}
+V_3&=\frac{1}{6}\det
+\begin{pmatrix}
+1&x_1&y_1&z_1\\
+1&x_2&y_2&z_2\\
+1&x&y&z\\
+1&x_4&y_4&z_4
+\end{pmatrix}\\
+&=\frac{1}{6}\bigl(
+x_2yz_4-x_2zy_4-y_2xz_4+y_2zx_4+z_2xy_4-z_2yx_4\\
+&\qquad-x_1yz_4+x_1zy_4+x_1y_2z_4-x_1y_2z-x_1z_2y_4+x_1z_2y\\
+&\qquad+y_1xz_4-y_1zx_4-y_1x_2z_4+y_1x_2z+y_1z_2x_4-y_1z_2x\\
+&\qquad-z_1xy_4+z_1yx_4+z_1x_2y_4-z_1x_2y-z_1y_2x_4+z_1y_2x
+\bigr)
+\end{aligned}
+\]
+</div>
 			<br>
-			<p class="im" style="text-align:left;padding-left:40px;"><img src="./../img/fem_n_tet.files/image007.png"></p>
+			<div class="math-block" id="formula-fem-6-2-1-007" data-source-image="./../img/fem_n_tet.files/image007.png">
+\[
+\begin{aligned}
+V_4&=\frac{1}{6}\det
+\begin{pmatrix}
+1&x_1&y_1&z_1\\
+1&x_2&y_2&z_2\\
+1&x_3&y_3&z_3\\
+1&x&y&z
+\end{pmatrix}\\
+&=\frac{1}{6}\bigl(
+x_2y_3z-x_2z_3y-y_2x_3z+y_2z_3x+z_2x_3y-z_2y_3x\\
+&\qquad-x_1y_3z+x_1z_3y+x_1y_2z-x_1y_2z_3-x_1z_2y+x_1z_2y_3\\
+&\qquad+y_1x_3z-y_1z_3x-y_1x_2z+y_1x_2z_3+y_1z_2x-y_1z_2x_3\\
+&\qquad-z_1x_3y+z_1y_3x+z_1x_2y-z_1x_2y_3-z_1y_2x+z_1y_2x_3
+\bigr)
+\end{aligned}
+\]
+</div>
 			<br>
 
 
