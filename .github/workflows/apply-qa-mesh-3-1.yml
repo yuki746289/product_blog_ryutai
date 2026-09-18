@@ -124,6 +124,9 @@ jobs:
           applied=dp.sub(drepl,original)
           applied=ip.sub(irepl,applied)
           applied=strip_mathjax(applied)
+          # The original image004 line ends with ", " before newline. After replacing
+          # the image with an inline span, remove only that inherited trailing space.
+          applied=applied.replace('</span>, \n','</span>,\n',1)
 
           if '</head>' not in applied:
               raise RuntimeError('missing </head>')
