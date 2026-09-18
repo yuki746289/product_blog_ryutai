@@ -11,9 +11,9 @@
 ## Summary
 
 - HTML pages scanned: **205**
-- Residual inline-image placements: **204**
-- Unique residual image assets: **202**
-- Priority A (`p.im`) placements: **194**
+- Residual inline-image placements: **203**
+- Unique residual image assets: **201**
+- Priority A (`p.im`) placements: **193**
 - Missing referenced assets: **49**
 
 ### By section
@@ -23,7 +23,7 @@
 | `mesh` | 53 |
 | `mps` | 49 |
 | `fem` | 33 |
-| `physics` | 24 |
+| `physics` | 23 |
 | `hydronamics` | 21 |
 | `appendix` | 9 |
 | `heat` | 8 |
@@ -161,11 +161,10 @@ These references exist in HTML but the corresponding image file is absent from t
 | 63 | `physics/physics_3.html` | 1 | 1 |
 | 64 | `physics/physics_6_2_1.html` | 1 | 1 |
 | 65 | `physics/physics_6_2_2.html` | 1 | 1 |
-| 66 | `physics/physics_6_2_5.html` | 1 | 1 |
-| 67 | `physics/physics_6_2_6.html` | 1 | 1 |
-| 68 | `physics/physics_6_2_7.html` | 1 | 1 |
-| 69 | `physics/physics_6_3_1.html` | 1 | 1 |
-| 70 | `physics/physics_7.html` | 1 | 1 |
+| 66 | `physics/physics_6_2_6.html` | 1 | 1 |
+| 67 | `physics/physics_6_2_7.html` | 1 | 1 |
+| 68 | `physics/physics_6_3_1.html` | 1 | 1 |
+| 69 | `physics/physics_7.html` | 1 | 1 |
 
 ## Next step
 
