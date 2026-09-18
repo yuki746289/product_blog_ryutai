@@ -301,6 +301,26 @@ Pass 2目視で `fem_10/image002`, `image003` の非対角添字差異を検出�
 - `.document/formula_reviews/FEM_BATCH_3_FORMULA_AUDIT_20260918.md`
 - `.document/formula_reviews/FEM_BATCH_3_NORMAL_BROWSER_QA_20260918.md`
 
+## 2026-09-18 FEM 5 行列式ページ再構成
+
+`fem/fem_5.html` の7画像を、元画像正本でHTML本文＋MathJaxへ再構成した。
+
+- 対象: **7画像**
+- 純MathJaxブロック: **6**
+- 日本語説明＋MathJax混在ブロック: **1**
+- Pass 1: **7/7**
+- Pass 2 run: **35317241741**
+- Pass 2: **7/7**
+- Normal browser QA run: **35317676898**
+- desktop: 7/7、MathJax errors 0、page overflowなし
+- mobile: 7/7、MathJax errors 0、local-scroll 4、uncontained 0、page overflowなし
+- image002の日本語説明、image003のsource-visibleな`a_{43}`、24項の順序・符号を維持。
+- 本番FTP反映は未実施。
+
+詳細:
+- `.document/formula_reviews/FEM_5_FORMULA_AUDIT_20260918.md`
+- `.document/formula_reviews/FEM_5_NORMAL_BROWSER_QA_20260918.md`
+
 ## 次の優先順
 
 1. サイト全体の残存画像を「数式 / 図 / 混在画像」に分類する。
