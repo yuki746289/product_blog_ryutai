@@ -1,0 +1,30 @@
+{
+  "page": "hydronamics/hydronamics_11.html",
+  "image_dir": "img/hydronamics_d_number.files",
+  "canonical_source": "original source images",
+  "retained_diagrams": [],
+  "transcription_assist": {
+    "source": "HP.7z / 流体力学_無次元数.doc",
+    "method": "Word/Equation Editor candidate + canonical source-image verification",
+    "verified_date": "2026-09-18",
+    "source_image_is_canonical": true
+  },
+  "formulas": [
+    {
+      "image": "image001.png",
+      "latex": "\\[\n\\begin{aligned}\nF_{\\text{慣性力}}\n&=ma\n&&[\\mathrm{kg}][\\mathrm{m/s^2}]\\\\\n&=w_x\\Delta t\\frac{dv}{dt}\n&&[\\mathrm{kg/s}][\\mathrm{s}][\\mathrm{m/s^2}]\\\\\n&=\\rho x^2v\\Delta t\\frac{dv}{dt}\\\\\n&=\\rho x^2v\\frac{dv}{dt}\\Delta t\\\\\n&=\\rho x^2v^2\n&&[\\mathrm{N}]\\left(=[\\mathrm{kg/m^3}][\\mathrm{m^2}][\\mathrm{m^2/s^2}]\\right)\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image002.png",
+      "latex": "\\[\n\\begin{aligned}\nF_{\\text{粘性力}}\n&=\\mu\\frac{\\partial v}{\\partial x}\\times A\n&&\\left[\\frac{\\mathrm{N}}{\\mathrm{m^2}}\\mathrm{s}\\right]\n\\frac{[\\mathrm{m/s}]}{[\\mathrm{m}]}[\\mathrm{m^2}]\\\\\n&=\\mu\\frac{v}{x}x^2\n&&[\\mathrm{N/m^2}][\\mathrm{m^2}]\\\\\n&=\\mu vx\n&&[\\mathrm{N}]\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image003.png",
+      "latex": "\\[\n\\begin{aligned}\nF_{\\text{表面張力}/2}\n&=\\frac{\\gamma}{R}\\times A\n&&\\frac{[\\mathrm{N/m}]}{[\\mathrm{m}]}[\\mathrm{m^2}]\\\\\n&=\\frac{\\gamma}{x}x^2\n&&\\frac{[\\mathrm{N/m}]}{[\\mathrm{m}]}[\\mathrm{m^2}]\\\\\n&=\\gamma x\n&&[\\mathrm{N}]\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image004.png",
+      "latex": "\\[\n\\begin{aligned}\nF_{\\text{重力}}\n&=mg\n&&[\\mathrm{kg}][\\mathrm{m/s^2}]\\\\\n&=\\rho Vg\n&&[\\mathrm{kg/m^3}][\\mathrm{m^3}][\\mathrm{m/s^2}]\\\\\n&=\\rho x^3g\n&&[\\mathrm{N}]\\left(=[\\mathrm{kg/m^3}][\\mathrm{m^3}][\\mathrm{m/s^2}]\\right)\n\\end{aligned}\n\\]"
+    }
+  ]
+}
