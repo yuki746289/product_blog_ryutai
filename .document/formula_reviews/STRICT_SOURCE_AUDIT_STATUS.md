@@ -753,6 +753,50 @@ FEM batches 1–3 / FEM 5後に残っていた未分類20画像を分類し、�
 - `.document/formula_reviews/HYDRONAMICS_9_3_FORMULA_AUDIT_20260918.md`
 - `.document/formula_reviews/HYDRONAMICS_9_3_NORMAL_BROWSER_QA_20260918.md`
 
+
+## 2026-09-18 Hydronamics 7 監査・通常ページ反映
+
+`hydronamics/hydronamics_7.html` の収支式導出ページを、元HP画像を正本として処理した。
+
+- 分類対象: **2画像**
+  - 数式 / 日本語混在数式: **1**
+  - 図: **1**（image001を維持）
+- Pass 1: **1/1**
+- Pass 2 run: **35353789977**
+- Pass 2: **1/1**
+- 通常ページ反映: **1/1**
+- Apply run: **35354039231**
+- Normal browser QA run: **35354086219**
+- desktop/mobile: 1/1 blocks、1/1 retained diagram、MathJax errors 0、unrendered 0、uncontained 0、page overflowなし
+- mobile local-scroll: **0**
+- `image002` 内の日本語ラベルも保持。
+- 本番FTP反映は未実施。
+
+詳細:
+- `.document/formula_reviews/HYDRONAMICS_7_IMAGE_CLASSIFICATION_20260918.md`
+- `.document/formula_reviews/HYDRONAMICS_7_FORMULA_AUDIT_20260918.md`
+- `.document/formula_reviews/HYDRONAMICS_7_NORMAL_BROWSER_QA_20260918.md`
+
+
+## 2026-09-18 Hydronamics 図のみページ確認
+
+以下は元HP画像を直接確認し、数式画像ではなく模式図として維持することを確定した。
+
+- `hydronamics_2.html`: **2図 / 数式0**
+  - 空気粒子密度の模式図
+  - 水粒子密度の模式図
+- `hydronamics_10.html`: **1図 / 数式0**
+  - 気液界面・固液界面の模式図
+- `hydronamics_10_2.html`: **1図 / 数式0**
+  - 壁面速度境界条件の模式図（式ラベルを図内に含むため画像維持）
+
+これらはMathJax変換対象外。ページ内容の変更なし。本番FTP反映は未実施。
+
+詳細:
+- `.document/formula_reviews/HYDRONAMICS_2_IMAGE_CLASSIFICATION_20260918.md`
+- `.document/formula_reviews/HYDRONAMICS_10_IMAGE_CLASSIFICATION_20260918.md`
+- `.document/formula_reviews/HYDRONAMICS_10_2_IMAGE_CLASSIFICATION_20260918.md`
+
 ## 次の優先順
 
 1. サイト全体の残存画像を「数式 / 図 / 混在画像」に分類する。
@@ -802,7 +846,7 @@ FEM batches 1–3 / FEM 5後に残っていた未分類20画像を分類し、�
 - FEM 5: **7件完了（純MathJax 6 + HTML本文＋MathJax 1）、PC/スマホQA完了**
 - Remaining FEM: **11件完了（純MathJax 10 + HTML本文＋MathJax 1）、PC/スマホQA完了**
 - **FEMカテゴリの既知数式画像は変換完了**
-- 厳密監査・通常ページ化まで完了した数式・数式テキスト: **475件**
+- 厳密監査・通常ページ化まで完了した数式・数式テキスト: **476件**
 - 残存画像は数式とは限らないため、今後はページ単位で分類してから数式のみ変換する。
 - MPS欠損GIF参照は別タスクとして扱う。
 - 本番FTP反映は未実施。
