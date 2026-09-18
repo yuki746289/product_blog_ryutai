@@ -11,6 +11,14 @@
 
 	<title>バブルメッシュ法（メッシュ）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+<script>
+window.MathJax={
+  output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+  chtml:{displayAlign:'left',displayIndent:'0'}
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="5">
@@ -56,12 +64,14 @@
 			</p>
 			<br>
 			<p>上図の様に直交座標上に2つの節点があるとします。それぞれ位置ベクトルを
-				<img src="./../img/mesh_node_buble.files/image004.png">, 
-				<img src="./../img/mesh_node_buble.files/image005.png">
+				<span class="math-inline" id="formula-mesh-3-1-004" data-source-image="./../img/mesh_node_buble.files/image004.png">\(\vec{p}_{1}\)</span>,
+				<span class="math-inline" id="formula-mesh-3-1-005" data-source-image="./../img/mesh_node_buble.files/image005.png">\(\vec{p}_{2}\)</span>
 					、半径を<span class="ft"><i>r</i><sub>1</sub></span>
 					, <span class="ft"><i>r</i><sub>2</sub></span>
 					とします。この時、2つの節点に働く力は次式となります。</p>
-			<p class="im"><img src="./../img/mesh_node_buble.files/image006.png"></p>
+			<div class="math-block" id="formula-mesh-3-1-006" data-source-image="./../img/mesh_node_buble.files/image006.png">
+\[\begin{aligned}\vec{F}_{12}&=-\vec{F}_{21}\\&=w\!\left(\frac{|\vec{p}_{2}-\vec{p}_{1}|}{r_{2}+r_{1}}\right)\frac{\vec{p}_{2}-\vec{p}_{1}}{|\vec{p}_{2}-\vec{p}_{2}|}\end{aligned}\]
+</div>
 			<br>
 			<p>ここで、<span class="ft"><i>w</i></span>は重み関数であり、
 					この式は重み関数と方向ベクトルの積を表しています。
@@ -75,11 +85,15 @@
 			<p class="im"><img src="./../img/mesh_node_buble.files/image008.png"></p>
 			<br>
 			<p>この場合は、節点に働く力は次式となります。</p>
-			<p class="im"><img src="./../img/mesh_node_buble.files/image009.png"></p>
+			<div class="math-block" id="formula-mesh-3-1-009" data-source-image="./../img/mesh_node_buble.files/image009.png">
+\[\vec{F}=\sum_{i=1}^{n}w\!\left(\frac{|\vec{p}-\vec{p}_{i}|}{r+r_{i}}\right)\frac{\vec{p}-\vec{p}_{i}}{|\vec{p}-\vec{p}_{i}|}\]
+</div>
 			<br>
 			<p>これは、斥力が正の向きを表しています。
 					従って、タイムステップごとの節点の方向ベクトルは次式なります。</p>
-			<p class="im"><img src="./../img/mesh_node_buble.files/image010.png"></p>
+			<div class="math-block" id="formula-mesh-3-1-010" data-source-image="./../img/mesh_node_buble.files/image010.png">
+\[\begin{aligned}\vec{r}&=cr\frac{\vec{F}}{|\vec{F}|}\\&=cr\frac{1}{|\vec{F}|}\sum_{i=1}^{n}w\!\left(\frac{|\vec{p}-\vec{p}_{i}|}{r+r_{i}}\right)\frac{\vec{p}-\vec{p}_{i}}{|\vec{p}-\vec{p}_{i}|}\end{aligned}\]
+</div>
 			<br>
 			<p>ここで、<span class="ft"><i>c</i></span>は緩和係数である。</p>
 			<br>
@@ -89,19 +103,23 @@
 			<p class="im"><img src="./../img/mesh_node_buble.files/image011.png"></p>
 			<p>上図の様に節点ごとに周囲の節点の粗密を考えます。
 				<span class="ft">2</span>次元の場合、節点の追加・削除の条件は次式なります。<p>
-			<p class="im">節点削除：<img src="./../img/mesh_node_buble.files/image012.png"></p>
+			<p class="im">節点削除：<span class="math-inline" id="formula-mesh-3-1-012" data-source-image="./../img/mesh_node_buble.files/image012.png">\(n(r_i)>8\)</span></p>
 			<br>
-			<p class="im">節点追加：<img src="./../img/mesh_node_buble.files/image013.png"></p>
+			<p class="im">節点追加：<span class="math-inline" id="formula-mesh-3-1-013" data-source-image="./../img/mesh_node_buble.files/image013.png">\(n(r_i)<5\)</span></p>
 			<br>
 			<p>ここで、節点の数密度を<span class="ft"><i>n</i>(<i>r<sub>i</sub></i>)</span>です。</p>
 			<br>
 
 			<h2>節点半径の補正</h2>
 			<p>節点の半径は、次式の様に距離の加重平均で補正しました。</p>
-			<p class="im"><img src="./../img/mesh_node_buble.files/image014.png"></p>
+			<div class="math-block" id="formula-mesh-3-1-014" data-source-image="./../img/mesh_node_buble.files/image014.png">
+\[r=\frac{\displaystyle\sum_{i=1}^{n}w(|\vec{p}-\vec{p}_{i}|)r_i}{\displaystyle\sum_{i=1}^{n}w(|\vec{p}-\vec{p}_{i}|)}\]
+</div>
 			<br>
 			<p>ここで、wは重み関数で次式となります。</p>
-			<p class="im"><img src="./../img/mesh_node_buble.files/image015.png"></p>
+			<div class="math-block" id="formula-mesh-3-1-015" data-source-image="./../img/mesh_node_buble.files/image015.png">
+\[w(d)=\frac{1}{d+10^{-3}}\]
+</div>
 			<p>補正はタイムステップごとに行います。</p>
 			<br>
 			<h2>結果</h2>
