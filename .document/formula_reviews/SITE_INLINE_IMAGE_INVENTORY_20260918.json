@@ -1,9 +1,9 @@
 {
   "summary": {
     "html_pages_scanned": 205,
-    "residual_word_image_placements": 206,
-    "unique_assets": 204,
-    "centered_p_im_placements": 196,
+    "residual_word_image_placements": 204,
+    "unique_assets": 202,
+    "centered_p_im_placements": 194,
     "missing_assets": 49,
     "missing_by_section": {
       "mps": 49
@@ -17,10 +17,10 @@
       "hydronamics": 21,
       "mesh": 53,
       "mps": 49,
-      "physics": 26
+      "physics": 24
     },
     "extensions": {
-      ".png": 153,
+      ".png": 151,
       ".jpg": 4,
       ".gif": 49
     }
@@ -2350,30 +2350,6 @@
       "exists": true,
       "width": 294,
       "height": 323,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "physics/physics_6_2_4.html",
-      "encoding": "cp932",
-      "src": "./../img/physics_c_inner.files/image016.png",
-      "asset": "img/physics_c_inner.files/image016.png",
-      "exists": true,
-      "width": 334,
-      "height": 728,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "physics/physics_6_2_4.html",
-      "encoding": "cp932",
-      "src": "./../img/physics_c_inner.files/image017.png",
-      "asset": "img/physics_c_inner.files/image017.png",
-      "exists": true,
-      "width": 149,
-      "height": 36,
       "format": "PNG",
       "centered_p_im": true,
       "review_priority": "A"
