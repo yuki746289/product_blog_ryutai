@@ -1,0 +1,668 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>heat_7_2 strict formula re-audit</title>
+<style>body{font-family:Arial,"Yu Gothic",sans-serif;margin:20px}.formula-pair{border-top:1px solid #bbb;padding:18px 0}.pair-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}.source,.render{min-width:0;overflow-x:auto;padding:10px;border:1px solid #ddd}.source img{display:block;max-width:100%;height:auto;margin:auto}.render mjx-container[display="true"]{margin:.4em 0!important;text-align:left!important}@media(max-width:800px){.pair-grid{grid-template-columns:1fr}}</style>
+<script>window.MathJax={output:{displayOverflow:"linebreak",linebreaks:{inline:false,width:"100%"}}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head><body><h1>Heat 7-2 strict source-image re-audit</h1>
+<p>Canonical formula source is the original image. Mathematical equivalence is not sufficient; notation, sign, term order, indices and coefficients must match.</p>
+<section class="formula-pair" id="formula-001"><h2>image001</h2><div class="pair-grid">
+<div class="source"><img src="./../img/heat_discretization_tet.files/image001.png" alt="source image001"></div>
+<div class="render" data-source-image="./../img/heat_discretization_tet.files/image001.png">\[
+\phi=
+\frac{\partial\Theta}{\partial\tau}
++V_x\frac{\partial\Theta}{\partial X}
++V_y\frac{\partial\Theta}{\partial Y}
++V_z\frac{\partial\Theta}{\partial Z}
++\frac{\partial q_x^{*}}{\partial X}
++\frac{\partial q_y^{*}}{\partial Y}
++\frac{\partial q_z^{*}}{\partial Z}
+=0
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-002"><h2>image002</h2><div class="pair-grid">
+<div class="source"><img src="./../img/heat_discretization_tet.files/image002.png" alt="source image002"></div>
+<div class="render" data-source-image="./../img/heat_discretization_tet.files/image002.png">\[
+\int_V
+\begin{bmatrix}
+N_1\\
+N_2\\
+N_3\\
+N_4
+\end{bmatrix}
+\phi\,dV
+=
+\int_V
+\begin{bmatrix}
+0\\
+0\\
+0\\
+0
+\end{bmatrix}
+dV
+=
+\begin{bmatrix}
+0\\
+0\\
+0\\
+0
+\end{bmatrix}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-003"><h2>image003</h2><div class="pair-grid">
+<div class="source"><img src="./../img/heat_discretization_tet.files/image003.png" alt="source image003"></div>
+<div class="render" data-source-image="./../img/heat_discretization_tet.files/image003.png">\[
+\begin{aligned}
+V_x&=N_1V_{x,1}+N_2V_{x,2}+N_3V_{x,3}+N_4V_{x,4}
+=\begin{bmatrix}N_1&N_2&N_3&N_4\end{bmatrix}
+\begin{Bmatrix}V_{x,1}\\V_{x,2}\\V_{x,3}\\V_{x,4}\end{Bmatrix}
+=[N]\{V_x\}=0\\
+V_y&=N_1V_{y,1}+N_2V_{y,2}+N_3V_{y,3}+N_4V_{y,4}=0\\
+V_z&=N_1V_{z,1}+N_2V_{z,2}+N_3V_{z,3}+N_4V_{z,4}=0\\
+\Theta&=N_1\Theta_1+N_2\Theta_2+N_3\Theta_3+N_4\Theta_4
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-004"><h2>image004</h2><div class="pair-grid">
+<div class="source"><img src="./../img/heat_discretization_tet.files/image004.png" alt="source image004"></div>
+<div class="render" data-source-image="./../img/heat_discretization_tet.files/image004.png">\[
+\begin{aligned}
+&\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\left(
+\frac{\partial\Theta}{\partial\tau}
++V_x\frac{\partial\Theta}{\partial X}
++V_y\frac{\partial\Theta}{\partial Y}
++V_z\frac{\partial\Theta}{\partial Z}
++\frac{\partial q_x^{*}}{\partial X}
++\frac{\partial q_y^{*}}{\partial Y}
++\frac{\partial q_z^{*}}{\partial Z}
+\right)dV\\
+&=
+\int_V\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial\Theta}{\partial\tau}dV
++V_x\int_V\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial\Theta}{\partial X}dV
++V_y\int_V\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial\Theta}{\partial Y}dV\\
+&\quad
++V_z\int_V\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial\Theta}{\partial Z}dV
++\int_V\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial q_x^{*}}{\partial X}dV
++\int_V\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial q_y^{*}}{\partial Y}dV\\
+&\quad
++\int_V\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial q_z^{*}}{\partial Z}dV
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-005"><h2>image005</h2><div class="pair-grid">
+<div class="source"><img src="./../img/heat_discretization_tet.files/image005.png" alt="source image005"></div>
+<div class="render" data-source-image="./../img/heat_discretization_tet.files/image005.png">\[
+\begin{aligned}
+&\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\left(
+\frac{\partial\Theta}{\partial\tau}
++V_x\frac{\partial\Theta}{\partial X}
++V_y\frac{\partial\Theta}{\partial Y}
++V_z\frac{\partial\Theta}{\partial Z}
++\frac{\partial q_x^{*}}{\partial X}
++\frac{\partial q_y^{*}}{\partial Y}
++\frac{\partial q_z^{*}}{\partial Z}
+\right)dV\\
+&=
+\int_V\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial\Theta}{\partial\tau}dV
++V_x\int_V\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial\Theta}{\partial X}dV
++V_y\int_V\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial\Theta}{\partial Y}dV\\
+&\quad
++V_z\int_V\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial\Theta}{\partial Z}dV
++\int_V\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial q_x^{*}}{\partial X}dV
++\int_V\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial q_y^{*}}{\partial Y}dV\\
+&\quad
++\int_V\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial q_z^{*}}{\partial Z}dV
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-006"><h2>image006</h2><div class="pair-grid">
+<div class="source"><img src="./../img/heat_discretization_tet.files/image006.png" alt="source image006"></div>
+<div class="render" data-source-image="./../img/heat_discretization_tet.files/image006.png">\[
+\begin{aligned}
+={}&
+\int_V[N]^T\frac{\partial\Theta}{\partial\tau}dV
++V_x\int_V[N]^T\frac{\partial\Theta}{\partial X}dV
++V_y\int_V[N]^T\frac{\partial\Theta}{\partial Y}dV
++V_z\int_V[N]^T\frac{\partial\Theta}{\partial Z}dV\\
+&+\int_V[N]^T\frac{\partial q_x^{*}}{\partial X}dV
++\int_V[N]^T\frac{\partial q_y^{*}}{\partial Y}dV
++\int_V[N]^T\frac{\partial q_z^{*}}{\partial Z}dV
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-007"><h2>image007</h2><div class="pair-grid">
+<div class="source"><img src="./../img/heat_discretization_tet.files/image007.png" alt="source image007"></div>
+<div class="render" data-source-image="./../img/heat_discretization_tet.files/image007.png">\[
+\begin{aligned}
+={}&
+\int_V[N]^T
+\frac{[N]\left(\{\Theta\}^{\tau+\Delta\tau}-\{\Theta\}^{\tau}\right)}
+{\Delta\tau}dV\\
+&+V_x\int_V[N]^T\frac{\partial[N]\{\Theta\}}{\partial X}dV
++V_y\int_V[N]^T\frac{\partial[N]\{\Theta\}}{\partial Y}dV
++V_z\int_V[N]^T\frac{\partial[N]\{\Theta\}}{\partial Z}dV\\
+&+\int_S[N]^Tq_x^{*}n_x\,dS
+-\int_V\left[\frac{\partial N}{\partial X}\right]^Tq_x^{*}dV\\
+&+\int_S[N]^Tq_y^{*}n_y\,dS
+-\int_V\left[\frac{\partial N}{\partial Y}\right]^Tq_y^{*}dV\\
+&+\int_S[N]^Tq_z^{*}n_z\,dS
+-\int_V\left[\frac{\partial N}{\partial Z}\right]^Tq_z^{*}dV
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-008"><h2>image008</h2><div class="pair-grid">
+<div class="source"><img src="./../img/heat_discretization_tet.files/image008.png" alt="source image008"></div>
+<div class="render" data-source-image="./../img/heat_discretization_tet.files/image008.png">\[
+\begin{aligned}
+={}&
+\int_V[N]^T[N]dV
+\frac{\{\Theta\}^{\tau+\Delta\tau}-\{\Theta\}^{\tau}}
+{\Delta\tau}\\
+&+V_x\int_V[N]^T\left[\frac{\partial N}{\partial X}\right]dV\{\Theta\}
++V_y\int_V[N]^T\left[\frac{\partial N}{\partial Y}\right]dV\{\Theta\}
++V_z\int_V[N]^T\left[\frac{\partial N}{\partial Z}\right]dV\{\Theta\}\\
+&-\int_V\left[\frac{\partial N}{\partial X}\right]^Tq_x^{*}dV
+-\int_V\left[\frac{\partial N}{\partial Y}\right]^Tq_y^{*}dV
+-\int_V\left[\frac{\partial N}{\partial Z}\right]^Tq_z^{*}dV\\
+&+\int_S[N]^T(q_x^{*}n_x+q_y^{*}n_y+q_z^{*}n_z)dS
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-009"><h2>image009</h2><div class="pair-grid">
+<div class="source"><img src="./../img/heat_discretization_tet.files/image009.png" alt="source image009"></div>
+<div class="render" data-source-image="./../img/heat_discretization_tet.files/image009.png">\[
+\begin{aligned}
+={}&
+\int_V[N]^T[N]dV
+\frac{\{\Theta\}^{\tau+\Delta\tau}-\{\Theta\}^{\tau}}
+{\Delta\tau}\\
+&+V_x\int_V[N]^T\left[\frac{\partial N}{\partial X}\right]dV\{\Theta\}
++V_y\int_V[N]^T\left[\frac{\partial N}{\partial Y}\right]dV\{\Theta\}
++V_z\int_V[N]^T\left[\frac{\partial N}{\partial Z}\right]dV\{\Theta\}\\
+&-\int_V\left[\frac{\partial N}{\partial X}\right]^T
+\left(-\frac{1}{Pe}\frac{\partial\Theta}{\partial X}\right)dV\\
+&-\int_V\left[\frac{\partial N}{\partial Y}\right]^T
+\left(-\frac{1}{Pe}\frac{\partial\Theta}{\partial Y}\right)dV\\
+&-\int_V\left[\frac{\partial N}{\partial Z}\right]^T
+\left(-\frac{1}{Pe}\frac{\partial\Theta}{\partial Z}\right)dV\\
+&+Nu(\Theta-\Theta_h)\int_S[N]^T dS
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-010"><h2>image010</h2><div class="pair-grid">
+<div class="source"><img src="./../img/heat_discretization_tet.files/image010.png" alt="source image010"></div>
+<div class="render" data-source-image="./../img/heat_discretization_tet.files/image010.png">\[
+\begin{aligned}
+={}&
+\int_V[N]^T[N]dV
+\frac{\{\Theta\}^{\tau+\Delta\tau}-\{\Theta\}^{\tau}}
+{\Delta\tau}\\
+&+V_x\int_V[N]^T\left[\frac{\partial N}{\partial X}\right]dV\{\Theta\}
++V_y\int_V[N]^T\left[\frac{\partial N}{\partial Y}\right]dV\{\Theta\}
++V_z\int_V[N]^T\left[\frac{\partial N}{\partial Z}\right]dV\{\Theta\}\\
+&+\frac{1}{Pe}\int_V\left[\frac{\partial N}{\partial X}\right]^T
+\frac{\partial\Theta}{\partial X}dV
++\frac{1}{Pe}\int_V\left[\frac{\partial N}{\partial Y}\right]^T
+\frac{\partial\Theta}{\partial Y}dV
++\frac{1}{Pe}\int_V\left[\frac{\partial N}{\partial Z}\right]^T
+\frac{\partial\Theta}{\partial Z}dV\\
+&+Nu(\Theta-\Theta_h)\int_S[N]^T dS
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-011"><h2>image011</h2><div class="pair-grid">
+<div class="source"><img src="./../img/heat_discretization_tet.files/image011.png" alt="source image011"></div>
+<div class="render" data-source-image="./../img/heat_discretization_tet.files/image011.png">\[
+\begin{aligned}
+={}&
+\int_V[N]^T[N]dV
+\frac{\{\Theta\}^{\tau+\Delta\tau}-\{\Theta\}^{\tau}}
+{\Delta\tau}\\
+&+V_x\int_V[N]^T\left[\frac{\partial N}{\partial X}\right]dV\{\Theta\}
++V_y\int_V[N]^T\left[\frac{\partial N}{\partial Y}\right]dV\{\Theta\}
++V_z\int_V[N]^T\left[\frac{\partial N}{\partial Z}\right]dV\{\Theta\}\\
+&+\frac{1}{Pe}\int_V\left[\frac{\partial N}{\partial X}\right]^T
+\frac{\partial[N]\{\Theta\}}{\partial X}dV
++\frac{1}{Pe}\int_V\left[\frac{\partial N}{\partial Y}\right]^T
+\frac{\partial[N]\{\Theta\}}{\partial Y}dV
++\frac{1}{Pe}\int_V\left[\frac{\partial N}{\partial Z}\right]^T
+\frac{\partial[N]\{\Theta\}}{\partial Z}dV\\
+&+Nu(\Theta-\Theta_h)\int_S[N]^T dS
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-012"><h2>image012</h2><div class="pair-grid">
+<div class="source"><img src="./../img/heat_discretization_tet.files/image012.png" alt="source image012"></div>
+<div class="render" data-source-image="./../img/heat_discretization_tet.files/image012.png">\[
+\begin{aligned}
+={}&
+\int_V[N]^T[N]dV
+\frac{\{\Theta\}^{\tau+\Delta\tau}-\{\Theta\}^{\tau}}
+{\Delta\tau}\\
+&+V_x\int_V[N]^T\left[\frac{\partial N}{\partial X}\right]dV\{\Theta\}
++V_y\int_V[N]^T\left[\frac{\partial N}{\partial Y}\right]dV\{\Theta\}
++V_z\int_V[N]^T\left[\frac{\partial N}{\partial Z}\right]dV\{\Theta\}\\
+&+\frac{1}{Pe}\int_V\left[\frac{\partial N}{\partial X}\right]^T
+\left[\frac{\partial N}{\partial X}\right]dV\{\Theta\}
++\frac{1}{Pe}\int_V\left[\frac{\partial N}{\partial Y}\right]^T
+\left[\frac{\partial N}{\partial Y}\right]dV\{\Theta\}\\
+&+\frac{1}{Pe}\int_V\left[\frac{\partial N}{\partial Z}\right]^T
+\left[\frac{\partial N}{\partial Z}\right]dV\{\Theta\}
++Nu(\Theta-\Theta_h)\int_S[N]^T dS
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-013"><h2>image013</h2><div class="pair-grid">
+<div class="source"><img src="./../img/heat_discretization_tet.files/image013.png" alt="source image013"></div>
+<div class="render" data-source-image="./../img/heat_discretization_tet.files/image013.png">\[
+=
+\int_V
+\begin{bmatrix}
+N_1N_1&N_1N_2&N_1N_3&N_1N_4\\
+N_2N_1&N_2N_2&N_2N_3&N_2N_4\\
+N_3N_1&N_3N_2&N_3N_3&N_3N_4\\
+N_4N_1&N_4N_2&N_4N_3&N_4N_4
+\end{bmatrix}
+dV\,
+\frac{\{\Theta\}^{\tau+\Delta\tau}-\{\Theta\}^{\tau}}
+{\Delta\tau}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-014"><h2>image014</h2><div class="pair-grid">
+<div class="source"><img src="./../img/heat_discretization_tet.files/image014.png" alt="source image014"></div>
+<div class="render" data-source-image="./../img/heat_discretization_tet.files/image014.png">\[
+\begin{aligned}
+&+V_x\int_V
+\begin{bmatrix}
+N_1\frac{\partial N_1}{\partial X}&N_1\frac{\partial N_2}{\partial X}&N_1\frac{\partial N_3}{\partial X}&N_1\frac{\partial N_4}{\partial X}\\
+N_2\frac{\partial N_1}{\partial X}&N_2\frac{\partial N_2}{\partial X}&N_2\frac{\partial N_3}{\partial X}&N_2\frac{\partial N_4}{\partial X}\\
+N_3\frac{\partial N_1}{\partial X}&N_3\frac{\partial N_2}{\partial X}&N_3\frac{\partial N_3}{\partial X}&N_3\frac{\partial N_4}{\partial X}\\
+N_4\frac{\partial N_1}{\partial X}&N_4\frac{\partial N_2}{\partial X}&N_4\frac{\partial N_3}{\partial X}&N_4\frac{\partial N_4}{\partial X}
+\end{bmatrix}dV\{\Theta\}\\
+&+V_y\int_V
+\begin{bmatrix}
+N_1\frac{\partial N_1}{\partial Y}&N_1\frac{\partial N_2}{\partial Y}&N_1\frac{\partial N_3}{\partial Y}&N_1\frac{\partial N_4}{\partial Y}\\
+N_2\frac{\partial N_1}{\partial Y}&N_2\frac{\partial N_2}{\partial Y}&N_2\frac{\partial N_3}{\partial Y}&N_2\frac{\partial N_4}{\partial Y}\\
+N_3\frac{\partial N_1}{\partial Y}&N_3\frac{\partial N_2}{\partial Y}&N_3\frac{\partial N_3}{\partial Y}&N_3\frac{\partial N_4}{\partial Y}\\
+N_4\frac{\partial N_1}{\partial Y}&N_4\frac{\partial N_2}{\partial Z}&N_4\frac{\partial N_3}{\partial Y}&N_4\frac{\partial N_4}{\partial Y}
+\end{bmatrix}dV\{\Theta\}\\
+&+V_z\int_V
+\begin{bmatrix}
+N_1\frac{\partial N_1}{\partial Z}&N_1\frac{\partial N_2}{\partial Z}&N_1\frac{\partial N_3}{\partial Z}&N_1\frac{\partial N_4}{\partial Z}\\
+N_2\frac{\partial N_1}{\partial Z}&N_2\frac{\partial N_2}{\partial Z}&N_2\frac{\partial N_3}{\partial Z}&N_2\frac{\partial N_4}{\partial Z}\\
+N_3\frac{\partial N_1}{\partial Z}&N_3\frac{\partial N_2}{\partial Z}&N_3\frac{\partial N_3}{\partial Z}&N_3\frac{\partial N_4}{\partial Z}\\
+N_4\frac{\partial N_1}{\partial Z}&N_4\frac{\partial N_2}{\partial Z}&N_4\frac{\partial N_3}{\partial Z}&N_4\frac{\partial N_4}{\partial Z}
+\end{bmatrix}dV\{\Theta\}
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-015"><h2>image015</h2><div class="pair-grid">
+<div class="source"><img src="./../img/heat_discretization_tet.files/image015.png" alt="source image015"></div>
+<div class="render" data-source-image="./../img/heat_discretization_tet.files/image015.png">\[
+\begin{aligned}
+&+\frac{1}{Pe}\int_V
+\begin{bmatrix}
+\frac{\partial N_1}{\partial X}\frac{\partial N_1}{\partial X}&\frac{\partial N_1}{\partial X}\frac{\partial N_2}{\partial X}&\frac{\partial N_1}{\partial X}\frac{\partial N_3}{\partial X}&\frac{\partial N_1}{\partial X}\frac{\partial N_4}{\partial X}\\
+\frac{\partial N_2}{\partial X}\frac{\partial N_1}{\partial X}&\frac{\partial N_2}{\partial X}\frac{\partial N_2}{\partial X}&\frac{\partial N_2}{\partial X}\frac{\partial N_3}{\partial X}&\frac{\partial N_2}{\partial X}\frac{\partial N_4}{\partial X}\\
+\frac{\partial N_3}{\partial X}\frac{\partial N_1}{\partial X}&\frac{\partial N_3}{\partial X}\frac{\partial N_2}{\partial X}&\frac{\partial N_3}{\partial X}\frac{\partial N_3}{\partial X}&\frac{\partial N_3}{\partial X}\frac{\partial N_4}{\partial X}\\
+\frac{\partial N_4}{\partial X}\frac{\partial N_1}{\partial X}&\frac{\partial N_4}{\partial X}\frac{\partial N_2}{\partial X}&\frac{\partial N_4}{\partial X}\frac{\partial N_3}{\partial X}&\frac{\partial N_4}{\partial X}\frac{\partial N_4}{\partial X}
+\end{bmatrix}dV\{\Theta\}\\
+&+\frac{1}{Pe}\int_V
+\begin{bmatrix}
+\frac{\partial N_1}{\partial Y}\frac{\partial N_1}{\partial Y}&\frac{\partial N_1}{\partial Y}\frac{\partial N_2}{\partial Y}&\frac{\partial N_1}{\partial Y}\frac{\partial N_3}{\partial Y}&\frac{\partial N_1}{\partial Y}\frac{\partial N_4}{\partial Y}\\
+\frac{\partial N_2}{\partial Y}\frac{\partial N_1}{\partial Y}&\frac{\partial N_2}{\partial Y}\frac{\partial N_2}{\partial Y}&\frac{\partial N_2}{\partial Y}\frac{\partial N_3}{\partial Y}&\frac{\partial N_2}{\partial Y}\frac{\partial N_4}{\partial Y}\\
+\frac{\partial N_3}{\partial Y}\frac{\partial N_1}{\partial Y}&\frac{\partial N_3}{\partial Y}\frac{\partial N_2}{\partial Y}&\frac{\partial N_3}{\partial Y}\frac{\partial N_3}{\partial Y}&\frac{\partial N_3}{\partial Y}\frac{\partial N_4}{\partial Y}\\
+\frac{\partial N_4}{\partial Y}\frac{\partial N_1}{\partial Y}&\frac{\partial N_4}{\partial Y}\frac{\partial N_2}{\partial Y}&\frac{\partial N_4}{\partial Y}\frac{\partial N_3}{\partial Y}&\frac{\partial N_4}{\partial Y}\frac{\partial N_4}{\partial Y}
+\end{bmatrix}dV\{\Theta\}\\
+&+\frac{1}{Pe}\int_V
+\begin{bmatrix}
+\frac{\partial N_1}{\partial Z}\frac{\partial N_1}{\partial Z}&\frac{\partial N_1}{\partial Z}\frac{\partial N_2}{\partial Z}&\frac{\partial N_1}{\partial Z}\frac{\partial N_3}{\partial Z}&\frac{\partial N_1}{\partial Z}\frac{\partial N_4}{\partial Z}\\
+\frac{\partial N_2}{\partial Z}\frac{\partial N_1}{\partial Z}&\frac{\partial N_2}{\partial Z}\frac{\partial N_2}{\partial Z}&\frac{\partial N_2}{\partial Z}\frac{\partial N_3}{\partial Z}&\frac{\partial N_2}{\partial Z}\frac{\partial N_4}{\partial Z}\\
+\frac{\partial N_3}{\partial Z}\frac{\partial N_1}{\partial Z}&\frac{\partial N_3}{\partial Z}\frac{\partial N_2}{\partial Z}&\frac{\partial N_3}{\partial Z}\frac{\partial N_3}{\partial Z}&\frac{\partial N_3}{\partial Z}\frac{\partial N_4}{\partial Z}\\
+\frac{\partial N_4}{\partial Z}\frac{\partial N_1}{\partial Z}&\frac{\partial N_4}{\partial Z}\frac{\partial N_2}{\partial Z}&\frac{\partial N_4}{\partial Z}\frac{\partial N_3}{\partial Z}&\frac{\partial N_4}{\partial Z}\frac{\partial N_4}{\partial Z}
+\end{bmatrix}dV\{\Theta\}
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-016"><h2>image016</h2><div class="pair-grid">
+<div class="source"><img src="./../img/heat_discretization_tet.files/image016.png" alt="source image016"></div>
+<div class="render" data-source-image="./../img/heat_discretization_tet.files/image016.png">\[
++Nu(\Theta-\Theta_h)\int_S
+\begin{bmatrix}
+N_1\\N_2\\N_3
+\end{bmatrix}dS
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-017"><h2>image017</h2><div class="pair-grid">
+<div class="source"><img src="./../img/heat_discretization_tet.files/image017.png" alt="source image017"></div>
+<div class="render" data-source-image="./../img/heat_discretization_tet.files/image017.png">\[
+=
+\int_V
+\begin{bmatrix}
+L_1L_1&L_1L_2&L_1L_3&L_1L_4\\
+L_2L_1&L_2L_2&L_2L_3&L_2L_4\\
+L_3L_1&L_3L_2&L_3L_3&L_3L_4\\
+L_4L_1&L_4L_2&L_4L_3&L_4L_4
+\end{bmatrix}
+dV\,
+\frac{\{\Theta\}^{\tau+\Delta\tau}-\{\Theta\}^{\tau}}
+{\Delta\tau}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-018"><h2>image018</h2><div class="pair-grid">
+<div class="source"><img src="./../img/heat_discretization_tet.files/image018.png" alt="source image018"></div>
+<div class="render" data-source-image="./../img/heat_discretization_tet.files/image018.png">\[
+\begin{aligned}
+&+V_x\int_V\frac{1}{6V}
+\begin{bmatrix}
+L_1c_{1x}&L_1c_{2x}&L_1c_{3x}&L_1c_{4x}\\
+L_2c_{1x}&L_2c_{2x}&L_2c_{3x}&L_2c_{4x}\\
+L_3c_{1x}&L_3c_{2x}&L_3c_{3x}&L_3c_{4x}\\
+L_4c_{1x}&L_4c_{2x}&L_4c_{3x}&L_4c_{4x}
+\end{bmatrix}dV\{\Theta\}\\
+&+V_y\int_V\frac{1}{6V}
+\begin{bmatrix}
+L_1c_{1y}&L_1c_{2y}&L_1c_{3y}&L_1c_{4y}\\
+L_2c_{1y}&L_2c_{2y}&L_2c_{3y}&L_2c_{4y}\\
+L_3c_{1y}&L_3c_{2y}&L_3c_{3y}&L_3c_{4y}\\
+L_4c_{1y}&L_4c_{2y}&L_4c_{3y}&L_4c_{4y}
+\end{bmatrix}dV\{\Theta\}\\
+&+V_z\int_V\frac{1}{6V}
+\begin{bmatrix}
+L_1c_{1z}&L_1c_{2z}&L_1c_{3z}&L_1c_{4z}\\
+L_2c_{1z}&L_2c_{2z}&L_2c_{3z}&L_2c_{4z}\\
+L_3c_{1z}&L_3c_{2z}&L_3c_{3z}&L_3c_{4z}\\
+L_4c_{1z}&L_4c_{2z}&L_4c_{3z}&L_4c_{4z}
+\end{bmatrix}dV\{\Theta\}
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-019"><h2>image019</h2><div class="pair-grid">
+<div class="source"><img src="./../img/heat_discretization_tet.files/image019.png" alt="source image019"></div>
+<div class="render" data-source-image="./../img/heat_discretization_tet.files/image019.png">\[
+\begin{aligned}
+&+\frac{1}{Pe}\int_V\frac{1}{36V^2}
+\begin{bmatrix}
+c_{1x}c_{1x}&c_{1x}c_{2x}&c_{1x}c_{3x}&c_{1x}c_{4x}\\
+c_{2x}c_{1x}&c_{2x}c_{2x}&c_{2x}c_{3x}&c_{2x}c_{4x}\\
+c_{3x}c_{1x}&c_{3x}c_{2x}&c_{3x}c_{3x}&c_{3x}c_{4x}\\
+c_{4x}c_{1x}&c_{4x}c_{2x}&c_{4x}c_{3x}&c_{4x}c_{4x}
+\end{bmatrix}dV\{\Theta\}\\
+&+\frac{1}{Pe}\int_V\frac{1}{36V^2}
+\begin{bmatrix}
+c_{1y}c_{1y}&c_{1y}c_{2y}&c_{1y}c_{3y}&c_{1y}c_{4y}\\
+c_{2y}c_{1y}&c_{2y}c_{2y}&c_{2y}c_{3y}&c_{2y}c_{4y}\\
+c_{3y}c_{1y}&c_{3y}c_{2y}&c_{3y}c_{3y}&c_{3y}c_{4y}\\
+c_{4y}c_{1y}&c_{4y}c_{2y}&c_{4y}c_{3y}&c_{4y}c_{4y}
+\end{bmatrix}dV\{\Theta\}\\
+&+\frac{1}{Pe}\int_V\frac{1}{36V^2}
+\begin{bmatrix}
+c_{1z}c_{1z}&c_{1z}c_{2z}&c_{1z}c_{3z}&c_{1z}c_{4z}\\
+c_{2z}c_{1z}&c_{2z}c_{2z}&c_{2z}c_{3z}&c_{2z}c_{4z}\\
+c_{3z}c_{1z}&c_{3z}c_{2z}&c_{3z}c_{3z}&c_{3z}c_{4z}\\
+c_{4z}c_{1z}&c_{4z}c_{2z}&c_{4z}c_{3z}&c_{4z}c_{4z}
+\end{bmatrix}dV\{\Theta\}
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-020"><h2>image020</h2><div class="pair-grid">
+<div class="source"><img src="./../img/heat_discretization_tet.files/image020.png" alt="source image020"></div>
+<div class="render" data-source-image="./../img/heat_discretization_tet.files/image020.png">\[
++Nu(\Theta-\Theta_h)\int_S
+\begin{bmatrix}
+L_1\\L_2\\L_3
+\end{bmatrix}dS
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-021"><h2>image021</h2><div class="pair-grid">
+<div class="source"><img src="./../img/heat_discretization_tet.files/image021.png" alt="source image021"></div>
+<div class="render" data-source-image="./../img/heat_discretization_tet.files/image021.png">\[
+\begin{aligned}
+\int_V L_1^pL_2^qL_3^rL_4^s\,dV
+&=\frac{p!q!r!s!}{(p+q+r+s+3)!}\,6V\\
+\int_V L_iL_j\,dV
+&=
+\begin{cases}
+\displaystyle\frac{1!1!}{(1+1+3)!}\,6V
+=\frac{6}{5!}V
+=\frac{1}{20}V &(i\ne j)\\
+\displaystyle\frac{2!}{(1+1+3)!}\,6V
+=\frac{12}{5!}V
+=\frac{1}{10}V &(i=j)
+\end{cases}\\
+\int_V L_i\,dV
+&=\frac{1!}{(1+3)!}\,6V
+=\frac{6}{4!}V
+=\frac{1}{4}V\\
+\int_S L_1^pL_2^qL_3^r\,dS
+&=\frac{p!q!r!}{(p+q+r+2)!}\,2S\\
+\int_S L_i\,dS
+&=\frac{1}{(1+2)!}\,2S
+=\frac{1}{3}S
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-022"><h2>image022</h2><div class="pair-grid">
+<div class="source"><img src="./../img/heat_discretization_tet.files/image022.png" alt="source image022"></div>
+<div class="render" data-source-image="./../img/heat_discretization_tet.files/image022.png">\[
+=
+\frac{1}{20}V
+\begin{bmatrix}
+2&1&1&1\\
+1&2&1&1\\
+1&1&2&1\\
+1&1&1&2
+\end{bmatrix}
+\frac{\{\Theta\}^{\tau+\Delta\tau}-\{\Theta\}^{\tau}}
+{\Delta\tau}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-023"><h2>image023</h2><div class="pair-grid">
+<div class="source"><img src="./../img/heat_discretization_tet.files/image023.png" alt="source image023"></div>
+<div class="render" data-source-image="./../img/heat_discretization_tet.files/image023.png">\[
+\begin{aligned}
+&+V_x\frac{1}{6V}\frac{V}{4}
+\begin{bmatrix}
+c_{1x}&c_{2x}&c_{3x}&c_{4x}\\
+c_{1x}&c_{2x}&c_{3x}&c_{4x}\\
+c_{1x}&c_{2x}&c_{3x}&c_{4x}\\
+c_{1x}&c_{2x}&c_{3x}&c_{4x}
+\end{bmatrix}\{\Theta\}\\
+&+V_y\frac{1}{6V}\frac{V}{4}
+\begin{bmatrix}
+c_{1y}&c_{2y}&c_{3y}&c_{4y}\\
+c_{1y}&c_{2y}&c_{3y}&c_{4y}\\
+c_{1y}&c_{2y}&c_{3y}&c_{4y}\\
+c_{1y}&c_{2y}&c_{3y}&c_{4y}
+\end{bmatrix}\{\Theta\}\\
+&+V_z\frac{1}{6V}\frac{V}{4}
+\begin{bmatrix}
+c_{1z}&c_{2z}&c_{3z}&c_{4z}\\
+c_{1z}&c_{2z}&c_{3z}&c_{4z}\\
+c_{1z}&c_{2z}&c_{3z}&c_{4z}\\
+c_{1z}&c_{2z}&c_{3z}&c_{4z}
+\end{bmatrix}\{\Theta\}
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-024"><h2>image024</h2><div class="pair-grid">
+<div class="source"><img src="./../img/heat_discretization_tet.files/image024.png" alt="source image024"></div>
+<div class="render" data-source-image="./../img/heat_discretization_tet.files/image024.png">\[
+\begin{aligned}
+&+\frac{1}{Pe}\frac{1}{36V^2}V
+\begin{bmatrix}
+c_{1x}c_{1x}&c_{1x}c_{2x}&c_{1x}c_{3x}&c_{1x}c_{4x}\\
+c_{2x}c_{1x}&c_{2x}c_{2x}&c_{2x}c_{3x}&c_{2x}c_{4x}\\
+c_{3x}c_{1x}&c_{3x}c_{2x}&c_{3x}c_{3x}&c_{3x}c_{4x}\\
+c_{4x}c_{1x}&c_{4x}c_{2x}&c_{4x}c_{3x}&c_{4x}c_{4x}
+\end{bmatrix}\{\Theta\}\\
+&+\frac{1}{Pe}\frac{1}{36V^2}V
+\begin{bmatrix}
+c_{1y}c_{1y}&c_{1y}c_{2y}&c_{1y}c_{3y}&c_{1y}c_{4y}\\
+c_{2y}c_{1y}&c_{2y}c_{2y}&c_{2y}c_{3y}&c_{2y}c_{4y}\\
+c_{3y}c_{1y}&c_{3y}c_{2y}&c_{3y}c_{3y}&c_{3y}c_{4y}\\
+c_{4y}c_{1y}&c_{4y}c_{2y}&c_{4y}c_{3y}&c_{4y}c_{4y}
+\end{bmatrix}\{\Theta\}\\
+&+\frac{1}{Pe}\frac{1}{36V^2}V
+\begin{bmatrix}
+c_{1z}c_{1z}&c_{1z}c_{2z}&c_{1z}c_{3z}&c_{1z}c_{4z}\\
+c_{2z}c_{1z}&c_{2z}c_{2z}&c_{2z}c_{3z}&c_{2z}c_{4z}\\
+c_{3z}c_{1z}&c_{3z}c_{2z}&c_{3z}c_{3z}&c_{3z}c_{4z}\\
+c_{4z}c_{1z}&c_{4z}c_{2z}&c_{4z}c_{3z}&c_{4z}c_{4z}
+\end{bmatrix}\{\Theta\}
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-025"><h2>image025</h2><div class="pair-grid">
+<div class="source"><img src="./../img/heat_discretization_tet.files/image025.png" alt="source image025"></div>
+<div class="render" data-source-image="./../img/heat_discretization_tet.files/image025.png">\[
++Nu(\Theta-\Theta_h)\frac{S}{3}
+\begin{bmatrix}
+1\\1\\1
+\end{bmatrix}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-026"><h2>image026</h2><div class="pair-grid">
+<div class="source"><img src="./../img/heat_discretization_tet.files/image026.png" alt="source image026"></div>
+<div class="render" data-source-image="./../img/heat_discretization_tet.files/image026.png">\[
+\begin{aligned}
+&+V_x\frac{1}{24}
+\begin{bmatrix}
+c_{1x}&c_{2x}&c_{3x}&c_{4x}\\
+c_{1x}&c_{2x}&c_{3x}&c_{4x}\\
+c_{1x}&c_{2x}&c_{3x}&c_{4x}\\
+c_{1x}&c_{2x}&c_{3x}&c_{4x}
+\end{bmatrix}\{\Theta\}\\
+&+V_y\frac{1}{24}
+\begin{bmatrix}
+c_{1y}&c_{2y}&c_{3y}&c_{4y}\\
+c_{1y}&c_{2y}&c_{3y}&c_{4y}\\
+c_{1y}&c_{2y}&c_{3y}&c_{4y}\\
+c_{1y}&c_{2y}&c_{3y}&c_{4y}
+\end{bmatrix}\{\Theta\}\\
+&+V_z\frac{1}{24}
+\begin{bmatrix}
+c_{1z}&c_{2z}&c_{3z}&c_{4z}\\
+c_{1z}&c_{2z}&c_{3z}&c_{4z}\\
+c_{1z}&c_{2z}&c_{3z}&c_{4z}\\
+c_{1z}&c_{2z}&c_{3z}&c_{4z}
+\end{bmatrix}\{\Theta\}
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-027"><h2>image027</h2><div class="pair-grid">
+<div class="source"><img src="./../img/heat_discretization_tet.files/image027.png" alt="source image027"></div>
+<div class="render" data-source-image="./../img/heat_discretization_tet.files/image027.png">\[
+\begin{aligned}
+&+\frac{1}{Pe}\frac{1}{36V}
+\begin{bmatrix}
+c_{1x}c_{1x}&c_{1x}c_{2x}&c_{1x}c_{3x}&c_{1x}c_{4x}\\
+c_{2x}c_{1x}&c_{2x}c_{2x}&c_{2x}c_{3x}&c_{2x}c_{4x}\\
+c_{3x}c_{1x}&c_{3x}c_{2x}&c_{3x}c_{3x}&c_{3x}c_{4x}\\
+c_{4x}c_{1x}&c_{4x}c_{2x}&c_{4x}c_{3x}&c_{4x}c_{4x}
+\end{bmatrix}\{\Theta\}\\
+&+\frac{1}{Pe}\frac{1}{36V}
+\begin{bmatrix}
+c_{1y}c_{1y}&c_{1y}c_{2y}&c_{1y}c_{3y}&c_{1y}c_{4y}\\
+c_{2y}c_{1y}&c_{2y}c_{2y}&c_{2y}c_{3y}&c_{2y}c_{4y}\\
+c_{3y}c_{1y}&c_{3y}c_{2y}&c_{3y}c_{3y}&c_{3y}c_{4y}\\
+c_{4y}c_{1y}&c_{4y}c_{2y}&c_{4y}c_{3y}&c_{4y}c_{4y}
+\end{bmatrix}\{\Theta\}\\
+&+\frac{1}{Pe}\frac{1}{36V}
+\begin{bmatrix}
+c_{1z}c_{1z}&c_{1z}c_{2z}&c_{1z}c_{3z}&c_{1z}c_{4z}\\
+c_{2z}c_{1z}&c_{2z}c_{2z}&c_{2z}c_{3z}&c_{2z}c_{4z}\\
+c_{3z}c_{1z}&c_{3z}c_{2z}&c_{3z}c_{3z}&c_{3z}c_{4z}\\
+c_{4z}c_{1z}&c_{4z}c_{2z}&c_{4z}c_{3z}&c_{4z}c_{4z}
+\end{bmatrix}\{\Theta\}
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-028"><h2>image028</h2><div class="pair-grid">
+<div class="source"><img src="./../img/heat_discretization_tet.files/image028.png" alt="source image028"></div>
+<div class="render" data-source-image="./../img/heat_discretization_tet.files/image028.png">\[
++Nu(\Theta-\Theta_h)\frac{S}{3}
+\begin{bmatrix}
+1\\1\\1
+\end{bmatrix}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-029"><h2>image029</h2><div class="pair-grid">
+<div class="source"><img src="./../img/heat_discretization_tet.files/image029.png" alt="source image029"></div>
+<div class="render" data-source-image="./../img/heat_discretization_tet.files/image029.png">\[
+\begin{aligned}
+={}&
+[C]\frac{\{\Theta\}^{\tau+\Delta\tau}-\{\Theta\}^{\tau}}{\Delta\tau}\\
+&+V_x[C_x]\{\Theta\}
++V_y[C_y]\{\Theta\}
++V_z[C_z]\{\Theta\}\\
+&+\frac{1}{Pe}[S_{xx}]\{\Theta\}
++\frac{1}{Pe}[S_{yy}]\{\Theta\}
++\frac{1}{Pe}[S_{zz}]\{\Theta\}\\
+&+Nu(\Theta-\Theta_h)\frac{S}{3}
+\begin{bmatrix}1\\1\\1\end{bmatrix}
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-030"><h2>image030</h2><div class="pair-grid">
+<div class="source"><img src="./../img/heat_discretization_tet.files/image030.png" alt="source image030"></div>
+<div class="render" data-source-image="./../img/heat_discretization_tet.files/image030.png">\[
+\begin{aligned}
+={}&
+[C]\frac{\{\Theta\}^{\tau+\Delta\tau}-\{\Theta\}^{\tau}}{\Delta\tau}\\
+&+\left(V_x[C_x]+V_y[C_y]+V_z[C_z]\right)\{\Theta\}\\
+&+\frac{1}{Pe}\left([S_{xx}]+[S_{yy}]+[S_{zz}]\right)\{\Theta\}\\
+&+Nu(\Theta-\Theta_h)\frac{S}{3}
+\begin{bmatrix}1\\1\\1\end{bmatrix}\\
+={}&
+\begin{bmatrix}0\\0\\0\\0\end{bmatrix}
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-031"><h2>image031</h2><div class="pair-grid">
+<div class="source"><img src="./../img/heat_discretization_tet.files/image031.png" alt="source image031"></div>
+<div class="render" data-source-image="./../img/heat_discretization_tet.files/image031.png">\[
+\begin{aligned}
+&[C]\frac{\{\Theta\}^{\tau+\Delta\tau}-\{\Theta\}^{\tau}}{\Delta\tau}
++\left(V_x[C_x]+V_y[C_y]+V_z[C_z]\right)\{\Theta\}\\
+&+\frac{1}{Pe}\left([S_{xx}]+[S_{yy}]+[S_{zz}]\right)\{\Theta\}
++Nu(\Theta-\Theta_h)\frac{S}{3}
+\begin{bmatrix}1\\1\\1\end{bmatrix}
+=
+\begin{bmatrix}0\\0\\0\\0\end{bmatrix}
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-032"><h2>image032</h2><div class="pair-grid">
+<div class="source"><img src="./../img/heat_discretization_tet.files/image032.png" alt="source image032"></div>
+<div class="render" data-source-image="./../img/heat_discretization_tet.files/image032.png">\[
+\begin{aligned}
+&\frac{[C]}{\Delta\tau}\{\Theta\}^{\tau+\Delta\tau}
++\left(V_x[C_x]+V_y[C_y]+V_z[C_z]\right)\{\Theta\}^{\tau+\Delta\tau}\\
+&+\frac{1}{Pe}\left([S_{xx}]+[S_{yy}]+[S_{zz}]\right)\{\Theta\}^{\tau+\Delta\tau}\\
+={}&
+\frac{[C]}{\Delta\tau}\{\Theta\}^{\tau}
+-Nu(\Theta-\Theta_h)\frac{S}{3}
+\begin{bmatrix}1\\1\\1\end{bmatrix}
+\end{aligned}
+\]</div>
+</div></section>
+</body></html>
