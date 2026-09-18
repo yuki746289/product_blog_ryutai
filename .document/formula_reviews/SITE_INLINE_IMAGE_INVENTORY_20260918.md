@@ -11,17 +11,17 @@
 ## Summary
 
 - HTML pages scanned: **205**
-- Residual inline-image placements: **238**
-- Unique residual image assets: **236**
-- Priority A (`p.im`) placements: **223**
+- Residual inline-image placements: **232**
+- Unique residual image assets: **230**
+- Priority A (`p.im`) placements: **220**
 - Missing referenced assets: **49**
 
 ### By section
 
 | Section | Placements |
 |---|---:|
-| `physics` | 58 |
 | `mesh` | 53 |
+| `physics` | 52 |
 | `mps` | 49 |
 | `fem` | 33 |
 | `hydronamics` | 21 |
@@ -102,23 +102,23 @@ These references exist in HTML but the corresponding image file is absent from t
 | 4 | `mesh/mesh_2.html` | 10 | 10 |
 | 5 | `mesh/mesh_5.html` | 9 | 9 |
 | 6 | `mps/mps_4.html` | 9 | 7 |
-| 7 | `physics/physics_4.html` | 9 | 6 |
-| 8 | `fem/fem_13.html` | 8 | 8 |
-| 9 | `physics/physics_3.html` | 7 | 7 |
-| 10 | `physics/physics_6_2_3.html` | 7 | 7 |
-| 11 | `fem/fem_1.html` | 6 | 6 |
-| 12 | `mesh/mesh_1.html` | 6 | 6 |
-| 13 | `column/column_2.html` | 5 | 5 |
-| 14 | `fem/fem_12.html` | 5 | 3 |
-| 15 | `mesh/mesh_3_2.html` | 5 | 5 |
-| 16 | `physics/physics_2.html` | 5 | 5 |
-| 17 | `physics/physics_6_1.html` | 5 | 5 |
-| 18 | `physics/physics_6_2_1.html` | 5 | 5 |
-| 19 | `appendix/appendix_3_1.html` | 4 | 4 |
-| 20 | `appendix/appendix_3_2.html` | 4 | 4 |
-| 21 | `mesh/mesh_4.html` | 4 | 4 |
-| 22 | `physics/physics_5.html` | 4 | 2 |
-| 23 | `hydronamics/hydronamics_10_1.html` | 3 | 3 |
+| 7 | `fem/fem_13.html` | 8 | 8 |
+| 8 | `physics/physics_3.html` | 7 | 7 |
+| 9 | `physics/physics_6_2_3.html` | 7 | 7 |
+| 10 | `fem/fem_1.html` | 6 | 6 |
+| 11 | `mesh/mesh_1.html` | 6 | 6 |
+| 12 | `column/column_2.html` | 5 | 5 |
+| 13 | `fem/fem_12.html` | 5 | 3 |
+| 14 | `mesh/mesh_3_2.html` | 5 | 5 |
+| 15 | `physics/physics_2.html` | 5 | 5 |
+| 16 | `physics/physics_6_1.html` | 5 | 5 |
+| 17 | `physics/physics_6_2_1.html` | 5 | 5 |
+| 18 | `appendix/appendix_3_1.html` | 4 | 4 |
+| 19 | `appendix/appendix_3_2.html` | 4 | 4 |
+| 20 | `mesh/mesh_4.html` | 4 | 4 |
+| 21 | `physics/physics_5.html` | 4 | 2 |
+| 22 | `hydronamics/hydronamics_10_1.html` | 3 | 3 |
+| 23 | `physics/physics_4.html` | 3 | 3 |
 | 24 | `physics/physics_6_2_2.html` | 3 | 3 |
 | 25 | `physics/physics_6_3_2.html` | 3 | 3 |
 | 26 | `fem/fem_2_1.html` | 2 | 2 |
