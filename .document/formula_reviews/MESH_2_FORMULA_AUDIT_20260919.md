@@ -28,8 +28,18 @@ Transcription:
 
 ## Pass 2
 
-Status: **Pending**
+Result: **9 / 9 PASS**
+
+- Workflow run: **35404059631**
+- Artifact: `mesh-2-pass2`
+- Artifact id: **10571656217**
+- MathJax errors: **0**
+- Unrendered formulas: **0**
+- Pair-page horizontal overflow: **0 / 9**
+- Browser page errors: **0**
+
+All nine source/render pairs were visually inspected. Subscripts, summation bounds, least-squares braces, derivative hold-constant annotations, `-1/2` factors, system ordering, normal-vector components, and `r_0` match the source.
 
 Normal-page application is prohibited until Pass 2 is complete.
 
-**Mesh 2 is not yet certified for normal-page application.**
+**Mesh 2 is certified for normal-page application.**
