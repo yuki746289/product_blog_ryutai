@@ -1,0 +1,488 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FEM batch 4 strict formula re-audit</title>
+<style>body{font-family:Arial,"Yu Gothic",sans-serif;margin:20px}.formula-pair{border-top:1px solid #bbb;padding:18px 0}.pair-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}.source,.render{min-width:0;overflow-x:auto;padding:10px;border:1px solid #ddd}.source img{display:block;max-width:100%;height:auto;margin:auto}.render mjx-container[display="true"]{margin:.4em 0!important;text-align:left!important}@media(max-width:900px){.pair-grid{grid-template-columns:1fr}}</style>
+<script>window.MathJax={output:{displayOverflow:"linebreak",linebreaks:{inline:false,width:"100%"}}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head><body><h1>FEM Batch 4 strict source-image re-audit</h1>
+<h2>fem/fem_4.html</h2>
+<section class="formula-pair" id="formula-fem_4-001"><h3>fem_4-001</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_tri_area.files/image001.png" alt="source fem_4-001"></div>
+<div class="render" data-source-image="./../img/fem_tri_area.files/image001.png">\[
+S=\frac{1}{2}
+\begin{vmatrix}
+1&x_1&y_1\\
+1&x_2&y_2\\
+1&x_3&y_3
+\end{vmatrix}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-fem_4-003"><h3>fem_4-003</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_tri_area.files/image003.png" alt="source fem_4-003"></div>
+<div class="render" data-source-image="./../img/fem_tri_area.files/image003.png">\[
+\begin{aligned}
+\det
+\begin{pmatrix}
+a_{11}&a_{12}&a_{13}\\
+a_{21}&a_{22}&a_{23}\\
+a_{31}&a_{32}&a_{33}
+\end{pmatrix}
+&=
+\sum_{\sigma\in\sigma_3}\varepsilon(\sigma)
+a_{1\sigma(1)}a_{2\sigma(2)}a_{3\sigma(3)}
+\\
+&=
+\sum_{\sigma\in\sigma_3}
+\varepsilon\!\left(
+\begin{pmatrix}1&2&3\\\sigma(1)&\sigma(2)&\sigma(3)\end{pmatrix}
+\right)
+a_{1\sigma(1)}a_{2\sigma(2)}a_{3\sigma(3)}
+\\
+&=
+\varepsilon\!\left(\begin{pmatrix}1&2&3\\1&2&3\end{pmatrix}\right)a_{11}a_{22}a_{33}
++
+\varepsilon\!\left(\begin{pmatrix}1&2&3\\1&3&2\end{pmatrix}\right)a_{11}a_{23}a_{32}
+\\
+&\quad+
+\varepsilon\!\left(\begin{pmatrix}1&2&3\\2&1&3\end{pmatrix}\right)a_{12}a_{21}a_{33}
++
+\varepsilon\!\left(\begin{pmatrix}1&2&3\\2&3&1\end{pmatrix}\right)a_{12}a_{23}a_{31}
+\\
+&\quad+
+\varepsilon\!\left(\begin{pmatrix}1&2&3\\3&1&2\end{pmatrix}\right)a_{13}a_{21}a_{32}
++
+\varepsilon\!\left(\begin{pmatrix}1&2&3\\3&2&1\end{pmatrix}\right)a_{13}a_{22}a_{31}
+\\
+&=
+\varepsilon\!\left(\begin{pmatrix}1&2&3\\1&2&3\end{pmatrix}\right)a_{11}a_{22}a_{33}
++
+\varepsilon\!\left((2\ 3)\begin{pmatrix}1&2&3\\1&2&3\end{pmatrix}\right)a_{11}a_{23}a_{32}
+\\
+&\quad+
+\varepsilon\!\left((1\ 2)\begin{pmatrix}1&2&3\\1&2&3\end{pmatrix}\right)a_{12}a_{21}a_{33}
++
+\varepsilon\!\left((1\ 2)(2\ 3)\begin{pmatrix}1&2&3\\1&2&3\end{pmatrix}\right)a_{12}a_{23}a_{31}
+\\
+&\quad+
+\varepsilon\!\left((1\ 3)(2\ 3)\begin{pmatrix}1&2&3\\1&2&3\end{pmatrix}\right)a_{13}a_{21}a_{32}
++
+\varepsilon\!\left((1\ 3)\begin{pmatrix}1&2&3\\1&2&3\end{pmatrix}\right)a_{13}a_{22}a_{31}
+\\
+&=
+(-1)^0a_{11}a_{22}a_{33}
++(-1)^1a_{11}a_{23}a_{32}
+\\
+&\quad+
+(-1)^1a_{12}a_{21}a_{33}
++(-1)^2a_{12}a_{23}a_{31}
+\\
+&\quad+
+(-1)^2a_{13}a_{21}a_{32}
++(-1)^1a_{13}a_{22}a_{31}
+\\
+&=
+a_{11}a_{22}a_{33}
+-a_{11}a_{23}a_{32}
+-a_{12}a_{21}a_{33}
++a_{12}a_{23}a_{31}
+\\
+&\quad+
+a_{13}a_{21}a_{32}
+-a_{13}a_{22}a_{31}
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-fem_4-004"><h3>fem_4-004</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_tri_area.files/image004.png" alt="source fem_4-004"></div>
+<div class="render" data-source-image="./../img/fem_tri_area.files/image004.png">\[
+\begin{aligned}
+S&=\frac{1}{2}\det
+\begin{pmatrix}
+1&x_1&y_1\\
+1&x_2&y_2\\
+1&x_3&y_3
+\end{pmatrix}\\
+&=\frac{1}{2}\left(
+x_2y_3-y_2x_3-x_1y_3+x_1y_2+y_1x_3-y_1x_2
+\right)
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-fem_4-005"><h3>fem_4-005</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_tri_area.files/image005.png" alt="source fem_4-005"></div>
+<div class="render" data-source-image="./../img/fem_tri_area.files/image005.png">\[
+\begin{aligned}
+&a_{11}=1,\ a_{12}=x_1,\ a_{13}=y_1\\
+&a_{21}=1,\ a_{22}=x_2,\ a_{23}=y_2\\
+&a_{31}=1,\ a_{32}=x_3,\ a_{33}=y_3
+\end{aligned}
+\]</div>
+</div></section>
+<h2>fem/fem_9.html</h2>
+<section class="formula-pair" id="formula-fem_9-001"><h3>fem_9-001</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_coordinates.files/image001.png" alt="source fem_9-001"></div>
+<div class="render" data-source-image="./../img/fem_coordinates.files/image001.png">\[
+\frac{D\vec v}{Dt}
+=
+\frac{\partial\vec v}{\partial t}
++
+(\vec v\cdot\nabla)\vec v
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-fem_9-002"><h3>fem_9-002</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_coordinates.files/image002.png" alt="source fem_9-002"></div>
+<div class="render" data-source-image="./../img/fem_coordinates.files/image002.png">\[
+\frac{D\vec v}{Dt}
+=
+[\nabla\cdot\vec\sigma]+\rho\vec g
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-fem_9-004"><h3>fem_9-004</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_coordinates.files/image004.png" alt="source fem_9-004"></div>
+<div class="render" data-source-image="./../img/fem_coordinates.files/image004.png">\[
+\frac{\partial\vec v}{\partial t}
+=
+[\nabla\cdot\vec\sigma]+\rho\vec g
+\]</div>
+</div></section>
+<h2>fem/fem_6_2_2.html</h2>
+<section class="formula-pair" id="formula-fem_6_2_2-009"><h3>fem_6_2_2-009</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_n_tet.files/image009.png" alt="source fem_6_2_2-009"></div>
+<div class="render" data-source-image="./../img/fem_n_tet.files/image009.png">\[
+\begin{aligned}
+\frac{\partial N_1}{\partial x}
+&=
+\frac{\partial L_1}{\partial x}
+=
+\frac{\partial(V_1/V)}{\partial x}
+=
+\frac{1}{V}\frac{\partial V_1}{\partial x}
+\\
+&=
+\frac{1}{V}\frac{\partial}{\partial x}\frac{1}{6}
+\Big(
+x_2y_3z_4-x_2z_3y_4-y_2x_3z_4+y_2z_3x_4+z_2x_3y_4-z_2y_3x_4
+-x y_3z_4+x z_3y_4+x y_2z_4-x y_2z_3-x z_2y_4+x z_2y_3
++y x_3z_4-y z_3x_4-y x_2z_4+y x_2z_3+y z_2x_4-y z_2x_3
+-z x_3y_4+z y_3x_4+z x_2y_4-z x_2y_3-z y_2x_4+z y_2x_3
+\Big)
+\\
+&=
+\frac{1}{6V}\Big(
+-y_3z_4+z_3y_4+y_2z_4-y_2z_3-z_2y_4+z_2y_3
+\Big)
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-fem_6_2_2-010"><h3>fem_6_2_2-010</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_n_tet.files/image010.png" alt="source fem_6_2_2-010"></div>
+<div class="render" data-source-image="./../img/fem_n_tet.files/image010.png">\[
+\begin{aligned}
+\frac{\partial N_1}{\partial y}
+&=
+\frac{\partial L_1}{\partial y}
+=
+\frac{\partial(V_1/V)}{\partial y}
+=
+\frac{1}{V}\frac{\partial V_1}{\partial y}
+\\
+&=
+\frac{1}{V}\frac{\partial}{\partial y}\frac{1}{6}
+\Big(
+x_2y_3z_4-x_2z_3y_4-y_2x_3z_4+y_2z_3x_4+z_2x_3y_4-z_2y_3x_4
+-x y_3z_4+x z_3y_4+x y_2z_4-x y_2z_3-x z_2y_4+x z_2y_3
++y x_3z_4-y z_3x_4-y x_2z_4+y x_2z_3+y z_2x_4-y z_2x_3
+-z x_3y_4+z y_3x_4+z x_2y_4-z x_2y_3-z y_2x_4+z y_2x_3
+\Big)
+\\
+&=
+\frac{1}{6V}\Big(
+x_3z_4-z_3x_4-x_2z_4+x_2z_3+z_2x_4-z_2x_3
+\Big)
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-fem_6_2_2-011"><h3>fem_6_2_2-011</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_n_tet.files/image011.png" alt="source fem_6_2_2-011"></div>
+<div class="render" data-source-image="./../img/fem_n_tet.files/image011.png">\[
+\begin{aligned}
+\frac{\partial N_1}{\partial z}
+&=
+\frac{\partial L_1}{\partial z}
+=
+\frac{\partial(V_1/V)}{\partial z}
+=
+\frac{1}{V}\frac{\partial V_1}{\partial z}
+\\
+&=
+\frac{1}{V}\frac{\partial}{\partial z}\frac{1}{6}
+\Big(
+x_2y_3z_4-x_2z_3y_4-y_2x_3z_4+y_2z_3x_4+z_2x_3y_4-z_2y_3x_4
+-x y_3z_4+x z_3y_4+x y_2z_4-x y_2z_3-x z_2y_4+x z_2y_3
++y x_3z_4-y z_3x_4-y x_2z_4+y x_2z_3+y z_2x_4-y z_2x_3
+-z x_3y_4+z y_3x_4+z x_2y_4-z x_2y_3-z y_2x_4+z y_2x_3
+\Big)
+\\
+&=
+\frac{1}{6V}\Big(
+-x_3y_4+y_3x_4+x_2y_4-x_2y_3-y_2x_4+y_2x_3
+\Big)
+\end{aligned}
+\]</div>
+</div></section>
+<h2>fem/fem_6_2_3.html</h2>
+<section class="formula-pair" id="formula-fem_6_2_3-012"><h3>fem_6_2_3-012</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_n_tet.files/image012.png" alt="source fem_6_2_3-012"></div>
+<div class="render" data-source-image="./../img/fem_n_tet.files/image012.png">\[
+\begin{aligned}
+\frac{\partial N_2}{\partial x}
+&=
+\frac{\partial L_2}{\partial x}
+=
+\frac{\partial(V_2/V)}{\partial x}
+=
+\frac{1}{V}\frac{\partial V_2}{\partial x}
+\\
+&=
+\frac{1}{V}\frac{\partial}{\partial x}\frac{1}{6}
+\Big(
+x y_3z_4-x z_3y_4-y x_3z_4+y z_3x_4+z x_3y_4-z y_3x_4
+-x_1y_3z_4+x_1z_3y_4+x_1y z_4-x_1y z_3-x_1z y_4+x_1z y_3
++y_1x_3z_4-y_1z_3x_4-y_1x z_4+y_1x z_3+y_1z x_4-y_1z x_3
+-z_1x_3y_4+z_1y_3x_4+z_1x y_4-z_1x y_3-z_1y x_4+z_1y x_3
+\Big)
+\\
+&=
+\frac{1}{6V}\Big(
+y_3z_4-z_3y_4-y_1z_4+y_1z_3+z_1y_4-z_1y_3
+\Big)
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-fem_6_2_3-013"><h3>fem_6_2_3-013</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_n_tet.files/image013.png" alt="source fem_6_2_3-013"></div>
+<div class="render" data-source-image="./../img/fem_n_tet.files/image013.png">\[
+\begin{aligned}
+\frac{\partial N_2}{\partial y}
+&=
+\frac{\partial L_2}{\partial y}
+=
+\frac{\partial(V_2/V)}{\partial y}
+=
+\frac{1}{V}\frac{\partial V_2}{\partial y}
+\\
+&=
+\frac{1}{V}\frac{\partial}{\partial y}\frac{1}{6}
+\Big(
+x y_3z_4-x z_3y_4-y x_3z_4+y z_3x_4+z x_3y_4-z y_3x_4
+-x_1y_3z_4+x_1z_3y_4+x_1y z_4-x_1y z_3-x_1z y_4+x_1z y_3
++y_1x_3z_4-y_1z_3x_4-y_1x z_4+y_1x z_3+y_1z x_4-y_1z x_3
+-z_1x_3y_4+z_1y_3x_4+z_1x y_4-z_1x y_3-z_1y x_4+z_1y x_3
+\Big)
+\\
+&=
+\frac{1}{6V}\Big(
+-x_3z_4+z_3x_4+x_1z_4-x_1z_3-z_1x_4+z_1x_3
+\Big)
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-fem_6_2_3-014"><h3>fem_6_2_3-014</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_n_tet.files/image014.png" alt="source fem_6_2_3-014"></div>
+<div class="render" data-source-image="./../img/fem_n_tet.files/image014.png">\[
+\begin{aligned}
+\frac{\partial N_2}{\partial z}
+&=
+\frac{\partial L_2}{\partial z}
+=
+\frac{\partial(V_2/V)}{\partial z}
+=
+\frac{1}{V}\frac{\partial V_2}{\partial z}
+\\
+&=
+\frac{1}{V}\frac{\partial}{\partial z}\frac{1}{6}
+\Big(
+x y_3z_4-x z_3y_4-y x_3z_4+y z_3x_4+z x_3y_4-z y_3x_4
+-x_1y_3z_4+x_1z_3y_4+x_1y z_4-x_1y z_3-x_1z y_4+x_1z y_3
++y_1x_3z_4-y_1z_3x_4-y_1x z_4+y_1x z_3+y_1z x_4-y_1z x_3
+-z_1x_3y_4+z_1y_3x_4+z_1x y_4-z_1x y_3-z_1y x_4+z_1y x_3
+\Big)
+\\
+&=
+\frac{1}{6V}\Big(
+x_3y_4-y_3x_4-x_1y_4+x_1y_3+y_1x_4-y_1x_3
+\Big)
+\end{aligned}
+\]</div>
+</div></section>
+<h2>fem/fem_6_2_4.html</h2>
+<section class="formula-pair" id="formula-fem_6_2_4-015"><h3>fem_6_2_4-015</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_n_tet.files/image015.png" alt="source fem_6_2_4-015"></div>
+<div class="render" data-source-image="./../img/fem_n_tet.files/image015.png">\[
+\begin{aligned}
+\frac{\partial N_3}{\partial x}
+&=
+\frac{\partial L_3}{\partial x}
+=
+\frac{\partial(V_3/V)}{\partial x}
+=
+\frac{1}{V}\frac{\partial V_3}{\partial x}
+\\
+&=
+\frac{1}{V}\frac{\partial}{\partial x}\frac{1}{6}
+\Big(
+x_2y z_4-x_2z y_4-y_2x z_4+y_2z x_4+z_2x y_4-z_2y x_4
+-x_1y z_4+x_1z y_4+x_1y_2z_4-x_1y_2z-x_1z_2y_4+x_1z_2y
++y_1x z_4-y_1z x_4-y_1x_2z_4+y_1x_2z+y_1z_2x_4-y_1z_2x
+-z_1x y_4+z_1y x_4+z_1x_2y_4-z_1x_2y-z_1y_2x_4+z_1y_2x
+\Big)
+\\
+&=
+\frac{1}{6V}\Big(
+-y_2z_4+z_2y_4+y_1z_4-y_1z_2-z_1y_4+z_1y_2
+\Big)
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-fem_6_2_4-016"><h3>fem_6_2_4-016</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_n_tet.files/image016.png" alt="source fem_6_2_4-016"></div>
+<div class="render" data-source-image="./../img/fem_n_tet.files/image016.png">\[
+\begin{aligned}
+\frac{\partial N_3}{\partial y}
+&=
+\frac{\partial L_3}{\partial y}
+=
+\frac{\partial(V_3/V)}{\partial y}
+=
+\frac{1}{V}\frac{\partial V_3}{\partial y}
+\\
+&=
+\frac{1}{V}\frac{\partial}{\partial y}\frac{1}{6}
+\Big(
+x_2y z_4-x_2z y_4-y_2x z_4+y_2z x_4+z_2x y_4-z_2y x_4
+-x_1y z_4+x_1z y_4+x_1y_2z_4-x_1y_2z-x_1z_2y_4+x_1z_2y
++y_1x z_4-y_1z x_4-y_1x_2z_4+y_1x_2z+y_1z_2x_4-y_1z_2x
+-z_1x y_4+z_1y x_4+z_1x_2y_4-z_1x_2y-z_1y_2x_4+z_1y_2x
+\Big)
+\\
+&=
+\frac{1}{6V}\Big(
+x_2z_4-z_2x_4-x_1z_4+x_1z_2+z_1x_4-z_1x_2
+\Big)
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-fem_6_2_4-017"><h3>fem_6_2_4-017</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_n_tet.files/image017.png" alt="source fem_6_2_4-017"></div>
+<div class="render" data-source-image="./../img/fem_n_tet.files/image017.png">\[
+\begin{aligned}
+\frac{\partial N_3}{\partial z}
+&=
+\frac{\partial L_3}{\partial z}
+=
+\frac{\partial(V_3/V)}{\partial z}
+=
+\frac{1}{V}\frac{\partial V_3}{\partial z}
+\\
+&=
+\frac{1}{V}\frac{\partial}{\partial z}\frac{1}{6}
+\Big(
+x_2y z_4-x_2z y_4-y_2x z_4+y_2z x_4+z_2x y_4-z_2y x_4
+-x_1y z_4+x_1z y_4+x_1y_2z_4-x_1y_2z-x_1z_2y_4+x_1z_2y
++y_1x z_4-y_1z x_4-y_1x_2z_4+y_1x_2z+y_1z_2x_4-y_1z_2x
+-z_1x y_4+z_1y x_4+z_1x_2y_4-z_1x_2y-z_1y_2x_4+z_1y_2x
+\Big)
+\\
+&=
+\frac{1}{6V}\Big(
+-x_2y_4+y_2x_4+x_1y_4-x_1y_2-y_1x_4+y_1x_2
+\Big)
+\end{aligned}
+\]</div>
+</div></section>
+<h2>fem/fem_6_2_5.html</h2>
+<section class="formula-pair" id="formula-fem_6_2_5-018"><h3>fem_6_2_5-018</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_n_tet.files/image018.png" alt="source fem_6_2_5-018"></div>
+<div class="render" data-source-image="./../img/fem_n_tet.files/image018.png">\[
+\begin{aligned}
+\frac{\partial N_4}{\partial x}
+&=
+\frac{\partial L_4}{\partial x}
+=
+\frac{\partial(V_4/V)}{\partial x}
+=
+\frac{1}{V}\frac{\partial V_4}{\partial x}
+\\
+&=
+\frac{1}{V}\frac{\partial}{\partial x}\frac{1}{6}
+\Big(
+x_2y_3z-x_2z_3y-y_2x_3z+y_2z_3x+z_2x_3y-z_2y_3x
+-x_1y_3z+x_1z_3y+x_1y_2z-x_1y_2z_3-x_1z_2y+x_1z_2y_3
++y_1x_3z-y_1z_3x-y_1x_2z+y_1x_2z_3+y_1z_2x-y_1z_2x_3
+-z_1x_3y+z_1y_3x+z_1x_2y-z_1x_2y_3-z_1y_2x+z_1y_2x_3
+\Big)
+\\
+&=
+\frac{1}{6V}\Big(
+y_2z_3-z_2y_3-y_1z_3+y_1z_2+z_1y_3-z_1y_2
+\Big)
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-fem_6_2_5-019"><h3>fem_6_2_5-019</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_n_tet.files/image019.png" alt="source fem_6_2_5-019"></div>
+<div class="render" data-source-image="./../img/fem_n_tet.files/image019.png">\[
+\begin{aligned}
+\frac{\partial N_4}{\partial y}
+&=
+\frac{\partial L_4}{\partial y}
+=
+\frac{\partial(V_4/V)}{\partial y}
+=
+\frac{1}{V}\frac{\partial V_4}{\partial y}
+\\
+&=
+\frac{1}{V}\frac{\partial}{\partial y}\frac{1}{6}
+\Big(
+x_2y_3z-x_2z_3y-y_2x_3z+y_2z_3x+z_2x_3y-z_2y_3x
+-x_1y_3z+x_1z_3y+x_1y_2z-x_1y_2z_3-x_1z_2y+x_1z_2y_3
++y_1x_3z-y_1z_3x-y_1x_2z+y_1x_2z_3+y_1z_2x-y_1z_2x_3
+-z_1x_3y+z_1y_3x+z_1x_2y-z_1x_2y_3-z_1y_2x+z_1y_2x_3
+\Big)
+\\
+&=
+\frac{1}{6V}\Big(
+-x_2z_3+z_2x_3+x_1z_3-x_1z_2-z_1x_3+z_1x_2
+\Big)
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-fem_6_2_5-020"><h3>fem_6_2_5-020</h3><div class="pair-grid">
+<div class="source"><img src="./../img/fem_n_tet.files/image020.png" alt="source fem_6_2_5-020"></div>
+<div class="render" data-source-image="./../img/fem_n_tet.files/image020.png">\[
+\begin{aligned}
+\frac{\partial N_4}{\partial z}
+&=
+\frac{\partial L_4}{\partial z}
+=
+\frac{\partial(V_4/V)}{\partial z}
+=
+\frac{1}{V}\frac{\partial V_4}{\partial z}
+\\
+&=
+\frac{1}{V}\frac{\partial}{\partial z}\frac{1}{6}
+\Big(
+x_2y_3z-x_2z_3y-y_2x_3z+y_2z_3x+z_2x_3y-z_2y_3x
+-x_1y_3z+x_1z_3y+x_1y_2z-x_1y_2z_3-x_1z_2y+x_1z_2y_3
++y_1x_3z-y_1z_3x-y_1x_2z+y_1x_2z_3+y_1z_2x-y_1z_2x_3
+-z_1x_3y+z_1y_3x+z_1x_2y-z_1x_2y_3-z_1y_2x+z_1y_2x_3
+\Big)
+\\
+&=
+\frac{1}{6V}\Big(
+x_2y_3-y_2x_3-x_1y_3+x_1y_2+y_1x_3-y_1x_2
+\Big)
+\end{aligned}
+\]</div>
+</div></section>
+</body></html>
