@@ -246,5 +246,6 @@ jobs:
             echo 'No inventory change.'
           else
             git commit -m 'docs: inventory remaining inline image assets'
+            git pull --rebase origin develop
             git push origin HEAD:develop
           fi
