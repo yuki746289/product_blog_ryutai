@@ -136,5 +136,13 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add hydronamics/hydronamics_11_1.html                   hydronamics/hydronamics_11_2.html                   hydronamics/hydronamics_11_3.html                   hydronamics/hydronamics_11_4.html                   hydronamics/hydronamics_11_5.html                   .document/formula_reviews/HYDRONAMICS_11_SMALL_NORMAL_APPLY_RESULT.md
           git commit -m 'feat: apply certified hydronamics 11_1-11_5 formulas'
-          git pull --rebase origin develop
-          git push origin HEAD:develop
+          for attempt in 1 2 3 4 5; do
+            git pull --rebase origin develop
+            if git push origin HEAD:develop; then
+              exit 0
+            fi
+            if [ "$attempt" -eq 5 ]; then
+              exit 1
+            fi
+            sleep 2
+          done
