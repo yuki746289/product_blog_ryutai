@@ -27,7 +27,17 @@ Transcription data:
 
 ## Pass 2 — browser MathJax comparison
 
-Status: **Pending**
+Result: **2 / 2 PASS**
+
+- Workflow run: **35396218213**
+- Artifact: `physics-6-2-4-pass2`
+- Artifact id: **10568320613**
+- MathJax errors: **0**
+- Unrendered formulas: **0**
+- Pair-page horizontal overflow: **0 / 2**
+- Browser page errors: **0**
+
+Both source/render pairs were visually inspected. The source-visible `x_i` denominators, `(i=j)` note, tensor subscripts, component order, inequality, and operand order all match.
 
 Normal-page application is prohibited until Pass 2 is complete.
 
@@ -38,7 +48,7 @@ Normal-page application is prohibited until Pass 2 is complete.
 | Formula targets | 2 |
 | Retained diagrams | 0 |
 | Pass 1 | **2 / 2 PASS** |
-| Pass 2 | Pending |
+| Pass 2 | **2 / 2 PASS** |
 | Production deployment | Not performed |
 
-**Physics 6_2_4 is not yet certified for normal-page application.**
+**Physics 6_2_4 is certified for normal-page application.**
