@@ -42,8 +42,8 @@ jobs:
 
           if old_pat.search(text):
               before=old_pat.sub('<MIXED/>',text)
-          elif new_pat.search(text):
-              before=new_pat.sub('<MIXED/>',text)
+          elif marker_pat.search(text):
+              before=marker_pat.sub('<MIXED/>',text)
           else:
               raise RuntimeError('image002 target not found')
 
@@ -60,13 +60,14 @@ jobs:
             f'  </div>\n'
             f'  <p>{cfg["prose"]}</p>\n'
             + '\n'.join('  '+x for x in rules) + '\n'
-            f'</div>'
+            f'</div>\\n'
+            f'<!-- FEM4_IMAGE002_TEXT_END -->'
           )
 
           if old_pat.search(text):
               applied=old_pat.sub(lambda _m:block,text,count=1)
           else:
-              applied=new_pat.sub(lambda _m:block,text,count=1)
+              applied=marker_pat.sub(lambda _m:block,text,count=1)
 
           after=re.sub(
             r'<div\b(?=[^>]*class=["\'][^"\']*\bmath-text-block\b[^"\']*["\'])'
