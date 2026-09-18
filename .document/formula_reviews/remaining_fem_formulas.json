@@ -1,0 +1,96 @@
+{
+  "canonical_source": "original source images",
+  "pages": [
+    {
+      "page": "fem/fem_3.html",
+      "image_dir": "img/fem_integrate.files",
+      "formulas": [
+        {
+          "image": "image001.png",
+          "type": "math",
+          "latex": "\\[\n\\int_S L_1^pL_2^qL_3^r\\,dS\n=\n\\frac{p!q!r!}{(p+q+r+2)!}\\,2S\n\\]"
+        },
+        {
+          "image": "image002.png",
+          "type": "math",
+          "latex": "\\[\n\\int_V L_1^pL_2^qL_3^rL_4^s\\,dV\n=\n\\frac{p!q!r!s!}{(p+q+r+s+3)!}\\,6V\n\\]"
+        }
+      ]
+    },
+    {
+      "page": "fem/fem_6_1_2.html",
+      "image_dir": "img/fem_n_tri.files",
+      "formulas": [
+        {
+          "image": "image007.png",
+          "type": "math",
+          "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial N_1}{\\partial x}\n&=\\frac{\\partial L_1}{\\partial x}\n=\\frac{\\partial(S_1/S)}{\\partial x}\n=\\frac{1}{S}\\frac{\\partial S_1}{\\partial x}\\\\\n&=\\frac{1}{S}\\frac{\\partial}{\\partial x}\\frac{1}{2}\n(x_2y_3-y_2x_3-xy_3+xy_2+yx_3-yx_2)\\\\\n&=\\frac{1}{2S}(-y_3+y_2)\n\\end{aligned}\n\\]"
+        },
+        {
+          "image": "image008.png",
+          "type": "math",
+          "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial N_1}{\\partial y}\n&=\\frac{\\partial L_1}{\\partial y}\n=\\frac{\\partial(S_1/S)}{\\partial y}\n=\\frac{1}{S}\\frac{\\partial S_1}{\\partial y}\\\\\n&=\\frac{1}{S}\\frac{\\partial}{\\partial y}\\frac{1}{2}\n(x_2y_3-y_2x_3-xy_3+xy_2+yx_3-yx_2)\\\\\n&=\\frac{1}{2S}(x_3-x_2)\n\\end{aligned}\n\\]"
+        }
+      ]
+    },
+    {
+      "page": "fem/fem_6_1_3.html",
+      "image_dir": "img/fem_n_tri.files",
+      "formulas": [
+        {
+          "image": "image009.png",
+          "type": "math",
+          "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial N_2}{\\partial x}\n&=\\frac{\\partial L_2}{\\partial x}\n=\\frac{\\partial(S_2/S)}{\\partial x}\n=\\frac{1}{S}\\frac{\\partial S_2}{\\partial x}\\\\\n&=\\frac{1}{S}\\frac{\\partial}{\\partial x}\\frac{1}{2}\n(xy_3-yx_3-x_1y_3+x_1y+y_1x_3-y_1x)\\\\\n&=\\frac{1}{2S}(y_3-y_1)\n\\end{aligned}\n\\]"
+        },
+        {
+          "image": "image010.png",
+          "type": "math",
+          "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial N_2}{\\partial y}\n&=\\frac{\\partial L_2}{\\partial y}\n=\\frac{\\partial(S_2/S)}{\\partial y}\n=\\frac{1}{S}\\frac{\\partial S_2}{\\partial y}\\\\\n&=\\frac{1}{S}\\frac{\\partial}{\\partial x}\\frac{1}{2}\n(xy_3-yx_3-x_1y_3+x_1y+y_1x_3-y_1x)\\\\\n&=\\frac{1}{2S}(-x_3+x_1)\n\\end{aligned}\n\\]"
+        }
+      ]
+    },
+    {
+      "page": "fem/fem_6_1_4.html",
+      "image_dir": "img/fem_n_tri.files",
+      "formulas": [
+        {
+          "image": "image011.png",
+          "type": "math",
+          "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial N_3}{\\partial x}\n&=\\frac{\\partial L_3}{\\partial x}\n=\\frac{\\partial(S_3/S)}{\\partial x}\n=\\frac{1}{S}\\frac{\\partial S_3}{\\partial x}\\\\\n&=\\frac{1}{S}\\frac{\\partial}{\\partial x}\\frac{1}{2}\n(x_2y-y_2x-x_1y+x_1y_2+y_1x-y_1x_2)\\\\\n&=\\frac{1}{2S}(-y_2+y_1)\n\\end{aligned}\n\\]"
+        },
+        {
+          "image": "image012.png",
+          "type": "math",
+          "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial N_3}{\\partial y}\n&=\\frac{\\partial L_3}{\\partial y}\n=\\frac{\\partial(S_3/S)}{\\partial y}\n=\\frac{1}{S}\\frac{\\partial S_3}{\\partial y}\\\\\n&=\\frac{1}{S}\\frac{\\partial}{\\partial x}\\frac{1}{2}\n(x_2y-y_2x-x_1y+x_1y_2+y_1x-y_1x_2)\\\\\n&=\\frac{1}{2S}(x_2-x_1)\n\\end{aligned}\n\\]"
+        }
+      ]
+    },
+    {
+      "page": "fem/fem_8.html",
+      "image_dir": "img/fem_bd.files",
+      "formulas": [
+        {
+          "image": "image001.png",
+          "type": "math",
+          "latex": "\\[\n\\frac{\\partial v_i}{\\partial x_i}=0\n\\]"
+        },
+        {
+          "image": "image002.png",
+          "type": "math",
+          "latex": "\\[\n\\frac{\\partial p}{\\partial x_i}=0\n\\]"
+        }
+      ]
+    },
+    {
+      "page": "fem/fem_4.html",
+      "image_dir": "img/fem_tri_area.files",
+      "formulas": [
+        {
+          "image": "image002.png",
+          "type": "rich",
+          "html": "<div class=\"formula-rich-inner\">\n\\[\n\\det A=\\sum_{\\sigma\\in\\sigma_n}\\varepsilon(\\sigma)a_{1\\sigma(1)}a_{2\\sigma(2)}\\cdots a_{n\\sigma(n)}\n\\]\n<p>\\(\\varepsilon(\\sigma)\\)を \\(\\sigma\\in\\sigma_n\\) の符号とすると</p>\n<p>(1) \\(\\varepsilon(\\tau\\sigma)=\\varepsilon(\\sigma)\\varepsilon(\\tau)\\)</p>\n<p>(2) \\(\\varepsilon(1)=1\\)</p>\n<p>(3) \\(\\varepsilon(\\sigma^{-1})=\\varepsilon(\\sigma)\\)</p>\n<p>(4) \\(\\rho\\) が互換であれば \\(\\varepsilon(\\rho)=-1\\)</p>\n</div>"
+        }
+      ]
+    }
+  ]
+}
