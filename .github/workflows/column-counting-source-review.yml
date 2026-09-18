@@ -1,0 +1,67 @@
+# Created: 2026-09-19T08:50:00+09:00
+name: Column Counting Source Review
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/column-counting-source-review.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Build source contact sheets
+        run: |
+          pip install pillow
+          python3 - <<'PY'
+          from pathlib import Path
+          from PIL import Image,ImageDraw
+
+          groups={
+            'column': [Path(f'img/column_energy.files/image{i:03d}.png') for i in range(1,6)],
+            'counting': [Path('img/counting.files/image001.png'),Path('img/counting.files/image002.png')]
+          }
+          out=Path('column-counting-source-review'); out.mkdir(exist_ok=True)
+
+          for name,paths in groups.items():
+              ims=[]
+              for p in paths:
+                  if not p.exists():
+                      raise RuntimeError(f'missing {p}')
+                  im=Image.open(p).convert('RGBA')
+                  bg=Image.new('RGBA',im.size,'white'); bg.alpha_composite(im)
+                  im=bg.convert('RGB')
+                  maxw=900
+                  if im.width>maxw:
+                      s=maxw/im.width
+                      im=im.resize((int(im.width*s),int(im.height*s)),Image.Resampling.LANCZOS)
+                  canvas=Image.new('RGB',(max(maxw,im.width)+20,im.height+45),'white')
+                  d=ImageDraw.Draw(canvas); d.text((10,10),str(p),fill='black'); canvas.paste(im,(10,35))
+                  ims.append(canvas)
+                  im.save(out/f'{name}-{p.name}')
+              W=max(i.width for i in ims)
+              H=sum(i.height for i in ims)+10*(len(ims)-1)
+              sheet=Image.new('RGB',(W,H),'white'); y=0
+              for im in ims:
+                  sheet.paste(im,(0,y)); y+=im.height+10
+              sheet.save(out/f'{name}-contact.png')
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: column-counting-source-review
+          path: column-counting-source-review
+          retention-days: 7
