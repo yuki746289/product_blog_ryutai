@@ -1,9 +1,9 @@
 {
   "summary": {
     "html_pages_scanned": 205,
-    "residual_word_image_placements": 171,
-    "unique_assets": 169,
-    "centered_p_im_placements": 163,
+    "residual_word_image_placements": 166,
+    "unique_assets": 164,
+    "centered_p_im_placements": 158,
     "missing_assets": 49,
     "missing_by_section": {
       "mps": 49
@@ -15,12 +15,12 @@
       "fem": 33,
       "heat": 8,
       "hydronamics": 21,
-      "mesh": 28,
+      "mesh": 23,
       "mps": 49,
       "physics": 16
     },
     "extensions": {
-      ".png": 118,
+      ".png": 113,
       ".jpg": 4,
       ".gif": 49
     }
@@ -970,66 +970,6 @@
       "exists": true,
       "width": 272,
       "height": 239,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "mesh/mesh_1.html",
-      "encoding": "cp932",
-      "src": "./../img/mesh_approximation.files/image002.png",
-      "asset": "img/mesh_approximation.files/image002.png",
-      "exists": true,
-      "width": 524,
-      "height": 399,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "mesh/mesh_1.html",
-      "encoding": "cp932",
-      "src": "./../img/mesh_approximation.files/image003.png",
-      "asset": "img/mesh_approximation.files/image003.png",
-      "exists": true,
-      "width": 99,
-      "height": 112,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "mesh/mesh_1.html",
-      "encoding": "cp932",
-      "src": "./../img/mesh_approximation.files/image004.png",
-      "asset": "img/mesh_approximation.files/image004.png",
-      "exists": true,
-      "width": 256,
-      "height": 87,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "mesh/mesh_1.html",
-      "encoding": "cp932",
-      "src": "./../img/mesh_approximation.files/image005.png",
-      "asset": "img/mesh_approximation.files/image005.png",
-      "exists": true,
-      "width": 304,
-      "height": 80,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "mesh/mesh_1.html",
-      "encoding": "cp932",
-      "src": "./../img/mesh_approximation.files/image006.png",
-      "asset": "img/mesh_approximation.files/image006.png",
-      "exists": true,
-      "width": 229,
-      "height": 122,
       "format": "PNG",
       "centered_p_im": true,
       "review_priority": "A"
