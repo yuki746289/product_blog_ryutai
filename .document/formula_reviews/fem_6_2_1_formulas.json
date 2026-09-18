@@ -1,6 +1,6 @@
 {
   "page": "fem/fem_6_2_1.html",
-  "image_dir": "img/fem_n_tet.files",
+  "image_dir": "img/fem_d_tetra.files",
   "canonical_source": "original source images",
   "retained_diagrams": [
     "image001.png"
@@ -8,27 +8,27 @@
   "formulas": [
     {
       "image": "image002.png",
-      "latex": "\\[\n\\begin{aligned}\nV&=\\frac{1}{6}\\det\n\\begin{pmatrix}\n1&x_1&y_1&z_1\\\\\n1&x_2&y_2&z_2\\\\\n1&x_3&y_3&z_3\\\\\n1&x_4&y_4&z_4\n\\end{pmatrix}\\\\\n&=\\frac{1}{6}\\bigl(\nx_2y_3z_4-x_2z_3y_4-y_2x_3z_4+y_2z_3x_4+z_2x_3y_4-z_2y_3x_4\\\\\n&\\qquad-x_1y_3z_4+x_1z_3y_4+x_1y_2z_4-x_1y_2z_3-x_1z_2y_4+x_1z_2y_3\\\\\n&\\qquad+y_1x_3z_4-y_1z_3x_4-y_1x_2z_4+y_1x_2z_3+y_1z_2x_4-y_1z_2x_3\\\\\n&\\qquad-z_1x_3y_4+z_1y_3x_4+z_1x_2y_4-z_1x_2y_3-z_1y_2x_4+z_1y_2x_3\n\\bigr)\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\nV&=\\frac{1}{6}\\det\n\\begin{pmatrix}\n1&x_1&y_1&z_1\\\\\n1&x_2&y_2&z_2\\\\\n1&x_3&y_3&z_3\\\\\n1&x_4&y_4&z_4\n\\end{pmatrix}\\\\\n&=\\frac{1}{6}\\Big(\nx_2y_3z_4-x_2z_3y_4-y_2x_3z_4+y_2z_3x_4+z_2x_3y_4-z_2y_3x_4\\\\\n&\\qquad-x_1y_3z_4+x_1z_3y_4+x_1y_2z_4-x_1y_2z_3-x_1z_2y_4+x_1z_2y_3\\\\\n&\\qquad+y_1x_3z_4-y_1z_3x_4-y_1x_2z_4+y_1x_2z_3+y_1z_2x_4-y_1z_2x_3\\\\\n&\\qquad-z_1x_3y_4+z_1y_3x_4+z_1x_2y_4-z_1x_2y_3-z_1y_2x_4+z_1y_2x_3\n\\Big)\n\\end{aligned}\n\\]"
     },
     {
       "image": "image003.png",
-      "latex": "\\[\n\\begin{aligned}\na_{11}&=1,\\ a_{12}=x_1,\\ a_{13}=y_1,\\ a_{14}=z_1\\\\\na_{21}&=1,\\ a_{22}=x_2,\\ a_{23}=y_2,\\ a_{24}=z_2\\\\\na_{31}&=1,\\ a_{32}=x_3,\\ a_{33}=y_3,\\ a_{34}=z_3\\\\\na_{41}&=1,\\ a_{42}=x_4,\\ a_{43}=y_4,\\ a_{44}=z_4\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n&a_{11}=1,\\ a_{12}=x_1,\\ a_{13}=y_1,\\ a_{14}=z_1\\\\\n&a_{21}=1,\\ a_{22}=x_2,\\ a_{23}=y_2,\\ a_{24}=z_2\\\\\n&a_{31}=1,\\ a_{32}=x_3,\\ a_{33}=y_3,\\ a_{34}=z_3\\\\\n&a_{41}=1,\\ a_{42}=x_4,\\ a_{43}=y_4,\\ a_{44}=z_4\n\\end{aligned}\n\\]"
     },
     {
       "image": "image004.png",
-      "latex": "\\[\n\\begin{aligned}\nV_1&=\\frac{1}{6}\\det\n\\begin{pmatrix}\n1&x&y&z\\\\\n1&x_2&y_2&z_2\\\\\n1&x_3&y_3&z_3\\\\\n1&x_4&y_4&z_4\n\\end{pmatrix}\\\\\n&=\\frac{1}{6}\\bigl(\nx_2y_3z_4-x_2z_3y_4-y_2x_3z_4+y_2z_3x_4+z_2x_3y_4-z_2y_3x_4\\\\\n&\\qquad-xy_3z_4+xz_3y_4+xy_2z_4-xy_2z_3-xz_2y_4+xz_2y_3\\\\\n&\\qquad+yx_3z_4-yz_3x_4-yx_2z_4+yx_2z_3+yz_2x_4-yz_2x_3\\\\\n&\\qquad-zx_3y_4+zy_3x_4+zx_2y_4-zx_2y_3-zy_2x_4+zy_2x_3\n\\bigr)\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\nV_1&=\\frac{1}{6}\\det\n\\begin{pmatrix}\n1&x&y&z\\\\\n1&x_2&y_2&z_2\\\\\n1&x_3&y_3&z_3\\\\\n1&x_4&y_4&z_4\n\\end{pmatrix}\\\\\n&=\\frac{1}{6}\\Big(\nx_2y_3z_4-x_2z_3y_4-y_2x_3z_4+y_2z_3x_4+z_2x_3y_4-z_2y_3x_4\\\\\n&\\qquad-xy_3z_4+xz_3y_4+xy_2z_4-xy_2z_3-xz_2y_4+xz_2y_3\\\\\n&\\qquad+yx_3z_4-yz_3x_4-yx_2z_4+yx_2z_3+yz_2x_4-yz_2x_3\\\\\n&\\qquad-zx_3y_4+zy_3x_4+zx_2y_4-zx_2y_3-zy_2x_4+zy_2x_3\n\\Big)\n\\end{aligned}\n\\]"
     },
     {
       "image": "image005.png",
-      "latex": "\\[\n\\begin{aligned}\nV_2&=\\frac{1}{6}\\det\n\\begin{pmatrix}\n1&x_1&y_1&z_1\\\\\n1&x&y&z\\\\\n1&x_3&y_3&z_3\\\\\n1&x_4&y_4&z_4\n\\end{pmatrix}\\\\\n&=\\frac{1}{6}\\bigl(\nxy_3z_4-xz_3y_4-yx_3z_4+yz_3x_4+zx_3y_4-zy_3x_4\\\\\n&\\qquad-x_1y_3z_4+x_1z_3y_4+x_1yz_4-x_1yz_3-x_1zy_4+x_1zy_3\\\\\n&\\qquad+y_1x_3z_4-y_1z_3x_4-y_1xz_4+y_1xz_3+y_1zx_4-y_1zx_3\\\\\n&\\qquad-z_1x_3y_4+z_1y_3x_4+z_1xy_4-z_1xy_3-z_1yx_4+z_1yx_3\n\\bigr)\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\nV_2&=\\frac{1}{6}\\det\n\\begin{pmatrix}\n1&x_1&y_1&z_1\\\\\n1&x&y&z\\\\\n1&x_3&y_3&z_3\\\\\n1&x_4&y_4&z_4\n\\end{pmatrix}\\\\\n&=\\frac{1}{6}\\Big(\nxy_3z_4-xz_3y_4-yx_3z_4+yz_3x_4+zx_3y_4-zy_3x_4\\\\\n&\\qquad-x_1y_3z_4+x_1z_3y_4+x_1yz_4-x_1yz_3-x_1zy_4+x_1zy_3\\\\\n&\\qquad+y_1x_3z_4-y_1z_3x_4-y_1xz_4+y_1xz_3+y_1zx_4-y_1zx_3\\\\\n&\\qquad-z_1x_3y_4+z_1y_3x_4+z_1xy_4-z_1xy_3-z_1yx_4+z_1yx_3\n\\Big)\n\\end{aligned}\n\\]"
     },
     {
       "image": "image006.png",
-      "latex": "\\[\n\\begin{aligned}\nV_3&=\\frac{1}{6}\\det\n\\begin{pmatrix}\n1&x_1&y_1&z_1\\\\\n1&x_2&y_2&z_2\\\\\n1&x&y&z\\\\\n1&x_4&y_4&z_4\n\\end{pmatrix}\\\\\n&=\\frac{1}{6}\\bigl(\nx_2yz_4-x_2zy_4-y_2xz_4+y_2zx_4+z_2xy_4-z_2yx_4\\\\\n&\\qquad-x_1yz_4+x_1zy_4+x_1y_2z_4-x_1y_2z-x_1z_2y_4+x_1z_2y\\\\\n&\\qquad+y_1xz_4-y_1zx_4-y_1x_2z_4+y_1x_2z+y_1z_2x_4-y_1z_2x\\\\\n&\\qquad-z_1xy_4+z_1yx_4+z_1x_2y_4-z_1x_2y-z_1y_2x_4+z_1y_2x\n\\bigr)\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\nV_3&=\\frac{1}{6}\\det\n\\begin{pmatrix}\n1&x_1&y_1&z_1\\\\\n1&x_2&y_2&z_2\\\\\n1&x&y&z\\\\\n1&x_4&y_4&z_4\n\\end{pmatrix}\\\\\n&=\\frac{1}{6}\\Big(\nx_2yz_4-x_2zy_4-y_2xz_4+y_2zx_4+z_2xy_4-z_2yx_4\\\\\n&\\qquad-x_1yz_4+x_1zy_4+x_1y_2z_4-x_1y_2z-x_1z_2y_4+x_1z_2y\\\\\n&\\qquad+y_1xz_4-y_1zx_4-y_1x_2z_4+y_1x_2z+y_1z_2x_4-y_1z_2x\\\\\n&\\qquad-z_1xy_4+z_1yx_4+z_1x_2y_4-z_1x_2y-z_1y_2x_4+z_1y_2x\n\\Big)\n\\end{aligned}\n\\]"
     },
     {
       "image": "image007.png",
-      "latex": "\\[\n\\begin{aligned}\nV_4&=\\frac{1}{6}\\det\n\\begin{pmatrix}\n1&x_1&y_1&z_1\\\\\n1&x_2&y_2&z_2\\\\\n1&x_3&y_3&z_3\\\\\n1&x&y&z\n\\end{pmatrix}\\\\\n&=\\frac{1}{6}\\bigl(\nx_2y_3z-x_2z_3y-y_2x_3z+y_2z_3x+z_2x_3y-z_2y_3x\\\\\n&\\qquad-x_1y_3z+x_1z_3y+x_1y_2z-x_1y_2z_3-x_1z_2y+x_1z_2y_3\\\\\n&\\qquad+y_1x_3z-y_1z_3x-y_1x_2z+y_1x_2z_3+y_1z_2x-y_1z_2x_3\\\\\n&\\qquad-z_1x_3y+z_1y_3x+z_1x_2y-z_1x_2y_3-z_1y_2x+z_1y_2x_3\n\\bigr)\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\nV_4&=\\frac{1}{6}\\det\n\\begin{pmatrix}\n1&x_1&y_1&z_1\\\\\n1&x_2&y_2&z_2\\\\\n1&x_3&y_3&z_3\\\\\n1&x&y&z\n\\end{pmatrix}\\\\\n&=\\frac{1}{6}\\Big(\nx_2y_3z-x_2z_3y-y_2x_3z+y_2z_3x+z_2x_3y-z_2y_3x\\\\\n&\\qquad-x_1y_3z+x_1z_3y+x_1y_2z-x_1y_2z_3-x_1z_2y+x_1z_2y_3\\\\\n&\\qquad+y_1x_3z-y_1z_3x-y_1x_2z+y_1x_2z_3+y_1z_2x-y_1z_2x_3\\\\\n&\\qquad-z_1x_3y+z_1y_3x+z_1x_2y-z_1x_2y_3-z_1y_2x+z_1y_2x_3\n\\Big)\n\\end{aligned}\n\\]"
     }
   ]
 }
