@@ -1,0 +1,65 @@
+# Created: 2026-09-19T07:00:00+09:00
+name: Physics 6_3_2 Formula Reaudit
+on:
+  push:
+    branches: [develop]
+    paths: ['.github/workflows/physics-6-3-2-formula-reaudit.yml','.document/formula_reviews/physics_6_3_2_formulas.json']
+permissions: {contents: write}
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: develop, fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.x'}
+      - name: Build audit page
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          cfg=json.loads(Path('.document/formula_reviews/physics_6_3_2_formulas.json').read_text())
+          parts=['<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">','<style>body{font-family:Arial;margin:20px}.formula-pair{border-top:1px solid #bbb;padding:18px 0}.pair-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}.source,.render{min-width:0;overflow-x:auto;padding:10px;border:1px solid #ddd}.source img{max-width:100%;height:auto}@media(max-width:900px){.pair-grid{grid-template-columns:1fr}}</style>','<script>window.MathJax={output:{displayOverflow:"linebreak",linebreaks:{inline:false,width:"100%"}}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>','</head><body>']
+          for item in cfg['formulas']:
+              n=item['image'][5:8]; src=f'./../{cfg["image_dir"]}/{item["image"]}'
+              parts += [f'<section class="formula-pair" id="formula-{n}"><div class="pair-grid">',f'<div class="source"><img src="{src}"></div>',f'<div class="render">{item["latex"]}</div>','</div></section>']
+          parts+=['</body></html>']; Path('physics/physics_6_3_2_reaudit.html').write_text('\n'.join(parts))
+          PY
+      - name: Install Chromium
+        run: |
+          pip install playwright pillow
+          python -m playwright install --with-deps chromium
+      - name: Capture pairs
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/p632.log 2>&1 &
+          sleep 1
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from PIL import Image,ImageDraw
+          from playwright.sync_api import sync_playwright
+          cfg=json.loads(Path('.document/formula_reviews/physics_6_3_2_formulas.json').read_text())
+          out=Path('physics-6-3-2-pass2'); (out/'pairs').mkdir(parents=True,exist_ok=True); errors=[]; manifest=[]
+          with sync_playwright() as p:
+              b=p.chromium.launch(headless=True); pg=b.new_page(viewport={'width':2400,'height':1800}); pg.on('pageerror',lambda e:errors.append(str(e)))
+              pg.goto('http://127.0.0.1:8000/physics/physics_6_3_2_reaudit.html',wait_until='domcontentloaded')
+              pg.wait_for_function('() => window.MathJax && MathJax.startup && MathJax.startup.promise'); pg.evaluate('async()=>{await MathJax.startup.promise;}'); pg.wait_for_timeout(300)
+              for item in cfg['formulas']:
+                  n=item['image'][5:8]; sec=pg.locator(f'#formula-{n}'); r=sec.locator('.render')
+                  if r.locator('mjx-container').count()!=1 or r.locator('mjx-merror').count(): raise RuntimeError(f'image{n} render failure')
+                  rp=out/f'render-{n}.png'; r.screenshot(path=str(rp))
+                  sp=Path(cfg['image_dir'])/item['image']; src=Image.open(sp).convert('RGBA'); bg=Image.new('RGBA',src.size,'white'); bg.alpha_composite(src); src=bg.convert('RGB'); scale=4 if src.width<900 else 2; src=src.resize((src.width*scale,src.height*scale),Image.Resampling.LANCZOS)
+                  rr=Image.open(rp).convert('RGB'); can=Image.new('RGB',(max(src.width,rr.width)+32,src.height+rr.height+100),'white'); d=ImageDraw.Draw(can); d.text((16,10),f'SOURCE {n}',fill='black'); can.paste(src,(16,35)); y=src.height+60; d.text((16,y),f'MATHJAX {n}',fill='black'); can.paste(rr,(16,y+25)); can.save(out/'pairs'/f'physics_6_3_2-{n}.png')
+                  dims=r.evaluate('(e)=>({cw:e.clientWidth,sw:e.scrollWidth})'); manifest.append({'id':n,'horizontal_overflow':dims['sw']>dims['cw']+1})
+              b.close()
+          (out/'manifest.json').write_text(json.dumps({'count':len(manifest),'page_errors':errors,'formulas':manifest},indent=2))
+          if len(manifest)!=2 or errors: raise SystemExit('audit capture failure')
+          PY
+      - uses: actions/upload-artifact@v4
+        with: {name: physics-6-3-2-pass2, path: physics-6-3-2-pass2, retention-days: 7}
+      - name: Commit audit page
+        run: |
+          git config user.name 'github-actions[bot]'; git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add physics/physics_6_3_2_reaudit.html
+          if ! git diff --cached --quiet; then git commit -m 'docs: build physics 6_3_2 strict reaudit page'; git pull --rebase origin develop; git push origin HEAD:develop; fi
