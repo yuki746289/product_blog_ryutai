@@ -1,0 +1,11 @@
+{
+  "created_at":"2026-09-19T06:52:00+09:00",
+  "page":"physics/physics_7.html",
+  "image_dir":"img/physics_form.files",
+  "canonical_source":"original source images",
+  "retained_diagrams":[],
+  "formulas":[{
+    "image":"image001.png",
+    "latex":"\\[\\Delta\\vec{v}=\\nabla(\\nabla\\cdot\\vec{v})-[\\nabla\\times[\\nabla\\times\\vec{v}]]\\]"
+  }]
+}
