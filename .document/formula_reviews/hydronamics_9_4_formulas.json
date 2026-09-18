@@ -1,0 +1,48 @@
+{
+  "page": "hydronamics/hydronamics_9_4.html",
+  "image_dir": "img/hydronamics_shear_symmetry.files",
+  "canonical_source": "original source images",
+  "retained_diagrams": [
+    "image001.png"
+  ],
+  "transcription_assist": {
+    "source": "HP.7z / 流体力学_応力の詳細_剪断成分の対称性.doc",
+    "method": "Word/Equation Editor candidate + canonical source-image verification",
+    "verified_date": "2026-09-18",
+    "source_image_is_canonical": true
+  },
+  "formulas": [
+    {
+      "image": "image002.png",
+      "latex": "\\[\n(\\tau_{yx|x}\\Delta y\\Delta z+\\tau_{yx|x+\\Delta x}\\Delta y\\Delta z)\\frac{\\Delta x}{2}\n-(\\tau_{xy|y}\\Delta z\\Delta x+\\tau_{xy|y+\\Delta y}\\Delta z\\Delta x)\\frac{\\Delta y}{2}\n=I_z\\omega\n\\]"
+    },
+    {
+      "image": "image003.png",
+      "latex": "\\[\n\\frac{\\Delta x\\Delta y\\Delta z}{2}\n(\\tau_{yx|x}+\\tau_{yx|x+\\Delta x}-\\tau_{xy|y}-\\tau_{xy|y+\\Delta y})\n=I_z\\omega\n\\]"
+    },
+    {
+      "image": "image004.png",
+      "latex": "\\[\n\\begin{aligned}\nI_z\n&=\\int \\rho r^2\\,dV\\\\\n&=\\iiint_{\\Delta V}\\rho r^2\\,dV\\\\\n&=\\Delta z\\iint_{\\Delta S}\\rho r^2\\,dS\\\\\n&=\\Delta z\\iint_{\\Delta S}\\rho(x^2+y^2)\\,dS\\\\\n&=\\Delta z\\int_{\\Delta L}\\rho\n\\left[\\frac{2}{3}x^3+xy^2\\right]_{-\\Delta x/2}^{\\Delta x/2}\\,dL\\\\\n&=\\Delta z\\int_{\\Delta L}\\rho\n\\left(\\frac{1}{12}\\Delta x^3+\\Delta x y^2\\right)\\,dL\\\\\n&=\\rho\\Delta z\n\\left[\\frac{1}{12}\\Delta x^3\\Delta y+\\frac{1}{12}\\Delta x\\Delta y^3\\right]_{-\\Delta y/2}^{\\Delta y/2}\\\\\n&=\\frac{\\rho}{12}\\Delta x\\Delta y\\Delta z(\\Delta x^2+\\Delta y^2)\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image005.png",
+      "latex": "\\[\n\\begin{aligned}\n\\frac{\\Delta x\\Delta y\\Delta z}{2}\n(\\tau_{yx|x}+\\tau_{yx|x+\\Delta x}-\\tau_{xy|y}-\\tau_{xy|y+\\Delta y})\n&=I_z\\omega\\\\\n&=\\frac{\\rho}{12}\\Delta x\\Delta y\\Delta z(\\Delta x^2+\\Delta y^2)\\omega\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image006.png",
+      "latex": "\\[\n\\tau_{yx|x}+\\tau_{yx|x+\\Delta x}-\\tau_{xy|y}-\\tau_{xy|y+\\Delta y}\n=\\frac{\\rho}{6}(\\Delta x^2+\\Delta y^2)\\omega\n\\]"
+    },
+    {
+      "image": "image007.png",
+      "latex": "\\[\n\\tau_{yx|x}+\\tau_{yx|x}-\\tau_{xy|y}-\\tau_{xy|y}=0\n\\]"
+    },
+    {
+      "image": "image008.png",
+      "latex": "\\[\n\\tau_{yx}=\\tau_{xy}\n\\]"
+    },
+    {
+      "image": "image009.png",
+      "latex": "\\[\n\\begin{aligned}\n\\tau_{yz}&=\\tau_{zy}\\\\\n\\tau_{zx}&=\\tau_{xz}\n\\end{aligned}\n\\]"
+    }
+  ]
+}
