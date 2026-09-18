@@ -3,6 +3,12 @@
   "image_dir": "img/hydronamics_d_ma.files",
   "canonical_source": "original source images",
   "retained_diagrams": [],
+  "transcription_assist": {
+    "source": "HP.7z / マッハ数関連Word原稿",
+    "method": "canonical source-image transcription; Word may be used only as assistance",
+    "verified_date": "2026-09-18",
+    "source_image_is_canonical": true
+  },
   "formulas": [
     {
       "image": "image001.png",
@@ -10,7 +16,7 @@
     },
     {
       "image": "image002.png",
-      "latex": "\\[\n\\frac{\\partial\\rho}{\\partial t}\\neq0\n\\]"
+      "latex": "\\[\n\\frac{\\partial \\rho}{\\partial t}\\neq 0\n\\]"
     }
   ]
 }
