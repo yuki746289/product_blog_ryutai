@@ -1,0 +1,140 @@
+{
+  "page": "heat/heat_7_1.html",
+  "image_dir": "img/heat_discretization_tri.files",
+  "canonical_source": "original source images",
+  "status": "Pass 1 transcription candidate; requires browser Pass 2",
+  "formulas": [
+    {
+      "image": "image001.png",
+      "latex": "\\[\n\\phi=\\frac{\\partial\\Theta}{\\partial\\tau}\n+V_x\\frac{\\partial\\Theta}{\\partial X}\n+V_y\\frac{\\partial\\Theta}{\\partial Y}\n+\\frac{\\partial q_x^{*}}{\\partial X}\n+\\frac{\\partial q_y^{*}}{\\partial Y}=0\n\\]"
+    },
+    {
+      "image": "image002.png",
+      "latex": "\\[\n\\int_S\n\\begin{bmatrix}\nN_1\\\\\nN_2\\\\\nN_3\n\\end{bmatrix}\n\\phi\\,dS\n=\n\\int_S\n\\begin{bmatrix}\n0\\\\\n0\\\\\n0\n\\end{bmatrix}\ndS\n=\n\\begin{bmatrix}\n0\\\\\n0\\\\\n0\n\\end{bmatrix}\n\\]"
+    },
+    {
+      "image": "image003.png",
+      "latex": "\\[\n\\begin{aligned}\nV_x&=N_1V_{x,1}+N_2V_{x,2}+N_3V_{x,3}\n=\\begin{bmatrix}N_1&N_2&N_3\\end{bmatrix}\n\\begin{Bmatrix}V_{x,1}\\\\V_{x,2}\\\\V_{x,3}\\end{Bmatrix}\n=[N]\\{V_x\\}=0\\\\\nV_y&=N_1V_{y,1}+N_2V_{y,2}+N_3V_{y,3}=0\\\\\n\\Theta&=N_1\\Theta_1+N_2\\Theta_2+N_3\\Theta_3\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image004.png",
+      "latex": "\\[\n\\begin{aligned}\n&\\int_S\n\\begin{bmatrix}\nN_1\\\\N_2\\\\N_3\n\\end{bmatrix}\n\\left(\n\\frac{\\partial\\Theta}{\\partial\\tau}\n+V_x\\frac{\\partial\\Theta}{\\partial X}\n+V_y\\frac{\\partial\\Theta}{\\partial Y}\n+\\frac{\\partial q_x^{*}}{\\partial X}\n+\\frac{\\partial q_y^{*}}{\\partial Y}\n\\right)dS\\\\\n&=\n\\int_S\n\\begin{bmatrix}N_1\\\\N_2\\\\N_3\\end{bmatrix}\n\\frac{\\partial\\Theta}{\\partial\\tau}dS\n+V_x\\int_S\n\\begin{bmatrix}N_1\\\\N_2\\\\N_3\\end{bmatrix}\n\\frac{\\partial\\Theta}{\\partial X}dS\n+V_y\\int_S\n\\begin{bmatrix}N_1\\\\N_2\\\\N_3\\end{bmatrix}\n\\frac{\\partial\\Theta}{\\partial Y}dS\\\\\n&\\quad+\n\\int_S\n\\begin{bmatrix}N_1\\\\N_2\\\\N_3\\end{bmatrix}\n\\frac{\\partial q_x^{*}}{\\partial X}dS\n+\n\\int_S\n\\begin{bmatrix}N_1\\\\N_2\\\\N_3\\end{bmatrix}\n\\frac{\\partial q_y^{*}}{\\partial Y}dS\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image005.png",
+      "latex": "\\[\n\\begin{aligned}\n&\\int_S\n\\begin{bmatrix}\nN_1\\\\N_2\\\\N_3\n\\end{bmatrix}\n\\left(\n\\frac{\\partial\\Theta}{\\partial\\tau}\n+V_x\\frac{\\partial\\Theta}{\\partial X}\n+V_y\\frac{\\partial\\Theta}{\\partial Y}\n+\\frac{\\partial q_x^{*}}{\\partial X}\n+\\frac{\\partial q_y^{*}}{\\partial Y}\n\\right)dS\\\\\n&=\n\\int_S\n\\begin{bmatrix}N_1\\\\N_2\\\\N_3\\end{bmatrix}\n\\frac{\\partial\\Theta}{\\partial\\tau}dS\n+V_x\\int_S\n\\begin{bmatrix}N_1\\\\N_2\\\\N_3\\end{bmatrix}\n\\frac{\\partial\\Theta}{\\partial X}dS\n+V_y\\int_S\n\\begin{bmatrix}N_1\\\\N_2\\\\N_3\\end{bmatrix}\n\\frac{\\partial\\Theta}{\\partial Y}dS\\\\\n&\\quad+\n\\int_S\n\\begin{bmatrix}N_1\\\\N_2\\\\N_3\\end{bmatrix}\n\\frac{\\partial q_x^{*}}{\\partial X}dS\n+\n\\int_S\n\\begin{bmatrix}N_1\\\\N_2\\\\N_3\\end{bmatrix}\n\\frac{\\partial q_y^{*}}{\\partial Y}dS\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image006.png",
+      "latex": "\\[\n\\begin{aligned}\n={}&\n\\int_S[N]^T\\frac{\\partial\\Theta}{\\partial\\tau}dS\n+V_x\\int_S[N]^T\\frac{\\partial\\Theta}{\\partial X}dS\n+V_y\\int_S[N]^T\\frac{\\partial\\Theta}{\\partial Y}dS\\\\\n&+\\int_S[N]^T\\frac{\\partial q_x^{*}}{\\partial X}dS\n+\\int_S[N]^T\\frac{\\partial q_y^{*}}{\\partial Y}dS\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image007.png",
+      "latex": "\\[\n\\begin{aligned}\n={}&\n\\int_S[N]^T\n\\frac{[N]\\left(\\{\\Theta\\}^{\\tau+\\Delta\\tau}-\\{\\Theta\\}^{\\tau}\\right)}\n{\\Delta\\tau}dS\\\\\n&+V_x\\int_S[N]^T\n\\frac{\\partial[N]\\{\\Theta\\}}{\\partial X}dS\n+V_y\\int_S[N]^T\n\\frac{\\partial[N]\\{\\Theta\\}}{\\partial Y}dS\\\\\n&+\\int_L[N]^Tq_x^{*}n_x\\,dL\n-\\int_S\\left[\\frac{\\partial N}{\\partial X}\\right]^Tq_x^{*}dS\\\\\n&+\\int_L[N]^Tq_y^{*}n_y\\,dL\n-\\int_S\\left[\\frac{\\partial N}{\\partial Y}\\right]^Tq_y^{*}dS\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image008.png",
+      "latex": "\\[\n\\begin{aligned}\n={}&\n\\int_S[N]^T[N]dS\n\\frac{\\{\\Theta\\}^{\\tau+\\Delta\\tau}-\\{\\Theta\\}^{\\tau}}\n{\\Delta\\tau}\\\\\n&+V_x\\int_S[N]^T\\left[\\frac{\\partial N}{\\partial X}\\right]dS\\{\\Theta\\}\n+V_y\\int_S[N]^T\\left[\\frac{\\partial N}{\\partial Y}\\right]dS\\{\\Theta\\}\\\\\n&-\\int_S\\left[\\frac{\\partial N}{\\partial X}\\right]^Tq_x^{*}dS\n-\\int_S\\left[\\frac{\\partial N}{\\partial Y}\\right]^Tq_y^{*}dS\\\\\n&+\\int_L[N]^T(q_x^{*}n_x+q_y^{*}n_y)dL\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image009.png",
+      "latex": "\\[\n\\begin{aligned}\n={}&\n\\int_S[N]^T[N]dS\n\\frac{\\{\\Theta\\}^{\\tau+\\Delta\\tau}-\\{\\Theta\\}^{\\tau}}\n{\\Delta\\tau}\\\\\n&+V_x\\int_S[N]^T\\left[\\frac{\\partial N}{\\partial X}\\right]dS\\{\\Theta\\}\n+V_y\\int_S[N]^T\\left[\\frac{\\partial N}{\\partial Y}\\right]dS\\{\\Theta\\}\\\\\n&-\\int_S\\left[\\frac{\\partial N}{\\partial X}\\right]^T\n\\left(-\\frac{1}{Pe}\\frac{\\partial\\Theta}{\\partial X}\\right)dS\\\\\n&-\\int_S\\left[\\frac{\\partial N}{\\partial Y}\\right]^T\n\\left(-\\frac{1}{Pe}\\frac{\\partial\\Theta}{\\partial Y}\\right)dS\\\\\n&+Nu(\\Theta-\\Theta_h)\\int_L[N]^T dL\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image010.png",
+      "latex": "\\[\n\\begin{aligned}\n={}&\n\\int_S[N]^T[N]dS\n\\frac{\\{\\Theta\\}^{\\tau+\\Delta\\tau}-\\{\\Theta\\}^{\\tau}}\n{\\Delta\\tau}\\\\\n&+V_x\\int_S[N]^T\\left[\\frac{\\partial N}{\\partial X}\\right]dS\\{\\Theta\\}\n+V_y\\int_S[N]^T\\left[\\frac{\\partial N}{\\partial Y}\\right]dS\\{\\Theta\\}\\\\\n&+\\frac{1}{Pe}\\int_S\\left[\\frac{\\partial N}{\\partial X}\\right]^T\n\\frac{\\partial\\Theta}{\\partial X}dS\n+\\frac{1}{Pe}\\int_S\\left[\\frac{\\partial N}{\\partial Y}\\right]^T\n\\frac{\\partial\\Theta}{\\partial Y}dS\\\\\n&+Nu(\\Theta-\\Theta_h)\\int_L[N]^T dL\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image011.png",
+      "latex": "\\[\n\\begin{aligned}\n={}&\n\\int_S[N]^T[N]dS\n\\frac{\\{\\Theta\\}^{\\tau+\\Delta\\tau}-\\{\\Theta\\}^{\\tau}}\n{\\Delta\\tau}\\\\\n&+V_x\\int_S[N]^T\\left[\\frac{\\partial N}{\\partial X}\\right]dS\\{\\Theta\\}\n+V_y\\int_S[N]^T\\left[\\frac{\\partial N}{\\partial Y}\\right]dS\\{\\Theta\\}\\\\\n&+\\frac{1}{Pe}\\int_S\\left[\\frac{\\partial N}{\\partial X}\\right]^T\n\\frac{\\partial[N]\\{\\Theta\\}}{\\partial X}dS\n+\\frac{1}{Pe}\\int_S\\left[\\frac{\\partial N}{\\partial Y}\\right]^T\n\\frac{\\partial[N]\\{\\Theta\\}}{\\partial Y}dS\\\\\n&+Nu(\\Theta-\\Theta_h)\\int_L[N]^T dL\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image012.png",
+      "latex": "\\[\n\\begin{aligned}\n={}&\n\\int_S[N]^T[N]dS\n\\frac{\\{\\Theta\\}^{\\tau+\\Delta\\tau}-\\{\\Theta\\}^{\\tau}}\n{\\Delta\\tau}\\\\\n&+V_x\\int_S[N]^T\\left[\\frac{\\partial N}{\\partial X}\\right]dS\\{\\Theta\\}\n+V_y\\int_S[N]^T\\left[\\frac{\\partial N}{\\partial Y}\\right]dS\\{\\Theta\\}\\\\\n&+\\frac{1}{Pe}\\int_S\\left[\\frac{\\partial N}{\\partial X}\\right]^T\n\\left[\\frac{\\partial N}{\\partial X}\\right]dS\\{\\Theta\\}\n+\\frac{1}{Pe}\\int_S\\left[\\frac{\\partial N}{\\partial Y}\\right]^T\n\\left[\\frac{\\partial N}{\\partial Y}\\right]dS\\{\\Theta\\}\\\\\n&+Nu(\\Theta-\\Theta_h)\\int_L[N]^T dL\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image013.png",
+      "latex": "\\[\n=\n\\int_S\n\\begin{bmatrix}\nN_1N_1&N_1N_2&N_1N_3\\\\\nN_2N_1&N_2N_2&N_2N_3\\\\\nN_3N_1&N_3N_2&N_3N_3\n\\end{bmatrix}\ndS\\,\n\\frac{\\{\\Theta\\}^{\\tau+\\Delta\\tau}-\\{\\Theta\\}^{\\tau}}\n{\\Delta\\tau}\n\\]"
+    },
+    {
+      "image": "image014.png",
+      "latex": "\\[\n\\begin{aligned}\n&+V_x\\int_S\n\\begin{bmatrix}\nN_1\\frac{\\partial N_1}{\\partial X}&N_1\\frac{\\partial N_2}{\\partial X}&N_1\\frac{\\partial N_3}{\\partial X}\\\\\nN_2\\frac{\\partial N_1}{\\partial X}&N_2\\frac{\\partial N_2}{\\partial X}&N_2\\frac{\\partial N_3}{\\partial X}\\\\\nN_3\\frac{\\partial N_1}{\\partial X}&N_3\\frac{\\partial N_2}{\\partial X}&N_3\\frac{\\partial N_3}{\\partial X}\n\\end{bmatrix}\ndS\\{\\Theta\\}\\\\\n&+V_y\\int_S\n\\begin{bmatrix}\nN_1\\frac{\\partial N_1}{\\partial Y}&N_1\\frac{\\partial N_2}{\\partial Y}&N_1\\frac{\\partial N_3}{\\partial Y}\\\\\nN_2\\frac{\\partial N_1}{\\partial Y}&N_2\\frac{\\partial N_2}{\\partial Y}&N_2\\frac{\\partial N_3}{\\partial Y}\\\\\nN_3\\frac{\\partial N_1}{\\partial Y}&N_3\\frac{\\partial N_2}{\\partial Y}&N_3\\frac{\\partial N_3}{\\partial Y}\n\\end{bmatrix}\ndS\\{\\Theta\\}\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image015.png",
+      "latex": "\\[\n\\begin{aligned}\n&+\\frac{1}{Pe}\\int_S\n\\begin{bmatrix}\n\\frac{\\partial N_1}{\\partial X}\\frac{\\partial N_1}{\\partial X}&\n\\frac{\\partial N_1}{\\partial X}\\frac{\\partial N_2}{\\partial X}&\n\\frac{\\partial N_1}{\\partial X}\\frac{\\partial N_3}{\\partial X}\\\\\n\\frac{\\partial N_2}{\\partial X}\\frac{\\partial N_1}{\\partial X}&\n\\frac{\\partial N_2}{\\partial X}\\frac{\\partial N_2}{\\partial X}&\n\\frac{\\partial N_2}{\\partial X}\\frac{\\partial N_3}{\\partial X}\\\\\n\\frac{\\partial N_3}{\\partial X}\\frac{\\partial N_1}{\\partial X}&\n\\frac{\\partial N_3}{\\partial X}\\frac{\\partial N_2}{\\partial X}&\n\\frac{\\partial N_3}{\\partial X}\\frac{\\partial N_3}{\\partial X}\n\\end{bmatrix}\ndS\\{\\Theta\\}\\\\\n&+\\frac{1}{Pe}\\int_S\n\\begin{bmatrix}\n\\frac{\\partial N_1}{\\partial Y}\\frac{\\partial N_1}{\\partial Y}&\n\\frac{\\partial N_1}{\\partial Y}\\frac{\\partial N_2}{\\partial Y}&\n\\frac{\\partial N_1}{\\partial Y}\\frac{\\partial N_3}{\\partial Y}\\\\\n\\frac{\\partial N_2}{\\partial Y}\\frac{\\partial N_1}{\\partial Y}&\n\\frac{\\partial N_2}{\\partial Y}\\frac{\\partial N_2}{\\partial Y}&\n\\frac{\\partial N_2}{\\partial Y}\\frac{\\partial N_3}{\\partial Y}\\\\\n\\frac{\\partial N_3}{\\partial Y}\\frac{\\partial N_1}{\\partial Y}&\n\\frac{\\partial N_3}{\\partial Y}\\frac{\\partial N_2}{\\partial Y}&\n\\frac{\\partial N_3}{\\partial Y}\\frac{\\partial N_3}{\\partial Y}\n\\end{bmatrix}\ndS\\{\\Theta\\}\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image016.png",
+      "latex": "\\[\n+Nu(\\Theta-\\Theta_h)\\int_L\n\\begin{bmatrix}\nN_1\\\\N_2\n\\end{bmatrix}dL\n\\]"
+    },
+    {
+      "image": "image017.png",
+      "latex": "\\[\n=\n\\int_S\n\\begin{bmatrix}\nL_1L_1&L_1L_2&L_1L_3\\\\\nL_2L_1&L_2L_2&L_2L_3\\\\\nL_3L_1&L_3L_2&L_3L_3\n\\end{bmatrix}\ndS\\,\n\\frac{\\{\\Theta\\}^{\\tau+\\Delta\\tau}-\\{\\Theta\\}^{\\tau}}\n{\\Delta\\tau}\n\\]"
+    },
+    {
+      "image": "image018.png",
+      "latex": "\\[\n\\begin{aligned}\n&+V_x\\int_S\\frac{1}{2A}\n\\begin{bmatrix}\nL_1c_{1x}&L_1c_{2x}&L_1c_{3x}\\\\\nL_2c_{1x}&L_2c_{2x}&L_2c_{3x}\\\\\nL_3c_{1x}&L_3c_{2x}&L_3c_{3x}\n\\end{bmatrix}\ndS\\{\\Theta\\}\\\\\n&+V_y\\int_S\\frac{1}{2A}\n\\begin{bmatrix}\nL_1c_{1y}&L_1c_{2y}&L_1c_{3y}\\\\\nL_2c_{1y}&L_2c_{2y}&L_2c_{3y}\\\\\nL_3c_{1y}&L_3c_{2y}&L_3c_{3y}\n\\end{bmatrix}\ndS\\{\\Theta\\}\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image019.png",
+      "latex": "\\[\n\\begin{aligned}\n&+\\frac{1}{Pe}\\int_S\\frac{1}{4A^2}A\n\\begin{bmatrix}\nc_{1x}c_{1x}&c_{1x}c_{2x}&c_{1x}c_{3x}\\\\\nc_{2x}c_{1x}&c_{2x}c_{2x}&c_{2x}c_{3x}\\\\\nc_{3x}c_{1x}&c_{3x}c_{2x}&c_{3x}c_{3x}\n\\end{bmatrix}\ndS\\{\\Theta\\}\\\\\n&+\\frac{1}{Pe}\\int_S\\frac{1}{4A^2}A\n\\begin{bmatrix}\nc_{1y}c_{1y}&c_{1y}c_{2y}&c_{1y}c_{3y}\\\\\nc_{2y}c_{1y}&c_{2y}c_{2y}&c_{2y}c_{3y}\\\\\nc_{3y}c_{1y}&c_{3y}c_{2y}&c_{3y}c_{3y}\n\\end{bmatrix}\ndS\\{\\Theta\\}\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image020.png",
+      "latex": "\\[\n+Nu(\\Theta-\\Theta_h)\\int_L\n\\begin{bmatrix}\nL_1\\\\L_2\n\\end{bmatrix}dL\n\\]"
+    },
+    {
+      "image": "image021.png",
+      "latex": "\\[\n\\begin{aligned}\n\\int_S L_1^pL_2^qL_3^r\\,dS\n&=\\frac{p!q!r!}{(p+q+r+2)!}\\,2A\\\\\n\\int_S L_iL_j\\,dS\n&=\n\\begin{cases}\n\\displaystyle\\frac{1!1!}{(1+1+2)!}\\,2A\n=\\frac{2}{4!}A\n=\\frac{1}{12}A &(i\\ne j)\\\\\n\\displaystyle\\frac{2!}{(1+1+2)!}\\,2A\n=\\frac{4}{4!}A\n=\\frac{1}{6}A &(i=j)\n\\end{cases}\\\\\n\\int_S L_i\\,dS\n&=\\frac{1!}{(1+2)!}\\,2A\n=\\frac{2}{3!}A\n=\\frac{1}{3}A\\\\\n\\int_L L_1^pL_2^q\\,dL\n&=\\frac{p!q!}{(p+q)!}L\\\\\n\\int_L L_i\\,dL\n&=\\frac{1}{1!}L=L\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image022.png",
+      "latex": "\\[\n=\n\\frac{1}{12}A\n\\begin{bmatrix}\n2&1&1\\\\\n1&2&1\\\\\n1&1&2\n\\end{bmatrix}\n\\frac{\\{\\Theta\\}^{\\tau+\\Delta\\tau}-\\{\\Theta\\}^{\\tau}}\n{\\Delta\\tau}\n\\]"
+    },
+    {
+      "image": "image023.png",
+      "latex": "\\[\n\\begin{aligned}\n&+V_x\\frac{1}{2A}\\frac{A}{3}\n\\begin{bmatrix}\nc_{1x}&c_{2x}&c_{3x}\\\\\nc_{1x}&c_{2x}&c_{3x}\\\\\nc_{1x}&c_{2x}&c_{3x}\n\\end{bmatrix}\\{\\Theta\\}\\\\\n&+V_y\\frac{1}{2A}\\frac{A}{3}\n\\begin{bmatrix}\nc_{1y}&c_{2y}&c_{3y}\\\\\nc_{1y}&c_{2y}&c_{3y}\\\\\nc_{1y}&c_{2y}&c_{3y}\n\\end{bmatrix}\\{\\Theta\\}\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image024.png",
+      "latex": "\\[\n\\begin{aligned}\n&+\\frac{1}{Pe}\\frac{1}{4A^2}A\n\\begin{bmatrix}\nc_{1x}c_{1x}&c_{1x}c_{2x}&c_{1x}c_{3x}\\\\\nc_{2x}c_{1x}&c_{2x}c_{2x}&c_{2x}c_{3x}\\\\\nc_{3x}c_{1x}&c_{3x}c_{2x}&c_{3x}c_{3x}\n\\end{bmatrix}\\{\\Theta\\}\\\\\n&+\\frac{1}{Pe}\\frac{1}{4A^2}A\n\\begin{bmatrix}\nc_{1y}c_{1y}&c_{1y}c_{2y}&c_{1y}c_{3y}\\\\\nc_{2y}c_{1y}&c_{2y}c_{2y}&c_{2y}c_{3y}\\\\\nc_{3y}c_{1y}&c_{3y}c_{2y}&c_{3y}c_{3y}\n\\end{bmatrix}\\{\\Theta\\}\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image025.png",
+      "latex": "\\[\n+Nu(\\Theta-\\Theta_h)L\n\\begin{bmatrix}\n1\\\\1\n\\end{bmatrix}\n\\]"
+    },
+    {
+      "image": "image026.png",
+      "latex": "\\[\n=\n\\frac{1}{12}A\n\\begin{bmatrix}\n2&1&1\\\\\n1&2&1\\\\\n1&1&2\n\\end{bmatrix}\n\\frac{\\{\\Theta\\}^{\\tau+\\Delta\\tau}-\\{\\Theta\\}^{\\tau}}\n{\\Delta\\tau}\n\\]"
+    },
+    {
+      "image": "image027.png",
+      "latex": "\\[\n\\begin{aligned}\n&+V_x\\frac{1}{6}\n\\begin{bmatrix}\nc_{1x}&c_{2x}&c_{3x}\\\\\nc_{1x}&c_{2x}&c_{3x}\\\\\nc_{1x}&c_{2x}&c_{3x}\n\\end{bmatrix}\\{\\Theta\\}\\\\\n&+V_y\\frac{1}{6}\n\\begin{bmatrix}\nc_{1y}&c_{2y}&c_{3y}\\\\\nc_{1y}&c_{2y}&c_{3y}\\\\\nc_{1y}&c_{2y}&c_{3y}\n\\end{bmatrix}\\{\\Theta\\}\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image028.png",
+      "latex": "\\[\n\\begin{aligned}\n&+\\frac{1}{Pe}\\frac{1}{4A}\n\\begin{bmatrix}\nc_{1x}c_{1x}&c_{1x}c_{2x}&c_{1x}c_{3x}\\\\\nc_{2x}c_{1x}&c_{2x}c_{2x}&c_{2x}c_{3x}\\\\\nc_{3x}c_{1x}&c_{3x}c_{2x}&c_{3x}c_{3x}\n\\end{bmatrix}\\{\\Theta\\}\\\\\n&+\\frac{1}{Pe}\\frac{1}{4A}\n\\begin{bmatrix}\nc_{1y}c_{1y}&c_{1y}c_{2y}&c_{1y}c_{3y}\\\\\nc_{2y}c_{1y}&c_{2y}c_{2y}&c_{2y}c_{3y}\\\\\nc_{3y}c_{1y}&c_{3y}c_{2y}&c_{3y}c_{3y}\n\\end{bmatrix}\\{\\Theta\\}\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image029.png",
+      "latex": "\\[\n+Nu(\\Theta-\\Theta_h)n_iL\n\\begin{bmatrix}\n1\\\\1\n\\end{bmatrix}\n\\]"
+    },
+    {
+      "image": "image030.png",
+      "latex": "\\[\n\\begin{aligned}\n={}&[C]\\frac{\\{\\Theta\\}^{\\tau+\\Delta\\tau}-\\{\\Theta\\}^{\\tau}}{\\Delta\\tau}\n+V_x[C_x]\\{\\Theta\\}\n+V_y[C_y]\\{\\Theta\\}\\\\\n&+\\frac{1}{Pe}[S_{xx}]\\{\\Theta\\}\n+\\frac{1}{Pe}[S_{yy}]\\{\\Theta\\}\\\\\n&+Nu(\\Theta-\\Theta_h)L\n\\begin{bmatrix}1\\\\1\\end{bmatrix}\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image031.png",
+      "latex": "\\[\n\\begin{aligned}\n={}&[C]\\frac{\\{\\Theta\\}^{\\tau+\\Delta\\tau}-\\{\\Theta\\}^{\\tau}}{\\Delta\\tau}\n+\\left(V_x[C_x]+V_y[C_y]\\right)\\{\\Theta\\}\\\\\n&+\\frac{1}{Pe}\\left([S_{xx}]+[S_{yy}]\\right)\\{\\Theta\\}\n+Nu(\\Theta-\\Theta_h)L\n\\begin{bmatrix}1\\\\1\\end{bmatrix}\\\\\n={}&\n\\begin{bmatrix}0\\\\0\\\\0\\end{bmatrix}\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image032.png",
+      "latex": "\\[\n\\begin{aligned}\n&[C]\\frac{\\{\\Theta\\}^{\\tau+\\Delta\\tau}-\\{\\Theta\\}^{\\tau}}{\\Delta\\tau}\n+\\left(V_x[C_x]+V_y[C_y]\\right)\\{\\Theta\\}\\\\\n&+\\frac{1}{Pe}\\left([S_{xx}]+[S_{yy}]\\right)\\{\\Theta\\}\n+Nu(\\Theta-\\Theta_h)L\n\\begin{bmatrix}1\\\\1\\end{bmatrix}\n=\n\\begin{bmatrix}0\\\\0\\\\0\\end{bmatrix}\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image033.png",
+      "latex": "\\[\n\\begin{aligned}\n&\\frac{[C]}{\\Delta\\tau}\\{\\Theta\\}^{\\tau+\\Delta\\tau}\n+\\left(V_x[C_x]+V_y[C_y]\\right)\\{\\Theta\\}^{\\tau+\\Delta\\tau}\\\\\n&+\\frac{1}{Pe}\\left([S_{xx}]+[S_{yy}]\\right)\\{\\Theta\\}^{\\tau+\\Delta\\tau}\\\\\n={}&\n\\frac{[C]}{\\Delta\\tau}\\{\\Theta\\}^{\\tau}\n-Nu(\\Theta-\\Theta_h)L\n\\begin{bmatrix}1\\\\1\\end{bmatrix}\n\\end{aligned}\n\\]"
+    }
+  ]
+}
