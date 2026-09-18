@@ -321,6 +321,30 @@ Pass 2目視で `fem_10/image002`, `image003` の非対角添字差異を検出�
 - `.document/formula_reviews/FEM_5_FORMULA_AUDIT_20260918.md`
 - `.document/formula_reviews/FEM_5_NORMAL_BROWSER_QA_20260918.md`
 
+## 2026-09-18 FEM Batch 4 監査・通常ページ反映
+
+残存FEM第4バッチ27画像を分類し、純数式19件を厳密監査・通常ページ化した。
+
+- 分類対象: **27画像**
+  - 純数式: **19**
+  - 日本語説明＋数式の混在テキスト: **1**
+  - 図・模式図: **7**
+- `fem_4.html`: 4式完了、`image002` は混在テキストとして別処理
+- `fem_9.html`: 3式完了、図2件維持
+- `fem_6_2_2.html`～`fem_6_2_5.html`: 各3式、計12式完了
+- `fem_12.html`: 5件すべて図として画像維持
+- Pass 1: **19/19**
+- Pass 2 run: **35317362082**
+- Pass 2: **19/19**
+- Normal browser QA run: **35317792518**
+- desktop/mobile: MathJax errors 0、uncontained 0、page overflowなし
+- 本番FTP反映は未実施。
+
+詳細:
+- `.document/formula_reviews/FEM_BATCH_4_IMAGE_CLASSIFICATION_20260918.md`
+- `.document/formula_reviews/FEM_BATCH_4_FORMULA_AUDIT_20260918.md`
+- `.document/formula_reviews/FEM_BATCH_4_NORMAL_BROWSER_QA_20260918.md`
+
 ## 次の優先順
 
 1. サイト全体の残存画像を「数式 / 図 / 混在画像」に分類する。
