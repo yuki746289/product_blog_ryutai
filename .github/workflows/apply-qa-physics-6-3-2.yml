@@ -1,0 +1,104 @@
+# Created: 2026-09-19T07:05:00+09:00
+name: Apply and QA Physics 6_3_2
+on:
+  push:
+    branches: [develop]
+    paths: ['.github/workflows/apply-qa-physics-6-3-2.yml']
+permissions: {contents: write}
+jobs:
+  apply_qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: develop, fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.x'}
+      - name: Apply certified formulas
+        run: |
+          python3 - <<'PY'
+          import json,re
+          from pathlib import Path
+          page=Path('physics/physics_6_3_2.html'); cfg=json.loads(Path('.document/formula_reviews/physics_6_3_2_formulas.json').read_text()); imgdir='physics_c_cross.files'
+          dnums=[x['image'][5:8] for x in cfg['formulas']]
+          if dnums!=['002','003']: raise RuntimeError(dnums)
+          bynum={x['image'][5:8]:x for x in cfg['formulas']}
+          raw=page.read_bytes(); enc=None
+          for candidate in ('cp932','utf-8'):
+              try: original=raw.decode(candidate); enc=candidate; break
+              except UnicodeDecodeError: pass
+          if enc is None: raise RuntimeError('encoding failed')
+          mathjax4="""
+          <script>
+          window.MathJax={output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},chtml:{displayAlign:'left',displayIndent:'0'}};
+          </script>
+          <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+          """
+          def strip_mj(t):
+              t=re.sub(r'\s*<script>\s*window\.MathJax\s*=\s*\{.*?</script>','',t,flags=re.I|re.S)
+              t=re.sub(r'\s*<script\b[^>]*src=["\'][^"\']*mathjax[^"\']*["\'][^>]*>\s*</script>','',t,flags=re.I|re.S); return t
+          alt='|'.join(dnums)
+          pat=re.compile(rf'(?P<block><div\b(?=[^>]*class=["\'][^"\']*\bmath-block\b[^"\']*["\'])(?=[^>]*data-source-image=["\'][^"\']*{imgdir}/image(?P<bnum>{alt})\.png["\'])[^>]*>.*?</div>)|(?P<img><p\b(?=[^>]*class=["\'][^"\']*\bim\b[^"\']*["\'])[^>]*>\s*<img\b[^>]*src=["\'][^"\']*{imgdir}/image(?P<inum>{alt})\.png["\'][^>]*>\s*</p>)',re.I|re.S)
+          def skeleton(t): return re.sub(r'\s+',' ',pat.sub('<FORMULA/>',strip_mj(t))).strip()
+          before=skeleton(original); found=[m.group('inum') or m.group('bnum') for m in pat.finditer(original)]
+          if found!=dnums: raise RuntimeError(f'found {found}')
+          pos=[0]
+          def repl(_m):
+              n=dnums[pos[0]]; pos[0]+=1
+              return f'<div class="math-block" id="formula-physics-6-3-2-{n}" data-source-image="./../img/{imgdir}/image{n}.png">\n{bynum[n]["latex"]}\n</div>'
+          applied=pat.sub(repl,original); applied=strip_mj(applied)
+          if '</head>' not in applied: raise RuntimeError('missing head')
+          applied=applied.replace('</head>',mathjax4+'</head>',1)
+          if skeleton(applied)!=before: raise RuntimeError('non-formula content changed')
+          if re.findall(rf'<img\b[^>]*src=["\'][^"\']*{imgdir}/image(?:{alt})\.png',applied,re.I): raise RuntimeError('formula images remain')
+          if len(re.findall(rf'<img\b[^>]*src=["\'][^"\']*{imgdir}/image004\.png',applied,re.I))!=1: raise RuntimeError('retained diagram missing')
+          page.write_bytes(applied.encode(enc))
+          Path('.document/formula_reviews/PHYSICS_6_3_2_NORMAL_APPLY_RESULT.md').write_text('# Physics 6_3_2 Normal Apply Result\n\n- Certified formulas applied: **2 / 2**\n- Display formulas: **2**\n- Retained diagram: **1**\n- Target formula image tags remaining: **0**\n- Non-formula content guard: **PASS**\n- Production deployment: not performed.\n',encoding='utf-8')
+          PY
+      - name: Install Chromium
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Browser QA
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/p632qa.log 2>&1 &
+          sleep 1
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+          out=Path('physics-6-3-2-normal-qa'); out.mkdir(exist_ok=True); results=[]; failures=[]
+          with sync_playwright() as p:
+              b=p.chromium.launch(headless=True)
+              for name,vp in {'desktop':{'width':1440,'height':1000},'mobile':{'width':390,'height':844}}.items():
+                  ctx=b.new_context(viewport=vp); pg=ctx.new_page(); errs=[]; pg.on('pageerror',lambda e,s=errs:s.append(str(e)))
+                  pg.goto('http://127.0.0.1:8000/physics/physics_6_3_2.html',wait_until='domcontentloaded')
+                  pg.wait_for_function('() => window.MathJax && MathJax.startup && MathJax.startup.promise'); pg.evaluate('async()=>{await MathJax.startup.promise;}'); pg.wait_for_timeout(300)
+                  blocks=pg.locator('div.math-block[data-source-image*="physics_c_cross.files/image"]'); bc=blocks.count(); imgs=pg.locator('img[src*="physics_c_cross.files/image"]').count(); me=pg.locator('mjx-merror').count(); ur=local=uc=0
+                  for i in range(blocks.count()):
+                      el=blocks.nth(i)
+                      if el.locator('mjx-container').count()<1: ur+=1
+                      d=el.evaluate('(e)=>({cw:e.clientWidth,sw:e.scrollWidth,ox:getComputedStyle(e).overflowX})')
+                      if d['sw']>d['cw']+1:
+                          local+=1
+                          if d['ox'] not in ('auto','scroll'): uc+=1
+                  pd=pg.evaluate('() => ({cw:document.documentElement.clientWidth,sw:document.documentElement.scrollWidth})'); po=pd['sw']>pd['cw']+2
+                  (out/name).mkdir(parents=True,exist_ok=True); pg.screenshot(path=str(out/name/'full.png'),full_page=True)
+                  row={'viewport':name,'display':bc,'retained_images':imgs,'mathjax_errors':me,'unrendered':ur,'local_scroll':local,'uncontained':uc,'page_overflow':po,'page_errors':errs}; results.append(row)
+                  if bc!=2 or imgs!=1 or me or ur or uc or po or errs: failures.append(str(row))
+                  ctx.close()
+              b.close()
+          status='PASS' if not failures else 'FAIL'
+          Path('.document/formula_reviews/PHYSICS_6_3_2_NORMAL_BROWSER_QA_20260919.md').write_text('# Physics 6_3_2 Normal Browser QA — 2026-09-19\n\n- Overall: **'+status+'**\n- desktop/mobile display: 2/2\n- retained diagram: 1/1\n- MathJax errors: '+str(sum(r['mathjax_errors'] for r in results))+'\n- Unrendered: '+str(sum(r['unrendered'] for r in results))+'\n- Uncontained overflow: '+str(sum(r['uncontained'] for r in results))+'\n- Page overflow: '+('YES' if any(r['page_overflow'] for r in results) else 'NO')+'\n- Production deployment: not performed.\n',encoding='utf-8')
+          (out/'manifest.json').write_text(json.dumps({'status':status,'results':results,'failures':failures},ensure_ascii=False,indent=2),encoding='utf-8')
+          if failures: raise SystemExit(failures)
+          PY
+      - uses: actions/upload-artifact@v4
+        with: {name: physics-6-3-2-normal-qa, path: physics-6-3-2-normal-qa, retention-days: 7}
+      - name: Commit applied page and QA
+        run: |
+          git diff --check
+          git config user.name 'github-actions[bot]'; git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add physics/physics_6_3_2.html .document/formula_reviews/PHYSICS_6_3_2_NORMAL_APPLY_RESULT.md .document/formula_reviews/PHYSICS_6_3_2_NORMAL_BROWSER_QA_20260919.md
+          git commit -m 'feat: apply and verify physics 6_3_2 formulas'
+          for attempt in 1 2 3 4 5; do git pull --rebase origin develop; if git push origin HEAD:develop; then exit 0; fi; if [ "$attempt" -eq 5 ]; then exit 1; fi; sleep 2; done
