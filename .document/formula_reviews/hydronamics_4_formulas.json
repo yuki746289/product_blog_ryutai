@@ -1,0 +1,49 @@
+{
+  "page": "hydronamics/hydronamics_4.html",
+  "image_dir": "img/hydronamics_e_mass.files",
+  "canonical_source": "original source images",
+  "retained_diagrams": [
+    "image001.png"
+  ],
+  "source_notation_notes": [
+    "image005 preserves source-visible F_z labels and the duplicated F_{z|z+Δz} term exactly as shown; they are not silently corrected."
+  ],
+  "formulas": [
+    {
+      "image": "image002.png",
+      "latex": "\\[\n\\begin{aligned}\nF_{x|x}&=\\rho\\Delta y\\Delta z\\,v_{x|x}\\\\\nF_{x|x+\\Delta x}&=-\\rho\\Delta y\\Delta z\\,v_{x|x+\\Delta x}\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image003.png",
+      "latex": "\\[\n\\begin{aligned}\nF_{y|y}&=\\rho\\Delta z\\Delta x\\,v_{y|y}\\\\\nF_{y|y+\\Delta y}&=-\\rho\\Delta z\\Delta x\\,v_{y|y+\\Delta y}\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image004.png",
+      "latex": "\\[\n\\begin{aligned}\nF_{z|z}&=\\rho\\Delta x\\Delta y\\,v_{z|z}\\\\\nF_{z|z+\\Delta z}&=-\\rho\\Delta x\\Delta y\\,v_{z|z+\\Delta z}\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image005.png",
+      "latex": "\\[\n\\begin{aligned}\n\\Delta x\\Delta y\\Delta z\n\\frac{\\rho|_{t|t+\\Delta t}-\\rho|_{t|t}}{\\Delta t}\n&=F_{z|z+\\Delta z}+F_{z|z}\\\\\n&\\quad+F_{y|y+\\Delta y}+F_{y|y}\\\\\n&\\quad+F_{z|z+\\Delta z}+F_{z|z+\\Delta z}\\\\\n&=-\\rho\\Delta y\\Delta z\\,v_{x|x+\\Delta x}\n+\\rho\\Delta y\\Delta z\\,v_{x|x}\\\\\n&\\quad-\\rho\\Delta z\\Delta x\\,v_{y|y+\\Delta y}\n+\\rho\\Delta z\\Delta x\\,v_{y|y}\\\\\n&\\quad-\\rho\\Delta x\\Delta y\\,v_{z|z+\\Delta z}\n+\\rho\\Delta x\\Delta y\\,v_{z|z}\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image006.png",
+      "latex": "\\[\n\\frac{\\rho|_{t|t+\\Delta t}-\\rho|_{t|t}}{\\Delta t}\n=\n-\\frac{\\rho v_x|_{x|x+\\Delta x}-\\rho v_x|_{x|x}}{\\Delta x}\n-\\frac{\\rho v_y|_{y|y+\\Delta y}-\\rho v_y|_{y|y}}{\\Delta y}\n-\\frac{\\rho v_z|_{z|z+\\Delta z}-\\rho v_z|_{z|z}}{\\Delta z}\n\\]"
+    },
+    {
+      "image": "image007.png",
+      "latex": "\\[\n\\frac{\\partial\\rho}{\\partial t}\n=\n-\\frac{\\partial(\\rho v_x)}{\\partial x}\n-\\frac{\\partial(\\rho v_y)}{\\partial y}\n-\\frac{\\partial(\\rho v_z)}{\\partial z}\n\\]"
+    },
+    {
+      "image": "image008.png",
+      "latex": "\\[\n\\frac{\\partial\\rho}{\\partial t}\n+v_x\\frac{\\partial\\rho}{\\partial x}\n+v_y\\frac{\\partial\\rho}{\\partial y}\n+v_z\\frac{\\partial\\rho}{\\partial z}\n=\n-\\rho\\left(\n\\frac{\\partial v_x}{\\partial x}\n+\\frac{\\partial v_y}{\\partial y}\n+\\frac{\\partial v_z}{\\partial z}\n\\right)\n\\]"
+    },
+    {
+      "image": "image009.png",
+      "latex": "\\[\n\\frac{D\\rho}{Dt}\n=\n-\\rho(\\nabla\\cdot\\vec v)\n\\]"
+    },
+    {
+      "image": "image010.png",
+      "latex": "\\[\n\\frac{D}{Dt}\n=\n\\frac{\\partial}{\\partial t}\n+\n(\\vec v\\cdot\\nabla)\n\\]"
+    }
+  ]
+}
