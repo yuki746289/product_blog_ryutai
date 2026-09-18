@@ -45,7 +45,7 @@ jobs:
           before=skeleton(original)
           if len(list(pat.finditer(original)))!=1: raise RuntimeError('source image mapping != 1')
           repl=f'<div class="math-block" id="formula-physics-6-2-5-018" data-source-image="./../img/{imgdir}/image018.png">\n{item["latex"]}\n</div>'
-          applied=pat.sub(repl,original); applied=strip_mj(applied)
+          applied=pat.sub(lambda _m: repl,original); applied=strip_mj(applied)
           if '</head>' not in applied: raise RuntimeError('missing head')
           applied=applied.replace('</head>',mathjax4+'</head>',1)
           if skeleton(applied)!=before: raise RuntimeError('non-formula content changed')
