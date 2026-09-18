@@ -1,0 +1,15 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>body{font-family:Arial;margin:20px}.pair{display:grid;grid-template-columns:1fr 1fr;gap:24px}.source,.render{padding:10px;border:1px solid #ddd;overflow-x:auto;min-width:0}.source img{max-width:100%;height:auto}@media(max-width:900px){.pair{grid-template-columns:1fr}}</style>
+<script>window.MathJax={output:{displayOverflow:"linebreak",linebreaks:{inline:false,width:"100%"}}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script></head><body>
+<div class="pair"><div class="source"><img src="./../img/physics_c_cross.files/image005.png"></div><div class="render">\[
+\begin{aligned}
+[\nabla\times\vec{v}]
+&=\left[\sum_{i=0}^{3}\vec{\delta}_{i}\frac{\partial}{\partial x_i}\times\sum_{j=0}^{3}\vec{\delta}_{j}v_j\right]\\
+&=\sum_{i=0}^{3}\sum_{j=0}^{3}\left[\vec{\delta}_{i}\frac{\partial}{\partial x_i}\times\vec{\delta}_{j}v_j\right]\\
+&=\sum_{i=0}^{3}\sum_{j=0}^{3}[\vec{\delta}_{i}\times\vec{\delta}_{j}]\frac{\partial}{\partial x_i}v_j\\
+&=\sum_{i=0}^{3}\sum_{j=0}^{3}\sum_{k=0}^{3}\varepsilon_{ijk}\vec{\delta}_{k}\frac{\partial v_j}{\partial x_i}\\
+&=\varepsilon_{123}\vec{\delta}_{z}\frac{\partial v_y}{\partial x_x}+\varepsilon_{231}\vec{\delta}_{x}\frac{\partial v_z}{\partial x_y}+\varepsilon_{312}\vec{\delta}_{y}\frac{\partial v_x}{\partial x_z}\\
+&\quad+\varepsilon_{321}\vec{\delta}_{x}\frac{\partial v_y}{\partial x_z}+\varepsilon_{213}\vec{\delta}_{z}\frac{\partial v_x}{\partial x_y}+\varepsilon_{132}\vec{\delta}_{y}\frac{\partial v_z}{\partial x_x}\\
+&=\vec{\delta}_{x}\left(\frac{\partial v_z}{\partial x_y}-\frac{\partial v_y}{\partial x_z}\right)+\vec{\delta}_{y}\left(\frac{\partial v_x}{\partial x_z}-\frac{\partial v_z}{\partial x_x}\right)+\vec{\delta}_{z}\left(\frac{\partial v_y}{\partial x_x}-\frac{\partial v_x}{\partial x_y}\right)
+\end{aligned}
+\]</div></div></body></html>
