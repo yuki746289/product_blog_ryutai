@@ -12,6 +12,14 @@ Transcription: `.document/formula_reviews/physics_6_2_7_formulas.json`
 
 ## Pass 2
 
-Status: **Pending**
+Result: **1 / 1 PASS**
 
-**Physics 6_2_7 is not yet certified for normal-page application.**
+- Workflow run: **35397972814**
+- Artifact: `physics-6-2-7-pass2`
+- Artifact id: **10569800660**
+- MathJax errors: **0**
+- Unrendered formulas: **0**
+
+The source/render pair was visually inspected. The therefore symbol, vector marks, absolute-value bars, fraction structure, and inverse-cosine notation match the source.
+
+**Physics 6_2_7 is certified for normal-page application.**
