@@ -1136,6 +1136,26 @@ FEM batches 1–3 / FEM 5後に残っていた未分類20画像を分類し、�
 - `.document/formula_reviews/PHYSICS_6_3_1_FORMULA_AUDIT_20260919.md`
 - `.document/formula_reviews/PHYSICS_6_3_1_NORMAL_BROWSER_QA_20260919.md`
 
+
+## 2026-09-19 Physics 6_3_2 監査・通常ページ反映
+
+`physics/physics_6_3_2.html` のベクトル外積ページを元HP画像正本で処理した。
+
+- 分類対象: **3画像**
+  - 数式: **2**
+  - 図: **1**（image004 を維持）
+- Pass 1: **2/2**
+- Pass 2 run: **35398683088**
+- Pass 2: **2/2**
+- Apply + Normal browser QA run: **35398979234**
+- desktop/mobile: display 2/2、retained image 1/1、MathJax errors 0、unrendered 0、uncontained 0、page overflowなし
+- 外積展開の epsilon 項順・符号を元画像どおり保持。
+- 本番FTP反映は未実施。
+
+詳細:
+- `.document/formula_reviews/PHYSICS_6_3_2_FORMULA_AUDIT_20260919.md`
+- `.document/formula_reviews/PHYSICS_6_3_2_NORMAL_BROWSER_QA_20260919.md`
+
 ## 次の優先順
 
 1. サイト全体の残存画像を「数式 / 図 / 混在画像」に分類する。
@@ -1199,7 +1219,8 @@ FEM batches 1–3 / FEM 5後に残っていた未分類20画像を分類し、�
 - Physics 6_2_5: **1式完了、PC/スマホQA完了**
 - Physics 6_2_6: **1式完了、PC/スマホQA完了**
 - Physics 6_2_7: **1式完了、PC/スマホQA完了**
-- Physics 6_3_1: **1式完了、PC/スマホQA完了**\n- 厳密監査・通常ページ化まで完了した数式・数式テキスト: **527件**
+- Physics 6_3_1: **1式完了、PC/スマホQA完了**
+- Physics 6_3_2: **2式完了、図1件は画像維持、PC/スマホQA完了**\n- 厳密監査・通常ページ化まで完了した数式・数式テキスト: **529件**
 - 残存画像は数式とは限らないため、今後はページ単位で分類してから数式のみ変換する。
 - MPS欠損GIF参照は別タスクとして扱う。
 - 本番FTP反映は未実施。
