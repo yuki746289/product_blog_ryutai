@@ -11,6 +11,14 @@
 
 	<title>曲率計算（メッシュ）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+<script>
+window.MathJax={
+  output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+  chtml:{displayAlign:'left',displayIndent:'0'}
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="5">
@@ -53,35 +61,53 @@
 			<p class="im"><img src="./../img/mesh_curvature.files/image001.png"></p>
 			<br>
 			<p>界面の近似間数を次式で与えます。</p>
-			<p class="im"><img src="./../img/mesh_curvature.files/image002.png"></p>
+			<div class="math-block" id="formula-mesh-2-002" data-source-image="./../img/mesh_curvature.files/image002.png">
+\[(x-x_c)^2+(y-y_c)^2+(z-z_c)^2-r^2=0\]
+</div>
 			<br>
 			<p>界面上の節点<span class="ft"><i>p</i><sub>1</sub>(<i>x</i><sub>1</sub>, 
 					<i>y</i><sub>1</sub>, <i>z</i><sub>1</sub>)</span>を通るので</p>
-			<p class="im"><img src="./../img/mesh_curvature.files/image003.png"></p>
+			<div class="math-block" id="formula-mesh-2-003" data-source-image="./../img/mesh_curvature.files/image003.png">
+\[\begin{aligned}r^2&=(x_1-x_c)^2+(y_1-y_c)^2+(z_1-z_c)^2\\&=r_0^2\end{aligned}\]
+</div>
 			<br>
 			<p>最小二乗法より誤差を計算すると</p>
-			<p class="im"><img src="./../img/mesh_curvature.files/image004.png"></p>
+			<div class="math-block" id="formula-mesh-2-004" data-source-image="./../img/mesh_curvature.files/image004.png">
+\[\begin{aligned}\chi(x_c,y_c,z_c)&=\sum_{i=1}^{n}\left\{(x_i-x_c)^2+(y_i-y_c)^2+(z_i-z_c)^2-r_0^2\right\}^2\\&=\sum_{i=1}^{n}\left\{(x-x_c)^2+(y-y_c)^2+(z-z_c)^2-(x_1-x_c)^2-(y_1-y_c)^2-(z_1-z_c)^2\right\}^2\\&=\sum_{i=1}^{n}\left\{2(x_1-x)x_c+2(y_1-y)y_c+2(z_1-z)z_c+x^2-x_1^2+y^2-y_1^2+z^2-z_1^2\right\}^2\\&=0\end{aligned}\]
+</div>
 			<br>
 			<p><span class="ft"><i>x</i><sub>c</sub></span>で微分して
-			<p class="im"><img src="./../img/mesh_curvature.files/image005.png"></p>
+			<div class="math-block" id="formula-mesh-2-005" data-source-image="./../img/mesh_curvature.files/image005.png">
+\[\begin{aligned}\left.\frac{\partial\chi}{\partial x_c}\right|_{y_c,z_c}&=\sum_{i=1}^{n}4(x_1-x_i)\left\{2(x_1-x_i)x_c+2(y_1-y_i)y_c+2(z_1-z_i)z_c+x_i^2-x_1^2+y_i^2-y_1^2+z_i^2-z_1^2\right\}\\&=0\end{aligned}\]
+</div>
 			<br>
 			<p><span class="ft"><i>y</i><sub>c</sub></span>で微分して
-			<p class="im"><img src="./../img/mesh_curvature.files/image006.png"></p>
+			<div class="math-block" id="formula-mesh-2-006" data-source-image="./../img/mesh_curvature.files/image006.png">
+\[\begin{aligned}\left.\frac{\partial\chi}{\partial y_c}\right|_{z_c,x_c}&=\sum_{i=1}^{n}4(y_1-y_i)\left\{2(x_1-x_i)x_c+2(y_1-y_i)y_c+2(z_1-z_i)z_c+x_i^2-x_1^2+y_i^2-y_1^2+z_i^2-z_1^2\right\}\\&=0\end{aligned}\]
+</div>
 			<br>
 			<p><span class="ft"><i>z</i><sub>c</sub></span>で微分して
-			<p class="im"><img src="./../img/mesh_curvature.files/image007.png"></p>
+			<div class="math-block" id="formula-mesh-2-007" data-source-image="./../img/mesh_curvature.files/image007.png">
+\[\begin{aligned}\left.\frac{\partial\chi}{\partial z_c}\right|_{x_c,y_c}&=\sum_{i=1}^{n}4(z_1-z_i)\left\{2(x_1-x_i)x_c+2(y_1-y_i)y_c+2(z_1-z_i)z_c+x_i^2-x_1^2+y_i^2-y_1^2+z_i^2-z_1^2\right\}\\&=0\end{aligned}\]
+</div>
 			<br>
 			<p>まとめると</p>
-			<p class="im"><img src="./../img/mesh_curvature.files/image008.png"></p>
+			<div class="math-block" id="formula-mesh-2-008" data-source-image="./../img/mesh_curvature.files/image008.png">
+\[\left\{\begin{aligned}\sum_{i=1}^{n}4(x_1-x_i)\left\{2(x_1-x_i)x_c+2(y_1-y_i)y_c+2(z_1-z_i)z_c+x_i^2-x_1^2+y_i^2-y_1^2+z_i^2-z_1^2\right\}&=0\\\sum_{i=1}^{n}4(y_1-y_i)\left\{2(x_1-x_i)x_c+2(y_1-y_i)y_c+2(z_1-z_i)z_c+x_i^2-x_1^2+y_i^2-y_1^2+z_i^2-z_1^2\right\}&=0\\\sum_{i=1}^{n}4(z_1-z_i)\left\{2(x_1-x_i)x_c+2(y_1-y_i)y_c+2(z_1-z_i)z_c+x_i^2-x_1^2+y_i^2-y_1^2+z_i^2-z_1^2\right\}&=0\end{aligned}\right.\]
+</div>
 			<br>
 			<p>変数ごとにまとめて</p>
-			<p class="im"><img src="./../img/mesh_curvature.files/image009.png"></p>
+			<div class="math-block" id="formula-mesh-2-009" data-source-image="./../img/mesh_curvature.files/image009.png">
+\[\left\{\begin{aligned}x_c\sum_{i=1}^{n}(x_1-x_i)(x_1-x_i)+y_c\sum_{i=1}^{n}(x_1-x_i)(y_1-y_i)+z_c\sum_{i=1}^{n}(x_1-x_i)(z_1-z_i)&=-\frac{1}{2}\sum_{i=1}^{n}(x_1-x_i)\left\{x_i^2-x_1^2+y_i^2-y_1^2+z_i^2-z_1^2\right\}\\x_c\sum_{i=1}^{n}(y_1-y_i)(x_1-x_i)+y_c\sum_{i=1}^{n}(y_1-y_i)(y_1-y_i)+z_c\sum_{i=1}^{n}(y_1-y_i)(z_1-z_i)&=-\frac{1}{2}\sum_{i=1}^{n}(y_1-y_i)\left\{x_i^2-x_1^2+y_i^2-y_1^2+z_i^2-z_1^2\right\}\\x_c\sum_{i=1}^{n}(z_1-z_i)(x_1-x_i)+y_c\sum_{i=1}^{n}(z_1-z_i)(y_1-y_i)+z_c\sum_{i=1}^{n}(z_1-z_i)(z_1-z_i)&=-\frac{1}{2}\sum_{i=1}^{n}(z_1-z_i)\left\{x_i^2-x_1^2+y_i^2-y_1^2+z_i^2-z_1^2\right\}\end{aligned}\right.\]
+</div>
 			<br>
 			<p>これを解くと変数<span class="ft"><i>x</i><sub>c</sub>, 
 					<i>y</i><sub>c</sub>, <i>z</i><sub>c</sub></span>
 					が求まるので曲率が計算できます。</p>
 			<p>また、法線ベクトルは次式となります。</p>
-			<p class="im"><img src="./../img/mesh_curvature.files/image010.png"></p>
+			<div class="math-block" id="formula-mesh-2-010" data-source-image="./../img/mesh_curvature.files/image010.png">
+\[\begin{aligned}\vec{n}&=\vec{\delta}_x n_x+\vec{\delta}_y n_y+\vec{\delta}_z n_z\\n_x&=\frac{x_1-x_c}{r_0}\\n_y&=\frac{y_1-y_c}{r_0}\\n_z&=\frac{z_1-z_c}{r_0}\\r_0&=\sqrt{(x_1-x_c)^2+(y_1-y_c)^2+(z_1-z_c)^2}\end{aligned}\]
+</div>
 			<br>
 
 
