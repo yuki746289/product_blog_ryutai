@@ -1,0 +1,50 @@
+{
+  "created_at":"2026-09-19T08:02:00+09:00",
+  "page":"mesh/mesh_2.html",
+  "image_dir":"img/mesh_curvature.files",
+  "canonical_source":"original source images",
+  "retained_diagrams":["image001.png"],
+  "transcription_assist":{
+    "source":"original HP images",
+    "method":"direct source-image transcription because the known Word conversion for mesh_2 is incomplete",
+    "source_image_is_canonical":true
+  },
+  "formulas":[
+    {
+      "image":"image002.png",
+      "latex":"\\[(x-x_c)^2+(y-y_c)^2+(z-z_c)^2-r^2=0\\]"
+    },
+    {
+      "image":"image003.png",
+      "latex":"\\[\\begin{aligned}r^2&=(x_1-x_c)^2+(y_1-y_c)^2+(z_1-z_c)^2\\\\&=r_0^2\\end{aligned}\\]"
+    },
+    {
+      "image":"image004.png",
+      "latex":"\\[\\begin{aligned}\\chi(x_c,y_c,z_c)&=\\sum_{i=1}^{n}\\left\\{(x_i-x_c)^2+(y_i-y_c)^2+(z_i-z_c)^2-r_0^2\\right\\}^2\\\\&=\\sum_{i=1}^{n}\\left\\{(x-x_c)^2+(y-y_c)^2+(z-z_c)^2-(x_1-x_c)^2-(y_1-y_c)^2-(z_1-z_c)^2\\right\\}^2\\\\&=\\sum_{i=1}^{n}\\left\\{2(x_1-x)x_c+2(y_1-y)y_c+2(z_1-z)z_c+x^2-x_1^2+y^2-y_1^2+z^2-z_1^2\\right\\}^2\\\\&=0\\end{aligned}\\]"
+    },
+    {
+      "image":"image005.png",
+      "latex":"\\[\\begin{aligned}\\left.\\frac{\\partial\\chi}{\\partial x_c}\\right|_{y_c,z_c}&=\\sum_{i=1}^{n}4(x_1-x_i)\\left\\{2(x_1-x_i)x_c+2(y_1-y_i)y_c+2(z_1-z_i)z_c+x_i^2-x_1^2+y_i^2-y_1^2+z_i^2-z_1^2\\right\\}\\\\&=0\\end{aligned}\\]"
+    },
+    {
+      "image":"image006.png",
+      "latex":"\\[\\begin{aligned}\\left.\\frac{\\partial\\chi}{\\partial y_c}\\right|_{z_c,x_c}&=\\sum_{i=1}^{n}4(y_1-y_i)\\left\\{2(x_1-x_i)x_c+2(y_1-y_i)y_c+2(z_1-z_i)z_c+x_i^2-x_1^2+y_i^2-y_1^2+z_i^2-z_1^2\\right\\}\\\\&=0\\end{aligned}\\]"
+    },
+    {
+      "image":"image007.png",
+      "latex":"\\[\\begin{aligned}\\left.\\frac{\\partial\\chi}{\\partial z_c}\\right|_{x_c,y_c}&=\\sum_{i=1}^{n}4(z_1-z_i)\\left\\{2(x_1-x_i)x_c+2(y_1-y_i)y_c+2(z_1-z_i)z_c+x_i^2-x_1^2+y_i^2-y_1^2+z_i^2-z_1^2\\right\\}\\\\&=0\\end{aligned}\\]"
+    },
+    {
+      "image":"image008.png",
+      "latex":"\\[\\left\\{\\begin{aligned}\\sum_{i=1}^{n}4(x_1-x_i)\\left\\{2(x_1-x_i)x_c+2(y_1-y_i)y_c+2(z_1-z_i)z_c+x_i^2-x_1^2+y_i^2-y_1^2+z_i^2-z_1^2\\right\\}&=0\\\\\\sum_{i=1}^{n}4(y_1-y_i)\\left\\{2(x_1-x_i)x_c+2(y_1-y_i)y_c+2(z_1-z_i)z_c+x_i^2-x_1^2+y_i^2-y_1^2+z_i^2-z_1^2\\right\\}&=0\\\\\\sum_{i=1}^{n}4(z_1-z_i)\\left\\{2(x_1-x_i)x_c+2(y_1-y_i)y_c+2(z_1-z_i)z_c+x_i^2-x_1^2+y_i^2-y_1^2+z_i^2-z_1^2\\right\\}&=0\\end{aligned}\\right.\\]"
+    },
+    {
+      "image":"image009.png",
+      "latex":"\\[\\left\\{\\begin{aligned}x_c\\sum_{i=1}^{n}(x_1-x_i)(x_1-x_i)+y_c\\sum_{i=1}^{n}(x_1-x_i)(y_1-y_i)+z_c\\sum_{i=1}^{n}(x_1-x_i)(z_1-z_i)&=-\\frac{1}{2}\\sum_{i=1}^{n}(x_1-x_i)\\left\\{x_i^2-x_1^2+y_i^2-y_1^2+z_i^2-z_1^2\\right\\}\\\\x_c\\sum_{i=1}^{n}(y_1-y_i)(x_1-x_i)+y_c\\sum_{i=1}^{n}(y_1-y_i)(y_1-y_i)+z_c\\sum_{i=1}^{n}(y_1-y_i)(z_1-z_i)&=-\\frac{1}{2}\\sum_{i=1}^{n}(y_1-y_i)\\left\\{x_i^2-x_1^2+y_i^2-y_1^2+z_i^2-z_1^2\\right\\}\\\\x_c\\sum_{i=1}^{n}(z_1-z_i)(x_1-x_i)+y_c\\sum_{i=1}^{n}(z_1-z_i)(y_1-y_i)+z_c\\sum_{i=1}^{n}(z_1-z_i)(z_1-z_i)&=-\\frac{1}{2}\\sum_{i=1}^{n}(z_1-z_i)\\left\\{x_i^2-x_1^2+y_i^2-y_1^2+z_i^2-z_1^2\\right\\}\\end{aligned}\\right.\\]"
+    },
+    {
+      "image":"image010.png",
+      "latex":"\\[\\begin{aligned}\\vec{n}&=\\vec{\\delta}_x n_x+\\vec{\\delta}_y n_y+\\vec{\\delta}_z n_z\\\\n_x&=\\frac{x_1-x_c}{r_0}\\\\n_y&=\\frac{y_1-y_c}{r_0}\\\\n_z&=\\frac{z_1-z_c}{r_0}\\\\r_0&=\\sqrt{(x_1-x_c)^2+(y_1-y_c)^2+(z_1-z_c)^2}\\end{aligned}\\]"
+    }
+  ]
+}
