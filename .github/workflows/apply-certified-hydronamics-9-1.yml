@@ -55,7 +55,7 @@ jobs:
           def old_pat(n):
             return re.compile(
               rf'<p\b(?=[^>]*class=["\'][^"\']*\bim\b[^"\']*["\'])[^>]*>\s*'
-              rf'<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image{n}\.png["\'][^>]*>\s*</p>',
+              rf'<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image{n}\.png["\'][^>]*>\s*(?:</p>|<p>)',
               flags=re.I|re.S)
 
           def new_pat(n):
