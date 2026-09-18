@@ -1,0 +1,50 @@
+{
+  "page": "hydronamics/hydronamics_12_1.html",
+  "image_dir": "img/hydronamics_dimensionless.files",
+  "canonical_source": "original source images",
+  "source_notation_notes": [
+    "image009 preserves the source-visible minus signs between the three velocity-divergence terms on the right-hand side."
+  ],
+  "formulas": [
+    {
+      "image": "image005.png",
+      "latex": "\\[\n\\frac{D\\rho}{Dt}\n=\n-\\rho(\\nabla\\cdot\\vec v)\n\\]"
+    },
+    {
+      "image": "image006.png",
+      "latex": "\\[\n\\frac{\\partial\\rho}{\\partial t}\n+v_x\\frac{\\partial\\rho}{\\partial x}\n+v_y\\frac{\\partial\\rho}{\\partial y}\n+v_z\\frac{\\partial\\rho}{\\partial z}\n=\n-\\rho\\left(\n\\frac{\\partial v_x}{\\partial x}\n+\\frac{\\partial v_y}{\\partial y}\n+\\frac{\\partial v_z}{\\partial z}\n\\right)\n\\]"
+    },
+    {
+      "image": "image007.png",
+      "latex": "\\[\nc=\\sqrt{\\frac{\\partial p}{\\partial\\rho}}\n\\]"
+    },
+    {
+      "image": "image008.png",
+      "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial\\rho}{\\partial t}&=\\frac{1}{c^2}\\frac{\\partial p}{\\partial t}\\\\\n\\frac{\\partial\\rho}{\\partial x}&=\\frac{1}{c^2}\\frac{\\partial p}{\\partial x}\\\\\n\\frac{\\partial\\rho}{\\partial y}&=\\frac{1}{c^2}\\frac{\\partial p}{\\partial y}\\\\\n\\frac{\\partial\\rho}{\\partial z}&=\\frac{1}{c^2}\\frac{\\partial p}{\\partial z}\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image009.png",
+      "latex": "\\[\n\\begin{aligned}\n&\\frac{\\partial(P\\rho v_0^2)}{\\partial(\\tau x_0/v_0)}\n+V_xv_0\\frac{\\partial(P\\rho v_0^2)}{\\partial(Xx_0)}\n+V_yv_0\\frac{\\partial(P\\rho v_0^2)}{\\partial(Yx_0)}\n+V_zv_0\\frac{\\partial(P\\rho v_0^2)}{\\partial(Zx_0)}\\\\\n&=-c^2\\rho\\left\\{\n\\frac{\\partial(V_xv_0)}{\\partial(Xx_0)}\n-\\frac{\\partial(V_yv_0)}{\\partial(Yx_0)}\n-\\frac{\\partial(V_zv_0)}{\\partial(Zx_0)}\n\\right\\}\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image010.png",
+      "latex": "\\[\n\\frac{\\rho v_0^3}{x_0}\\frac{\\partial P}{\\partial\\tau}\n+\\frac{\\rho v_0^3}{x_0}V_x\\frac{\\partial P}{\\partial X}\n+\\frac{\\rho v_0^3}{x_0}V_y\\frac{\\partial P}{\\partial Y}\n+\\frac{\\rho v_0^3}{x_0}V_z\\frac{\\partial P}{\\partial Z}\n=\n-c^2\\rho\\frac{v_0}{x_0}\\left(\n\\frac{\\partial V_x}{\\partial X}\n+\\frac{\\partial V_y}{\\partial Y}\n+\\frac{\\partial V_z}{\\partial Z}\n\\right)\n\\]"
+    },
+    {
+      "image": "image011.png",
+      "latex": "\\[\n\\frac{\\partial P}{\\partial\\tau}\n+V_x\\frac{\\partial P}{\\partial X}\n+V_y\\frac{\\partial P}{\\partial Y}\n+V_z\\frac{\\partial P}{\\partial Z}\n=\n\\frac{c^2}{v_0^2}\\left(\n\\frac{\\partial V_x}{\\partial X}\n+\\frac{\\partial V_y}{\\partial Y}\n+\\frac{\\partial V_z}{\\partial Z}\n\\right)\n=0\n\\]"
+    },
+    {
+      "image": "image012.png",
+      "latex": "\\[\n\\frac{\\partial P}{\\partial\\tau}\n+V_x\\frac{\\partial P}{\\partial X}\n+V_y\\frac{\\partial P}{\\partial Y}\n+V_z\\frac{\\partial P}{\\partial Z}\n=\n-\\frac{1}{Ma^2}\\left(\n\\frac{\\partial V_x}{\\partial X}\n+\\frac{\\partial V_y}{\\partial Y}\n+\\frac{\\partial V_z}{\\partial Z}\n\\right)\n\\]"
+    },
+    {
+      "image": "image013.png",
+      "latex": "\\[\n\\frac{DP}{D\\tau}\n=\n-\\frac{1}{Ma^2}(\\nabla\\cdot\\vec V)\n\\]"
+    },
+    {
+      "image": "image014.png",
+      "latex": "\\[\nMa=\\frac{v_0}{c}\n\\]"
+    }
+  ]
+}
