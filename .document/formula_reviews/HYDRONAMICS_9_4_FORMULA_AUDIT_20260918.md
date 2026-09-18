@@ -18,8 +18,24 @@ Source-visible notation and term order are preserved.
 
 ## Pass 2 — browser MathJax comparison
 
-Status: **pending workflow artifact review**
+- Workflow run: **35337301521**
+- Artifact: `hydronamics-9-4-pass2`
+- Artifact id: **10543885222**
+- Result: **8 / 8 PASS**
+- MathJax rendering errors: **0**
+- Formula-level horizontal overflow: **0 / 8**
+- Source image vs MathJax rendering: **8 / 8 visually checked and PASS**
 
 ## Certification
 
-Not yet certified for normal-page application until Pass 2 is complete.
+| Check | Result |
+|---|---|
+| Formula targets | 8 |
+| Diagram retained | 1 |
+| Pass 1 | **8 / 8 PASS** |
+| Pass 2 | **8 / 8 PASS** |
+| MathJax errors | **0** |
+| Audit horizontal overflow | **0 / 8** |
+| Production deployment | Not performed |
+
+**Hydronamics 9_4 formulas are certified for application to the normal page.**
