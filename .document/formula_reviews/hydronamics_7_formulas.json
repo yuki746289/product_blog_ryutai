@@ -1,0 +1,17 @@
+{
+  "page": "hydronamics/hydronamics_7.html",
+  "image_dir": "img/hydronamics_e_derivation.files",
+  "canonical_source": "original source images",
+  "retained_diagrams": [
+    "image001.png"
+  ],
+  "source_notation_notes": [
+    "image002 contains Japanese labels inside the equation; all labels are preserved as source text."
+  ],
+  "formulas": [
+    {
+      "image": "image002.png",
+      "latex": "\\[\n\\frac{[\\text{蓄積した運動量}]}{\\Delta t}\n=\n\\Delta A\\times\\left(\n[\\text{応力}]_{\\text{流入}}-[\\text{応力}]_{\\text{流出}}\n\\right)\n+\\Delta V\\times[\\text{体積力}]\n\\]"
+    }
+  ]
+}
