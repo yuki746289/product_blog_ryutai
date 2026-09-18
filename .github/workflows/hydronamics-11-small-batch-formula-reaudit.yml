@@ -1,0 +1,173 @@
+name: Hydronamics 11_1-11_5 Formula Reaudit
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/hydronamics-11-small-batch-formula-reaudit.yml'
+      - '.document/formula_reviews/hydronamics_11_1_formulas.json'
+      - '.document/formula_reviews/hydronamics_11_2_formulas.json'
+      - '.document/formula_reviews/hydronamics_11_3_formulas.json'
+      - '.document/formula_reviews/hydronamics_11_4_formulas.json'
+      - '.document/formula_reviews/hydronamics_11_5_formulas.json'
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Build strict audit page
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          defs=[
+            ('hydronamics_11_1','.document/formula_reviews/hydronamics_11_1_formulas.json'),
+            ('hydronamics_11_2','.document/formula_reviews/hydronamics_11_2_formulas.json'),
+            ('hydronamics_11_3','.document/formula_reviews/hydronamics_11_3_formulas.json'),
+            ('hydronamics_11_4','.document/formula_reviews/hydronamics_11_4_formulas.json'),
+            ('hydronamics_11_5','.document/formula_reviews/hydronamics_11_5_formulas.json'),
+          ]
+          parts=[
+            '<!doctype html><html lang="ja"><head><meta charset="utf-8">',
+            '<meta name="viewport" content="width=device-width,initial-scale=1">',
+            '<title>Hydronamics 11_1-11_5 strict formula re-audit</title>',
+            '<style>body{font-family:Arial,"Yu Gothic",sans-serif;margin:20px}.formula-pair{border-top:1px solid #bbb;padding:18px 0}.pair-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}.source,.render{min-width:0;overflow-x:auto;padding:10px;border:1px solid #ddd}.source img{display:block;max-width:100%;height:auto;margin:auto}.render mjx-container[display="true"]{margin:.4em 0!important;text-align:left!important}@media(max-width:900px){.pair-grid{grid-template-columns:1fr}}</style>',
+            '<script>window.MathJax={output:{displayOverflow:"linebreak",linebreaks:{inline:false,width:"100%"}}};</script>',
+            '<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>',
+            '</head><body><h1>Hydronamics 11_1-11_5 strict source-image re-audit</h1>'
+          ]
+          count=0
+          for key,path in defs:
+            cfg=json.loads(Path(path).read_text(encoding='utf-8'))
+            if len(cfg['formulas'])!=1:
+              raise RuntimeError(f'{key}: formula count != 1')
+            item=cfg['formulas'][0]
+            ident=f'{key}-001'
+            src=f'./../{cfg["image_dir"]}/{item["image"]}'
+            parts += [
+              f'<section class="formula-pair" id="formula-{ident}"><h3>{ident}</h3><div class="pair-grid">',
+              f'<div class="source"><img src="{src}" alt="source {ident}"></div>',
+              f'<div class="render" data-source-image="{src}">{item["latex"]}</div>',
+              '</div></section>'
+            ]
+            count+=1
+          if count!=5:
+            raise RuntimeError(f'formula count {count} != 5')
+          parts += ['</body></html>']
+          Path('hydronamics/hydronamics_11_small_batch_reaudit.html').write_text('\n'.join(parts)+'\n',encoding='utf-8')
+          PY
+
+      - name: Install Chromium
+        run: |
+          pip install playwright pillow
+          python -m playwright install --with-deps chromium
+
+      - name: Start server
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/h11small-http.log 2>&1 &
+          sleep 1
+
+      - name: Capture source/render pairs
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from PIL import Image,ImageDraw
+          from playwright.sync_api import sync_playwright
+
+          defs=[
+            ('hydronamics_11_1','.document/formula_reviews/hydronamics_11_1_formulas.json'),
+            ('hydronamics_11_2','.document/formula_reviews/hydronamics_11_2_formulas.json'),
+            ('hydronamics_11_3','.document/formula_reviews/hydronamics_11_3_formulas.json'),
+            ('hydronamics_11_4','.document/formula_reviews/hydronamics_11_4_formulas.json'),
+            ('hydronamics_11_5','.document/formula_reviews/hydronamics_11_5_formulas.json'),
+          ]
+          out=Path('hydronamics-11-small-pass2')
+          for s in ('sources','renders','pairs'):
+            (out/s).mkdir(parents=True,exist_ok=True)
+          manifest={'formulas':[]}
+
+          with sync_playwright() as p:
+            browser=p.chromium.launch(headless=True)
+            ctx=browser.new_context(viewport={'width':2200,'height':1600},device_scale_factor=1)
+            pg=ctx.new_page()
+            pg.goto('http://127.0.0.1:8000/hydronamics/hydronamics_11_small_batch_reaudit.html',wait_until='domcontentloaded',timeout=120000)
+            pg.wait_for_function('() => window.MathJax && MathJax.startup && MathJax.startup.promise',timeout=60000)
+            pg.evaluate('async()=>{await MathJax.startup.promise;}')
+            pg.wait_for_timeout(500)
+
+            for key,path in defs:
+              cfg=json.loads(Path(path).read_text(encoding='utf-8'))
+              item=cfg['formulas'][0]
+              ident=f'{key}-001'
+              sec=pg.locator(f'#formula-{ident}')
+              r=sec.locator('.render')
+              simg=sec.locator('.source img')
+              if r.locator('mjx-container').count()<1 or r.locator('mjx-merror').count()>0:
+                raise RuntimeError(f'{ident} MathJax error')
+              dims=r.evaluate('(e)=>({clientWidth:e.clientWidth,scrollWidth:e.scrollWidth})')
+              rp=out/'renders'/f'{ident}.png'
+              r.screenshot(path=str(rp),animations='disabled')
+              sp=(Path.cwd()/'hydronamics'/simg.get_attribute('src')).resolve()
+              im=Image.open(sp).convert('RGBA')
+              bg=Image.new('RGBA',im.size,'white')
+              bg.alpha_composite(im)
+              src=bg.convert('RGB')
+              scale=5 if src.width<700 else 2
+              src=src.resize((src.width*scale,src.height*scale),Image.Resampling.LANCZOS)
+              src.save(out/'sources'/f'{ident}.png')
+              rr=Image.open(rp).convert('RGB')
+              margin,label,gap=16,28,24
+              w=max(src.width,rr.width)+2*margin
+              h=2*margin+2*label+gap+src.height+rr.height
+              can=Image.new('RGB',(w,h),'white')
+              d=ImageDraw.Draw(can)
+              y=margin
+              d.text((margin,y),f'SOURCE {ident}',fill='black')
+              y+=label
+              can.paste(src,(margin,y))
+              y+=src.height+gap
+              d.text((margin,y),f'MATHJAX {ident}',fill='black')
+              y+=label
+              can.paste(rr,(margin,y))
+              can.save(out/'pairs'/f'{ident}.png')
+              manifest['formulas'].append({'id':ident,'horizontal_overflow':dims['scrollWidth']>dims['clientWidth']+1,'dims':dims})
+            browser.close()
+
+          manifest['count']=len(manifest['formulas'])
+          if manifest['count']!=5:
+            raise RuntimeError(f'manifest count {manifest["count"]} != 5')
+          (out/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf-8')
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hydronamics-11-small-pass2
+          path: hydronamics-11-small-pass2
+          retention-days: 7
+
+      - name: Commit strict page
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add hydronamics/hydronamics_11_small_batch_reaudit.html
+          git diff --cached --check
+          if ! git diff --cached --quiet; then
+            git commit -m 'docs: build hydronamics 11_1-11_5 strict reaudit page'
+            git pull --rebase origin develop
+            git push origin HEAD:develop
+          fi
