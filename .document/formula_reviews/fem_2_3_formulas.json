@@ -1,6 +1,6 @@
 {
   "page": "fem/fem_2_3.html",
-  "image_dir": "img/fem_tet.files",
+  "image_dir": "img/fem_tetra.files",
   "canonical_source": "original source images",
   "retained_diagrams": [
     "image001.png",
