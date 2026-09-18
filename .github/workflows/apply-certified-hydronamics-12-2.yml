@@ -34,37 +34,38 @@ jobs:
           if len(display)!=6 or len(inline)!=2:
               raise RuntimeError(f'formula modes display={len(display)} inline={len(inline)}')
 
-          dalt='|'.join(dnums); ialt='|'.join(inums)
+          dalt='|'.join(dnums)
+          ialt='|'.join(inums)
           bynum={x['image'][5:8]:x for x in cfg['formulas']}
 
-          mathjax4 = "\n\\t<script>\n\\twindow.MathJax={\n\\t\\toutput:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},\n\\t\\tchtml:{displayAlign:'left',displayIndent:'0'}\n\\t};\n\\t</script>\n\\t<script defer src=\"https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js\"></script>\n"
+          mathjax4 = "\n\t<script>\n\twindow.MathJax={\n\t\toutput:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},\n\t\tchtml:{displayAlign:'left',displayIndent:'0'}\n\t};\n\t</script>\n\t<script defer src=\"https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js\"></script>\n"
 
-          raw=page.read_bytes(); enc=None
+          raw=page.read_bytes()
+          enc=None
           for candidate in ('cp932','utf-8'):
               try:
-                  original=raw.decode(candidate); enc=candidate; break
+                  original=raw.decode(candidate)
+                  enc=candidate
+                  break
               except UnicodeDecodeError:
                   pass
-          if enc is None: raise RuntimeError('encoding failed')
+          if enc is None:
+              raise RuntimeError('encoding failed')
 
           def strip_mathjax(text):
               text=re.sub(r'\s*<script>\s*window\.MathJax\s*=\s*\{.*?</script>','',text,flags=re.I|re.S)
               text=re.sub(r'\s*<script\b[^>]*src=["\'][^"\']*mathjax[^"\']*["\'][^>]*>\s*</script>','',text,flags=re.I|re.S)
               return text
 
-          def display_pat():
-              return re.compile(
-                rf'(?P<block><div\b(?=[^>]*class=["\'][^"\']*\bmath-block\b[^"\']*["\'])(?=[^>]*data-source-image=["\'][^"\']*{re.escape(imgdir)}/image(?P<bnum>{dalt})\.png["\'])[^>]*>.*?</div>)'
-                rf'|(?P<img><p\b(?=[^>]*class=["\'][^"\']*\bim\b[^"\']*["\'])[^>]*>\s*<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image(?P<inum>{dalt})\.png["\'][^>]*>\s*</p>)',
-                flags=re.I|re.S)
+          dp=re.compile(
+              rf'(?P<block><div\b(?=[^>]*class=["\'][^"\']*\bmath-block\b[^"\']*["\'])(?=[^>]*data-source-image=["\'][^"\']*{re.escape(imgdir)}/image(?P<bnum>{dalt})\.png["\'])[^>]*>.*?</div>)'
+              rf'|(?P<img><p\b(?=[^>]*class=["\'][^"\']*\bim\b[^"\']*["\'])[^>]*>\s*<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image(?P<inum>{dalt})\.png["\'][^>]*>\s*</p>)',
+              flags=re.I|re.S)
 
-          def inline_pat():
-              return re.compile(
-                rf'(?P<span><span\b(?=[^>]*class=["\'][^"\']*\bmath-inline\b[^"\']*["\'])(?=[^>]*data-source-image=["\'][^"\']*{re.escape(imgdir)}/image(?P<snum>{ialt})\.png["\'])[^>]*>.*?</span>)'
-                rf'|(?P<img><img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image(?P<inum>{ialt})\.png["\'][^>]*>)',
-                flags=re.I|re.S)
-
-          dp=display_pat(); ip=inline_pat()
+          ip=re.compile(
+              rf'(?P<span><span\b(?=[^>]*class=["\'][^"\']*\bmath-inline\b[^"\']*["\'])(?=[^>]*data-source-image=["\'][^"\']*{re.escape(imgdir)}/image(?P<snum>{ialt})\.png["\'])[^>]*>.*?</span>)'
+              rf'|(?P<img><img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image(?P<inum>{ialt})\.png["\'][^>]*>)',
+              flags=re.I|re.S)
 
           def guard(text):
               text=strip_mathjax(text)
@@ -75,31 +76,36 @@ jobs:
           before=guard(original)
           dfound=[m.group('inum') or m.group('bnum') for m in dp.finditer(original)]
           ifound=[m.group('inum') or m.group('snum') for m in ip.finditer(original)]
-          if dfound!=dnums: raise RuntimeError(f'display sequence {dfound} != {dnums}')
-          if ifound!=inums: raise RuntimeError(f'inline sequence {ifound} != {inums}')
+          if dfound!=dnums:
+              raise RuntimeError(f'display sequence {dfound} != {dnums}')
+          if ifound!=inums:
+              raise RuntimeError(f'inline sequence {ifound} != {inums}')
 
           dpos=[0]
           def drepl(_m):
-              n=dnums[dpos[0]]; dpos[0]+=1
+              n=dnums[dpos[0]]
+              dpos[0]+=1
               return (
-                f'<div class="math-block" id="formula-hydronamics-12-2-{n}" '
-                f'data-source-image="./../img/{imgdir}/image{n}.png">\n'
-                f'{bynum[n]["latex"]}\n</div>'
+                  f'<div class="math-block" id="formula-hydronamics-12-2-{n}" '
+                  f'data-source-image="./../img/{imgdir}/image{n}.png">\n'
+                  f'{bynum[n]["latex"]}\n</div>'
               )
 
           ipos=[0]
           def irepl(_m):
-              n=inums[ipos[0]]; ipos[0]+=1
+              n=inums[ipos[0]]
+              ipos[0]+=1
               return (
-                f'<span class="math-inline" id="formula-hydronamics-12-2-{n}" '
-                f'data-source-image="./../img/{imgdir}/image{n}.png">'
-                f'{bynum[n]["latex"]}</span>'
+                  f'<span class="math-inline" id="formula-hydronamics-12-2-{n}" '
+                  f'data-source-image="./../img/{imgdir}/image{n}.png">'
+                  f'{bynum[n]["latex"]}</span>'
               )
 
           applied=dp.sub(drepl,original)
           applied=ip.sub(irepl,applied)
           applied=strip_mathjax(applied)
-          if '</head>' not in applied: raise RuntimeError('missing </head>')
+          if '</head>' not in applied:
+              raise RuntimeError('missing </head>')
           applied=applied.replace('</head>',mathjax4+'</head>',1)
 
           if guard(applied)!=before:
@@ -111,15 +117,17 @@ jobs:
           imapped=re.findall(
               rf'<span\b[^>]*class=["\'][^"\']*\bmath-inline\b[^"\']*["\'][^>]*data-source-image=["\'][^"\']*{re.escape(imgdir)}/image(\d{{3}})\.png["\']',
               applied,flags=re.I)
-          if dmapped!=dnums: raise RuntimeError(f'display mapped {dmapped} != {dnums}')
-          if imapped!=inums: raise RuntimeError(f'inline mapped {imapped} != {inums}')
+          if dmapped!=dnums:
+              raise RuntimeError(f'display mapped {dmapped} != {dnums}')
+          if imapped!=inums:
+              raise RuntimeError(f'inline mapped {imapped} != {inums}')
 
-          allnums=dnums+inums
-          alt='|'.join(allnums)
+          alt='|'.join(dnums+inums)
           leftovers=re.findall(
               rf'<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image(?:{alt})\.png["\'][^>]*>',
               applied,flags=re.I)
-          if leftovers: raise RuntimeError(f'target images remain {len(leftovers)}')
+          if leftovers:
+              raise RuntimeError(f'target images remain {len(leftovers)}')
 
           page.write_bytes(applied.encode(enc))
           Path('.document/formula_reviews/HYDRONAMICS_12_2_NORMAL_APPLY_RESULT.md').write_text(
@@ -130,7 +138,8 @@ jobs:
               '- Target formula image tags remaining: **0**\n'
               '- Non-formula content guard: **PASS**\n'
               '- MathJax: v4\n'
-              '- Production deployment: not performed.\n',encoding='utf-8')
+              '- Production deployment: not performed.\n',
+              encoding='utf-8')
           print('PASS display=6 inline=2 encoding='+enc)
           PY
 
