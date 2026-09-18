@@ -1,0 +1,26 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>body{font-family:Arial,"Yu Gothic",sans-serif;margin:20px}.formula-pair{border-top:1px solid #bbb;padding:18px 0}.pair-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}.source,.render{min-width:0;overflow-x:auto;padding:10px;border:1px solid #ddd}.source img{display:block;max-width:100%;height:auto;margin:auto}@media(max-width:900px){.pair-grid{grid-template-columns:1fr}}</style>
+<script>window.MathJax={output:{displayOverflow:"linebreak",linebreaks:{inline:false,width:"100%"}}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script></head><body>
+<section class="formula-pair" id="formula-mesh_5-003"><h3>mesh_5-003</h3><div class="pair-grid">
+<div class="source"><img src="./../img/mesh_deformation_tet.files/image003.png" alt="source mesh_5-003"></div>
+<div class="render">\[\begin{aligned}x_g&=\frac{1}{4}\sum_{i=1}^{4}x_i\\y_g&=\frac{1}{4}\sum_{i=1}^{4}y_i\\z_g&=\frac{1}{4}\sum_{i=1}^{4}z_i\end{aligned}\]</div></div></section>
+<section class="formula-pair" id="formula-mesh_5-004"><h3>mesh_5-004</h3><div class="pair-grid">
+<div class="source"><img src="./../img/mesh_deformation_tet.files/image004.png" alt="source mesh_5-004"></div>
+<div class="render">\[r_i=\sqrt{(x_i-x_g)^2+(y_i-y_g)^2+(z_i-z_g)^2}\]</div></div></section>
+<section class="formula-pair" id="formula-mesh_5-005"><h3>mesh_5-005</h3><div class="pair-grid">
+<div class="source"><img src="./../img/mesh_deformation_tet.files/image005.png" alt="source mesh_5-005"></div>
+<div class="render">\[\begin{aligned}dr^2&=\sum_{i=1}^{4}(r_i-r)^2\\&=\sum_{i=1}^{4}(r^2-2r_ir+r_i^2)\\&=\sum_{i=1}^{4}r^2-\sum_{i=1}^{4}2r_ir+\sum_{i=1}^{4}r_i^2\\&=4r^2-2\sum_{i=1}^{4}r_ir+\sum_{i=1}^{4}r_i^2\\&=4r^2-2ar+b\\&=4\left(r^2-\frac{1}{2}ar+\frac{b}{4}\right)\\&=4\left\{\left(r^2-\frac{1}{2}ar+\frac{1}{16}a^2\right)-\frac{1}{16}a^2+\frac{b}{4}\right\}\\&=4\left\{\left(r-\frac{1}{4}a\right)^2-\frac{1}{16}a^2+\frac{b}{4}\right\}\\&=4\left\{\left(r-\frac{1}{4}a\right)^2-\frac{1}{16}a^2+\frac{b}{4}\right\}\\&=4\left(r-\frac{1}{4}a\right)^2-\frac{1}{4}a^2+b\end{aligned}\]</div></div></section>
+<section class="formula-pair" id="formula-mesh_5-006"><h3>mesh_5-006</h3><div class="pair-grid">
+<div class="source"><img src="./../img/mesh_deformation_tet.files/image006.png" alt="source mesh_5-006"></div>
+<div class="render">\[\begin{aligned}a&=\sum_{i=1}^{4}r_i\\b&=\sum_{i=1}^{4}r_i^2\end{aligned}\]</div></div></section>
+<section class="formula-pair" id="formula-mesh_5-007"><h3>mesh_5-007</h3><div class="pair-grid">
+<div class="source"><img src="./../img/mesh_deformation_tet.files/image007.png" alt="source mesh_5-007"></div>
+<div class="render">\[dr_{\min}^{2}=b-\left(\frac{a}{2}\right)^2\qquad \text{at }r_{\min}=\frac{a}{4}\]</div></div></section>
+<section class="formula-pair" id="formula-mesh_5-008"><h3>mesh_5-008</h3><div class="pair-grid">
+<div class="source"><img src="./../img/mesh_deformation_tet.files/image008.png" alt="source mesh_5-008"></div>
+<div class="render">\[\begin{aligned}dR_{\min}^{2}&=\frac{dr_{\min}^{2}}{r_{\min}^{2}}\\&=\frac{b-(a/2)^2}{(a/4)^2}\\&=\frac{16b-4a^2}{a^2}\\&=\left(\frac{2}{a}\right)^2(4b-a^2)\end{aligned}\]</div></div></section>
+<section class="formula-pair" id="formula-mesh_5-009"><h3>mesh_5-009</h3><div class="pair-grid">
+<div class="source"><img src="./../img/mesh_deformation_tet.files/image009.png" alt="source mesh_5-009"></div>
+<div class="render">\[\begin{aligned}dR_{\min}&=\frac{2}{a}\sqrt{4b-a^2}\\&=\frac{2}{\displaystyle\sum_{i=1}^{4}r_i}\sqrt{4\sum_{i=1}^{4}r_i^2-\left(\sum_{i=1}^{4}r_i\right)^2}\end{aligned}\]</div></div></section>
+</body></html>
