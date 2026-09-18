@@ -11,6 +11,14 @@
 
 	<title>ガウスの消去法（有限要素法）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+	<script>
+	window.MathJax={
+		output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+		chtml:{displayAlign:'left',displayIndent:'0'}
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id"   value="4">
@@ -50,36 +58,141 @@
 			<h2>・ガウスの消去法</h2>
 			<p>ガウスの消去法は、直接、連立方程式を解く方法です。</p>
 			<p>この解法で<span class="ft">3</span>元<span class="ft">1</span>次方程式を解いてみます。</p>
-			<p class="im"><img src="./../img/fem_m_gauss.files/image001.png"></p>
+			<div class="math-block" id="formula-fem_11_1-001" data-source-image="./../img/fem_m_gauss.files/image001.png">
+\[
+\left\{
+\begin{aligned}
+a_1x_1+b_1y_1+c_1z_1&=d_1\\
+a_2x_2+b_2y_2+c_2z_2&=d_2\\
+a_3x_3+b_3y_3+c_3z_3&=d_3
+\end{aligned}
+\right.
+\]
+</div>
 			<p>上式を行列式で表すと次式となります。</p>
-			<p class="im"><img src="./../img/fem_m_gauss.files/image002.png"></p>
+			<div class="math-block" id="formula-fem_11_1-002" data-source-image="./../img/fem_m_gauss.files/image002.png">
+\[
+\begin{pmatrix}
+a_1&b_1&c_1\\
+a_2&b_2&c_2\\
+a_3&b_3&c_3
+\end{pmatrix}
+\begin{bmatrix}x\\y\\z\end{bmatrix}
+=
+\begin{pmatrix}d_1\\d_2\\d_3\end{pmatrix}
+\]
+</div>
 			<p>これを次式の形に直すと変数がわかります。</p>
-			<p class="im"><img src="./../img/fem_m_gauss.files/image003.png"></p>
+			<div class="math-block" id="formula-fem_11_1-003" data-source-image="./../img/fem_m_gauss.files/image003.png">
+\[
+\begin{pmatrix}
+1&0&0\\
+0&1&0\\
+0&0&1
+\end{pmatrix}
+\begin{bmatrix}x\\y\\z\end{bmatrix}
+=
+\begin{pmatrix}p_1\\p_2\\p_3\end{pmatrix}
+\]
+</div>
 			<br><br>
 			<p><span class="ft">1</span>つの行列で表すと次式となります。</p>
-			<p class="im"><img src="./../img/fem_m_gauss.files/image004.png"></p>
+			<div class="math-block" id="formula-fem_11_1-004" data-source-image="./../img/fem_m_gauss.files/image004.png">
+\[
+\begin{pmatrix}
+a_1&b_1&c_1&d_1\\
+a_2&b_2&c_2&d_2\\
+a_3&b_3&c_3&d_3
+\end{pmatrix}
+\]
+</div>
 			<p>手順<span class="ft">1</span>.<br>
 			　　　　・<span class="ft">1</span>行目を係数<span class="ft"><i>a</i><sub>1</sub></span>で割る。<br>
 			　　　　・<span class="ft">2</span>行目を係数<span class="ft"><i>a</i><sub>2</sub></span>で割る。<br>
 			　　　　・<span class="ft">3</span>行目を係数<span class="ft"><i>a</i><sub>3</sub></span>で割る。<br>
-			<p class="im"><img src="./../img/fem_m_gauss.files/image005.png"></p>
+			<div class="math-block" id="formula-fem_11_1-005" data-source-image="./../img/fem_m_gauss.files/image005.png">
+\[
+\begin{pmatrix}
+1&\dfrac{b_1}{a_1}&\dfrac{c_1}{a_1}&\dfrac{d_1}{a_1}\\
+1&\dfrac{b_2}{a_2}&\dfrac{c_2}{a_2}&\dfrac{d_2}{a_2}\\
+1&\dfrac{b_3}{a_3}&\dfrac{c_3}{a_3}&\dfrac{d_3}{a_3}
+\end{pmatrix}
+\]
+</div>
 			<p>手順<span class="ft">2</span>.<span class="ft">1</span>行目を引く。</p>
-			<p class="im"><img src="./../img/fem_m_gauss.files/image006.png"></p>
+			<div class="math-block" id="formula-fem_11_1-006" data-source-image="./../img/fem_m_gauss.files/image006.png">
+\[
+\begin{pmatrix}
+1&\dfrac{b_1}{a_1}&\dfrac{c_1}{a_1}&\dfrac{d_1}{a_1}\\
+0&\dfrac{b_2}{a_2}-\dfrac{b_1}{a_1}&\dfrac{c_2}{a_2}-\dfrac{c_1}{a_1}&\dfrac{d_2}{a_2}-\dfrac{d_1}{a_1}\\
+0&\dfrac{b_3}{a_3}-\dfrac{b_1}{a_1}&\dfrac{c_3}{a_3}-\dfrac{c_1}{a_1}&\dfrac{d_3}{a_3}-\dfrac{d_1}{a_1}
+\end{pmatrix}
+\]
+</div>
 			<p>手順<span class="ft">3</span>.係数を次式で置き換える。</p>
-			<p class="im"><img src="./../img/fem_m_gauss.files/image007.png"></p>
+			<div class="math-block" id="formula-fem_11_1-007" data-source-image="./../img/fem_m_gauss.files/image007.png">
+\[
+\begin{pmatrix}
+1&\dfrac{b_1}{a_1}&\dfrac{c_1}{a_1}&\dfrac{d_1}{a_1}\\
+0&s_1&s_2&s_3\\
+0&t_1&t_2&t_3
+\end{pmatrix}
+\]
+</div>
 			<p>手順<span class="ft">4</span>.<br>
 			　　　　・<span class="ft">2</span>行目を係数<span class="ft"><i>s</i><sub>1</sub></span>で割る。<br>
 			　　　　・<span class="ft">3</span>行目を係数<span class="ft"><i>t</i><sub>1</sub></span>で割る。</p>
-			<p class="im"><img src="./../img/fem_m_gauss.files/image008.png"></p>
+			<div class="math-block" id="formula-fem_11_1-008" data-source-image="./../img/fem_m_gauss.files/image008.png">
+\[
+\begin{pmatrix}
+1&\dfrac{b_1}{a_1}&\dfrac{c_1}{a_1}&\dfrac{d_1}{a_1}\\
+0&1&\dfrac{s_2}{s_1}&\dfrac{s_3}{s_1}\\
+0&1&\dfrac{t_2}{t_1}&\dfrac{t_3}{t_1}
+\end{pmatrix}
+\]
+</div>
 			<p>手順<span class="ft">5</span>.<span class="ft">2</span>行目を引く。</p>
-			<p class="im"><img src="./../img/fem_m_gauss.files/image009.png"></p>
+			<div class="math-block" id="formula-fem_11_1-009" data-source-image="./../img/fem_m_gauss.files/image009.png">
+\[
+\begin{pmatrix}
+1&\dfrac{b_1}{a_1}&\dfrac{c_1}{a_1}&\dfrac{d_1}{a_1}\\
+0&1&\dfrac{s_2}{s_1}&\dfrac{s_3}{s_1}\\
+0&0&\dfrac{t_2}{t_1}-\dfrac{s_2}{s_1}&\dfrac{t_3}{t_1}-\dfrac{s_3}{s_1}
+\end{pmatrix}
+\]
+</div>
 			<br><br>
 			<p>連列方程式に直すと次式となります。
 					<span class="ft"><i>z</i></span>→
 					<span class="ft"><i>y</i></span>→
 					<span class="ft"><i>x</i></span>の順番に変数が計算できます。</p>
-			<p class="im"><img src="./../img/fem_m_gauss.files/image010.png"></p>
-			<p class="im"><img src="./../img/fem_m_gauss.files/image011.png"></p>
+			<div class="math-block" id="formula-fem_11_1-010" data-source-image="./../img/fem_m_gauss.files/image010.png">
+\[
+\left\{
+\begin{aligned}
+x+\frac{b_1}{a_1}y+\frac{c_1}{a_1}z&=\frac{d_1}{a_1}\\
+y+\frac{s_2}{s_1}z&=\frac{s_3}{s_1}\\
+\left(\frac{t_2}{t_1}-\frac{s_2}{s_1}\right)z&=\frac{t_3}{t_1}-\frac{s_3}{s_1}
+\end{aligned}
+\right.
+\]
+</div>
+			<div class="math-block" id="formula-fem_11_1-011" data-source-image="./../img/fem_m_gauss.files/image011.png">
+\[
+\begin{pmatrix}
+1&\dfrac{b_1}{a_1}&\dfrac{c_1}{a_1}\\
+0&1&\dfrac{s_2}{s_1}\\
+0&0&\dfrac{t_2}{t_1}-\dfrac{s_2}{s_1}
+\end{pmatrix}
+\begin{bmatrix}x\\y\\z\end{bmatrix}
+=
+\begin{pmatrix}
+\dfrac{d_1}{a_1}\\
+\dfrac{s_3}{s_1}\\
+\dfrac{t_3}{t_1}-\dfrac{s_3}{s_1}
+\end{pmatrix}
+\]
+</div>
 			<br>
 			<p>・ポイント</p>
 			<p>割り算をする係数が<span class="ft">0</span>の場合は、計算ができません。
