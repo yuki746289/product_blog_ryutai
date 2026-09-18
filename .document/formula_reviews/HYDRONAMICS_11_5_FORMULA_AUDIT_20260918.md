@@ -13,7 +13,7 @@ Result: **1 / 1 PASS**
 Transcription data:
 - `.document/formula_reviews/hydronamics_11_5_formulas.json`
 
-Source-visible Japanese force labels, square-root nesting, and formula structure are preserved.
+Source-visible Japanese force labels and formula structure are preserved.
 
 ## Pass 2 — browser MathJax comparison
 
