@@ -11,16 +11,16 @@
 ## Summary
 
 - HTML pages scanned: **205**
-- Residual inline-image placements: **311**
-- Unique residual image assets: **309**
-- Priority A (`p.im`) placements: **293**
+- Residual inline-image placements: **303**
+- Unique residual image assets: **301**
+- Priority A (`p.im`) placements: **287**
 - Missing referenced assets: **49**
 
 ### By section
 
 | Section | Placements |
 |---|---:|
-| `hydronamics` | 87 |
+| `hydronamics` | 79 |
 | `physics` | 65 |
 | `mesh` | 53 |
 | `mps` | 49 |
@@ -105,81 +105,80 @@ These references exist in HTML but the corresponding image file is absent from t
 | 7 | `mps/mps_4.html` | 9 | 7 |
 | 8 | `physics/physics_4.html` | 9 | 6 |
 | 9 | `fem/fem_13.html` | 8 | 8 |
-| 10 | `hydronamics/hydronamics_12_2.html` | 8 | 6 |
-| 11 | `hydronamics/hydronamics_6_1.html` | 8 | 8 |
-| 12 | `hydronamics/hydronamics_6_2.html` | 7 | 7 |
-| 13 | `hydronamics/hydronamics_6_3.html` | 7 | 7 |
-| 14 | `hydronamics/hydronamics_6_4.html` | 7 | 6 |
-| 15 | `physics/physics_3.html` | 7 | 7 |
-| 16 | `physics/physics_6_2_3.html` | 7 | 7 |
-| 17 | `fem/fem_1.html` | 6 | 6 |
-| 18 | `hydronamics/hydronamics_9_1.html` | 6 | 6 |
-| 19 | `hydronamics/hydronamics_9_5.html` | 6 | 6 |
-| 20 | `mesh/mesh_1.html` | 6 | 6 |
-| 21 | `column/column_2.html` | 5 | 5 |
-| 22 | `fem/fem_12.html` | 5 | 3 |
-| 23 | `hydronamics/hydronamics_9_6.html` | 5 | 5 |
-| 24 | `mesh/mesh_3_2.html` | 5 | 5 |
-| 25 | `physics/physics_6_1.html` | 5 | 5 |
-| 26 | `physics/physics_6_2_1.html` | 5 | 5 |
-| 27 | `appendix/appendix_3_1.html` | 4 | 4 |
-| 28 | `appendix/appendix_3_2.html` | 4 | 4 |
-| 29 | `hydronamics/hydronamics_11.html` | 4 | 4 |
-| 30 | `hydronamics/hydronamics_12.html` | 4 | 4 |
-| 31 | `mesh/mesh_4.html` | 4 | 4 |
-| 32 | `physics/physics_5.html` | 4 | 2 |
-| 33 | `hydronamics/hydronamics_10_1.html` | 3 | 3 |
-| 34 | `physics/physics_6_2_2.html` | 3 | 3 |
-| 35 | `physics/physics_6_3_2.html` | 3 | 3 |
-| 36 | `fem/fem_2_1.html` | 2 | 2 |
-| 37 | `fem/fem_2_3.html` | 2 | 2 |
-| 38 | `fem/fem_8_2_1.html` | 2 | 2 |
-| 39 | `fem/fem_9.html` | 2 | 2 |
-| 40 | `hydronamics/hydronamics_11_6.html` | 2 | 2 |
-| 41 | `hydronamics/hydronamics_14.html` | 2 | 2 |
-| 42 | `hydronamics/hydronamics_2.html` | 2 | 2 |
-| 43 | `hydronamics/hydronamics_5.html` | 2 | 2 |
-| 44 | `hydronamics/hydronamics_7.html` | 2 | 2 |
-| 45 | `hydronamics/hydronamics_9_3.html` | 2 | 2 |
-| 46 | `mps/mps_5.html` | 2 | 2 |
-| 47 | `mps/mps_6_1.html` | 2 | 2 |
-| 48 | `physics/physics_6_2_4.html` | 2 | 2 |
-| 49 | `physics/physics_6_3_3.html` | 2 | 2 |
-| 50 | `appendix/appendix_2.html` | 1 | 1 |
-| 51 | `counting/counting_1.html` | 1 | 1 |
-| 52 | `counting/counting_2.html` | 1 | 1 |
-| 53 | `fem/fem.html` | 1 | 1 |
-| 54 | `fem/fem_10.html` | 1 | 1 |
-| 55 | `fem/fem_2_2.html` | 1 | 1 |
-| 56 | `fem/fem_6_1_1.html` | 1 | 1 |
-| 57 | `fem/fem_6_2_1.html` | 1 | 1 |
-| 58 | `fem/fem_8_1.html` | 1 | 1 |
-| 59 | `heat/heat_4_1.html` | 1 | 1 |
-| 60 | `heat/heat_4_2.html` | 1 | 1 |
-| 61 | `heat/heat_4_3.html` | 1 | 1 |
-| 62 | `heat/heat_5.html` | 1 | 1 |
-| 63 | `heat/heat_5_1.html` | 1 | 1 |
-| 64 | `heat/heat_5_2.html` | 1 | 1 |
-| 65 | `heat/heat_5_3.html` | 1 | 1 |
-| 66 | `heat/heat_5_4.html` | 1 | 1 |
-| 67 | `hydronamics/hydronamics_10.html` | 1 | 1 |
-| 68 | `hydronamics/hydronamics_10_2.html` | 1 | 1 |
-| 69 | `hydronamics/hydronamics_11_1.html` | 1 | 1 |
-| 70 | `hydronamics/hydronamics_11_2.html` | 1 | 1 |
-| 71 | `hydronamics/hydronamics_11_3.html` | 1 | 1 |
-| 72 | `hydronamics/hydronamics_11_4.html` | 1 | 1 |
-| 73 | `hydronamics/hydronamics_11_5.html` | 1 | 1 |
-| 74 | `hydronamics/hydronamics_4.html` | 1 | 1 |
-| 75 | `hydronamics/hydronamics_9_2.html` | 1 | 1 |
-| 76 | `hydronamics/hydronamics_9_4.html` | 1 | 1 |
-| 77 | `mps/mps_1.html` | 1 | 1 |
-| 78 | `mps/mps_2.html` | 1 | 1 |
-| 79 | `physics/physics_1.html` | 1 | 1 |
-| 80 | `physics/physics_6_2_5.html` | 1 | 1 |
-| 81 | `physics/physics_6_2_6.html` | 1 | 1 |
-| 82 | `physics/physics_6_2_7.html` | 1 | 1 |
-| 83 | `physics/physics_6_3_1.html` | 1 | 1 |
-| 84 | `physics/physics_7.html` | 1 | 1 |
+| 10 | `hydronamics/hydronamics_6_1.html` | 8 | 8 |
+| 11 | `hydronamics/hydronamics_6_2.html` | 7 | 7 |
+| 12 | `hydronamics/hydronamics_6_3.html` | 7 | 7 |
+| 13 | `hydronamics/hydronamics_6_4.html` | 7 | 6 |
+| 14 | `physics/physics_3.html` | 7 | 7 |
+| 15 | `physics/physics_6_2_3.html` | 7 | 7 |
+| 16 | `fem/fem_1.html` | 6 | 6 |
+| 17 | `hydronamics/hydronamics_9_1.html` | 6 | 6 |
+| 18 | `hydronamics/hydronamics_9_5.html` | 6 | 6 |
+| 19 | `mesh/mesh_1.html` | 6 | 6 |
+| 20 | `column/column_2.html` | 5 | 5 |
+| 21 | `fem/fem_12.html` | 5 | 3 |
+| 22 | `hydronamics/hydronamics_9_6.html` | 5 | 5 |
+| 23 | `mesh/mesh_3_2.html` | 5 | 5 |
+| 24 | `physics/physics_6_1.html` | 5 | 5 |
+| 25 | `physics/physics_6_2_1.html` | 5 | 5 |
+| 26 | `appendix/appendix_3_1.html` | 4 | 4 |
+| 27 | `appendix/appendix_3_2.html` | 4 | 4 |
+| 28 | `hydronamics/hydronamics_11.html` | 4 | 4 |
+| 29 | `hydronamics/hydronamics_12.html` | 4 | 4 |
+| 30 | `mesh/mesh_4.html` | 4 | 4 |
+| 31 | `physics/physics_5.html` | 4 | 2 |
+| 32 | `hydronamics/hydronamics_10_1.html` | 3 | 3 |
+| 33 | `physics/physics_6_2_2.html` | 3 | 3 |
+| 34 | `physics/physics_6_3_2.html` | 3 | 3 |
+| 35 | `fem/fem_2_1.html` | 2 | 2 |
+| 36 | `fem/fem_2_3.html` | 2 | 2 |
+| 37 | `fem/fem_8_2_1.html` | 2 | 2 |
+| 38 | `fem/fem_9.html` | 2 | 2 |
+| 39 | `hydronamics/hydronamics_11_6.html` | 2 | 2 |
+| 40 | `hydronamics/hydronamics_14.html` | 2 | 2 |
+| 41 | `hydronamics/hydronamics_2.html` | 2 | 2 |
+| 42 | `hydronamics/hydronamics_5.html` | 2 | 2 |
+| 43 | `hydronamics/hydronamics_7.html` | 2 | 2 |
+| 44 | `hydronamics/hydronamics_9_3.html` | 2 | 2 |
+| 45 | `mps/mps_5.html` | 2 | 2 |
+| 46 | `mps/mps_6_1.html` | 2 | 2 |
+| 47 | `physics/physics_6_2_4.html` | 2 | 2 |
+| 48 | `physics/physics_6_3_3.html` | 2 | 2 |
+| 49 | `appendix/appendix_2.html` | 1 | 1 |
+| 50 | `counting/counting_1.html` | 1 | 1 |
+| 51 | `counting/counting_2.html` | 1 | 1 |
+| 52 | `fem/fem.html` | 1 | 1 |
+| 53 | `fem/fem_10.html` | 1 | 1 |
+| 54 | `fem/fem_2_2.html` | 1 | 1 |
+| 55 | `fem/fem_6_1_1.html` | 1 | 1 |
+| 56 | `fem/fem_6_2_1.html` | 1 | 1 |
+| 57 | `fem/fem_8_1.html` | 1 | 1 |
+| 58 | `heat/heat_4_1.html` | 1 | 1 |
+| 59 | `heat/heat_4_2.html` | 1 | 1 |
+| 60 | `heat/heat_4_3.html` | 1 | 1 |
+| 61 | `heat/heat_5.html` | 1 | 1 |
+| 62 | `heat/heat_5_1.html` | 1 | 1 |
+| 63 | `heat/heat_5_2.html` | 1 | 1 |
+| 64 | `heat/heat_5_3.html` | 1 | 1 |
+| 65 | `heat/heat_5_4.html` | 1 | 1 |
+| 66 | `hydronamics/hydronamics_10.html` | 1 | 1 |
+| 67 | `hydronamics/hydronamics_10_2.html` | 1 | 1 |
+| 68 | `hydronamics/hydronamics_11_1.html` | 1 | 1 |
+| 69 | `hydronamics/hydronamics_11_2.html` | 1 | 1 |
+| 70 | `hydronamics/hydronamics_11_3.html` | 1 | 1 |
+| 71 | `hydronamics/hydronamics_11_4.html` | 1 | 1 |
+| 72 | `hydronamics/hydronamics_11_5.html` | 1 | 1 |
+| 73 | `hydronamics/hydronamics_4.html` | 1 | 1 |
+| 74 | `hydronamics/hydronamics_9_2.html` | 1 | 1 |
+| 75 | `hydronamics/hydronamics_9_4.html` | 1 | 1 |
+| 76 | `mps/mps_1.html` | 1 | 1 |
+| 77 | `mps/mps_2.html` | 1 | 1 |
+| 78 | `physics/physics_1.html` | 1 | 1 |
+| 79 | `physics/physics_6_2_5.html` | 1 | 1 |
+| 80 | `physics/physics_6_2_6.html` | 1 | 1 |
+| 81 | `physics/physics_6_2_7.html` | 1 | 1 |
+| 82 | `physics/physics_6_3_1.html` | 1 | 1 |
+| 83 | `physics/physics_7.html` | 1 | 1 |
 
 ## Next step
 

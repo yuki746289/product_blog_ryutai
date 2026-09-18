@@ -1,9 +1,9 @@
 {
   "summary": {
     "html_pages_scanned": 205,
-    "residual_word_image_placements": 311,
-    "unique_assets": 309,
-    "centered_p_im_placements": 293,
+    "residual_word_image_placements": 303,
+    "unique_assets": 301,
+    "centered_p_im_placements": 287,
     "missing_assets": 49,
     "missing_by_section": {
       "mps": 49
@@ -14,13 +14,13 @@
       "counting": 2,
       "fem": 33,
       "heat": 8,
-      "hydronamics": 87,
+      "hydronamics": 79,
       "mesh": 53,
       "mps": 49,
       "physics": 65
     },
     "extensions": {
-      ".png": 258,
+      ".png": 250,
       ".jpg": 4,
       ".gif": 49
     }
@@ -945,102 +945,6 @@
       "asset": "img/hydronamics_dimensionless.files/image004.png",
       "exists": true,
       "width": 80,
-      "height": 61,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "hydronamics/hydronamics_12_2.html",
-      "encoding": "cp932",
-      "src": "./../img/hydronamics_dimensionless.files/image015.png",
-      "asset": "img/hydronamics_dimensionless.files/image015.png",
-      "exists": true,
-      "width": 190,
-      "height": 62,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "hydronamics/hydronamics_12_2.html",
-      "encoding": "cp932",
-      "src": "./../img/hydronamics_dimensionless.files/image016.png",
-      "asset": "img/hydronamics_dimensionless.files/image016.png",
-      "exists": true,
-      "width": 16,
-      "height": 17,
-      "format": "PNG",
-      "centered_p_im": false,
-      "review_priority": "B"
-    },
-    {
-      "page": "hydronamics/hydronamics_12_2.html",
-      "encoding": "cp932",
-      "src": "./../img/hydronamics_dimensionless.files/image017.png",
-      "asset": "img/hydronamics_dimensionless.files/image017.png",
-      "exists": true,
-      "width": 409,
-      "height": 118,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "hydronamics/hydronamics_12_2.html",
-      "encoding": "cp932",
-      "src": "./../img/hydronamics_dimensionless.files/image018.png",
-      "asset": "img/hydronamics_dimensionless.files/image018.png",
-      "exists": true,
-      "width": 222,
-      "height": 66,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "hydronamics/hydronamics_12_2.html",
-      "encoding": "cp932",
-      "src": "./../img/hydronamics_dimensionless.files/image019.png",
-      "asset": "img/hydronamics_dimensionless.files/image019.png",
-      "exists": true,
-      "width": 22,
-      "height": 21,
-      "format": "PNG",
-      "centered_p_im": false,
-      "review_priority": "B"
-    },
-    {
-      "page": "hydronamics/hydronamics_12_2.html",
-      "encoding": "cp932",
-      "src": "./../img/hydronamics_dimensionless.files/image020.png",
-      "asset": "img/hydronamics_dimensionless.files/image020.png",
-      "exists": true,
-      "width": 455,
-      "height": 113,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "hydronamics/hydronamics_12_2.html",
-      "encoding": "cp932",
-      "src": "./../img/hydronamics_dimensionless.files/image021.png",
-      "asset": "img/hydronamics_dimensionless.files/image021.png",
-      "exists": true,
-      "width": 117,
-      "height": 65,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "hydronamics/hydronamics_12_2.html",
-      "encoding": "cp932",
-      "src": "./../img/hydronamics_dimensionless.files/image022.png",
-      "asset": "img/hydronamics_dimensionless.files/image022.png",
-      "exists": true,
-      "width": 117,
       "height": 61,
       "format": "PNG",
       "centered_p_im": true,
