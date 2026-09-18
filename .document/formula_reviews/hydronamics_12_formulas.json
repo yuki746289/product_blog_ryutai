@@ -1,0 +1,30 @@
+{
+  "page": "hydronamics/hydronamics_12.html",
+  "image_dir": "img/hydronamics_dimensionless.files",
+  "canonical_source": "original source images",
+  "retained_diagrams": [],
+  "transcription_assist": {
+    "source": "HP.7z / 流体力学_無次元化.doc",
+    "method": "Word OMML candidate + canonical source-image verification",
+    "verified_date": "2026-09-18",
+    "source_image_is_canonical": true
+  },
+  "formulas": [
+    {
+      "image": "image001.png",
+      "latex": "\\[\nX=\\frac{x}{x_0},\\quad Y=\\frac{y}{x_0},\\quad Z=\\frac{z}{x_0}\n\\]"
+    },
+    {
+      "image": "image002.png",
+      "latex": "\\[\nV_x=\\frac{v_x}{v_0},\\quad V_y=\\frac{v_y}{v_0},\\quad V_z=\\frac{v_z}{v_0}\n\\]"
+    },
+    {
+      "image": "image003.png",
+      "latex": "\\[\nP=\\frac{p}{\\rho v_0^2}\n\\]"
+    },
+    {
+      "image": "image004.png",
+      "latex": "\\[\n\\tau=\\frac{v_0}{x_0}t\n\\]"
+    }
+  ]
+}
