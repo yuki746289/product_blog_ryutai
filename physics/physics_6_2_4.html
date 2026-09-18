@@ -11,6 +11,11 @@
 
 	<title>(∇・テンソル)（物理）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+<script>
+window.MathJax={output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},chtml:{displayAlign:'left',displayIndent:'0'}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="2">
@@ -50,11 +55,29 @@
 
 			<h2>(∇・テンソル)</h2>
 			<p>微分作用素とテンソルの内積は次式となります。</p>
-			<p class="im"><img src="./../img/physics_c_inner.files/image016.png"></p>
+			<div class="math-block" id="formula-physics-6-2-4-016" data-source-image="./../img/physics_c_inner.files/image016.png">
+\[
+\begin{aligned}
+[\nabla\cdot\vec{\tau}]
+&=\left[\sum_{i=0}^{3}\vec{\delta}_{i}\frac{\partial}{\partial x_i}\cdot\sum_{j=0}^{3}\sum_{k=0}^{3}\vec{\delta}_{j}\vec{\delta}_{k}\tau_{jk}\right]\\
+&=\sum_{i=0}^{3}\sum_{j=0}^{3}\sum_{k=0}^{3}\left[\vec{\delta}_{i}\frac{\partial}{\partial x_i}\cdot\vec{\delta}_{j}\vec{\delta}_{k}\tau_{jk}\right]\\
+&=\sum_{i=0}^{3}\sum_{j=0}^{3}\sum_{k=0}^{3}\left[(\vec{\delta}_{i}\cdot\vec{\delta}_{j})\vec{\delta}_{k}\right]\frac{\partial}{\partial x_i}\tau_{jk}\\
+&=\sum_{i=0}^{3}\sum_{j=0}^{3}\sum_{k=0}^{3}\delta_{ij}\vec{\delta}_{k}\frac{\partial\tau_{jk}}{\partial x_i}\\
+&=\sum_{j=0}^{3}\sum_{k=0}^{3}\vec{\delta}_{k}\frac{\partial\tau_{jk}}{\partial x_i}\qquad(i=j)\\
+&=\sum_{k=0}^{3}\vec{\delta}_{k}\sum_{j=0}^{3}\frac{\partial\tau_{jk}}{\partial x_i}\\
+&=\sum_{k=0}^{3}\vec{\delta}_{k}\left(\frac{\partial\tau_{xk}}{\partial x}+\frac{\partial\tau_{yk}}{\partial y}+\frac{\partial\tau_{zk}}{\partial z}\right)\\
+&=\vec{\delta}_{x}\left(\frac{\partial\tau_{xx}}{\partial x}+\frac{\partial\tau_{yx}}{\partial y}+\frac{\partial\tau_{zx}}{\partial z}\right)\\
+&\quad+\vec{\delta}_{y}\left(\frac{\partial\tau_{xy}}{\partial x}+\frac{\partial\tau_{yy}}{\partial y}+\frac{\partial\tau_{zy}}{\partial z}\right)\\
+&\quad+\vec{\delta}_{z}\left(\frac{\partial\tau_{xz}}{\partial x}+\frac{\partial\tau_{yz}}{\partial y}+\frac{\partial\tau_{zz}}{\partial z}\right)
+\end{aligned}
+\]
+</div>
 			<p>上記の項のオーダーは、</p>
 			<p class="im"><span class="ft">(</span>微分作用素・テンソル<span class="ft">) = (1 - 2 + 2) = 1</span></p>
 			<p>と計算されるので、ベクトル量になります。また、下記が成り立ちます。</p>
-			<p class="im"><img src="./../img/physics_c_inner.files/image017.png"></p>
+			<div class="math-block" id="formula-physics-6-2-4-017" data-source-image="./../img/physics_c_inner.files/image017.png">
+\[(\nabla\cdot\vec{\tau})\neq(\vec{\tau}\cdot\nabla)\]
+</div>
 			<br>
 
 			<div style="margin-top:10px;"></div>
