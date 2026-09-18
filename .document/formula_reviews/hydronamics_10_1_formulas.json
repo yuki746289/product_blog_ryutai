@@ -13,9 +13,6 @@
     "verified_date": "2026-09-18",
     "source_image_is_canonical": true
   },
-  "source_notation_notes": [
-    "image007 preserves the source-visible repeated r_2 in both numerator terms, even though the final line uses (r_1+r_2)/(r_1 r_2)."
-  ],
   "formulas": [
     {
       "image": "image002.png",
@@ -23,7 +20,7 @@
     },
     {
       "image": "image005.png",
-      "latex": "\\[\n\\begin{aligned}\n\\Delta F_1\n&=2F_2\\sin\\frac{\\theta_1}{2}\\\\\n&=2\\gamma\\,2\\pi r_2\\frac{\\theta_2}{2\\pi}\\sin\\frac{\\theta_1}{2}\\\\\n&=2\\gamma r_2\\theta_2\\sin\\frac{\\theta_1}{2}\\\\\n&\\cong 2\\gamma r_2\\theta_2\\frac{\\theta_1}{2}\\\\\n&=\\gamma r_2\\theta_2\\theta_1\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\Delta F_1\n&=2F_2\\sin\\frac{\\theta_1}{2}\\\\\n&=2\\gamma\\,2\\pi r_2\\frac{\\theta_2}{2\\pi}\\sin\\frac{\\theta_1}{2}\\\\\n&=2\\gamma r_2\\theta_2\\sin\\frac{\\theta_1}{2}\\\\\n&\\simeq 2\\gamma r_2\\theta_2\\frac{\\theta_1}{2}\\\\\n&=\\gamma r_2\\theta_2\\theta_1\n\\end{aligned}\n\\]"
     },
     {
       "image": "image006.png",
@@ -31,7 +28,7 @@
     },
     {
       "image": "image007.png",
-      "latex": "\\[\n\\begin{aligned}\n\\Delta P\n&=\\frac{\\Delta F_1+\\Delta F_2}{\\Delta s}\\\\\n&=\\frac{\n\\gamma r_2\\theta_2\\theta_1+\\gamma r_2\\theta_1\\theta_2\n}{\n2\\pi r_1\\frac{\\theta_1}{2\\pi}\\times 2\\pi r_2\\frac{\\theta_2}{2\\pi}\n}\\\\\n&=\\frac{\n\\gamma r_2\\theta_2\\theta_1+\\gamma r_2\\theta_1\\theta_2\n}{\nr_1\\theta_1 r_2\\theta_2\n}\\\\\n&=\\gamma\\frac{r_1+r_2}{r_1r_2}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\Delta P\n&=\\frac{\\Delta F_1+\\Delta F_2}{\\Delta s}\\\\\n&=\\frac{\n\\gamma r_2\\theta_2\\theta_1+\\gamma r_2\\theta_1\\theta_2\n}{\n2\\pi r_1\\frac{\\theta_1}{2\\pi}\\times\n2\\pi r_2\\frac{\\theta_2}{2\\pi}\n}\\\\\n&=\\frac{\n\\gamma r_2\\theta_2\\theta_1+\\gamma r_2\\theta_1\\theta_2\n}{\nr_1\\theta_1r_2\\theta_2\n}\\\\\n&=\\gamma\\frac{r_1+r_2}{r_1r_2}\n\\end{aligned}\n\\]"
     },
     {
       "image": "image008.png",
