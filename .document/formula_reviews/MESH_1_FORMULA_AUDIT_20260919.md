@@ -25,8 +25,18 @@ Transcription:
 
 ## Pass 2
 
-Status: **Pending**
+Result: **5 / 5 PASS**
+
+- Workflow run: **35404960517**
+- Artifact: `mesh-1-pass2`
+- Artifact id: **10572152251**
+- MathJax errors: **0**
+- Unrendered formulas: **0**
+- Pair-page horizontal overflow: **0 / 5**
+- Browser page errors: **0**
+
+All five source/render pairs were visually inspected. The long least-squares expansion, repeated intermediate terms, summation limits, derivative equations, signs, factors, and final two-equation system match the source.
 
 Normal-page application is prohibited until Pass 2 is complete.
 
-**Mesh 1 is not yet certified for normal-page application.**
+**Mesh 1 is certified for normal-page application.**
