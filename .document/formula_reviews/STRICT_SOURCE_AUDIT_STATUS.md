@@ -870,6 +870,35 @@ FEM batches 1–3 / FEM 5後に残っていた未分類20画像を分類し、�
 - `.document/formula_reviews/PHYSICS_2_FORMULA_AUDIT_20260918.md`
 - `.document/formula_reviews/PHYSICS_2_NORMAL_BROWSER_QA_20260918.md`
 
+
+## 2026-09-18 Physics 4 監査・通常ページ反映
+
+`physics/physics_4.html` の物理量分類ページを、元HP画像を正本として処理した。
+
+- 分類対象: **9画像**
+  - 表示数式: **3**
+  - インライン数式: **3**
+  - 図・混在図: **3**（image001 / image006 / image009 を維持）
+- Pass 1: **6/6**
+- Pass 2 workflow run: **35358712499**
+- Pass 2: **6/6**
+- Pass 2 artifact: `physics-4-pass2` / id **10553611379**
+- 通常ページ反映: **6/6**
+- Apply workflow run: **35359040981**
+- Normal browser QA run: **35359135031**
+- desktop/mobile: display 3/3、inline 3/3、retained images 3/3、MathJax errors 0、unrendered 0、uncontained 0、page overflowなし
+- mobile local-scroll: **0**
+- source-visible な非標準表記を修正せず保持:
+  - image004: `\\sum_{i=3}^{3}`
+  - image004: 中央展開項 `\\vec{\\delta}_y v_i`
+  - image008: 総和範囲 `i=0..3`, `j=0..3`
+- 本番FTP反映は未実施。
+
+詳細:
+- `.document/formula_reviews/PHYSICS_4_IMAGE_CLASSIFICATION_20260918.md`
+- `.document/formula_reviews/PHYSICS_4_FORMULA_AUDIT_20260918.md`
+- `.document/formula_reviews/PHYSICS_4_NORMAL_BROWSER_QA_20260918.md`
+
 ## 次の優先順
 
 1. サイト全体の残存画像を「数式 / 図 / 混在画像」に分類する。
@@ -922,7 +951,7 @@ FEM batches 1–3 / FEM 5後に残っていた未分類20画像を分類し、�
 - **Hydronamicsカテゴリの既知数式画像は変換完了**
   - 最新残存21画像は、すべて確認済みの保持図（数式画像0）
   - 本番FTP反映は未実施。
-- 厳密監査・通常ページ化まで完了した数式・数式テキスト: **489件**
+- Physics 4: **6式完了、図・混在図3件は画像維持、PC/スマホQA完了**\n- 厳密監査・通常ページ化まで完了した数式・数式テキスト: **495件**
 - 残存画像は数式とは限らないため、今後はページ単位で分類してから数式のみ変換する。
 - MPS欠損GIF参照は別タスクとして扱う。
 - 本番FTP反映は未実施。
