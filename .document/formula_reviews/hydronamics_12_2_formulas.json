@@ -1,0 +1,48 @@
+{
+  "page": "hydronamics/hydronamics_12_2.html",
+  "image_dir": "img/hydronamics_dimensionless.files",
+  "canonical_source": "original source images",
+  "retained_diagrams": [],
+  "transcription_assist": {
+    "source": "HP.7z / 流体力学_無次元化.doc",
+    "method": "Word/Equation Editor candidate + canonical source-image verification",
+    "verified_date": "2026-09-18",
+    "source_image_is_canonical": true
+  },
+  "formulas": [
+    {
+      "image": "image015.png",
+      "latex": "\\[\n\\rho\\frac{D\\vec v}{Dt}\n=\n[\\nabla\\cdot\\vec\\sigma]+\\rho\\vec g\n\\]"
+    },
+    {
+      "image": "image016.png",
+      "latex": "\\(\\vec\\sigma\\)",
+      "mode": "inline"
+    },
+    {
+      "image": "image017.png",
+      "latex": "\\[\n\\begin{aligned}\n\\sigma_{ij}\n&=-\\delta_{ij}p_j-\\tau_{ij}\\\\\n&=-\\delta_{ij}p_j\n+\\mu\\left(\n\\frac{\\partial v_i}{\\partial x_j}\n+\\frac{\\partial v_j}{\\partial x_i}\n\\right)\n-\\delta_{ij}\\frac{2}{3}\\mu(\\nabla\\cdot\\vec v)\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image018.png",
+      "latex": "\\[\n\\frac{D\\vec V}{D\\tau}\n=\n[\\nabla\\cdot\\vec\\sigma^{*}]\n+\\frac{1}{Fr^{2}}\\vec r\n\\]"
+    },
+    {
+      "image": "image019.png",
+      "latex": "\\(\\vec\\sigma^{*}\\)",
+      "mode": "inline"
+    },
+    {
+      "image": "image020.png",
+      "latex": "\\[\n\\begin{aligned}\n\\sigma_{ij}^{*}\n&=-\\delta_{ij}P_j-\\tau_{ij}^{*}\\\\\n&=-\\delta_{ij}P_j\n+\\frac{1}{Re}\\left(\n\\frac{\\partial V_i}{\\partial X_j}\n+\\frac{\\partial V_j}{\\partial X_i}\n\\right)\n-\\delta_{ij}\\frac{2}{3}\\frac{1}{Re}(\\nabla\\cdot\\vec V)\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image021.png",
+      "latex": "\\[\nFr=\\frac{v_0}{\\sqrt{x_0g}}\n\\]"
+    },
+    {
+      "image": "image022.png",
+      "latex": "\\[\nRe=\\frac{\\rho x_0v_0}{\\mu}\n\\]"
+    }
+  ]
+}
