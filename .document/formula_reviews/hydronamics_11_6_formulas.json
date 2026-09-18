@@ -1,0 +1,16 @@
+{
+  "page": "hydronamics/hydronamics_11_6.html",
+  "image_dir": "img/hydronamics_d_ma.files",
+  "canonical_source": "original source images",
+  "retained_diagrams": [],
+  "formulas": [
+    {
+      "image": "image001.png",
+      "latex": "\\[\nMa=\\frac{v}{c}\n\\]"
+    },
+    {
+      "image": "image002.png",
+      "latex": "\\[\n\\frac{\\partial\\rho}{\\partial t}\\neq0\n\\]"
+    }
+  ]
+}
