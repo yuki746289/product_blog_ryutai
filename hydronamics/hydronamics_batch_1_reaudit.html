@@ -1,0 +1,481 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hydronamics batch 1 strict formula re-audit</title>
+<style>body{font-family:Arial,"Yu Gothic",sans-serif;margin:20px}.formula-pair{border-top:1px solid #bbb;padding:18px 0}.pair-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}.source,.render{min-width:0;overflow-x:auto;padding:10px;border:1px solid #ddd}.source img{display:block;max-width:100%;height:auto;margin:auto}.render mjx-container[display="true"]{margin:.4em 0!important;text-align:left!important}@media(max-width:900px){.pair-grid{grid-template-columns:1fr}}</style>
+<script>window.MathJax={output:{displayOverflow:"linebreak",linebreaks:{inline:false,width:"100%"}}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head><body><h1>Hydronamics Batch 1 strict source-image re-audit</h1>
+<h2>hydronamics/hydronamics_14.html</h2>
+<section class="formula-pair" id="formula-hydronamics_14-003"><h3>hydronamics_14-003 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_gauss.files/image003.png" alt="source hydronamics_14-003"></div>
+<div class="render" data-source-image="./../img/hydronamics_gauss.files/image003.png">\[
+\iiint_{\Delta V}\frac{\partial\phi}{\partial x}\,dx\,dy\,dz
+=
+\iint(\phi\,dy\,dz)_R-\iint(\phi\,dy\,dz)_L
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_14-004"><h3>hydronamics_14-004 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_gauss.files/image004.png" alt="source hydronamics_14-004"></div>
+<div class="render" data-source-image="./../img/hydronamics_gauss.files/image004.png">\[
+\vec n=\vec\delta_x n_x+\vec\delta_y n_y+\vec\delta_z n_z
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_14-005"><h3>hydronamics_14-005 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_gauss.files/image005.png" alt="source hydronamics_14-005"></div>
+<div class="render" data-source-image="./../img/hydronamics_gauss.files/image005.png">\[
+dA=-n_x\,dy\,dz
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_14-006"><h3>hydronamics_14-006 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_gauss.files/image006.png" alt="source hydronamics_14-006"></div>
+<div class="render" data-source-image="./../img/hydronamics_gauss.files/image006.png">\[
+dA=+n_x\,dy\,dz
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_14-007"><h3>hydronamics_14-007 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_gauss.files/image007.png" alt="source hydronamics_14-007"></div>
+<div class="render" data-source-image="./../img/hydronamics_gauss.files/image007.png">\[
+\begin{aligned}
+\iiint_{\Delta V}\frac{\partial\phi}{\partial x}\,dx\,dy\,dz
+&=\iint(\phi\,dy\,dz)_R-\iint(\phi\,dy\,dz)_L\\
+&=\iint\{\phi(+n_x\,dA)\}_R-\iint\{\phi(-n_x\,dA)\}_L\\
+&=\iint(\phi n_x\,dA)_R+\iint(\phi n_x\,dA)_L
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_14-008"><h3>hydronamics_14-008 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_gauss.files/image008.png" alt="source hydronamics_14-008"></div>
+<div class="render" data-source-image="./../img/hydronamics_gauss.files/image008.png">\[
+\begin{aligned}
+\iiint_V\frac{\partial\phi}{\partial x}\,dx\,dy\,dz
+&=\iint_R\phi n_x\,dA+\iint_L\phi n_x\,dA\\
+&=\oiint_S\phi n_x\,dA
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_14-009"><h3>hydronamics_14-009 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_gauss.files/image009.png" alt="source hydronamics_14-009"></div>
+<div class="render" data-source-image="./../img/hydronamics_gauss.files/image009.png">\[
+\iiint_V\frac{\partial\phi}{\partial y}\,dV
+=
+\oiint_S\phi n_y\,dA
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_14-010"><h3>hydronamics_14-010 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_gauss.files/image010.png" alt="source hydronamics_14-010"></div>
+<div class="render" data-source-image="./../img/hydronamics_gauss.files/image010.png">\[
+\iiint_V\frac{\partial\phi}{\partial z}\,dV
+=
+\oiint_S\phi n_z\,dA
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_14-011"><h3>hydronamics_14-011 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_gauss.files/image011.png" alt="source hydronamics_14-011"></div>
+<div class="render" data-source-image="./../img/hydronamics_gauss.files/image011.png">\[
+\iiint_V\nabla\phi\,dV
+=
+\oiint_S\phi\vec n\,dA
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_14-012"><h3>hydronamics_14-012 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_gauss.files/image012.png" alt="source hydronamics_14-012"></div>
+<div class="render" data-source-image="./../img/hydronamics_gauss.files/image012.png">\[
+\iiint_V\frac{\partial(uv)}{\partial x_i}\,dV
+=
+\oiint_S(uv)n_i\,dA
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_14-013"><h3>hydronamics_14-013 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_gauss.files/image013.png" alt="source hydronamics_14-013"></div>
+<div class="render" data-source-image="./../img/hydronamics_gauss.files/image013.png">\[
+\iiint_Vu\frac{\partial v}{\partial x_i}\,dV
++
+\iiint_V\frac{\partial u}{\partial x_i}v\,dV
+=
+\oiint_Suvn_i\,dA
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_14-014"><h3>hydronamics_14-014 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_gauss.files/image014.png" alt="source hydronamics_14-014"></div>
+<div class="render" data-source-image="./../img/hydronamics_gauss.files/image014.png">\[
+\iiint_Vu\frac{\partial v}{\partial x_i}\,dV
+=
+\oiint_Suvn_i\,dA
+-
+\iiint_V\frac{\partial u}{\partial x_i}v\,dV
+\]</div>
+</div></section>
+<h2>hydronamics/hydronamics_8.html</h2>
+<section class="formula-pair" id="formula-hydronamics_8-001"><h3>hydronamics_8-001 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_e_momentum.files/image001.png" alt="source hydronamics_8-001"></div>
+<div class="render" data-source-image="./../img/hydronamics_e_momentum.files/image001.png">\[
+\begin{aligned}
+\rho\Delta x\Delta y\Delta z
+\frac{v_{x|t+\Delta t}-v_{x|t}}{\Delta t}
+={}&
+\rho(\Delta y\Delta z\,v_x+\Delta z\Delta x\,v_y+\Delta x\Delta y\,v_z)v_{x|x}\\
+&-\rho(\Delta y\Delta z\,v_x+\Delta z\Delta x\,v_y+\Delta x\Delta y\,v_z)v_{x|x+\Delta x}\\
+&+\Delta y\Delta z\,\tau_{xx|x}
+-\Delta y\Delta z\,\tau_{xx|x+\Delta x}\\
+&+\Delta z\Delta x\,\tau_{yx|y}
+-\Delta z\Delta x\,\tau_{yx|y+\Delta y}\\
+&+\Delta x\Delta y\,\tau_{zx|z}
+-\Delta x\Delta y\,\tau_{zx|z+\Delta z}\\
+&+\Delta y\Delta z\,p_{x|x}
+-\Delta y\Delta z\,p_{x|x+\Delta x}\\
+&+\rho\Delta x\Delta y\Delta z\,g_x
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_8-002"><h3>hydronamics_8-002 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_e_momentum.files/image002.png" alt="source hydronamics_8-002"></div>
+<div class="render" data-source-image="./../img/hydronamics_e_momentum.files/image002.png">\[
+\begin{aligned}
+\frac{\rho v_{x|t+\Delta t}-\rho v_{x|t}}{\Delta t}
+={}&
+-\frac{\rho v_xv_{x|x+\Delta x}-\rho v_xv_{x|x}}{\Delta x}\\
+&-\frac{\rho v_yv_{x|x+\Delta x}-\rho v_yv_{x|x}}{\Delta y}\\
+&-\frac{\rho v_zv_{x|x+\Delta x}-\rho v_zv_{x|x}}{\Delta z}\\
+&-\frac{\tau_{xx|x+\Delta x}-\tau_{xx|x}}{\Delta x}
+-\frac{\tau_{yx|y+\Delta y}-\tau_{yx|y}}{\Delta y}
+-\frac{\tau_{zx|z+\Delta z}-\tau_{zx|z}}{\Delta z}\\
+&-\frac{p_{x|x+\Delta x}-p_{x|x}}{\Delta x}
++\rho g_x
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_8-003"><h3>hydronamics_8-003 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_e_momentum.files/image003.png" alt="source hydronamics_8-003"></div>
+<div class="render" data-source-image="./../img/hydronamics_e_momentum.files/image003.png">\[
+\begin{aligned}
+\frac{\partial(\rho v_x)}{\partial t}
+={}&
+-\frac{\partial(\rho v_xv_x)}{\partial x}
+-\frac{\partial(\rho v_yv_x)}{\partial y}
+-\frac{\partial(\rho v_zv_x)}{\partial z}\\
+&-\frac{\partial\tau_x}{\partial x}
+-\frac{\partial\tau_y}{\partial y}
+-\frac{\partial\tau_z}{\partial z}\\
+&-\frac{\partial p_x}{\partial x}
++\rho g_x
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_8-004"><h3>hydronamics_8-004 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_e_momentum.files/image004.png" alt="source hydronamics_8-004"></div>
+<div class="render" data-source-image="./../img/hydronamics_e_momentum.files/image004.png">\[
+\rho\left(
+\frac{\partial v_x}{\partial t}
++v_x\frac{\partial v_x}{\partial x}
++v_y\frac{\partial v_x}{\partial y}
++v_z\frac{\partial v_x}{\partial z}
+\right)
+=
+-\frac{\partial\tau_{xx}}{\partial x}
+-\frac{\partial\tau_{yx}}{\partial y}
+-\frac{\partial\tau_{zx}}{\partial z}
+-\frac{\partial p_x}{\partial x}
++\rho g_x
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_8-005"><h3>hydronamics_8-005 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_e_momentum.files/image005.png" alt="source hydronamics_8-005"></div>
+<div class="render" data-source-image="./../img/hydronamics_e_momentum.files/image005.png">\[
+\rho\left(
+\frac{\partial v_y}{\partial t}
++v_x\frac{\partial v_y}{\partial x}
++v_y\frac{\partial v_y}{\partial y}
++v_z\frac{\partial v_y}{\partial z}
+\right)
+=
+-\frac{\partial\tau_{xy}}{\partial x}
+-\frac{\partial\tau_{yy}}{\partial y}
+-\frac{\partial\tau_{zy}}{\partial z}
+-\frac{\partial p_y}{\partial y}
++\rho g_y
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_8-006"><h3>hydronamics_8-006 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_e_momentum.files/image006.png" alt="source hydronamics_8-006"></div>
+<div class="render" data-source-image="./../img/hydronamics_e_momentum.files/image006.png">\[
+\rho\left(
+\frac{\partial v_z}{\partial t}
++v_x\frac{\partial v_z}{\partial x}
++v_y\frac{\partial v_z}{\partial y}
++v_z\frac{\partial v_z}{\partial z}
+\right)
+=
+-\frac{\partial\tau_{xz}}{\partial x}
+-\frac{\partial\tau_{yz}}{\partial y}
+-\frac{\partial\tau_{zz}}{\partial z}
+-\frac{\partial p_z}{\partial z}
++\rho g_z
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_8-007"><h3>hydronamics_8-007 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_e_momentum.files/image007.png" alt="source hydronamics_8-007"></div>
+<div class="render" data-source-image="./../img/hydronamics_e_momentum.files/image007.png">\[
+\rho\frac{\partial\vec v}{\partial t}
++\rho(\vec v\cdot\nabla)\vec v
+=
+-[\nabla\cdot\vec\tau]
+-[\nabla\cdot\vec p]
++\rho\vec g
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_8-008"><h3>hydronamics_8-008 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_e_momentum.files/image008.png" alt="source hydronamics_8-008"></div>
+<div class="render" data-source-image="./../img/hydronamics_e_momentum.files/image008.png">\[
+\frac{D}{Dt}
+=
+\frac{\partial}{\partial t}
++
+(\vec v\cdot\nabla)
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_8-009"><h3>hydronamics_8-009 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_e_momentum.files/image009.png" alt="source hydronamics_8-009"></div>
+<div class="render" data-source-image="./../img/hydronamics_e_momentum.files/image009.png">\[
+\rho\frac{D\vec v}{Dt}
+=
+-[\nabla\cdot\vec\tau]
+-[\nabla\cdot\vec p]
++\rho\vec g
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_8-010"><h3>hydronamics_8-010 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_e_momentum.files/image010.png" alt="source hydronamics_8-010"></div>
+<div class="render" data-source-image="./../img/hydronamics_e_momentum.files/image010.png">\[
+\rho\frac{D\vec v}{Dt}
+=
+[\nabla\cdot\vec\sigma]
++\rho\vec g
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_8-011"><h3>hydronamics_8-011 (inline)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_e_momentum.files/image011.png" alt="source hydronamics_8-011"></div>
+<div class="render" data-source-image="./../img/hydronamics_e_momentum.files/image011.png">\(\vec\sigma\)</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_8-012"><h3>hydronamics_8-012 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_e_momentum.files/image012.png" alt="source hydronamics_8-012"></div>
+<div class="render" data-source-image="./../img/hydronamics_e_momentum.files/image012.png">\[
+\sigma_{ij}=-\delta_{ij}p_j-\tau_{ij}
+\]</div>
+</div></section>
+<h2>hydronamics/hydronamics_12_1.html</h2>
+<section class="formula-pair" id="formula-hydronamics_12_1-005"><h3>hydronamics_12_1-005 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_dimensionless.files/image005.png" alt="source hydronamics_12_1-005"></div>
+<div class="render" data-source-image="./../img/hydronamics_dimensionless.files/image005.png">\[
+\frac{D\rho}{Dt}
+=
+-\rho(\nabla\cdot\vec v)
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_12_1-006"><h3>hydronamics_12_1-006 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_dimensionless.files/image006.png" alt="source hydronamics_12_1-006"></div>
+<div class="render" data-source-image="./../img/hydronamics_dimensionless.files/image006.png">\[
+\frac{\partial\rho}{\partial t}
++v_x\frac{\partial\rho}{\partial x}
++v_y\frac{\partial\rho}{\partial y}
++v_z\frac{\partial\rho}{\partial z}
+=
+-\rho\left(
+\frac{\partial v_x}{\partial x}
++\frac{\partial v_y}{\partial y}
++\frac{\partial v_z}{\partial z}
+\right)
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_12_1-007"><h3>hydronamics_12_1-007 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_dimensionless.files/image007.png" alt="source hydronamics_12_1-007"></div>
+<div class="render" data-source-image="./../img/hydronamics_dimensionless.files/image007.png">\[
+c=\sqrt{\frac{\partial p}{\partial\rho}}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_12_1-008"><h3>hydronamics_12_1-008 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_dimensionless.files/image008.png" alt="source hydronamics_12_1-008"></div>
+<div class="render" data-source-image="./../img/hydronamics_dimensionless.files/image008.png">\[
+\begin{aligned}
+\frac{\partial\rho}{\partial t}&=\frac{1}{c^2}\frac{\partial p}{\partial t}\\
+\frac{\partial\rho}{\partial x}&=\frac{1}{c^2}\frac{\partial p}{\partial x}\\
+\frac{\partial\rho}{\partial y}&=\frac{1}{c^2}\frac{\partial p}{\partial y}\\
+\frac{\partial\rho}{\partial z}&=\frac{1}{c^2}\frac{\partial p}{\partial z}
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_12_1-009"><h3>hydronamics_12_1-009 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_dimensionless.files/image009.png" alt="source hydronamics_12_1-009"></div>
+<div class="render" data-source-image="./../img/hydronamics_dimensionless.files/image009.png">\[
+\begin{aligned}
+&\frac{\partial(P\rho v_0^2)}{\partial(\tau x_0/v_0)}
++V_xv_0\frac{\partial(P\rho v_0^2)}{\partial(Xx_0)}
++V_yv_0\frac{\partial(P\rho v_0^2)}{\partial(Yx_0)}
++V_zv_0\frac{\partial(P\rho v_0^2)}{\partial(Zx_0)}\\
+&=-c^2\rho\left\{
+\frac{\partial(V_xv_0)}{\partial(Xx_0)}
+-\frac{\partial(V_yv_0)}{\partial(Yx_0)}
+-\frac{\partial(V_zv_0)}{\partial(Zx_0)}
+\right\}
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_12_1-010"><h3>hydronamics_12_1-010 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_dimensionless.files/image010.png" alt="source hydronamics_12_1-010"></div>
+<div class="render" data-source-image="./../img/hydronamics_dimensionless.files/image010.png">\[
+\frac{\rho v_0^3}{x_0}\frac{\partial P}{\partial\tau}
++\frac{\rho v_0^3}{x_0}V_x\frac{\partial P}{\partial X}
++\frac{\rho v_0^3}{x_0}V_y\frac{\partial P}{\partial Y}
++\frac{\rho v_0^3}{x_0}V_z\frac{\partial P}{\partial Z}
+=
+-c^2\rho\frac{v_0}{x_0}\left(
+\frac{\partial V_x}{\partial X}
++\frac{\partial V_y}{\partial Y}
++\frac{\partial V_z}{\partial Z}
+\right)
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_12_1-011"><h3>hydronamics_12_1-011 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_dimensionless.files/image011.png" alt="source hydronamics_12_1-011"></div>
+<div class="render" data-source-image="./../img/hydronamics_dimensionless.files/image011.png">\[
+\frac{\partial P}{\partial\tau}
++V_x\frac{\partial P}{\partial X}
++V_y\frac{\partial P}{\partial Y}
++V_z\frac{\partial P}{\partial Z}
+=
+\frac{c^2}{v_0^2}\left(
+\frac{\partial V_x}{\partial X}
++\frac{\partial V_y}{\partial Y}
++\frac{\partial V_z}{\partial Z}
+\right)
+=0
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_12_1-012"><h3>hydronamics_12_1-012 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_dimensionless.files/image012.png" alt="source hydronamics_12_1-012"></div>
+<div class="render" data-source-image="./../img/hydronamics_dimensionless.files/image012.png">\[
+\frac{\partial P}{\partial\tau}
++V_x\frac{\partial P}{\partial X}
++V_y\frac{\partial P}{\partial Y}
++V_z\frac{\partial P}{\partial Z}
+=
+-\frac{1}{Ma^2}\left(
+\frac{\partial V_x}{\partial X}
++\frac{\partial V_y}{\partial Y}
++\frac{\partial V_z}{\partial Z}
+\right)
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_12_1-013"><h3>hydronamics_12_1-013 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_dimensionless.files/image013.png" alt="source hydronamics_12_1-013"></div>
+<div class="render" data-source-image="./../img/hydronamics_dimensionless.files/image013.png">\[
+\frac{DP}{D\tau}
+=
+-\frac{1}{Ma^2}(\nabla\cdot\vec V)
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_12_1-014"><h3>hydronamics_12_1-014 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_dimensionless.files/image014.png" alt="source hydronamics_12_1-014"></div>
+<div class="render" data-source-image="./../img/hydronamics_dimensionless.files/image014.png">\[
+Ma=\frac{v_0}{c}
+\]</div>
+</div></section>
+<h2>hydronamics/hydronamics_4.html</h2>
+<section class="formula-pair" id="formula-hydronamics_4-002"><h3>hydronamics_4-002 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_e_mass.files/image002.png" alt="source hydronamics_4-002"></div>
+<div class="render" data-source-image="./../img/hydronamics_e_mass.files/image002.png">\[
+\begin{aligned}
+F_{x|x}&=\rho\Delta y\Delta z\,v_{x|x}\\
+F_{x|x+\Delta x}&=-\rho\Delta y\Delta z\,v_{x|x+\Delta x}
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_4-003"><h3>hydronamics_4-003 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_e_mass.files/image003.png" alt="source hydronamics_4-003"></div>
+<div class="render" data-source-image="./../img/hydronamics_e_mass.files/image003.png">\[
+\begin{aligned}
+F_{y|y}&=\rho\Delta z\Delta x\,v_{y|y}\\
+F_{y|y+\Delta y}&=-\rho\Delta z\Delta x\,v_{y|y+\Delta y}
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_4-004"><h3>hydronamics_4-004 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_e_mass.files/image004.png" alt="source hydronamics_4-004"></div>
+<div class="render" data-source-image="./../img/hydronamics_e_mass.files/image004.png">\[
+\begin{aligned}
+F_{z|z}&=\rho\Delta x\Delta y\,v_{z|z}\\
+F_{z|z+\Delta z}&=-\rho\Delta x\Delta y\,v_{z|z+\Delta z}
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_4-005"><h3>hydronamics_4-005 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_e_mass.files/image005.png" alt="source hydronamics_4-005"></div>
+<div class="render" data-source-image="./../img/hydronamics_e_mass.files/image005.png">\[
+\begin{aligned}
+\Delta x\Delta y\Delta z
+\frac{\rho_{t|t+\Delta t}-\rho_{t|t}}{\Delta t}
+&=F_{z|z+\Delta z}+F_{z|z}\\
+&\quad+F_{y|y+\Delta y}+F_{y|y}\\
+&\quad+F_{z|z+\Delta z}+F_{z|z+\Delta z}\\
+&=-\rho\Delta y\Delta z\,v_{x|x+\Delta x}
++\rho\Delta y\Delta z\,v_{x|x}\\
+&\quad-\rho\Delta z\Delta x\,v_{y|y+\Delta y}
++\rho\Delta z\Delta x\,v_{y|y}\\
+&\quad-\rho\Delta x\Delta y\,v_{z|z+\Delta z}
++\rho\Delta x\Delta y\,v_{z|z}
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_4-006"><h3>hydronamics_4-006 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_e_mass.files/image006.png" alt="source hydronamics_4-006"></div>
+<div class="render" data-source-image="./../img/hydronamics_e_mass.files/image006.png">\[
+\frac{\rho_{t|t+\Delta t}-\rho_{t|t}}{\Delta t}
+=
+-\frac{\rho v_{x|x+\Delta x}-\rho v_{x|x}}{\Delta x}
+-\frac{\rho v_{y|y+\Delta y}-\rho v_{y|y}}{\Delta y}
+-\frac{\rho v_{z|z+\Delta z}-\rho v_{z|z}}{\Delta z}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_4-007"><h3>hydronamics_4-007 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_e_mass.files/image007.png" alt="source hydronamics_4-007"></div>
+<div class="render" data-source-image="./../img/hydronamics_e_mass.files/image007.png">\[
+\frac{\partial\rho}{\partial t}
+=
+-\frac{\partial(\rho v_x)}{\partial x}
+-\frac{\partial(\rho v_y)}{\partial y}
+-\frac{\partial(\rho v_z)}{\partial z}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_4-008"><h3>hydronamics_4-008 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_e_mass.files/image008.png" alt="source hydronamics_4-008"></div>
+<div class="render" data-source-image="./../img/hydronamics_e_mass.files/image008.png">\[
+\frac{\partial\rho}{\partial t}
++v_x\frac{\partial\rho}{\partial x}
++v_y\frac{\partial\rho}{\partial y}
++v_z\frac{\partial\rho}{\partial z}
+=
+-\rho\left(
+\frac{\partial v_x}{\partial x}
++\frac{\partial v_y}{\partial y}
++\frac{\partial v_z}{\partial z}
+\right)
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_4-009"><h3>hydronamics_4-009 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_e_mass.files/image009.png" alt="source hydronamics_4-009"></div>
+<div class="render" data-source-image="./../img/hydronamics_e_mass.files/image009.png">\[
+\frac{D\rho}{Dt}
+=
+-\rho(\nabla\cdot\vec v)
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_4-010"><h3>hydronamics_4-010 (display)</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_e_mass.files/image010.png" alt="source hydronamics_4-010"></div>
+<div class="render" data-source-image="./../img/hydronamics_e_mass.files/image010.png">\[
+\frac{D}{Dt}
+=
+\frac{\partial}{\partial t}
++
+(\vec v\cdot\nabla)
+\]</div>
+</div></section>
+</body></html>
