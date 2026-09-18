@@ -17,8 +17,14 @@ Source-visible pressure subscripts, division by 3, prime on `μ'`, and divergenc
 
 ## Pass 2 — browser MathJax comparison
 
-Status: **pending workflow artifact review**
+- Workflow run: **35350029756**
+- Artifact: `hydronamics-9-3-pass2`
+- Artifact id: **10549921851**
+- Result: **2 / 2 PASS**
+- MathJax rendering errors: **0**
+- Formula-level horizontal overflow: **0 / 2**
+- Source image vs MathJax rendering: **2 / 2 PASS**
 
 ## Certification
 
-Not yet certified for normal-page application until Pass 2 is complete.
+**Hydronamics 9_3 formulas are certified for application to the normal page.**
