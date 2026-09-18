@@ -1,0 +1,72 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Physics 2 strict formula re-audit</title>
+<style>body{font-family:Arial,"Yu Gothic",sans-serif;margin:20px}.formula-pair{border-top:1px solid #bbb;padding:18px 0}.pair-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}.source,.render{min-width:0;overflow-x:auto;padding:10px;border:1px solid #ddd}.source img{display:block;max-width:100%;height:auto;margin:auto}.render mjx-container[display="true"]{margin:.4em 0!important;text-align:left!important}@media(max-width:900px){.pair-grid{grid-template-columns:1fr}}</style>
+<script>window.MathJax={output:{displayOverflow:"linebreak",linebreaks:{inline:false,width:"100%"}}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head><body><h1>Physics 2 strict source-image re-audit</h1>
+<section class="formula-pair" id="formula-physics_2-001"><h3>physics_2-001</h3><div class="pair-grid">
+<div class="source"><img src="./../img/physics_quantity.files/image001.png" alt="source physics_2-001"></div>
+<div class="render" data-source-image="./../img/physics_quantity.files/image001.png">\[
+\begin{aligned}
+v
+&=\lim_{\Delta t\to0}\frac{l_{t+\Delta t}-l_t}{\Delta t}\\
+&=\frac{dl}{dt}
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-physics_2-002"><h3>physics_2-002</h3><div class="pair-grid">
+<div class="source"><img src="./../img/physics_quantity.files/image002.png" alt="source physics_2-002"></div>
+<div class="render" data-source-image="./../img/physics_quantity.files/image002.png">\[
+\begin{aligned}
+a
+&=\lim_{\Delta t\to0}\frac{v_{t+\Delta t}-v_t}{\Delta t}\\
+&=\frac{dv}{dt}
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-physics_2-003"><h3>physics_2-003</h3><div class="pair-grid">
+<div class="source"><img src="./../img/physics_quantity.files/image003.png" alt="source physics_2-003"></div>
+<div class="render" data-source-image="./../img/physics_quantity.files/image003.png">\(a\neq0\)</div>
+</div></section>
+<section class="formula-pair" id="formula-physics_2-004"><h3>physics_2-004</h3><div class="pair-grid">
+<div class="source"><img src="./../img/physics_quantity.files/image004.png" alt="source physics_2-004"></div>
+<div class="render" data-source-image="./../img/physics_quantity.files/image004.png">\(a=0\)</div>
+</div></section>
+<section class="formula-pair" id="formula-physics_2-005"><h3>physics_2-005</h3><div class="pair-grid">
+<div class="source"><img src="./../img/physics_quantity.files/image005.png" alt="source physics_2-005"></div>
+<div class="render" data-source-image="./../img/physics_quantity.files/image005.png">\[
+\begin{aligned}
+F
+&=ma\\
+&=m\frac{dv}{dt}\\
+&=\lim_{\Delta t\to0}\frac{mv_{t+\Delta t}-mv_t}{\Delta t}
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-physics_2-008"><h3>physics_2-008</h3><div class="pair-grid">
+<div class="source"><img src="./../img/physics_quantity.files/image008.png" alt="source physics_2-008"></div>
+<div class="render" data-source-image="./../img/physics_quantity.files/image008.png">\[
+\begin{aligned}
+\int F\,dt
+&=\int m\frac{dv}{dt}\,dt\\
+&=m\int dv\\
+&=m(v_f-v_i)\,[\mathrm{kgm/s}]
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-physics_2-011"><h3>physics_2-011</h3><div class="pair-grid">
+<div class="source"><img src="./../img/physics_quantity.files/image011.png" alt="source physics_2-011"></div>
+<div class="render" data-source-image="./../img/physics_quantity.files/image011.png">\[
+\begin{aligned}
+\int F\,dl
+&=\int F\frac{dl}{dt}\,dt\\
+&=\int Fv\,dt\\
+&=\int m\frac{dv}{dt}\frac{dl}{dt}\,dt\\
+&=\int m\frac{dl}{dt}\,dv\\
+&=\int mv\,dv\\
+&=\frac{1}{2}mv^2
+\end{aligned}
+\]</div>
+</div></section>
+</body></html>
