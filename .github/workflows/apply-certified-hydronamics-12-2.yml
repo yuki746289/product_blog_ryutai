@@ -37,15 +37,7 @@ jobs:
           dalt='|'.join(dnums); ialt='|'.join(inums)
           bynum={x['image'][5:8]:x for x in cfg['formulas']}
 
-          mathjax4 = """
-	<script>
-	window.MathJax={
-		output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
-		chtml:{displayAlign:'left',displayIndent:'0'}
-	};
-	</script>
-	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
-"""
+          mathjax4 = "\n\\t<script>\n\\twindow.MathJax={\n\\t\\toutput:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},\n\\t\\tchtml:{displayAlign:'left',displayIndent:'0'}\n\\t};\n\\t</script>\n\\t<script defer src=\"https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js\"></script>\n"
 
           raw=page.read_bytes(); enc=None
           for candidate in ('cp932','utf-8'):
