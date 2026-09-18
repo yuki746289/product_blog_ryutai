@@ -1,0 +1,89 @@
+name: Classify heat 7 images
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/classify-heat-7-images.yml'
+
+jobs:
+  contact-sheets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - run: pip install pillow
+
+      - name: Build heat 7 review sheets
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from PIL import Image, ImageDraw, ImageFont
+          from urllib.parse import unquote
+          import html,re,shutil,json
+
+          pages=[Path('heat/heat_7_1.html'),Path('heat/heat_7_2.html')]
+          out=Path('heat-7-image-review'); out.mkdir(exist_ok=True)
+          font=ImageFont.load_default()
+          img_re=re.compile(r'<img\b[^>]*src=["\']([^"\']+\.files/image\d+\.(?:png|gif|jpe?g))["\'][^>]*>',re.I)
+          manifest={}
+
+          def read(path):
+              b=path.read_bytes()
+              for enc in ('utf-8','cp932'):
+                  try:return b.decode(enc)
+                  except UnicodeDecodeError:pass
+              raise RuntimeError(path)
+
+          for page in pages:
+              text=read(page)
+              refs=[]
+              for src in img_re.findall(text):
+                  src=unquote(html.unescape(src))
+                  p=(page.parent/src).resolve().relative_to(Path('.').resolve())
+                  if p.exists(): refs.append(p)
+              if not refs: raise RuntimeError(f'no review images for {page}')
+              manifest[page.as_posix()]=[p.as_posix() for p in refs]
+              page_out=out/page.stem; page_out.mkdir(parents=True,exist_ok=True)
+              cards=[]; card_w=1500
+              for idx,p in enumerate(refs,1):
+                  im=Image.open(p).convert('RGB')
+                  white=Image.new('RGB',im.size,'white'); white.paste(im)
+                  dst=page_out/f'{idx:02d}_{p.name}'
+                  shutil.copyfile(p,dst)
+                  inner=card_w-60
+                  # enlarge small equation images for visual classification, but don't shrink below native details.
+                  scale=min(3.0, inner/max(1,white.width))
+                  if white.width*scale>inner: scale=inner/white.width
+                  fit=white.resize((max(1,int(white.width*scale)),max(1,int(white.height*scale))),Image.Resampling.LANCZOS)
+                  card=Image.new('RGB',(card_w,fit.height+100),'white')
+                  d=ImageDraw.Draw(card)
+                  d.text((24,14),f'{idx:02d}  {p.as_posix()}  native={white.width}x{white.height}',fill='black',font=font)
+                  card.paste(fit,((card_w-fit.width)//2,62))
+                  d.rectangle((0,0,card.width-1,card.height-1),outline='gray')
+                  cards.append(card)
+              # Split sheets every 12 cards for readable review.
+              for batch in range(0,len(cards),12):
+                  chunk=cards[batch:batch+12]
+                  h=sum(c.height for c in chunk)+18*(len(chunk)-1)
+                  sheet=Image.new('RGB',(card_w,h),'white'); y=0
+                  for c in chunk:
+                      sheet.paste(c,(0,y)); y+=c.height+18
+                  n=batch//12+1
+                  sheet.save(out/f'{page.stem}_contact_{n:02d}.png')
+              print(page,len(refs))
+
+          (out/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf-8')
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: heat-7-image-review
+          path: heat-7-image-review
+          retention-days: 7
