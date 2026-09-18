@@ -1,0 +1,16 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>body{font-family:Arial,sans-serif;margin:20px}.pair{display:grid;grid-template-columns:1fr 1fr;gap:24px}.source,.render{min-width:0;overflow-x:auto;padding:10px;border:1px solid #ddd}.source img{max-width:100%;height:auto}@media(max-width:900px){.pair{grid-template-columns:1fr}}</style>
+<script>window.MathJax={output:{displayOverflow:"linebreak",linebreaks:{inline:false,width:"100%"}}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script></head><body>
+<section id="formula-physics_6_2_6-019"><div class="pair"><div class="source"><img src="./../img/physics_c_inner.files/image019.png"></div><div class="render">\[
+\begin{aligned}
+\frac{D}{Dt}
+&=\frac{\partial}{\partial t}+(\vec{v}\cdot\nabla)\\
+&=\frac{\partial}{\partial t}+\left(\sum_{i=0}^{3}\vec{\delta}_{i}v_i\cdot\sum_{j=0}^{3}\vec{\delta}_{j}\frac{\partial}{\partial x_j}\right)\\
+&=\frac{\partial}{\partial t}+\left(\sum_{i=0}^{3}\sum_{j=0}^{3}\vec{\delta}_{i}v_i\cdot\vec{\delta}_{j}\frac{\partial}{\partial x_j}\right)\\
+&=\frac{\partial}{\partial t}+\sum_{i=0}^{3}\sum_{j=0}^{3}(\vec{\delta}_{i}\cdot\vec{\delta}_{j})v_i\frac{\partial}{\partial x_j}\\
+&=\frac{\partial}{\partial t}+\sum_{i=0}^{3}\sum_{j=0}^{3}\delta_{ij}v_i\frac{\partial}{\partial x_j}\\
+&=\frac{\partial}{\partial t}+\sum_{i=0}^{3}v_i\frac{\partial}{\partial x_i}\\
+&=\frac{\partial}{\partial t}+v_x\frac{\partial}{\partial x_x}+v_y\frac{\partial}{\partial x_y}+v_z\frac{\partial}{\partial x_z}
+\end{aligned}
+\]</div></div></section></body></html>
