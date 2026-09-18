@@ -1,0 +1,78 @@
+name: Classify remaining heat images
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/classify-remaining-heat-images.yml'
+
+jobs:
+  contact-sheets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - run: pip install pillow
+
+      - name: Build review sheets
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from PIL import Image,ImageDraw,ImageFont
+          from urllib.parse import unquote
+          import html,re,shutil,json
+
+          pages=[Path(x) for x in [
+            'heat/heat_3.html','heat/heat_4_1.html','heat/heat_4_2.html','heat/heat_4_3.html',
+            'heat/heat_5.html','heat/heat_5_1.html','heat/heat_5_2.html','heat/heat_5_3.html','heat/heat_5_4.html'
+          ]]
+          out=Path('remaining-heat-review'); out.mkdir(exist_ok=True)
+          img_re=re.compile(r'<img\b[^>]*src=["\']([^"\']+\.files/image\d+\.(?:png|gif|jpe?g))["\'][^>]*>',re.I)
+          font=ImageFont.load_default()
+          manifest={}
+
+          def read(path):
+              b=path.read_bytes()
+              for enc in ('utf-8','cp932'):
+                  try:return b.decode(enc)
+                  except UnicodeDecodeError:pass
+              raise RuntimeError(path)
+
+          for page in pages:
+              refs=[]
+              for src in img_re.findall(read(page)):
+                  src=unquote(html.unescape(src))
+                  p=(page.parent/src).resolve().relative_to(Path('.').resolve())
+                  if p.exists(): refs.append(p)
+              if not refs: continue
+              manifest[page.as_posix()]=[p.as_posix() for p in refs]
+              pageout=out/page.stem; pageout.mkdir(exist_ok=True)
+              cards=[]; W=1500
+              for idx,p in enumerate(refs,1):
+                  im=Image.open(p).convert('RGB')
+                  shutil.copyfile(p,pageout/f'{idx:02d}_{p.name}')
+                  scale=min(3.5,(W-80)/max(1,im.width))
+                  fit=im.resize((max(1,int(im.width*scale)),max(1,int(im.height*scale))),Image.Resampling.LANCZOS)
+                  card=Image.new('RGB',(W,fit.height+100),'white'); d=ImageDraw.Draw(card)
+                  d.text((20,15),f'{idx:02d} {p.as_posix()} native={im.width}x{im.height}',fill='black',font=font)
+                  card.paste(fit,((W-fit.width)//2,60)); d.rectangle((0,0,W-1,card.height-1),outline='gray')
+                  cards.append(card)
+              H=sum(c.height for c in cards)+15*(len(cards)-1)
+              sheet=Image.new('RGB',(W,H),'white'); y=0
+              for c in cards: sheet.paste(c,(0,y)); y+=c.height+15
+              sheet.save(out/f'{page.stem}_contact.png')
+
+          (out/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf-8')
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: remaining-heat-review
+          path: remaining-heat-review
+          retention-days: 7
