@@ -1,0 +1,77 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hydronamics 9_5 strict formula re-audit</title>
+<style>body{font-family:Arial,"Yu Gothic",sans-serif;margin:20px}.formula-pair{border-top:1px solid #bbb;padding:18px 0}.pair-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}.source,.render{min-width:0;overflow-x:auto;padding:10px;border:1px solid #ddd}.source img{display:block;max-width:100%;height:auto;margin:auto}.render mjx-container[display="true"]{margin:.4em 0!important;text-align:left!important}@media(max-width:900px){.pair-grid{grid-template-columns:1fr}}</style>
+<script>window.MathJax={output:{displayOverflow:"linebreak",linebreaks:{inline:false,width:"100%"}}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head><body><h1>Hydronamics 9_5 strict source-image re-audit</h1>
+<section class="formula-pair" id="formula-hydronamics_9_5-002"><h3>hydronamics_9_5-002</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_shear_value.files/image002.png" alt="source hydronamics_9_5-002"></div>
+<div class="render" data-source-image="./../img/hydronamics_shear_value.files/image002.png">\[
+\begin{aligned}
+\Delta\alpha &\cong \tan\Delta\alpha\\
+&=\frac{\frac{\partial v_y}{\partial x}\Delta x\Delta t}
+{\Delta x+\frac{\partial v_x}{\partial x}\Delta x\Delta t}\\
+&=\frac{\frac{\partial v_y}{\partial x}}
+{\frac{1}{\Delta t}+\frac{\partial v_x}{\partial x}}
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_9_5-003"><h3>hydronamics_9_5-003</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_shear_value.files/image003.png" alt="source hydronamics_9_5-003"></div>
+<div class="render" data-source-image="./../img/hydronamics_shear_value.files/image003.png">\[
+\begin{aligned}
+\Delta\beta &\cong \tan\Delta\beta\\
+&=\frac{\frac{\partial v_x}{\partial y}\Delta y\Delta t}
+{\Delta y+\frac{\partial v_y}{\partial y}\Delta y\Delta t}\\
+&=\frac{\frac{\partial v_x}{\partial y}}
+{\frac{1}{\Delta t}+\frac{\partial v_y}{\partial y}}
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_9_5-004"><h3>hydronamics_9_5-004</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_shear_value.files/image004.png" alt="source hydronamics_9_5-004"></div>
+<div class="render" data-source-image="./../img/hydronamics_shear_value.files/image004.png">\[
+\begin{aligned}
+\gamma_z
+&=\lim_{\Delta t\to0}\frac{\Delta\alpha+\Delta\beta}{\Delta t}\\
+&=\lim_{\Delta t\to0}\frac{1}{\Delta t}
+\left(
+\frac{\frac{\partial v_y}{\partial x}}
+{\frac{1}{\Delta t}+\frac{\partial v_x}{\partial x}}
++
+\frac{\frac{\partial v_x}{\partial y}}
+{\frac{1}{\Delta t}+\frac{\partial v_y}{\partial y}}
+\right)\\
+&=\lim_{\Delta t\to0}
+\left(
+\frac{\frac{\partial v_y}{\partial x}}
+{1+\frac{\partial v_x}{\partial x}\Delta t}
++
+\frac{\frac{\partial v_x}{\partial y}}
+{1+\frac{\partial v_y}{\partial y}\Delta t}
+\right)\\
+&=\frac{\partial v_y}{\partial x}+\frac{\partial v_x}{\partial y}
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_9_5-005"><h3>hydronamics_9_5-005</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_shear_value.files/image005.png" alt="source hydronamics_9_5-005"></div>
+<div class="render" data-source-image="./../img/hydronamics_shear_value.files/image005.png">\[
+\begin{aligned}
+\gamma_y&=\frac{\partial v_y}{\partial z}+\frac{\partial v_z}{\partial y}\\
+\gamma_z&=\frac{\partial v_y}{\partial z}+\frac{\partial v_z}{\partial y}
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_9_5-006"><h3>hydronamics_9_5-006</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_shear_value.files/image006.png" alt="source hydronamics_9_5-006"></div>
+<div class="render" data-source-image="./../img/hydronamics_shear_value.files/image006.png">\[
+\begin{aligned}
+\tau_{xy}&=\tau_{yx}=-\mu\left(\frac{\partial v_x}{\partial y}+\frac{\partial v_y}{\partial x}\right)\\
+\tau_{yz}&=\tau_{zx}=-\mu\left(\frac{\partial v_y}{\partial z}+\frac{\partial v_z}{\partial y}\right)\\
+\tau_{zx}&=\tau_{yz}=-\mu\left(\frac{\partial v_z}{\partial x}+\frac{\partial v_x}{\partial z}\right)
+\end{aligned}
+\]</div>
+</div></section>
+</body></html>
