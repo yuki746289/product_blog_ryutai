@@ -1,0 +1,41 @@
+{
+  "page": "hydronamics/hydronamics_9_5.html",
+  "image_dir": "img/hydronamics_shear_value.files",
+  "canonical_source": "original source images",
+  "retained_diagrams": [
+    "image001.png"
+  ],
+  "transcription_assist": {
+    "source": "HP.7z / 流体力学_応力の詳細_剪断成分の値.doc",
+    "method": "Word/Equation Editor candidate + canonical source-image verification",
+    "verified_date": "2026-09-18",
+    "source_image_is_canonical": true
+  },
+  "source_notation_notes": [
+    "image002 and image003 use the source-visible congruence-like symbol, rendered with \\\\cong.",
+    "image005 repeats the same derivative expression for gamma_y and gamma_z; preserved exactly.",
+    "image006 preserves the source-visible stress-subscript equalities without theoretical correction."
+  ],
+  "formulas": [
+    {
+      "image": "image002.png",
+      "latex": "\\[\n\\begin{aligned}\n\\Delta\\alpha &\\cong \\tan\\Delta\\alpha\\\\\n&=\\frac{\\frac{\\partial v_y}{\\partial x}\\Delta x\\Delta t}\n{\\Delta x+\\frac{\\partial v_x}{\\partial x}\\Delta x\\Delta t}\\\\\n&=\\frac{\\frac{\\partial v_y}{\\partial x}}\n{\\frac{1}{\\Delta t}+\\frac{\\partial v_x}{\\partial x}}\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image003.png",
+      "latex": "\\[\n\\begin{aligned}\n\\Delta\\beta &\\cong \\tan\\Delta\\beta\\\\\n&=\\frac{\\frac{\\partial v_x}{\\partial y}\\Delta y\\Delta t}\n{\\Delta y+\\frac{\\partial v_y}{\\partial y}\\Delta y\\Delta t}\\\\\n&=\\frac{\\frac{\\partial v_x}{\\partial y}}\n{\\frac{1}{\\Delta t}+\\frac{\\partial v_y}{\\partial y}}\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image004.png",
+      "latex": "\\[\n\\begin{aligned}\n\\gamma_z\n&=\\lim_{\\Delta t\\to0}\\frac{\\Delta\\alpha+\\Delta\\beta}{\\Delta t}\\\\\n&=\\lim_{\\Delta t\\to0}\\frac{1}{\\Delta t}\n\\left(\n\\frac{\\frac{\\partial v_y}{\\partial x}}\n{\\frac{1}{\\Delta t}+\\frac{\\partial v_x}{\\partial x}}\n+\n\\frac{\\frac{\\partial v_x}{\\partial y}}\n{\\frac{1}{\\Delta t}+\\frac{\\partial v_y}{\\partial y}}\n\\right)\\\\\n&=\\lim_{\\Delta t\\to0}\n\\left(\n\\frac{\\frac{\\partial v_y}{\\partial x}}\n{1+\\frac{\\partial v_x}{\\partial x}\\Delta t}\n+\n\\frac{\\frac{\\partial v_x}{\\partial y}}\n{1+\\frac{\\partial v_y}{\\partial y}\\Delta t}\n\\right)\\\\\n&=\\frac{\\partial v_y}{\\partial x}+\\frac{\\partial v_x}{\\partial y}\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image005.png",
+      "latex": "\\[\n\\begin{aligned}\n\\gamma_y&=\\frac{\\partial v_y}{\\partial z}+\\frac{\\partial v_z}{\\partial y}\\\\\n\\gamma_z&=\\frac{\\partial v_y}{\\partial z}+\\frac{\\partial v_z}{\\partial y}\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image006.png",
+      "latex": "\\[\n\\begin{aligned}\n\\tau_{xy}&=\\tau_{yx}=-\\mu\\left(\\frac{\\partial v_x}{\\partial y}+\\frac{\\partial v_y}{\\partial x}\\right)\\\\\n\\tau_{yz}&=\\tau_{zx}=-\\mu\\left(\\frac{\\partial v_y}{\\partial z}+\\frac{\\partial v_z}{\\partial y}\\right)\\\\\n\\tau_{zx}&=\\tau_{yz}=-\\mu\\left(\\frac{\\partial v_z}{\\partial x}+\\frac{\\partial v_x}{\\partial z}\\right)\n\\end{aligned}\n\\]"
+    }
+  ]
+}
