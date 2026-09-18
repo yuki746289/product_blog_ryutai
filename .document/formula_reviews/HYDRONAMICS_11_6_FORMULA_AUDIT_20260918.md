@@ -15,8 +15,14 @@ Transcription data:
 
 ## Pass 2 — browser MathJax comparison
 
-Status: **pending workflow artifact review**
+- Workflow run: **35349495411**
+- Artifact: `hydronamics-11-6-pass2`
+- Artifact id: **10548686812**
+- Result: **2 / 2 PASS**
+- MathJax rendering errors: **0**
+- Formula-level horizontal overflow: **0 / 2**
+- Source image vs MathJax rendering: **2 / 2 PASS**
 
 ## Certification
 
-Not yet certified for normal-page application until Pass 2 is complete.
+**Hydronamics 11_6 formulas are certified for application to the normal page.**
