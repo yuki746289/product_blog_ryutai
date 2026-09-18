@@ -27,7 +27,17 @@ Source-visible nonstandard notation is intentionally preserved, including `image
 
 ## Pass 2 — browser MathJax comparison
 
-Status: **Pending**
+Result: **5 / 5 PASS**
+
+- Workflow run: **35362124494**
+- Artifact: `physics-6-1-pass2`
+- Artifact id: **10554856753**
+- MathJax errors: **0**
+- Unrendered formulas: **0**
+- Pair-page horizontal overflow: **0 / 5**
+- Browser page errors: **0**
+
+All five source/render pairs were visually inspected. The MathJax rendering matches the source-visible summation bounds, vector marks, indices, derivative order, signs, and expansion order.
 
 Normal-page application is prohibited until Pass 2 is complete.
 
@@ -38,7 +48,7 @@ Normal-page application is prohibited until Pass 2 is complete.
 | Formula targets | 5 |
 | Retained diagrams | 0 |
 | Pass 1 | **5 / 5 PASS** |
-| Pass 2 | Pending |
+| Pass 2 | **5 / 5 PASS** |
 | Production deployment | Not performed |
 
-**Physics 6_1 is not yet certified for normal-page application.**
+**Physics 6_1 is certified for normal-page application.**
