@@ -23,11 +23,11 @@
     },
     {
       "image": "image005.png",
-      "latex": "\\[\n\\begin{aligned}\n\\Delta x\\Delta y\\Delta z\n\\frac{\\rho|_{t|t+\\Delta t}-\\rho|_{t|t}}{\\Delta t}\n&=F_{z|z+\\Delta z}+F_{z|z}\\\\\n&\\quad+F_{y|y+\\Delta y}+F_{y|y}\\\\\n&\\quad+F_{z|z+\\Delta z}+F_{z|z+\\Delta z}\\\\\n&=-\\rho\\Delta y\\Delta z\\,v_{x|x+\\Delta x}\n+\\rho\\Delta y\\Delta z\\,v_{x|x}\\\\\n&\\quad-\\rho\\Delta z\\Delta x\\,v_{y|y+\\Delta y}\n+\\rho\\Delta z\\Delta x\\,v_{y|y}\\\\\n&\\quad-\\rho\\Delta x\\Delta y\\,v_{z|z+\\Delta z}\n+\\rho\\Delta x\\Delta y\\,v_{z|z}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\Delta x\\Delta y\\Delta z\n\\frac{\\rho_{t|t+\\Delta t}-\\rho_{t|t}}{\\Delta t}\n&=F_{z|z+\\Delta z}+F_{z|z}\\\\\n&\\quad+F_{y|y+\\Delta y}+F_{y|y}\\\\\n&\\quad+F_{z|z+\\Delta z}+F_{z|z+\\Delta z}\\\\\n&=-\\rho\\Delta y\\Delta z\\,v_{x|x+\\Delta x}\n+\\rho\\Delta y\\Delta z\\,v_{x|x}\\\\\n&\\quad-\\rho\\Delta z\\Delta x\\,v_{y|y+\\Delta y}\n+\\rho\\Delta z\\Delta x\\,v_{y|y}\\\\\n&\\quad-\\rho\\Delta x\\Delta y\\,v_{z|z+\\Delta z}\n+\\rho\\Delta x\\Delta y\\,v_{z|z}\n\\end{aligned}\n\\]"
     },
     {
       "image": "image006.png",
-      "latex": "\\[\n\\frac{\\rho|_{t|t+\\Delta t}-\\rho|_{t|t}}{\\Delta t}\n=\n-\\frac{\\rho v_x|_{x|x+\\Delta x}-\\rho v_x|_{x|x}}{\\Delta x}\n-\\frac{\\rho v_y|_{y|y+\\Delta y}-\\rho v_y|_{y|y}}{\\Delta y}\n-\\frac{\\rho v_z|_{z|z+\\Delta z}-\\rho v_z|_{z|z}}{\\Delta z}\n\\]"
+      "latex": "\\[\n\\frac{\\rho_{t|t+\\Delta t}-\\rho_{t|t}}{\\Delta t}\n=\n-\\frac{\\rho v_{x|x+\\Delta x}-\\rho v_{x|x}}{\\Delta x}\n-\\frac{\\rho v_{y|y+\\Delta y}-\\rho v_{y|y}}{\\Delta y}\n-\\frac{\\rho v_{z|z+\\Delta z}-\\rho v_{z|z}}{\\Delta z}\n\\]"
     },
     {
       "image": "image007.png",
