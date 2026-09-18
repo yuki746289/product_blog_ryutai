@@ -15,6 +15,10 @@
 ## Formula targets
 
 - `image001.png`: `Ma=v/c`
-- `image002.png`: `∂ρ/∂t≠0`
+- `image002.png`: `∂ρ/∂t ≠ 0`
 
-Original HP images are canonical. Production deployment has not been performed.
+## Source policy
+
+Original HP images are canonical. Word material may be used only as transcription assistance.
+
+Production deployment has not been performed.
