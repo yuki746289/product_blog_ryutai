@@ -1,0 +1,66 @@
+# Created: 2026-09-19T06:54:00+09:00
+name: Physics 7 Formula Reaudit
+on:
+  push:
+    branches: [develop]
+    paths: ['.github/workflows/physics-7-formula-reaudit.yml','.document/formula_reviews/physics_7_formulas.json']
+permissions: {contents: write}
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: develop, fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.x'}
+      - name: Build audit page
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          cfg=json.loads(Path('.document/formula_reviews/physics_7_formulas.json').read_text())
+          item=cfg['formulas'][0]; src=f'./../{cfg["image_dir"]}/{item["image"]}'
+          html=f'''<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+          <style>body{{font-family:Arial;margin:20px}}.pair{{display:grid;grid-template-columns:1fr 1fr;gap:24px}}.source,.render{{padding:10px;border:1px solid #ddd;overflow-x:auto;min-width:0}}.source img{{max-width:100%;height:auto}}@media(max-width:900px){{.pair{{grid-template-columns:1fr}}}}</style>
+          <script>window.MathJax={{output:{{displayOverflow:"linebreak",linebreaks:{{inline:false,width:"100%"}}}}}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script></head><body>
+          <div class="pair"><div class="source"><img src="{src}"></div><div class="render">{item["latex"]}</div></div></body></html>'''
+          Path('physics/physics_7_reaudit.html').write_text(html)
+          PY
+      - name: Install Chromium
+        run: |
+          pip install playwright pillow
+          python -m playwright install --with-deps chromium
+      - name: Capture pair
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/p7.log 2>&1 &
+          sleep 1
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from PIL import Image,ImageDraw
+          from playwright.sync_api import sync_playwright
+          out=Path('physics-7-pass2'); (out/'pairs').mkdir(parents=True,exist_ok=True); errors=[]
+          with sync_playwright() as p:
+              b=p.chromium.launch(headless=True); pg=b.new_page(viewport={'width':1600,'height':900})
+              pg.on('pageerror',lambda e:errors.append(str(e)))
+              pg.goto('http://127.0.0.1:8000/physics/physics_7_reaudit.html',wait_until='domcontentloaded')
+              pg.wait_for_function('() => window.MathJax && MathJax.startup && MathJax.startup.promise'); pg.evaluate('async()=>{await MathJax.startup.promise;}'); pg.wait_for_timeout(300)
+              r=pg.locator('.render')
+              if r.locator('mjx-container').count()!=1 or r.locator('mjx-merror').count(): raise RuntimeError('MathJax render failure')
+              rp=out/'render.png'; r.screenshot(path=str(rp))
+              sp=Path('img/physics_form.files/image001.png'); im=Image.open(sp).convert('RGBA'); bg=Image.new('RGBA',im.size,'white'); bg.alpha_composite(im); src=bg.convert('RGB')
+              src=src.resize((src.width*6,src.height*6),Image.Resampling.LANCZOS)
+              rr=Image.open(rp).convert('RGB'); can=Image.new('RGB',(max(src.width,rr.width)+32,src.height+rr.height+100),'white'); d=ImageDraw.Draw(can)
+              d.text((16,10),'SOURCE',fill='black'); can.paste(src,(16,35)); y=src.height+60; d.text((16,y),'MATHJAX',fill='black'); can.paste(rr,(16,y+25)); can.save(out/'pairs'/'physics_7-001.png')
+              b.close()
+          (out/'manifest.json').write_text(json.dumps({'count':1,'page_errors':errors},indent=2))
+          if errors: raise SystemExit(errors)
+          PY
+      - uses: actions/upload-artifact@v4
+        with: {name: physics-7-pass2, path: physics-7-pass2, retention-days: 7}
+      - name: Commit audit page
+        run: |
+          git config user.name 'github-actions[bot]'; git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add physics/physics_7_reaudit.html
+          if ! git diff --cached --quiet; then git commit -m 'docs: build physics 7 strict reaudit page'; git pull --rebase origin develop; git push origin HEAD:develop; fi
