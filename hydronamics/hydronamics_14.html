@@ -11,6 +11,14 @@
 
 	<title>グリーン・ガウスの定理（流体力学）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+	<script>
+	window.MathJax={
+		output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+		chtml:{displayAlign:'left',displayIndent:'0'}
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="3">
@@ -59,31 +67,98 @@
 			<p class="im"><img src="./../img/hydronamics_gauss.files/image002.png"></p>
 			<p>上図において、微小領域内のx軸方向の収支を考えます。物理量を
 					<span class="fs"><i>f</i></span>とすると</p>
-			<p class="im"><img src="./../img/hydronamics_gauss.files/image003.png"></p>
+			<div class="math-block" id="formula-hydronamics-14-003" data-source-image="./../img/hydronamics_gauss.files/image003.png">
+\[
+\iiint_{\Delta V}\frac{\partial\phi}{\partial x}\,dx\,dy\,dz
+=
+\iint(\phi\,dy\,dz)_R-\iint(\phi\,dy\,dz)_L
+\]
+</div>
 			<p>ここで、法線ベクトルは</p>
-			<p class="im"><img src="./../img/hydronamics_gauss.files/image004.png"></p>
+			<div class="math-block" id="formula-hydronamics-14-004" data-source-image="./../img/hydronamics_gauss.files/image004.png">
+\[
+\vec n=\vec\delta_x n_x+\vec\delta_y n_y+\vec\delta_z n_z
+\]
+</div>
 			<p>であり、微小面積は</p>
 			<p class="im">　　<span class="ft"><i>L</i></span>面：
-					<img src="./../img/hydronamics_gauss.files/image005.png"></p>
+					<span class="math-inline" id="formula-hydronamics-14-005" data-source-image="./../img/hydronamics_gauss.files/image005.png">\(dA=-n_x\,dy\,dz\)</span></p>
 			<p class="im">　　<span class="ft"><i>R</i></span>面：
-					<img src="./../img/hydronamics_gauss.files/image006.png"></p>
+					<span class="math-inline" id="formula-hydronamics-14-006" data-source-image="./../img/hydronamics_gauss.files/image006.png">\(dA=+n_x\,dy\,dz\)</span></p>
 			<p>であるので、</p>
-			<p class="im"><img src="./../img/hydronamics_gauss.files/image007.png"></p>
+			<div class="math-block" id="formula-hydronamics-14-007" data-source-image="./../img/hydronamics_gauss.files/image007.png">
+\[
+\begin{aligned}
+\iiint_{\Delta V}\frac{\partial\phi}{\partial x}\,dx\,dy\,dz
+&=\iint(\phi\,dy\,dz)_R-\iint(\phi\,dy\,dz)_L\\
+&=\iint\{\phi(+n_x\,dA)\}_R-\iint\{\phi(-n_x\,dA)\}_L\\
+&=\iint(\phi n_x\,dA)_R+\iint(\phi n_x\,dA)_L
+\end{aligned}
+\]
+</div>
 			<p>領域全体を積分すると</p>
-			<p class="im"><img src="./../img/hydronamics_gauss.files/image008.png"></p>
+			<div class="math-block" id="formula-hydronamics-14-008" data-source-image="./../img/hydronamics_gauss.files/image008.png">
+\[
+\begin{aligned}
+\iiint_V\frac{\partial\phi}{\partial x}\,dx\,dy\,dz
+&=\iint_R\phi n_x\,dA+\iint_L\phi n_x\,dA\\
+&=\oiint_S\phi n_x\,dA
+\end{aligned}
+\]
+</div>
 			<p>同様に</p>
-			<p class="im"><img src="./../img/hydronamics_gauss.files/image009.png"></p>
-			<p class="im"><img src="./../img/hydronamics_gauss.files/image010.png"></p>
+			<div class="math-block" id="formula-hydronamics-14-009" data-source-image="./../img/hydronamics_gauss.files/image009.png">
+\[
+\iiint_V\frac{\partial\phi}{\partial y}\,dV
+=
+\oiint_S\phi n_y\,dA
+\]
+</div>
+			<div class="math-block" id="formula-hydronamics-14-010" data-source-image="./../img/hydronamics_gauss.files/image010.png">
+\[
+\iiint_V\frac{\partial\phi}{\partial z}\,dV
+=
+\oiint_S\phi n_z\,dA
+\]
+</div>
 			<p>ベクトル表示すると</p>
-			<p class="im"><img src="./../img/hydronamics_gauss.files/image011.png"></p>
+			<div class="math-block" id="formula-hydronamics-14-011" data-source-image="./../img/hydronamics_gauss.files/image011.png">
+\[
+\iiint_V\nabla\phi\,dV
+=
+\oiint_S\phi\vec n\,dA
+\]
+</div>
 			<br>
 			<h2>有限要素法で使用する形式</h2>
 			<p><span class="fs"><i>f</i></span><span class="ft"> = <i>uv</i></span>の場合、</p>
-			<p class="im"><img src="./../img/hydronamics_gauss.files/image012.png"></p>
+			<div class="math-block" id="formula-hydronamics-14-012" data-source-image="./../img/hydronamics_gauss.files/image012.png">
+\[
+\iiint_V\frac{\partial(uv)}{\partial x_i}\,dV
+=
+\oiint_S(uv)n_i\,dA
+\]
+</div>
 			<p>となるので、</p>
-			<p class="im"><img src="./../img/hydronamics_gauss.files/image013.png"></p>
+			<div class="math-block" id="formula-hydronamics-14-013" data-source-image="./../img/hydronamics_gauss.files/image013.png">
+\[
+\iiint_Vu\frac{\partial v}{\partial x_i}\,dV
++
+\iiint_V\frac{\partial u}{\partial x_i}v\,dV
+=
+\oiint_Suvn_i\,dA
+\]
+</div>
 			<p>移項して、</p>
-			<p class="im"><img src="./../img/hydronamics_gauss.files/image014.png"></p>
+			<div class="math-block" id="formula-hydronamics-14-014" data-source-image="./../img/hydronamics_gauss.files/image014.png">
+\[
+\iiint_Vu\frac{\partial v}{\partial x_i}\,dV
+=
+\oiint_Suvn_i\,dA
+-
+\iiint_V\frac{\partial u}{\partial x_i}v\,dV
+\]
+</div>
 			<p>この形式は、有限要素法で収支式の離散化に使用されます。</p>
 			<br>
 

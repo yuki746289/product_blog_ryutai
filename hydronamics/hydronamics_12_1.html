@@ -11,6 +11,14 @@
 
 	<title>質量収支式の無次元化（流体力学）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+	<script>
+	window.MathJax={
+		output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+		chtml:{displayAlign:'left',displayIndent:'0'}
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="3">
@@ -49,27 +57,123 @@
 
 			<h2>質量収支式の無次元化</h2>
 			<p>無次元化前</p>
-			<p class="im"><img src="./../img/hydronamics_dimensionless.files/image005.png"></p>
-			<p class="im"><img src="./../img/hydronamics_dimensionless.files/image006.png"></p>
+			<div class="math-block" id="formula-hydronamics-12-1-005" data-source-image="./../img/hydronamics_dimensionless.files/image005.png">
+\[
+\frac{D\rho}{Dt}
+=
+-\rho(\nabla\cdot\vec v)
+\]
+</div>
+			<div class="math-block" id="formula-hydronamics-12-1-006" data-source-image="./../img/hydronamics_dimensionless.files/image006.png">
+\[
+\frac{\partial\rho}{\partial t}
++v_x\frac{\partial\rho}{\partial x}
++v_y\frac{\partial\rho}{\partial y}
++v_z\frac{\partial\rho}{\partial z}
+=
+-\rho\left(
+\frac{\partial v_x}{\partial x}
++\frac{\partial v_y}{\partial y}
++\frac{\partial v_z}{\partial z}
+\right)
+\]
+</div>
 			<br>
 			<p>音速式より</p>
-			<p class="im"><img src="./../img/hydronamics_dimensionless.files/image007.png"></p>
+			<div class="math-block" id="formula-hydronamics-12-1-007" data-source-image="./../img/hydronamics_dimensionless.files/image007.png">
+\[
+c=\sqrt{\frac{\partial p}{\partial\rho}}
+\]
+</div>
 			<p>なので</p>
-			<p class="im"><img src="./../img/hydronamics_dimensionless.files/image008.png"></p>
+			<div class="math-block" id="formula-hydronamics-12-1-008" data-source-image="./../img/hydronamics_dimensionless.files/image008.png">
+\[
+\begin{aligned}
+\frac{\partial\rho}{\partial t}&=\frac{1}{c^2}\frac{\partial p}{\partial t}\\
+\frac{\partial\rho}{\partial x}&=\frac{1}{c^2}\frac{\partial p}{\partial x}\\
+\frac{\partial\rho}{\partial y}&=\frac{1}{c^2}\frac{\partial p}{\partial y}\\
+\frac{\partial\rho}{\partial z}&=\frac{1}{c^2}\frac{\partial p}{\partial z}
+\end{aligned}
+\]
+</div>
 			<p>ここで、<span class="ft"><i>c</i>[m/s]</span>は音速です。
 					上式と無次元変数を代入して、</p>
-			<p class="im"><img src="./../img/hydronamics_dimensionless.files/image009.png"></p>
+			<div class="math-block" id="formula-hydronamics-12-1-009" data-source-image="./../img/hydronamics_dimensionless.files/image009.png">
+\[
+\begin{aligned}
+&\frac{\partial(P\rho v_0^2)}{\partial(\tau x_0/v_0)}
++V_xv_0\frac{\partial(P\rho v_0^2)}{\partial(Xx_0)}
++V_yv_0\frac{\partial(P\rho v_0^2)}{\partial(Yx_0)}
++V_zv_0\frac{\partial(P\rho v_0^2)}{\partial(Zx_0)}\\
+&=-c^2\rho\left\{
+\frac{\partial(V_xv_0)}{\partial(Xx_0)}
+-\frac{\partial(V_yv_0)}{\partial(Yx_0)}
+-\frac{\partial(V_zv_0)}{\partial(Zx_0)}
+\right\}
+\end{aligned}
+\]
+</div>
 			<p>定数を微分の外に出す。</p>
-			<p class="im"><img src="./../img/hydronamics_dimensionless.files/image010.png"></p>
+			<div class="math-block" id="formula-hydronamics-12-1-010" data-source-image="./../img/hydronamics_dimensionless.files/image010.png">
+\[
+\frac{\rho v_0^3}{x_0}\frac{\partial P}{\partial\tau}
++\frac{\rho v_0^3}{x_0}V_x\frac{\partial P}{\partial X}
++\frac{\rho v_0^3}{x_0}V_y\frac{\partial P}{\partial Y}
++\frac{\rho v_0^3}{x_0}V_z\frac{\partial P}{\partial Z}
+=
+-c^2\rho\frac{v_0}{x_0}\left(
+\frac{\partial V_x}{\partial X}
++\frac{\partial V_y}{\partial Y}
++\frac{\partial V_z}{\partial Z}
+\right)
+\]
+</div>
 			<p><span class="ft">(</span><span class="fs"><i>r</i></span>
 					<span class="ft"><i>v</i><sub>0</sub><sup>3</sup> /<i>x</i><sub>0</sub>)</span>
 					で割ると</p>
-			<p class="im"><img src="./../img/hydronamics_dimensionless.files/image011.png"></p>
+			<div class="math-block" id="formula-hydronamics-12-1-011" data-source-image="./../img/hydronamics_dimensionless.files/image011.png">
+\[
+\frac{\partial P}{\partial\tau}
++V_x\frac{\partial P}{\partial X}
++V_y\frac{\partial P}{\partial Y}
++V_z\frac{\partial P}{\partial Z}
+=
+\frac{c^2}{v_0^2}\left(
+\frac{\partial V_x}{\partial X}
++\frac{\partial V_y}{\partial Y}
++\frac{\partial V_z}{\partial Z}
+\right)
+=0
+\]
+</div>
 			<p>無次元数を代入して</p>
-			<p class="im"><img src="./../img/hydronamics_dimensionless.files/image012.png"></p>
-			<p class="im"><img src="./../img/hydronamics_dimensionless.files/image013.png"></p>
+			<div class="math-block" id="formula-hydronamics-12-1-012" data-source-image="./../img/hydronamics_dimensionless.files/image012.png">
+\[
+\frac{\partial P}{\partial\tau}
++V_x\frac{\partial P}{\partial X}
++V_y\frac{\partial P}{\partial Y}
++V_z\frac{\partial P}{\partial Z}
+=
+-\frac{1}{Ma^2}\left(
+\frac{\partial V_x}{\partial X}
++\frac{\partial V_y}{\partial Y}
++\frac{\partial V_z}{\partial Z}
+\right)
+\]
+</div>
+			<div class="math-block" id="formula-hydronamics-12-1-013" data-source-image="./../img/hydronamics_dimensionless.files/image013.png">
+\[
+\frac{DP}{D\tau}
+=
+-\frac{1}{Ma^2}(\nabla\cdot\vec V)
+\]
+</div>
 			<p>ここで、</p>
-			<p class="im"><img src="./../img/hydronamics_dimensionless.files/image014.png"></p>
+			<div class="math-block" id="formula-hydronamics-12-1-014" data-source-image="./../img/hydronamics_dimensionless.files/image014.png">
+\[
+Ma=\frac{v_0}{c}
+\]
+</div>
 			<br>
 
 

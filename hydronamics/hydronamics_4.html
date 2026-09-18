@@ -11,6 +11,14 @@
 
 	<title>質量収支式（流体力学）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+	<script>
+	window.MathJax={
+		output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+		chtml:{displayAlign:'left',displayIndent:'0'}
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="3">
@@ -51,22 +59,67 @@
 			<p><span class="ft"><i>F<sub>x</sub></i>, <i>F<sub>y</sub></i>, <i>F<sub>z</sub></i>[kg/s]</span>
 					は質量流量である。微小領域への流入・流出量は、それぞれ次式となる。</p>
 			<p class="im"><span class="ft"><i>x</i></span>軸方向</p>
-			<p class="im"><img src="./../img/hydronamics_e_mass.files/image002.png"></p>
+			<div class="math-block" id="formula-hydronamics-4-002" data-source-image="./../img/hydronamics_e_mass.files/image002.png">
+\[
+\begin{aligned}
+F_{x|x}&=\rho\Delta y\Delta z\,v_{x|x}\\
+F_{x|x+\Delta x}&=-\rho\Delta y\Delta z\,v_{x|x+\Delta x}
+\end{aligned}
+\]
+</div>
 			<br>
 			<p class="im"><span class="ft"><i>y</i></span>軸方向</p>
-			<p class="im"><img src="./../img/hydronamics_e_mass.files/image003.png"></p>
+			<div class="math-block" id="formula-hydronamics-4-003" data-source-image="./../img/hydronamics_e_mass.files/image003.png">
+\[
+\begin{aligned}
+F_{y|y}&=\rho\Delta z\Delta x\,v_{y|y}\\
+F_{y|y+\Delta y}&=-\rho\Delta z\Delta x\,v_{y|y+\Delta y}
+\end{aligned}
+\]
+</div>
 			<br>
 			<p class="im"><span class="ft"><i>z</i></span>軸方向</p>
-			<p class="im"><img src="./../img/hydronamics_e_mass.files/image004.png"></p>
+			<div class="math-block" id="formula-hydronamics-4-004" data-source-image="./../img/hydronamics_e_mass.files/image004.png">
+\[
+\begin{aligned}
+F_{z|z}&=\rho\Delta x\Delta y\,v_{z|z}\\
+F_{z|z+\Delta z}&=-\rho\Delta x\Delta y\,v_{z|z+\Delta z}
+\end{aligned}
+\]
+</div>
 			<p>収支式は、次式となる。</p>
-			<p class="im"><img src="./../img/hydronamics_e_mass.files/image005.png"></p>
+			<div class="math-block" id="formula-hydronamics-4-005" data-source-image="./../img/hydronamics_e_mass.files/image005.png">
+\[
+\begin{aligned}
+\Delta x\Delta y\Delta z
+\frac{\rho_{t|t+\Delta t}-\rho_{t|t}}{\Delta t}
+&=F_{z|z+\Delta z}+F_{z|z}\\
+&\quad+F_{y|y+\Delta y}+F_{y|y}\\
+&\quad+F_{z|z+\Delta z}+F_{z|z+\Delta z}\\
+&=-\rho\Delta y\Delta z\,v_{x|x+\Delta x}
++\rho\Delta y\Delta z\,v_{x|x}\\
+&\quad-\rho\Delta z\Delta x\,v_{y|y+\Delta y}
++\rho\Delta z\Delta x\,v_{y|y}\\
+&\quad-\rho\Delta x\Delta y\,v_{z|z+\Delta z}
++\rho\Delta x\Delta y\,v_{z|z}
+\end{aligned}
+\]
+</div>
 			<p>両辺を<span class="fs"><i>D</i></span><span class="ft"><i>x</i></span>
 					<span class="fs"><i>D</i></span>
 					<span class="ft"><i>y</i></span>
 					<span class="fs"><i>D</i></span>
 					<span class="ft"><i>z</i></span>
 					で割って、</p>
-			<p class="im"><img src="./../img/hydronamics_e_mass.files/image006.png"></p>
+			<div class="math-block" id="formula-hydronamics-4-006" data-source-image="./../img/hydronamics_e_mass.files/image006.png">
+\[
+\frac{\rho_{t|t+\Delta t}-\rho_{t|t}}{\Delta t}
+=
+-\frac{\rho v_{x|x+\Delta x}-\rho v_{x|x}}{\Delta x}
+-\frac{\rho v_{y|y+\Delta y}-\rho v_{y|y}}{\Delta y}
+-\frac{\rho v_{z|z+\Delta z}-\rho v_{z|z}}{\Delta z}
+\]
+</div>
 			<p>
 					<span class="fs"><i>D</i></span>
 					<span class="ft"><i>t</i></span>
@@ -80,13 +133,48 @@
 					<span class="fs"><i>D</i></span>
 					<span class="ft"><i>z</i></span>
 					→<span class="ft"> 0</span>とすると</p>
-			<p class="im"><img src="./../img/hydronamics_e_mass.files/image007.png"></p>
+			<div class="math-block" id="formula-hydronamics-4-007" data-source-image="./../img/hydronamics_e_mass.files/image007.png">
+\[
+\frac{\partial\rho}{\partial t}
+=
+-\frac{\partial(\rho v_x)}{\partial x}
+-\frac{\partial(\rho v_y)}{\partial y}
+-\frac{\partial(\rho v_z)}{\partial z}
+\]
+</div>
 			<p>右辺を展開すると</p>
-			<p class="im"><img src="./../img/hydronamics_e_mass.files/image008.png"></p>
+			<div class="math-block" id="formula-hydronamics-4-008" data-source-image="./../img/hydronamics_e_mass.files/image008.png">
+\[
+\frac{\partial\rho}{\partial t}
++v_x\frac{\partial\rho}{\partial x}
++v_y\frac{\partial\rho}{\partial y}
++v_z\frac{\partial\rho}{\partial z}
+=
+-\rho\left(
+\frac{\partial v_x}{\partial x}
++\frac{\partial v_y}{\partial y}
++\frac{\partial v_z}{\partial z}
+\right)
+\]
+</div>
 			<p>ベクトル表示すると</p>
-			<p class="im"><img src="./../img/hydronamics_e_mass.files/image009.png"></p>
+			<div class="math-block" id="formula-hydronamics-4-009" data-source-image="./../img/hydronamics_e_mass.files/image009.png">
+\[
+\frac{D\rho}{Dt}
+=
+-\rho(\nabla\cdot\vec v)
+\]
+</div>
 			<p>ここで、<span class="ft">D/D<i>t</i></span>は全微分作用素で</p>
-			<p class="im"><img src="./../img/hydronamics_e_mass.files/image010.png"></p>
+			<div class="math-block" id="formula-hydronamics-4-010" data-source-image="./../img/hydronamics_e_mass.files/image010.png">
+\[
+\frac{D}{Dt}
+=
+\frac{\partial}{\partial t}
++
+(\vec v\cdot\nabla)
+\]
+</div>
 			<br>
 
 			<div style="margin-top:10px;"></div>
