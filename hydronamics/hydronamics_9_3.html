@@ -11,6 +11,14 @@
 
 	<title>圧力について（流体力学）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+<script>
+window.MathJax={
+  output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+  chtml:{displayAlign:'left',displayIndent:'0'}
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="3">
@@ -52,14 +60,24 @@
 					<span class="ft"><i>p<sub>x</sub></i>, <i>p<sub>y</sub></i>, <i>p<sub>z</sub></i>[N/m<sup>2</sup>]</span>
 					は、動力学的圧力を表しています。これは熱力学的な平衡圧力<span class="ft"><i>p</i>[N/m<sup>2</sup>]</span>
 					を用いると次式で表されます。</p>
-			<p class="im"><img src="./../img/hydronamics_stress_pressure.files/image001.png"></p>
+			<div class="math-block" id="formula-hydronamics-9-3-001" data-source-image="./../img/hydronamics_stress_pressure.files/image001.png">
+\[
+\frac{p_x+p_y+p_z}{3}
+=
+p-\mu'(\nabla\cdot\vec v)
+\]
+</div>
 			<p>ここで、<span class="fs"><i>m</i></span>
 					<span class="ft">’[kg/m</span>・
 					<span class="ft">s]</span>
 					は体積粘性係数です。
 					<span class="fs"><i>m</i></span><span class="ft">’=0</span>
 					として</p>
-			<p class="im"><img src="./../img/hydronamics_stress_pressure.files/image002.png"></p>
+			<div class="math-block" id="formula-hydronamics-9-3-002" data-source-image="./../img/hydronamics_stress_pressure.files/image002.png">
+\[
+p_x=p_y=p_z=p
+\]
+</div>
 			<p>とする場合もあります。</p>
 			<br>
 
