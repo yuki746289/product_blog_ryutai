@@ -1,0 +1,178 @@
+name: Remaining Heat Normal Browser QA
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/remaining-heat-normal-browser-qa.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Chromium
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Start server
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/rhqa-http.log 2>&1 &
+          sleep 1
+
+      - name: QA
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+
+          pages=[
+            {'key':'heat_3','path':'heat/heat_3.html','imgdir':'heat_flux.files','count':1,'diagram':0},
+            {'key':'heat_4_1','path':'heat/heat_4_1.html','imgdir':'heat_conduction.files','count':1,'diagram':1},
+            {'key':'heat_4_2','path':'heat/heat_4_2.html','imgdir':'heat_convection.files','count':1,'diagram':1},
+            {'key':'heat_4_3','path':'heat/heat_4_3.html','imgdir':'heat_emission.files','count':2,'diagram':1},
+            {'key':'heat_5_1','path':'heat/heat_5_1.html','imgdir':'heat_eq_accumulation.files','count':1,'diagram':1},
+            {'key':'heat_5_2','path':'heat/heat_5_2.html','imgdir':'heat_eq_convection.files','count':2,'diagram':1},
+            {'key':'heat_5_3','path':'heat/heat_5_3.html','imgdir':'heat_eq_conduction.files','count':2,'diagram':1},
+            {'key':'heat_5_4','path':'heat/heat_5_4.html','imgdir':'heat_eq_derivation.files','count':6,'diagram':1},
+          ]
+          vps={'desktop':{'width':1440,'height':1000},'mobile':{'width':390,'height':844}}
+          out=Path('remaining-heat-normal-qa'); out.mkdir(exist_ok=True)
+          rows=[]; failures=[]
+
+          with sync_playwright() as p:
+            browser=p.chromium.launch(headless=True)
+            for pdef in pages:
+              for vn,vp in vps.items():
+                ctx=browser.new_context(viewport=vp,device_scale_factor=1)
+                pg=ctx.new_page(); errs=[]
+                pg.on('pageerror',lambda exc,s=errs:s.append(str(exc)))
+                pg.goto(f'http://127.0.0.1:8000/{pdef["path"]}',
+                        wait_until='domcontentloaded',timeout=120000)
+                pg.wait_for_function(
+                    '() => window.MathJax && MathJax.startup && MathJax.startup.promise',
+                    timeout=60000)
+                pg.evaluate('async()=>{await MathJax.startup.promise;}')
+                pg.wait_for_timeout(350)
+
+                blocks=pg.locator(
+                    f'div.math-block[data-source-image*="{pdef["imgdir"]}/image"]')
+                bc=blocks.count()
+                formula_imgs=0
+                for i in range(1,20):
+                  n=f'{i:03d}'
+                  # image001 is a diagram on most pages; count formula images via known math source mapping.
+                  if pdef['diagram']==1 and n=='001':
+                    continue
+                  formula_imgs += pg.locator(
+                      f'img[src*="{pdef["imgdir"]}/image{n}.png"]').count()
+
+                diagram_count=pg.locator(
+                    f'img[src*="{pdef["imgdir"]}/image001.png"]').count()
+                merror=pg.locator('mjx-merror').count()
+                unrendered=[]; local=[]; uncontained=[]
+
+                for i in range(bc):
+                  el=blocks.nth(i)
+                  src=el.get_attribute('data-source-image')
+                  if el.locator('mjx-container').count()<1:
+                    unrendered.append(src)
+                  dims=el.evaluate(
+                      "e=>({clientWidth:e.clientWidth,scrollWidth:e.scrollWidth,"
+                      "overflowX:getComputedStyle(e).overflowX})")
+                  if dims['scrollWidth']>dims['clientWidth']+1:
+                    local.append(src)
+                    if vn=='desktop' or dims['overflowX'] not in ('auto','scroll'):
+                      uncontained.append(src)
+
+                pd=pg.evaluate(
+                    "()=>({clientWidth:document.documentElement.clientWidth,"
+                    "scrollWidth:document.documentElement.scrollWidth})")
+                po=pd['scrollWidth']>pd['clientWidth']+2
+
+                shot=out/f'{pdef["key"]}_{vn}.png'
+                pg.screenshot(path=str(shot),full_page=True,animations='disabled')
+
+                row={
+                  'page':pdef['key'],'viewport':vn,'blocks':bc,
+                  'expected_blocks':pdef['count'],'formula_images':formula_imgs,
+                  'diagram_image001':diagram_count,'expected_diagram':pdef['diagram'],
+                  'merror':merror,'unrendered':unrendered,'local_scroll':local,
+                  'uncontained':uncontained,'page_overflow':po,'page_errors':errs
+                }
+                rows.append(row)
+
+                if bc!=pdef['count']:
+                  failures.append(f'{pdef["key"]} {vn}: blocks={bc}')
+                if formula_imgs!=0:
+                  failures.append(f'{pdef["key"]} {vn}: formula images={formula_imgs}')
+                if diagram_count!=pdef['diagram']:
+                  failures.append(
+                    f'{pdef["key"]} {vn}: diagram image001={diagram_count}')
+                if merror or unrendered or uncontained or po or errs:
+                  failures.append(f'{pdef["key"]} {vn}: render/layout failure')
+                ctx.close()
+            browser.close()
+
+          status='PASS' if not failures else 'FAIL'
+          (out/'manifest.json').write_text(
+              json.dumps({'status':status,'rows':rows,'failures':failures},
+                         ensure_ascii=False,indent=2),encoding='utf-8')
+
+          report=Path('.document/formula_reviews/REMAINING_HEAT_NORMAL_BROWSER_QA_20260918.md')
+          L=[
+            '# Remaining Heat Normal Browser QA — 2026-09-18','',
+            f'- Overall: **{status}**',
+            '- Viewports: desktop 1440x1000; mobile 390x844',
+            '- Formula target: 16 MathJax blocks across 8 pages.',
+            '- Classified diagram image001 assets must remain unchanged.','',
+            '| Page | Viewport | Blocks | Formula images | image001 diagram | MathJax errors | Local-scroll | Uncontained | Page overflow |',
+            '|---|---|---:|---:|---:|---:|---:|---:|---|'
+          ]
+          for r in rows:
+            L.append(
+              f"| {r['page']} | {r['viewport']} | {r['blocks']}/{r['expected_blocks']} | "
+              f"{r['formula_images']} | {r['diagram_image001']}/{r['expected_diagram']} | "
+              f"{r['merror']} | {len(r['local_scroll'])} | {len(r['uncontained'])} | "
+              f"{'YES' if r['page_overflow'] else 'NO'} |")
+          L += ['', '## Failures',''] + (
+              [f'- {x}' for x in failures] if failures else ['- None.'])
+          L += ['', '- Production deployment has not been performed.']
+          report.write_text('\n'.join(L)+'\n',encoding='utf-8')
+
+          if failures:
+            raise SystemExit(1)
+          PY
+
+      - name: Commit report
+        if: success()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .document/formula_reviews/REMAINING_HEAT_NORMAL_BROWSER_QA_20260918.md
+          if ! git diff --cached --quiet; then
+            git commit -m 'docs: record remaining heat browser QA'
+            git pull --rebase origin develop
+            git push origin HEAD:develop
+          fi
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: remaining-heat-normal-qa
+          path: remaining-heat-normal-qa
+          retention-days: 7
