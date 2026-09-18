@@ -30,14 +30,14 @@ jobs:
           bynum={x['image'][5:8]:x for x in cfg['formulas']}
 
           mathjax4 = """
-	<script>
-	window.MathJax={
-		output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
-		chtml:{displayAlign:'left',displayIndent:'0'}
-	};
-	</script>
-	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
-"""
+          <script>
+          window.MathJax={
+            output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+            chtml:{displayAlign:'left',displayIndent:'0'}
+          };
+          </script>
+          <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+          """
 
           raw=page.read_bytes(); enc=None
           for candidate in ('cp932','utf-8'):
