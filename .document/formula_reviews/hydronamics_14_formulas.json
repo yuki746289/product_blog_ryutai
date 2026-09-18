@@ -57,5 +57,10 @@
       "image": "image014.png",
       "latex": "\\[\n\\iiint_Vu\\frac{\\partial v}{\\partial x_i}\\,dV\n=\n\\oiint_Suvn_i\\,dA\n-\n\\iiint_V\\frac{\\partial u}{\\partial x_i}v\\,dV\n\\]"
     }
-  ]
+  ],
+  "transcription_assist": {
+    "method": "Word OMML candidate + canonical source-image verification",
+    "verified_date": "2026-09-18",
+    "source_image_is_canonical": true
+  }
 }
