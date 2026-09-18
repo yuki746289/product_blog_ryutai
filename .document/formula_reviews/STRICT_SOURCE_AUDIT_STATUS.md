@@ -1372,6 +1372,29 @@ Physics の最終残存画像インベントリを再照合した。
 - `.document/formula_reviews/COUNTING_IMAGE_CLASSIFICATION_20260919.md`
 - `.document/formula_reviews/COUNTING_RETAINED_IMAGE_AUDIT_20260919.md`
 
+
+## 2026-09-19 FEM / Heat / Appendix 残存画像最終監査
+
+既知数式のMathJax化完了後に残っていた画像を、元画像で全件再確認した。
+
+- FEM: **33/33配置**
+  - 数式単体画像: **0**
+  - 保持図・混在図: **33**
+- Heat: **8/8配置**
+  - 数式単体画像: **0**
+  - 保持図・混在図: **8**
+- Appendix: **9/9配置**（7 unique assets）
+  - 数式単体画像: **0**
+  - 保持図・混在図: **9**
+- 3カテゴリ合計50配置に未確認数式画像なし。
+- 数式ラベルを含む混在画像は、幾何・トポロジー・境界条件との視覚関係が本体のため画像維持。
+- 本番FTP反映は未実施。
+
+詳細:
+- `.document/formula_reviews/FEM_RETAINED_IMAGE_FINAL_AUDIT_20260919.md`
+- `.document/formula_reviews/HEAT_RETAINED_IMAGE_FINAL_AUDIT_20260919.md`
+- `.document/formula_reviews/APPENDIX_RETAINED_IMAGE_FINAL_AUDIT_20260919.md`
+
 ## 次の優先順
 
 1. **Mesh残存53画像**をページ単位で分類し、数式だけを Pass 1 → Pass 2 → 通常反映 → PC/スマホQA の順で処理する。
@@ -1451,6 +1474,9 @@ Physics の最終残存画像インベントリを再照合した。
 - **Columnカテゴリの既知数式画像は変換完了**
 - Counting: **数式画像0、フローチャート2件確認済み**
 - **Countingカテゴリの既知数式画像は変換完了**
+- **Appendix残存9画像は全件確認済み保持図・混在図（数式単体画像0）**
+- **Heat残存8画像は全件確認済み保持図・混在図（数式単体画像0）**
+- **FEM残存33画像は全件確認済み保持図・混在図（数式単体画像0）**
 - **Physicsカテゴリの既知数式画像は変換完了**
   - 最新残存16画像はすべて確認済みの保持図（数式画像0）\n- 厳密監査・通常ページ化まで完了した数式・数式テキスト: **564件**
 - 残存画像は数式とは限らないため、今後はページ単位で分類してから数式のみ変換する。
