@@ -182,6 +182,27 @@ Appendixの数式画像について、元画像を正本として分類・再転
 - `.document/formula_reviews/HEAT_7_2_FORMULA_AUDIT_20260918.md`
 - `.document/formula_reviews/HEAT_7_2_NORMAL_BROWSER_QA_20260918.md`
 
+## 2026-09-18 Heat 6 監査・通常ページ反映
+
+`heat/heat_6.html` の無次元化関連13画像を元画像正本で監査した。
+
+- 画像分類: **13件すべて数式系**
+  - 表示数式: **11**
+  - インライン数式記号: **2**
+- Pass 1: **13/13**
+- Pass 2: **13/13**
+- Pass 2 workflow run: **35295172775**
+- 通常ページへMathJax反映済み
+- Normal browser QA run: **35295410479**
+- desktop: display 11/11, inline 2/2, formula images 0, MathJax errors 0, page overflowなし
+- mobile: display 11/11, inline 2/2, formula images 0, MathJax errors 0, page overflowなし
+- 本番FTP反映は未実施。
+
+詳細:
+- `.document/formula_reviews/HEAT_6_IMAGE_CLASSIFICATION_20260918.md`
+- `.document/formula_reviews/HEAT_6_FORMULA_AUDIT_20260918.md`
+- `.document/formula_reviews/HEAT_6_NORMAL_BROWSER_QA_20260918.md`
+
 ## 次の優先順
 
 1. サイト全体の残存画像を「数式 / 図 / 混在画像」に分類する。
@@ -222,7 +243,8 @@ Appendixの数式画像について、元画像を正本として分類・再転
 - 主要FEM 5ページ: **143/143 Pass 1・Pass 2完了、通常ページ反映・PC/スマホQA完了**
 - Appendix: **41式完了、通常ページ反映・PC/スマホQA完了**
 - Heat 7: **65式完了、通常ページ反映・PC/スマホQA完了**
-- 厳密監査・通常ページ化まで完了した数式: **249式**
+- Heat 6: **13式完了、通常ページ反映・PC/スマホQA完了**
+- 厳密監査・通常ページ化まで完了した数式: **262式**
 - 残存画像は数式とは限らないため、今後はページ単位で分類してから数式のみ変換する。
 - MPS欠損GIF参照は別タスクとして扱う。
 - 本番FTP反映は未実施。
