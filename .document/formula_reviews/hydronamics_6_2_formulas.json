@@ -12,33 +12,33 @@
     "source_image_is_canonical": true
   },
   "source_notation_notes": [
-    "LibreOffice/Pandoc corrupts some ΔzΔx products; those terms are restored from the source images.",
+    "The middle area-product term is source-visible as ΔzxΔz in image002-image007. It is preserved exactly rather than normalized to the theoretically expected ΔzΔx.",
     "All source-visible stress subscripts and evaluation-position bars are preserved without theoretical correction."
   ],
   "formulas": [
     {
       "image": "image002.png",
-      "latex": "\\[\nF_{\\mid x}\n=\n\\Delta y\\Delta z\\,\\tau_{xx\\mid x}\n+\\Delta z\\Delta x\\,\\tau_{yx\\mid y}\n+\\Delta x\\Delta y\\,\\tau_{zx\\mid z}\n\\]"
+      "latex": "\\[\nF_{\\mid x}\n=\n\\Delta y\\Delta z\\,\\tau_{xx\\mid x}\n+\\Delta z x\\Delta z\\,\\tau_{yx\\mid y}\n+\\Delta x\\Delta y\\,\\tau_{zx\\mid z}\n\\]"
     },
     {
       "image": "image003.png",
-      "latex": "\\[\nF_{\\mid x+\\Delta x}\n=\n-\\Delta y\\Delta z\\,\\tau_{xx\\mid x+\\Delta x}\n-\\Delta z\\Delta x\\,\\tau_{yx\\mid y+\\Delta y}\n-\\Delta x\\Delta y\\,\\tau_{zx\\mid z+\\Delta z}\n\\]"
+      "latex": "\\[\nF_{\\mid x+\\Delta x}\n=\n-\\Delta y\\Delta z\\,\\tau_{xx\\mid x+\\Delta x}\n-\\Delta z x\\Delta z\\,\\tau_{yx\\mid y+\\Delta y}\n-\\Delta x\\Delta y\\,\\tau_{zx\\mid z+\\Delta z}\n\\]"
     },
     {
       "image": "image004.png",
-      "latex": "\\[\nF_{\\mid y}\n=\n\\Delta y\\Delta z\\,\\tau_{yx\\mid x}\n+\\Delta z\\Delta x\\,\\tau_{yy\\mid y}\n+\\Delta x\\Delta y\\,\\tau_{zy\\mid z}\n\\]"
+      "latex": "\\[\nF_{\\mid y}\n=\n\\Delta y\\Delta z\\,\\tau_{yx\\mid x}\n+\\Delta z x\\Delta z\\,\\tau_{yy\\mid y}\n+\\Delta x\\Delta y\\,\\tau_{zy\\mid z}\n\\]"
     },
     {
       "image": "image005.png",
-      "latex": "\\[\nF_{\\mid y+\\Delta y}\n=\n-\\Delta y\\Delta z\\,\\tau_{xy\\mid x+\\Delta x}\n-\\Delta z\\Delta x\\,\\tau_{yy\\mid y+\\Delta y}\n-\\Delta x\\Delta y\\,\\tau_{zy\\mid z+\\Delta z}\n\\]"
+      "latex": "\\[\nF_{\\mid y+\\Delta y}\n=\n-\\Delta y\\Delta z\\,\\tau_{xy\\mid x+\\Delta x}\n-\\Delta z x\\Delta z\\,\\tau_{yy\\mid y+\\Delta y}\n-\\Delta x\\Delta y\\,\\tau_{zy\\mid z+\\Delta z}\n\\]"
     },
     {
       "image": "image006.png",
-      "latex": "\\[\nF_{\\mid z}\n=\n\\Delta y\\Delta z\\,\\tau_{yz\\mid x}\n+\\Delta z\\Delta x\\,\\tau_{yz\\mid y}\n+\\Delta x\\Delta y\\,\\tau_{zz\\mid z}\n\\]"
+      "latex": "\\[\nF_{\\mid z}\n=\n\\Delta y\\Delta z\\,\\tau_{yz\\mid x}\n+\\Delta z x\\Delta z\\,\\tau_{yz\\mid y}\n+\\Delta x\\Delta y\\,\\tau_{zz\\mid z}\n\\]"
     },
     {
       "image": "image007.png",
-      "latex": "\\[\nF_{\\mid z+\\Delta z}\n=\n-\\Delta y\\Delta z\\,\\tau_{xz\\mid x+\\Delta x}\n-\\Delta z\\Delta x\\,\\tau_{yz\\mid y+\\Delta y}\n-\\Delta x\\Delta y\\,\\tau_{zz\\mid z+\\Delta z}\n\\]"
+      "latex": "\\[\nF_{\\mid z+\\Delta z}\n=\n-\\Delta y\\Delta z\\,\\tau_{xz\\mid x+\\Delta x}\n-\\Delta z x\\Delta z\\,\\tau_{yz\\mid y+\\Delta y}\n-\\Delta x\\Delta y\\,\\tau_{zz\\mid z+\\Delta z}\n\\]"
     }
   ]
 }
