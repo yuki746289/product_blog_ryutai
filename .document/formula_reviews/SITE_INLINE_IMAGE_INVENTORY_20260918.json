@@ -1,9 +1,9 @@
 {
   "summary": {
     "html_pages_scanned": 205,
-    "residual_word_image_placements": 221,
-    "unique_assets": 219,
-    "centered_p_im_placements": 209,
+    "residual_word_image_placements": 216,
+    "unique_assets": 214,
+    "centered_p_im_placements": 204,
     "missing_assets": 49,
     "missing_by_section": {
       "mps": 49
@@ -17,10 +17,10 @@
       "hydronamics": 21,
       "mesh": 53,
       "mps": 49,
-      "physics": 41
+      "physics": 36
     },
     "extensions": {
-      ".png": 168,
+      ".png": 163,
       ".jpg": 4,
       ".gif": 49
     }
@@ -2350,66 +2350,6 @@
       "exists": true,
       "width": 209,
       "height": 143,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "physics/physics_6_1.html",
-      "encoding": "cp932",
-      "src": "./../img/physics_c_four_operator.files/image001.png",
-      "asset": "img/physics_c_four_operator.files/image001.png",
-      "exists": true,
-      "width": 506,
-      "height": 253,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "physics/physics_6_1.html",
-      "encoding": "cp932",
-      "src": "./../img/physics_c_four_operator.files/image002.png",
-      "asset": "img/physics_c_four_operator.files/image002.png",
-      "exists": true,
-      "width": 631,
-      "height": 349,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "physics/physics_6_1.html",
-      "encoding": "cp932",
-      "src": "./../img/physics_c_four_operator.files/image003.png",
-      "asset": "img/physics_c_four_operator.files/image003.png",
-      "exists": true,
-      "width": 270,
-      "height": 206,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "physics/physics_6_1.html",
-      "encoding": "cp932",
-      "src": "./../img/physics_c_four_operator.files/image004.png",
-      "asset": "img/physics_c_four_operator.files/image004.png",
-      "exists": true,
-      "width": 376,
-      "height": 511,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "physics/physics_6_1.html",
-      "encoding": "cp932",
-      "src": "./../img/physics_c_four_operator.files/image005.png",
-      "asset": "img/physics_c_four_operator.files/image005.png",
-      "exists": true,
-      "width": 313,
-      "height": 521,
       "format": "PNG",
       "centered_p_im": true,
       "review_priority": "A"
