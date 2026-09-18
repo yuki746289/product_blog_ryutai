@@ -1,0 +1,160 @@
+name: Hydronamics Batch 1 Normal Browser QA
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/hydronamics-batch-1-normal-browser-qa.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Chromium
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Start local site
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/hydro-b1-qa-http.log 2>&1 &
+          sleep 1
+
+      - name: Run desktop and mobile QA
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+
+          configs=[
+            {'key':'hydronamics_14','file':'hydronamics/hydronamics_14.html','imgdir':'hydronamics_gauss.files','display':10,'inline':2,'diagrams':2},
+            {'key':'hydronamics_8','file':'hydronamics/hydronamics_8.html','imgdir':'hydronamics_e_momentum.files','display':11,'inline':1,'diagrams':0},
+            {'key':'hydronamics_12_1','file':'hydronamics/hydronamics_12_1.html','imgdir':'hydronamics_dimensionless.files','display':10,'inline':0,'diagrams':0},
+            {'key':'hydronamics_4','file':'hydronamics/hydronamics_4.html','imgdir':'hydronamics_e_mass.files','display':9,'inline':0,'diagrams':1},
+          ]
+          viewports={'desktop':{'width':1440,'height':1000},'mobile':{'width':390,'height':844}}
+          out=Path('hydronamics-batch-1-normal-qa'); out.mkdir(exist_ok=True)
+          results=[]; failures=[]
+
+          with sync_playwright() as p:
+            browser=p.chromium.launch(headless=True)
+            for cfg in configs:
+              for vp_name,vp in viewports.items():
+                ctx=browser.new_context(viewport=vp,device_scale_factor=1)
+                page=ctx.new_page()
+                page_errors=[]
+                page.on('pageerror',lambda exc,store=page_errors:store.append(str(exc)))
+                page.goto('http://127.0.0.1:8000/'+cfg['file'],wait_until='domcontentloaded',timeout=120000)
+                page.wait_for_function('() => window.MathJax && MathJax.startup && MathJax.startup.promise',timeout=60000)
+                page.evaluate('async()=>{await MathJax.startup.promise;}')
+                page.wait_for_timeout(500)
+
+                db=page.locator(f'div.math-block[data-source-image*="{cfg["imgdir"]}/image"]')
+                ib=page.locator(f'span.math-inline[data-source-image*="{cfg["imgdir"]}/image"]')
+                dc,ic=db.count(),ib.count()
+                merror=page.locator('mjx-merror').count()
+                unrendered=0
+                local_scroll=0
+                uncontained=0
+                for loc in (db,ib):
+                  for i in range(loc.count()):
+                    el=loc.nth(i)
+                    if el.locator('mjx-container').count()<1:
+                      unrendered+=1
+                    dims=el.evaluate('(e)=>({clientWidth:e.clientWidth,scrollWidth:e.scrollWidth,overflowX:getComputedStyle(e).overflowX})')
+                    if dims['scrollWidth']>dims['clientWidth']+1:
+                      local_scroll+=1
+                      if vp_name=='desktop' or dims['overflowX'] not in ('auto','scroll'):
+                        uncontained+=1
+
+                # Count only real IMG tags from this Word-export image directory.
+                img_count=page.locator(f'img[src*="{cfg["imgdir"]}/image"]').count()
+                expected_imgs=cfg['diagrams']
+
+                pd=page.evaluate('() => ({cw:document.documentElement.clientWidth,sw:document.documentElement.scrollWidth})')
+                page_overflow=pd['sw']>pd['cw']+2
+
+                shotdir=out/cfg['key']; shotdir.mkdir(parents=True,exist_ok=True)
+                page.screenshot(path=str(shotdir/f'{vp_name}.png'),full_page=True,animations='disabled')
+
+                row={'page':cfg['key'],'viewport':vp_name,'display':dc,'inline':ic,
+                     'expected_display':cfg['display'],'expected_inline':cfg['inline'],
+                     'image_tags':img_count,'expected_diagrams':expected_imgs,
+                     'mathjax_errors':merror,'unrendered':unrendered,
+                     'local_scroll':local_scroll,'uncontained':uncontained,
+                     'page_overflow':page_overflow,'page_errors':page_errors}
+                results.append(row)
+                if dc!=cfg['display']: failures.append(f"{cfg['key']} {vp_name}: display {dc}!={cfg['display']}")
+                if ic!=cfg['inline']: failures.append(f"{cfg['key']} {vp_name}: inline {ic}!={cfg['inline']}")
+                if img_count!=expected_imgs: failures.append(f"{cfg['key']} {vp_name}: image tags {img_count}!={expected_imgs}")
+                if merror: failures.append(f"{cfg['key']} {vp_name}: MathJax errors {merror}")
+                if unrendered: failures.append(f"{cfg['key']} {vp_name}: unrendered {unrendered}")
+                if uncontained: failures.append(f"{cfg['key']} {vp_name}: uncontained overflow {uncontained}")
+                if page_overflow: failures.append(f"{cfg['key']} {vp_name}: page overflow")
+                if page_errors: failures.append(f"{cfg['key']} {vp_name}: page errors {page_errors}")
+                print(row)
+                ctx.close()
+            browser.close()
+
+          status='PASS' if not failures else 'FAIL'
+          manifest={'status':status,'results':results,'failures':failures}
+          (out/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf-8')
+
+          report=Path('.document/formula_reviews/HYDRONAMICS_BATCH_1_NORMAL_BROWSER_QA_20260918.md')
+          lines=[
+            '# Hydronamics Batch 1 Normal Browser QA — 2026-09-18','',
+            f'- Overall: **{status}**',
+            '- Browser: Chromium / Playwright',
+            '- Viewports: desktop 1440×1000, mobile 390×844',
+            '- Expected formulas: display 40 + inline 3 = 43',
+            '- Expected retained diagrams: 3',
+            '- Production deployment: not performed.','',
+            '| Page | Viewport | Display | Inline | Retained images | MathJax errors | Unrendered | Local scroll | Uncontained | Page overflow |',
+            '|---|---|---:|---:|---:|---:|---:|---:|---:|---|'
+          ]
+          for r in results:
+            lines.append(
+              f"| `{r['page']}` | {r['viewport']} | {r['display']}/{r['expected_display']} | "
+              f"{r['inline']}/{r['expected_inline']} | {r['image_tags']}/{r['expected_diagrams']} | "
+              f"{r['mathjax_errors']} | {r['unrendered']} | {r['local_scroll']} | "
+              f"{r['uncontained']} | {'YES' if r['page_overflow'] else 'NO'} |")
+          lines += ['', '## Failures', '']
+          lines += [f'- {x}' for x in failures] if failures else ['- None.']
+          report.write_text('\n'.join(lines)+'\n',encoding='utf-8')
+
+          if failures:
+            raise SystemExit(1)
+          PY
+
+      - name: Commit QA report
+        if: success()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .document/formula_reviews/HYDRONAMICS_BATCH_1_NORMAL_BROWSER_QA_20260918.md
+          if ! git diff --cached --quiet; then
+            git commit -m 'docs: record hydronamics batch 1 normal browser QA'
+            git pull --rebase origin develop
+            git push origin HEAD:develop
+          fi
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hydronamics-batch-1-normal-qa
+          path: hydronamics-batch-1-normal-qa
+          retention-days: 7
