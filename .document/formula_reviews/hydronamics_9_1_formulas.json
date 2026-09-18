@@ -1,0 +1,33 @@
+{
+  "page": "hydronamics/hydronamics_9_1.html",
+  "image_dir": "img/hydronamics_shear_velocity.files",
+  "canonical_source": "original source images",
+  "retained_diagrams": [
+    "image001.png",
+    "image004.png"
+  ],
+  "transcription_assist": {
+    "source": "HP.7z / 流体力学_応力の詳細_せん断速度.doc",
+    "method": "Word/Equation Editor candidate + canonical source-image verification",
+    "verified_date": "2026-09-18",
+    "source_image_is_canonical": true
+  },
+  "formulas": [
+    {
+      "image": "image002.png",
+      "latex": "\\[\n\\begin{aligned}\n\\gamma&=\\lim_{\\Delta x\\to0}\\frac{v_2-v_1}{\\Delta x}\\\\\n&=\\frac{dv}{dx}\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image003.png",
+      "latex": "\\[\n\\frac{\\text{速度}[\\mathrm{m/s}]}{\\text{距離}[\\mathrm{m}]}\n=[\\mathrm{1/s}]\n\\]"
+    },
+    {
+      "image": "image005.png",
+      "latex": "\\[\n\\frac{1}{2}rv\\Delta t\n=\n\\frac{\\Delta\\theta}{2\\pi}\\pi r^2\n\\]"
+    },
+    {
+      "image": "image006.png",
+      "latex": "\\[\n\\begin{aligned}\n\\gamma&=\\lim_{\\Delta t\\to0}\\frac{\\Delta\\theta}{\\Delta t}\\\\\n&=\\frac{v}{r}\n\\end{aligned}\n\\]"
+    }
+  ]
+}
