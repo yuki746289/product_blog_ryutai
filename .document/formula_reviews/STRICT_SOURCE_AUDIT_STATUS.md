@@ -1214,6 +1214,29 @@ Physics の最終残存画像インベントリを再照合した。
 
 **Physicsカテゴリの既知数式画像は変換完了。**
 
+
+## 2026-09-19 Mesh 3_1 監査・通常ページ反映
+
+`mesh/mesh_3_1.html` のバブルメッシュ法ページを元HP画像正本で処理した。
+
+- 分類対象: **19画像**
+  - 表示数式: **5**
+  - インライン数式: **4**
+  - 図・グラフ・結果画像: **10**（画像維持）
+- Pass 1: **9/9**
+- Pass 2 workflow run: **35400903542**
+- Pass 2: **9/9**
+- 通常ページ反映: **9/9**
+- Normal browser QA: **PASS**
+- desktop/mobile: display 5/5、inline 4/4、retained 10/10、MathJax errors 0、unrendered 0、uncontained 0、page overflowなし
+- `image006` の source-visible な `|p_2-p_2|` 分母を理論補正せず保持。
+- 本番FTP反映は未実施。
+
+詳細:
+- `.document/formula_reviews/MESH_3_1_IMAGE_CLASSIFICATION_20260919.md`
+- `.document/formula_reviews/MESH_3_1_FORMULA_AUDIT_20260919.md`
+- `.document/formula_reviews/MESH_3_1_NORMAL_BROWSER_QA_20260919.md`
+
 ## 次の優先順
 
 1. **Mesh残存53画像**をページ単位で分類し、数式だけを Pass 1 → Pass 2 → 通常反映 → PC/スマホQA の順で処理する。
@@ -1282,8 +1305,9 @@ Physics の最終残存画像インベントリを再照合した。
 - Physics 7: **1式完了、PC/スマホQA完了**
 - Physics 6_3_1: **1式完了、PC/スマホQA完了**
 - Physics 6_3_2: **2式完了、図1件は画像維持、PC/スマホQA完了**
+- Mesh 3_1: **9式完了、図等10件は画像維持、PC/スマホQA完了**
 - **Physicsカテゴリの既知数式画像は変換完了**
-  - 最新残存16画像はすべて確認済みの保持図（数式画像0）\n- 厳密監査・通常ページ化まで完了した数式・数式テキスト: **529件**
+  - 最新残存16画像はすべて確認済みの保持図（数式画像0）\n- 厳密監査・通常ページ化まで完了した数式・数式テキスト: **538件**
 - 残存画像は数式とは限らないため、今後はページ単位で分類してから数式のみ変換する。
 - MPS欠損GIF参照は別タスクとして扱う。
 - 本番FTP反映は未実施。
