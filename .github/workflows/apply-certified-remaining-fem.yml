@@ -103,11 +103,12 @@ jobs:
               if guard(applied)!=before:
                   raise RuntimeError(f'{page}: non-formula content changed')
 
-              mapped=re.findall(
+              mapped_all=re.findall(
                   rf'data-source-image=["\'][^"\']*{re.escape(imgdir)}/image(\d{{3}})\.png["\']',
                   applied,flags=re.I)
+              mapped=[n for n in mapped_all if n in nums]
               if mapped!=nums:
-                  raise RuntimeError(f'{page}: mapped sequence mismatch {mapped}')
+                  raise RuntimeError(f'{page}: target mapped sequence mismatch {mapped}; all={mapped_all}')
 
               leftovers=re.findall(
                   rf'<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image(?:{alt})\.png["\'][^>]*>',
