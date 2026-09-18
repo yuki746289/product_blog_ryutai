@@ -11,9 +11,9 @@
 ## Summary
 
 - HTML pages scanned: **205**
-- Residual inline-image placements: **201**
-- Unique residual image assets: **199**
-- Priority A (`p.im`) placements: **191**
+- Residual inline-image placements: **200**
+- Unique residual image assets: **198**
+- Priority A (`p.im`) placements: **190**
 - Missing referenced assets: **49**
 
 ### By section
@@ -24,7 +24,7 @@
 | `mps` | 49 |
 | `fem` | 33 |
 | `hydronamics` | 21 |
-| `physics` | 21 |
+| `physics` | 20 |
 | `appendix` | 9 |
 | `heat` | 8 |
 | `column` | 5 |
@@ -161,8 +161,7 @@ These references exist in HTML but the corresponding image file is absent from t
 | 63 | `physics/physics_3.html` | 1 | 1 |
 | 64 | `physics/physics_6_2_1.html` | 1 | 1 |
 | 65 | `physics/physics_6_2_2.html` | 1 | 1 |
-| 66 | `physics/physics_6_3_1.html` | 1 | 1 |
-| 67 | `physics/physics_7.html` | 1 | 1 |
+| 66 | `physics/physics_7.html` | 1 | 1 |
 
 ## Next step
 
