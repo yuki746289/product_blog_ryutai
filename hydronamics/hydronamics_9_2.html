@@ -11,6 +11,14 @@
 
 	<title>応力の垂直成分（流体力学）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+<script>
+window.MathJax={
+  output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+  chtml:{displayAlign:'left',displayIndent:'0'}
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="3">
@@ -52,20 +60,83 @@
 			<p class="im"><img src="./../img/hydronamics_stress_vertical.files/image001.png"></p>
 			<p><span class="fs"><i>D</i></span><span class="ft"><i>t</i></span>経過後の角度
 					<span class="fs"><i>D</i></span><span class="ft"><i>a</i></span>は次式となります。</p>
-			<p class="im"><img src="./../img/hydronamics_stress_vertical.files/image002.png"></p>
+			<div class="math-block" id="formula-hydronamics-9-2-002" data-source-image="./../img/hydronamics_stress_vertical.files/image002.png">
+\[
+\begin{aligned}
+\Delta\alpha&\simeq\sin\Delta\alpha\\
+&=\frac{
+\frac{1}{\sqrt{2}}\frac{\partial v_x}{\partial x}\Delta l\Delta t
+-\frac{1}{\sqrt{2}}\frac{\partial v_y}{\partial y}\Delta l\Delta t
+}{
+\frac{1}{\sqrt{2}}\frac{\partial v_y}{\partial y}\Delta l\Delta t
++\sqrt{2}\Delta l
+}\\
+&=\frac{
+\frac{\partial v_x}{\partial x}-\frac{\partial v_y}{\partial y}
+}{
+\frac{\partial v_y}{\partial y}+\frac{2}{\Delta t}
+}
+\end{aligned}
+\]
+</div>
 			<p>剪断速度<span class="fs"><i>g</i></span><span class="ft">[1/s]</span>は、次式となります。</p>
-			<p class="im"><img src="./../img/hydronamics_stress_vertical.files/image003.png"></p>
+			<div class="math-block" id="formula-hydronamics-9-2-003" data-source-image="./../img/hydronamics_stress_vertical.files/image003.png">
+\[
+\begin{aligned}
+\gamma
+&=\lim_{\Delta t\to0}\frac{2\Delta\alpha}{\Delta t}\\
+&=\lim_{\Delta t\to0}
+2\frac{
+\frac{\partial v_x}{\partial x}-\frac{\partial v_y}{\partial y}
+}{
+\frac{\partial v_y}{\partial y}\Delta t+2
+}\\
+&=\frac{\partial v_x}{\partial x}-\frac{\partial v_y}{\partial y}
+\end{aligned}
+\]
+</div>
 			<p>従って、剪断応力<span class="fs"><i>t </i></span>
 					<span class="ft">’<i><sub>xy</sub></i>[N/m<sup>2</sup>]</span>は次式となります。</p>
-			<p class="im"><img src="./../img/hydronamics_stress_vertical.files/image004.png"></p>
+			<div class="math-block" id="formula-hydronamics-9-2-004" data-source-image="./../img/hydronamics_stress_vertical.files/image004.png">
+\[
+\begin{aligned}
+\tau'_{xy}&=\mu\gamma\\
+&=\mu\left(\frac{\partial v_x}{\partial x}-\frac{\partial v_y}{\partial y}\right)
+\end{aligned}
+\]
+</div>
 			<p>また、応力の釣り合いから</p>
-			<p class="im"><img src="./../img/hydronamics_stress_vertical.files/image005.png"></p>
+			<div class="math-block" id="formula-hydronamics-9-2-005" data-source-image="./../img/hydronamics_stress_vertical.files/image005.png">
+\[
+\frac{1}{\sqrt{2}}\Delta l\,\sigma_x
+-\frac{1}{\sqrt{2}}\Delta l\,\sigma_y
+-\sqrt{2}\Delta l\,\tau'_{xy}=0
+\]
+</div>
 			<p>より</p>
-			<p class="im"><img src="./../img/hydronamics_stress_vertical.files/image006.png"></p>
+			<div class="math-block" id="formula-hydronamics-9-2-006" data-source-image="./../img/hydronamics_stress_vertical.files/image006.png">
+\[
+\sigma_x-\sigma_y-2\tau'_{xy}=0
+\]
+</div>
 			<p>従って、</p>
-			<p class="im"><img src="./../img/hydronamics_stress_vertical.files/image007.png"></p>
+			<div class="math-block" id="formula-hydronamics-9-2-007" data-source-image="./../img/hydronamics_stress_vertical.files/image007.png">
+\[
+\begin{aligned}
+\sigma_x-\sigma_y&=2\tau'_{xy}\\
+&=2\mu\left(\frac{\partial v_x}{\partial x}-\frac{\partial v_y}{\partial y}\right)
+\end{aligned}
+\]
+</div>
 			<p>同様に</p>
-			<p class="im"><img src="./../img/hydronamics_stress_vertical.files/image008.png"></p>
+			<div class="math-block" id="formula-hydronamics-9-2-008" data-source-image="./../img/hydronamics_stress_vertical.files/image008.png">
+\[
+\begin{aligned}
+\sigma_y-\sigma_z&=2\mu\left(\frac{\partial v_y}{\partial y}-\frac{\partial v_z}{\partial z}\right)\\
+\sigma_z-\sigma_x&=2\mu\left(\frac{\partial v_z}{\partial z}-\frac{\partial v_x}{\partial x}\right)
+\end{aligned}
+\]
+</div>
 			<p><span class="fs"><i>s</i></span><span class="ft"><i><sub>x</sub></i></span>
 					<span class="ft">, </span><span class="fs"><i>s</i></span>
 					<span class="ft"><i><sub>y</sub></i></span>
@@ -73,10 +144,25 @@
 					<span class="fs"><i>s</i></span>
 					<span class="ft"><i><sub>z</sub></i></span>
 					は垂直応力なので次式で表されます。</p>
-			<p class="im"><img src="./../img/hydronamics_stress_vertical.files/image009.png"></p>
+			<div class="math-block" id="formula-hydronamics-9-2-009" data-source-image="./../img/hydronamics_stress_vertical.files/image009.png">
+\[
+\sigma_x+\sigma_y+\sigma_z
+=\frac{p_x+p_y+p_z}{3}
+\]
+</div>
 			<p>従って、これらを解くと次式が導出されます。</p>
-			<p class="im"><img src="./../img/hydronamics_stress_vertical.files/image010.png"><br>
-			<br>
+			<div class="math-block" id="formula-hydronamics-9-2-010" data-source-image="./../img/hydronamics_stress_vertical.files/image010.png">
+\[
+\begin{aligned}
+\sigma_x&=-p_x+2\mu\frac{\partial v_x}{\partial x}
+-\frac{2}{3}\mu(\nabla\cdot v)\\
+\sigma_y&=-p_y+2\mu\frac{\partial v_y}{\partial y}
+-\frac{2}{3}\mu(\nabla\cdot v)\\
+\sigma_z&=-p_z+2\mu\frac{\partial v_z}{\partial z}
+-\frac{2}{3}\mu(\nabla\cdot v)
+\end{aligned}
+\]
+</div>
 
 
 			<div style="margin-top:10px;"></div>
