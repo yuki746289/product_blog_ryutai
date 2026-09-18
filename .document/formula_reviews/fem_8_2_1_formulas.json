@@ -1,6 +1,6 @@
 {
   "page": "fem/fem_8_2_1.html",
-  "image_dir": "img/fem_bd_2.files",
+  "image_dir": "img/fem_surface_tension.files",
   "canonical_source": "original source images",
   "retained_diagrams": [
     "image001.png",
@@ -9,7 +9,7 @@
   "formulas": [
     {
       "image": "image002.png",
-      "latex": "\\[\n\\begin{aligned}\n[\\vec n^{\\,*}\\cdot\\vec\\sigma^{\\,*}]\n&=\\left[\\sum_{i=1}^{3}\\vec\\delta_i n_i\\cdot\n\\sum_{j=1}^{3}\\sum_{k=1}^{3}\\vec\\delta_j\\vec\\delta_k\\sigma_{jk}^{*}\\right]\\\\\n&=\\sum_{i=1}^{3}\\sum_{j=1}^{3}\\sum_{k=1}^{3}\n[\\vec\\delta_i\\cdot\\vec\\delta_j\\vec\\delta_k]n_i\\sigma_{jk}^{*}\\\\\n&=\\sum_{i=1}^{3}\\sum_{j=1}^{3}\\sum_{k=1}^{3}\n\\delta_{ij}\\vec\\delta_k n_i\\sigma_{jk}^{*}\\\\\n&=\\sum_{i=1}^{3}\\sum_{k=1}^{3}\\vec\\delta_k n_i\\sigma_{ik}^{*}\n\\qquad(\\because i=j)\\\\\n&=\\sum_{k=1}^{3}\\vec\\delta_k\\sum_{i=1}^{3}n_i\\sigma_{ik}^{*}\\\\\n&=\\sum_{k=1}^{3}\\vec\\delta_k\n(n_x\\sigma_{xk}^{*}+n_y\\sigma_{yk}^{*}+n_z\\sigma_{zk}^{*})\\\\\n&=\\vec\\delta_x(n_x\\sigma_{xx}^{*}+n_y\\sigma_{yx}^{*}+n_z\\sigma_{zx}^{*})\\\\\n&\\quad+\\vec\\delta_y(n_x\\sigma_{xy}^{*}+n_y\\sigma_{yy}^{*}+n_z\\sigma_{zy}^{*})\\\\\n&\\quad+\\vec\\delta_z(n_x\\sigma_{xz}^{*}+n_y\\sigma_{yz}^{*}+n_z\\sigma_{zz}^{*})\\\\\n&=\\vec\\delta_x\\frac{-2K^{*}}{We}n_x\n+\\vec\\delta_y\\frac{-2K^{*}}{We}n_y\n+\\vec\\delta_z\\frac{-2K^{*}}{We}n_z\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n[\\vec n^{*}\\cdot\\vec\\sigma^{*}]\n&=\\left[\n\\sum_{i=1}^{3}\\vec\\delta_i n_i\\cdot\n\\sum_{j=1}^{3}\\sum_{k=1}^{3}\\vec\\delta_j\\vec\\delta_k\\sigma^{*}_{jk}\n\\right]\\\\\n&=\\sum_{i=1}^{3}\\sum_{j=1}^{3}\\sum_{k=1}^{3}\n[\\vec\\delta_i\\cdot\\vec\\delta_j\\vec\\delta_k]\\,n_i\\sigma^{*}_{jk}\\\\\n&=\\sum_{i=1}^{3}\\sum_{j=1}^{3}\\sum_{k=1}^{3}\n\\delta_{ij}\\vec\\delta_k n_i\\sigma^{*}_{jk}\\\\\n&=\\sum_{i=1}^{3}\\sum_{k=1}^{3}\n\\vec\\delta_k n_i\\sigma^{*}_{ik}\n\\qquad(\\because i=j)\\\\\n&=\\sum_{k=1}^{3}\\vec\\delta_k\\sum_{i=1}^{3}n_i\\sigma^{*}_{ik}\\\\\n&=\\sum_{k=1}^{3}\\vec\\delta_k\n(n_x\\sigma^{*}_{xk}+n_y\\sigma^{*}_{yk}+n_z\\sigma^{*}_{zk})\\\\\n&=\\vec\\delta_x(n_x\\sigma^{*}_{xx}+n_y\\sigma^{*}_{yx}+n_z\\sigma^{*}_{zx})\\\\\n&\\quad+\\vec\\delta_y(n_x\\sigma^{*}_{xy}+n_y\\sigma^{*}_{yy}+n_z\\sigma^{*}_{zy})\\\\\n&\\quad+\\vec\\delta_z(n_x\\sigma^{*}_{xz}+n_y\\sigma^{*}_{yz}+n_z\\sigma^{*}_{zz})\\\\\n&=\\vec\\delta_x\\frac{-2K^{*}}{We}n_x\n+\\vec\\delta_y\\frac{-2K^{*}}{We}n_y\n+\\vec\\delta_z\\frac{-2K^{*}}{We}n_z\n\\end{aligned}\n\\]"
     },
     {
       "image": "image003.png",
@@ -21,11 +21,11 @@
     },
     {
       "image": "image005.png",
-      "latex": "\\[\n\\begin{aligned}\n[\\vec n\\cdot\\vec\\sigma^{\\,*}]\n&=-\\frac{2\\gamma K^{*}}{\\rho v_0^2x_0}\\vec n\\\\\n&=-\\frac{2K^{*}}{We}\\vec n\\\\\n&=\\vec\\delta_x\\frac{-2K^{*}}{We}n_x\n+\\vec\\delta_y\\frac{-2K^{*}}{We}n_y\n+\\vec\\delta_z\\frac{-2K^{*}}{We}n_z\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n[\\vec n^{*}\\cdot\\vec\\sigma^{*}]\n&=-\\frac{2\\gamma K^{*}}{\\rho v_0^{2}x_0}\\vec n\\\\\n&=-\\frac{2K^{*}}{We}\\vec n\\\\\n&=\\vec\\delta_x\\frac{-2K^{*}}{We}n_x\n+\\vec\\delta_y\\frac{-2K^{*}}{We}n_y\n+\\vec\\delta_z\\frac{-2K^{*}}{We}n_z\n\\end{aligned}\n\\]"
     },
     {
       "image": "image006.png",
-      "latex": "\\[\n\\begin{aligned}\nP_{bd}^{*}\n&=\\frac{P_{bd}}{\\rho v_0^2}\\\\\n&=\\frac{2\\gamma K}{\\rho v_0^2}\\\\\n&=\\frac{2\\gamma K^{*}}{\\rho v_0^2x_0}\\\\\n&=\\frac{2K^{*}}{We}\\\\\n&=\\frac{2K^{*}}{Oh^2}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\nP_{bd}^{*}\n&=\\frac{P_{bd}}{\\rho v_0^{2}}\\\\\n&=\\frac{2\\gamma K}{\\rho v_0^{2}}\\\\\n&=\\frac{2\\gamma K^{*}}{\\rho v_0^{2}x_0}\\\\\n&=\\frac{2K^{*}}{We}\\\\\n&=\\frac{2K^{*}}{Oh^{2}}\n\\end{aligned}\n\\]"
     }
   ]
 }
