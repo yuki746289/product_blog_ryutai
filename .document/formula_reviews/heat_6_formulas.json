@@ -1,0 +1,72 @@
+{
+  "page": "heat/heat_6.html",
+  "image_dir": "img/heat_dimensionless.files",
+  "canonical_source": "original source images",
+  "formulas": [
+    {
+      "image": "image001.png",
+      "mode": "display",
+      "latex": "\\[\nX=\\frac{x}{x_0},\\quad Y=\\frac{y}{x_0},\\quad Z=\\frac{z}{x_0}\n\\]"
+    },
+    {
+      "image": "image002.png",
+      "mode": "display",
+      "latex": "\\[\nV_x=\\frac{v_x}{v_0},\\quad V_y=\\frac{v_y}{v_0},\\quad V_z=\\frac{v_z}{v_0}\n\\]"
+    },
+    {
+      "image": "image003.png",
+      "mode": "display",
+      "latex": "\\[\n\\Theta=\\frac{T-T_0}{T_1-T_0}\n\\]"
+    },
+    {
+      "image": "image004.png",
+      "mode": "display",
+      "latex": "\\[\n\\tau=\\frac{v_0}{x_0}t\n\\]"
+    },
+    {
+      "image": "image005.png",
+      "mode": "display",
+      "latex": "\\[\n\\rho C_p\\frac{DT}{Dt}=-(\\nabla\\cdot\\vec q)\n\\]"
+    },
+    {
+      "image": "image006.png",
+      "mode": "inline",
+      "latex": "\\(\\vec q\\)"
+    },
+    {
+      "image": "image007.png",
+      "mode": "display",
+      "latex": "\\[\n\\vec q=-k\\left(\n\\vec\\delta_x\\frac{\\partial T}{\\partial x}\n+\\vec\\delta_y\\frac{\\partial T}{\\partial y}\n+\\vec\\delta_z\\frac{\\partial T}{\\partial z}\n\\right)\n\\]"
+    },
+    {
+      "image": "image008.png",
+      "mode": "display",
+      "latex": "\\[\n\\rho C_p\\left(\n\\frac{\\partial T}{\\partial t}\n+v_x\\frac{\\partial T}{\\partial x}\n+v_y\\frac{\\partial T}{\\partial y}\n+v_z\\frac{\\partial T}{\\partial z}\n\\right)\n=\nk\\left(\n\\frac{\\partial^2T}{\\partial x^2}\n+\\frac{\\partial^2T}{\\partial y^2}\n+\\frac{\\partial^2T}{\\partial z^2}\n\\right)\n\\]"
+    },
+    {
+      "image": "image009.png",
+      "mode": "display",
+      "latex": "\\[\n\\frac{D\\Theta}{D\\tau}=-(\\nabla\\cdot\\vec q^{*})\n\\]"
+    },
+    {
+      "image": "image010.png",
+      "mode": "inline",
+      "latex": "\\(\\vec q^{*}\\)"
+    },
+    {
+      "image": "image011.png",
+      "mode": "display",
+      "latex": "\\[\n\\vec q^{*}=-\\frac{1}{Pe}\\left(\n\\vec\\delta_x\\frac{\\partial T}{\\partial x}\n+\\vec\\delta_y\\frac{\\partial T}{\\partial y}\n+\\vec\\delta_z\\frac{\\partial T}{\\partial z}\n\\right)\n\\]"
+    },
+    {
+      "image": "image012.png",
+      "mode": "display",
+      "latex": "\\[\n\\frac{\\partial\\Theta}{\\partial\\tau}\n+V_x\\frac{\\partial\\Theta}{\\partial X}\n+V_y\\frac{\\partial\\Theta}{\\partial Y}\n+V_z\\frac{\\partial\\Theta}{\\partial Z}\n=\n\\frac{1}{Pe}\\left(\n\\frac{\\partial^2\\Theta}{\\partial X^2}\n+\\frac{\\partial^2\\Theta}{\\partial Y^2}\n+\\frac{\\partial^2\\Theta}{\\partial Z^2}\n\\right)\n\\]"
+    },
+    {
+      "image": "image013.png",
+      "mode": "display",
+      "latex": "\\[\nPe=\\frac{\\rho C_p v_0 x_0}{k}\n\\]"
+    }
+  ]
+}
