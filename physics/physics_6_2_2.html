@@ -11,6 +11,11 @@
 
 	<title>(ベクトル・ベクトル)（物理）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+<script>
+window.MathJax={output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},chtml:{displayAlign:'left',displayIndent:'0'}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="2">
@@ -50,13 +55,27 @@
 
 			<h2>(ベクトル・ベクトル)</h2>
 			<p>ベクトルとベクトルの内積は次式となります。</p>
-			<p class="im"><img src="./../img/physics_c_inner.files/image006.png"></p>
+			<div class="math-block" id="formula-physics-6-2-2-006" data-source-image="./../img/physics_c_inner.files/image006.png">
+\[
+\begin{aligned}
+(\vec{v}\cdot\vec{w})
+&=\left(\sum_{i=0}^{3}\vec{\delta}_{i}v_i\cdot\sum_{j=0}^{3}\vec{\delta}_{j}w_j\right)\\
+&=\left(\sum_{i=0}^{3}\vec{\delta}_{i}v_i\cdot\sum_{j=0}^{3}\vec{\delta}_{j}w_j\right)\\
+&=\sum_{i=0}^{3}\sum_{j=0}^{3}(\vec{\delta}_{i}v_i\cdot\vec{\delta}_{j}w_j)\\
+&=\sum_{i=0}^{3}\sum_{j=0}^{3}(\vec{\delta}_{i}\cdot\vec{\delta}_{j})v_iw_j\\
+&=\sum_{i=0}^{3}\sum_{j=0}^{3}\delta_{ij}v_iw_j\\
+&=v_xw_x+v_yw_y+v_zw_z
+\end{aligned}
+\]
+</div>
 			<p>上記の項のオーダーは、</p>
 			<p class="im"><span class="ft">(</span>ベクトル・ベクトル<span class="ft">) = (1 - 2 + 1) = 0</span></p>
 			<p>と計算されるので、スカラー量になります。</p>
 			<p class="im"><img src="./../img/physics_c_inner.files/image007.png"></p>
 			<p>また、下記が成り立ちます。</p>
-			<p class="im"><img src="./../img/physics_c_inner.files/image008.png"></p>
+			<div class="math-block" id="formula-physics-6-2-2-008" data-source-image="./../img/physics_c_inner.files/image008.png">
+\[(\vec{v}\cdot\vec{w})=(\vec{w}\cdot\vec{v})\]
+</div>
 			<br>
 
 			<div style="margin-top:10px;"></div>
