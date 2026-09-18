@@ -1,0 +1,82 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hydronamics 9_4 strict formula re-audit</title>
+<style>body{font-family:Arial,"Yu Gothic",sans-serif;margin:20px}.formula-pair{border-top:1px solid #bbb;padding:18px 0}.pair-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}.source,.render{min-width:0;overflow-x:auto;padding:10px;border:1px solid #ddd}.source img{display:block;max-width:100%;height:auto;margin:auto}.render mjx-container[display="true"]{margin:.4em 0!important;text-align:left!important}@media(max-width:900px){.pair-grid{grid-template-columns:1fr}}</style>
+<script>window.MathJax={output:{displayOverflow:"linebreak",linebreaks:{inline:false,width:"100%"}}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head><body><h1>Hydronamics 9_4 strict source-image re-audit</h1>
+<section class="formula-pair" id="formula-hydronamics_9_4-002"><h3>hydronamics_9_4-002</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_shear_symmetry.files/image002.png" alt="source hydronamics_9_4-002"></div>
+<div class="render" data-source-image="./../img/hydronamics_shear_symmetry.files/image002.png">\[
+(\tau_{yx|x}\Delta y\Delta z+\tau_{yx|x+\Delta x}\Delta y\Delta z)\frac{\Delta x}{2}
+-(\tau_{xy|y}\Delta z\Delta x+\tau_{xy|y+\Delta y}\Delta z\Delta x)\frac{\Delta y}{2}
+=I_z\omega
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_9_4-003"><h3>hydronamics_9_4-003</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_shear_symmetry.files/image003.png" alt="source hydronamics_9_4-003"></div>
+<div class="render" data-source-image="./../img/hydronamics_shear_symmetry.files/image003.png">\[
+\frac{\Delta x\Delta y\Delta z}{2}
+(\tau_{yx|x}+\tau_{yx|x+\Delta x}-\tau_{xy|y}-\tau_{xy|y+\Delta y})
+=I_z\omega
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_9_4-004"><h3>hydronamics_9_4-004</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_shear_symmetry.files/image004.png" alt="source hydronamics_9_4-004"></div>
+<div class="render" data-source-image="./../img/hydronamics_shear_symmetry.files/image004.png">\[
+\begin{aligned}
+I_z
+&=\int \rho r^2\,dV\\
+&=\iiint_{\Delta V}\rho r^2\,dV\\
+&=\Delta z\iint_{\Delta S}\rho r^2\,dS\\
+&=\Delta z\iint_{\Delta S}\rho(x^2+y^2)\,dS\\
+&=\Delta z\int_{\Delta L}\rho
+\left[\frac{2}{3}x^3+xy^2\right]_{-\Delta x/2}^{\Delta x/2}\,dL\\
+&=\Delta z\int_{\Delta L}\rho
+\left(\frac{1}{12}\Delta x^3+\Delta x y^2\right)\,dL\\
+&=\rho\Delta z
+\left[\frac{1}{12}\Delta x^3\Delta y+\frac{1}{12}\Delta x\Delta y^3\right]_{-\Delta y/2}^{\Delta y/2}\\
+&=\frac{\rho}{12}\Delta x\Delta y\Delta z(\Delta x^2+\Delta y^2)
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_9_4-005"><h3>hydronamics_9_4-005</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_shear_symmetry.files/image005.png" alt="source hydronamics_9_4-005"></div>
+<div class="render" data-source-image="./../img/hydronamics_shear_symmetry.files/image005.png">\[
+\begin{aligned}
+\frac{\Delta x\Delta y\Delta z}{2}
+(\tau_{yx|x}+\tau_{yx|x+\Delta x}-\tau_{xy|y}-\tau_{xy|y+\Delta y})
+&=I_z\omega\\
+&=\frac{\rho}{12}\Delta x\Delta y\Delta z(\Delta x^2+\Delta y^2)\omega
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_9_4-006"><h3>hydronamics_9_4-006</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_shear_symmetry.files/image006.png" alt="source hydronamics_9_4-006"></div>
+<div class="render" data-source-image="./../img/hydronamics_shear_symmetry.files/image006.png">\[
+\tau_{yx|x}+\tau_{yx|x+\Delta x}-\tau_{xy|y}-\tau_{xy|y+\Delta y}
+=\frac{\rho}{6}(\Delta x^2+\Delta y^2)\omega
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_9_4-007"><h3>hydronamics_9_4-007</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_shear_symmetry.files/image007.png" alt="source hydronamics_9_4-007"></div>
+<div class="render" data-source-image="./../img/hydronamics_shear_symmetry.files/image007.png">\[
+\tau_{yx|x}+\tau_{yx|x}-\tau_{xy|y}-\tau_{xy|y}=0
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_9_4-008"><h3>hydronamics_9_4-008</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_shear_symmetry.files/image008.png" alt="source hydronamics_9_4-008"></div>
+<div class="render" data-source-image="./../img/hydronamics_shear_symmetry.files/image008.png">\[
+\tau_{yx}=\tau_{xy}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-hydronamics_9_4-009"><h3>hydronamics_9_4-009</h3><div class="pair-grid">
+<div class="source"><img src="./../img/hydronamics_shear_symmetry.files/image009.png" alt="source hydronamics_9_4-009"></div>
+<div class="render" data-source-image="./../img/hydronamics_shear_symmetry.files/image009.png">\[
+\begin{aligned}
+\tau_{yz}&=\tau_{zy}\\
+\tau_{zx}&=\tau_{xz}
+\end{aligned}
+\]</div>
+</div></section>
+</body></html>
