@@ -11,6 +11,14 @@
 
 	<title>マッハ数（無次元数）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+<script>
+window.MathJax={
+  output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+  chtml:{displayAlign:'left',displayIndent:'0'}
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="3">
@@ -49,13 +57,21 @@
 
 			<h2>マッハ数</h2>
 			<p>音速と代表速度の比を表す無次元数</p>
-			<p class="im"><img src="./../img/hydronamics_d_ma.files/image001.png"></p>
+			<div class="math-block" id="formula-hydronamics-11-6-001" data-source-image="./../img/hydronamics_d_ma.files/image001.png">
+\[
+Ma=\frac{v}{c}
+\]
+</div>
 			<p>ここで、<span class="ft"><i>c</i>[m/s]</span>
 					は流体の音速を表しています。これは、圧縮性流体を扱う場合に使用します。
 					連続の式を無次元化した場合に現れます。</p>
 			<p>厳密に言うと、連続の式において、ある地点における密度が時系列的に変化すると仮定した場合に
 					用いられる無次元数になります。式で表すと下記になります。</p>
-			<p class="im"><img src="./../img/hydronamics_d_ma.files/image002.png"></p>
+			<div class="math-block" id="formula-hydronamics-11-6-002" data-source-image="./../img/hydronamics_d_ma.files/image002.png">
+\[
+\frac{\partial\rho}{\partial t}\neq0
+\]
+</div>
 			<br>
 
 
