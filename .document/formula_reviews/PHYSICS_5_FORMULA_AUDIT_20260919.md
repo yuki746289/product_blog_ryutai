@@ -27,7 +27,17 @@ Transcription data:
 
 ## Pass 2 — browser MathJax comparison
 
-Status: **Pending**
+Result: **4 / 4 PASS**
+
+- Workflow run: **35395065101**
+- Artifact: `physics-5-pass2`
+- Artifact id: **10567437487**
+- MathJax errors: **0**
+- Unrendered formulas: **0**
+- Pair-page horizontal overflow: **0 / 4**
+- Browser page errors: **0**
+
+All four source/render pairs were visually inspected. The MathJax rendering matches the source-visible operator symbols, summation bounds, vector arrows, derivative order, and term order.
 
 Normal-page application is prohibited until Pass 2 is complete.
 
@@ -38,7 +48,7 @@ Normal-page application is prohibited until Pass 2 is complete.
 | Formula targets | 4 |
 | Retained diagrams | 0 |
 | Pass 1 | **4 / 4 PASS** |
-| Pass 2 | Pending |
+| Pass 2 | **4 / 4 PASS** |
 | Production deployment | Not performed |
 
-**Physics 5 is not yet certified for normal-page application.**
+**Physics 5 is certified for normal-page application.**
