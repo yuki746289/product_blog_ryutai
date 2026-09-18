@@ -708,6 +708,29 @@ FEM batches 1–3 / FEM 5後に残っていた未分類20画像を分類し、�
 - `.document/formula_reviews/HYDRONAMICS_12_FORMULA_AUDIT_20260918.md`
 - `.document/formula_reviews/HYDRONAMICS_12_NORMAL_BROWSER_QA_20260918.md`
 
+
+## 2026-09-18 Hydronamics 11_6 監査・通常ページ反映
+
+`hydronamics/hydronamics_11_6.html` のマッハ数ページを、元HP画像を正本として処理した。
+
+- 分類対象: **2画像**
+  - 数式: **2**
+  - 図: **0**
+- Pass 1: **2/2**
+- Pass 2 run: **35349495411**
+- Pass 2: **2/2**
+- 通常ページ反映: **2/2**
+- Apply run: **35349670890**
+- Normal browser QA run: **35349676360**
+- desktop/mobile: 2/2 blocks、残存画像0、MathJax errors 0、unrendered 0、uncontained 0、page overflowなし
+- mobile local-scroll: **0**
+- 本番FTP反映は未実施。
+
+詳細:
+- `.document/formula_reviews/HYDRONAMICS_11_6_IMAGE_CLASSIFICATION_20260918.md`
+- `.document/formula_reviews/HYDRONAMICS_11_6_FORMULA_AUDIT_20260918.md`
+- `.document/formula_reviews/HYDRONAMICS_11_6_NORMAL_BROWSER_QA_20260918.md`
+
 ## 次の優先順
 
 1. サイト全体の残存画像を「数式 / 図 / 混在画像」に分類する。
@@ -757,7 +780,7 @@ FEM batches 1–3 / FEM 5後に残っていた未分類20画像を分類し、�
 - FEM 5: **7件完了（純MathJax 6 + HTML本文＋MathJax 1）、PC/スマホQA完了**
 - Remaining FEM: **11件完了（純MathJax 10 + HTML本文＋MathJax 1）、PC/スマホQA完了**
 - **FEMカテゴリの既知数式画像は変換完了**
-- 厳密監査・通常ページ化まで完了した数式・数式テキスト: **471件**
+- 厳密監査・通常ページ化まで完了した数式・数式テキスト: **473件**
 - 残存画像は数式とは限らないため、今後はページ単位で分類してから数式のみ変換する。
 - MPS欠損GIF参照は別タスクとして扱う。
 - 本番FTP反映は未実施。
