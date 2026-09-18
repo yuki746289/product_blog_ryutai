@@ -1303,6 +1303,22 @@ Physics の最終残存画像インベントリを再照合した。
 - `.document/formula_reviews/MESH_1_FORMULA_AUDIT_20260919.md`
 - `.document/formula_reviews/MESH_1_NORMAL_BROWSER_QA_20260919.md`
 
+
+## 2026-09-19 Mesh 3_2 最終残存画像監査
+
+`mesh/mesh_3_2.html` の8分木ページに残る5画像を元HP画像で再確認した。
+
+- 残存画像: **5**
+- 数式画像: **0**
+- 保持図: **5**
+- 通常ページ変更: **なし**
+- 変更なしのため追加ブラウザQAは不要
+- 本番FTP反映は未実施。
+
+詳細:
+- `.document/formula_reviews/MESH_3_2_IMAGE_CLASSIFICATION_20260919.md`
+- `.document/formula_reviews/MESH_3_2_RETAINED_IMAGE_AUDIT_20260919.md`
+
 ## 次の優先順
 
 1. **Mesh残存53画像**をページ単位で分類し、数式だけを Pass 1 → Pass 2 → 通常反映 → PC/スマホQA の順で処理する。
@@ -1375,6 +1391,7 @@ Physics の最終残存画像インベントリを再照合した。
 - Mesh 2: **9式完了、図1件は画像維持、PC/スマホQA完了**
 - Mesh 5: **7式完了、図2件は画像維持、PC/スマホQA完了**
 - Mesh 1: **5式完了、グラフ1件は画像維持、PC/スマホQA完了**
+- Mesh 3_2: **数式画像0、保持図5件確認済み**
 - **Physicsカテゴリの既知数式画像は変換完了**
   - 最新残存16画像はすべて確認済みの保持図（数式画像0）\n- 厳密監査・通常ページ化まで完了した数式・数式テキスト: **559件**
 - 残存画像は数式とは限らないため、今後はページ単位で分類してから数式のみ変換する。
