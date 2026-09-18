@@ -11,6 +11,14 @@
 
 	<title>物理量（物理）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+<script>
+window.MathJax={
+  output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+  chtml:{displayAlign:'left',displayIndent:'0'}
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="2">
@@ -54,21 +62,46 @@
 			<h2>・速度<span class="ft"><i>v</i>[m/s]</span></h2>
 			<p>単位時間当たりに進む距離。また、時間と距離の変換。時間を<i><span class="ft">t</span></i>
 					<span class="ft">[s]</span>、移動距離を<span class="ft"><i>l</i>[m]</span>とすると次式で定義されます。</p>
-			<p class="im"><img src="./../img/physics_quantity.files/image001.png"></p>
+			<div class="math-block" id="formula-physics-2-001" data-source-image="./../img/physics_quantity.files/image001.png">
+\[
+\begin{aligned}
+v
+&=\lim_{\Delta t\to0}\frac{l_{t+\Delta t}-l_t}{\Delta t}\\
+&=\frac{dl}{dt}
+\end{aligned}
+\]
+</div>
 
 			<br>
 			<h2>・加速度<span class="ft"><i>a</i>[m/s<sup>2</sup>]</span></h2>
 			<p>時間に対する速度勾配</p>
-			<p class="im"><img src="./../img/physics_quantity.files/image002.png"></p>
+			<div class="math-block" id="formula-physics-2-002" data-source-image="./../img/physics_quantity.files/image002.png">
+\[
+\begin{aligned}
+a
+&=\lim_{\Delta t\to0}\frac{v_{t+\Delta t}-v_t}{\Delta t}\\
+&=\frac{dv}{dt}
+\end{aligned}
+\]
+</div>
 			<p>重力も加速度です。これは重力によって質点に速度勾配が生じることを意味しています。</p>
 			<br>
-			<p class="im"><img src="./../img/physics_quantity.files/image003.png" alt="*">：時間に対して速度が変化している。</p>
-			<p class="im"><img src="./../img/physics_quantity.files/image004.png" alt="*">：速度は変わらない。</p>
+			<p class="im"><span class="math-inline" id="formula-physics-2-003" data-source-image="./../img/physics_quantity.files/image003.png">\(a\neq0\)</span>：時間に対して速度が変化している。</p>
+			<p class="im"><span class="math-inline" id="formula-physics-2-004" data-source-image="./../img/physics_quantity.files/image004.png">\(a=0\)</span>：速度は変わらない。</p>
 
 			<br>
 			<h2>・力<span class="ft"><i>F</i>[N]</span></h2>
 			<p>質量<span class="ft"><i>m</i>[kg]</span>の時間に対する速度勾配。</p>
-			<p class="im"><img src="./../img/physics_quantity.files/image005.png"></p>
+			<div class="math-block" id="formula-physics-2-005" data-source-image="./../img/physics_quantity.files/image005.png">
+\[
+\begin{aligned}
+F
+&=ma\\
+&=m\frac{dv}{dt}\\
+&=\lim_{\Delta t\to0}\frac{mv_{t+\Delta t}-mv_t}{\Delta t}
+\end{aligned}
+\]
+</div>
 			<p>単位には、ニュートン<span class="ft">[N]</span>が使用され、次式で定義されます。</p>
 			<p class="im"><span class="ft">[N] = [kg m/s<sup>2</sup>]</span></p>
 			<p>次の様にも表現できます。</p>
@@ -82,7 +115,16 @@
 
 			<h2>・運動量<span class="ft"><i>mv</i>[kg m/s]</span></h2>
 			<p>加えた力<span class="ft"><i>F</i>[N]</span>の総量。力積とも言います。簡易的に言うと何秒間、力を加え続けたかになります。</p>
-			<p class="im"><img src="./../img/physics_quantity.files/image008.png"></p>
+			<div class="math-block" id="formula-physics-2-008" data-source-image="./../img/physics_quantity.files/image008.png">
+\[
+\begin{aligned}
+\int F\,dt
+&=\int m\frac{dv}{dt}\,dt\\
+&=m\int dv\\
+&=m(v_f-v_i)\,[\mathrm{kgm/s}]
+\end{aligned}
+\]
+</div>
 			<p>上式から大きな力<span class="ft"><i>F</i>[N]</span>が短時間加わった場合の運動量と、
 					小さな力<span class="ft"><i>F</i>[N]</span>が長時間加わった場合の運動量は等しいことがわかります。
 					つまり、運動量は力を加えた結果であり、過程は問われません。</p>
@@ -94,7 +136,19 @@
 
 			<h2>・エネルギー</span><span class="ft"><i>E</i>[J]</span></h2>
 			<p>加えた力<span class="ft"><i>F</i>[N]</span>の総量。簡易的に言うと何メートル力を加え続けたになります。</p>
-			<p class="im"><img src="./../img/physics_quantity.files/image011.png"></p>
+			<div class="math-block" id="formula-physics-2-011" data-source-image="./../img/physics_quantity.files/image011.png">
+\[
+\begin{aligned}
+\int F\,dl
+&=\int F\frac{dl}{dt}\,dt\\
+&=\int Fv\,dt\\
+&=\int m\frac{dv}{dt}\frac{dl}{dt}\,dt\\
+&=\int m\frac{dl}{dt}\,dv\\
+&=\int mv\,dv\\
+&=\frac{1}{2}mv^2
+\end{aligned}
+\]
+</div>
 			<p>速度<span class="ft"><i>v</i>[m/s]</span>が距離<span class="ft"><i>l</i>[m]</span>と
 					時間<span class="ft"><i>t</i>[s]</span>の変換に使用されています。つまり、「何メートル力を加え続けたか。」
 					が「何秒間、力を加え続けたか。」に変換されていることがわかります。</p>
