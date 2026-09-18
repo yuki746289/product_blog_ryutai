@@ -41,58 +41,87 @@ jobs:
 
           raw=page.read_bytes(); enc=None
           for candidate in ('cp932','utf-8'):
-            try: original=raw.decode(candidate); enc=candidate; break
-            except UnicodeDecodeError: pass
-          if enc is None: raise RuntimeError('encoding failed')
+            try:
+              original=raw.decode(candidate); enc=candidate; break
+            except UnicodeDecodeError:
+              pass
+          if enc is None:
+            raise RuntimeError('encoding failed')
 
           def strip_mathjax(text):
             text=re.sub(r'\s*<script>\s*window\.MathJax\s*=\s*\{.*?</script>','',text,flags=re.I|re.S)
             text=re.sub(r'\s*<script\b[^>]*src=["\'][^"\']*mathjax[^"\']*["\'][^>]*>\s*</script>','',text,flags=re.I|re.S)
             return text
 
-          alt='|'.join(nums)
-          pat=re.compile(
-            rf'(?P<block><div\b(?=[^>]*class=["\'][^"\']*\bmath-block\b[^"\']*["\'])(?=[^>]*data-source-image=["\'][^"\']*{re.escape(imgdir)}/image(?P<bnum>{alt})\.png["\'])[^>]*>.*?</div>)'
-            rf'|(?P<img><p\b(?=[^>]*class=["\'][^"\']*\bim\b[^"\']*["\'])[^>]*>\s*<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image(?P<inum>{alt})\.png["\'][^>]*>\s*</p>)',
-            flags=re.I|re.S)
+          def old_pat(n):
+            if n=='010':
+              return re.compile(
+                rf'<p\b(?=[^>]*class=["\'][^"\']*\bim\b[^"\']*["\'])[^>]*>\s*'
+                rf'<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image{n}\.png["\'][^>]*>\s*'
+                rf'<br\s*/?>\s*<br\s*/?>',
+                flags=re.I|re.S)
+            return re.compile(
+              rf'<p\b(?=[^>]*class=["\'][^"\']*\bim\b[^"\']*["\'])[^>]*>\s*'
+              rf'<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image{n}\.png["\'][^>]*>\s*</p>',
+              flags=re.I|re.S)
 
-          matches=list(pat.finditer(original))
-          found=[m.group('inum') or m.group('bnum') for m in matches]
-          if found!=nums: raise RuntimeError(f'sequence {found} != {nums}')
+          def new_pat(n):
+            return re.compile(
+              rf'<div\b(?=[^>]*class=["\'][^"\']*\bmath-block\b[^"\']*["\'])'
+              rf'(?=[^>]*data-source-image=["\'][^"\']*{re.escape(imgdir)}/image{n}\.png["\'])[^>]*>.*?</div>',
+              flags=re.I|re.S)
 
-          def guard(text):
+          def skeleton(text):
             text=strip_mathjax(text)
-            text=pat.sub('<FORMULA/>',text)
+            for n in nums:
+              text=new_pat(n).sub('<FORMULA/>',text)
+              text=old_pat(n).sub('<FORMULA/>',text)
             return re.sub(r'\s+',' ',text).strip()
-          before=guard(original)
 
-          pos=[0]
-          def repl(_m):
-            n=nums[pos[0]]; pos[0]+=1
-            return (f'<div class="math-block" id="formula-hydronamics-9-2-{n}" '
-                    f'data-source-image="./../img/{imgdir}/image{n}.png">\n'
-                    f'{bynum[n]["latex"]}\n</div>')
-          applied=pat.sub(repl,original)
+          before=skeleton(original)
+          applied=original
+
+          for n in nums:
+            existing=new_pat(n)
+            if existing.search(applied):
+              continue
+            p=old_pat(n)
+            if len(p.findall(applied))!=1:
+              raise RuntimeError(f'image{n}: source wrapper count != 1')
+            block=(f'<div class="math-block" id="formula-hydronamics-9-2-{n}" '
+                   f'data-source-image="./../img/{imgdir}/image{n}.png">\n'
+                   f'{bynum[n]["latex"]}\n</div>')
+            applied=p.sub(block,applied,count=1)
+
           applied=strip_mathjax(applied)
-          if '</head>' not in applied: raise RuntimeError('missing head')
+          if '</head>' not in applied:
+            raise RuntimeError('missing head')
           applied=applied.replace('</head>',mathjax4+'</head>',1)
 
-          if guard(applied)!=before: raise RuntimeError('non-formula content changed')
+          if skeleton(applied)!=before:
+            raise RuntimeError('non-formula content changed')
 
-          mapped=re.findall(
-            rf'<div\b[^>]*class=["\'][^"\']*\bmath-block\b[^"\']*["\'][^>]*data-source-image=["\'][^"\']*{re.escape(imgdir)}/image(\d{{3}})\.png["\']',
-            applied,flags=re.I)
-          if mapped!=nums: raise RuntimeError(f'mapped {mapped} != {nums}')
+          mapped=[]
+          for n in nums:
+            if len(new_pat(n).findall(applied))!=1:
+              raise RuntimeError(f'image{n}: math block count != 1')
+            mapped.append(n)
+          if mapped!=nums:
+            raise RuntimeError(f'mapped {mapped} != {nums}')
 
-          leftovers=re.findall(
-            rf'<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image(?:{alt})\.png["\'][^>]*>',
-            applied,flags=re.I)
-          if leftovers: raise RuntimeError(f'target images remain {len(leftovers)}')
+          target_imgs=0
+          for n in nums:
+            target_imgs += len(re.findall(
+              rf'<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image{n}\.png["\'][^>]*>',
+              applied,flags=re.I))
+          if target_imgs:
+            raise RuntimeError(f'target images remain {target_imgs}')
 
           diag=len(re.findall(
             rf'<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image001\.png["\'][^>]*>',
             applied,flags=re.I))
-          if diag!=1: raise RuntimeError(f'diagram count {diag} != 1')
+          if diag!=1:
+            raise RuntimeError(f'diagram count {diag} != 1')
 
           page.write_bytes(applied.encode(enc))
           Path('.document/formula_reviews/HYDRONAMICS_9_2_NORMAL_APPLY_RESULT.md').write_text(
@@ -100,6 +129,7 @@ jobs:
             '- Certified formulas applied: **9 / 9**\n'
             '- Target formula image tags remaining: **0**\n'
             '- Diagram image001 preserved unchanged.\n'
+            '- Source malformed image010 paragraph was replaced as one formula wrapper unit.\n'
             '- Non-formula content guard: **PASS**\n'
             '- MathJax: v4\n'
             '- Production deployment: not performed.\n',encoding='utf-8')
