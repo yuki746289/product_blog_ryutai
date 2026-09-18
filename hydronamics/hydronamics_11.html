@@ -11,6 +11,14 @@
 
 	<title>無次元数</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+<script>
+window.MathJax={
+  output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+  chtml:{displayAlign:'left',displayIndent:'0'}
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="3">
@@ -66,13 +74,64 @@
 					　・しかし、代表速度・長さの取り方や物性値が異なっていれば、現実の現象（有次元の現象）は異なったものになる。<br>
 					と言うことになります。</p>
 				<p>系に作用する力は次の様になります。</p>
-			<p class="im" style="text-align:left;padding-left:50px;"><img src="./../img/hydronamics_d_number.files/image001.png"></p>
+			<div class="math-block" id="formula-hydronamics-11-001" data-source-image="./../img/hydronamics_d_number.files/image001.png">
+\[
+\begin{aligned}
+F_{\text{慣性力}}
+&=ma
+&&[\mathrm{kg}][\mathrm{m/s^2}]\\
+&=w_x\Delta t\frac{dv}{dt}
+&&[\mathrm{kg/s}][\mathrm{s}][\mathrm{m/s^2}]\\
+&=\rho x^2v\Delta t\frac{dv}{dt}\\
+&=\rho x^2v\frac{dv}{dt}\Delta t\\
+&=\rho x^2v^2
+&&[\mathrm{N}]\left(=[\mathrm{kg/m^3}][\mathrm{m^2}][\mathrm{m^2/s^2}]\right)
+\end{aligned}
+\]
+</div>
 			<br><br>
-			<p class="im" style="text-align:left;padding-left:50px;"><img src="./../img/hydronamics_d_number.files/image002.png"></p>
+			<div class="math-block" id="formula-hydronamics-11-002" data-source-image="./../img/hydronamics_d_number.files/image002.png">
+\[
+\begin{aligned}
+F_{\text{粘性力}}
+&=\mu\frac{\partial v}{\partial x}\times A
+&&\left[\frac{\mathrm{N}}{\mathrm{m^2}}\mathrm{s}\right]
+\frac{[\mathrm{m/s}]}{[\mathrm{m}]}[\mathrm{m^2}]\\
+&=\mu\frac{v}{x}x^2
+&&[\mathrm{N/m^2}][\mathrm{m^2}]\\
+&=\mu vx
+&&[\mathrm{N}]
+\end{aligned}
+\]
+</div>
 			<br><br>
-			<p class="im" style="text-align:left;padding-left:50px;"><img src="./../img/hydronamics_d_number.files/image003.png"></p>
+			<div class="math-block" id="formula-hydronamics-11-003" data-source-image="./../img/hydronamics_d_number.files/image003.png">
+\[
+\begin{aligned}
+F_{\text{表面張力}/2}
+&=\frac{\gamma}{R}\times A
+&&\frac{[\mathrm{N/m}]}{[\mathrm{m}]}[\mathrm{m^2}]\\
+&=\frac{\gamma}{x}x^2
+&&\frac{[\mathrm{N/m}]}{[\mathrm{m}]}[\mathrm{m^2}]\\
+&=\gamma x
+&&[\mathrm{N}]
+\end{aligned}
+\]
+</div>
 			<br><br>
-			<p class="im" style="text-align:left;padding-left:50px;"><img src="./../img/hydronamics_d_number.files/image004.png"></p>
+			<div class="math-block" id="formula-hydronamics-11-004" data-source-image="./../img/hydronamics_d_number.files/image004.png">
+\[
+\begin{aligned}
+F_{\text{重力}}
+&=mg
+&&[\mathrm{kg}][\mathrm{m/s^2}]\\
+&=\rho Vg
+&&[\mathrm{kg/m^3}][\mathrm{m^3}][\mathrm{m/s^2}]\\
+&=\rho x^3g
+&&[\mathrm{N}]\left(=[\mathrm{kg/m^3}][\mathrm{m^3}][\mathrm{m/s^2}]\right)
+\end{aligned}
+\]
+</div>
 			<p>ここで、<span class="ft"><i>x</i>[m]</span>は代表長さ、
 					<span class="ft"><i>v</i>[m/s]</span>は代表速度です。</p>
 			<p>これらの力の釣り合いを示す無次元数を紹介します。
