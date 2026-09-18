@@ -1,0 +1,176 @@
+# Created: 2026-09-18T23:56:00+09:00
+name: Physics 4 Normal Browser QA
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/physics-4-normal-browser-qa.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Chromium
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Start local site
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/physics4-normal-qa-http.log 2>&1 &
+          sleep 1
+
+      - name: Run desktop and mobile QA
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+
+          file='physics/physics_4.html'
+          imgdir='physics_q_category.files'
+          viewports={'desktop':{'width':1440,'height':1000},'mobile':{'width':390,'height':844}}
+          out=Path('physics-4-normal-qa')
+          out.mkdir(exist_ok=True)
+          results=[]
+          failures=[]
+
+          with sync_playwright() as p:
+              browser=p.chromium.launch(headless=True)
+              for vp_name,vp in viewports.items():
+                  ctx=browser.new_context(viewport=vp,device_scale_factor=1)
+                  page=ctx.new_page()
+                  page_errors=[]
+                  page.on('pageerror',lambda exc,store=page_errors:store.append(str(exc)))
+                  page.goto('http://127.0.0.1:8000/'+file,wait_until='domcontentloaded',timeout=120000)
+                  page.wait_for_function('() => window.MathJax && MathJax.startup && MathJax.startup.promise',timeout=60000)
+                  page.evaluate('async()=>{await MathJax.startup.promise;}')
+                  page.wait_for_timeout(500)
+
+                  blocks=page.locator(f'div.math-block[data-source-image*="{imgdir}/image"]')
+                  inlines=page.locator(f'span.math-inline[data-source-image*="{imgdir}/image"]')
+                  block_count=blocks.count()
+                  inline_count=inlines.count()
+                  img_count=page.locator(f'img[src*="{imgdir}/image"]').count()
+                  merror=page.locator('mjx-merror').count()
+                  unrendered=0
+                  local_scroll=0
+                  uncontained=0
+
+                  for loc in (blocks,inlines):
+                      for i in range(loc.count()):
+                          el=loc.nth(i)
+                          if el.locator('mjx-container').count()<1:
+                              unrendered+=1
+                          dims=el.evaluate('(e)=>({clientWidth:e.clientWidth,scrollWidth:e.scrollWidth,overflowX:getComputedStyle(e).overflowX})')
+                          if dims['scrollWidth']>dims['clientWidth']+1:
+                              local_scroll+=1
+                              if vp_name=='desktop' or dims['overflowX'] not in ('auto','scroll'):
+                                  uncontained+=1
+
+                  pd=page.evaluate('() => ({cw:document.documentElement.clientWidth,sw:document.documentElement.scrollWidth})')
+                  page_overflow=pd['sw']>pd['cw']+2
+
+                  shotdir=out/vp_name
+                  shotdir.mkdir(parents=True,exist_ok=True)
+                  page.screenshot(path=str(shotdir/'full.png'),full_page=True,animations='disabled')
+
+                  row={
+                      'viewport':vp_name,
+                      'display':block_count,
+                      'inline':inline_count,
+                      'retained_images':img_count,
+                      'mathjax_errors':merror,
+                      'unrendered':unrendered,
+                      'local_scroll':local_scroll,
+                      'uncontained':uncontained,
+                      'page_overflow':page_overflow,
+                      'page_errors':page_errors
+                  }
+                  results.append(row)
+
+                  if block_count!=3: failures.append(f'{vp_name}: display {block_count} != 3')
+                  if inline_count!=3: failures.append(f'{vp_name}: inline {inline_count} != 3')
+                  if img_count!=3: failures.append(f'{vp_name}: retained images {img_count} != 3')
+                  if merror: failures.append(f'{vp_name}: MathJax errors {merror}')
+                  if unrendered: failures.append(f'{vp_name}: unrendered {unrendered}')
+                  if uncontained: failures.append(f'{vp_name}: uncontained overflow {uncontained}')
+                  if page_overflow: failures.append(f'{vp_name}: page overflow')
+                  if page_errors: failures.append(f'{vp_name}: page errors {page_errors}')
+
+                  print(row)
+                  ctx.close()
+
+              browser.close()
+
+          status='PASS' if not failures else 'FAIL'
+          (out/'manifest.json').write_text(
+              json.dumps({'status':status,'results':results,'failures':failures},ensure_ascii=False,indent=2),
+              encoding='utf-8')
+
+          report=Path('.document/formula_reviews/PHYSICS_4_NORMAL_BROWSER_QA_20260918.md')
+          lines=[
+              '# Physics 4 Normal Browser QA — 2026-09-18','',
+              f'- Overall: **{status}**',
+              '- Browser: Chromium / Playwright',
+              '- Viewports: desktop 1440×1000, mobile 390×844',
+              '- Expected display formulas: 3',
+              '- Expected inline formulas: 3',
+              '- Expected retained diagrams / mixed illustrations: 3',
+              '- Production deployment: not performed.','',
+              '| Viewport | Display | Inline | Retained images | MathJax errors | Unrendered | Local scroll | Uncontained | Page overflow |',
+              '|---|---:|---:|---:|---:|---:|---:|---:|---|'
+          ]
+          for r in results:
+              lines.append(
+                  f"| {r['viewport']} | {r['display']}/3 | {r['inline']}/3 | {r['retained_images']}/3 | "
+                  f"{r['mathjax_errors']} | {r['unrendered']} | {r['local_scroll']} | "
+                  f"{r['uncontained']} | {'YES' if r['page_overflow'] else 'NO'} |")
+          lines += ['', '## Failures', '']
+          lines += [f'- {x}' for x in failures] if failures else ['- None.']
+          report.write_text('\n'.join(lines)+'\n',encoding='utf-8')
+
+          if failures:
+              raise SystemExit(1)
+          PY
+
+      - name: Commit QA report
+        if: success()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .document/formula_reviews/PHYSICS_4_NORMAL_BROWSER_QA_20260918.md
+          if ! git diff --cached --quiet; then
+            git commit -m 'docs: record physics 4 normal browser QA'
+            for attempt in 1 2 3 4 5; do
+              git pull --rebase origin develop
+              if git push origin HEAD:develop; then
+                exit 0
+              fi
+              if [ "$attempt" -eq 5 ]; then
+                exit 1
+              fi
+              sleep 2
+            done
+          fi
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: physics-4-normal-qa
+          path: physics-4-normal-qa
+          retention-days: 7
