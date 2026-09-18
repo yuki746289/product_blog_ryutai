@@ -98,7 +98,7 @@ jobs:
 
           page.write_bytes(applied.encode('cp932'))
 
-          report=Path('.document/formula_reviews/HEAT_7_1_NORMAL_APPLY_RESULT.md')
+          report=Path('.document/formula_reviews/HEAT_7_2_NORMAL_APPLY_RESULT.md')
           report.write_text(
               '# Heat 7-2 Normal Apply Result\n\n'
               '- Page: heat/heat_7_2.html\n'
@@ -117,6 +117,6 @@ jobs:
           git diff --check
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add heat/heat_7_2.html .document/formula_reviews/HEAT_7_1_NORMAL_APPLY_RESULT.md
-          git commit -m 'feat: apply certified heat 7-1 formulas'
+          git add heat/heat_7_2.html .document/formula_reviews/HEAT_7_2_NORMAL_APPLY_RESULT.md
+          git commit -m 'feat: apply certified heat 7-2 formulas'
           git push origin HEAD:develop
