@@ -1,0 +1,16 @@
+{
+  "page": "hydronamics/hydronamics_9_3.html",
+  "image_dir": "img/hydronamics_stress_pressure.files",
+  "canonical_source": "original source images",
+  "retained_diagrams": [],
+  "formulas": [
+    {
+      "image": "image001.png",
+      "latex": "\\[\n\\frac{p_x+p_y+p_z}{3}\n=\np-\\mu'(\\nabla\\cdot\\vec v)\n\\]"
+    },
+    {
+      "image": "image002.png",
+      "latex": "\\[\np_x=p_y=p_z=p\n\\]"
+    }
+  ]
+}
