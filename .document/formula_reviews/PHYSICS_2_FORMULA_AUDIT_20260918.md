@@ -20,8 +20,33 @@ Source-visible limits, derivatives, integrals, subscripts, units, and equality o
 
 ## Pass 2 — browser MathJax comparison
 
-Status: **pending workflow artifact review**
+- Workflow run: **35355730644**
+- Artifact: `physics-2-pass2`
+- Artifact id: **10551277987**
+- Result: **7 / 7 PASS**
+- MathJax rendering errors: **0**
+- Formula-level horizontal overflow: **0 / 7**
+- Source image vs MathJax rendering: **7 / 7 visually checked and PASS**
+
+## Diagram policy
+
+Retained unchanged:
+- `image006.png`
+- `image007.png`
+- `image009.png`
+- `image010.png`
+- `image012.png`
 
 ## Certification
 
-Not yet certified for normal-page application until Pass 2 is complete.
+| Check | Result |
+|---|---|
+| Formula targets | 7 |
+| Diagrams retained | 5 |
+| Pass 1 | **7 / 7 PASS** |
+| Pass 2 | **7 / 7 PASS** |
+| MathJax errors | **0** |
+| Audit horizontal overflow | **0 / 7** |
+| Production deployment | Not performed |
+
+**Physics 2 formulas are certified for application to the normal page.**
