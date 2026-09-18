@@ -1,0 +1,41 @@
+{
+  "page": "hydronamics/hydronamics_10_1.html",
+  "image_dir": "img/hydronamics_b_surface.files",
+  "canonical_source": "original source images",
+  "retained_diagrams": [
+    "image001.png",
+    "image003.png",
+    "image004.png"
+  ],
+  "transcription_assist": {
+    "source": "HP.7z / 流体力学_境界に働く力_表面張力.doc",
+    "method": "Word/Equation Editor candidate + canonical source-image verification",
+    "verified_date": "2026-09-18",
+    "source_image_is_canonical": true
+  },
+  "source_notation_notes": [
+    "image007 preserves the source-visible repeated r_2 in both numerator terms, even though the final line uses (r_1+r_2)/(r_1 r_2)."
+  ],
+  "formulas": [
+    {
+      "image": "image002.png",
+      "latex": "\\[\n\\begin{aligned}\n\\Delta P&=\\Delta P_{\\mathrm{gas}}-\\Delta P_{\\mathrm{liquid}}\\\\\n&=\\frac{2\\gamma}{R}\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image005.png",
+      "latex": "\\[\n\\begin{aligned}\n\\Delta F_1\n&=2F_2\\sin\\frac{\\theta_1}{2}\\\\\n&=2\\gamma\\,2\\pi r_2\\frac{\\theta_2}{2\\pi}\\sin\\frac{\\theta_1}{2}\\\\\n&=2\\gamma r_2\\theta_2\\sin\\frac{\\theta_1}{2}\\\\\n&\\cong 2\\gamma r_2\\theta_2\\frac{\\theta_1}{2}\\\\\n&=\\gamma r_2\\theta_2\\theta_1\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image006.png",
+      "latex": "\\[\n\\Delta F_2=\\gamma r_1\\theta_1\\theta_2\n\\]"
+    },
+    {
+      "image": "image007.png",
+      "latex": "\\[\n\\begin{aligned}\n\\Delta P\n&=\\frac{\\Delta F_1+\\Delta F_2}{\\Delta s}\\\\\n&=\\frac{\n\\gamma r_2\\theta_2\\theta_1+\\gamma r_2\\theta_1\\theta_2\n}{\n2\\pi r_1\\frac{\\theta_1}{2\\pi}\\times 2\\pi r_2\\frac{\\theta_2}{2\\pi}\n}\\\\\n&=\\frac{\n\\gamma r_2\\theta_2\\theta_1+\\gamma r_2\\theta_1\\theta_2\n}{\nr_1\\theta_1 r_2\\theta_2\n}\\\\\n&=\\gamma\\frac{r_1+r_2}{r_1r_2}\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image008.png",
+      "latex": "\\[\n\\Delta P=\\frac{2\\gamma}{r}\\qquad \\because\\ r_1=r_2\n\\]"
+    }
+  ]
+}
