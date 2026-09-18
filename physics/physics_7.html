@@ -11,6 +11,11 @@
 
 	<title>公式（物理）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+<script>
+window.MathJax={output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},chtml:{displayAlign:'left',displayIndent:'0'}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="2">
@@ -47,7 +52,9 @@
 
 			<h2>公式</h2>
 			<p>流体力学で使用される公式を示します。</p>
-			<p class="im"><img src="./../img/physics_form.files/image001.png"></p>
+			<div class="math-block" id="formula-physics-7-001" data-source-image="./../img/physics_form.files/image001.png">
+\[\Delta\vec{v}=\nabla(\nabla\cdot\vec{v})-[\nabla\times[\nabla\times\vec{v}]]\]
+</div>
 			<p>これは、ヘルムホルツ分解と言います。<!-- 流体力学では、粘性項の分解に用いられる。--></p>
 			<br>
 
