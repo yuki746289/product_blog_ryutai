@@ -1,0 +1,34 @@
+{
+  "page": "fem/fem_2_3.html",
+  "image_dir": "img/fem_tet.files",
+  "canonical_source": "original source images",
+  "retained_diagrams": [
+    "image001.png",
+    "image007.png"
+  ],
+  "formulas": [
+    {
+      "image": "image002.png",
+      "latex": "\\[\n\\phi(x,y,z)=\\alpha+\\beta x+\\gamma y+\\xi z\n\\]"
+    },
+    {
+      "image": "image003.png",
+      "latex": "\\[\n\\left\\{\n\\begin{aligned}\n\\phi_1&=\\alpha+\\beta x_1+\\gamma y_1+\\xi z_1\\\\\n\\phi_2&=\\alpha+\\beta x_2+\\gamma y_2+\\xi z_2\\\\\n\\phi_3&=\\alpha+\\beta x_3+\\gamma y_3+\\xi z_3\\\\\n\\phi_4&=\\alpha+\\beta x_4+\\gamma y_4+\\xi z_4\n\\end{aligned}\n\\right.\n\\]"
+    },
+    {
+      "image": "image004.png",
+      "latex": "\\[\n\\begin{aligned}\n\\phi(x,y)&=N_1\\phi_1+N_2\\phi_2+N_3\\phi_3+N_4\\phi_4\\\\\n&=L_1\\phi_1+L_2\\phi_2+L_3\\phi_3+L_4\\phi_4\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image005.png",
+      "latex": "\\[\nL_1=\\frac{V_1}{V},\\quad\nL_2=\\frac{V_2}{V},\\quad\nL_3=\\frac{V_3}{V},\\quad\nL_4=\\frac{V_4}{V}\n\\]"
+    },
+    {
+      "image": "image006.png",
+      "latex": "\\[\n\\begin{aligned}\nN_1&=L_1,\\qquad N_2=L_2,\\qquad N_3=L_3,\\qquad N_4=L_4\\\\\nN_1+N_2+N_3+N_4&=1\n\\end{aligned}\n\\]"
+    }
+  ],
+  "source_notation_notes": [
+    "image004 visibly writes phi(x,y), not phi(x,y,z); source notation is preserved verbatim."
+  ]
+}
