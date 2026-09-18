@@ -1,0 +1,11 @@
+{
+  "created_at":"2026-09-19T06:25:00+09:00",
+  "page":"physics/physics_6_2_7.html",
+  "image_dir":"img/physics_c_inner.files",
+  "canonical_source":"original source images",
+  "retained_diagrams":[],
+  "formulas":[{
+    "image":"image020.png",
+    "latex":"\\[\n\\begin{aligned}\n\\cos\\theta&=\\frac{(\\vec{v}\\cdot\\vec{w})}{|\\vec{v}|\\,|\\vec{w}|}\\\\\n\\therefore\\quad\\theta&=\\cos^{-1}\\frac{(\\vec{v}\\cdot\\vec{w})}{|\\vec{v}|\\,|\\vec{w}|}\n\\end{aligned}\n\\]"
+  }]
+}
