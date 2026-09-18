@@ -11,6 +11,11 @@
 
 	<title>全微分作用素（物理）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+<script>
+window.MathJax={output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},chtml:{displayAlign:'left',displayIndent:'0'}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="2">
@@ -50,7 +55,20 @@
 
 			<h2>全微分作用素</h2>
 			<p>流体力学で使用する全微分作用素には、内積が使用されています。</p>
-			<p class="im"><img src="./../img/physics_c_inner.files/image019.png"></p>
+			<div class="math-block" id="formula-physics-6-2-6-019" data-source-image="./../img/physics_c_inner.files/image019.png">
+\[
+\begin{aligned}
+\frac{D}{Dt}
+&=\frac{\partial}{\partial t}+(\vec{v}\cdot\nabla)\\
+&=\frac{\partial}{\partial t}+\left(\sum_{i=0}^{3}\vec{\delta}_{i}v_i\cdot\sum_{j=0}^{3}\vec{\delta}_{j}\frac{\partial}{\partial x_j}\right)\\
+&=\frac{\partial}{\partial t}+\left(\sum_{i=0}^{3}\sum_{j=0}^{3}\vec{\delta}_{i}v_i\cdot\vec{\delta}_{j}\frac{\partial}{\partial x_j}\right)\\
+&=\frac{\partial}{\partial t}+\sum_{i=0}^{3}\sum_{j=0}^{3}(\vec{\delta}_{i}\cdot\vec{\delta}_{j})v_i\frac{\partial}{\partial x_j}\\
+&=\frac{\partial}{\partial t}+\sum_{i=0}^{3}\sum_{j=0}^{3}\delta_{ij}v_i\frac{\partial}{\partial x_j}\\
+&=\frac{\partial}{\partial t}+\sum_{i=0}^{3}v_i\frac{\partial}{\partial x_i}\\
+&=\frac{\partial}{\partial t}+v_x\frac{\partial}{\partial x_x}+v_y\frac{\partial}{\partial x_y}+v_z\frac{\partial}{\partial x_z}
+\end{aligned}
+\]
+</div>
 			<p>上記の項のオーダーは、</p>
 			<p class="im"><span class="ft">(</span>ベクトル・微分作用素<span class="ft">) = (1 - 2 + 1) = 0</span></p>
 			<p>と計算されるので、スカラー量になります。</p>
