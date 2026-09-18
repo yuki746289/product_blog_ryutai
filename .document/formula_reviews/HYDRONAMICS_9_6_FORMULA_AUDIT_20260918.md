@@ -18,8 +18,24 @@ Source-visible tensor indices, signs, divergence notation, and `p_j` notation ar
 
 ## Pass 2 — browser MathJax comparison
 
-Status: **pending workflow artifact review**
+- Workflow run: **35347501891**
+- Artifact: `hydronamics-9-6-pass2`
+- Artifact id: **10547568032**
+- Result: **5 / 5 PASS**
+- MathJax rendering errors: **0**
+- Formula-level horizontal overflow: **0 / 5**
+- Source image vs MathJax rendering: **5 / 5 visually checked and PASS**
 
 ## Certification
 
-Not yet certified for normal-page application until Pass 2 is complete.
+| Check | Result |
+|---|---|
+| Formula targets | 5 |
+| Diagram retained | 0 |
+| Pass 1 | **5 / 5 PASS** |
+| Pass 2 | **5 / 5 PASS** |
+| MathJax errors | **0** |
+| Audit horizontal overflow | **0 / 5** |
+| Production deployment | Not performed |
+
+**Hydronamics 9_6 formulas are certified for application to the normal page.**
