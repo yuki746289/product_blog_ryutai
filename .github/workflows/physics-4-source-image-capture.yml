@@ -1,0 +1,43 @@
+# Created: 2026-09-18T23:47:03+09:00
+name: Physics 4 Source Image Capture
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/physics-4-source-image-capture.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - name: Validate source images
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          base=Path('img/physics_q_category.files')
+          expected=[base/f'image{i:03d}.png' for i in range(1,10)]
+          missing=[str(p) for p in expected if not p.exists()]
+          if missing:
+              raise SystemExit(f'missing: {missing}')
+          print('PASS: 9/9 source images present')
+          PY
+
+      - name: Stage source images
+        run: |
+          mkdir -p physics-4-source-images
+          cp img/physics_q_category.files/image00{1..9}.png physics-4-source-images/
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: physics-4-source-images
+          path: physics-4-source-images
+          retention-days: 7
