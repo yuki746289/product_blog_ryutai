@@ -1,9 +1,9 @@
 {
   "summary": {
     "html_pages_scanned": 205,
-    "residual_word_image_placements": 333,
-    "unique_assets": 331,
-    "centered_p_im_placements": 315,
+    "residual_word_image_placements": 324,
+    "unique_assets": 322,
+    "centered_p_im_placements": 306,
     "missing_assets": 49,
     "missing_by_section": {
       "mps": 49
@@ -14,13 +14,13 @@
       "counting": 2,
       "fem": 33,
       "heat": 8,
-      "hydronamics": 109,
+      "hydronamics": 100,
       "mesh": 53,
       "mps": 49,
       "physics": 65
     },
     "extensions": {
-      ".png": 280,
+      ".png": 271,
       ".jpg": 4,
       ".gif": 49
     }
@@ -1642,114 +1642,6 @@
       "exists": true,
       "width": 634,
       "height": 422,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "hydronamics/hydronamics_9_2.html",
-      "encoding": "cp932",
-      "src": "./../img/hydronamics_stress_vertical.files/image002.png",
-      "asset": "img/hydronamics_stress_vertical.files/image002.png",
-      "exists": true,
-      "width": 331,
-      "height": 310,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "hydronamics/hydronamics_9_2.html",
-      "encoding": "cp932",
-      "src": "./../img/hydronamics_stress_vertical.files/image003.png",
-      "asset": "img/hydronamics_stress_vertical.files/image003.png",
-      "exists": true,
-      "width": 195,
-      "height": 275,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "hydronamics/hydronamics_9_2.html",
-      "encoding": "cp932",
-      "src": "./../img/hydronamics_stress_vertical.files/image004.png",
-      "asset": "img/hydronamics_stress_vertical.files/image004.png",
-      "exists": true,
-      "width": 187,
-      "height": 109,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "hydronamics/hydronamics_9_2.html",
-      "encoding": "cp932",
-      "src": "./../img/hydronamics_stress_vertical.files/image005.png",
-      "asset": "img/hydronamics_stress_vertical.files/image005.png",
-      "exists": true,
-      "width": 336,
-      "height": 69,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "hydronamics/hydronamics_9_2.html",
-      "encoding": "cp932",
-      "src": "./../img/hydronamics_stress_vertical.files/image006.png",
-      "asset": "img/hydronamics_stress_vertical.files/image006.png",
-      "exists": true,
-      "width": 176,
-      "height": 40,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "hydronamics/hydronamics_9_2.html",
-      "encoding": "cp932",
-      "src": "./../img/hydronamics_stress_vertical.files/image007.png",
-      "asset": "img/hydronamics_stress_vertical.files/image007.png",
-      "exists": true,
-      "width": 246,
-      "height": 107,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "hydronamics/hydronamics_9_2.html",
-      "encoding": "cp932",
-      "src": "./../img/hydronamics_stress_vertical.files/image008.png",
-      "asset": "img/hydronamics_stress_vertical.files/image008.png",
-      "exists": true,
-      "width": 247,
-      "height": 140,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "hydronamics/hydronamics_9_2.html",
-      "encoding": "cp932",
-      "src": "./../img/hydronamics_stress_vertical.files/image009.png",
-      "asset": "img/hydronamics_stress_vertical.files/image009.png",
-      "exists": true,
-      "width": 274,
-      "height": 63,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "hydronamics/hydronamics_9_2.html",
-      "encoding": "cp932",
-      "src": "./../img/hydronamics_stress_vertical.files/image010.png",
-      "asset": "img/hydronamics_stress_vertical.files/image010.png",
-      "exists": true,
-      "width": 300,
-      "height": 194,
       "format": "PNG",
       "centered_p_im": true,
       "review_priority": "A"
