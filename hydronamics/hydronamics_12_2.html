@@ -11,6 +11,14 @@
 
 	<title>運動量収支式の無次元化（流体力学）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+	<script>
+	window.MathJax={
+		output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+		chtml:{displayAlign:'left',displayIndent:'0'}
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="3">
@@ -49,19 +57,66 @@
 
 			<h2>運動量収支式の無次元化</h2>
 			<p>無次元化前</p>
-			<p class="im"><img src="./../img/hydronamics_dimensionless.files/image015.png"></p>
-			<p>ここで、<img src="./../img/hydronamics_dimensionless.files/image016.png"><span class="ft">[N/m<sup>2</sup>]</span>
+			<div class="math-block" id="formula-hydronamics-12-2-015" data-source-image="./../img/hydronamics_dimensionless.files/image015.png">
+\[
+\rho\frac{D\vec v}{Dt}
+=
+[\nabla\cdot\vec\sigma]+\rho\vec g
+\]
+</div>
+			<p>ここで、<span class="math-inline" id="formula-hydronamics-12-2-016" data-source-image="./../img/hydronamics_dimensionless.files/image016.png">\(\vec\sigma\)</span><span class="ft">[N/m<sup>2</sup>]</span>
 					は応力テンソルで、</p>
-			<p class="im"><img src="./../img/hydronamics_dimensionless.files/image017.png"></p>
+			<div class="math-block" id="formula-hydronamics-12-2-017" data-source-image="./../img/hydronamics_dimensionless.files/image017.png">
+\[
+\begin{aligned}
+\sigma_{ij}
+&=-\delta_{ij}p_j-\tau_{ij}\\
+&=-\delta_{ij}p_j
++\mu\left(
+\frac{\partial v_i}{\partial x_j}
++\frac{\partial v_j}{\partial x_i}
+\right)
+-\delta_{ij}\frac{2}{3}\mu(\nabla\cdot\vec v)
+\end{aligned}
+\]
+</div>
 			<br>
 			<p>無次元化後</p>
-			<p class="im"><img src="./../img/hydronamics_dimensionless.files/image018.png"></p>
-			<p>ここで、<img src="./../img/hydronamics_dimensionless.files/image019.png">
+			<div class="math-block" id="formula-hydronamics-12-2-018" data-source-image="./../img/hydronamics_dimensionless.files/image018.png">
+\[
+\frac{D\vec V}{D\tau}
+=
+[\nabla\cdot\vec\sigma^{*}]
++\frac{1}{Fr^{2}}\vec r
+\]
+</div>
+			<p>ここで、<span class="math-inline" id="formula-hydronamics-12-2-019" data-source-image="./../img/hydronamics_dimensionless.files/image019.png">\(\vec\sigma^{*}\)</span>
 					は応力テンソルで、</p>
-			<p class="im"><img src="./../img/hydronamics_dimensionless.files/image020.png"></p>
+			<div class="math-block" id="formula-hydronamics-12-2-020" data-source-image="./../img/hydronamics_dimensionless.files/image020.png">
+\[
+\begin{aligned}
+\sigma_{ij}^{*}
+&=-\delta_{ij}P_j-\tau_{ij}^{*}\\
+&=-\delta_{ij}P_j
++\frac{1}{Re}\left(
+\frac{\partial V_i}{\partial X_j}
++\frac{\partial V_j}{\partial X_i}
+\right)
+-\delta_{ij}\frac{2}{3}\frac{1}{Re}(\nabla\cdot\vec V)
+\end{aligned}
+\]
+</div>
 			<p>また、</p>
-			<p class="im"><img src="./../img/hydronamics_dimensionless.files/image021.png"></p>
-			<p class="im"><img src="./../img/hydronamics_dimensionless.files/image022.png"></p>
+			<div class="math-block" id="formula-hydronamics-12-2-021" data-source-image="./../img/hydronamics_dimensionless.files/image021.png">
+\[
+Fr=\frac{v_0}{\sqrt{x_0g}}
+\]
+</div>
+			<div class="math-block" id="formula-hydronamics-12-2-022" data-source-image="./../img/hydronamics_dimensionless.files/image022.png">
+\[
+Re=\frac{\rho x_0v_0}{\mu}
+\]
+</div>
 			<br>
 
 
