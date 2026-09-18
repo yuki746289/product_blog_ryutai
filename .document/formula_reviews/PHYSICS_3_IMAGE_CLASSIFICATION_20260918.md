@@ -11,15 +11,19 @@ Created: 2026-09-18T23:59:30+09:00
 
 | Classification | Count |
 |---|---:|
-| Display formula | **6** |
+| Display formula | **3** |
+| Inline formula | **3** |
 | Retained diagram | **1** |
 | Total | **7** |
 
 ## Formula targets
 
+Inline:
 - `image002.png`: x-axis unit vector
 - `image003.png`: y-axis unit vector
 - `image004.png`: z-axis unit vector
+
+Display:
 - `image005.png`: magnitudes of three unit vectors
 - `image006.png`: vector expressed by unit vectors and coefficients p/q/r
 - `image007.png`: vector magnitude
