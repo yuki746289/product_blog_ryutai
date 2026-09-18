@@ -26,7 +26,17 @@ Transcription data:
 
 ## Pass 2 — browser MathJax comparison
 
-Status: **Pending**
+Result: **2 / 2 PASS**
+
+- Workflow run: **35395643660**
+- Artifact: `physics-6-2-2-pass2`
+- Artifact id: **10567715794**
+- MathJax errors: **0**
+- Unrendered formulas: **0**
+- Pair-page horizontal overflow: **0 / 2**
+- Browser page errors: **0**
+
+Both source/render pairs were visually inspected. The repeated source line, vector marks, summation bounds, dot products, Kronecker delta, component expansion, and operand order all match.
 
 Normal-page application is prohibited until Pass 2 is complete.
 
@@ -37,7 +47,7 @@ Normal-page application is prohibited until Pass 2 is complete.
 | Formula targets | 2 |
 | Retained diagram | 1 |
 | Pass 1 | **2 / 2 PASS** |
-| Pass 2 | Pending |
+| Pass 2 | **2 / 2 PASS** |
 | Production deployment | Not performed |
 
-**Physics 6_2_2 is not yet certified for normal-page application.**
+**Physics 6_2_2 is certified for normal-page application.**
