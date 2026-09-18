@@ -27,7 +27,17 @@ Transcription data:
 
 ## Pass 2 — browser MathJax comparison
 
-Status: **Pending**
+Result: **6 / 6 PASS**
+
+- Workflow run: **35359678102**
+- Artifact: `physics-3-pass2`
+- Artifact id: **10554167183**
+- MathJax errors: **0**
+- Unrendered formulas: **0**
+- Pair-page horizontal overflow: **0 / 6**
+- Browser page errors: **0**
+
+All six source/render pairs were visually inspected and match the source-visible notation.
 
 Normal-page application is prohibited until Pass 2 is complete.
 
@@ -38,7 +48,7 @@ Normal-page application is prohibited until Pass 2 is complete.
 | Formula targets | 6 |
 | Retained diagram | 1 |
 | Pass 1 | **6 / 6 PASS** |
-| Pass 2 | Pending |
+| Pass 2 | **6 / 6 PASS** |
 | Production deployment | Not performed |
 
-**Physics 3 is not yet certified for normal-page application.**
+**Physics 3 is certified for normal-page application.**
