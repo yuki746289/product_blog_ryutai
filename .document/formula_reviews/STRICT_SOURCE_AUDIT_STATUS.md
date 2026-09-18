@@ -845,6 +845,31 @@ FEM batches 1–3 / FEM 5後に残っていた未分類20画像を分類し、�
 - `.document/formula_reviews/HYDRONAMICS_5_FORMULA_AUDIT_20260918.md`
 - `.document/formula_reviews/HYDRONAMICS_5_NORMAL_BROWSER_QA_20260918.md`
 
+
+## 2026-09-18 Physics 2 監査・通常ページ反映
+
+`physics/physics_2.html` の物理量ページを、Word原稿を転記補助に使い、元HP画像を正本として処理した。
+
+- 分類対象: **12画像**
+  - 表示数式: **5**
+  - インライン数式: **2**
+  - 図: **5**（image006 / image007 / image009 / image010 / image012 を維持）
+- Word検証: **OMML 7 + 埋め込み図5 = 元画像12件**
+- Pass 1: **7/7**
+- Pass 2 run: **35355730644**
+- Pass 2: **7/7**
+- 通常ページ反映: **7/7**
+- Apply run: **35356003826**
+- Normal browser QA run: **35356074863**
+- desktop/mobile: display 5/5、inline 2/2、retained diagrams 5/5、MathJax errors 0、unrendered 0、uncontained 0、page overflowなし
+- mobile local-scroll: **0**
+- 本番FTP反映は未実施。
+
+詳細:
+- `.document/formula_reviews/PHYSICS_2_IMAGE_CLASSIFICATION_20260918.md`
+- `.document/formula_reviews/PHYSICS_2_FORMULA_AUDIT_20260918.md`
+- `.document/formula_reviews/PHYSICS_2_NORMAL_BROWSER_QA_20260918.md`
+
 ## 次の優先順
 
 1. サイト全体の残存画像を「数式 / 図 / 混在画像」に分類する。
@@ -897,7 +922,7 @@ FEM batches 1–3 / FEM 5後に残っていた未分類20画像を分類し、�
 - **Hydronamicsカテゴリの既知数式画像は変換完了**
   - 最新残存21画像は、すべて確認済みの保持図（数式画像0）
   - 本番FTP反映は未実施。
-- 厳密監査・通常ページ化まで完了した数式・数式テキスト: **482件**
+- 厳密監査・通常ページ化まで完了した数式・数式テキスト: **489件**
 - 残存画像は数式とは限らないため、今後はページ単位で分類してから数式のみ変換する。
 - MPS欠損GIF参照は別タスクとして扱う。
 - 本番FTP反映は未実施。
