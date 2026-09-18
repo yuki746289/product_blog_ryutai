@@ -1,0 +1,34 @@
+{
+  "page": "fem/fem_10.html",
+  "image_dir": "img/fem_fluid_discrete.files",
+  "canonical_source": "original source images",
+  "retained_diagrams": [
+    "image005.png"
+  ],
+  "formulas": [
+    {
+      "image": "image001.png",
+      "latex": "\\[\n\\left(\n\\frac{[C]}{5\\Delta\\tau}\n+V_x[C_x]+V_y[C_y]+V_z[C_z]\n\\right)\\{P\\}^{\\Delta\\tau+\\tau}\n+\\frac{1}{Ma^2}\n\\left(\n[C_x]\\{V_x\\}^{\\Delta\\tau+\\tau}\n+[C_y]\\{V_y\\}^{\\Delta\\tau+\\tau}\n+[C_z]\\{V_z\\}^{\\Delta\\tau+\\tau}\n\\right)\n=\n\\frac{[C]}{5\\Delta\\tau}\\{P\\}^{\\tau}\n\\]"
+    },
+    {
+      "image": "image002.png",
+      "latex": "\\[\n\\begin{aligned}\n\\frac{[C]}{\\Delta\\tau}\\{V_x\\}^{\\tau+\\Delta\\tau}\n&+\\left(V_x[C_x]+V_y[C_y]+V_z[C_z]\\right)\\{V_x\\}^{\\tau+\\Delta\\tau}\\\\\n&+\\frac{1}{Re}\\left\\{\n\\left(2[S_{xx}]+[S_{yy}]+[S_{zz}]\\right)\\{V_x\\}^{\\tau+\\Delta\\tau}\n+[S_{xy}]\\{V_y\\}^{\\tau+\\Delta\\tau}\n+[S_{xz}]\\{V_z\\}^{\\tau+\\Delta\\tau}\n+[C_x]\\{P\\}^{\\tau+\\Delta\\tau}\n\\right\\}\\\\\n&=\n\\frac{[C]}{\\Delta\\tau}\\{V_x\\}^{\\tau}\n+\\frac{2K^*}{We}n_x\n\\begin{bmatrix}1\\\\1\\\\1\\end{bmatrix}\\frac{S}{3}\n+g_x^*\n\\begin{bmatrix}1\\\\1\\\\1\\\\1\\end{bmatrix}\\frac{V}{4}\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image003.png",
+      "latex": "\\[\n\\begin{aligned}\n\\frac{[C]}{\\Delta\\tau}\\{V_y\\}^{\\tau+\\Delta\\tau}\n&+\\left(V_x[C_x]+V_y[C_y]+V_z[C_z]\\right)\\{V_y\\}^{\\tau+\\Delta\\tau}\\\\\n&+\\frac{1}{Re}\\left\\{\n[S_{xy}]\\{V_x\\}^{\\tau+\\Delta\\tau}\n+\\left([S_{xx}]+2[S_{yy}]+[S_{zz}]\\right)\\{V_y\\}^{\\tau+\\Delta\\tau}\n+[S_{yz}]\\{V_z\\}^{\\tau+\\Delta\\tau}\n+[C_y]\\{P\\}^{\\tau+\\Delta\\tau}\n\\right\\}\\\\\n&=\n\\frac{[C]}{\\Delta\\tau}\\{V_y\\}^{\\tau}\n+\\frac{2K^*}{We}n_y\n\\begin{bmatrix}1\\\\1\\\\1\\end{bmatrix}\\frac{S}{3}\n+g_y^*\n\\begin{bmatrix}1\\\\1\\\\1\\\\1\\end{bmatrix}\\frac{V}{4}\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image004.png",
+      "latex": "\\[\n\\begin{aligned}\n\\frac{[C]}{\\Delta\\tau}\\{V_z\\}^{\\tau+\\Delta\\tau}\n&+\\left(V_x[C_x]+V_y[C_y]+V_z[C_z]\\right)\\{V_z\\}^{\\tau+\\Delta\\tau}\\\\\n&+\\frac{1}{Re}\\left\\{\n[S_{xz}]\\{V_x\\}^{\\tau+\\Delta\\tau}\n+[S_{yz}]\\{V_y\\}^{\\tau+\\Delta\\tau}\n+\\left([S_{xx}]+[S_{yy}]+2[S_{zz}]\\right)\\{V_z\\}^{\\tau+\\Delta\\tau}\n+[C_z]\\{P\\}^{\\tau+\\Delta\\tau}\n\\right\\}\\\\\n&=\n\\frac{[C]}{\\Delta\\tau}\\{V_z\\}^{\\tau}\n+\\frac{2K^*}{We}n_z\n\\begin{bmatrix}1\\\\1\\\\1\\end{bmatrix}\\frac{S}{3}\n+g_z^*\n\\begin{bmatrix}1\\\\1\\\\1\\\\1\\end{bmatrix}\\frac{V}{4}\n\\qquad(i=1,2,3)\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image006.png",
+      "latex": "\\[\n\\begin{aligned}\np_1&(v_{1x},v_{1y},v_{1z},p_1)\\\\\np_2&(v_{2x},v_{2y},v_{2z},p_2)\\\\\np_3&(v_{3x},v_{3y},v_{3z},p_3)\\\\\np_4&(v_{4x},v_{4y},v_{4z},p_4)\\\\\np_5&(v_{5x},v_{5y},v_{5z},p_5)\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image007.png",
+      "latex": "\\[\n\\left(\n\\begin{array}{ccccccc}\na_{11}&a_{12}&a_{13}&a_{14}&&a_{119}&a_{120}\\\\\na_{21}&a_{22}&a_{23}&a_{24}&&a_{219}&a_{220}\\\\\na_{31}&a_{32}&a_{33}&a_{34}&&a_{319}&a_{320}\\\\\na_{41}&a_{42}&a_{43}&a_{44}&&a_{419}&a_{420}\\\\\na_{51}&a_{52}&a_{53}&a_{54}&&a_{519}&a_{520}\\\\\na_{61}&a_{62}&a_{63}&a_{64}&&a_{619}&a_{620}\\\\\na_{71}&a_{72}&a_{73}&a_{74}&&a_{719}&a_{720}\\\\\na_{81}&a_{82}&a_{83}&a_{84}&&a_{819}&a_{820}\\\\\na_{91}&a_{92}&a_{93}&a_{94}&&a_{919}&a_{920}\\\\\na_{101}&a_{102}&a_{103}&a_{104}&&a_{1019}&a_{1020}\\\\\na_{111}&a_{112}&a_{113}&a_{114}&&a_{1119}&a_{1120}\\\\\na_{121}&a_{122}&a_{123}&a_{124}&&a_{1219}&a_{1220}\\\\\na_{131}&a_{132}&a_{133}&a_{134}&&a_{1319}&a_{1320}\\\\\na_{141}&a_{142}&a_{143}&a_{144}&&a_{1419}&a_{1420}\\\\\na_{151}&a_{152}&a_{153}&a_{154}&&a_{1519}&a_{1520}\\\\\na_{161}&a_{162}&a_{163}&a_{164}&&a_{1619}&a_{1620}\\\\\na_{171}&a_{172}&a_{173}&a_{174}&&a_{1719}&a_{1720}\\\\\na_{181}&a_{182}&a_{183}&a_{184}&&a_{1819}&a_{1820}\\\\\na_{191}&a_{192}&a_{193}&a_{194}&&a_{1919}&a_{1920}\\\\\na_{201}&a_{202}&a_{203}&a_{204}&&a_{2019}&a_{2020}\n\\end{array}\n\\right)\n\\left(\n\\begin{array}{c}\nv_{1x}\\\\\nv_{1y}\\\\\nv_{1z}\\\\\np_1\\\\\nv_{2x}\\\\\nv_{2y}\\\\\nv_{2z}\\\\\np_2\\\\\nv_{3x}\\\\\nv_{3y}\\\\\nv_{3z}\\\\\np_3\\\\\nv_{4x}\\\\\nv_{4y}\\\\\nv_{4z}\\\\\np_4\\\\\nv_{5x}\\\\\nv_{5y}\\\\\nv_{5z}\\\\\np_5\n\\end{array}\n\\right)^{\\tau+\\Delta\\tau}\n=\n\\left(\n\\begin{array}{c}\nv_{1x}\\\\\nv_{1y}\\\\\nv_{1z}\\\\\np_1\\\\\nv_{2x}\\\\\nv_{2y}\\\\\nv_{2z}\\\\\np_2\\\\\nv_{3x}\\\\\nv_{3y}\\\\\nv_{3z}\\\\\np_3\\\\\nv_{4x}\\\\\nv_{4y}\\\\\nv_{4z}\\\\\np_4\\\\\nv_{5x}\\\\\nv_{5y}\\\\\nv_{5z}\\\\\np_5\n\\end{array}\n\\right)^{\\tau}\n+\n\\left(\n\\begin{array}{c}\nf_{11}\\\\\nf_{12}\\\\\nf_{13}\\\\\nf_{14}\\\\\nf_{21}\\\\\nf_{22}\\\\\nf_{23}\\\\\nf_{24}\\\\\nf_{31}\\\\\nf_{32}\\\\\nf_{33}\\\\\nf_{34}\\\\\nf_{41}\\\\\nf_{42}\\\\\nf_{43}\\\\\nf_{44}\\\\\nf_{51}\\\\\nf_{52}\\\\\nf_{53}\\\\\nf_{54}\n\\end{array}\n\\right)\n\\]"
+    }
+  ]
+}
