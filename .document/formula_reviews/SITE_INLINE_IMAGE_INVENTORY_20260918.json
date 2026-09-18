@@ -1,9 +1,9 @@
 {
   "summary": {
     "html_pages_scanned": 205,
-    "residual_word_image_placements": 216,
-    "unique_assets": 214,
-    "centered_p_im_placements": 204,
+    "residual_word_image_placements": 212,
+    "unique_assets": 210,
+    "centered_p_im_placements": 200,
     "missing_assets": 49,
     "missing_by_section": {
       "mps": 49
@@ -17,10 +17,10 @@
       "hydronamics": 21,
       "mesh": 53,
       "mps": 49,
-      "physics": 36
+      "physics": 32
     },
     "extensions": {
-      ".png": 163,
+      ".png": 159,
       ".jpg": 4,
       ".gif": 49
     }
@@ -2350,54 +2350,6 @@
       "exists": true,
       "width": 209,
       "height": 143,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "physics/physics_6_2_1.html",
-      "encoding": "cp932",
-      "src": "./../img/physics_c_inner.files/image001.png",
-      "asset": "img/physics_c_inner.files/image001.png",
-      "exists": true,
-      "width": 163,
-      "height": 85,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "physics/physics_6_2_1.html",
-      "encoding": "cp932",
-      "src": "./../img/physics_c_inner.files/image002.png",
-      "asset": "img/physics_c_inner.files/image002.png",
-      "exists": true,
-      "width": 123,
-      "height": 42,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "physics/physics_6_2_1.html",
-      "encoding": "cp932",
-      "src": "./../img/physics_c_inner.files/image003.png",
-      "asset": "img/physics_c_inner.files/image003.png",
-      "exists": true,
-      "width": 212,
-      "height": 79,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "physics/physics_6_2_1.html",
-      "encoding": "cp932",
-      "src": "./../img/physics_c_inner.files/image004.png",
-      "asset": "img/physics_c_inner.files/image004.png",
-      "exists": true,
-      "width": 204,
-      "height": 226,
       "format": "PNG",
       "centered_p_im": true,
       "review_priority": "A"
