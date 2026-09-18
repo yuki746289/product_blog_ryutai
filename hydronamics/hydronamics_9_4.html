@@ -11,6 +11,14 @@
 
 	<title>剪断成分の対称性（流体力学）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+<script>
+window.MathJax={
+  output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+  chtml:{displayAlign:'left',displayIndent:'0'}
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="3">
@@ -56,24 +64,82 @@
 					<span class="fs"><i>w</i></span><span class="ft">[rad/s]</span>
 					とします。この時、剪断応力とのトルク<span class="ft">[Nm]</span>
 					の収支は次式で与えられます。</p>
-			<p class="im"><img src="./../img/hydronamics_shear_symmetry.files/image002.png"></p>
+			<div class="math-block" id="formula-hydronamics-9-4-002" data-source-image="./../img/hydronamics_shear_symmetry.files/image002.png">
+\[
+(\tau_{yx|x}\Delta y\Delta z+\tau_{yx|x+\Delta x}\Delta y\Delta z)\frac{\Delta x}{2}
+-(\tau_{xy|y}\Delta z\Delta x+\tau_{xy|y+\Delta y}\Delta z\Delta x)\frac{\Delta y}{2}
+=I_z\omega
+\]
+</div>
 			<p>従って、</p>
-			<p class="im"><img src="./../img/hydronamics_shear_symmetry.files/image003.png"></p>
+			<div class="math-block" id="formula-hydronamics-9-4-003" data-source-image="./../img/hydronamics_shear_symmetry.files/image003.png">
+\[
+\frac{\Delta x\Delta y\Delta z}{2}
+(\tau_{yx|x}+\tau_{yx|x+\Delta x}-\tau_{xy|y}-\tau_{xy|y+\Delta y})
+=I_z\omega
+\]
+</div>
 			<p>ここで、慣性モーメントは、</p>
-			<p class="im"><img src="./../img/hydronamics_shear_symmetry.files/image004.png"></p>
+			<div class="math-block" id="formula-hydronamics-9-4-004" data-source-image="./../img/hydronamics_shear_symmetry.files/image004.png">
+\[
+\begin{aligned}
+I_z
+&=\int \rho r^2\,dV\\
+&=\iiint_{\Delta V}\rho r^2\,dV\\
+&=\Delta z\iint_{\Delta S}\rho r^2\,dS\\
+&=\Delta z\iint_{\Delta S}\rho(x^2+y^2)\,dS\\
+&=\Delta z\int_{\Delta L}\rho
+\left[\frac{2}{3}x^3+xy^2\right]_{-\Delta x/2}^{\Delta x/2}\,dL\\
+&=\Delta z\int_{\Delta L}\rho
+\left(\frac{1}{12}\Delta x^3+\Delta x y^2\right)\,dL\\
+&=\rho\Delta z
+\left[\frac{1}{12}\Delta x^3\Delta y+\frac{1}{12}\Delta x\Delta y^3\right]_{-\Delta y/2}^{\Delta y/2}\\
+&=\frac{\rho}{12}\Delta x\Delta y\Delta z(\Delta x^2+\Delta y^2)
+\end{aligned}
+\]
+</div>
 			<p>となるので、トルクの収支式に代入すると次式となります。</p>
-			<p class="im"><img src="./../img/hydronamics_shear_symmetry.files/image005.png"></p>
+			<div class="math-block" id="formula-hydronamics-9-4-005" data-source-image="./../img/hydronamics_shear_symmetry.files/image005.png">
+\[
+\begin{aligned}
+\frac{\Delta x\Delta y\Delta z}{2}
+(\tau_{yx|x}+\tau_{yx|x+\Delta x}-\tau_{xy|y}-\tau_{xy|y+\Delta y})
+&=I_z\omega\\
+&=\frac{\rho}{12}\Delta x\Delta y\Delta z(\Delta x^2+\Delta y^2)\omega
+\end{aligned}
+\]
+</div>
 			<p>従って、</p>
-			<p class="im"><img src="./../img/hydronamics_shear_symmetry.files/image006.png"></p>
+			<div class="math-block" id="formula-hydronamics-9-4-006" data-source-image="./../img/hydronamics_shear_symmetry.files/image006.png">
+\[
+\tau_{yx|x}+\tau_{yx|x+\Delta x}-\tau_{xy|y}-\tau_{xy|y+\Delta y}
+=\frac{\rho}{6}(\Delta x^2+\Delta y^2)\omega
+\]
+</div>
 			<p><span class="fs"><i>D</i></span><span class="ft"><i>x</i></span>
 					<span class="ft">,</span><span class="fs"><i>D</i></span>
 					<span class="ft"><i>y</i></span>
 					→<span class="ft"> 0</span>とすると</p>
-			<p class="im"><img src="./../img/hydronamics_shear_symmetry.files/image007.png"></p>
+			<div class="math-block" id="formula-hydronamics-9-4-007" data-source-image="./../img/hydronamics_shear_symmetry.files/image007.png">
+\[
+\tau_{yx|x}+\tau_{yx|x}-\tau_{xy|y}-\tau_{xy|y}=0
+\]
+</div>
 			<p>従って、</p>
-			<p class="im"><img src="./../img/hydronamics_shear_symmetry.files/image008.png"></p>
+			<div class="math-block" id="formula-hydronamics-9-4-008" data-source-image="./../img/hydronamics_shear_symmetry.files/image008.png">
+\[
+\tau_{yx}=\tau_{xy}
+\]
+</div>
 			<p>同様に</p>
-			<p class="im"><img src="./../img/hydronamics_shear_symmetry.files/image009.png"></p>
+			<div class="math-block" id="formula-hydronamics-9-4-009" data-source-image="./../img/hydronamics_shear_symmetry.files/image009.png">
+\[
+\begin{aligned}
+\tau_{yz}&=\tau_{zy}\\
+\tau_{zx}&=\tau_{xz}
+\end{aligned}
+\]
+</div>
 			<br>
 
 
