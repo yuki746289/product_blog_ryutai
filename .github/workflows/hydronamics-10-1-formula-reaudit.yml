@@ -111,7 +111,7 @@ jobs:
           git add hydronamics/hydronamics_10_1_reaudit.html
           git diff --cached --check
           if ! git diff --cached --quiet; then
-            git commit -m 'docs: build hydronamics 10_1 strict reaudit page'
+            git commit -m 'docs: build hydronamics 9_4 strict reaudit page'
             git pull --rebase origin develop
             git push origin HEAD:develop
           fi
