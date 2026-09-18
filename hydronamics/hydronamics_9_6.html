@@ -11,6 +11,14 @@
 
 	<title>応力のまとめ（流体力学）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+<script>
+window.MathJax={
+  output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+  chtml:{displayAlign:'left',displayIndent:'0'}
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="3">
@@ -50,15 +58,62 @@
 			<h2>応力のまとめ</h2>
 			<p>まとめると次の様になります。</p>
 			<p><span class="ft"><i>x</i></span>軸に垂直な面に作用する剪断応力の成分</p>
-			<p class="im"><img src="./../img/hydronamics_stress_conclusion.files/image001.png"></p>
+			<div class="math-block" id="formula-hydronamics-9-6-001" data-source-image="./../img/hydronamics_stress_conclusion.files/image001.png">
+\[
+\begin{aligned}
+\tau_{xx}&=-2\mu\frac{\partial v_x}{\partial x}+\frac{2}{3}\mu(\nabla\cdot\vec v)\\
+\tau_{xy}&=-\mu\left(\frac{\partial v_x}{\partial y}+\frac{\partial v_y}{\partial x}\right)\\
+\tau_{xz}&=-\mu\left(\frac{\partial v_x}{\partial z}+\frac{\partial v_z}{\partial x}\right)
+\end{aligned}
+\]
+</div>
 			<p><span class="ft"><i>y</i></span>軸に垂直な面に作用する剪断応力の成分</p>
-			<p class="im"><img src="./../img/hydronamics_stress_conclusion.files/image002.png"></p>
+			<div class="math-block" id="formula-hydronamics-9-6-002" data-source-image="./../img/hydronamics_stress_conclusion.files/image002.png">
+\[
+\begin{aligned}
+\tau_{yx}&=-\mu\left(\frac{\partial v_y}{\partial x}+\frac{\partial v_x}{\partial y}\right)\\
+\tau_{yy}&=-2\mu\frac{\partial v_y}{\partial y}+\frac{2}{3}\mu(\nabla\cdot\vec v)\\
+\tau_{yz}&=-\mu\left(\frac{\partial v_y}{\partial z}+\frac{\partial v_z}{\partial y}\right)
+\end{aligned}
+\]
+</div>
 			<p><span class="ft"><i>z</i></span>軸に垂直な面に作用する剪断応力の成分</p>
-			<p class="im"><img src="./../img/hydronamics_stress_conclusion.files/image003.png"></p>
+			<div class="math-block" id="formula-hydronamics-9-6-003" data-source-image="./../img/hydronamics_stress_conclusion.files/image003.png">
+\[
+\begin{aligned}
+\tau_{zx}&=-\mu\left(\frac{\partial v_z}{\partial x}+\frac{\partial v_x}{\partial z}\right)\\
+\tau_{zy}&=-\mu\left(\frac{\partial v_z}{\partial y}+\frac{\partial v_y}{\partial z}\right)\\
+\tau_{zz}&=-2\mu\frac{\partial v_z}{\partial z}+\frac{2}{3}\mu(\nabla\cdot\vec v)
+\end{aligned}
+\]
+</div>
 			<p>一般的に次の様に表されます。</p>
-			<p class="im"><img src="./../img/hydronamics_stress_conclusion.files/image004.png"></p>
+			<div class="math-block" id="formula-hydronamics-9-6-004" data-source-image="./../img/hydronamics_stress_conclusion.files/image004.png">
+\[
+\tau_{ij}
+=
+-\mu\left(
+\frac{\partial v_i}{\partial x_j}
++\frac{\partial v_j}{\partial x_i}
+\right)
++\delta_{ij}\frac{2}{3}\mu(\nabla\cdot\vec v)
+\]
+</div>
 			<p>また、</p>
-			<p class="im"><img src="./../img/hydronamics_stress_conclusion.files/image005.png"></p>
+			<div class="math-block" id="formula-hydronamics-9-6-005" data-source-image="./../img/hydronamics_stress_conclusion.files/image005.png">
+\[
+\begin{aligned}
+\sigma_{ij}
+&=-\delta_{ij}p_j-\tau_{ij}\\
+&=-\delta_{ij}p_j
++\mu\left(
+\frac{\partial v_i}{\partial x_j}
++\frac{\partial v_j}{\partial x_i}
+\right)
+-\delta_{ij}\frac{2}{3}\mu(\nabla\cdot\vec v)
+\end{aligned}
+\]
+</div>
 			<br>
 
 
