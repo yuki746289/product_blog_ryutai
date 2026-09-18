@@ -7,7 +7,7 @@
   "formulas":[
     {"image":"image001.png","latex":"\\[[\\mathrm{J}]\\]"},
     {"image":"image002.png","latex":"\\[\\begin{aligned}[\\mathrm{J}]&=[\\mathrm{N}][\\mathrm{m}]\\\\&=\\left[\\mathrm{kg}\\frac{\\mathrm{m}}{\\mathrm{s}^{2}}\\right][\\mathrm{m}]\\\\&=[\\mathrm{kg}][\\mathrm{m}^{2}][\\mathrm{s}^{-2}]\\end{aligned}\\]"},
-    {"image":"image003.png","latex":"\\[[\\mathrm{J}]\\fallingdotseq0.239[\\mathrm{cal}]\\]"},
+    {"image":"image003.png","latex":"\\[[\\mathrm{J}]\\cong0.239[\\mathrm{cal}]\\]"},
     {"image":"image004.png","latex":"\\[\\begin{aligned}[\\mathrm{J}]&=\\left[\\frac{\\mathrm{J}}{\\mathrm{s}}\\right][\\mathrm{s}]\\\\&=[\\mathrm{W}][\\mathrm{s}]\\\\&=[\\mathrm{V}][\\mathrm{A}][\\mathrm{s}]\\end{aligned}\\]"},
     {"image":"image005.png","latex":"\\[\\begin{aligned}[\\mathrm{J}]&=[\\mathrm{kg}][\\mathrm{m}^{2}][\\mathrm{s}^{-2}]\\\\&=0.239[\\mathrm{cal}]\\\\&=[\\mathrm{V}][\\mathrm{A}][\\mathrm{s}]\\end{aligned}\\]"}
   ]
