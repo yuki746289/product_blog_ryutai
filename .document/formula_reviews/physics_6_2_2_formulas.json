@@ -1,0 +1,23 @@
+{
+  "created_at": "2026-09-19T06:18:00+09:00",
+  "page": "physics/physics_6_2_2.html",
+  "image_dir": "img/physics_c_inner.files",
+  "canonical_source": "original source images",
+  "retained_diagrams": ["image007.png"],
+  "transcription_assist": {
+    "source": "original HP images",
+    "method": "direct source-image transcription",
+    "verified_date": "2026-09-19",
+    "source_image_is_canonical": true
+  },
+  "formulas": [
+    {
+      "image": "image006.png",
+      "latex": "\\[\n\\begin{aligned}\n(\\vec{v}\\cdot\\vec{w})\n&=\\left(\\sum_{i=0}^{3}\\vec{\\delta}_{i}v_i\\cdot\\sum_{j=0}^{3}\\vec{\\delta}_{j}w_j\\right)\\\\\n&=\\left(\\sum_{i=0}^{3}\\vec{\\delta}_{i}v_i\\cdot\\sum_{j=0}^{3}\\vec{\\delta}_{j}w_j\\right)\\\\\n&=\\sum_{i=0}^{3}\\sum_{j=0}^{3}(\\vec{\\delta}_{i}v_i\\cdot\\vec{\\delta}_{j}w_j)\\\\\n&=\\sum_{i=0}^{3}\\sum_{j=0}^{3}(\\vec{\\delta}_{i}\\cdot\\vec{\\delta}_{j})v_iw_j\\\\\n&=\\sum_{i=0}^{3}\\sum_{j=0}^{3}\\delta_{ij}v_iw_j\\\\\n&=v_xw_x+v_yw_y+v_zw_z\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image008.png",
+      "latex": "\\[(\\vec{v}\\cdot\\vec{w})=(\\vec{w}\\cdot\\vec{v})\\]"
+    }
+  ]
+}
