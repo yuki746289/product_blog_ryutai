@@ -1,9 +1,9 @@
 {
   "summary": {
     "html_pages_scanned": 205,
-    "residual_word_image_placements": 178,
-    "unique_assets": 176,
-    "centered_p_im_placements": 170,
+    "residual_word_image_placements": 171,
+    "unique_assets": 169,
+    "centered_p_im_placements": 163,
     "missing_assets": 49,
     "missing_by_section": {
       "mps": 49
@@ -15,12 +15,12 @@
       "fem": 33,
       "heat": 8,
       "hydronamics": 21,
-      "mesh": 35,
+      "mesh": 28,
       "mps": 49,
       "physics": 16
     },
     "extensions": {
-      ".png": 125,
+      ".png": 118,
       ".jpg": 4,
       ".gif": 49
     }
@@ -1294,90 +1294,6 @@
       "exists": true,
       "width": 209,
       "height": 242,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "mesh/mesh_5.html",
-      "encoding": "cp932",
-      "src": "./../img/mesh_deformation_tet.files/image003.png",
-      "asset": "img/mesh_deformation_tet.files/image003.png",
-      "exists": true,
-      "width": 99,
-      "height": 165,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "mesh/mesh_5.html",
-      "encoding": "cp932",
-      "src": "./../img/mesh_deformation_tet.files/image004.png",
-      "asset": "img/mesh_deformation_tet.files/image004.png",
-      "exists": true,
-      "width": 312,
-      "height": 35,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "mesh/mesh_5.html",
-      "encoding": "cp932",
-      "src": "./../img/mesh_deformation_tet.files/image005.png",
-      "asset": "img/mesh_deformation_tet.files/image005.png",
-      "exists": true,
-      "width": 303,
-      "height": 517,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "mesh/mesh_5.html",
-      "encoding": "cp932",
-      "src": "./../img/mesh_deformation_tet.files/image006.png",
-      "asset": "img/mesh_deformation_tet.files/image006.png",
-      "exists": true,
-      "width": 73,
-      "height": 116,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "mesh/mesh_5.html",
-      "encoding": "cp932",
-      "src": "./../img/mesh_deformation_tet.files/image007.png",
-      "asset": "img/mesh_deformation_tet.files/image007.png",
-      "exists": true,
-      "width": 242,
-      "height": 43,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "mesh/mesh_5.html",
-      "encoding": "cp932",
-      "src": "./../img/mesh_deformation_tet.files/image008.png",
-      "asset": "img/mesh_deformation_tet.files/image008.png",
-      "exists": true,
-      "width": 169,
-      "height": 219,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "mesh/mesh_5.html",
-      "encoding": "cp932",
-      "src": "./../img/mesh_deformation_tet.files/image009.png",
-      "asset": "img/mesh_deformation_tet.files/image009.png",
-      "exists": true,
-      "width": 239,
-      "height": 134,
       "format": "PNG",
       "centered_p_im": true,
       "review_priority": "A"
