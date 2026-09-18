@@ -28,6 +28,11 @@ Source-visible notation is preserved without theoretical correction, including:
 - Formula-level horizontal overflow: **0 / 9**
 - Source image vs MathJax rendering: **9 / 9 visually checked and PASS**
 
+## Diagram policy
+
+Retained unchanged:
+- `hydronamics_9_2/image001.png`
+
 ## Certification
 
 | Check | Result |
