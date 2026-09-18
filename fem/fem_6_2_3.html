@@ -11,6 +11,14 @@
 
 	<title>内挿関数の微分（有限要素法）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+	<script>
+	window.MathJax={
+		output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+		chtml:{displayAlign:'left',displayIndent:'0'}
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id"   value="4">
@@ -54,15 +62,93 @@
 			<br>
 			<br>
 			<p><span class="ft"><i>x</i></span>微分</p>
-			<p class="im"><img src="./../img/fem_n_tet.files/image012.png"></p>
+			<div class="math-block" id="formula-fem-6-2-3-012" data-source-image="./../img/fem_n_tet.files/image012.png">
+\[
+\begin{aligned}
+\frac{\partial N_2}{\partial x}
+&=
+\frac{\partial L_2}{\partial x}
+=
+\frac{\partial(V_2/V)}{\partial x}
+=
+\frac{1}{V}\frac{\partial V_2}{\partial x}
+\\
+&=
+\frac{1}{V}\frac{\partial}{\partial x}\frac{1}{6}
+\Big(
+x y_3z_4-x z_3y_4-y x_3z_4+y z_3x_4+z x_3y_4-z y_3x_4
+-x_1y_3z_4+x_1z_3y_4+x_1y z_4-x_1y z_3-x_1z y_4+x_1z y_3
++y_1x_3z_4-y_1z_3x_4-y_1x z_4+y_1x z_3+y_1z x_4-y_1z x_3
+-z_1x_3y_4+z_1y_3x_4+z_1x y_4-z_1x y_3-z_1y x_4+z_1y x_3
+\Big)
+\\
+&=
+\frac{1}{6V}\Big(
+y_3z_4-z_3y_4-y_1z_4+y_1z_3+z_1y_4-z_1y_3
+\Big)
+\end{aligned}
+\]
+</div>
 			<br>
 			<br>
 			<p><span class="ft"><i>y</i></span>微分</p>
-			<p class="im"><img src="./../img/fem_n_tet.files/image013.png"></p>
+			<div class="math-block" id="formula-fem-6-2-3-013" data-source-image="./../img/fem_n_tet.files/image013.png">
+\[
+\begin{aligned}
+\frac{\partial N_2}{\partial y}
+&=
+\frac{\partial L_2}{\partial y}
+=
+\frac{\partial(V_2/V)}{\partial y}
+=
+\frac{1}{V}\frac{\partial V_2}{\partial y}
+\\
+&=
+\frac{1}{V}\frac{\partial}{\partial y}\frac{1}{6}
+\Big(
+x y_3z_4-x z_3y_4-y x_3z_4+y z_3x_4+z x_3y_4-z y_3x_4
+-x_1y_3z_4+x_1z_3y_4+x_1y z_4-x_1y z_3-x_1z y_4+x_1z y_3
++y_1x_3z_4-y_1z_3x_4-y_1x z_4+y_1x z_3+y_1z x_4-y_1z x_3
+-z_1x_3y_4+z_1y_3x_4+z_1x y_4-z_1x y_3-z_1y x_4+z_1y x_3
+\Big)
+\\
+&=
+\frac{1}{6V}\Big(
+-x_3z_4+z_3x_4+x_1z_4-x_1z_3-z_1x_4+z_1x_3
+\Big)
+\end{aligned}
+\]
+</div>
 			<br>
 			<br>
 			<p><span class="ft"><i>z</i></span>微分</p>
-			<p class="im"><img src="./../img/fem_n_tet.files/image014.png"></p>
+			<div class="math-block" id="formula-fem-6-2-3-014" data-source-image="./../img/fem_n_tet.files/image014.png">
+\[
+\begin{aligned}
+\frac{\partial N_2}{\partial z}
+&=
+\frac{\partial L_2}{\partial z}
+=
+\frac{\partial(V_2/V)}{\partial z}
+=
+\frac{1}{V}\frac{\partial V_2}{\partial z}
+\\
+&=
+\frac{1}{V}\frac{\partial}{\partial z}\frac{1}{6}
+\Big(
+x y_3z_4-x z_3y_4-y x_3z_4+y z_3x_4+z x_3y_4-z y_3x_4
+-x_1y_3z_4+x_1z_3y_4+x_1y z_4-x_1y z_3-x_1z y_4+x_1z y_3
++y_1x_3z_4-y_1z_3x_4-y_1x z_4+y_1x z_3+y_1z x_4-y_1z x_3
+-z_1x_3y_4+z_1y_3x_4+z_1x y_4-z_1x y_3-z_1y x_4+z_1y x_3
+\Big)
+\\
+&=
+\frac{1}{6V}\Big(
+x_3y_4-y_3x_4-x_1y_4+x_1y_3+y_1x_4-y_1x_3
+\Big)
+\end{aligned}
+\]
+</div>
 			<br>
 
 

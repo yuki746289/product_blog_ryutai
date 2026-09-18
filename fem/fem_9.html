@@ -11,6 +11,14 @@
 
 	<title>座標の取り方（有限要素法）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+	<script>
+	window.MathJax={
+		output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+		chtml:{displayAlign:'left',displayIndent:'0'}
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="4">
@@ -52,13 +60,27 @@
 					それぞれオイラー座標、ラグラジアン座標が用いられます。
 					これらの座標の違いは、対流項<span class="ft">(</span>慣性力<span class="ft">)</span>
 					を考慮するかしないかです。対流項は、全微分作用の項に含まれています。</p>
-			<p class="im"><img src="./../img/fem_coordinates.files/image001.png"></p>
+			<div class="math-block" id="formula-fem-9-001" data-source-image="./../img/fem_coordinates.files/image001.png">
+\[
+\frac{D\vec v}{Dt}
+=
+\frac{\partial\vec v}{\partial t}
++
+(\vec v\cdot\nabla)\vec v
+\]
+</div>
 			<br>
 			<h2>オイラー座標</h2>
 			<p>節点を観測点と見なして計算します。
 					対流項を考慮するため、節点は移動しません。
 					逆に言えば、節点を固定するため、慣性力によって節点が押されると解釈できます。</p>
-			<p class="im"><img src="./../img/fem_coordinates.files/image002.png"></p>
+			<div class="math-block" id="formula-fem-9-002" data-source-image="./../img/fem_coordinates.files/image002.png">
+\[
+\frac{D\vec v}{Dt}
+=
+[\nabla\cdot\vec\sigma]+\rho\vec g
+\]
+</div>
 			<p class="im"><img src="./../img/fem_coordinates.files/image003.png"></p>
 			<br>
 			<h2>ラグラジアン座標</h2>
@@ -68,7 +90,13 @@
 					と解釈できます。節点の移動量は、タイムステップ<span class="fs"><i>D</i></span>
 					<span class="ft"><i>t</i>[s]</span>×計算した速度
 					<span class="ft"><i>v</i>[m/s]</span>となります。</p>
-			<p class="im"><img src="./../img/fem_coordinates.files/image004.png"></p>
+			<div class="math-block" id="formula-fem-9-004" data-source-image="./../img/fem_coordinates.files/image004.png">
+\[
+\frac{\partial\vec v}{\partial t}
+=
+[\nabla\cdot\vec\sigma]+\rho\vec g
+\]
+</div>
 			<p class="im"><img src="./../img/fem_coordinates.files/image005.png"></p>
 			<br>
 
