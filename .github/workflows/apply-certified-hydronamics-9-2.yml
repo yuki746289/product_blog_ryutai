@@ -91,7 +91,7 @@ jobs:
             block=(f'<div class="math-block" id="formula-hydronamics-9-2-{n}" '
                    f'data-source-image="./../img/{imgdir}/image{n}.png">\n'
                    f'{bynum[n]["latex"]}\n</div>')
-            applied=p.sub(block,applied,count=1)
+            applied=p.sub(lambda _m, block=block: block,applied,count=1)
 
           applied=strip_mathjax(applied)
           if '</head>' not in applied:
