@@ -16,10 +16,34 @@ Transcription data:
 
 Source-visible term order, signs, products, stress subscripts, and evaluation-position bars are preserved.
 
+Notable source-visible irregularity:
+- The middle product in `image002`–`image007` is visibly `ΔzxΔz`. It is retained exactly rather than normalized to the theoretically expected `ΔzΔx`.
+
 ## Pass 2 — browser MathJax comparison
 
-Status: **pending workflow artifact review**
+- Workflow run: **35341075511**
+- Artifact: `hydronamics-6-2-pass2`
+- Artifact id: **10544843010**
+- Result: **6 / 6 PASS**
+- MathJax rendering errors: **0**
+- Formula-level horizontal overflow: **0 / 6**
+- Source image vs MathJax rendering: **6 / 6 visually checked and PASS**
+
+## Diagram policy
+
+Retained unchanged:
+- `image001.png`
 
 ## Certification
 
-Not yet certified for normal-page application until Pass 2 is complete.
+| Check | Result |
+|---|---|
+| Formula targets | 6 |
+| Diagram retained | 1 |
+| Pass 1 | **6 / 6 PASS** |
+| Pass 2 | **6 / 6 PASS** |
+| MathJax errors | **0** |
+| Audit horizontal overflow | **0 / 6** |
+| Production deployment | Not performed |
+
+**Hydronamics 6_2 formulas are certified for application to the normal page.**
