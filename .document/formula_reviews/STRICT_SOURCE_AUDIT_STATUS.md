@@ -1335,6 +1335,43 @@ Physics の最終残存画像インベントリを再照合した。
 - `.document/formula_reviews/MESH_4_IMAGE_CLASSIFICATION_20260919.md`
 - `.document/formula_reviews/MESH_4_RETAINED_IMAGE_AUDIT_20260919.md`
 
+
+## 2026-09-19 Column 2 監査・通常ページ反映
+
+`column/column_2.html` のエネルギー単位ページを元HP画像正本で処理した。
+
+- 分類対象: **5画像**
+- 表示数式: **5**
+- Pass 1: **5/5**
+- 初回Pass 2 run: **35406153509**
+  - `image003` の近似記号を `\\fallingdotseq` と転記しており、元画像の `≅` 型と不一致を検出。
+- 修正後Pass 2 final run: **35406325865**
+- Pass 2: **5/5**
+- Apply + Normal browser QA run: **35406472563**
+- desktop/mobile: display 5/5、MathJax errors 0、unrendered 0、local-scroll 0、uncontained 0、page overflowなし
+- `image003` は元画像どおり `\\cong` に修正して認証。
+- 本番FTP反映は未実施。
+
+詳細:
+- `.document/formula_reviews/COLUMN_2_IMAGE_CLASSIFICATION_20260919.md`
+- `.document/formula_reviews/COLUMN_2_FORMULA_AUDIT_20260919.md`
+- `.document/formula_reviews/COLUMN_2_NORMAL_BROWSER_QA_20260919.md`
+
+## 2026-09-19 Counting 最終残存画像監査
+
+`counting/counting_1.html` / `counting/counting_2.html` の残存2画像を元HP画像で再確認した。
+
+- 残存画像: **2**
+- 数式画像: **0**
+- フローチャート: **2**
+- 通常ページ変更: **なし**
+- 変更なしのため追加ブラウザQAは不要
+- 本番FTP反映は未実施。
+
+詳細:
+- `.document/formula_reviews/COUNTING_IMAGE_CLASSIFICATION_20260919.md`
+- `.document/formula_reviews/COUNTING_RETAINED_IMAGE_AUDIT_20260919.md`
+
 ## 次の優先順
 
 1. **Mesh残存53画像**をページ単位で分類し、数式だけを Pass 1 → Pass 2 → 通常反映 → PC/スマホQA の順で処理する。
@@ -1410,8 +1447,12 @@ Physics の最終残存画像インベントリを再照合した。
 - Mesh 3_2: **数式画像0、保持図5件確認済み**
 - Mesh 4: **数式画像0、保持図4件確認済み**
 - **Meshカテゴリの既知数式画像は変換完了**
+- Column 2: **5式完了、PC/スマホQA完了**
+- **Columnカテゴリの既知数式画像は変換完了**
+- Counting: **数式画像0、フローチャート2件確認済み**
+- **Countingカテゴリの既知数式画像は変換完了**
 - **Physicsカテゴリの既知数式画像は変換完了**
-  - 最新残存16画像はすべて確認済みの保持図（数式画像0）\n- 厳密監査・通常ページ化まで完了した数式・数式テキスト: **559件**
+  - 最新残存16画像はすべて確認済みの保持図（数式画像0）\n- 厳密監査・通常ページ化まで完了した数式・数式テキスト: **564件**
 - 残存画像は数式とは限らないため、今後はページ単位で分類してから数式のみ変換する。
 - MPS欠損GIF参照は別タスクとして扱う。
 - 本番FTP反映は未実施。
