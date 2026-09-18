@@ -26,8 +26,18 @@ Transcription:
 
 ## Pass 2
 
-Status: **Pending**
+Result: **7 / 7 PASS**
+
+- Workflow run: **35404545950**
+- Artifact: `mesh-5-pass2`
+- Artifact id: **10572026814**
+- MathJax errors: **0**
+- Unrendered formulas: **0**
+- Pair-page horizontal overflow: **0 / 7**
+- Browser page errors: **0**
+
+All seven source/render pairs were visually inspected. The duplicated completed-square line in `image005`, summation limits, coefficients, subscripts, radicals, and final normalized deformation expressions match the source.
 
 Normal-page application is prohibited until Pass 2 is complete.
 
-**Mesh 5 is not yet certified for normal-page application.**
+**Mesh 5 is certified for normal-page application.**
