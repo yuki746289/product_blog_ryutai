@@ -1,0 +1,172 @@
+name: Apply certified FEM Batch 1 formulas
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/apply-certified-fem-batch-1.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - name: Apply certified formulas only
+        run: |
+          python3 - <<'PY'
+          import json,re
+          from pathlib import Path
+
+          pages=[
+              {
+                  'page':Path('fem/fem_11_1.html'),
+                  'json':Path('.document/formula_reviews/fem_11_1_formulas.json'),
+                  'imgdir':'fem_m_gauss.files',
+                  'targets':[f'{i:03d}' for i in range(1,12)],
+                  'diagrams':[]
+              },
+              {
+                  'page':Path('fem/fem_2_1.html'),
+                  'json':Path('.document/formula_reviews/fem_2_1_formulas.json'),
+                  'imgdir':'fem_tri.files',
+                  'targets':[f'{i:03d}' for i in range(2,8)],
+                  'diagrams':['001','008']
+              },
+              {
+                  'page':Path('fem/fem_10.html'),
+                  'json':Path('.document/formula_reviews/fem_10_formulas.json'),
+                  'imgdir':'fem_d_matrix.files',
+                  'targets':['001','002','003','004','006','007'],
+                  'diagrams':['005']
+              },
+          ]
+
+          mathjax4 = "\n\t<script>\n\twindow.MathJax={\n\t\toutput:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},\n\t\tchtml:{displayAlign:'left',displayIndent:'0'}\n\t};\n\t</script>\n\t<script defer src=\"https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js\"></script>\n"
+
+          def strip_mathjax(text):
+              text=re.sub(r'\s*<script>\s*window\.MathJax\s*=\s*\{.*?</script>','',text,flags=re.I|re.S)
+              text=re.sub(r'\s*<script\b[^>]*src=["\'][^"\']*mathjax[^"\']*["\'][^>]*>\s*</script>','',text,flags=re.I|re.S)
+              return text
+
+          def add_mathjax(text):
+              text=strip_mathjax(text)
+              if '</head>' not in text:
+                  raise RuntimeError('missing </head>')
+              return text.replace('</head>',mathjax4+'</head>',1)
+
+          summary=[]
+          for spec in pages:
+              page=spec['page']
+              cfg=json.loads(spec['json'].read_text(encoding='utf-8'))
+              target=spec['targets']
+              seq=[x['image'][5:8] for x in cfg['formulas']]
+              if seq!=target:
+                  raise RuntimeError(f'{page}: certified sequence mismatch {seq} != {target}')
+
+              alt='|'.join(target)
+              imgdir=spec['imgdir']
+
+              pat=re.compile(
+                  rf'(?P<block><div\b(?=[^>]*class=["\'][^"\']*\bmath-block\b[^"\']*["\'])(?=[^>]*data-source-image=["\'][^"\']*{re.escape(imgdir)}/image(?P<bnum>{alt})\.png["\'])[^>]*>.*?</div>)'
+                  rf'|(?P<img><p\b(?=[^>]*class=["\'][^"\']*\bim\b[^"\']*["\'])[^>]*>\s*<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image(?P<inum>{alt})\.png["\'][^>]*>\s*</p>)',
+                  flags=re.I|re.S)
+
+              def guard(text):
+                  text=strip_mathjax(text)
+                  text=pat.sub('<FORMULA/>',text)
+                  return re.sub(r'\s+',' ',text).strip()
+
+              raw=page.read_bytes()
+              enc=None
+              for candidate in ('cp932','utf-8'):
+                  try:
+                      original=raw.decode(candidate)
+                      enc=candidate
+                      break
+                  except UnicodeDecodeError:
+                      pass
+              if enc is None:
+                  raise RuntimeError(f'{page}: encoding decode failed')
+
+              before=guard(original)
+              matches=list(pat.finditer(original))
+              found=[m.group('inum') or m.group('bnum') for m in matches]
+              if found!=target:
+                  raise RuntimeError(f'{page}: normal formula sequence mismatch {found} != {target}')
+
+              bynum={x['image'][5:8]:x for x in cfg['formulas']}
+              pos=[0]
+              def repl(_m):
+                  n=target[pos[0]]
+                  pos[0]+=1
+                  return (
+                      f'<div class="math-block" id="formula-{page.stem}-{n}" '
+                      f'data-source-image="./../img/{imgdir}/image{n}.png">\n'
+                      f'{bynum[n]["latex"]}\n</div>'
+                  )
+
+              applied=pat.sub(repl,original)
+              applied=add_mathjax(applied)
+
+              if guard(applied)!=before:
+                  raise RuntimeError(f'{page}: non-formula content changed')
+
+              mapped=re.findall(
+                  rf'data-source-image=["\'][^"\']*{re.escape(imgdir)}/image(\d{{3}})\.png["\']',
+                  applied,flags=re.I)
+              if mapped!=target:
+                  raise RuntimeError(f'{page}: mapped sequence mismatch {mapped}')
+
+              leftovers=re.findall(
+                  rf'<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image(?:{alt})\.png["\'][^>]*>',
+                  applied,flags=re.I)
+              if leftovers:
+                  raise RuntimeError(f'{page}: target formula image tags remain {len(leftovers)}')
+
+              for d in spec['diagrams']:
+                  count=len(re.findall(
+                      rf'<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image{d}\.png["\'][^>]*>',
+                      applied,flags=re.I))
+                  if count!=1:
+                      raise RuntimeError(f'{page}: diagram image{d} count {count} != 1')
+
+              page.write_bytes(applied.encode(enc))
+              summary.append((page.as_posix(),len(target),enc,','.join(spec['diagrams']) or '-'))
+
+          if sum(x[1] for x in summary)!=23:
+              raise RuntimeError('unexpected FEM batch 1 formula total')
+
+          report=Path('.document/formula_reviews/FEM_BATCH_1_NORMAL_APPLY_RESULT.md')
+          lines=[
+              '# FEM Batch 1 Normal Apply Result','',
+              '- Certified formulas applied: **23 / 23**',
+              '- Target formula image tags remaining: **0**',
+              '- Classified diagram assets preserved unchanged.',
+              '- Non-formula content guards: **PASS**',
+              '- MathJax: v4',
+              '- Production deployment: not performed.','',
+              '| Page | Formulas | Encoding | Retained diagram images |',
+              '|---|---:|---|---|'
+          ]
+          for page,count,enc,diags in summary:
+              lines.append(f'| `{page}` | {count} | {enc} | {diags} |')
+          report.write_text('\n'.join(lines)+'\n',encoding='utf-8')
+          print('FEM batch 1 PASS formulas=23 pages=3')
+          PY
+
+      - name: Validate and commit
+        run: |
+          git diff --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add fem/fem_11_1.html fem/fem_2_1.html fem/fem_10.html \
+                  .document/formula_reviews/FEM_BATCH_1_NORMAL_APPLY_RESULT.md
+          git commit -m 'feat: apply certified FEM batch 1 formulas'
+          git push origin HEAD:develop
