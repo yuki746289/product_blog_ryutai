@@ -1,0 +1,140 @@
+name: Apply certified Hydronamics 11_1-11_5 formulas
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/apply-certified-hydronamics-11-small.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - name: Apply certified formulas
+        run: |
+          python3 - <<'PY'
+          import json,re
+          from pathlib import Path
+
+          defs=[
+            ('11_1','hydronamics/hydronamics_11_1.html','.document/formula_reviews/hydronamics_11_1_formulas.json'),
+            ('11_2','hydronamics/hydronamics_11_2.html','.document/formula_reviews/hydronamics_11_2_formulas.json'),
+            ('11_3','hydronamics/hydronamics_11_3.html','.document/formula_reviews/hydronamics_11_3_formulas.json'),
+            ('11_4','hydronamics/hydronamics_11_4.html','.document/formula_reviews/hydronamics_11_4_formulas.json'),
+            ('11_5','hydronamics/hydronamics_11_5.html','.document/formula_reviews/hydronamics_11_5_formulas.json'),
+          ]
+
+          mathjax4 = """
+          <script>
+          window.MathJax={
+            output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+            chtml:{displayAlign:'left',displayIndent:'0'}
+          };
+          </script>
+          <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+          """
+
+          def strip_mathjax(text):
+            text=re.sub(r'\s*<script>\s*window\.MathJax\s*=\s*\{.*?</script>','',text,flags=re.I|re.S)
+            text=re.sub(r'\s*<script\b[^>]*src=["\'][^"\']*mathjax[^"\']*["\'][^>]*>\s*</script>','',text,flags=re.I|re.S)
+            return text
+
+          results=[]
+          for ident,page_path,cfg_path in defs:
+            page=Path(page_path)
+            cfg=json.loads(Path(cfg_path).read_text(encoding='utf-8'))
+            if len(cfg['formulas'])!=1:
+              raise RuntimeError(f'{ident}: formula count != 1')
+            item=cfg['formulas'][0]
+            imgdir=cfg['image_dir'].split('/',1)[1]
+            n=item['image'][5:8]
+
+            raw=page.read_bytes()
+            enc=None
+            for candidate in ('cp932','utf-8'):
+              try:
+                original=raw.decode(candidate)
+                enc=candidate
+                break
+              except UnicodeDecodeError:
+                pass
+            if enc is None:
+              raise RuntimeError(f'{ident}: encoding failed')
+
+            old=re.compile(
+              rf'<p\b(?=[^>]*class=["\'][^"\']*\bim\b[^"\']*["\'])[^>]*>\s*'
+              rf'<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image{n}\.png["\'][^>]*>\s*</p>',
+              flags=re.I|re.S)
+            new=re.compile(
+              rf'<div\b(?=[^>]*class=["\'][^"\']*\bmath-block\b[^"\']*["\'])'
+              rf'(?=[^>]*data-source-image=["\'][^"\']*{re.escape(imgdir)}/image{n}\.png["\'])[^>]*>.*?</div>',
+              flags=re.I|re.S)
+
+            def skeleton(text):
+              text=strip_mathjax(text)
+              text=new.sub('<FORMULA/>',text)
+              text=old.sub('<FORMULA/>',text)
+              return re.sub(r'\s+',' ',text).strip()
+
+            before=skeleton(original)
+            applied=original
+            if not new.search(applied):
+              if len(old.findall(applied))!=1:
+                raise RuntimeError(f'{ident}: source wrapper count != 1')
+              block=(
+                f'<div class="math-block" id="formula-hydronamics-{ident.replace("_","-")}-{n}" '
+                f'data-source-image="./../img/{imgdir}/image{n}.png">\n'
+                f'{item["latex"]}\n</div>'
+              )
+              applied=old.sub(lambda _m:block,applied,count=1)
+
+            applied=strip_mathjax(applied)
+            if '</head>' not in applied:
+              raise RuntimeError(f'{ident}: missing head')
+            applied=applied.replace('</head>',mathjax4+'</head>',1)
+
+            if skeleton(applied)!=before:
+              raise RuntimeError(f'{ident}: non-formula content changed')
+            if len(new.findall(applied))!=1:
+              raise RuntimeError(f'{ident}: math block count != 1')
+            if re.search(rf'<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image{n}\.png["\'][^>]*>',applied,flags=re.I):
+              raise RuntimeError(f'{ident}: target image remains')
+            residual=len(re.findall(
+              rf'<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image\d{{3}}\.png["\'][^>]*>',
+              applied,flags=re.I))
+            if residual!=0:
+              raise RuntimeError(f'{ident}: residual images {residual}')
+
+            page.write_bytes(applied.encode(enc))
+            results.append(f'{ident}: PASS encoding={enc}')
+
+          Path('.document/formula_reviews/HYDRONAMICS_11_SMALL_NORMAL_APPLY_RESULT.md').write_text(
+            '# Hydronamics 11_1-11_5 Normal Apply Result\n\n'
+            '- Certified formulas applied: **5 / 5**\n'
+            '- Pages: hydronamics_11_1.html through hydronamics_11_5.html\n'
+            '- Target formula image tags remaining: **0**\n'
+            '- Retained diagrams in these image directories: **0**\n'
+            '- Non-formula content guards: **PASS**\n'
+            '- MathJax: v4\n'
+            '- Production deployment: not performed.\n',
+            encoding='utf-8')
+          print('\n'.join(results))
+          PY
+
+      - name: Validate and commit
+        run: |
+          git diff --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add hydronamics/hydronamics_11_1.html                   hydronamics/hydronamics_11_2.html                   hydronamics/hydronamics_11_3.html                   hydronamics/hydronamics_11_4.html                   hydronamics/hydronamics_11_5.html                   .document/formula_reviews/HYDRONAMICS_11_SMALL_NORMAL_APPLY_RESULT.md
+          git commit -m 'feat: apply certified hydronamics 11_1-11_5 formulas'
+          git pull --rebase origin develop
+          git push origin HEAD:develop
