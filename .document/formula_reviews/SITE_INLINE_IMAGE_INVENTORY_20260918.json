@@ -1,9 +1,9 @@
 {
   "summary": {
     "html_pages_scanned": 205,
-    "residual_word_image_placements": 387,
-    "unique_assets": 385,
-    "centered_p_im_placements": 368,
+    "residual_word_image_placements": 376,
+    "unique_assets": 374,
+    "centered_p_im_placements": 357,
     "missing_assets": 49,
     "missing_by_section": {
       "mps": 49
@@ -12,7 +12,7 @@
       "appendix": 9,
       "column": 5,
       "counting": 2,
-      "fem": 44,
+      "fem": 33,
       "heat": 8,
       "hydronamics": 152,
       "mesh": 53,
@@ -20,7 +20,7 @@
       "physics": 65
     },
     "extensions": {
-      ".png": 334,
+      ".png": 323,
       ".jpg": 4,
       ".gif": 49
     }
@@ -531,42 +531,6 @@
       "review_priority": "A"
     },
     {
-      "page": "fem/fem_3.html",
-      "encoding": "cp932",
-      "src": "./../img/fem_integrate.files/image001.png",
-      "asset": "img/fem_integrate.files/image001.png",
-      "exists": true,
-      "width": 311,
-      "height": 65,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "fem/fem_3.html",
-      "encoding": "cp932",
-      "src": "./../img/fem_integrate.files/image002.png",
-      "asset": "img/fem_integrate.files/image002.png",
-      "exists": true,
-      "width": 373,
-      "height": 64,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "fem/fem_4.html",
-      "encoding": "cp932",
-      "src": "./../img/fem_tri_area.files/image002.png",
-      "asset": "img/fem_tri_area.files/image002.png",
-      "exists": true,
-      "width": 341,
-      "height": 254,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
       "page": "fem/fem_6_1_1.html",
       "encoding": "cp932",
       "src": "./../img/fem_n_tri.files/image001.png",
@@ -579,78 +543,6 @@
       "review_priority": "A"
     },
     {
-      "page": "fem/fem_6_1_2.html",
-      "encoding": "cp932",
-      "src": "./../img/fem_n_tri.files/image007.png",
-      "asset": "img/fem_n_tri.files/image007.png",
-      "exists": true,
-      "width": 360,
-      "height": 153,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "fem/fem_6_1_2.html",
-      "encoding": "cp932",
-      "src": "./../img/fem_n_tri.files/image008.png",
-      "asset": "img/fem_n_tri.files/image008.png",
-      "exists": true,
-      "width": 351,
-      "height": 167,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "fem/fem_6_1_3.html",
-      "encoding": "cp932",
-      "src": "./../img/fem_n_tri.files/image009.png",
-      "asset": "img/fem_n_tri.files/image009.png",
-      "exists": true,
-      "width": 357,
-      "height": 154,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "fem/fem_6_1_3.html",
-      "encoding": "cp932",
-      "src": "./../img/fem_n_tri.files/image010.png",
-      "asset": "img/fem_n_tri.files/image010.png",
-      "exists": true,
-      "width": 357,
-      "height": 161,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "fem/fem_6_1_4.html",
-      "encoding": "cp932",
-      "src": "./../img/fem_n_tri.files/image011.png",
-      "asset": "img/fem_n_tri.files/image011.png",
-      "exists": true,
-      "width": 347,
-      "height": 158,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "fem/fem_6_1_4.html",
-      "encoding": "cp932",
-      "src": "./../img/fem_n_tri.files/image012.png",
-      "asset": "img/fem_n_tri.files/image012.png",
-      "exists": true,
-      "width": 355,
-      "height": 160,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
       "page": "fem/fem_6_2_1.html",
       "encoding": "cp932",
       "src": "./../img/fem_n_tet.files/image001.png",
@@ -658,30 +550,6 @@
       "exists": true,
       "width": 378,
       "height": 384,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "fem/fem_8.html",
-      "encoding": "cp932",
-      "src": "./../img/fem_bd.files/image001.png",
-      "asset": "img/fem_bd.files/image001.png",
-      "exists": true,
-      "width": 75,
-      "height": 62,
-      "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "fem/fem_8.html",
-      "encoding": "cp932",
-      "src": "./../img/fem_bd.files/image002.png",
-      "asset": "img/fem_bd.files/image002.png",
-      "exists": true,
-      "width": 75,
-      "height": 65,
       "format": "PNG",
       "centered_p_im": true,
       "review_priority": "A"
