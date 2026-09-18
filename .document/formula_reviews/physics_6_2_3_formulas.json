@@ -1,0 +1,41 @@
+{
+  "created_at": "2026-09-19T00:08:00+09:00",
+  "page": "physics/physics_6_2_3.html",
+  "image_dir": "img/physics_c_inner.files",
+  "canonical_source": "original source images",
+  "retained_diagrams": [
+    "image010.png",
+    "image011.png"
+  ],
+  "transcription_assist": {
+    "source": "original HP images",
+    "method": "direct source-image transcription",
+    "verified_date": "2026-09-19",
+    "source_image_is_canonical": true
+  },
+  "formulas": [
+    {
+      "image": "image009.png",
+      "latex": "\\[\n\\begin{aligned}\n(\\nabla\\cdot\\vec{v})\n&=\\left(\\sum_{i=0}^{3}\\vec{\\delta}_{i}\\frac{\\partial}{\\partial x_i}\\cdot\\sum_{j=0}^{3}\\vec{\\delta}_{j}v_j\\right)\\\\\n&=\\sum_{i=0}^{3}\\sum_{j=0}^{3}\\left(\\vec{\\delta}_{i}\\frac{\\partial}{\\partial x_i}\\cdot\\vec{\\delta}_{j}v_j\\right)\\\\\n&=\\sum_{i=0}^{3}\\sum_{j=0}^{3}(\\vec{\\delta}_{i}\\cdot\\vec{\\delta}_{j})\\frac{\\partial}{\\partial x_i}v_j\\\\\n&=\\sum_{i=0}^{3}\\sum_{j=0}^{3}\\delta_{ij}\\frac{\\partial v_j}{\\partial x_i}\\\\\n&=\\frac{\\partial v_x}{\\partial x}+\\frac{\\partial v_y}{\\partial y}+\\frac{\\partial v_z}{\\partial z}\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image012.png",
+      "latex": "\\((\\nabla\\cdot\\vec{v})<0\\)",
+      "mode": "inline"
+    },
+    {
+      "image": "image013.png",
+      "latex": "\\((\\nabla\\cdot\\vec{v})=0\\)",
+      "mode": "inline"
+    },
+    {
+      "image": "image014.png",
+      "latex": "\\((\\nabla\\cdot\\vec{v})>0\\)",
+      "mode": "inline"
+    },
+    {
+      "image": "image015.png",
+      "latex": "\\[(\\nabla\\cdot\\vec{v})\\neq(\\vec{v}\\cdot\\nabla)\\]"
+    }
+  ]
+}
