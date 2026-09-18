@@ -1,0 +1,67 @@
+name: Classify heat 6 images
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/classify-heat-6-images.yml'
+
+jobs:
+  contact-sheet:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - run: pip install pillow
+
+      - name: Build review sheet
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from PIL import Image,ImageDraw,ImageFont
+          import json,shutil
+
+          src=Path('img/heat_dimensionless.files')
+          out=Path('heat-6-image-review')
+          out.mkdir(exist_ok=True)
+          raw=out/'raw'; raw.mkdir(exist_ok=True)
+          font=ImageFont.load_default()
+          cards=[]
+          manifest=[]
+          W=1500
+
+          for i in range(1,14):
+              p=src/f'image{i:03d}.png'
+              if not p.exists():
+                  raise RuntimeError(f'missing {p}')
+              im=Image.open(p).convert('RGB')
+              shutil.copyfile(p,raw/p.name)
+              scale=min(5.0,(W-80)/max(1,im.width))
+              fit=im.resize((max(1,int(im.width*scale)),max(1,int(im.height*scale))),Image.Resampling.LANCZOS)
+              card=Image.new('RGB',(W,fit.height+100),'white')
+              d=ImageDraw.Draw(card)
+              d.text((20,15),f'image{i:03d}.png  native={im.width}x{im.height}',fill='black',font=font)
+              card.paste(fit,((W-fit.width)//2,60))
+              d.rectangle((0,0,card.width-1,card.height-1),outline='gray')
+              cards.append(card)
+              manifest.append({'image':f'image{i:03d}.png','width':im.width,'height':im.height})
+
+          H=sum(x.height for x in cards)+15*(len(cards)-1)
+          sheet=Image.new('RGB',(W,H),'white'); y=0
+          for c in cards:
+              sheet.paste(c,(0,y)); y+=c.height+15
+          sheet.save(out/'heat_6_contact_sheet.png')
+          (out/'manifest.json').write_text(json.dumps(manifest,indent=2),encoding='utf-8')
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: heat-6-image-review
+          path: heat-6-image-review
+          retention-days: 7
