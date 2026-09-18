@@ -82,11 +82,16 @@ jobs:
                   pos[0]+=1
                   item=bynum[n]
                   if item['type']=='rich':
-                      return (
-                          f'<div class="formula-rich-block" id="formula-{key}-{n}" '
-                          f'data-source-image="./../img/{imgdir}/image{n}.png">\n'
-                          f'{item["html"]}\n</div>'
+                      opening='<div class="formula-rich-inner">'
+                      replacement=(
+                          f'<div class="formula-rich-block formula-rich-inner" '
+                          f'id="formula-{key}-{n}" '
+                          f'data-source-image="./../img/{imgdir}/image{n}.png">'
                       )
+                      rich=item["html"].replace(opening,replacement,1)
+                      if rich==item["html"]:
+                          raise RuntimeError(f'{page}: rich wrapper not found')
+                      return rich
                   return (
                       f'<div class="math-block" id="formula-{key}-{n}" '
                       f'data-source-image="./../img/{imgdir}/image{n}.png">\n'
