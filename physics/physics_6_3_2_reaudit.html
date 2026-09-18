@@ -1,0 +1,26 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>body{font-family:Arial;margin:20px}.formula-pair{border-top:1px solid #bbb;padding:18px 0}.pair-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}.source,.render{min-width:0;overflow-x:auto;padding:10px;border:1px solid #ddd}.source img{max-width:100%;height:auto}@media(max-width:900px){.pair-grid{grid-template-columns:1fr}}</style>
+<script>window.MathJax={output:{displayOverflow:"linebreak",linebreaks:{inline:false,width:"100%"}}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head><body>
+<section class="formula-pair" id="formula-002"><div class="pair-grid">
+<div class="source"><img src="./../img/physics_c_cross.files/image002.png"></div>
+<div class="render">\[
+\begin{aligned}
+[\vec{v}\times\vec{w}]
+&=\left[\sum_{i=0}^{3}\vec{\delta}_{i}v_i\times\sum_{j=0}^{3}\vec{\delta}_{j}w_j\right]\\
+&=\left[\sum_{i=0}^{3}\sum_{j=0}^{3}\vec{\delta}_{i}v_i\times\vec{\delta}_{j}w_j\right]\\
+&=\sum_{i=0}^{3}\sum_{j=0}^{3}[\vec{\delta}_{i}\times\vec{\delta}_{j}]v_iw_j\\
+&=\sum_{i=0}^{3}\sum_{j=0}^{3}\sum_{k=0}^{3}\varepsilon_{ijk}\vec{\delta}_{k}v_iw_j\\
+&=\varepsilon_{123}\vec{\delta}_{z}v_xw_y+\varepsilon_{231}\vec{\delta}_{x}v_yw_z+\varepsilon_{312}\vec{\delta}_{y}v_zw_x\\
+&\quad+\varepsilon_{321}\vec{\delta}_{x}v_zw_y+\varepsilon_{213}\vec{\delta}_{z}v_yw_x+\varepsilon_{132}\vec{\delta}_{y}v_xw_z\\
+&=\vec{\delta}_{x}(v_yw_z-v_zw_y)+\vec{\delta}_{y}(v_zw_x-v_xw_z)+\vec{\delta}_{z}(v_xw_y-v_yw_x)
+\end{aligned}
+\]</div>
+</div></section>
+<section class="formula-pair" id="formula-003"><div class="pair-grid">
+<div class="source"><img src="./../img/physics_c_cross.files/image003.png"></div>
+<div class="render">\[
+[\vec{v}\times\vec{w}]=( |\vec{v}|\,|\vec{w}|\sin\theta )\vec{n}
+\]</div>
+</div></section>
+</body></html>
