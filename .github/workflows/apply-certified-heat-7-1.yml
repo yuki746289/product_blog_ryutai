@@ -1,0 +1,122 @@
+name: Apply certified Heat 7-1 formulas
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/apply-certified-heat-7-1.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - name: Apply certified formulas only
+        run: |
+          python3 - <<'PY'
+          import json,re
+          from pathlib import Path
+
+          key='heat_7_1'
+          imgdir='heat_discretization_tri.files'
+          target_nums=[f'{i:03d}' for i in range(1,34)]
+          page=Path('heat/heat_7_1.html')
+          cfg=json.loads(Path('.document/formula_reviews/heat_7_1_formulas.json').read_text(encoding='utf-8'))
+
+          seq=[x['image'][5:8] for x in cfg['formulas']]
+          if seq!=target_nums:
+              raise RuntimeError(f'certified sequence mismatch: {seq}')
+
+          def strip_mathjax(text):
+              text=re.sub(r'\s*<script>\s*window\.MathJax\s*=\s*\{.*?</script>','',text,flags=re.I|re.S)
+              text=re.sub(r'\s*<script\b[^>]*src=["\'][^"\']*mathjax[^"\']*["\'][^>]*>\s*</script>','',text,flags=re.I|re.S)
+              return text
+
+          mathjax4 = "\n\t<script>\n\twindow.MathJax={\n\t\toutput:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},\n\t\tchtml:{displayAlign:'left',displayIndent:'0'}\n\t};\n\t</script>\n\t<script defer src=\"https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js\"></script>\n"
+
+          def add_mathjax(text):
+              text=strip_mathjax(text)
+              if '</head>' not in text:
+                  raise RuntimeError('missing </head>')
+              return text.replace('</head>',mathjax4+'</head>',1)
+
+          alt='|'.join(target_nums)
+          pat=re.compile(
+              rf'(?P<block><div\b(?=[^>]*class=["\'][^"\']*\bmath-block\b[^"\']*["\'])(?=[^>]*data-source-image=["\'][^"\']*{re.escape(imgdir)}/image(?P<bnum>{alt})\.png["\'])[^>]*>.*?</div>)'
+              rf'|(?P<img><p\b(?=[^>]*class=["\'][^"\']*\bim\b[^"\']*["\'])[^>]*>\s*<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image(?P<inum>{alt})\.png["\'][^>]*>\s*</p>)',
+              flags=re.I|re.S)
+
+          def guard(text):
+              return re.sub(r'\s+',' ',pat.sub('<FORMULA/>',strip_mathjax(text))).strip()
+
+          original=page.read_bytes().decode('cp932')
+          before=guard(original)
+
+          matches=list(pat.finditer(original))
+          found=[m.group('inum') or m.group('bnum') for m in matches]
+          if found!=target_nums:
+              raise RuntimeError(f'normal formula sequence mismatch: {found}')
+
+          blocks=[]
+          for item in cfg['formulas']:
+              n=item['image'][5:8]
+              blocks.append(
+                  f'<div class="math-block" id="formula-heat-7-1-{n}" '
+                  f'data-source-image="./../img/{imgdir}/image{n}.png">\n'
+                  f'{item["latex"]}\n</div>'
+              )
+
+          pos=[0]
+          def repl(_m):
+              i=pos[0]
+              pos[0]+=1
+              return blocks[i]
+
+          applied=add_mathjax(pat.sub(repl,original))
+
+          if guard(applied)!=before:
+              raise RuntimeError('non-formula content changed')
+
+          mapped=re.findall(
+              rf'data-source-image=["\'][^"\']*{re.escape(imgdir)}/image(\d{{3}})\.png["\']',
+              applied,flags=re.I)
+          if mapped!=target_nums:
+              raise RuntimeError(f'mapped sequence mismatch: {mapped}')
+
+          leftovers=re.findall(
+              rf'<img\b[^>]*src=["\'][^"\']*{re.escape(imgdir)}/image(?:{alt})\.png["\'][^>]*>',
+              applied,flags=re.I)
+          if leftovers:
+              raise RuntimeError(f'target formula image tags remain: {len(leftovers)}')
+
+          page.write_bytes(applied.encode('cp932'))
+
+          report=Path('.document/formula_reviews/HEAT_7_1_NORMAL_APPLY_RESULT.md')
+          report.write_text(
+              '# Heat 7-1 Normal Apply Result\n\n'
+              '- Page: heat/heat_7_1.html\n'
+              '- Certified formula placements applied: 33 / 33\n'
+              '- Target formula image tags remaining: 0\n'
+              '- Non-formula content guard: PASS\n'
+              '- Encoding: CP932 / Shift_JIS preserved\n'
+              '- MathJax: v4\n'
+              '- Production deployment: not performed\n',
+              encoding='utf-8')
+          print('heat_7_1 PASS formulas=33')
+          PY
+
+      - name: Validate and commit
+        run: |
+          git diff --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add heat/heat_7_1.html .document/formula_reviews/HEAT_7_1_NORMAL_APPLY_RESULT.md
+          git commit -m 'feat: apply certified heat 7-1 formulas'
+          git push origin HEAD:develop
