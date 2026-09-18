@@ -899,6 +899,30 @@ FEM batches 1–3 / FEM 5後に残っていた未分類20画像を分類し、�
 - `.document/formula_reviews/PHYSICS_4_FORMULA_AUDIT_20260918.md`
 - `.document/formula_reviews/PHYSICS_4_NORMAL_BROWSER_QA_20260918.md`
 
+
+## 2026-09-18 Physics 3 監査・通常ページ反映
+
+`physics/physics_3.html` の単位ベクトルページを、元HP画像を正本として処理した。
+
+- 分類対象: **7画像**
+  - 表示数式: **3**
+  - インライン数式: **3**
+  - 図: **1**（image001 を維持）
+- Pass 1: **6/6**
+- Pass 2 workflow run: **35359678102**
+- Pass 2: **6/6**
+- 通常ページ反映: **6/6**
+- Apply workflow run: **35359911102**
+- Normal browser QA run: **35359986398**
+- desktop/mobile: display 3/3、inline 3/3、retained image 1/1、MathJax errors 0、unrendered 0、uncontained 0、page overflowなし
+- mobile local-scroll: **0**
+- 本番FTP反映は未実施。
+
+詳細:
+- `.document/formula_reviews/PHYSICS_3_IMAGE_CLASSIFICATION_20260918.md`
+- `.document/formula_reviews/PHYSICS_3_FORMULA_AUDIT_20260918.md`
+- `.document/formula_reviews/PHYSICS_3_NORMAL_BROWSER_QA_20260918.md`
+
 ## 次の優先順
 
 1. サイト全体の残存画像を「数式 / 図 / 混在画像」に分類する。
@@ -951,7 +975,8 @@ FEM batches 1–3 / FEM 5後に残っていた未分類20画像を分類し、�
 - **Hydronamicsカテゴリの既知数式画像は変換完了**
   - 最新残存21画像は、すべて確認済みの保持図（数式画像0）
   - 本番FTP反映は未実施。
-- Physics 4: **6式完了、図・混在図3件は画像維持、PC/スマホQA完了**\n- 厳密監査・通常ページ化まで完了した数式・数式テキスト: **495件**
+- Physics 4: **6式完了、図・混在図3件は画像維持、PC/スマホQA完了**
+- Physics 3: **6式完了、図1件は画像維持、PC/スマホQA完了**\n- 厳密監査・通常ページ化まで完了した数式・数式テキスト: **501件**
 - 残存画像は数式とは限らないため、今後はページ単位で分類してから数式のみ変換する。
 - MPS欠損GIF参照は別タスクとして扱う。
 - 本番FTP反映は未実施。
