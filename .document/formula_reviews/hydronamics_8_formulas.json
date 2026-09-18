@@ -1,0 +1,67 @@
+{
+  "page": "hydronamics/hydronamics_8.html",
+  "image_dir": "img/hydronamics_e_momentum.files",
+  "canonical_source": "original source images",
+  "formulas": [
+    {
+      "image": "image001.png",
+      "mode": "display",
+      "latex": "\\[\n\\begin{aligned}\n\\rho\\Delta x\\Delta y\\Delta z\n\\frac{v_{x|t+\\Delta t}-v_{x|t}}{\\Delta t}\n={}&\n\\rho(\\Delta y\\Delta z\\,v_x+\\Delta z\\Delta x\\,v_y+\\Delta x\\Delta y\\,v_z)v_{x|x}\\\\\n&-\\rho(\\Delta y\\Delta z\\,v_x+\\Delta z\\Delta x\\,v_y+\\Delta x\\Delta y\\,v_z)v_{x|x+\\Delta x}\\\\\n&+\\Delta y\\Delta z\\,\\tau_{xx|x}\n-\\Delta y\\Delta z\\,\\tau_{xx|x+\\Delta x}\\\\\n&+\\Delta z\\Delta x\\,\\tau_{yx|y}\n-\\Delta z\\Delta x\\,\\tau_{yx|y+\\Delta y}\\\\\n&+\\Delta x\\Delta y\\,\\tau_{zx|z}\n-\\Delta x\\Delta y\\,\\tau_{zx|z+\\Delta z}\\\\\n&+\\Delta y\\Delta z\\,p_{x|x}\n-\\Delta y\\Delta z\\,p_{x|x+\\Delta x}\\\\\n&+\\rho\\Delta x\\Delta y\\Delta z\\,g_x\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image002.png",
+      "mode": "display",
+      "latex": "\\[\n\\begin{aligned}\n\\frac{\\rho v_{x|t+\\Delta t}-\\rho v_{x|t}}{\\Delta t}\n={}&\n-\\frac{\\rho v_xv_{x|x+\\Delta x}-\\rho v_xv_{x|x}}{\\Delta x}\\\\\n&-\\frac{\\rho v_yv_{x|x+\\Delta x}-\\rho v_yv_{x|x}}{\\Delta y}\\\\\n&-\\frac{\\rho v_zv_{x|x+\\Delta x}-\\rho v_zv_{x|x}}{\\Delta z}\\\\\n&-\\frac{\\tau_{xx|x+\\Delta x}-\\tau_{xx|x}}{\\Delta x}\n-\\frac{\\tau_{yx|y+\\Delta y}-\\tau_{yx|y}}{\\Delta y}\n-\\frac{\\tau_{zx|z+\\Delta z}-\\tau_{zx|z}}{\\Delta z}\\\\\n&-\\frac{p_{x|x+\\Delta x}-p_{x|x}}{\\Delta x}\n+\\rho g_x\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image003.png",
+      "mode": "display",
+      "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial(\\rho v_x)}{\\partial t}\n={}&\n-\\frac{\\partial(\\rho v_xv_x)}{\\partial x}\n-\\frac{\\partial(\\rho v_yv_x)}{\\partial y}\n-\\frac{\\partial(\\rho v_zv_x)}{\\partial z}\\\\\n&-\\frac{\\partial\\tau_x}{\\partial x}\n-\\frac{\\partial\\tau_y}{\\partial y}\n-\\frac{\\partial\\tau_z}{\\partial z}\\\\\n&-\\frac{\\partial p_x}{\\partial x}\n+\\rho g_x\n\\end{aligned}\n\\]"
+    },
+    {
+      "image": "image004.png",
+      "mode": "display",
+      "latex": "\\[\n\\rho\\left(\n\\frac{\\partial v_x}{\\partial t}\n+v_x\\frac{\\partial v_x}{\\partial x}\n+v_y\\frac{\\partial v_x}{\\partial y}\n+v_z\\frac{\\partial v_x}{\\partial z}\n\\right)\n=\n-\\frac{\\partial\\tau_{xx}}{\\partial x}\n-\\frac{\\partial\\tau_{yx}}{\\partial y}\n-\\frac{\\partial\\tau_{zx}}{\\partial z}\n-\\frac{\\partial p_x}{\\partial x}\n+\\rho g_x\n\\]"
+    },
+    {
+      "image": "image005.png",
+      "mode": "display",
+      "latex": "\\[\n\\rho\\left(\n\\frac{\\partial v_y}{\\partial t}\n+v_x\\frac{\\partial v_y}{\\partial x}\n+v_y\\frac{\\partial v_y}{\\partial y}\n+v_z\\frac{\\partial v_y}{\\partial z}\n\\right)\n=\n-\\frac{\\partial\\tau_{xy}}{\\partial x}\n-\\frac{\\partial\\tau_{yy}}{\\partial y}\n-\\frac{\\partial\\tau_{zy}}{\\partial z}\n-\\frac{\\partial p_y}{\\partial y}\n+\\rho g_y\n\\]"
+    },
+    {
+      "image": "image006.png",
+      "mode": "display",
+      "latex": "\\[\n\\rho\\left(\n\\frac{\\partial v_z}{\\partial t}\n+v_x\\frac{\\partial v_z}{\\partial x}\n+v_y\\frac{\\partial v_z}{\\partial y}\n+v_z\\frac{\\partial v_z}{\\partial z}\n\\right)\n=\n-\\frac{\\partial\\tau_{xz}}{\\partial x}\n-\\frac{\\partial\\tau_{yz}}{\\partial y}\n-\\frac{\\partial\\tau_{zz}}{\\partial z}\n-\\frac{\\partial p_z}{\\partial z}\n+\\rho g_z\n\\]"
+    },
+    {
+      "image": "image007.png",
+      "mode": "display",
+      "latex": "\\[\n\\rho\\frac{\\partial\\vec v}{\\partial t}\n+\\rho(\\vec v\\cdot\\nabla)\\vec v\n=\n-[\\nabla\\cdot\\vec\\tau]\n-[\\nabla\\cdot\\vec p]\n+\\rho\\vec g\n\\]"
+    },
+    {
+      "image": "image008.png",
+      "mode": "display",
+      "latex": "\\[\n\\frac{D}{Dt}\n=\n\\frac{\\partial}{\\partial t}\n+\n(\\vec v\\cdot\\nabla)\n\\]"
+    },
+    {
+      "image": "image009.png",
+      "mode": "display",
+      "latex": "\\[\n\\rho\\frac{D\\vec v}{Dt}\n=\n-[\\nabla\\cdot\\vec\\tau]\n-[\\nabla\\cdot\\vec p]\n+\\rho\\vec g\n\\]"
+    },
+    {
+      "image": "image010.png",
+      "mode": "display",
+      "latex": "\\[\n\\rho\\frac{D\\vec v}{Dt}\n=\n[\\nabla\\cdot\\vec\\sigma]\n+\\rho\\vec g\n\\]"
+    },
+    {
+      "image": "image011.png",
+      "mode": "inline",
+      "latex": "\\(\\vec\\sigma\\)"
+    },
+    {
+      "image": "image012.png",
+      "mode": "display",
+      "latex": "\\[\n\\sigma_{ij}=-\\delta_{ij}p_j-\\tau_{ij}\n\\]"
+    }
+  ]
+}
