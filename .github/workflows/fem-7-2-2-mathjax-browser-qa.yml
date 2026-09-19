@@ -1,5 +1,5 @@
 # Created: 2026-09-19 JST
-# Re-run marker: 2026-09-19 source/render fixes
+# Re-run marker: 2026-09-19 source/render fixes v2
 name: FEM 7-2-2 MathJax Browser QA
 
 on:
