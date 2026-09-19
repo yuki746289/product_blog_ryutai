@@ -1,0 +1,111 @@
+# Created: 2026-09-19T09:28:00+09:00
+name: Diagnose final mobile overflow
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/diagnose-final-mobile-overflow.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install Chromium
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Start local site
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/diag-overflow-http.log 2>&1 &
+          sleep 1
+      - name: Diagnose overflow elements
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from urllib.parse import urlparse
+          from playwright.sync_api import sync_playwright
+
+          pages=['ad_amazon.html','index.html','questionnaire.html']
+          out={}
+          def is_local(url):
+              try:
+                  u=urlparse(url)
+                  return (not u.netloc) or u.hostname in ('127.0.0.1','localhost')
+              except Exception:
+                  return False
+
+          with sync_playwright() as p:
+              b=p.chromium.launch(headless=True)
+              ctx=b.new_context(viewport={'width':390,'height':844},device_scale_factor=1)
+              def route_handler(route):
+                  u=route.request.url
+                  if is_local(u) or u.startswith('https://cdn.jsdelivr.net/'):
+                      route.continue_()
+                  else:
+                      route.abort()
+              ctx.route('**/*',route_handler)
+              pg=ctx.new_page()
+              for path in pages:
+                  pg.goto('http://127.0.0.1:8000/'+path,wait_until='domcontentloaded',timeout=30000)
+                  pg.wait_for_timeout(300)
+                  result=pg.evaluate('''() => {
+                    const vw=document.documentElement.clientWidth;
+                    const all=[...document.querySelectorAll('*')];
+                    const offenders=[];
+                    for (const e of all) {
+                      const r=e.getBoundingClientRect();
+                      const cs=getComputedStyle(e);
+                      const right=r.right;
+                      const left=r.left;
+                      const sw=e.scrollWidth, cw=e.clientWidth;
+                      if (right > vw + 1 || left < -1 || sw > cw + 1) {
+                        offenders.push({
+                          tag:e.tagName.toLowerCase(),
+                          id:e.id||'',
+                          cls:e.className && typeof e.className==='string' ? e.className : '',
+                          right:+right.toFixed(1),
+                          left:+left.toFixed(1),
+                          width:+r.width.toFixed(1),
+                          clientWidth:cw,
+                          scrollWidth:sw,
+                          overflowX:cs.overflowX,
+                          display:cs.display,
+                          position:cs.position,
+                          widthCss:cs.width,
+                          maxWidth:cs.maxWidth,
+                          snippet:(e.outerHTML||'').replace(/\s+/g,' ').slice(0,300)
+                        });
+                      }
+                    }
+                    return {
+                      viewport:vw,
+                      htmlClient:document.documentElement.clientWidth,
+                      htmlScroll:document.documentElement.scrollWidth,
+                      bodyClient:document.body.clientWidth,
+                      bodyScroll:document.body.scrollWidth,
+                      offenders
+                    };
+                  }''')
+                  out[path]=result
+                  print('\n###',path)
+                  print(json.dumps(result,ensure_ascii=False,indent=2))
+              b.close()
+          Path('mobile-overflow-diagnostic.json').write_text(json.dumps(out,ensure_ascii=False,indent=2),encoding='utf-8')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mobile-overflow-diagnostic
+          path: mobile-overflow-diagnostic.json
+          retention-days: 7
