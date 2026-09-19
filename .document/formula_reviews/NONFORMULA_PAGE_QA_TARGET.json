@@ -1,33 +1,58 @@
 {
-  "category": "physics",
+  "category": "mesh-column-appendix",
   "pages": [
     {
-      "path": "physics/physics.html",
+      "path": "mesh/mesh.html",
       "expected_math_blocks": 0,
       "expected_local_images": 0
     },
     {
-      "path": "physics/physics_1.html",
-      "expected_math_blocks": 0,
-      "expected_local_images": 1
-    },
-    {
-      "path": "physics/physics_6.html",
+      "path": "mesh/mesh_3.html",
       "expected_math_blocks": 0,
       "expected_local_images": 0
     },
     {
-      "path": "physics/physics_6_2.html",
+      "path": "mesh/mesh_3_2.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 5
+    },
+    {
+      "path": "mesh/mesh_4.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 4
+    },
+    {
+      "path": "column/column.html",
       "expected_math_blocks": 0,
       "expected_local_images": 0
     },
     {
-      "path": "physics/physics_6_3.html",
+      "path": "column/column_1.html",
       "expected_math_blocks": 0,
       "expected_local_images": 0
     },
     {
-      "path": "physics/physics_8.html",
+      "path": "column/column_3.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 0
+    },
+    {
+      "path": "column/column_4.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 0
+    },
+    {
+      "path": "column/column_5.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 0
+    },
+    {
+      "path": "appendix/appendix.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 0
+    },
+    {
+      "path": "appendix/appendix_3.html",
       "expected_math_blocks": 0,
       "expected_local_images": 0
     }
