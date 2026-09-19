@@ -54,8 +54,18 @@ Final MPS delta QA:
 
 ### FTPS capability
 
-- FTPS接続: 過去に確認済み
-- 一時ファイルupload/delete: 過去に確認済み
+- 最新read-only接続確認: **接続成功**
+  - run: `35408141850`
+  - job: `105836951290`
+  - checkout: latest `develop`
+  - `FTP_TLS.connect` / login / `PROT P` / passive mode: 成功
+  - remote `/img` read access: 到達
+  - remote write/delete: **なし**
+- job conclusion自体はfailureだが、原因は旧スクリプトの「MPS画像参照49件」assert。
+  - 現在の実測: **0件**
+  - 接続処理完了後に `Expected 49 MPS references but parsed 0` で終了したもの。
+  - workflowの期待値は **0件** へ修正済み。
+- 一時ファイルupload/delete能力: 過去に確認済み
 - 本番書込み: **未実施**
 
 ## 本番反映時の安全条件
@@ -78,6 +88,7 @@ Final MPS delta QA:
 - [x] 残存画像インベントリ更新
 - [x] 監査台帳更新
 - [x] デプロイ対象外パス確認方針
+- [x] 最新FTPS read-only接続確認
 - [ ] **ユーザーの本番デプロイ明示承認**
 - [ ] FTPS本番upload
 - [ ] 公開サイトsmoke test
