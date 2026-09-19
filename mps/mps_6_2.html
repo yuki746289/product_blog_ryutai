@@ -6,12 +6,20 @@
 	<meta http-equiv="content-type" content="text/html; charset=shift_jis">
 	<meta http-equiv="content-style-type" content="text/css">
 
-	<meta name="description" content="���̗͊w�E�L���v�f�@�ɂ�鐔�l�v�Z�T�C�g�B">
-	<meta name="keywords" content="���̗͊w,�L���v�f�@,���l�v�Z,���b�V��,FEM"> 
+	<meta name="description" content="流体力学・有限要素法による数値計算サイト。">
+	<meta name="keywords" content="流体力学,有限要素法,数値計算,メッシュ,FEM"> 
 	<meta name="author" content="HTMQ"> 
 
-	<title>�v�Z�̗���(���q�@)</title>
+	<title>計算の流れ(粒子法)</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+	<script>
+	window.MathJax={
+		output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+		chtml:{displayAlign:'left',displayIndent:'0'}
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="11">
@@ -19,14 +27,14 @@
 	<div id="wrapper">
 
 	<div id="header">
-		<h1><a href="./../index.html" title="�g�b�v�y�[�W��">�L���v�f�@�E���̗͊w�ɂ�鐔�l�v�Z</a></h1>
+		<h1><a href="./../index.html" title="トップページへ">有限要素法・流体力学による数値計算</a></h1>
 
 		<br style="clear:both;">
 		<ul style="margin-left:30px;">
-		<li><a href="./../index.html" title="index��">index</a>&gt;</li>
-		<li><a href="./mps.html" title="���q�@��">���q�@</a>&gt;</li>
-		<li><a href="./mps_6.html" title="�񈳏k������ւ̓K�p��">�񈳏k������ւ̓K�p</a>&gt;</li>
-		<li><a href="./mps_6_2.html" title="�v�Z�̗����">�v�Z�̗���</a>&gt;</li>
+		<li><a href="./../index.html" title="indexへ">index</a>&gt;</li>
+		<li><a href="./mps.html" title="粒子法へ">粒子法</a>&gt;</li>
+		<li><a href="./mps_6.html" title="非圧縮性流れへの適用へ">非圧縮性流れへの適用</a>&gt;</li>
+		<li><a href="./mps_6_2.html" title="計算の流れへ">計算の流れ</a>&gt;</li>
 		</ul>
 		<hr>
 	</div>
@@ -34,7 +42,7 @@
 	<div id="main" >
 
 	<div id="image">
-		<p>���̗͊w���琔�l�v�Z�܂�</p>
+		<p>流体力学から数値計算まで</p>
 		<p><img src="./../img/shiki1.gif"></p>
 		<p><img src="./../img/shiki2.gif"></p>
 	</div>
@@ -43,65 +51,193 @@
 
 		<div id="content-text">
 
-			<h2>�L��</h2>
+			<h2>広告</h2>
 			<p><iframe src="./../ad.html" width="470" height="60" scrolling="no" frameborder="0"></iframe></p>
 			<br>
 
-			<h2>�v�Z�̗���</h2>
-			<h2>���A��@</h2>
-			<p>�@�v�Z�́A�^�C���X�e�b�v���Ƃɔ��A��@�Ōv�Z����܂��B
-				�������̃^�C���X�e�b�v��k,���̎����̃^�C���X�e�b�v��k+1�Ƃ���Ǝx�z�������̊e���́A�����ƂȂ�܂��B</p>
-			<p class="im"><img src="./../img/mps_fluid_count.files/image001.gif"></p>
-			<p class="im"><img src="./../img/mps_fluid_count.files/image002.gif"></p>
-			<p>�@��L�̗l�Ɋe����z�I�����A�A�I�����ɕ����Čv�Z���s���܂��B
-				�v�Z�̗���Ƃ��ẮA�܂��A�z�I�����̌v�Z���s���A���̒l��p���ĉA�I�����̌v�Z���s���܂��B
-				�����ŁA�e���q�̑��x�A�ʒu�����̗l�ɒ�`���܂��B</p>
+			<h2>計算の流れ</h2>
+			<h2>半陰解法</h2>
+			<p>　計算は、タイムステップごとに半陰解法で計算されます。
+				現時刻のタイムステップをk,次の時刻のタイムステップをk+1とすると支配方程式の各項は、次式となります。</p>
+			<div class="math-block" id="formula-mps-6-2-001" data-source-image="./../img/mps_fluid_count.files/image001.gif">
+\[
+\left[\frac{D\rho}{Dt}\right]^{k+1}=0
+\]
+</div>
+			<div class="math-block" id="formula-mps-6-2-002" data-source-image="./../img/mps_fluid_count.files/image002.gif">
+\[
+\frac{D\vec v}{Dt}
+=
+-\left[\frac{1}{\rho}\nabla P\right]^{k+1}
++\left[\upsilon\nabla^2\vec v\right]^k
++[g]^k
+\]
+</div>
+			<p>　上記の様に各項を陽的部分、陰的部分に分けて計算を行います。
+				計算の流れとしては、まず、陽的部分の計算を行い、その値を用いて陰的部分の計算を行います。
+				ここで、各粒子の速度、位置を次の様に定義します。</p>
 			<br>
-			<p>�@�@�^�C���X�e�b�vk�̑��x�E�ʒu</p>
-			<p class="im"><img src="./../img/mps_fluid_count.files/image003.gif"></p>
-			<p>�@�@�z�I�v�Z���I��������_�ł̑��x�E�ʒu</p>
-			<p class="im"><img src="./../img/mps_fluid_count.files/image004.gif"></p>
-			<p>�@�@�^�C���X�e�b�vk+1�̑��x�E�ʒu</p>
-			<p class="im"><img src="./../img/mps_fluid_count.files/image005.gif"></p>
+			<p>　　タイムステップkの速度・位置</p>
+			<div class="math-block" id="formula-mps-6-2-003" data-source-image="./../img/mps_fluid_count.files/image003.gif">
+\[
+\vec v^k,\qquad \vec r^k
+\]
+</div>
+			<p>　　陽的計算が終わった時点での速度・位置</p>
+			<div class="math-block" id="formula-mps-6-2-004" data-source-image="./../img/mps_fluid_count.files/image004.gif">
+\[
+\vec v^*,\qquad \vec r^*
+\]
+</div>
+			<p>　　タイムステップk+1の速度・位置</p>
+			<div class="math-block" id="formula-mps-6-2-005" data-source-image="./../img/mps_fluid_count.files/image005.gif">
+\[
+\vec v^{k+1},\qquad \vec r^{k+1}
+\]
+</div>
 			<br>
-			<h2>�z�I�����̌v�Z</h2>
-			<p>�@�z��@�ŉ������ɂ́A�S�����A�d�͍�������܂��B</p>
-			<p class="im"><img src="./../img/mps_fluid_count.files/image006.gif"></p>
-			<p class="im"><img src="./../img/mps_fluid_count.files/image007.gif"></p>
+			<h2>陽的部分の計算</h2>
+			<p>　陽解法で解く項には、粘性項、重力項があります。</p>
+			<div class="math-block" id="formula-mps-6-2-006" data-source-image="./../img/mps_fluid_count.files/image006.gif">
+\[
+\vec v^*
+=
+\vec v^k+\Delta t\,(\upsilon\nabla^2\vec v+g)^k
+\]
+</div>
+			<div class="math-block" id="formula-mps-6-2-007" data-source-image="./../img/mps_fluid_count.files/image007.gif">
+\[
+\vec r^*
+=
+\vec r^k+\Delta t\,\vec v^*
+\]
+</div>
 			<br>
-			<p class="im"><img src="./../img/mps_fluid_count.files/image008.gif"></p>
+			<div class="math-block" id="formula-mps-6-2-008" data-source-image="./../img/mps_fluid_count.files/image008.gif">
+\[
+\left[\nabla^2\vec v\right]_i^k
+=
+\frac{2d}{\lambda n^0}
+\sum_{j\ne i}
+(\vec v_j^k-\vec v_i^k)
+w(|\vec v_j^k-\vec v_i^k|)
+\]
+</div>
 			<br>
-			<h2>�A�I�����̌v�Z</h2>
-			<p>�@���ɉA��@�ŉ���������������܂��B</p>
-			<p class="im"><img src="./../img/mps_fluid_count.files/image009.gif"></p>
-			<p>�z��@�ŉ��������́A</p>
-			<p class="im"><img src="./../img/mps_fluid_count.files/image010.gif"></p>
-			<p>�A��@�ŉ������́A</p>
-			<p class="im"><img src="./../img/mps_fluid_count.files/image011.gif"></p>
-			<p>�ɂȂ�܂��B�A��@�ŉ������ɂ́A���͍�������܂��B���k������̎��ʎ��x�����</p>
-			<p class="im"><img src="./../img/mps_fluid_count.files/image012.gif"></p>
-			<p>���ӑ�2���̖��x<span class="fs"><i>r</i></span>[kg/m3]�����l�ŋߎ������</p>
-			<p class="im"><img src="./../img/mps_fluid_count.files/image013.gif"></p>
-			<p>���̖̂��x�Ɨ��q�����x�͔�Ⴕ�Ă��邱�Ƃ���</p>
-			<p class="im"><img src="./../img/mps_fluid_count.files/image014.gif"></p>
-			<p>�]���āA�C����(')�ɂ��ĉ����A���Ԃɂ��ė��U�������</p>
-			<p class="im"><img src="./../img/mps_fluid_count.files/image015.gif"></p>
-			<p>�ƂȂ�܂��B�����ŁA�^���ʎ��x�����瑬�x�̏C���ʂ�</p>
-			<p class="im"><img src="./../img/mps_fluid_count.files/image016.gif"></p>
-			<p>�ƂȂ�̂ŁA���z���Ƃ��</p>
-			<p class="im"><img src="./../img/mps_fluid_count.files/image017.gif"></p>
-			<p>�ƂȂ�܂��B�]���āA</p>
-			<p class="im"><img src="./../img/mps_fluid_count.files/image018.gif"></p>
-			<p>�ƂȂ�</p>
-			<p class="im"><img src="./../img/mps_fluid_count.files/image019.gif"></p>
-			<p>�������܂��B�E�ӂ͊��m�ł��B���ӂ͎����ŕ\����܂��B</p>
-			<p class="im"><img src="./../img/mps_fluid_count.files/image020.gif"></p>
-			<p>�]���āA�A�����������������Ƃɂ��Ak+1�ɂ����鈳�͂��v�Z����܂��B
-				�v�Z���ꂽ���͂���A������葬�x�̏C���ʂ��v�Z����܂��B</p>
-			<p class="im"><img src="./../img/mps_fluid_count.files/image021.gif"></p>
-			<p>�����ŁA���͂̌��z���f���͐��l���萫�̂��߁A�������g�p���܂��B</p>
+			<h2>陰的部分の計算</h2>
+			<p>　次に陰解法で解く部分を説明します。</p>
+			<div class="math-block" id="formula-mps-6-2-009" data-source-image="./../img/mps_fluid_count.files/image009.gif">
+\[
+\begin{aligned}
+n^0&=n^{k+1}=n^*+n'\\
+\vec v^{k+1}&=\vec v^*+\vec v'\\
+\vec r^{k+1}&=\vec r^*+\vec r'
+\end{aligned}
+\]
+</div>
+			<p>陽解法で解いた項は、</p>
+			<div class="math-block" id="formula-mps-6-2-010" data-source-image="./../img/mps_fluid_count.files/image010.gif">
+\[
+\vec v^*,\qquad \vec r^*
+\]
+</div>
+			<p>陰解法で解く項は、</p>
+			<div class="math-block" id="formula-mps-6-2-011" data-source-image="./../img/mps_fluid_count.files/image011.gif">
+\[
+\vec v',\qquad \vec r'
+\]
+</div>
+			<p>になります。陰解法で解く項には、圧力項があります。圧縮性流れの質量収支式より</p>
+			<div class="math-block" id="formula-mps-6-2-012" data-source-image="./../img/mps_fluid_count.files/image012.gif">
+\[
+\frac{D\rho}{Dt}+\rho\nabla\cdot\vec v=0
+\]
+</div>
+			<p>左辺第2項の密度<span class="fs"><i>r</i></span>[kg/m3]を一定値で近似すると</p>
+			<div class="math-block" id="formula-mps-6-2-013" data-source-image="./../img/mps_fluid_count.files/image013.gif">
+\[
+\frac{D\rho}{Dt}+\rho_0\nabla\cdot\vec v=0
+\]
+</div>
+			<p>流体の密度と粒子数密度は比例していることから</p>
+			<div class="math-block" id="formula-mps-6-2-014" data-source-image="./../img/mps_fluid_count.files/image014.gif">
+\[
+\frac{1}{n^0}\frac{Dn}{Dt}+\nabla\cdot\vec v=0
+\]
+</div>
+			<p>従って、修正量(')について解き、時間について離散化すると</p>
+			<div class="math-block" id="formula-mps-6-2-015" data-source-image="./../img/mps_fluid_count.files/image015.gif">
+\[
+\frac{1}{n^0}\frac{n'}{\Delta t}+\nabla\cdot\vec v'=0
+\]
+</div>
+			<p>となります。ここで、運動量収支式から速度の修正量は</p>
+			<div class="math-block" id="formula-mps-6-2-016" data-source-image="./../img/mps_fluid_count.files/image016.gif">
+\[
+\vec v'
+=
+-\frac{\Delta t}{\rho_0}\nabla P^{k+1}
+\]
+</div>
+			<p>となるので、勾配をとると</p>
+			<div class="math-block" id="formula-mps-6-2-017" data-source-image="./../img/mps_fluid_count.files/image017.gif">
+\[
+(\nabla\cdot\vec v')
+=
+-\frac{\Delta t}{\rho_0}\nabla^2P^{k+1}
+\]
+</div>
+			<p>となります。従って、</p>
+			<div class="math-block" id="formula-mps-6-2-018" data-source-image="./../img/mps_fluid_count.files/image018.gif">
+\[
+\begin{aligned}
+\frac{\Delta t}{\rho_0}\nabla^2P^{k+1}
+&=
+\frac{1}{n^0}\frac{n'}{\Delta t}\\
+&=
+-\frac{1}{n^0}\frac{n^*-n^0}{\Delta t}
+\end{aligned}
+\]
+</div>
+			<p>となり</p>
+			<div class="math-block" id="formula-mps-6-2-019" data-source-image="./../img/mps_fluid_count.files/image019.gif">
+\[
+\nabla^2P^{k+1}
+=
+-\frac{\rho_0}{\Delta t^2}
+\frac{n^*-n^0}{n^0}
+\]
+</div>
+			<p>が得られます。右辺は既知です。左辺は次式で表されます。</p>
+			<div class="math-block" id="formula-mps-6-2-020" data-source-image="./../img/mps_fluid_count.files/image020.gif">
+\[
+\begin{aligned}
+\nabla^2P_i^{k+1}
+&=
+\frac{2d}{\lambda n^0}
+\sum_{j\ne i}(P_j^{k+1}-P_i^{k+1})
+w(|\vec r_j-\vec r_i|)\\
+&=
+\frac{2d}{\lambda n^0}
+\sum_{j\ne i}w(|\vec r_j-\vec r_i|)P_j^{k+1}
+-
+\frac{2d}{\lambda n^0}
+\sum_{j\ne i}w(|\vec r_j-\vec r_i|)P_i^{k+1}
+\end{aligned}
+\]
+</div>
+			<p>従って、連立方程式を解くことにより、k+1における圧力が計算されます。
+				計算された圧力から、次式より速度の修正量が計算されます。</p>
+			<div class="math-block" id="formula-mps-6-2-021" data-source-image="./../img/mps_fluid_count.files/image021.gif">
+\[
+\vec v'
+=
+-\frac{\Delta t}{\rho_0}\nabla P^{k+1}
+\]
+</div>
+			<p>ここで、圧力の勾配モデルは数値安定性のため、次式を使用します。</p>
 			<p class="im"><img src="./../img/mps_fluid_count.files/image022.gif"></p>
-			<p>����ŁA�^�C���X�e�b�vk+1�̑��x���v�Z����܂����B</p>
+			<p>これで、タイムステップk+1の速度が計算されました。</p>
 			<br>
 
 			<div style="margin-top:10px;"></div>
@@ -115,7 +251,7 @@
 				</tr></table>
 			</h2>
 
-			<!-- �L�� -->
+			<!-- 広告 -->
 			<p><iframe src="./../questionnaire.html" width="650" height="325" scrolling="yes" frameborder="0"></iframe></p>
 		</div>
 
@@ -126,9 +262,9 @@
 	<div id="sub">
 		<iframe src="./../menu.html" id="menu" name="menu" width="180" scrolling="no" frameborder="0"></iframe>
 
-		<!-- �L�� -->
+		<!-- 広告 -->
 		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-		<!-- �o�i�[3�i���j���[���j -->
+		<!-- バナー3（メニュー欄） -->
 		<ins class="adsbygoogle"
 		     style="display:inline-block;width:160px;height:600px"
 		     data-ad-client="ca-pub-4382202381956938"
@@ -137,26 +273,26 @@
 		(adsbygoogle = window.adsbygoogle || []).push({});
 		</script>
 
-		<!-- �y�[�W�ʃJ�E���^ -->
+		<!-- ページ別カウンタ -->
 		<!--shinobi1-->
 		<script type="text/javascript" src="http://x7.tuzikaze.com/ufo/10850281t"></script>
 		<noscript><a href="http://x7.tuzikaze.com/bin/gg?10850281t" target="_blank">
 		<img src="http://x7.tuzikaze.com/bin/ll?10850281t" border="0"></a><br>
-		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://life-koike.info/">�݂�Ȃō�鐶���p</a></span></noscript>
+		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://life-koike.info/">みんなで作る生活術</a></span></noscript>
 		<!--shinobi2-->
 
 		<div class="sub-text">
 			<dl>
-				<dt>�J�E���^</dt>
+				<dt>カウンタ</dt>
 				<dd>
 					<!-- shinobi ct2 -->
 					<script type="text/javascript" src="http://ct2.tirirenge.com/sc/1515356"></script>
 					<noscript><a href="http://ct2.tirirenge.com/gg/1515356" target="_blank">
-					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="�J�E���^�[" /></a><br />
-					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">�|�C���g</a></span></noscript>
+					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="カウンター" /></a><br />
+					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">ポイント</a></span></noscript>
 					<!-- /shinobi ct2 -->
 					<br>
-				�i2011.3.15�`�j
+				（2011.3.15～）
 				</dd>
 			</dl>
 		</div>
