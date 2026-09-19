@@ -1,8 +1,8 @@
 {
-  "page_key": "mps_1",
-  "page_path": "mps/mps_1.html",
-  "source_dir": "img/mps_weight.files",
-  "source_fragment": "mps_weight.files",
+  "page_key": "mps_2",
+  "page_path": "mps/mps_2.html",
+  "source_dir": "img/mps_num.files",
+  "source_fragment": "mps_num.files",
   "source_ext": "gif",
   "images": [
     "001"
@@ -20,5 +20,5 @@
       "height": 844
     }
   },
-  "rerun_revision": 111
+  "rerun_revision": 112
 }
