@@ -1,20 +1,22 @@
 {
-  "page_key": "physics_3",
-  "page_path": "physics/physics_3.html",
-  "source_dir": "img/physics_vector.files",
-  "source_fragment": "physics_vector.files",
+  "page_key": "physics_4",
+  "page_path": "physics/physics_4.html",
+  "source_dir": "img/physics_q_category.files",
+  "source_fragment": "physics_q_category.files",
   "images": [
     "002",
     "003",
     "004",
     "005",
-    "006",
-    "007"
+    "007",
+    "008"
   ],
   "expected_math_blocks": 6,
   "formula_selector": "[data-source-image]",
   "retained_source_images": [
-    "001"
+    "001",
+    "006",
+    "009"
   ],
   "viewports": {
     "desktop": {
@@ -26,5 +28,5 @@
       "height": 844
     }
   },
-  "rerun_revision": 73
+  "rerun_revision": 74
 }
