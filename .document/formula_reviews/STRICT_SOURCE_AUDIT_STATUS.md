@@ -1507,3 +1507,70 @@ MPSカテゴリのHTMLが参照する49件のGIFについて、正本回収経�
 - 残存画像は数式とは限らないため、今後はページ単位で分類してから数式のみ変換する。
 - MPS: **49参照 SOURCE BLOCKED / HOLD（GitHub・本番FTPS・HTTP・Waybackで復元不可、HP.7z raw展開不可）**
 - 本番FTP反映は未実施。
+
+
+## 2026-09-19 全サイト最終Browser QA・残存画像最終固定
+
+### 全サイト最終Browser QA
+
+修正版の全サイトQAを4Shardで実行し、全件PASSを確認した。
+
+- 正本: `.document/formula_reviews/FINAL_SITE_BROWSER_QA_20260919.md`
+- GitHub Actions run: `35411325166`
+- HTMLページ: **205**
+- desktop: **205/205**
+- mobile: **205/205**
+- 総チェック: **410**
+- hard failure: **0**
+- MathJax errors: **0**
+- unrendered: **0**
+- page overflow: **0**
+- uncontained overflow: **0**
+- page errors: **0**
+- 非MPS欠損画像: **0**
+- MPS既知欠損: **49/49**（HOLDとして一致）
+
+初回全サイトQAで発生したmobileの大量uncontained判定は、全DOM要素を対象にした汎用判定の誤検出だった。
+既存の認証済み個別Browser QAと同じく、`.math-block` のローカル横スクロールのみを判定対象とする方式へ修正し、4Shardすべてsuccessを確認した。
+
+**判定: 全サイト最終Browser QA 完了。**
+
+### 残存画像最終固定
+
+正本:
+- `.document/formula_reviews/FINAL_RETAINED_IMAGE_STATUS_20260919.md`
+- `.document/formula_reviews/SITE_INLINE_IMAGE_INVENTORY_20260918.md`
+
+最終状態:
+
+- 残存inline-image配置: **161**
+- 非MPS残存配置: **112**
+- MPS欠損参照: **49**
+- 非MPS 112配置: **全件確認済み保持図 / 混在図 / グラフ / フローチャート**
+- 未確認数式画像: **0**
+- MPS 49: **SOURCE BLOCKED / HOLD**
+
+カテゴリ別:
+- FEM: 33
+- Mesh: 23
+- Hydronamics: 21
+- Physics: 16
+- Appendix: 9
+- Heat: 8
+- Counting: 2
+- 非MPS合計: **112**
+
+**判定: 残存画像最終固定 完了。**
+
+### 2026-09-19 最新到達点
+
+- 厳密監査・通常ページ化: **564件 完了**
+- 全サイト最終Browser QA: **完了**
+- 非MPS残存112配置の最終固定: **完了**
+- MPS 49件の最終扱い: **SOURCE BLOCKED / HOLD**
+- 未確認数式画像: **0**
+- 本番FTP/FTPS反映: **未実施**
+- 公開サイトスモークテスト: **未実施**
+
+次工程は **本番反映判断 → FTP/FTPS反映 → 公開サイトスモークテスト**。
+MPS追加探索は正本取得手段が見つかるまで行わない。
