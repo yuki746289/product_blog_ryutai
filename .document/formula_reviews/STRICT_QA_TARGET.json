@@ -1,11 +1,11 @@
 {
-  "page_key": "fem_6_1_3",
-  "page_path": "fem/fem_6_1_3.html",
+  "page_key": "fem_6_1_4",
+  "page_path": "fem/fem_6_1_4.html",
   "source_dir": "img/fem_n_tri.files",
   "source_fragment": "fem_n_tri.files",
   "images": [
-    "009",
-    "010"
+    "011",
+    "012"
   ],
   "expected_math_blocks": 2,
   "retained_source_images": [],
@@ -19,5 +19,5 @@
       "height": 844
     }
   },
-  "rerun_revision": 14
+  "rerun_revision": 15
 }
