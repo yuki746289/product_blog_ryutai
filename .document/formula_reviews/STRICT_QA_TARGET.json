@@ -1,21 +1,28 @@
 {
-  "page_key": "hydronamics_12_2",
-  "page_path": "hydronamics/hydronamics_12_2.html",
-  "source_dir": "img/hydronamics_dimensionless.files",
-  "source_fragment": "hydronamics_dimensionless.files",
+  "page_key": "hydronamics_14",
+  "page_path": "hydronamics/hydronamics_14.html",
+  "source_dir": "img/hydronamics_gauss.files",
+  "source_fragment": "hydronamics_gauss.files",
   "images": [
-    "015",
-    "016",
-    "017",
-    "018",
-    "019",
-    "020",
-    "021",
-    "022"
+    "003",
+    "004",
+    "005",
+    "006",
+    "007",
+    "008",
+    "009",
+    "010",
+    "011",
+    "012",
+    "013",
+    "014"
   ],
-  "expected_math_blocks": 8,
+  "expected_math_blocks": 12,
   "formula_selector": "[data-source-image]",
-  "retained_source_images": [],
+  "retained_source_images": [
+    "001",
+    "002"
+  ],
   "viewports": {
     "desktop": {
       "width": 1440,
@@ -26,5 +33,5 @@
       "height": 844
     }
   },
-  "rerun_revision": 68
+  "rerun_revision": 69
 }
