@@ -1,13 +1,12 @@
 {
-  "page_key": "heat_4_3",
-  "page_path": "heat/heat_4_3.html",
-  "source_dir": "img/heat_emission.files",
-  "source_fragment": "heat_emission.files",
+  "page_key": "heat_5_1",
+  "page_path": "heat/heat_5_1.html",
+  "source_dir": "img/heat_eq_accumulation.files",
+  "source_fragment": "heat_eq_accumulation.files",
   "images": [
-    "002",
-    "003"
+    "002"
   ],
-  "expected_math_blocks": 2,
+  "expected_math_blocks": 1,
   "retained_source_images": [
     "001"
   ],
@@ -21,5 +20,5 @@
       "height": 844
     }
   },
-  "rerun_revision": 36
+  "rerun_revision": 37
 }
