@@ -1,53 +1,33 @@
 {
-  "category": "hydronamics",
+  "category": "physics",
   "pages": [
     {
-      "path": "hydronamics/hydronamics.html",
+      "path": "physics/physics.html",
       "expected_math_blocks": 0,
       "expected_local_images": 0
     },
     {
-      "path": "hydronamics/hydronamics_1.html",
-      "expected_math_blocks": 0,
-      "expected_local_images": 0
-    },
-    {
-      "path": "hydronamics/hydronamics_2.html",
-      "expected_math_blocks": 0,
-      "expected_local_images": 2
-    },
-    {
-      "path": "hydronamics/hydronamics_3.html",
-      "expected_math_blocks": 0,
-      "expected_local_images": 0
-    },
-    {
-      "path": "hydronamics/hydronamics_6.html",
-      "expected_math_blocks": 0,
-      "expected_local_images": 0
-    },
-    {
-      "path": "hydronamics/hydronamics_9.html",
-      "expected_math_blocks": 0,
-      "expected_local_images": 0
-    },
-    {
-      "path": "hydronamics/hydronamics_10.html",
+      "path": "physics/physics_1.html",
       "expected_math_blocks": 0,
       "expected_local_images": 1
     },
     {
-      "path": "hydronamics/hydronamics_10_2.html",
-      "expected_math_blocks": 0,
-      "expected_local_images": 1
-    },
-    {
-      "path": "hydronamics/hydronamics_10_3.html",
+      "path": "physics/physics_6.html",
       "expected_math_blocks": 0,
       "expected_local_images": 0
     },
     {
-      "path": "hydronamics/hydronamics_13.html",
+      "path": "physics/physics_6_2.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 0
+    },
+    {
+      "path": "physics/physics_6_3.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 0
+    },
+    {
+      "path": "physics/physics_8.html",
       "expected_math_blocks": 0,
       "expected_local_images": 0
     }
