@@ -60,6 +60,12 @@ def main() -> int:
             new = linebreak_block.sub("linebreaks:{inline:false}", new)
         elif path.suffix.lower() == ".css":
             new = css_charset.sub('@charset "UTF-8";', new)
+            if path.relative_to(ROOT).as_posix() == "css/math.css":
+                new = new.replace(
+                    "overflow: visible;\n\tmargin: 12px 0 18px 0;",
+                    "overflow-x: auto;\n\toverflow-y: hidden;\n\toverscroll-behavior-x: contain;\n\t-webkit-overflow-scrolling: touch;\n\tmargin: 12px 0 18px 0;",
+                    1,
+                )
 
         if write_if_changed(path, text, new):
             changed.append(path.relative_to(ROOT).as_posix())
