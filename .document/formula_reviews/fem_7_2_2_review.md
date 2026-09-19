@@ -152,34 +152,13 @@ P={}&N_1P_{z,1}+N_2P_{z,2}+N_3P_{z,3}+N_4P_{z,4}
 
 ### `image006`
 
-2026-09-19 再監査。ユーザー提示の元画像を正本として再確認した。
+2026-09-19 新再監査。**元HP画像（image006.gif）とWord数式を並べて照合**した。
 
-- 左辺は `\int_V [N]^T \phi_i\,dV` を含む。
-- 右辺は運動量残差を代入した積分まで。
-- 各項を個別積分へ展開する部分はこの画像には含めない。
-- 時間微分の分母は **`t`**。**`\tau` へ置換しない**。
-- `t/τ`, `i/j` 等の紛らわしい文字は高一致率でも別途局所確認する。
-
-```latex
-\[
-\int_V
-\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
-\phi_i\,dV
-=
-\int_V
-\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
-\left(
-\frac{\partial V_i}{\partial t}
-+V_x\frac{\partial V_i}{\partial X}
-+V_y\frac{\partial V_i}{\partial Y}
-+V_z\frac{\partial V_i}{\partial Z}
--\frac{\partial\sigma^*_{xi}}{\partial X}
--\frac{\partial\sigma^*_{yi}}{\partial Y}
--\frac{\partial\sigma^*_{zi}}{\partial Z}
--g_i^*
-\right)dV
-\]
-```
+- 両者の式内容は一致。
+- 時間微分は **`\partial V_i/\partial\tau`**。
+- 画像006は、残差積分と、その個別積分への展開を同一画像内に含む。
+- `t / τ` は類似度だけでは判定せず、字形を局所確認した。
+- 直前の `t` 判定は、正本の元HP画像との照合前の暫定判断だったため撤回。
 
 **新再監査 = DONE。**
 
