@@ -1,13 +1,11 @@
 {
   "summary": {
     "html_pages_scanned": 205,
-    "residual_word_image_placements": 113,
-    "unique_assets": 111,
-    "centered_p_im_placements": 111,
-    "missing_assets": 1,
-    "missing_by_section": {
-      "mps": 1
-    },
+    "residual_word_image_placements": 112,
+    "unique_assets": 110,
+    "centered_p_im_placements": 110,
+    "missing_assets": 0,
+    "missing_by_section": {},
     "section_counts": {
       "appendix": 9,
       "counting": 2,
@@ -15,13 +13,11 @@
       "heat": 8,
       "hydronamics": 21,
       "mesh": 23,
-      "mps": 1,
       "physics": 16
     },
     "extensions": {
       ".png": 108,
-      ".jpg": 4,
-      ".gif": 1
+      ".jpg": 4
     }
   },
   "rows": [
@@ -1174,18 +1170,6 @@
       "width": 209,
       "height": 242,
       "format": "PNG",
-      "centered_p_im": true,
-      "review_priority": "A"
-    },
-    {
-      "page": "mps/mps_6_2.html",
-      "encoding": "utf-8-sig",
-      "src": "./../img/mps_fluid_count.files/image022.gif",
-      "asset": "img/mps_fluid_count.files/image022.gif",
-      "exists": false,
-      "width": null,
-      "height": null,
-      "format": null,
       "centered_p_im": true,
       "review_priority": "A"
     },
