@@ -197,3 +197,37 @@ This is a source-preservation correction only. No theoretical normalization was 
 - image022: **SOURCE BLOCKED / HOLD**
 
 The Visio materials were also rechecked. `HP図.vsd` contains pressure/gradient-related material, but no object can be mapped one-to-one to image022 with sufficient confidence. Therefore image022 remains HOLD.
+
+
+## 11. image022 inferred reconstruction adopted
+
+The original `image022.gif` source could not be recovered after exhaustive archive / Word / PDF / Visio investigation.
+
+The user explicitly approved proceeding with the most probable MPS pressure-gradient stabilization formula as a temporary reconstruction.
+
+Applied on `develop`:
+
+```latex
+\[
+\left[\nabla P_i^{k+1}\right]
+=
+\frac{d}{n^0}
+\sum_{j\ne i}
+\frac{P_j^{k+1}-\hat P_i^{k+1}}
+{|\vec r_j-\vec r_i|^2}
+(\vec r_j-\vec r_i)
+w(|\vec r_j-\vec r_i|)
+\]
+```
+
+Traceability:
+- formula id: `formula-mps-6-2-022`
+- former source path: `img/mps_fluid_count.files/image022.gif`
+- HTML metadata: `data-source-status="inferred-reconstruction"`
+- authoritative recovered formulas: **48**
+- inferred reconstructed formulas: **1**
+- MPS MathJax formulas: **49**
+- residual MPS formula images: **0**
+- MPS HOLD items: **0**
+
+This formula is **not classified as source-exact**. It is retained as an explicitly documented reconstruction.
