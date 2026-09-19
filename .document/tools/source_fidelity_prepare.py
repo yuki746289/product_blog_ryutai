@@ -26,31 +26,30 @@ def public(path: Path) -> bool:
     return not any(part in SKIP_PARTS or part.startswith(".") for part in rel.parts)
 
 
-def read_utf8(path: Path) -> str:
+def decode_public_text(path: Path):
     data = path.read_bytes()
     try:
-        return data.decode("utf-8")
+        return data.decode("utf-8"), "utf-8"
+    except UnicodeDecodeError:
+        pass
+    try:
+        return data.decode("cp932"), "cp932"
     except UnicodeDecodeError as exc:
-        raise RuntimeError(f"NON_UTF8: {path.relative_to(ROOT)}: {exc}") from exc
-
-
-def write_if_changed(path: Path, old: str, new: str) -> bool:
-    if new == old:
-        return False
-    path.write_text(new, encoding="utf-8", newline="\n")
-    return True
+        raise RuntimeError(f"UNDECODABLE_TEXT: {path.relative_to(ROOT)}: {exc}") from exc
 
 
 def main() -> int:
     changed = []
-    non_utf8 = []
+    undecodable = []
+    source_encodings = {"utf-8": 0, "cp932": 0}
 
     targets = [p for p in ROOT.rglob("*") if p.is_file() and public(p) and p.suffix.lower() in {".html", ".css", ".js"}]
     for path in targets:
         try:
-            text = read_utf8(path)
+            text, source_encoding = decode_public_text(path)
+            source_encodings[source_encoding] += 1
         except RuntimeError as exc:
-            non_utf8.append(str(exc))
+            undecodable.append(str(exc))
             continue
 
         new = text
@@ -67,14 +66,18 @@ def main() -> int:
                     1,
                 )
 
-        if write_if_changed(path, text, new):
+        # Force UTF-8 bytes even when textual content itself did not change.
+        current_bytes = path.read_bytes()
+        target_bytes = new.encode("utf-8")
+        if current_bytes != target_bytes:
+            path.write_bytes(target_bytes)
             changed.append(path.relative_to(ROOT).as_posix())
 
-    if non_utf8:
-        print("\n".join(non_utf8))
+    if undecodable:
+        print("\n".join(undecodable))
         return 2
 
-    print(f"public_text_files={len(targets)} changed={len(changed)}")
+    print(f"public_text_files={len(targets)} changed={len(changed)} source_encodings={source_encodings}")
     by_ext = {}
     for name in changed:
         ext = Path(name).suffix.lower()
