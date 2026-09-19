@@ -63,6 +63,12 @@
 | 35 | `heat/heat_5_4.html` | 6 | **6/6** | **6/6** | **PASS** | **DONE** |
 | 36 | `heat/heat_7_1.html` | 33 | **33/33** | **33/33** | **PASS** | **DONE** |
 | 37 | `heat/heat_7_2.html` | 32 | **32/32** | **32/32** | **PASS** | **DONE** |
+| 38 | `hydronamics/hydronamics_5.html` | 1 | **1/1** | **1/1** | **PASS** | **DONE** |
+| 39 | `hydronamics/hydronamics_6_1.html` | 7 | **7/7** | **7/7** | **PASS** | **DONE** |
+| 40 | `hydronamics/hydronamics_6_2.html` | 6 | **6/6** | **6/6** | **PASS** | **DONE** |
+| 41 | `hydronamics/hydronamics_6_3.html` | 6 | **6/6** | **6/6** | **PASS** | **DONE** |
+| 42 | `hydronamics/hydronamics_6_4.html` | 6 | **6/6** | **6/6** | **PASS** | **DONE** |
+| 43 | `hydronamics/hydronamics_7.html` | 1 | **1/1** | **1/1** | **PASS** | **DONE** |
 
 ## fem_7_2_2 完了結果
 
@@ -245,12 +251,23 @@
 - Heatカテゴリ: **COMPLETE**
 - 最終レポート: `.document/formula_reviews/HEAT_FINAL_QA_20260919_STRICT.md`
 
+## Hydronamics小規模6ページ完了結果
+- hydronamics_5: 1/1
+- hydronamics_6_1: 7/7
+- hydronamics_6_2: 6/6
+- hydronamics_6_3: 6/6
+- hydronamics_6_4: 6/6
+- hydronamics_7: 1/1
+- 全対象で元画像↔MathJax直接比較済み
+- Browser QA: 全ページ **PASS**
+- HOLD: 0
+
 ## 累計
 
-- 新厳密再監査完了: **329式**
-- 完了ページ: **37**
+- 新厳密再監査完了: **356式**
+- 完了ページ: **43**
 - 旧564式監査結果とは分離して管理する。
 
 ## 次回再開位置
 
-**Heat完了。次カテゴリ（Hydronamics）へ移行する。**
+**Hydronamicsカテゴリの残りページを継続する。**
