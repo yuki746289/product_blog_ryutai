@@ -1,0 +1,227 @@
+# Created: 2026-09-19 JST
+name: Strict Formula Page QA
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.document/formula_reviews/STRICT_QA_TARGET.json'
+      - '.github/workflows/strict-formula-page-qa.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Chromium and Pillow
+        run: |
+          pip install playwright pillow
+          python -m playwright install --with-deps chromium
+
+      - name: Start server
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/strict-formula-http.log 2>&1 &
+          sleep 1
+
+      - name: Strict browser QA and source-render pairs
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from PIL import Image, ImageDraw
+          from playwright.sync_api import sync_playwright
+
+          cfg=json.loads(Path('.document/formula_reviews/STRICT_QA_TARGET.json').read_text(encoding='utf-8'))
+          key=cfg['page_key']
+          page_path=cfg['page_path']
+          source_dir=Path(cfg['source_dir'])
+          source_fragment=cfg['source_fragment']
+          nums=cfg['images']
+          expected=cfg['expected_math_blocks']
+          vps=cfg['viewports']
+
+          out=Path('strict-formula-page-qa')
+          out.mkdir(exist_ok=True)
+          pair_dir=out/'pairs'; pair_dir.mkdir(exist_ok=True)
+          render_dir=out/'rendered'; render_dir.mkdir(exist_ok=True)
+          rows=[]; failures=[]
+
+          def white_rgb(im):
+              im=im.convert('RGBA')
+              bg=Image.new('RGBA',im.size,'white')
+              bg.alpha_composite(im)
+              return bg.convert('RGB')
+
+          def fit(im,max_w=720,max_h=520):
+              ratio=min(max_w/im.width,max_h/im.height,1.0)
+              if ratio < 1.0:
+                  im=im.resize((max(1,int(im.width*ratio)),
+                                max(1,int(im.height*ratio))),
+                               Image.Resampling.LANCZOS)
+              return im
+
+          with sync_playwright() as p:
+              browser=p.chromium.launch(headless=True)
+              for vn,vp in vps.items():
+                  ctx=browser.new_context(viewport=vp,device_scale_factor=1)
+                  pg=ctx.new_page()
+                  page_errors=[]
+                  console_errors=[]
+                  pg.on('pageerror',lambda exc,a=page_errors:a.append(str(exc)))
+                  pg.on('console',lambda msg,a=console_errors:
+                        a.append(msg.text) if msg.type=='error' else None)
+
+                  pg.goto(f'http://127.0.0.1:8000/{page_path}',
+                          wait_until='domcontentloaded',timeout=120000)
+                  pg.wait_for_function(
+                      '() => window.MathJax && MathJax.startup && MathJax.startup.promise',
+                      timeout=60000)
+                  pg.evaluate('async()=>{await MathJax.startup.promise;}')
+                  pg.wait_for_timeout(800)
+
+                  blocks=pg.locator('.math-block')
+                  block_count=blocks.count()
+                  rendered=0; local=[]; uncontained=[]; unrendered=[]
+                  for i in range(block_count):
+                      el=blocks.nth(i)
+                      bid=el.get_attribute('id') or f'index-{i}'
+                      if el.locator('mjx-container').count()>0:
+                          rendered+=1
+                      else:
+                          unrendered.append(bid)
+                      dims=el.evaluate(
+                        "e=>({clientWidth:e.clientWidth,scrollWidth:e.scrollWidth,"
+                        "overflowX:getComputedStyle(e).overflowX})")
+                      if dims['scrollWidth']>dims['clientWidth']+1:
+                          local.append(bid)
+                          if dims['overflowX'] not in ('auto','scroll'):
+                              uncontained.append(bid)
+
+                  mappings={}
+                  for n in nums:
+                      sel=f'[data-source-image*="{source_fragment}/image{n}.png"]'
+                      cnt=pg.locator(sel).count()
+                      mappings[n]=cnt
+                      if cnt<1:
+                          failures.append(f'{vn}: image{n} mapped blocks={cnt}')
+
+                  merror=pg.locator('mjx-merror').count()
+                  d=pg.evaluate("()=>({cw:document.documentElement.clientWidth,sw:document.documentElement.scrollWidth})")
+                  page_overflow=d['sw']>d['cw']+2
+                  source_img_elements=pg.locator(f'img[src*="{source_fragment}/image"]').count()
+
+                  pg.screenshot(path=str(out/f'{key}_{vn}.png'),
+                                full_page=True,animations='disabled')
+
+                  if vn=='desktop':
+                      pair_paths=[]
+                      for n in nums:
+                          loc=pg.locator(f'[data-source-image*="{source_fragment}/image{n}.png"]').first
+                          rpath=render_dir/f'image{n}.png'
+                          loc.screenshot(path=str(rpath),animations='disabled')
+                          spath=source_dir/f'image{n}.png'
+                          if not spath.exists():
+                              failures.append(f'source missing: {spath}')
+                              continue
+                          src=fit(white_rgb(Image.open(spath)))
+                          ren=fit(white_rgb(Image.open(rpath)))
+                          h=max(src.height,ren.height)+42
+                          pair=Image.new('RGB',(1480,h),'white')
+                          dr=ImageDraw.Draw(pair)
+                          dr.text((10,8),f'image{n} SOURCE',fill='black')
+                          dr.text((750,8),f'image{n} MATHJAX',fill='black')
+                          pair.paste(src,(10,32)); pair.paste(ren,(750,32))
+                          pp=pair_dir/f'image{n}_pair.png'
+                          pair.save(pp); pair_paths.append(pp)
+
+                      for start in range(0,len(pair_paths),10):
+                          group=pair_paths[start:start+10]
+                          imgs=[Image.open(x).convert('RGB') for x in group]
+                          total_h=sum(i.height for i in imgs)+12*(len(imgs)-1)
+                          sheet=Image.new('RGB',(1480,total_h),'white')
+                          y=0
+                          for im in imgs:
+                              sheet.paste(im,(0,y)); y+=im.height+12
+                          a=start+1; b=start+len(group)
+                          sheet.save(out/f'pair_sheet_{a:03d}_{b:03d}.png')
+
+                  row={
+                    'viewport':vn,'math_blocks':block_count,'rendered':rendered,
+                    'merror':merror,'unrendered':unrendered,
+                    'local_scroll_count':len(local),'local_scroll':local,
+                    'uncontained':uncontained,'page_overflow':page_overflow,
+                    'source_image_elements':source_img_elements,
+                    'mappings':mappings,'page_errors':page_errors,
+                    'console_errors':console_errors
+                  }
+                  rows.append(row)
+
+                  if block_count!=expected:
+                      failures.append(f'{vn}: math-block count={block_count}, expected={expected}')
+                  if rendered!=block_count:
+                      failures.append(f'{vn}: rendered={rendered}/{block_count}')
+                  if merror:
+                      failures.append(f'{vn}: mjx-merror={merror}')
+                  if uncontained:
+                      failures.append(f'{vn}: uncontained overflow={len(uncontained)}')
+                  if page_overflow:
+                      failures.append(f'{vn}: page-wide horizontal overflow')
+                  if source_img_elements:
+                      failures.append(f'{vn}: legacy source image elements={source_img_elements}')
+                  if page_errors:
+                      failures.append(f'{vn}: page errors={len(page_errors)}')
+                  ctx.close()
+              browser.close()
+
+          status='PASS' if not failures else 'FAIL'
+          manifest={'status':status,'config':cfg,'rows':rows,'failures':failures}
+          (out/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf-8')
+
+          report=Path(f'.document/formula_reviews/STRICT_PAGE_BROWSER_QA_{key.upper()}_20260919.md')
+          L=[
+            f'# Strict Page Browser QA: {key} — 2026-09-19','',
+            f'- Overall: **{status}**',
+            f'- Page: `{page_path}`',
+            f'- Source images: {len(nums)}',
+            f'- Expected math-blocks: {expected}','','| Viewport | Blocks | Rendered | MathJax errors | Local scroll | Uncontained | Page overflow | Legacy source imgs |',
+            '|---|---:|---:|---:|---:|---:|---|---:|'
+          ]
+          for r in rows:
+              L.append(f"| {r['viewport']} | {r['math_blocks']} | {r['rendered']} | {r['merror']} | {r['local_scroll_count']} | {len(r['uncontained'])} | {'YES' if r['page_overflow'] else 'NO'} | {r['source_image_elements']} |")
+          L += ['', '## Failures',''] + ([f'- {x}' for x in failures] if failures else ['- None.'])
+          L += ['', '- Source-vs-MathJax pair images are stored in the workflow artifact for direct visual audit.']
+          report.write_text('\n'.join(L)+'\n',encoding='utf-8')
+          if failures:
+              raise SystemExit(1)
+          PY
+
+      - name: Commit QA report
+        if: success()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .document/formula_reviews/STRICT_PAGE_BROWSER_QA_*_20260919.md
+          if ! git diff --cached --quiet; then
+            git commit -m 'docs: record strict formula page browser QA'
+            git pull --rebase origin develop
+            git push origin HEAD:develop
+          fi
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: strict-formula-page-qa
+          path: strict-formula-page-qa
+          retention-days: 7
