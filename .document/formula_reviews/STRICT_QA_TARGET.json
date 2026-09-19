@@ -1,8 +1,8 @@
 {
-  "page_key": "fem_7_2_1",
-  "page_path": "fem/fem_7_2_1.html",
-  "source_dir": "img/fem_d_mass_tet.files",
-  "source_fragment": "fem_d_mass_tet.files",
+  "page_key": "fem_7_1_2",
+  "page_path": "fem/fem_7_1_2.html",
+  "source_dir": "img/fem_d_momentum_tri.files",
+  "source_fragment": "fem_d_momentum_tri.files",
   "images": [
     "001",
     "002",
@@ -23,9 +23,31 @@
     "017",
     "018",
     "019",
-    "020"
+    "020",
+    "021",
+    "022",
+    "023",
+    "024",
+    "025",
+    "026",
+    "027",
+    "028",
+    "029",
+    "030",
+    "031",
+    "032",
+    "033",
+    "034",
+    "035",
+    "036",
+    "037",
+    "038",
+    "039",
+    "040",
+    "041",
+    "042"
   ],
-  "expected_math_blocks": 20,
+  "expected_math_blocks": 45,
   "viewports": {
     "desktop": {
       "width": 1440,
@@ -36,5 +58,5 @@
       "height": 844
     }
   },
-  "rerun_revision": 1
+  "rerun_revision": 2
 }
