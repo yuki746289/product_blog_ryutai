@@ -69,6 +69,14 @@
 | 41 | `hydronamics/hydronamics_6_3.html` | 6 | **6/6** | **6/6** | **PASS** | **DONE** |
 | 42 | `hydronamics/hydronamics_6_4.html` | 6 | **6/6** | **6/6** | **PASS** | **DONE** |
 | 43 | `hydronamics/hydronamics_7.html` | 1 | **1/1** | **1/1** | **PASS** | **DONE** |
+| 44 | `hydronamics/hydronamics_9_1.html` | 4 | **4/4** | **4/4** | **PASS** | **DONE** |
+| 45 | `hydronamics/hydronamics_9_2.html` | 9 | **9/9** | **9/9** | **PASS** | **DONE** |
+| 46 | `hydronamics/hydronamics_9_3.html` | 2 | **2/2** | **2/2** | **PASS** | **DONE** |
+| 47 | `hydronamics/hydronamics_9_4.html` | 8 | **8/8** | **8/8** | **PASS** | **DONE** |
+| 48 | `hydronamics/hydronamics_9_5.html` | 5 | **5/5** | **5/5** | **PASS** | **DONE** |
+| 49 | `hydronamics/hydronamics_9_6.html` | 5 | **5/5** | **5/5** | **PASS** | **DONE** |
+| 50 | `hydronamics/hydronamics_10_1.html` | 5 | **5/5** | **5/5** | **PASS** | **DONE** |
+| 51 | `hydronamics/hydronamics_11.html` | 4 | **4/4** | **4/4** | **PASS** | **DONE** |
 
 ## fem_7_2_2 完了結果
 
@@ -262,12 +270,25 @@
 - Browser QA: 全ページ **PASS**
 - HOLD: 0
 
+## Hydronamics 9系～11 完了結果
+- hydronamics_9_1: 4/4
+- hydronamics_9_2: 9/9
+- hydronamics_9_3: 2/2
+- hydronamics_9_4: 8/8
+- hydronamics_9_5: 5/5
+- hydronamics_9_6: 5/5
+- hydronamics_10_1: 5/5
+- hydronamics_11: 4/4
+- 全対象で元画像↔MathJax直接比較済み
+- Browser QA: 全ページ **PASS**
+- HOLD: 0
+
 ## 累計
 
-- 新厳密再監査完了: **356式**
-- 完了ページ: **43**
+- 新厳密再監査完了: **398式**
+- 完了ページ: **51**
 - 旧564式監査結果とは分離して管理する。
 
 ## 次回再開位置
 
-**Hydronamicsカテゴリの残りページを継続する。**
+**Hydronamicsカテゴリの残り（11_1～、12系、14等）を継続する。**
