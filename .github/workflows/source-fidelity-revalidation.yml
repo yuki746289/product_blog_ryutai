@@ -1,0 +1,93 @@
+name: Source Fidelity Revalidation
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [develop]
+    paths:
+      - '.document/qa_trigger/source_fidelity_revalidation.trigger'
+
+permissions:
+  contents: write
+
+jobs:
+  revalidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Normalize encoding and MathJax overflow policy
+        run: |
+          python .document/tools/source_fidelity_prepare.py
+          git status --short
+
+      - name: Commit normalized public assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- '*.html' '*.css' '*.js'
+          if git diff --cached --quiet; then
+            echo "No normalization changes"
+          else
+            git commit -m "fix: align encoding and formula overflow with source fidelity [skip ci]"
+            git push origin HEAD:develop
+          fi
+
+      - name: Install browser QA dependencies
+        run: |
+          pip install playwright pillow
+          python -m playwright install --with-deps chromium
+
+      - name: Start local server
+        run: |
+          python -m http.server 8000 --bind 127.0.0.1 >/tmp/source-fidelity-http.log 2>&1 &
+          sleep 2
+
+      - name: Source-fidelity revalidation
+        id: audit
+        continue-on-error: true
+        run: |
+          python .document/tools/source_fidelity_visual_qa.py \
+            --root . \
+            --base-url http://127.0.0.1:8000 \
+            --output-dir qa-results/source-fidelity \
+            --report .document/formula_reviews/SOURCE_FIDELITY_REVALIDATION_20260920.md
+
+      - name: Upload source-fidelity evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: source-fidelity-revalidation
+          path: |
+            qa-results/source-fidelity/
+            .document/formula_reviews/SOURCE_FIDELITY_REVALIDATION_20260920.md
+          if-no-files-found: error
+
+      - name: Commit revalidation report
+        if: always()
+        run: |
+          cp .document/formula_reviews/SOURCE_FIDELITY_REVALIDATION_20260920.md /tmp/SOURCE_FIDELITY_REVALIDATION_20260920.md
+          git fetch origin develop
+          git reset --hard origin/develop
+          cp /tmp/SOURCE_FIDELITY_REVALIDATION_20260920.md .document/formula_reviews/SOURCE_FIDELITY_REVALIDATION_20260920.md
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .document/formula_reviews/SOURCE_FIDELITY_REVALIDATION_20260920.md
+          if git diff --cached --quiet; then
+            echo "No report change"
+          else
+            git commit -m "test: record source-fidelity revalidation [skip ci]"
+            git push origin HEAD:develop
+          fi
+
+      - name: Mark review required
+        if: steps.audit.outcome == 'failure'
+        run: exit 1
