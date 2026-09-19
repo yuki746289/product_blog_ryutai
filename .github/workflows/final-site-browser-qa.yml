@@ -13,8 +13,33 @@ permissions:
   contents: write
 
 jobs:
+  probe:
+    name: probe
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+      - name: Record run id
+        run: |
+          mkdir -p .document/formula_reviews
+          {
+            echo "# Final Site Browser QA Run"
+            echo
+            echo "- run_id: $GITHUB_RUN_ID"
+            echo "- head_sha: $GITHUB_SHA"
+            echo "- date: 2026-09-19"
+          } > .document/formula_reviews/FINAL_SITE_BROWSER_QA_RUN_20260919.md
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .document/formula_reviews/FINAL_SITE_BROWSER_QA_RUN_20260919.md
+          git commit -m "test: record final browser QA run [skip ci]"
+          git push origin HEAD:develop
+
   qa:
     name: qa-shard-${{ matrix.shard }}
+    needs: probe
     runs-on: ubuntu-latest
     timeout-minutes: 20
     strategy:
@@ -73,6 +98,8 @@ jobs:
       - name: Install Python dependency
         run: pip install playwright
       - name: Download shard results
+        id: download
+        continue-on-error: true
         uses: actions/download-artifact@v4
         with:
           pattern: final-site-qa-*
@@ -82,6 +109,7 @@ jobs:
         id: merge
         continue-on-error: true
         run: |
+          mkdir -p qa-results
           python .document/tools/final_site_browser_qa.py \
             --merge-dir qa-results \
             --expected-shards 4 \
@@ -92,6 +120,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin develop
           git add .document/formula_reviews/FINAL_SITE_BROWSER_QA_20260919.md
           if git diff --cached --quiet; then
             echo "No QA report change"
