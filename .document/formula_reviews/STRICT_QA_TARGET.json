@@ -1,10 +1,10 @@
 {
-  "page_key": "physics_6_2_6",
-  "page_path": "physics/physics_6_2_6.html",
+  "page_key": "physics_6_2_7",
+  "page_path": "physics/physics_6_2_7.html",
   "source_dir": "img/physics_c_inner.files",
   "source_fragment": "physics_c_inner.files",
   "images": [
-    "019"
+    "020"
   ],
   "expected_math_blocks": 1,
   "formula_selector": "[data-source-image]",
@@ -19,5 +19,5 @@
       "height": 844
     }
   },
-  "rerun_revision": 87
+  "rerun_revision": 88
 }
