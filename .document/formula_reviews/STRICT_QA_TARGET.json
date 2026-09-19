@@ -1,9 +1,10 @@
 {
-  "page_key": "hydronamics_4",
-  "page_path": "hydronamics/hydronamics_4.html",
-  "source_dir": "img/hydronamics_e_mass.files",
-  "source_fragment": "hydronamics_e_mass.files",
+  "page_key": "hydronamics_8",
+  "page_path": "hydronamics/hydronamics_8.html",
+  "source_dir": "img/hydronamics_e_momentum.files",
+  "source_fragment": "hydronamics_e_momentum.files",
   "images": [
+    "001",
     "002",
     "003",
     "004",
@@ -12,12 +13,12 @@
     "007",
     "008",
     "009",
-    "010"
+    "010",
+    "011",
+    "012"
   ],
-  "expected_math_blocks": 9,
-  "retained_source_images": [
-    "001"
-  ],
+  "expected_math_blocks": 12,
+  "retained_source_images": [],
   "viewports": {
     "desktop": {
       "width": 1440,
@@ -28,5 +29,6 @@
       "height": 844
     }
   },
-  "rerun_revision": 70
+  "rerun_revision": 71,
+  "formula_selector": "[data-source-image]"
 }
