@@ -49,6 +49,7 @@ jobs:
           source_fragment=cfg['source_fragment']
           nums=cfg['images']
           retained=cfg.get('retained_source_images',[])
+          retained_expected=cfg.get('retained_source_image_counts',{n:1 for n in retained})
           expected=cfg['expected_math_blocks']
           formula_selector=cfg.get('formula_selector','.math-block')
           vps=cfg['viewports']
@@ -124,7 +125,7 @@ jobs:
                   source_img_elements=pg.locator(f'img[src*="{source_fragment}/image"]').count()
                   retained_counts={
                       n:pg.locator(f'img[src*="{source_fragment}/image{n}.png"]').count()
-                      for n in retained
+                      for n in retained_expected
                   }
                   unexpected_source_img_elements=source_img_elements-sum(retained_counts.values())
 
@@ -189,8 +190,9 @@ jobs:
                   if unexpected_source_img_elements:
                       failures.append(f'{vn}: unexpected source image elements={unexpected_source_img_elements}')
                   for n,cnt in retained_counts.items():
-                      if cnt != 1:
-                          failures.append(f'{vn}: retained image{n} count={cnt}, expected=1')
+                      exp=retained_expected[n]
+                      if cnt != exp:
+                          failures.append(f'{vn}: retained image{n} count={cnt}, expected={exp}')
                   if page_errors:
                       failures.append(f'{vn}: page errors={len(page_errors)}')
                   ctx.close()
