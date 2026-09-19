@@ -114,6 +114,13 @@
 | 86 | `mesh/mesh_2.html` | 9 | **9/9** | **9/9** | **PASS** | **DONE** |
 | 87 | `mesh/mesh_3_1.html` | 9 | **9/9** | **9/9** | **PASS** | **DONE** |
 | 88 | `mesh/mesh_5.html` | 7 | **7/7** | **7/7** | **PASS** | **DONE** |
+| 89 | `mps/mps_1.html` | 1 | **1/1** | **1/1** | **PASS** | **DONE** |
+| 90 | `mps/mps_2.html` | 1 | **1/1** | **1/1** | **PASS** | **DONE** |
+| 91 | `mps/mps_3.html` | 12 | **12/12** | **12/12** | **PASS** | **DONE** |
+| 92 | `mps/mps_4.html` | 9 | **9/9** | **9/9** | **PASS** | **DONE** |
+| 93 | `mps/mps_5.html` | 2 | **2/2** | **2/2** | **PASS** | **DONE** |
+| 94 | `mps/mps_6_1.html` | 2 | **2/2** | **2/2** | **PASS** | **DONE** |
+| 95 | `mps/mps_6_2.html` | 22 | **21 source-exact + 1 inferred** | **22/22** | **PASS** | **DONE*** |
 
 ## fem_7_2_2 完了結果
 
@@ -395,12 +402,42 @@
 - Broken image: 0
 - PC/mobile page-wide overflow: 0
 
+## MPSカテゴリ最終QA
+
+- MathJax: **49式 / 7ページ**
+- source-exact / recovered: **48式**
+- user-approved inferred reconstruction: **1式**
+- inferred対象: `mps/mps_6_2.html -> former image022.gif`
+- residual formula images: **0**
+- MathJax error: 0
+- unrendered: 0
+- page-wide overflow: 0
+- Browser QA: **PASS**
+- HOLD: 0
+- 詳細: `.document/formula_reviews/MPS_FINAL_BROWSER_QA_20260919.md`
+- 注: inferred 1式は source-exact の633式には含めず、operational total 634式にのみ含める。
+
+## Countingカテゴリ最終QA
+
+- 数式画像: **0**
+- 保持フローチャート: **2/2**
+- 通常ページ: **3/3**
+- desktop/mobile: **PASS**
+- broken image: 0
+- page-wide overflow: 0
+- Countingカテゴリ: **COMPLETE**
+- 詳細: `.document/formula_reviews/COUNTING_FINAL_QA_20260919_STRICT.md`
+
 ## 累計
 
-- 新厳密再監査完了: **585式**
-- 完了ページ: **88**
+- source-exact / source-recovered 新厳密再監査完了: **633式**
+- 数式ページ完了: **95ページ**
+- inferred reconstruction: **1式**
+- operational MathJax total: **634式**
+- Counting: 数式0、フローチャート2枚保持
 - 旧564式監査結果とは分離して管理する。
 
 ## 次回再開位置
 
-**Counting最終QAとMPS特別扱いの最終整合を行う。**
+**全対象カテゴリの新厳密再監査・最終表示QA完了。**
+最終サマリ: `.document/formula_reviews/FORMULA_STRICT_REAUDIT_FINAL_SUMMARY_20260919.md`
