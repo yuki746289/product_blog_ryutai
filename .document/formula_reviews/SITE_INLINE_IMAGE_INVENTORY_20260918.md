@@ -11,10 +11,10 @@
 ## Summary
 
 - HTML pages scanned: **205**
-- Residual inline-image placements: **113**
-- Unique residual image assets: **111**
-- Priority A (`p.im`) placements: **111**
-- Missing referenced assets: **1**
+- Residual inline-image placements: **112**
+- Unique residual image assets: **110**
+- Priority A (`p.im`) placements: **110**
+- Missing referenced assets: **0**
 
 ### By section
 
@@ -27,21 +27,10 @@
 | `appendix` | 9 |
 | `heat` | 8 |
 | `counting` | 2 |
-| `mps` | 1 |
 
 ### Missing referenced assets
 
-These references exist in HTML but the corresponding image file is absent from this repository checkout. They must be recovered or separately verified before formula conversion.
-
-| Section | Missing placements |
-|---|---:|
-| `mps` | 1 |
-
-<details><summary>Missing asset references</summary>
-
-- `mps/mps_6_2.html` → `img/mps_fluid_count.files/image022.gif`
-
-</details>
+- **0**
 
 ### Pages with residual Word-export images
 
@@ -98,17 +87,16 @@ These references exist in HTML but the corresponding image file is absent from t
 | 49 | `hydronamics/hydronamics_9_5.html` | 1 | 1 |
 | 50 | `mesh/mesh_1.html` | 1 | 1 |
 | 51 | `mesh/mesh_2.html` | 1 | 1 |
-| 52 | `mps/mps_6_2.html` | 1 | 1 |
-| 53 | `physics/physics_1.html` | 1 | 1 |
-| 54 | `physics/physics_3.html` | 1 | 1 |
-| 55 | `physics/physics_6_2_1.html` | 1 | 1 |
-| 56 | `physics/physics_6_2_2.html` | 1 | 1 |
-| 57 | `physics/physics_6_3_2.html` | 1 | 1 |
-| 58 | `physics/physics_6_3_3.html` | 1 | 1 |
+| 52 | `physics/physics_1.html` | 1 | 1 |
+| 53 | `physics/physics_3.html` | 1 | 1 |
+| 54 | `physics/physics_6_2_1.html` | 1 | 1 |
+| 55 | `physics/physics_6_2_2.html` | 1 | 1 |
+| 56 | `physics/physics_6_3_2.html` | 1 | 1 |
+| 57 | `physics/physics_6_3_3.html` | 1 | 1 |
 
 ## Next step
 
-Review Priority A assets page-by-page against the original images, classify each as formula / diagram / other, and only then start exact LaTeX transcription under the existing strict source-image policy.
+Final residual set contains only confirmed non-formula retained images. MPS formula images are fully replaced by MathJax; image022 is tracked separately as an inferred reconstruction.
 
 Detailed per-image data is stored in:
 - `.document/formula_reviews/SITE_INLINE_IMAGE_INVENTORY_20260918.csv`
