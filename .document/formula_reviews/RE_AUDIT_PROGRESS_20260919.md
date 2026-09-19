@@ -89,6 +89,22 @@
 | 61 | `hydronamics/hydronamics_14.html` | 12 | **12/12** | **12/12** | **PASS** | **DONE** |
 | 62 | `hydronamics/hydronamics_4.html` | 9 | **9/9** | **9/9** | **PASS** | **DONE** |
 | 63 | `hydronamics/hydronamics_8.html` | 12 | **12/12** | **12/12** | **PASS** | **DONE** |
+| 64 | `physics/physics_2.html` | 7 | **7/7** | **7/7** | **PASS** | **DONE** |
+| 65 | `physics/physics_3.html` | 6 | **6/6** | **6/6** | **PASS** | **DONE** |
+| 66 | `physics/physics_4.html` | 6 | **6/6** | **6/6** | **PASS** | **DONE** |
+| 67 | `physics/physics_5.html` | 4 | **4/4** | **4/4** | **PASS** | **DONE** |
+| 68 | `physics/physics_6_1.html` | 5 | **5/5** | **5/5** | **PASS** | **DONE** |
+| 69 | `physics/physics_6_2_1.html` | 4 | **4/4** | **4/4** | **PASS** | **DONE** |
+| 70 | `physics/physics_6_2_2.html` | 2 | **2/2** | **2/2** | **PASS** | **DONE** |
+| 71 | `physics/physics_6_2_3.html` | 5 | **5/5** | **5/5** | **PASS** | **DONE** |
+| 72 | `physics/physics_6_2_4.html` | 2 | **2/2** | **2/2** | **PASS** | **DONE** |
+| 73 | `physics/physics_6_2_5.html` | 1 | **1/1** | **1/1** | **PASS** | **DONE** |
+| 74 | `physics/physics_6_2_6.html` | 1 | **1/1** | **1/1** | **PASS** | **DONE** |
+| 75 | `physics/physics_6_2_7.html` | 1 | **1/1** | **1/1** | **PASS** | **DONE** |
+| 76 | `physics/physics_6_3_1.html` | 1 | **1/1** | **1/1** | **PASS** | **DONE** |
+| 77 | `physics/physics_6_3_2.html` | 2 | **2/2** | **2/2** | **PASS** | **DONE** |
+| 78 | `physics/physics_6_3_3.html` | 1 | **1/1** | **1/1** | **PASS** | **DONE** |
+| 79 | `physics/physics_7.html` | 1 | **1/1** | **1/1** | **PASS** | **DONE** |
 
 ## fem_7_2_2 完了結果
 
@@ -328,12 +344,19 @@
 - Browser QA: 全ページ **PASS**
 - HOLD: 0
 
+## Physics数式ページ完了結果
+- 新厳密再監査: **49式 / 16ページ**
+- 元画像↔MathJax直接比較: **49/49**
+- Browser QA: 全ページ **PASS**
+- HOLD: 0
+- レビュー正本: `.document/formula_reviews/PHYSICS_STRICT_REAUDIT_20260919.md`
+
 ## 累計
 
-- 新厳密再監査完了: **460式**
-- 完了ページ: **63**
+- 新厳密再監査完了: **509式**
+- 完了ページ: **79**
 - 旧564式監査結果とは分離して管理する。
 
 ## 次回再開位置
 
-**Hydronamics完了。次カテゴリ（Physics）へ移行する。**
+**Physics非数式ページの最終QAを実施する。**
