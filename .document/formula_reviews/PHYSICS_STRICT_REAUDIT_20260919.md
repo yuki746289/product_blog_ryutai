@@ -1,45 +1,58 @@
 # Physics Strict Re-audit — 2026-09-19
 
-## 結果
+## Result
 
-**Physics 数式ページ: 新厳密再監査 完了**
+**Physics formula strict re-audit: PASS**
 
-| Page | 数式数 | Pass 1 | Pass 2 | Browser QA |
-|---|---:|---:|---:|---|
-| physics_2 | 7 | 7/7 | 7/7 | PASS |
-| physics_3 | 6 | 6/6 | 6/6 | PASS |
-| physics_4 | 6 | 6/6 | 6/6 | PASS |
-| physics_5 | 4 | 4/4 | 4/4 | PASS |
-| physics_6_1 | 5 | 5/5 | 5/5 | PASS |
-| physics_6_2_1 | 4 | 4/4 | 4/4 | PASS |
-| physics_6_2_2 | 2 | 2/2 | 2/2 | PASS |
-| physics_6_2_3 | 5 | 5/5 | 5/5 | PASS |
-| physics_6_2_4 | 2 | 2/2 | 2/2 | PASS |
-| physics_6_2_5 | 1 | 1/1 | 1/1 | PASS |
-| physics_6_2_6 | 1 | 1/1 | 1/1 | PASS |
-| physics_6_2_7 | 1 | 1/1 | 1/1 | PASS |
-| physics_6_3_1 | 1 | 1/1 | 1/1 | PASS |
-| physics_6_3_2 | 2 | 2/2 | 2/2 | PASS |
-| physics_6_3_3 | 1 | 1/1 | 1/1 | PASS |
-| physics_7 | 1 | 1/1 | 1/1 | PASS |
-
-合計: **49式 / 16ページ**
-
-## 確認方式
-
-- 元HP画像 ↔ MathJax完成描画を全49式で直接比較。
-- `i/j/k`, `x/y/z`, ベクトル単位基底、Kronecker delta、Levi-Civita記号、内積・外積、grad/div/Laplacianを重点確認。
-- 式内容・符号・添字・上付き・項順・改行に、修正が必要な差異なし。
+### Scope
+- Formula pages: **16**
+- Formula images: **49**
+- New strict Pass 1: **49/49**
+- New strict Pass 2: **49/49**
 - HOLD: **0**
+- Browser QA: **all PASS**
 
-## Browser QA
+### Pages
+| Page | Formulas |
+|---|---:|
+| physics_2 | 7 |
+| physics_3 | 6 |
+| physics_4 | 6 |
+| physics_5 | 4 |
+| physics_6_1 | 5 |
+| physics_6_2_1 | 4 |
+| physics_6_2_2 | 2 |
+| physics_6_2_3 | 5 |
+| physics_6_2_4 | 2 |
+| physics_6_2_5 | 1 |
+| physics_6_2_6 | 1 |
+| physics_6_2_7 | 1 |
+| physics_6_3_1 | 1 |
+| physics_6_3_2 | 2 |
+| physics_6_3_3 | 1 |
+| physics_7 | 1 |
 
-全対象で desktop / mobile:
+### Verification
+- All 49 source-image / MathJax pairs were generated and visually compared.
+- Current HTML matches the source-certified formula JSON for **49/49** formulas.
+- Focus checks included:
+  - `i / j / k` indices
+  - `x / y / z` components
+  - Kronecker delta `δ_{ij}`
+  - Levi-Civita `ε_{ijk}`
+  - vector basis subscripts
+  - divergence / gradient / Laplacian notation
+  - dot / cross product expansions
+  - signs, superscripts, subscripts, and line structure
+- No source-confirmed formula-content correction was required in this Physics batch.
+
+### Browser QA
+- Desktop and mobile: all target formulas rendered.
 - MathJax error = 0
-- unrendered = 0
-- uncontained overflow = 0
-- page-wide overflow = 0
+- Unrendered = 0
+- Uncontained overflow = 0
+- Page-wide overflow = 0
 
-## 判定
+## Verdict
 
-**Physics 数式ページ 49式: DONE**
+**Physics formula pages: strict re-audit complete.**
