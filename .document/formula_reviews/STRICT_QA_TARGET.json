@@ -1,36 +1,20 @@
 {
-  "page_key": "mps_6_2",
-  "page_path": "mps/mps_6_2.html",
-  "source_dir": "img/mps_fluid_count.files",
-  "source_fragment": "mps_fluid_count.files",
-  "source_ext": "gif",
+  "page_key": "mesh_1",
+  "page_path": "mesh/mesh_1.html",
+  "source_dir": "img/mesh_approximation.files",
+  "source_fragment": "mesh_approximation.files",
   "images": [
-    "001",
     "002",
     "003",
     "004",
     "005",
-    "006",
-    "007",
-    "008",
-    "009",
-    "010",
-    "011",
-    "012",
-    "013",
-    "014",
-    "015",
-    "016",
-    "017",
-    "018",
-    "019",
-    "020",
-    "021",
-    "022"
+    "006"
   ],
-  "expected_math_blocks": 22,
+  "expected_math_blocks": 5,
   "formula_selector": "[data-source-image]",
-  "retained_source_images": [],
+  "retained_source_images": [
+    "001"
+  ],
   "viewports": {
     "desktop": {
       "width": 1440,
@@ -41,5 +25,5 @@
       "height": 844
     }
   },
-  "rerun_revision": 117
+  "rerun_revision": 118
 }
