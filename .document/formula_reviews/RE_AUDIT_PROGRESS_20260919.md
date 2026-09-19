@@ -386,6 +386,15 @@
 - Appendix / Column / Mesh: **COMPLETE**
 - 最終レポート: `.document/formula_reviews/APPENDIX_COLUMN_MESH_FINAL_QA_20260919_STRICT.md`
 
+## Appendix / Column / Mesh カテゴリ最終QA
+
+- Appendix: **COMPLETE**
+- Column: **COMPLETE**
+- Mesh: **COMPLETE**
+- 非数式ページQA: **11/11 PASS**
+- Broken image: 0
+- PC/mobile page-wide overflow: 0
+
 ## 累計
 
 - 新厳密再監査完了: **585式**
