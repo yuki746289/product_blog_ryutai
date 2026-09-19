@@ -3,18 +3,18 @@
 <html lang="ja">
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta http-equiv="content-style-type" content="text/css">
 
-	<meta name="description" content="���̗͊w�E�L���v�f�@�ɂ�鐔�l�v�Z�T�C�g�B">
-	<meta name="keywords" content="���̗͊w,�L���v�f�@,���l�v�Z,���b�V��,FEM"> 
+	<meta name="description" content="流体力学・有限要素法による数値計算サイト。">
+	<meta name="keywords" content="流体力学,有限要素法,数値計算,メッシュ,FEM"> 
 
-	<title>(�ށE�x�N�g��)�@���U�i�����j</title>
+	<title>(∇・ベクトル)　発散（物理）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
 
 <script>
 window.MathJax={
-  output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+  output:{displayOverflow:'overflow',linebreaks:{inline:false}},
   chtml:{displayAlign:'left',displayIndent:'0'}
 };
 </script>
@@ -27,15 +27,15 @@ window.MathJax={
 	<div id="wrapper">
 
 	<div id="header">
-		<h1><a href="./../index.html" title="�g�b�v�y�[�W��">�L���v�f�@�E���̗͊w�ɂ�鐔�l�v�Z</a></h1>
+		<h1><a href="./../index.html" title="トップページへ">有限要素法・流体力学による数値計算</a></h1>
 
 		<br style="clear:both;">
 		<ul style="margin-left:30px;">
-		<li><a href="./../index.html" title="index��">index</a>&gt;</li>
-		<li><a href="./physics.html" title="������">����</a>&gt;</li>
-		<li><a href="./physics_6.html" title="�v�Z�̎�ނ�">�v�Z�̎��</a>&gt;</li>
-		<li><a href="./physics_6_2.html" title="���ς�">����</a>&gt;</li>
-		<li><a href="./physics_6_2_3.html" title="(�ށE�x�N�g��)�@���U��">(�ށE�x�N�g��)�@���U</a>&gt;</li>
+		<li><a href="./../index.html" title="indexへ">index</a>&gt;</li>
+		<li><a href="./physics.html" title="物理へ">物理</a>&gt;</li>
+		<li><a href="./physics_6.html" title="計算の種類へ">計算の種類</a>&gt;</li>
+		<li><a href="./physics_6_2.html" title="内積へ">内積</a>&gt;</li>
+		<li><a href="./physics_6_2_3.html" title="(∇・ベクトル)　発散へ">(∇・ベクトル)　発散</a>&gt;</li>
 		</ul>
 		<hr>
 	</div>
@@ -43,7 +43,7 @@ window.MathJax={
 	<div id="main" >
 
 	<div id="image">
-		<p>���̗͊w���琔�l�v�Z�܂�</p>
+		<p>流体力学から数値計算まで</p>
 		<p><img src="./../img/shiki1.gif"></p>
 		<p><img src="./../img/shiki2.gif"></p>
 	</div>
@@ -52,12 +52,12 @@ window.MathJax={
 
 		<div id="content-text">
 
-			<h2>�L��</h2>
+			<h2>広告</h2>
 			<p><iframe src="./../ad.html" width="470" height="60" scrolling="no" frameborder="0"></iframe></p>
 			<br>
 
-			<h2>(�ށE�x�N�g��)�@���U</h2>
-			<p>������p�f�ƃx�N�g���̓��ς͎����ƂȂ�܂��B</p>
+			<h2>(∇・ベクトル)　発散</h2>
+			<p>微分作用素とベクトルの内積は次式となります。</p>
 			<div class="math-block" id="formula-physics-6-2-3-009" data-source-image="./../img/physics_c_inner.files/image009.png">
 \[
 \begin{aligned}
@@ -70,17 +70,17 @@ window.MathJax={
 \end{aligned}
 \]
 </div>
-			<p>��L�̍��̃I�[�_�[�́A</p>
-			<p class="im"><span class="ft">(</span>������p�f�E�x�N�g��<span class="ft">) = (1 - 2 + 1) = 0</span></p>
-			<p>�ƌv�Z�����̂ŁA�X�J���[�ʂɂȂ�܂��B���̕����ʂ͔��U�ƌĂ΂�A�����̈�ւ̗����E���o�ʂ�\���Ă��܂��B</p>
-			<p class="im"><img src="./../img/physics_c_inner.files/image010.png">�@�@
+			<p>上記の項のオーダーは、</p>
+			<p class="im"><span class="ft">(</span>微分作用素・ベクトル<span class="ft">) = (1 - 2 + 1) = 0</span></p>
+			<p>と計算されるので、スカラー量になります。この物理量は発散と呼ばれ、微小領域への流入・流出量を表しています。</p>
+			<p class="im"><img src="./../img/physics_c_inner.files/image010.png">　　
 								<img src="./../img/physics_c_inner.files/image011.png"></p>
-			<p class="im"><span class="math-inline" id="formula-physics-6-2-3-012" data-source-image="./../img/physics_c_inner.files/image012.png">\((\nabla\cdot\vec{v})<0\)</span> �������̈�֕����ʂ����o����</p>
-			<p class="im"><span class="math-inline" id="formula-physics-6-2-3-013" data-source-image="./../img/physics_c_inner.files/image013.png">\((\nabla\cdot\vec{v})=0\)</span> �������̈�ւ̗����E���o�͖���</p>
-			<p class="im"><span class="math-inline" id="formula-physics-6-2-3-014" data-source-image="./../img/physics_c_inner.files/image014.png">\((\nabla\cdot\vec{v})>0\)</span> �������̈�֕����ʂ���������</p>
-			<p>��L����킩��悤�ɔ��U�Ƃ�<span class="ft"><i>x</i>, <i>y</i>, <i>z</i></span>
-							�������̌��z�̘a�ł���A<span class="ft">0</span>�̏ꍇ�́A����Ȃ̂ŗ����E���o�͖����Ɖ��߂ł��܂��B
-							�܂��A���L�����藧���܂��B</p>
+			<p class="im"><span class="math-inline" id="formula-physics-6-2-3-012" data-source-image="./../img/physics_c_inner.files/image012.png">\((\nabla\cdot\vec{v})<0\)</span> →微小領域へ物理量が流出した</p>
+			<p class="im"><span class="math-inline" id="formula-physics-6-2-3-013" data-source-image="./../img/physics_c_inner.files/image013.png">\((\nabla\cdot\vec{v})=0\)</span> →微小領域への流入・流出は無い</p>
+			<p class="im"><span class="math-inline" id="formula-physics-6-2-3-014" data-source-image="./../img/physics_c_inner.files/image014.png">\((\nabla\cdot\vec{v})>0\)</span> →微小領域へ物理量が流入した</p>
+			<p>上記からわかるように発散とは<span class="ft"><i>x</i>, <i>y</i>, <i>z</i></span>
+							軸方向の勾配の和であり、<span class="ft">0</span>の場合は、平らなので流入・流出は無いと解釈できます。
+							また、下記が成り立ちます。</p>
 			<div class="math-block" id="formula-physics-6-2-3-015" data-source-image="./../img/physics_c_inner.files/image015.png">
 \[(\nabla\cdot\vec{v})\neq(\vec{v}\cdot\nabla)\]
 </div>
@@ -97,7 +97,7 @@ window.MathJax={
 				</tr></table>
 			</h2>
 
-			<!-- �L�� -->
+			<!-- 広告 -->
 			<p><iframe src="./../questionnaire.html" width="650" height="325" scrolling="yes" frameborder="0"></iframe></p>
 		</div>
 
@@ -108,9 +108,9 @@ window.MathJax={
 	<div id="sub">
 		<iframe src="./../menu.html" id="menu" name="menu" width="180" scrolling="no" frameborder="0"></iframe>
 
-		<!-- �L�� -->
+		<!-- 広告 -->
 		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-		<!-- �o�i�[3�i���j���[���j -->
+		<!-- バナー3（メニュー欄） -->
 		<ins class="adsbygoogle"
 		     style="display:inline-block;width:160px;height:600px"
 		     data-ad-client="ca-pub-4382202381956938"
@@ -119,26 +119,26 @@ window.MathJax={
 		(adsbygoogle = window.adsbygoogle || []).push({});
 		</script>
 
-		<!-- �y�[�W�ʃJ�E���^ -->
+		<!-- ページ別カウンタ -->
 		<!--shinobi1-->
 		<script type="text/javascript" src="http://x7.tuzikaze.com/ufo/10850280l"></script>
 		<noscript><a href="http://x7.tuzikaze.com/bin/gg?10850280l" target="_blank">
 		<img src="http://x7.tuzikaze.com/bin/ll?10850280l" border="0"></a><br>
-		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://home-matsubara.com/">�Z��S��</a></span></noscript>
+		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://home-matsubara.com/">住宅百科</a></span></noscript>
 		<!--shinobi2-->
 
 		<div class="sub-text">
 			<dl>
-				<dt>�J�E���^</dt>
+				<dt>カウンタ</dt>
 				<dd>
 					<!-- shinobi ct2 -->
 					<script type="text/javascript" src="http://ct2.tirirenge.com/sc/1515356"></script>
 					<noscript><a href="http://ct2.tirirenge.com/gg/1515356" target="_blank">
-					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="�J�E���^�[" /></a><br />
-					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">�|�C���g</a></span></noscript>
+					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="カウンター" /></a><br />
+					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">ポイント</a></span></noscript>
 					<!-- /shinobi ct2 -->
 					<br>
-				�i2011.3.15�`�j
+				（2011.3.15～）
 				</dd>
 			</dl>
 		</div>

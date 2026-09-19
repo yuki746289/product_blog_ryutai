@@ -3,18 +3,18 @@
 <html lang="ja">
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta http-equiv="content-style-type" content="text/css">
 
-	<meta name="description" content="�L���v�f�@�E���̗͊w�ɂ�鐔�l�v�Z�T�C�g�B">
-	<meta name="keywords" content="�L���v�f�@,FEM,���̗͊w,���l�v�Z,���b�V��"> 
+	<meta name="description" content="有限要素法・流体力学による数値計算サイト。">
+	<meta name="keywords" content="有限要素法,FEM,流体力学,数値計算,メッシュ"> 
 
-	<title>3�p�`�v�f�i�L���v�f�@�j</title>
+	<title>3角形要素（有限要素法）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
 
 	<script>
 	window.MathJax={
-		output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+		output:{displayOverflow:'overflow',linebreaks:{inline:false}},
 		chtml:{displayAlign:'left',displayIndent:'0'}
 	};
 	</script>
@@ -27,14 +27,14 @@
 	<div id="wrapper">
 
 	<div id="header">
-		<h1><a href="./../index.html" title="�g�b�v�y�[�W��">�L���v�f�@�E���̗͊w�ɂ�鐔�l�v�Z</a></h1>
+		<h1><a href="./../index.html" title="トップページへ">有限要素法・流体力学による数値計算</a></h1>
 
 		<br style="clear:both;">
 		<ul style="margin-left:30px;">
-		<li><a href="./../index.html" title="index��">index</a>&gt;</li>
-		<li><a href="./fem.html" title="�L���v�f�@��">�L���v�f�@</a>&gt;</li>
-		<li><a href="./fem_2.html" title="�`��֐��Ɠ��}�֐���">�`��֐��Ɠ��}�֐�</a>&gt;</li>
-		<li><a href="./fem_2_1.html" title="3�p�`1���v�f��">3�p�`1���v�f</a>&gt;</li>
+		<li><a href="./../index.html" title="indexへ">index</a>&gt;</li>
+		<li><a href="./fem.html" title="有限要素法へ">有限要素法</a>&gt;</li>
+		<li><a href="./fem_2.html" title="形状関数と内挿関数へ">形状関数と内挿関数</a>&gt;</li>
+		<li><a href="./fem_2_1.html" title="3角形1次要素へ">3角形1次要素</a>&gt;</li>
 		</ul>
 		<hr>
 	</div>
@@ -42,7 +42,7 @@
 	<div id="main" >
 
 	<div id="image">
-		<p>���̗͊w���琔�l�v�Z�܂�</p>
+		<p>流体力学から数値計算まで</p>
 		<p><img src="./../img/shiki1.gif"></p>
 		<p><img src="./../img/shiki2.gif"></p>
 	</div>
@@ -51,25 +51,25 @@
 
 		<div id="content-text">
 
-			<h2>�L��</h2>
+			<h2>広告</h2>
 			<p><iframe src="./../ad.html" width="470" height="60" scrolling="no" frameborder="0"></iframe></p>
 			<br>
 
-			<h2>�E<span class="ft">3</span>�p�`<span class="ft">1</span>���v�f</h2>
+			<h2>・<span class="ft">3</span>角形<span class="ft">1</span>次要素</h2>
 			<p class="im"><img src="./../img/fem_tri.files/image001.png"></p>
-			<p>��}�̗l��<span class="ft"><i>xy</i></span>���W��<span class="ft">1</span>��
-					<span class="ft">3</span>�p�`�v�f���l����B<span class="ft">1</span>���v�f�̏ꍇ�́A
-					������<span class="fs"><i>f</i></span>�͎����ƂȂ�܂��B</p>
+			<p>上図の様に<span class="ft"><i>xy</i></span>座標に<span class="ft">1</span>つの
+					<span class="ft">3</span>角形要素を考える。<span class="ft">1</span>次要素の場合は、
+					物理量<span class="fs"><i>f</i></span>は次式となります。</p>
 			<div class="math-block" id="formula-fem_2_1-002" data-source-image="./../img/fem_tri.files/image002.png">
 \[
 \phi(x,y)=\alpha+\beta x+\gamma y
 \]
 </div>
-			<p>�����ŁA<span class="fs"><i>a</i></span><span class="ft">, </span>
+			<p>ここで、<span class="fs"><i>a</i></span><span class="ft">, </span>
 					<span class="fs"><i>b</i></span><span class="ft">, </span>
-					<span class="fs"><i>g</i></span>�͖��m���ł��B�����
-					<span class="ft">3</span>�̖��m����<span class="ft">3</span>
-					�̐ߓ_�̕����ʂ���v�Z���܂��B</p>
+					<span class="fs"><i>g</i></span>は未知数です。これら
+					<span class="ft">3</span>つの未知数を<span class="ft">3</span>
+					つの節点の物理量から計算します。</p>
 			<div class="math-block" id="formula-fem_2_1-003" data-source-image="./../img/fem_tri.files/image003.png">
 \[
 \left\{
@@ -81,7 +81,7 @@
 \right.
 \]
 </div>
-			<p>������v�Z����Ǝ����ƂȂ�܂��B</p>
+			<p>これを計算すると次式となります。</p>
 			<div class="math-block" id="formula-fem_2_1-004" data-source-image="./../img/fem_tri.files/image004.png">
 \[
 \begin{aligned}
@@ -91,7 +91,7 @@
 \end{aligned}
 \]
 </div>
-			<p>����𕨗���<span class="fs"><i>f</i></span>�̎��ɑ������Ǝ����������܂��B</p>
+			<p>これを物理量<span class="fs"><i>f</i></span>の式に代入すると次式が得られます。</p>
 			<div class="math-block" id="formula-fem_2_1-005" data-source-image="./../img/fem_tri.files/image005.png">
 \[
 \begin{aligned}
@@ -100,9 +100,9 @@
 \end{aligned}
 \]
 </div>
-			<p>�����ŁA<span class="ft"><i>L</i><sub>1</sub></span>
+			<p>ここで、<span class="ft"><i>L</i><sub>1</sub></span>
 					<span class="ft">, <i>L</i><sub>2</sub>, <i>L</i><sub>3</sub>[-]</span>
-					�͌`��֐��ƌĂ΂ꎟ���Œ�`����܂��B</p>
+					は形状関数と呼ばれ次式で定義されます。</p>
 			<div class="math-block" id="formula-fem_2_1-006" data-source-image="./../img/fem_tri.files/image006.png">
 \[
 L_1=\frac{A_1}{A},\quad
@@ -110,7 +110,7 @@ L_2=\frac{A_2}{A},\quad
 L_3=\frac{A_3}{A}
 \]
 </div>
-			<p>�܂��A���}�֐��͎����Œ�`����܂��B</p>
+			<p>また、内挿関数は次式で定義されます。</p>
 			<div class="math-block" id="formula-fem_2_1-007" data-source-image="./../img/fem_tri.files/image007.png">
 \[
 \begin{aligned}
@@ -119,7 +119,7 @@ N_1+N_2+N_3&=1
 \end{aligned}
 \]
 </div>
-			<p>�܂�A�����ʂ͖ʐϔ�Ō��܂��Ă��邱�Ƃ��킩��܂��B</p>
+			<p>つまり、物理量は面積比で決まっていることがわかります。</p>
 			<p class="im"><img src="./../img/fem_tri.files/image008.png"></p>
 			<br>
 
@@ -135,7 +135,7 @@ N_1+N_2+N_3&=1
 				</tr></table>
 			</h2>
 
-			<!-- �L�� -->
+			<!-- 広告 -->
 			<p><iframe src="./../questionnaire.html" width="650" height="325" scrolling="yes" frameborder="0"></iframe></p>
 		</div>
 
@@ -146,9 +146,9 @@ N_1+N_2+N_3&=1
 	<div id="sub">
 		<iframe src="./../menu.html" id="menu" name="menu" width="180" scrolling="no" frameborder="0"></iframe>
 
-		<!-- �L�� -->
+		<!-- 広告 -->
 		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-		<!-- �o�i�[3�i���j���[���j -->
+		<!-- バナー3（メニュー欄） -->
 		<ins class="adsbygoogle"
 		     style="display:inline-block;width:160px;height:600px"
 		     data-ad-client="ca-pub-4382202381956938"
@@ -157,7 +157,7 @@ N_1+N_2+N_3&=1
 		(adsbygoogle = window.adsbygoogle || []).push({});
 		</script>
 
-		<!-- �y�[�W�ʃJ�E���^ -->
+		<!-- ページ別カウンタ -->
 		<!--shinobi1-->
 		<script type="text/javascript" src="http://x7.tuzikaze.com/ufo/10850280H"></script>
 		<noscript><a href="http://x7.tuzikaze.com/bin/gg?10850280H" target="_blank">
@@ -167,16 +167,16 @@ N_1+N_2+N_3&=1
 
 		<div class="sub-text">
 			<dl>
-				<dt>�J�E���^</dt>
+				<dt>カウンタ</dt>
 				<dd>
 					<!-- shinobi ct2 -->
 					<script type="text/javascript" src="http://ct2.tirirenge.com/sc/1515356"></script>
 					<noscript><a href="http://ct2.tirirenge.com/gg/1515356" target="_blank">
-					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="�J�E���^�[" /></a><br />
-					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">�|�C���g</a></span></noscript>
+					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="カウンター" /></a><br />
+					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">ポイント</a></span></noscript>
 					<!-- /shinobi ct2 -->
 					<br>
-				�i2011.3.15�`�j
+				（2011.3.15～）
 				</dd>
 			</dl>
 		</div>

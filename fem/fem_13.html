@@ -3,13 +3,13 @@
 <html lang="ja">
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta http-equiv="content-style-type" content="text/css">
 
-	<meta name="description" content="�L���v�f�@�E���̗͊w�ɂ�鐔�l�v�Z�T�C�g�B">
-	<meta name="keywords" content="�L���v�f�@,FEM,���̗͊w,���l�v�Z,���b�V��"> 
+	<meta name="description" content="有限要素法・流体力学による数値計算サイト。">
+	<meta name="keywords" content="有限要素法,FEM,流体力学,数値計算,メッシュ"> 
 
-	<title>�o���h���œK���̕��@�i�L���v�f�@�j</title>
+	<title>バンド幅最適化の方法（有限要素法）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
 </head>
 <body>
@@ -18,13 +18,13 @@
 	<div id="wrapper">
 
 	<div id="header">
-		<h1><a href="./../index.html" title="�g�b�v�y�[�W��">�L���v�f�@�E���̗͊w�ɂ�鐔�l�v�Z</a></h1>
+		<h1><a href="./../index.html" title="トップページへ">有限要素法・流体力学による数値計算</a></h1>
 
 		<br style="clear:both;">
 		<ul style="margin-left:30px;">
-		<li><a href="./../index.html" title="index��">index</a>&gt;</li>
-		<li><a href="./fem.html" title="�L���v�f�@��">�L���v�f�@</a>&gt;</li>
-		<li><a href="./fem_13.html" title="�o���h���œK���̕��@��">�o���h���œK���̕��@</a>&gt;</li>
+		<li><a href="./../index.html" title="indexへ">index</a>&gt;</li>
+		<li><a href="./fem.html" title="有限要素法へ">有限要素法</a>&gt;</li>
+		<li><a href="./fem_13.html" title="バンド幅最適化の方法へ">バンド幅最適化の方法</a>&gt;</li>
 		</ul>
 		<hr>
 	</div>
@@ -32,7 +32,7 @@
 	<div id="main" >
 
 	<div id="image">
-		<p>���̗͊w���琔�l�v�Z�܂�</p>
+		<p>流体力学から数値計算まで</p>
 		<p><img src="./../img/shiki1.gif"></p>
 		<p><img src="./../img/shiki2.gif"></p>
 	</div>
@@ -41,45 +41,45 @@
 
 		<div id="content-text">
 
-			<h2>�L��</h2>
+			<h2>広告</h2>
 			<p><iframe src="./../ad.html" width="470" height="60" scrolling="no" frameborder="0"></iframe></p>
 			<br>
 
-			<h2>�E�o���h���œK���̕��@</h2>
-			<p>�@�o���h���̍œK���Ƃ́A�אڂ���ߓ_�Ԃ̐ߓ_�ԍ��̍����ŏ��ɂ��邱�Ƃ��Ӗ����Ă��܂��B
-				�����ł́A�o���h�����ŏ��ɂȂ�ߓ_�̊���U����ɂ��čl���Ă݂܂��B</p>
+			<h2>・バンド幅最適化の方法</h2>
+			<p>　バンド幅の最適化とは、隣接する節点間の節点番号の差を最小にすることを意味しています。
+				ここでは、バンド幅が最小になる節点の割り振り方について考えてみます。</p>
 			<p class="im"><img src="./../img/fem_band_method.files/image001.png"></p>
 			<br>
-			<p>��}�̗̈�ɂ��āA�o���h���̍ŏ������l���Ă݂܂��B���̗̈�̃o���h���́A</p>
-			<p><span class="ft">�@�@(15 - 1) + 1 = 15</span></p>
-			<p>�ƂȂ�܂��B�o���h�����œK�����邽�߂ɁA�ߓ_�𕪖؂ŕ\������Ɖ��}�ƂȂ�܂��B</p>
+			<p>上図の領域について、バンド幅の最小化を考えてみます。この領域のバンド幅は、</p>
+			<p><span class="ft">　　(15 - 1) + 1 = 15</span></p>
+			<p>となります。バンド幅を最適化するために、節点を分木で表示すると下図となります。</p>
 			<p class="im"><img src="./../img/fem_band_method.files/image002.png"></p>
 			<br>
-			<p>�����ŁA���}�̗l�ȏꍇ�̐ߓ_�z�u���l���Ă݂܂��B</p>
+			<p>ここで、下図の様な場合の節点配置を考えてみます。</p>
 			<p class="im"><img src="./../img/fem_band_method.files/image003.png"></p>
 			<br>
-			<p>���̏ꍇ�́A��菬�����ߓ_�ԍ��ɏ��������ɐߓ_������U��΁A�o���h���͍ŏ��ƂȂ�܂��B</p>
+			<p>この場合は、より小さい節点番号に小さい順に節点を割り振れば、バンド幅は最小となります。</p>
 			<p class="im"><img src="./../img/fem_band_method.files/image004.png"></p>
 			<br>
-			<p>���ɁA�}�������E���������ꍇ���l���Č��܂��B</p>
+			<p>次に、枝が結合・分離した場合を考えて見ます。</p>
 			<p class="im"><img src="./../img/fem_band_method.files/image005.png"></p>
 			<br>
-			<p>���̏ꍇ�����l�ɐߓ_�ԍ��̏��������ɐߓ_������U��΁A�o���h���͍ŏ��ƂȂ�܂��B</p>
+			<p>この場合も同様に節点番号の小さい順に節点を割り振れば、バンド幅は最小となります。</p>
 			<p class="im"><img src="./../img/fem_band_method.files/image006.png"></p>
 			<br>
-			<p>�܂�A�o���h�����ŏ������邽�߂ɂ́A�ߓ_�ԍ��̂�菬�����ߓ_�ɁA
-				�ߓ_�ԍ��̂�菬�����ߓ_���珇�ԂɊ���U��΂悢���ƂɂȂ�܂��B
-				�]���āA���؂ŕ\�����ꍇ�A����i�ɂ��č��̎}����ߓ_�ԍ��̏��������ɐߓ_������U�����ꍇ�A
-				���̒i�ɂ��Ă����̎}���珬�������ɐߓ_������U��΃o���h���͍ŏ��ɂȂ�܂��B
-				�Ԏ����V�����ߓ_�ԍ��ł��B</p>
+			<p>つまり、バンド幅を最小化するためには、節点番号のより小さい節点に、
+				節点番号のより小さい節点から順番に割り振ればよいことになります。
+				従って、分木で表した場合、ある段について左の枝から節点番号の小さい順に節点を割り振った場合、
+				次の段についても左の枝から小さい順に節点を割り振ればバンド幅は最小になります。
+				赤字が新しい節点番号です。</p>
 			<p class="im"><img src="./../img/fem_band_method.files/image007.png"></p>
 			<br>
-			<p>�]���āA�V�����ߓ_�ԍ��̗̈�͉��}�ƂȂ�܂��B</p>
+			<p>従って、新しい節点番号の領域は下図となります。</p>
 			<p class="im"><img src="./../img/fem_band_method.files/image008.png"></p>
 			<br>
-			<p>���̐}�̃o���h���́A</p>
-			<p><span class="ft">�@�@(10 - 4) + 1 = 7</span></p>
-			<p>�ƂȂ�܂��B</p>
+			<p>この図のバンド幅は、</p>
+			<p><span class="ft">　　(10 - 4) + 1 = 7</span></p>
+			<p>となります。</p>
 			<br>
 
 			<div style="margin-top:10px;"></div>
@@ -93,7 +93,7 @@
 				</tr></table>
 			</h2>
 
-			<!-- �L�� -->
+			<!-- 広告 -->
 			<p><iframe src="./../questionnaire.html" width="650" height="325" scrolling="yes" frameborder="0"></iframe></p>
 		</div>
 
@@ -104,9 +104,9 @@
 	<div id="sub">
 		<iframe src="./../menu.html" id="menu" name="menu" width="180" scrolling="no" frameborder="0"></iframe>
 
-		<!-- �L�� -->
+		<!-- 広告 -->
 		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-		<!-- �o�i�[3�i���j���[���j -->
+		<!-- バナー3（メニュー欄） -->
 		<ins class="adsbygoogle"
 		     style="display:inline-block;width:160px;height:600px"
 		     data-ad-client="ca-pub-4382202381956938"
@@ -115,26 +115,26 @@
 		(adsbygoogle = window.adsbygoogle || []).push({});
 		</script>
 
-		<!-- �y�[�W�ʃJ�E���^ -->
+		<!-- ページ別カウンタ -->
 		<!--shinobi1-->
 		<script type="text/javascript" src="http://x7.tuzikaze.com/ufo/10850280R"></script>
 		<noscript><a href="http://x7.tuzikaze.com/bin/gg?10850280R" target="_blank">
 		<img src="http://x7.tuzikaze.com/bin/ll?10850280R" border="0"></a><br>
-		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://www.lifequartz.com/">��炵�̈����o��</a></span></noscript>
+		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://www.lifequartz.com/">暮らしの引き出し</a></span></noscript>
 		<!--shinobi2-->
 
 		<div class="sub-text">
 			<dl>
-				<dt>�J�E���^</dt>
+				<dt>カウンタ</dt>
 				<dd>
 					<!-- shinobi ct2 -->
 					<script type="text/javascript" src="http://ct2.tirirenge.com/sc/1515356"></script>
 					<noscript><a href="http://ct2.tirirenge.com/gg/1515356" target="_blank">
-					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="�J�E���^�[" /></a><br />
-					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">�|�C���g</a></span></noscript>
+					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="カウンター" /></a><br />
+					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">ポイント</a></span></noscript>
 					<!-- /shinobi ct2 -->
 					<br>
-				�i2011.3.15�`�j
+				（2011.3.15～）
 				</dd>
 			</dl>
 		</div>

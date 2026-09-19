@@ -1,13 +1,13 @@
 
-var xc, yc;								//Œ´“_ˆÊ’u
-var xc_canvas, yc_canvas;	//ƒLƒƒƒ“ƒoƒX¶ãÀ•W
-var axis_x, axis_y;				//²’·‚³
+var xc, yc;								//åŸç‚¹ä½ç½®
+var xc_canvas, yc_canvas;	//ã‚­ãƒ£ãƒ³ãƒã‚¹å·¦ä¸Šåº§æ¨™
+var axis_x, axis_y;				//è»¸é•·ã•
 
-var x_val = [];	//xÀ•W
-var y_val = [];	//yÀ•W
+var x_val = [];	//xåº§æ¨™
+var y_val = [];	//yåº§æ¨™
 
-var x_pos = [];	//xÀ•W_ˆÊ’u
-var y_pos = [];	//yÀ•W_ˆÊ’u
+var x_pos = [];	//xåº§æ¨™_ä½ç½®
+var y_pos = [];	//yåº§æ¨™_ä½ç½®
 
 var context;
 var context_2;
@@ -15,34 +15,34 @@ var context_2;
 var canvas;
 var canvas_2;
 
-var img_temp = -999;	//Œ»İ•`‰æ‚µ‚Ä‚¢‚éƒ‰ƒxƒ‹
+var img_temp = -999;	//ç¾åœ¨æç”»ã—ã¦ã„ã‚‹ãƒ©ãƒ™ãƒ«
 
 
 function graph2() {
 alert("p");
-	//•`‰æƒRƒ“ƒeƒLƒXƒg‚Ìæ“¾
+	//æç”»ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®å–å¾—
 	canvas = document.getElementById('canvas_main');
 	canvas_2 = document.getElementById('canvas_sub');
 
 	if (!canvas.getContext)return;
 	if (!canvas_2.getContext)return;
 
-	//˜gü
+	//æ ç·š
 	canvas.style.border = "1px solid #000000";
 	canvas_2.style.border = "1px solid #000000";
 
-	//ƒLƒƒƒ“ƒoƒXƒTƒCƒY
+	//ã‚­ãƒ£ãƒ³ãƒã‚¹ã‚µã‚¤ã‚º
 	canvas.width  = 786;
 	canvas.height = 592;
 
 	canvas_2.width  = 786;
 	canvas_2.height = 592;
 
-	//ƒLƒƒƒ“ƒoƒX‚ÌˆÊ’u
+	//ã‚­ãƒ£ãƒ³ãƒã‚¹ã®ä½ç½®
 	canvasPos = canvas.getBoundingClientRect();
 	canvasPos_2 = canvas_2.getBoundingClientRect();
 
-	//ƒRƒ“ƒeƒLƒXƒg
+	//ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
 	context = canvas.getContext('2d');
 	context_2 = canvas_2.getContext('2d');
 
@@ -51,8 +51,8 @@ alert("p");
 	yc_canvas = canvasPos.top;
 
 
-	xc =  56;	//Œ´“_xÀ•W
-	yc = 516;	//Œ´“_yÀ•W
+	xc =  56;	//åŸç‚¹xåº§æ¨™
+	yc = 516;	//åŸç‚¹yåº§æ¨™
 
 				//		1			2			3				4			5				6			7			8				9			10			11		12			13
 	x_val = [ 0.76,  0.76, 5.15,  5.26,  8.00, 13.95, 15.94, 17.48, 17.80, 18.95, 19.42, 20.95, 22.98];
@@ -64,25 +64,25 @@ alert("p");
 	x_min = 0;
 	x_max = 23;
 
-	//²’·‚³
+	//è»¸é•·ã•
 	axis_x = 666;
 	axis_y = 470;
 
-	//x²
+	//xè»¸
 	context.beginPath();
 	context.strokeStyle = "rgb(255, 0, 0)";
 	context.moveTo(xc, yc);
 	context.lineTo(xc+axis_x, yc);
 	context.stroke();
 
-	//y²
+	//yè»¸
 	context.beginPath();
 	context.strokeStyle = "rgb(255, 0, 0)";
 	context.moveTo(xc, yc);
 	context.lineTo(xc, yc-axis_y);
 	context.stroke();
 
-	//ƒf[ƒ^
+	//ãƒ‡ãƒ¼ã‚¿
 	for(i=0;i<x_val.length;i++){
 		x_pos[i] = xc + x_val[i] / (x_max - x_min) * axis_x;
 		y_pos[i] = yc - y_val[i] / (y_max - y_min) * axis_y;
@@ -91,13 +91,13 @@ alert("p");
 
 //	for(i=0;i<x_val.length;i++){
 //		context_2.beginPath();
-//		context_2.fillStyle = 'rgb(192, 80, 77)'; // Ô
+//		context_2.fillStyle = 'rgb(192, 80, 77)'; // èµ¤
 //		context_2.arc(x_pos[i], y_pos[i], 5, 0, Math.PI*2, true);
 //		context_2.fill();
 //	}
 
 
-	// ƒCƒxƒ“ƒg‚Ì“o˜^
+	// ã‚¤ãƒ™ãƒ³ãƒˆã®ç™»éŒ²
 
 	//phone
 	if ((navigator.userAgent.indexOf('iPhone') > 0 && navigator.userAgent.indexOf( 'iPad') == -1) ||
@@ -136,12 +136,12 @@ alert("p");
 }
 
 ///////////////////////////////////////////////////////
-//ƒCƒxƒ“ƒgˆ—
+//ã‚¤ãƒ™ãƒ³ãƒˆå‡¦ç†
 
-//ƒXƒ}ƒz
+//ã‚¹ãƒãƒ›
 function touchPosition( e ){
 
-	touches = event.touches;	//ƒ}ƒ‹ƒ`ƒ^ƒbƒ`‚Ìê‡Aƒ^ƒbƒ`‰ÓŠ‚ªƒŠƒXƒg‚Åæ“¾‚³‚ê‚Ü‚·B
+	touches = event.touches;	//ãƒãƒ«ãƒã‚¿ãƒƒãƒã®å ´åˆã€ã‚¿ãƒƒãƒç®‡æ‰€ãŒãƒªã‚¹ãƒˆã§å–å¾—ã•ã‚Œã¾ã™ã€‚
 	var i, len = touches.length;
 	for (i = 0; i < len; i++) {
 		var touch = touches[i];
@@ -150,43 +150,43 @@ function touchPosition( e ){
 	}
 
 	document.form.t1.value=px+","+py;
-	canvasRefresh(px, py);	//ƒOƒ‰ƒtXV
+	canvasRefresh(px, py);	//ã‚°ãƒ©ãƒ•æ›´æ–°
 }
 
-//ƒ}ƒEƒX
+//ãƒã‚¦ã‚¹
 function clickPosition( e ){
 
-	// ƒCƒxƒ“ƒgƒIƒuƒWƒFƒNƒg‚Ì”»’è
+	// ã‚¤ãƒ™ãƒ³ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®åˆ¤å®š
 	var e = ( e || window.event.e ) ;
 
-	// ˆê”Ê“I‚Èƒuƒ‰ƒEƒU
+	// ä¸€èˆ¬çš„ãªãƒ–ãƒ©ã‚¦ã‚¶
 	if( e.pageX || e.pageX ){
 		var x = e.pageX;
 		var y = e.pageY;
 	}
-	// ŒÃ‚¢ƒuƒ‰ƒEƒU(Ie9ˆÈ‰º)
+	// å¤ã„ãƒ–ãƒ©ã‚¦ã‚¶(Ie9ä»¥ä¸‹)
 	else if( e.clientX || e.clientY ){
 		var dElm = document.documentElement , dBody = document.body ;
 		var x = e.clientX + dBody.scrollLeft + dElm.scrollLeft ;
 		var y = e.clientY + dBody.scrollTop + dElm.scrollTop ;
 	}
-	// ‚»‚ê‚Å‚àƒ_ƒ‚Èê‡
+	// ãã‚Œã§ã‚‚ãƒ€ãƒ¡ãªå ´åˆ
 	else{
 		return false ;
 	}
 
-	canvasRefresh(x, y);	//ƒOƒ‰ƒtXV
+	canvasRefresh(x, y);	//ã‚°ãƒ©ãƒ•æ›´æ–°
 }
 
 
-//ƒOƒ‰ƒtXV
+//ã‚°ãƒ©ãƒ•æ›´æ–°
 function canvasRefresh(x, y){
 
-	//ƒLƒƒƒ“ƒoƒX¶ãŠî€
+	//ã‚­ãƒ£ãƒ³ãƒã‚¹å·¦ä¸ŠåŸºæº–
 	x2 = x - xc_canvas;
 	y2 = y - yc_canvas;
 
-	//ÅŠñ‚è‚ÌÀ•W
+	//æœ€å¯„ã‚Šã®åº§æ¨™
 	n = reset_x(x2, y2);
 /*
 	if(img_temp ==  0 && (n==0 || n==1))return;
@@ -198,10 +198,10 @@ function canvasRefresh(x, y){
 	if(img_temp == 12 && (n>=12))return;
 */
 
-	//ƒNƒŠƒA
+	//ã‚¯ãƒªã‚¢
 	context_2.clearRect(0, 0, canvas.width, canvas.height);
 
-	//’¼ü
+	//ç›´ç·š
 	context_2.beginPath();
 	context_2.moveTo(x_pos[n], yc);
 	context_2.lineTo(x_pos[n], yc - axis_y);
@@ -210,7 +210,7 @@ function canvasRefresh(x, y){
 	var img_1 = new Image();
 	var img_2 = new Image();
 
-	//‰æ‘œ
+	//ç”»åƒ
 /*
 	if(n==0 || n==1){
 		img_1.onload = function() {
@@ -307,7 +307,7 @@ function canvasRefresh(x, y){
 }
 
 
-//ÅŠñ‚è‚ÌxÀ•W‚ğ’T‚·
+//æœ€å¯„ã‚Šã®xåº§æ¨™ã‚’æ¢ã™
 function reset_x(x, y){
 
 	n=-1;

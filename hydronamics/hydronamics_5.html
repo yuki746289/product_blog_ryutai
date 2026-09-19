@@ -3,18 +3,18 @@
 <html lang="ja">
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta http-equiv="content-style-type" content="text/css">
 
-	<meta name="description" content="���̗͊w�E�L���v�f�@�ɂ�鐔�l�v�Z�T�C�g�B">
-	<meta name="keywords" content="���̗͊w,�L���v�f�@,���l�v�Z,���b�V��,FEM"> 
+	<meta name="description" content="流体力学・有限要素法による数値計算サイト。">
+	<meta name="keywords" content="流体力学,有限要素法,数値計算,メッシュ,FEM"> 
 
-	<title>�S���͂̊ȒP�Ȑ����i���̗͊w�j</title>
+	<title>粘性力の簡単な説明（流体力学）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
 
 <script>
 window.MathJax={
-  output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+  output:{displayOverflow:'overflow',linebreaks:{inline:false}},
   chtml:{displayAlign:'left',displayIndent:'0'}
 };
 </script>
@@ -26,13 +26,13 @@ window.MathJax={
 	<div id="wrapper">
 
 	<div id="header">
-		<h1><a href="./../index.html" title="�g�b�v�y�[�W��">�L���v�f�@�E���̗͊w�ɂ�鐔�l�v�Z</a></h1>
+		<h1><a href="./../index.html" title="トップページへ">有限要素法・流体力学による数値計算</a></h1>
 
 		<br style="clear:both;">
 		<ul style="margin-left:30px;">
-		<li><a href="./../index.html" title="index��">index</a>&gt;</li>
-		<li><a href="./hydronamics.html" title="���̗͊w��">���̗͊w</a>&gt;</li>
-		<li><a href="./hydronamics_5.html" title="�S���͂̊ȒP�Ȑ�����">�S���͂̊ȒP�Ȑ���</a>&gt;</li>
+		<li><a href="./../index.html" title="indexへ">index</a>&gt;</li>
+		<li><a href="./hydronamics.html" title="流体力学へ">流体力学</a>&gt;</li>
+		<li><a href="./hydronamics_5.html" title="粘性力の簡単な説明へ">粘性力の簡単な説明</a>&gt;</li>
 		</ul>
 		<hr>
 	</div>
@@ -40,7 +40,7 @@ window.MathJax={
 	<div id="main" >
 
 	<div id="image">
-		<p>���̗͊w���琔�l�v�Z�܂�</p>
+		<p>流体力学から数値計算まで</p>
 		<p><img src="./../img/shiki1.gif"></p>
 		<p><img src="./../img/shiki2.gif"></p>
 	</div>
@@ -49,19 +49,19 @@ window.MathJax={
 
 		<div id="content-text">
 
-			<h2>�L��</h2>
+			<h2>広告</h2>
 			<p><iframe src="./../ad.html" width="470" height="60" scrolling="no" frameborder="0"></iframe></p>
 			<br>
 
-			<h2>�S���͂̊ȒP�Ȑ���</h2>
-			<p>���̂ɂ͔S���͂Ƃ����͂������܂��B����͗��̗��q�Ԃɓ������C�͂ł��B
-					���}�̗l�ɔS���͂ɂ���āA��������ɗ���Ă��闬�̗��q�̎��̗͂��q�����ē��������ɗ���o�����ۂ��N����܂��B</p>
+			<h2>粘性力の簡単な説明</h2>
+			<p>流体には粘性力という力が働きます。これは流体粒子間に働く摩擦力です。
+					下図の様に粘性力によって、ある方向に流れている流体粒子の周囲の粒子がつられて同じ方向に流れ出す現象が起こります。</p>
 			<p class="im"><img src="./../img/hydronamics_viscosity.files/image001.png"></p>
-			<p>��}�̏ꍇ�A<span class="ft">2</span>�̗��̗��q�Ԃɍ�p���Ă��鉞��
+			<p>上図の場合、<span class="ft">2</span>つの流体粒子間に作用している応力
 					<span class="fs"><i>t</i></span>
-					<span class="ft"> [N/m<sup>2</sup>]</span>�́A�S�x��<span class="fs"><i>m</i></span>
-					<span class="ft"> [Pa</span>�E<span class="ft">s]</span>
-					�Ƃ���Ǝ����ƂȂ�B</p>
+					<span class="ft"> [N/m<sup>2</sup>]</span>は、粘度を<span class="fs"><i>m</i></span>
+					<span class="ft"> [Pa</span>・<span class="ft">s]</span>
+					とすると次式となる。</p>
 			<div class="math-block" id="formula-hydronamics-5-002" data-source-image="./../img/hydronamics_viscosity.files/image002.png">
 \[
 \begin{aligned}
@@ -71,9 +71,9 @@ window.MathJax={
 \end{aligned}
 \]
 </div>
-			<p>����̓j���[�g���̔S���̖@���ƌĂ΂�A�P�ʖʐϓ�����ɓ����S���͂𙒒f���͂ƌ����܂��B
-					���f���͂̓e���\���ʂɂȂ�܂��B�ڂ����́A<a href="./../physics/physics_4.html" target="_parent">�e���\����</a>
-					���Q�Ƃ��Ă��������B</p>
+			<p>これはニュートンの粘性の法則と呼ばれ、単位面積当たりに働く粘性力を剪断応力と言います。
+					剪断応力はテンソル量になります。詳しくは、<a href="./../physics/physics_4.html" target="_parent">テンソル量</a>
+					を参照してください。</p>
 			<br>
 
 			<div style="margin-top:10px;"></div>
@@ -87,7 +87,7 @@ window.MathJax={
 				</tr></table>
 			</h2>
 
-			<!-- �L�� -->
+			<!-- 広告 -->
 			<p><iframe src="./../questionnaire.html" width="650" height="325" scrolling="yes" frameborder="0"></iframe></p>
 		</div>
 
@@ -98,9 +98,9 @@ window.MathJax={
 	<div id="sub">
 		<iframe src="./../menu.html" id="menu" name="menu" width="180" scrolling="no" frameborder="0"></iframe>
 
-		<!-- �L�� -->
+		<!-- 広告 -->
 		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-		<!-- �o�i�[3�i���j���[���j -->
+		<!-- バナー3（メニュー欄） -->
 		<ins class="adsbygoogle"
 		     style="display:inline-block;width:160px;height:600px"
 		     data-ad-client="ca-pub-4382202381956938"
@@ -109,26 +109,26 @@ window.MathJax={
 		(adsbygoogle = window.adsbygoogle || []).push({});
 		</script>
 
-		<!-- �y�[�W�ʃJ�E���^ -->
+		<!-- ページ別カウンタ -->
 		<!--shinobi1-->
 		<script type="text/javascript" src="http://x7.tuzikaze.com/ufo/10850280s"></script>
 		<noscript><a href="http://x7.tuzikaze.com/bin/gg?10850280s" target="_blank">
 		<img src="http://x7.tuzikaze.com/bin/ll?10850280s" border="0"></a><br>
-		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://www.rushtonfamilyministries.org/">���̒��ւ��ŃC���[�W�`�F���W</a></span></noscript>
+		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://www.rushtonfamilyministries.org/">襖の張替えでイメージチェンジ</a></span></noscript>
 		<!--shinobi2-->
 
 		<div class="sub-text">
 			<dl>
-				<dt>�J�E���^</dt>
+				<dt>カウンタ</dt>
 				<dd>
 					<!-- shinobi ct2 -->
 					<script type="text/javascript" src="http://ct2.tirirenge.com/sc/1515356"></script>
 					<noscript><a href="http://ct2.tirirenge.com/gg/1515356" target="_blank">
-					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="�J�E���^�[" /></a><br />
-					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">�|�C���g</a></span></noscript>
+					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="カウンター" /></a><br />
+					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">ポイント</a></span></noscript>
 					<!-- /shinobi ct2 -->
 					<br>
-				�i2011.3.15�`�j
+				（2011.3.15～）
 				</dd>
 			</dl>
 		</div>

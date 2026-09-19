@@ -3,13 +3,13 @@
 <html lang="ja">
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta http-equiv="content-style-type" content="text/css">
 
-	<meta name="description" content="���̗͊w�E�L���v�f�@�ɂ�鐔�l�v�Z�T�C�g�B">
-	<meta name="keywords" content="���̗͊w,�L���v�f�@,���l�v�Z,���b�V��,FEM"> 
+	<meta name="description" content="流体力学・有限要素法による数値計算サイト。">
+	<meta name="keywords" content="流体力学,有限要素法,数値計算,メッシュ,FEM"> 
 
-	<title>�f���[�j�����i���b�V���j</title>
+	<title>デローニ分割（メッシュ）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
 </head>
 <body>
@@ -18,13 +18,13 @@
 	<div id="wrapper">
 
 	<div id="header">
-		<h1><a href="./../index.html" title="�g�b�v�y�[�W��">�L���v�f�@�E���̗͊w�ɂ�鐔�l�v�Z</a></h1>
+		<h1><a href="./../index.html" title="トップページへ">有限要素法・流体力学による数値計算</a></h1>
 
 		<br style="clear:both;">
 		<ul style="margin-left:30px;">
-		<li><a href="./../index.html" title="index��">index</a>&gt;</li>
-		<li><a href="./mesh.html" title="���b�V����">���b�V��</a>&gt;</li>
-		<li><a href="./mesh_4.html" title="�f���[�j������">�f���[�j����</a>&gt;</li>
+		<li><a href="./../index.html" title="indexへ">index</a>&gt;</li>
+		<li><a href="./mesh.html" title="メッシュへ">メッシュ</a>&gt;</li>
+		<li><a href="./mesh_4.html" title="デローニ分割へ">デローニ分割</a>&gt;</li>
 		</ul>
 		<hr>
 	</div>
@@ -32,7 +32,7 @@
 	<div id="main" >
 
 	<div id="image">
-		<p>���̗͊w���琔�l�v�Z�܂�</p>
+		<p>流体力学から数値計算まで</p>
 		<p><img src="./../img/shiki1.gif"></p>
 		<p><img src="./../img/shiki2.gif"></p>
 	</div>
@@ -40,35 +40,35 @@
 	<div id="content">
 
 		<div id="content-text">
-			<h2>�L��</h2>
+			<h2>広告</h2>
 			<p><iframe src="./../ad.html" width="470" height="60" scrolling="no" frameborder="0"></iframe></p>
 			<br>
 
-			<h2>�f���[�j����</h2>
-			<p>�f���[�j����(delaunay method)�́A���b�V�����쐬������@��1�ł��B
-					�ߓ_��1���̈�ɒǉ����邱�ƂŃ��b�V�����쐬����Ă����܂��B
-					�����ł�3�p�`�v�f��p���ė̈�ɐߓ_��ǉ����ă��b�V����
-					�쐬�����v���Z�X�������Ă݂܂��B<p>
+			<h2>デローニ分割</h2>
+			<p>デローニ分割(delaunay method)は、メッシュを作成する方法の1つです。
+					節点を1つずつ領域に追加することでメッシュが作成されていきます。
+					ここでは3角形要素を用いて領域に節点を追加してメッシュが
+					作成されるプロセスを示してみます。<p>
 			<br>
-			<p>���}�̗l�ɗ̈�ɐߓ_��1�ǉ����܂��B</p>
+			<p>下図の様に領域に節点を1つ追加します。</p>
 			<p class="im"><img src="./../img/mesh_delauney.files/image001.png"><p>
 			<br>
-			<p>���Ɋe�v�f�̊O�ډ~��`���āA�ǉ������ߓ_���O�ډ~�Ɋ܂܂��v�f��T���܂��B</p>
+			<p>次に各要素の外接円を描いて、追加した節点が外接円に含まれる要素を探します。</p>
 			<p class="im"><img src="./../img/mesh_delauney.files/image002.png"><p>
 			<br>
-			<p>�O�ډ~�ɐߓ_���܂ޗv�f�ō���鑽�p�`���ł�������܂��B</p>
+			<p>外接円に節点を含む要素で作られる多角形ができあがります。</p>
 			<p class="im"><img src="./../img/mesh_delauney.files/image003.png"><p>
 			<br>
-			<p>���̑��p�`�̊e���_�Ɛߓ_�𒼐��Ō��ԂƐV���ȗv�f���o���オ��܂��B</p>
+			<p>この多角形の各頂点と節点を直線で結ぶと新たな要素が出来上がります。</p>
 			<p class="im"><img src="./../img/mesh_delauney.files/image004.png"><p>
 			<br>
-			<p>4�ʑ̗v�f��p����ꍇ�́A�ߓ_���O�ڋ��Ɋ܂ޗv�f��T�����ƂɂȂ�܂��B</p>
-			<p>4�ʑ̂̊O�S�̌v�Z���@�́A<a href="./../appendix/appendix_2.html">������</a>�ł��B
+			<p>4面体要素を用いる場合は、節点を外接球に含む要素を探すことになります。</p>
+			<p>4面体の外心の計算方法は、<a href="./../appendix/appendix_2.html">こちら</a>です。
 			<br>
-			<p>�f���[�j������</p>
+			<p>デローニ分割後</p>
 			<p class="im"><img width="500" height="250" src="./../img/result/mesh.jpg"></p>
 			<br>
-			<p>�f���[�j����</p>
+			<p>デローニ分割</p>
 			<p><iframe width="425" height="349" src="http://www.youtube.com/embed/QJyFDWlckGk" frameborder="0" allowfullscreen></iframe></p>
 			<br>
 
@@ -83,7 +83,7 @@
 				</tr></table>
 			</h2>
 
-			<!-- �L�� -->
+			<!-- 広告 -->
 			<p><iframe src="./../questionnaire.html" width="650" height="325" scrolling="yes" frameborder="0"></iframe></p>
 		</div>
 
@@ -94,9 +94,9 @@
 	<div id="sub">
 		<iframe src="./../menu.html" id="menu" name="menu" width="180" scrolling="no" frameborder="0"></iframe>
 
-		<!-- �L�� -->
+		<!-- 広告 -->
 		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-		<!-- �o�i�[3�i���j���[���j -->
+		<!-- バナー3（メニュー欄） -->
 		<ins class="adsbygoogle"
 		     style="display:inline-block;width:160px;height:600px"
 		     data-ad-client="ca-pub-4382202381956938"
@@ -105,26 +105,26 @@
 		(adsbygoogle = window.adsbygoogle || []).push({});
 		</script>
 
-		<!-- �y�[�W�ʃJ�E���^ -->
+		<!-- ページ別カウンタ -->
 		<!--shinobi1-->
 		<script type="text/javascript" src="http://x7.tuzikaze.com/ufo/10850280X"></script>
 		<noscript><a href="http://x7.tuzikaze.com/bin/gg?10850280X" target="_blank">
 		<img src="http://x7.tuzikaze.com/bin/ll?10850280X" border="0"></a><br>
-		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://www.reformur.net/">���t�H�[�}�[�̂Ԃ₫</a></span></noscript>
+		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://www.reformur.net/">リフォーマーのつぶやき</a></span></noscript>
 		<!--shinobi2-->
 
 		<div class="sub-text">
 			<dl>
-				<dt>�J�E���^</dt>
+				<dt>カウンタ</dt>
 				<dd>
 					<!-- shinobi ct2 -->
 					<script type="text/javascript" src="http://ct2.tirirenge.com/sc/1515356"></script>
 					<noscript><a href="http://ct2.tirirenge.com/gg/1515356" target="_blank">
-					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="�J�E���^�[" /></a><br />
-					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">�|�C���g</a></span></noscript>
+					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="カウンター" /></a><br />
+					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">ポイント</a></span></noscript>
 					<!-- /shinobi ct2 -->
 					<br>
-				�i2011.3.15�`�j
+				（2011.3.15～）
 				</dd>
 			</dl>
 		</div>

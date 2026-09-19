@@ -3,18 +3,18 @@
 <html lang="ja">
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta http-equiv="content-style-type" content="text/css">
 
-	<meta name="description" content="�L���v�f�@�E���̗͊w�ɂ�鐔�l�v�Z�T�C�g�B">
-	<meta name="keywords" content="�L���v�f�@,FEM,���̗͊w,���l�v�Z,���b�V��"> 
+	<meta name="description" content="有限要素法・流体力学による数値計算サイト。">
+	<meta name="keywords" content="有限要素法,FEM,流体力学,数値計算,メッシュ"> 
 
-	<title>���W�̎����i�L���v�f�@�j</title>
+	<title>座標の取り方（有限要素法）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
 
 	<script>
 	window.MathJax={
-		output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+		output:{displayOverflow:'overflow',linebreaks:{inline:false}},
 		chtml:{displayAlign:'left',displayIndent:'0'}
 	};
 	</script>
@@ -26,13 +26,13 @@
 	<div id="wrapper">
 
 	<div id="header">
-		<h1><a href="./../index.html" title="�g�b�v�y�[�W��">�L���v�f�@�E���̗͊w�ɂ�鐔�l�v�Z</a></h1>
+		<h1><a href="./../index.html" title="トップページへ">有限要素法・流体力学による数値計算</a></h1>
 
 		<br style="clear:both;">
 		<ul style="margin-left:30px;">
-		<li><a href="./../index.html" title="index��">index</a>&gt;</li>
-		<li><a href="./fem.html" title="�L���v�f�@��">�L���v�f�@</a>&gt;</li>
-		<li><a href="./fem_9.html" title="���W�̎�����">���W�̎���</a>&gt;</li>
+		<li><a href="./../index.html" title="indexへ">index</a>&gt;</li>
+		<li><a href="./fem.html" title="有限要素法へ">有限要素法</a>&gt;</li>
+		<li><a href="./fem_9.html" title="座標の取り方へ">座標の取り方</a>&gt;</li>
 		</ul>
 		<hr>
 	</div>
@@ -40,7 +40,7 @@
 	<div id="main" >
 
 	<div id="image">
-		<p>���̗͊w���琔�l�v�Z�܂�</p>
+		<p>流体力学から数値計算まで</p>
 		<p><img src="./../img/shiki1.gif"></p>
 		<p><img src="./../img/shiki2.gif"></p>
 	</div>
@@ -49,17 +49,17 @@
 
 		<div id="content-text">
 
-			<h2>�L��</h2>
+			<h2>広告</h2>
 			<p><iframe src="./../ad.html" width="470" height="60" scrolling="no" frameborder="0"></iframe></p>
 			<br>
 
-			<h2>�E���W�̎���</h2>
-			<p>�I�C���[���W�ƃ��O���W�A�����W</p>
-			<p>���l�v�Z�ł́A�^�C���X�e�b�v���Ƃɐߓ_�̑��x���v�Z���Ă����܂��B
-					�ߓ_�ɂ́A�u�ϑ��_�v�Ƃ��������Ɓu���̗��q�v�Ƃ�������������A
-					���ꂼ��I�C���[���W�A���O���W�A�����W���p�����܂��B
-					�����̍��W�̈Ⴂ�́A�Η���<span class="ft">(</span>������<span class="ft">)</span>
-					���l�����邩���Ȃ����ł��B�Η����́A�S������p�̍��Ɋ܂܂�Ă��܂��B</p>
+			<h2>・座標の取り方</h2>
+			<p>オイラー座標とラグラジアン座標</p>
+			<p>数値計算では、タイムステップごとに節点の速度を計算していきます。
+					節点には、「観測点」という見方と「流体粒子」という見方があり、
+					それぞれオイラー座標、ラグラジアン座標が用いられます。
+					これらの座標の違いは、対流項<span class="ft">(</span>慣性力<span class="ft">)</span>
+					を考慮するかしないかです。対流項は、全微分作用の項に含まれています。</p>
 			<div class="math-block" id="formula-fem-9-001" data-source-image="./../img/fem_coordinates.files/image001.png">
 \[
 \frac{D\vec v}{Dt}
@@ -70,10 +70,10 @@
 \]
 </div>
 			<br>
-			<h2>�I�C���[���W</h2>
-			<p>�ߓ_���ϑ��_�ƌ��Ȃ��Čv�Z���܂��B
-					�Η������l�����邽�߁A�ߓ_�͈ړ����܂���B
-					�t�Ɍ����΁A�ߓ_���Œ肷�邽�߁A�����͂ɂ���Đߓ_���������Ɖ��߂ł��܂��B</p>
+			<h2>オイラー座標</h2>
+			<p>節点を観測点と見なして計算します。
+					対流項を考慮するため、節点は移動しません。
+					逆に言えば、節点を固定するため、慣性力によって節点が押されると解釈できます。</p>
 			<div class="math-block" id="formula-fem-9-002" data-source-image="./../img/fem_coordinates.files/image002.png">
 \[
 \frac{D\vec v}{Dt}
@@ -83,13 +83,13 @@
 </div>
 			<p class="im"><img src="./../img/fem_coordinates.files/image003.png"></p>
 			<br>
-			<h2>���O���W�A�����W</h2>
-			<p>�ߓ_�𗬑̗��q�ƌ��Ȃ��Čv�Z���܂��B�Η������l�����Ȃ����߁A�ߓ_�͈ړ����܂��B
-					�t�Ɍ����΁A�����͂ɂ���Đߓ_��������Ĉړ����邽�߁A
-					�ߓ_���̂͊����͂������Ȃ�<span class="ft">(</span>�����͂��~�ς��Ȃ�<span class="ft">)</span>
-					�Ɖ��߂ł��܂��B�ߓ_�̈ړ��ʂ́A�^�C���X�e�b�v<span class="fs"><i>D</i></span>
-					<span class="ft"><i>t</i>[s]</span>�~�v�Z�������x
-					<span class="ft"><i>v</i>[m/s]</span>�ƂȂ�܂��B</p>
+			<h2>ラグラジアン座標</h2>
+			<p>節点を流体粒子と見なして計算します。対流項を考慮しないため、節点は移動します。
+					逆に言えば、慣性力によって節点が押されて移動するため、
+					節点自体は慣性力を感じない<span class="ft">(</span>慣性力が蓄積しない<span class="ft">)</span>
+					と解釈できます。節点の移動量は、タイムステップ<span class="fs"><i>D</i></span>
+					<span class="ft"><i>t</i>[s]</span>×計算した速度
+					<span class="ft"><i>v</i>[m/s]</span>となります。</p>
 			<div class="math-block" id="formula-fem-9-004" data-source-image="./../img/fem_coordinates.files/image004.png">
 \[
 \frac{\partial\vec v}{\partial t}
@@ -112,7 +112,7 @@
 				</tr></table>
 			</h2>
 
-			<!-- �L�� -->
+			<!-- 広告 -->
 			<p><iframe src="./../questionnaire.html" width="650" height="325" scrolling="yes" frameborder="0"></iframe></p>
 		</div>
 
@@ -123,9 +123,9 @@
 	<div id="sub">
 		<iframe src="./../menu.html" id="menu" name="menu" width="180" scrolling="no" frameborder="0"></iframe>
 
-		<!-- �L�� -->
+		<!-- 広告 -->
 		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-		<!-- �o�i�[3�i���j���[���j -->
+		<!-- バナー3（メニュー欄） -->
 		<ins class="adsbygoogle"
 		     style="display:inline-block;width:160px;height:600px"
 		     data-ad-client="ca-pub-4382202381956938"
@@ -134,26 +134,26 @@
 		(adsbygoogle = window.adsbygoogle || []).push({});
 		</script>
 
-		<!-- �y�[�W�ʃJ�E���^ -->
+		<!-- ページ別カウンタ -->
 		<!--shinobi1-->
 		<script type="text/javascript" src="http://x7.tuzikaze.com/ufo/10850280O"></script>
 		<noscript><a href="http://x7.tuzikaze.com/bin/gg?10850280O" target="_blank">
 		<img src="http://x7.tuzikaze.com/bin/ll?10850280O" border="0"></a><br>
-		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://www.syufukarasinmaie.com/">��炵�̃i�r�Q�[�V����</a></span></noscript>
+		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://www.syufukarasinmaie.com/">暮らしのナビゲーション</a></span></noscript>
 		<!--shinobi2-->
 
 		<div class="sub-text">
 			<dl>
-				<dt>�J�E���^</dt>
+				<dt>カウンタ</dt>
 				<dd>
 					<!-- shinobi ct2 -->
 					<script type="text/javascript" src="http://ct2.tirirenge.com/sc/1515356"></script>
 					<noscript><a href="http://ct2.tirirenge.com/gg/1515356" target="_blank">
-					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="�J�E���^�[" /></a><br />
-					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">�|�C���g</a></span></noscript>
+					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="カウンター" /></a><br />
+					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">ポイント</a></span></noscript>
 					<!-- /shinobi ct2 -->
 					<br>
-				�i2011.3.15�`�j
+				（2011.3.15～）
 				</dd>
 			</dl>
 		</div>

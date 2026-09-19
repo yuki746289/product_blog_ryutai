@@ -3,18 +3,18 @@
 <html lang="ja">
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta http-equiv="content-style-type" content="text/css">
 
-	<meta name="description" content="�L���v�f�@�E���̗͊w�ɂ�鐔�l�v�Z�T�C�g�B">
-	<meta name="keywords" content="�L���v�f�@,FEM,���̗͊w,���l�v�Z,���b�V��"> 
+	<meta name="description" content="有限要素法・流体力学による数値計算サイト。">
+	<meta name="keywords" content="有限要素法,FEM,流体力学,数値計算,メッシュ"> 
 
-	<title>���E�����i�L���v�f�@�j</title>
+	<title>境界条件（有限要素法）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
 
 	<script>
 	window.MathJax={
-		output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+		output:{displayOverflow:'overflow',linebreaks:{inline:false}},
 		chtml:{displayAlign:'left',displayIndent:'0'}
 	};
 	</script>
@@ -27,13 +27,13 @@
 	<div id="wrapper">
 
 	<div id="header">
-		<h1><a href="./../index.html" title="�g�b�v�y�[�W��">�L���v�f�@�E���̗͊w�ɂ�鐔�l�v�Z</a></h1>
+		<h1><a href="./../index.html" title="トップページへ">有限要素法・流体力学による数値計算</a></h1>
 
 		<br style="clear:both;">
 		<ul style="margin-left:30px;">
-		<li><a href="./../index.html" title="index��">index</a>&gt;</li>
-		<li><a href="./fem.html" title="�L���v�f�@��">�L���v�f�@</a>&gt;</li>
-		<li><a href="./fem_8.html" title="���E������">���E����</a>&gt;</li>
+		<li><a href="./../index.html" title="indexへ">index</a>&gt;</li>
+		<li><a href="./fem.html" title="有限要素法へ">有限要素法</a>&gt;</li>
+		<li><a href="./fem_8.html" title="境界条件へ">境界条件</a>&gt;</li>
 		</ul>
 		<hr>
 	</div>
@@ -41,7 +41,7 @@
 	<div id="main" >
 
 	<div id="image">
-		<p>���̗͊w���琔�l�v�Z�܂�</p>
+		<p>流体力学から数値計算まで</p>
 		<p><img src="./../img/shiki1.gif"></p>
 		<p><img src="./../img/shiki2.gif"></p>
 	</div>
@@ -50,27 +50,27 @@
 
 		<div id="content-text">
 
-			<h2>�L��</h2>
+			<h2>広告</h2>
 			<p><iframe src="./../ad.html" width="470" height="60" scrolling="no" frameborder="0"></iframe></p>
 			<br>
 
-			<h2>�E���E����</h2>
-			<p>���E������</p>
+			<h2>・境界条件</h2>
+			<p>境界条件は</p>
 			<br>
-			<p>��<span class="ft">1</span>�틫�E����</p>
-			<p>��<span class="ft">2</span>�틫�E����</p>
-			<p>��<span class="ft">3</span>�틫�E����</p>
+			<p>第<span class="ft">1</span>種境界条件</p>
+			<p>第<span class="ft">2</span>種境界条件</p>
+			<p>第<span class="ft">3</span>種境界条件</p>
 			<br>
-			<p>�ɕ������܂��B</p>
-			<p>��<span class="ft">1</span>�틫�E�����Ƃ́A�E�ʂ̐ߓ_�Ɉ��͂⑬�x�Ȃǂ�
-					�����ʂ𒼐ڗ^��������ł��B�Ⴆ�΁A���薳���̏����͑�1�틫�E�����ŁA����͕ǖʂ̑��x��
-					<span class="ft">0</span>��^���܂��B�܂��A�z�ǂ̓�������x��ݒ肷��̂���1�틫�E�����ɂȂ�܂��B</p>
-			<p>��<span class="ft">2</span>�틫�E�����Ƃ́A�E�ʂ̐ߓ_�ɕ����ʂ̔����l��^��������ł��B
-					�Ⴆ�΁A�E�ʂ̐ߓ_�ɉ���<span class="ft">[N/m<sup>2</sup></span>]��^����ꍇ������܂��B
-					�E�ʂɕ\�ʒ��͂������ꍇ�́A�E�ʐߓ_�ɕ\�ʒ��́i���́j�������܂��B
-					���͂̒P�ʂ́A���x�∳�͂̔����l�ɌW�����|�������Ɠ����ɂȂ�܂��B�܂�A�����ʂ̔����l�ł��B</p>
-			<p>�܂��A���E�ߓ_�ɐ��������̏����i�����ʂ̌��z�[���j��^����ꍇ������܂��B
-					�Ⴆ�΁A��͗̈��r���ŋ�؂�ꍇ�́A���E�ߓ_�ɉ��L�̏�����^����ꍇ������܂��B
+			<p>に分けられます。</p>
+			<p>第<span class="ft">1</span>種境界条件とは、界面の節点に圧力や速度などの
+					物理量を直接与える条件です。例えば、滑り無しの条件は第1種境界条件で、これは壁面の速度に
+					<span class="ft">0</span>を与えます。また、配管の入り口速度を設定するのも第1種境界条件になります。</p>
+			<p>第<span class="ft">2</span>種境界条件とは、界面の節点に物理量の微分値を与える条件です。
+					例えば、界面の節点に応力<span class="ft">[N/m<sup>2</sup></span>]を与える場合があります。
+					界面に表面張力が働く場合は、界面節点に表面張力（応力）を加えます。
+					応力の単位は、速度や圧力の微分値に係数を掛けた項と同じになります。つまり、物理量の微分値です。</p>
+			<p>また、境界節点に吹き流しの条件（物理量の勾配ゼロ）を与える場合があります。
+					例えば、解析領域を途中で区切る場合は、境界節点に下記の条件を与える場合があります。
 					<div class="math-block" id="formula-fem_8-001" data-source-image="./../img/fem_bd.files/image001.png">
 \[
 \frac{\partial v_i}{\partial x_i}=0
@@ -82,8 +82,8 @@
 \]
 </div>
 			</p>
-			<p>����ɂ́A�z�ǂ̗������͂��鎞�ɉ�͗̈��r���ŋ�؂�ꍇ�Ȃǂ����Ă͂܂�܂��B</p>
-			<p>��<span class="ft">3</span>�틫�E�����Ƃ́A�E�ʂ̐ߓ_�ɕ����ʂƂ��̔����l��^��������ɂȂ�܂��B</p>
+			<p>これには、配管の流れを解析する時に解析領域を途中で区切る場合などが当てはまります。</p>
+			<p>第<span class="ft">3</span>種境界条件とは、界面の節点に物理量とその微分値を与える条件になります。</p>
 aaa
 			<br>
 
@@ -99,7 +99,7 @@ aaa
 				</tr></table>
 			</h2>
 
-			<!-- �L�� -->
+			<!-- 広告 -->
 			<p><iframe src="./../questionnaire.html" width="650" height="325" scrolling="yes" frameborder="0"></iframe></p>
 		</div>
 
@@ -110,9 +110,9 @@ aaa
 	<div id="sub">
 		<iframe src="./../menu.html" id="menu" name="menu" width="180" scrolling="no" frameborder="0"></iframe>
 
-		<!-- �L�� -->
+		<!-- 広告 -->
 		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-		<!-- �o�i�[3�i���j���[���j -->
+		<!-- バナー3（メニュー欄） -->
 		<ins class="adsbygoogle"
 		     style="display:inline-block;width:160px;height:600px"
 		     data-ad-client="ca-pub-4382202381956938"
@@ -121,26 +121,26 @@ aaa
 		(adsbygoogle = window.adsbygoogle || []).push({});
 		</script>
 
-		<!-- �y�[�W�ʃJ�E���^ -->
+		<!-- ページ別カウンタ -->
 		<!--shinobi1-->
 		<script type="text/javascript" src="http://x7.tuzikaze.com/ufo/10850280N"></script>
 		<noscript><a href="http://x7.tuzikaze.com/bin/gg?10850280N" target="_blank">
 		<img src="http://x7.tuzikaze.com/bin/ll?10850280N" border="0"></a><br>
-		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://seikatu-zuihitu.info/">�����������C�t</a></span></noscript>
+		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://seikatu-zuihitu.info/">生き活きライフ</a></span></noscript>
 		<!--shinobi2-->
 
 		<div class="sub-text">
 			<dl>
-				<dt>�J�E���^</dt>
+				<dt>カウンタ</dt>
 				<dd>
 					<!-- shinobi ct2 -->
 					<script type="text/javascript" src="http://ct2.tirirenge.com/sc/1515356"></script>
 					<noscript><a href="http://ct2.tirirenge.com/gg/1515356" target="_blank">
-					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="�J�E���^�[" /></a><br />
-					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">�|�C���g</a></span></noscript>
+					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="カウンター" /></a><br />
+					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">ポイント</a></span></noscript>
 					<!-- /shinobi ct2 -->
 					<br>
-				�i2011.3.15�`�j
+				（2011.3.15～）
 				</dd>
 			</dl>
 		</div>

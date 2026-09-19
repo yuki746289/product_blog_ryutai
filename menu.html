@@ -1,27 +1,27 @@
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!--
- XV“úŽž: 2026/09/16
- ˆ—ŠT—v: [S001][S002][S003] ƒXƒ}[ƒgƒtƒHƒ“—pƒnƒ“ƒo[ƒK[ƒƒjƒ…[‰Šú‰»EŠJ•Â§Œä
- ‘O‰ñƒo[ƒWƒ‡ƒ“‚Æ‚Ìˆá‚¢:
- - [ADD]: refreshMobileNavigation(), updateMobileMenuState() ‚ð’Ç‰Á
- - [MOD]: Init() ‚©‚çƒ‚ƒoƒCƒ‹ƒiƒrƒQ[ƒVƒ‡ƒ“‰Šú‰»‚ðŒÄ‚Ño‚·
- - [DEL]: ‚È‚µ
+ æ›´æ–°æ—¥æ™‚: 2026/09/16
+ å‡¦ç†æ¦‚è¦: [S001][S002][S003] ã‚¹ãƒžãƒ¼ãƒˆãƒ•ã‚©ãƒ³ç”¨ãƒãƒ³ãƒãƒ¼ã‚¬ãƒ¼ãƒ¡ãƒ‹ãƒ¥ãƒ¼åˆæœŸåŒ–ãƒ»é–‹é–‰åˆ¶å¾¡
+ å‰å›žãƒãƒ¼ã‚¸ãƒ§ãƒ³ã¨ã®é•ã„:
+ - [ADD]: refreshMobileNavigation(), updateMobileMenuState() ã‚’è¿½åŠ 
+ - [MOD]: Init() ã‹ã‚‰ãƒ¢ãƒã‚¤ãƒ«ãƒŠãƒ“ã‚²ãƒ¼ã‚·ãƒ§ãƒ³åˆæœŸåŒ–ã‚’å‘¼ã³å‡ºã™
+ - [DEL]: ãªã—
 -->
 <html lang="ja">
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta http-equiv="content-style-type" content="text/css">
 
-	<meta name="description" content="—¬‘Ì—ÍŠwE—LŒÀ—v‘f–@‚É‚æ‚é”’lŒvŽZƒTƒCƒgB">
-	<meta name="keywords" content="—¬‘Ì—ÍŠw,—LŒÀ—v‘f–@,”’lŒvŽZ,ƒƒbƒVƒ…,FEM"> 
+	<meta name="description" content="æµä½“åŠ›å­¦ãƒ»æœ‰é™è¦ç´ æ³•ã«ã‚ˆã‚‹æ•°å€¤è¨ˆç®—ã‚µã‚¤ãƒˆã€‚">
+	<meta name="keywords" content="æµä½“åŠ›å­¦,æœ‰é™è¦ç´ æ³•,æ•°å€¤è¨ˆç®—,ãƒ¡ãƒƒã‚·ãƒ¥,FEM"> 
 	<meta name="author" content="HTMQ"> 
 
-	<title>—LŒÀ—v‘f–@E—¬‘Ì—ÍŠw‚É‚æ‚é”’lŒvŽZ</title>
+	<title>æœ‰é™è¦ç´ æ³•ãƒ»æµä½“åŠ›å­¦ã«ã‚ˆã‚‹æ•°å€¤è¨ˆç®—</title>
 	<link href="./css/lib.css" rel="stylesheet" type="text/css" media="all">
 
-	<!-- ŽŸ‚Ìƒ^ƒO‚ð head —v‘f“à‚Ü‚½‚Í body I—¹ƒ^ƒO‚Ì’¼‘O‚É“\‚è•t‚¯‚Ä‚­‚¾‚³‚¢ -->
+	<!-- æ¬¡ã®ã‚¿ã‚°ã‚’ head è¦ç´ å†…ã¾ãŸã¯ body çµ‚äº†ã‚¿ã‚°ã®ç›´å‰ã«è²¼ã‚Šä»˜ã‘ã¦ãã ã•ã„ -->
 	<script type="text/javascript" src="https://apis.google.com/js/plusone.js">
 	  {lang: 'ja'}
 	</script>
@@ -29,31 +29,31 @@
 	<script type="text/javascript">
 	<!--
 
-		// [F001] [MOD] ƒy[ƒW‰Šú‰»
+		// [F001] [MOD] ãƒšãƒ¼ã‚¸åˆæœŸåŒ–
 		function Init(){
 
-			// [L001] [KEEP] ‘I‘ð’†ƒJƒeƒSƒŠ•\Ž¦
-			disp();		//•\Ž¦
+			// [L001] [KEEP] é¸æŠžä¸­ã‚«ãƒ†ã‚´ãƒªè¡¨ç¤º
+			disp();		//è¡¨ç¤º
 
-			// [L002] [KEEP] Šù‘¶iframe‚‚³’²®
-			set_height();		//‚‚³’²ß
+			// [L002] [KEEP] æ—¢å­˜iframeé«˜ã•èª¿æ•´
+			set_height();		//é«˜ã•èª¿ç¯€
 
-			// [L003] [ADD] ƒXƒ}[ƒgƒtƒHƒ“ƒiƒrƒQ[ƒVƒ‡ƒ“‰Šú‰»
+			// [L003] [ADD] ã‚¹ãƒžãƒ¼ãƒˆãƒ•ã‚©ãƒ³ãƒŠãƒ“ã‚²ãƒ¼ã‚·ãƒ§ãƒ³åˆæœŸåŒ–
 			refreshMobileNavigation();
 
-			// [O001] [KEEP] ’l‚Í•Ô‚³‚È‚¢
+			// [O001] [KEEP] å€¤ã¯è¿”ã•ãªã„
 		}
 
-		// [F002] [ADD] ƒXƒ}[ƒgƒtƒHƒ“ƒiƒrƒQ[ƒVƒ‡ƒ“‰Šú‰»
+		// [F002] [ADD] ã‚¹ãƒžãƒ¼ãƒˆãƒ•ã‚©ãƒ³ãƒŠãƒ“ã‚²ãƒ¼ã‚·ãƒ§ãƒ³åˆæœŸåŒ–
 		function refreshMobileNavigation(){
 
-			// [O002] [ADD] DOM‰Šú‰»‚Ì‚Ýs‚¢’l‚Í•Ô‚³‚È‚¢
-			// [L004] [ADD] iframeŠO‚Åmenu.html‚ð’¼Ú•\Ž¦‚µ‚½ê‡‚ÍI—¹
+			// [O002] [ADD] DOMåˆæœŸåŒ–ã®ã¿è¡Œã„å€¤ã¯è¿”ã•ãªã„
+			// [L004] [ADD] iframeå¤–ã§menu.htmlã‚’ç›´æŽ¥è¡¨ç¤ºã—ãŸå ´åˆã¯çµ‚äº†
 			if(parent === self)return;
 
-			// [V001] [KEEP] Šù‘¶‚ÌiframeeƒEƒBƒ“ƒhƒE‚ðŽQÆ
+			// [V001] [KEEP] æ—¢å­˜ã®iframeè¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’å‚ç…§
 			var parentWindow = parent;
-			// [V002] [KEEP] eƒy[ƒWDOM‚ðŽæ“¾
+			// [V002] [KEEP] è¦ªãƒšãƒ¼ã‚¸DOMã‚’å–å¾—
 			var parentDocument = parentWindow.document;
 			var parentBody = parentDocument.body;
 			var headerId = "header";
@@ -61,18 +61,18 @@
 			var parentHeader = parentDocument.getElementById(headerId);
 			var menuIframe = parentDocument.getElementById(menuIframeId);
 
-			// [L005] [ADD] •K—vDOM‚ª–³‚¢ê‡‚Í–{•¶‚Ö‰e‹¿‚ð—^‚¦‚¸I—¹
+			// [L005] [ADD] å¿…è¦DOMãŒç„¡ã„å ´åˆã¯æœ¬æ–‡ã¸å½±éŸ¿ã‚’ä¸Žãˆãšçµ‚äº†
 			if(!parentBody || !parentHeader || !menuIframe)return;
 
-			// [V003][V004][L301] [ADD] ƒ‚ƒoƒCƒ‹iframe‚ðƒ}ƒEƒX/ƒ^ƒbƒ`‚ÅƒXƒNƒ[ƒ‹‰Â”\‚É‚·‚é
-			// [L301] [MOD] viewport•‚É‰ž‚¶‚½scrolling‘®«‚ð“¯Šú
+			// [V003][V004][L301] [ADD] ãƒ¢ãƒã‚¤ãƒ«iframeã‚’ãƒžã‚¦ã‚¹/ã‚¿ãƒƒãƒã§ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«å¯èƒ½ã«ã™ã‚‹
+			// [L301] [MOD] viewportå¹…ã«å¿œã˜ãŸscrollingå±žæ€§ã‚’åŒæœŸ
 			refreshMenuScrollingMode(parentWindow, menuIframe);
 
-			// [L006] [ADD] iframe‚ÖƒAƒNƒZƒVƒrƒŠƒeƒB—ptitle‚ðÝ’è
-			var menuTitle = "ƒTƒCƒgƒƒjƒ…[";
+			// [L006] [ADD] iframeã¸ã‚¢ã‚¯ã‚»ã‚·ãƒ“ãƒªãƒ†ã‚£ç”¨titleã‚’è¨­å®š
+			var menuTitle = "ã‚µã‚¤ãƒˆãƒ¡ãƒ‹ãƒ¥ãƒ¼";
 			menuIframe.setAttribute("title", menuTitle);
 
-			// [L007] [ADD] ƒ‚ƒoƒCƒ‹ƒƒjƒ…[ƒ{ƒ^ƒ“‚ðˆê“x‚¾‚¯¶¬
+			// [L007] [ADD] ãƒ¢ãƒã‚¤ãƒ«ãƒ¡ãƒ‹ãƒ¥ãƒ¼ãƒœã‚¿ãƒ³ã‚’ä¸€åº¦ã ã‘ç”Ÿæˆ
 			var menuButtonId = "mobile-menu-button";
 			var menuButtonClassName = "mobile-menu-button";
 			var menuButton = parentDocument.getElementById(menuButtonId);
@@ -83,7 +83,7 @@
 				var expandedAttribute = "aria-expanded";
 				var labelAttribute = "aria-label";
 				var closedValue = "false";
-				var closedLabel = "ƒƒjƒ…[‚ðŠJ‚­";
+				var closedLabel = "ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚’é–‹ã";
 				menuButton = parentDocument.createElement(buttonTagName);
 				menuButton.id = menuButtonId;
 				menuButton.className = menuButtonClassName;
@@ -92,7 +92,7 @@
 				menuButton.setAttribute(expandedAttribute, closedValue);
 				menuButton.setAttribute(labelAttribute, closedLabel);
 
-				// [L008] [ADD] DOM API‚Åƒnƒ“ƒo[ƒK[3–{ü‚ð¶¬
+				// [L008] [ADD] DOM APIã§ãƒãƒ³ãƒãƒ¼ã‚¬ãƒ¼3æœ¬ç·šã‚’ç”Ÿæˆ
 				var hamburgerLineCount = 3;
 				var hamburgerLineClassName = "mobile-menu-button-line";
 				var spanTagName = "span";
@@ -105,7 +105,7 @@
 				parentHeader.appendChild(menuButton);
 			}
 
-			// [L009] [ADD] ”wŒiƒI[ƒo[ƒŒƒC‚ðˆê“x‚¾‚¯¶¬
+			// [L009] [ADD] èƒŒæ™¯ã‚ªãƒ¼ãƒãƒ¼ãƒ¬ã‚¤ã‚’ä¸€åº¦ã ã‘ç”Ÿæˆ
 			var overlayId = "mobile-menu-overlay";
 			var overlayClassName = "mobile-menu-overlay";
 			var menuOverlay = parentDocument.getElementById(overlayId);
@@ -121,20 +121,20 @@
 			var boundValue = "true";
 			var menuOpenClassName = "mobile-menu-open";
 			if(menuButton.getAttribute(boundAttribute) !== boundValue){
-				// [L011] [ADD] ƒ{ƒ^ƒ“‰Ÿ‰º‚ÅŒ»Ý‚ÌŠJ•Âó‘Ô‚ð”½“]
+				// [L011] [ADD] ãƒœã‚¿ãƒ³æŠ¼ä¸‹ã§ç¾åœ¨ã®é–‹é–‰çŠ¶æ…‹ã‚’åè»¢
 				menuButton.addEventListener("click", function(){
 					var currentIsOpen = parentBody.classList.contains(menuOpenClassName);
 					var requestedIsOpen = !currentIsOpen;
 					updateMobileMenuState(parentDocument, menuButton, requestedIsOpen);
 				});
 
-				// [L012] [ADD] ƒI[ƒo[ƒŒƒC‰Ÿ‰º‚Å•Â‚¶‚é
+				// [L012] [ADD] ã‚ªãƒ¼ãƒãƒ¼ãƒ¬ã‚¤æŠ¼ä¸‹ã§é–‰ã˜ã‚‹
 				menuOverlay.addEventListener("click", function(){
 					var requestedIsOpen = false;
 					updateMobileMenuState(parentDocument, menuButton, requestedIsOpen);
 				});
 
-				// [L013] [ADD] EscapeƒL[‚Å•Â‚¶‚é
+				// [L013] [ADD] Escapeã‚­ãƒ¼ã§é–‰ã˜ã‚‹
 				parentWindow.addEventListener("keydown", function(event){
 					var escapeKey = "Escape";
 					if(event.key === escapeKey){
@@ -143,9 +143,9 @@
 					}
 				});
 
-				// [L014] [ADD] 768pxˆÈã‚Ö–ß‚Á‚½ê‡‚Í•Â‚¶‚é
+				// [L014] [ADD] 768pxä»¥ä¸Šã¸æˆ»ã£ãŸå ´åˆã¯é–‰ã˜ã‚‹
 				parentWindow.addEventListener("resize", function(){
-					// [L402] [MOD] resizeŽž‚àPC/ƒXƒ}ƒz‚Ìscrolling‘®«‚ð“¯Šú
+					// [L402] [MOD] resizeæ™‚ã‚‚PC/ã‚¹ãƒžãƒ›ã®scrollingå±žæ€§ã‚’åŒæœŸ
 					refreshMenuScrollingMode(parentWindow, menuIframe);
 					var desktopMinWidth = 768;
 					if(parentWindow.innerWidth >= desktopMinWidth){
@@ -157,24 +157,24 @@
 				menuButton.setAttribute(boundAttribute, boundValue);
 			}
 
-			// [L010] [ADD] ‰Šú‰»¬Œ÷Œã‚ÉreadyƒNƒ‰ƒX‚ð•t—^
+			// [L010] [ADD] åˆæœŸåŒ–æˆåŠŸå¾Œã«readyã‚¯ãƒ©ã‚¹ã‚’ä»˜ä¸Ž
 			var mobileReadyClassName = "mobile-nav-ready";
 			parentBody.classList.add(mobileReadyClassName);
 
-			// [L015] [ADD] ‰Šúó‘Ô‚ð•Âó‘Ô‚Ö“¯Šú
+			// [L015] [ADD] åˆæœŸçŠ¶æ…‹ã‚’é–‰çŠ¶æ…‹ã¸åŒæœŸ
 			var initialIsOpen = false;
 			updateMobileMenuState(parentDocument, menuButton, initialIsOpen);
 		}
 
-		// [T001] [ADD] •\Ž¦•‚É‰ž‚¶‚Ämenu iframe‚ÌƒXƒNƒ[ƒ‹•ûŽ®‚ðXV
+		// [T001] [ADD] è¡¨ç¤ºå¹…ã«å¿œã˜ã¦menu iframeã®ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«æ–¹å¼ã‚’æ›´æ–°
 		function refreshMenuScrollingMode(parentWindow, menuIframe){
 
-			// [I004] [ADD] parentWindow: eƒy[ƒWWindow
-			// [I005] [ADD] menuIframe: eƒy[ƒW‚Ìmenu iframe
-			// [O006] [ADD] ‘®«XV‚Ì‚Ýs‚¢’l‚Í•Ô‚³‚È‚¢
+			// [I004] [ADD] parentWindow: è¦ªãƒšãƒ¼ã‚¸Window
+			// [I005] [ADD] menuIframe: è¦ªãƒšãƒ¼ã‚¸ã®menu iframe
+			// [O006] [ADD] å±žæ€§æ›´æ–°ã®ã¿è¡Œã„å€¤ã¯è¿”ã•ãªã„
 			if(!parentWindow || !menuIframe)return;
 
-			// [L401] [ADD] 767pxˆÈ‰º‚Ì‚ÝautoA768pxˆÈã‚Íno
+			// [L401] [ADD] 767pxä»¥ä¸‹ã®ã¿autoã€768pxä»¥ä¸Šã¯no
 			var mobileMaxWidth = 767;
 			var scrollingAttribute = "scrolling"; // [V003] [KEEP]
 			var mobileScrollingValue = "auto";
@@ -185,19 +185,19 @@
 			return;
 		}
 
-		// [F003] [ADD] ƒ‚ƒoƒCƒ‹ƒƒjƒ…[ŠJ•Âó‘ÔXV
+		// [F003] [ADD] ãƒ¢ãƒã‚¤ãƒ«ãƒ¡ãƒ‹ãƒ¥ãƒ¼é–‹é–‰çŠ¶æ…‹æ›´æ–°
 		function updateMobileMenuState(parentDocument, menuButton, isOpen){
 
-			// [I001] [ADD] parentDocument: eƒy[ƒWDOM
-			// [I002] [ADD] menuButton: ARIAó‘Ô‚ðXV‚·‚éƒ{ƒ^ƒ“
-			// [I003] [ADD] isOpen: true=ŠJAfalse=•Â
-			// [O003] [ADD] ó‘ÔXV‚Ì‚Ýs‚¢’l‚Í•Ô‚³‚È‚¢
+			// [I001] [ADD] parentDocument: è¦ªãƒšãƒ¼ã‚¸DOM
+			// [I002] [ADD] menuButton: ARIAçŠ¶æ…‹ã‚’æ›´æ–°ã™ã‚‹ãƒœã‚¿ãƒ³
+			// [I003] [ADD] isOpen: true=é–‹ã€false=é–‰
+			// [O003] [ADD] çŠ¶æ…‹æ›´æ–°ã®ã¿è¡Œã„å€¤ã¯è¿”ã•ãªã„
 			if(!parentDocument || !menuButton)return;
 
 			var parentBody = parentDocument.body;
 			if(!parentBody)return;
 
-			// [L016] [ADD] bodyƒNƒ‰ƒX‚ðŠJ•Âó‘Ô‚Æ“¯Šú
+			// [L016] [ADD] bodyã‚¯ãƒ©ã‚¹ã‚’é–‹é–‰çŠ¶æ…‹ã¨åŒæœŸ
 			var menuOpenClassName = "mobile-menu-open";
 			if(isOpen){
 				parentBody.classList.add(menuOpenClassName);
@@ -205,18 +205,18 @@
 				parentBody.classList.remove(menuOpenClassName);
 			}
 
-			// [L017] [ADD] aria-expanded‚ð“¯Šú
+			// [L017] [ADD] aria-expandedã‚’åŒæœŸ
 			var expandedAttribute = "aria-expanded";
 			var expandedValue = isOpen ? "true" : "false";
 			menuButton.setAttribute(expandedAttribute, expandedValue);
 
-			// [L018] [ADD] aria-label‚ð“¯Šú
+			// [L018] [ADD] aria-labelã‚’åŒæœŸ
 			var labelAttribute = "aria-label";
-			var menuLabel = isOpen ? "ƒƒjƒ…[‚ð•Â‚¶‚é" : "ƒƒjƒ…[‚ðŠJ‚­";
+			var menuLabel = isOpen ? "ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚’é–‰ã˜ã‚‹" : "ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚’é–‹ã";
 			menuButton.setAttribute(labelAttribute, menuLabel);
 		}
 
-		//•\Ž¦
+		//è¡¨ç¤º
 		function disp(){
 
 			menu_id   = parent.document.getElementById("menu_id");
@@ -238,7 +238,7 @@
 			return;
 		}
 
-		//‚‚³’²ß
+		//é«˜ã•èª¿ç¯€
 		function set_height(){
 
 			ParentIframeId = "menu";
@@ -264,357 +264,357 @@
 
 		<div id="sub-menu">
 			<ul>
-			<li><a href="index.html" 										target="_parent" title="ƒz[ƒ€‚Ö">ƒz[ƒ€</a></li>
-			<li><a href="./introduce/introduce.html" 		target="_parent" title="‚Í‚¶‚ß‚É‚Ö">‚Í‚¶‚ß‚É</a></li>
-			<li><a href="./profile/profile.html" 				target="_parent" title="ƒvƒƒtƒB[ƒ‹‚Ö">ƒvƒƒtƒB[ƒ‹</a></li>
-			<li><a href="./mail/mail.html" 							target="_parent" title="‚p•‚`ƒR[ƒi[‚Ö">‚p•‚`ƒR[ƒi[</a></li>
-			<li><a href="./sitemap/sitemap.html" 				target="_parent" title="ƒTƒCƒgƒ}ƒbƒv‚Ö">ƒTƒCƒgƒ}ƒbƒv</a></li>
-			<li><a href="./mail/mail_base.html" 				target="_parent" title="ƒ[ƒ‹‚Ö">ƒ[ƒ‹</a></li>
-			<li><a href="http://orange314.bbs.fc2.com/" target="_parent" title="ŒfŽ¦”Â‚Ö">ŒfŽ¦”Â</a></li>
-			<li><a href="./link/link.html" 							target="_parent" title="ƒŠƒ“ƒN‚Ö">ƒŠƒ“ƒN</a></li>
+			<li><a href="index.html" 										target="_parent" title="ãƒ›ãƒ¼ãƒ ã¸">ãƒ›ãƒ¼ãƒ </a></li>
+			<li><a href="./introduce/introduce.html" 		target="_parent" title="ã¯ã˜ã‚ã«ã¸">ã¯ã˜ã‚ã«</a></li>
+			<li><a href="./profile/profile.html" 				target="_parent" title="ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ«ã¸">ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ«</a></li>
+			<li><a href="./mail/mail.html" 							target="_parent" title="ï¼±ï¼†ï¼¡ã‚³ãƒ¼ãƒŠãƒ¼ã¸">ï¼±ï¼†ï¼¡ã‚³ãƒ¼ãƒŠãƒ¼</a></li>
+			<li><a href="./sitemap/sitemap.html" 				target="_parent" title="ã‚µã‚¤ãƒˆãƒžãƒƒãƒ—ã¸">ã‚µã‚¤ãƒˆãƒžãƒƒãƒ—</a></li>
+			<li><a href="./mail/mail_base.html" 				target="_parent" title="ãƒ¡ãƒ¼ãƒ«ã¸">ãƒ¡ãƒ¼ãƒ«</a></li>
+			<li><a href="http://orange314.bbs.fc2.com/" target="_parent" title="æŽ²ç¤ºæ¿ã¸">æŽ²ç¤ºæ¿</a></li>
+			<li><a href="./link/link.html" 							target="_parent" title="ãƒªãƒ³ã‚¯ã¸">ãƒªãƒ³ã‚¯</a></li>
 			<!--
-			<li><a href="http://orange314.blog55.fc2.com/" 	target="_parent" title="ƒuƒƒO‚Ö">ƒuƒƒO</a></li>
+			<li><a href="http://orange314.blog55.fc2.com/" 	target="_parent" title="ãƒ–ãƒ­ã‚°ã¸">ãƒ–ãƒ­ã‚°</a></li>
 			-->
-			<li><a href="./mail/mail_base.html" target="_parent" title="‘ŠŒÝƒŠƒ“ƒN•åW’†‚Ö">‘ŠŒÝƒŠƒ“ƒN•åW’†</a></li>
-			<li><a href="javascript:window.external.AddFavorite('http://ryutai.ninja-web.net/','—¬‘Ì—ÍŠwE—LŒÀ—v‘f–@‚É‚æ‚é”’lŒvŽZ')">‚¨‹C‚É“ü‚è‚É’Ç‰Á</a></li>
-			<li><a href="./revision_history.html" target="_parent" title="C³—š—ð‚Ö">C³—š—ð</a></li>
+			<li><a href="./mail/mail_base.html" target="_parent" title="ç›¸äº’ãƒªãƒ³ã‚¯å‹Ÿé›†ä¸­ã¸">ç›¸äº’ãƒªãƒ³ã‚¯å‹Ÿé›†ä¸­</a></li>
+			<li><a href="javascript:window.external.AddFavorite('http://ryutai.ninja-web.net/','æµä½“åŠ›å­¦ãƒ»æœ‰é™è¦ç´ æ³•ã«ã‚ˆã‚‹æ•°å€¤è¨ˆç®—')">ãŠæ°—ã«å…¥ã‚Šã«è¿½åŠ </a></li>
+			<li><a href="./revision_history.html" target="_parent" title="ä¿®æ­£å±¥æ­´ã¸">ä¿®æ­£å±¥æ­´</a></li>
 			</ul>
 
 
-			<!-- ƒƒCƒ“ƒRƒ“ƒeƒ“ƒc -->
+			<!-- ãƒ¡ã‚¤ãƒ³ã‚³ãƒ³ãƒ†ãƒ³ãƒ„ -->
 			<div class="sub-text">
 				<dl>
-				<dt>ƒƒCƒ“ƒRƒ“ƒeƒ“ƒc</dt>
+				<dt>ãƒ¡ã‚¤ãƒ³ã‚³ãƒ³ãƒ†ãƒ³ãƒ„</dt>
 				</dl>
 			</div>
 
-			<!-- ”Šw -->
+			<!-- æ•°å­¦ -->
 <!--
 			<ul>
-			<li><a href="./math/math.html" target="_parent" title="”Šw‚Ö">”Šw</a></li>
+			<li><a href="./math/math.html" target="_parent" title="æ•°å­¦ã¸">æ•°å­¦</a></li>
 			</ul>
 			<ul id="id_1" style="display:none;padding-left:10px;">
-			<li><a href="./math/math_1.html" 		target="_parent">ƒxƒNƒgƒ‹</a></li>
-			<li><a href="./math/math_2.html" 		target="_parent">í”÷•ª</a></li>
-			<li><a href="./math/math_3.html" 		target="_parent">ƒe[ƒ‰[“WŠJ</a></li>
-			<li><a href="./math/math_3_1.html" 	target="_parent">@1•Ï”</a></li>
-			<li><a href="./math/math_3_2.html" 	target="_parent">@2•Ï”</a></li>
-			<li><a href="./math/math_3_3.html" 	target="_parent">@‘½•Ï”</a></li>
-			<li><a href="./math/math_4.html" 		target="_parent">•Î”÷•ª</a></li>
-			<li><a href="./math/math_5.html" 		target="_parent">Ï•ª</a></li>
-			<li><a href="./math/math_5_1.html" 	target="_parent">@üÏ•ª</a></li>
-			<li><a href="./math/math_5_2.html" 	target="_parent">@–ÊÏ•ª</a></li>
-			<li><a href="./math/math_5_3.html" 	target="_parent">@‘ÌÏ•ª</a></li>
-			<li><a href="./math/math_6.html" 		target="_parent">í”÷•ª‚Ì‰ðÍ</a></li>
+			<li><a href="./math/math_1.html" 		target="_parent">ãƒ™ã‚¯ãƒˆãƒ«</a></li>
+			<li><a href="./math/math_2.html" 		target="_parent">å¸¸å¾®åˆ†</a></li>
+			<li><a href="./math/math_3.html" 		target="_parent">ãƒ†ãƒ¼ãƒ©ãƒ¼å±•é–‹</a></li>
+			<li><a href="./math/math_3_1.html" 	target="_parent">ã€€1å¤‰æ•°</a></li>
+			<li><a href="./math/math_3_2.html" 	target="_parent">ã€€2å¤‰æ•°</a></li>
+			<li><a href="./math/math_3_3.html" 	target="_parent">ã€€å¤šå¤‰æ•°</a></li>
+			<li><a href="./math/math_4.html" 		target="_parent">åå¾®åˆ†</a></li>
+			<li><a href="./math/math_5.html" 		target="_parent">ç©åˆ†</a></li>
+			<li><a href="./math/math_5_1.html" 	target="_parent">ã€€ç·šç©åˆ†</a></li>
+			<li><a href="./math/math_5_2.html" 	target="_parent">ã€€é¢ç©åˆ†</a></li>
+			<li><a href="./math/math_5_3.html" 	target="_parent">ã€€ä½“ç©åˆ†</a></li>
+			<li><a href="./math/math_6.html" 		target="_parent">å¸¸å¾®åˆ†ã®è§£æž</a></li>
 			</ul>
 -->
 
-			<!-- •¨— -->
+			<!-- ç‰©ç† -->
 			<ul>
-			<li><a href="./physics/physics.html" target="_parent" title="•¨—‚Ö">•¨—</a></li>
+			<li><a href="./physics/physics.html" target="_parent" title="ç‰©ç†ã¸">ç‰©ç†</a></li>
 			</ul>
 			<ul id="id_2" style="display:none;padding-left:10px;">
-			<li><a href="./physics/physics_1.html" 			target="_parent">SI’PˆÊ</a></li>
-			<li><a href="./physics/physics_2.html" 			target="_parent">•¨——Ê</a></li>
-			<li><a href="./physics/physics_3.html" 			target="_parent">’PˆÊƒxƒNƒgƒ‹</a></li>
-			<li><a href="./physics/physics_4.html" 			target="_parent">•¨——Ê‚Ì•ª—Þ</a></li>
-			<li><a href="./physics/physics_5.html" 			target="_parent">ì—p‘f‚ÌŽí—Þ</a></li>
-			<li><a href="./physics/physics_6.html" 			target="_parent">ŒvŽZ‚ÌŽí—Þ</a></li>
-			<li><a href="./physics/physics_6_1.html" 		target="_parent">@Žl‘¥‰‰ŽZ</a></li>
+			<li><a href="./physics/physics_1.html" 			target="_parent">SIå˜ä½</a></li>
+			<li><a href="./physics/physics_2.html" 			target="_parent">ç‰©ç†é‡</a></li>
+			<li><a href="./physics/physics_3.html" 			target="_parent">å˜ä½ãƒ™ã‚¯ãƒˆãƒ«</a></li>
+			<li><a href="./physics/physics_4.html" 			target="_parent">ç‰©ç†é‡ã®åˆ†é¡ž</a></li>
+			<li><a href="./physics/physics_5.html" 			target="_parent">ä½œç”¨ç´ ã®ç¨®é¡ž</a></li>
+			<li><a href="./physics/physics_6.html" 			target="_parent">è¨ˆç®—ã®ç¨®é¡ž</a></li>
+			<li><a href="./physics/physics_6_1.html" 		target="_parent">ã€€å››å‰‡æ¼”ç®—</a></li>
 
-			<li><a href="./physics/physics_6_2.html" 		target="_parent">@“àÏ</a></li>
+			<li><a href="./physics/physics_6_2.html" 		target="_parent">ã€€å†…ç©</a></li>
 			<span id="id_2_1" style="display:none;">
-			<li><a href="./physics/physics_6_2_1.html" 	target="_parent">@@ƒNƒƒlƒbƒJ[‚Ìƒfƒ‹ƒ^</a></li>
-			<li><a href="./physics/physics_6_2_2.html" 	target="_parent">@@(ƒxƒNƒgƒ‹EƒxƒNƒgƒ‹)</a></li>
-			<li><a href="./physics/physics_6_2_3.html" 	target="_parent">@@(ÞEƒxƒNƒgƒ‹)@”­ŽU</a></li>
-			<li><a href="./physics/physics_6_2_4.html" 	target="_parent">@@(ÞEƒeƒ“ƒ\ƒ‹)</a></li>
-			<li><a href="./physics/physics_6_2_5.html" 	target="_parent">@@ƒ‰ƒvƒ‰ƒVƒAƒ“</a></li>
-			<li><a href="./physics/physics_6_2_6.html" 	target="_parent">@@‘S”÷•ªì—p‘f</a></li>
-			<li><a href="./physics/physics_6_2_7.html" 	target="_parent">@@“àÏ‚©‚ç‚ÌŠp“xŒvŽZ</a></li>
+			<li><a href="./physics/physics_6_2_1.html" 	target="_parent">ã€€ã€€ã‚¯ãƒ­ãƒãƒƒã‚«ãƒ¼ã®ãƒ‡ãƒ«ã‚¿</a></li>
+			<li><a href="./physics/physics_6_2_2.html" 	target="_parent">ã€€ã€€(ãƒ™ã‚¯ãƒˆãƒ«ãƒ»ãƒ™ã‚¯ãƒˆãƒ«)</a></li>
+			<li><a href="./physics/physics_6_2_3.html" 	target="_parent">ã€€ã€€(âˆ‡ãƒ»ãƒ™ã‚¯ãƒˆãƒ«)ã€€ç™ºæ•£</a></li>
+			<li><a href="./physics/physics_6_2_4.html" 	target="_parent">ã€€ã€€(âˆ‡ãƒ»ãƒ†ãƒ³ã‚½ãƒ«)</a></li>
+			<li><a href="./physics/physics_6_2_5.html" 	target="_parent">ã€€ã€€ãƒ©ãƒ—ãƒ©ã‚·ã‚¢ãƒ³</a></li>
+			<li><a href="./physics/physics_6_2_6.html" 	target="_parent">ã€€ã€€å…¨å¾®åˆ†ä½œç”¨ç´ </a></li>
+			<li><a href="./physics/physics_6_2_7.html" 	target="_parent">ã€€ã€€å†…ç©ã‹ã‚‰ã®è§’åº¦è¨ˆç®—</a></li>
 			</span>
 
-			<li><a href="./physics/physics_6_3.html" 		target="_parent">@ŠOÏ</a></li>
+			<li><a href="./physics/physics_6_3.html" 		target="_parent">ã€€å¤–ç©</a></li>
 			<span id="id_2_2" style="display:none;">
-			<li><a href="./physics/physics_6_3_1.html" 	target="_parent">@@€”õ</a></li>
-			<li><a href="./physics/physics_6_3_2.html" 	target="_parent">@@[ƒxƒNƒgƒ‹~ƒxƒNƒgƒ‹]</a></li>
-			<li><a href="./physics/physics_6_3_3.html" 	target="_parent">@@[Þ~ƒxƒNƒgƒ‹]</a></li>
+			<li><a href="./physics/physics_6_3_1.html" 	target="_parent">ã€€ã€€æº–å‚™</a></li>
+			<li><a href="./physics/physics_6_3_2.html" 	target="_parent">ã€€ã€€[ãƒ™ã‚¯ãƒˆãƒ«Ã—ãƒ™ã‚¯ãƒˆãƒ«]</a></li>
+			<li><a href="./physics/physics_6_3_3.html" 	target="_parent">ã€€ã€€[âˆ‡Ã—ãƒ™ã‚¯ãƒˆãƒ«]</a></li>
 			</span>
 
-			<li><a href="./physics/physics_7.html" 			target="_parent">ŒöŽ®</a></li>
-			<li><a href="./physics/physics_8.html" 			target="_parent">ƒI[ƒ_[ˆê——</a></li>
+			<li><a href="./physics/physics_7.html" 			target="_parent">å…¬å¼</a></li>
+			<li><a href="./physics/physics_8.html" 			target="_parent">ã‚ªãƒ¼ãƒ€ãƒ¼ä¸€è¦§</a></li>
 			</ul>
 
-			<!-- —¬‘Ì—ÍŠw -->
+			<!-- æµä½“åŠ›å­¦ -->
 			<ul>
-			<li><a href="./hydronamics/hydronamics.html" target="_parent" title="—¬‘Ì—ÍŠw‚Ö">—¬‘Ì—ÍŠw</a></li>
+			<li><a href="./hydronamics/hydronamics.html" target="_parent" title="æµä½“åŠ›å­¦ã¸">æµä½“åŠ›å­¦</a></li>
 			</ul>
 			<ul id="id_3" style="display:none;padding-left:10px;">
-			<li><a href="./hydronamics/hydronamics_1.html" 			target="_parent">—¬‘Ì</a></li>
-			<li><a href="./hydronamics/hydronamics_2.html" 			target="_parent">—¬‘Ì‚Ì•¨«</a></li>
-			<li><a href="./hydronamics/hydronamics_3.html" 			target="_parent">Žg—p‚·‚éŽûŽxŽ®</a></li>
-			<li><a href="./hydronamics/hydronamics_4.html" 			target="_parent">Ž¿—ÊŽûŽxŽ®</a></li>
-			<li><a href="./hydronamics/hydronamics_5.html" 			target="_parent">”S«—Í‚ÌŠÈ’P‚Èà–¾</a></li>
+			<li><a href="./hydronamics/hydronamics_1.html" 			target="_parent">æµä½“</a></li>
+			<li><a href="./hydronamics/hydronamics_2.html" 			target="_parent">æµä½“ã®ç‰©æ€§</a></li>
+			<li><a href="./hydronamics/hydronamics_3.html" 			target="_parent">ä½¿ç”¨ã™ã‚‹åŽæ”¯å¼</a></li>
+			<li><a href="./hydronamics/hydronamics_4.html" 			target="_parent">è³ªé‡åŽæ”¯å¼</a></li>
+			<li><a href="./hydronamics/hydronamics_5.html" 			target="_parent">ç²˜æ€§åŠ›ã®ç°¡å˜ãªèª¬æ˜Ž</a></li>
 
-			<li><a href="./hydronamics/hydronamics_6.html" 			target="_parent">—Í‚ÌŽí—Þ</a></li>
+			<li><a href="./hydronamics/hydronamics_6.html" 			target="_parent">åŠ›ã®ç¨®é¡ž</a></li>
 			<span id="id_3_1" style="display:none;">
-			<li><a href="./hydronamics/hydronamics_6_1.html" 		target="_parent">@Šµ«—Í</a></li>
-			<li><a href="./hydronamics/hydronamics_6_2.html" 		target="_parent">@”S«—Í</a></li>
-			<li><a href="./hydronamics/hydronamics_6_3.html" 		target="_parent">@ˆ³—Í</a></li>
-			<li><a href="./hydronamics/hydronamics_6_4.html" 		target="_parent">@d—Í</a></li>
+			<li><a href="./hydronamics/hydronamics_6_1.html" 		target="_parent">ã€€æ…£æ€§åŠ›</a></li>
+			<li><a href="./hydronamics/hydronamics_6_2.html" 		target="_parent">ã€€ç²˜æ€§åŠ›</a></li>
+			<li><a href="./hydronamics/hydronamics_6_3.html" 		target="_parent">ã€€åœ§åŠ›</a></li>
+			<li><a href="./hydronamics/hydronamics_6_4.html" 		target="_parent">ã€€é‡åŠ›</a></li>
 			</span>
 
-			<li><a href="./hydronamics/hydronamics_7.html" 			target="_parent">ŽûŽxŽ®‚Ì“±o</a></li>
-			<li><a href="./hydronamics/hydronamics_8.html" 			target="_parent">‰^“®—ÊŽûŽxŽ®</a></li>
+			<li><a href="./hydronamics/hydronamics_7.html" 			target="_parent">åŽæ”¯å¼ã®å°Žå‡º</a></li>
+			<li><a href="./hydronamics/hydronamics_8.html" 			target="_parent">é‹å‹•é‡åŽæ”¯å¼</a></li>
 
-			<li><a href="./hydronamics/hydronamics_9.html" 			target="_parent">‰ž—Í‚ÌÚ×</a></li>
+			<li><a href="./hydronamics/hydronamics_9.html" 			target="_parent">å¿œåŠ›ã®è©³ç´°</a></li>
 			<span id="id_3_2" style="display:none;">
-			<li><a href="./hydronamics/hydronamics_9_1.html" 		target="_parent">@‚¹‚ñ’f‘¬“x</a></li>
-			<li><a href="./hydronamics/hydronamics_9_2.html" 		target="_parent">@‚’¼¬•ª</a></li>
-			<li><a href="./hydronamics/hydronamics_9_3.html" 		target="_parent">@ˆ³—Í‚É‚Â‚¢‚Ä</a></li>
-			<li><a href="./hydronamics/hydronamics_9_4.html" 		target="_parent">@™’’f¬•ª‚Ì‘ÎÌ«</a></li>
-			<li><a href="./hydronamics/hydronamics_9_5.html" 		target="_parent">@™’’f¬•ª‚Ì’l</a></li>
-			<li><a href="./hydronamics/hydronamics_9_6.html" 		target="_parent">@‰ž—Í‚Ì‚Ü‚Æ‚ß</a></li>
+			<li><a href="./hydronamics/hydronamics_9_1.html" 		target="_parent">ã€€ã›ã‚“æ–­é€Ÿåº¦</a></li>
+			<li><a href="./hydronamics/hydronamics_9_2.html" 		target="_parent">ã€€åž‚ç›´æˆåˆ†</a></li>
+			<li><a href="./hydronamics/hydronamics_9_3.html" 		target="_parent">ã€€åœ§åŠ›ã«ã¤ã„ã¦</a></li>
+			<li><a href="./hydronamics/hydronamics_9_4.html" 		target="_parent">ã€€å‰ªæ–­æˆåˆ†ã®å¯¾ç§°æ€§</a></li>
+			<li><a href="./hydronamics/hydronamics_9_5.html" 		target="_parent">ã€€å‰ªæ–­æˆåˆ†ã®å€¤</a></li>
+			<li><a href="./hydronamics/hydronamics_9_6.html" 		target="_parent">ã€€å¿œåŠ›ã®ã¾ã¨ã‚</a></li>
 			</span>
 
-			<li><a href="./hydronamics/hydronamics_10.html" 		target="_parent">‹«ŠE‚Éì—p‚·‚é—Í</a></li>
+			<li><a href="./hydronamics/hydronamics_10.html" 		target="_parent">å¢ƒç•Œã«ä½œç”¨ã™ã‚‹åŠ›</a></li>
 			<span id="id_3_3" style="display:none;">
-			<li><a href="./hydronamics/hydronamics_10_1.html" 	target="_parent">@•\–Ê’£—Í</a></li>
-			<li><a href="./hydronamics/hydronamics_10_2.html" 	target="_parent">@•Ç–Ê‚Ì‘¬“x</a></li>
-			<li><a href="./hydronamics/hydronamics_10_3.html" 	target="_parent">@ö”­</a></li>
+			<li><a href="./hydronamics/hydronamics_10_1.html" 	target="_parent">ã€€è¡¨é¢å¼µåŠ›</a></li>
+			<li><a href="./hydronamics/hydronamics_10_2.html" 	target="_parent">ã€€å£é¢ã®é€Ÿåº¦</a></li>
+			<li><a href="./hydronamics/hydronamics_10_3.html" 	target="_parent">ã€€è’¸ç™º</a></li>
 			</span>
 
-			<li><a href="./hydronamics/hydronamics_11.html" 		target="_parent">–³ŽŸŒ³”</a></li>
+			<li><a href="./hydronamics/hydronamics_11.html" 		target="_parent">ç„¡æ¬¡å…ƒæ•°</a></li>
 			<span id="id_3_4" style="display:none;">
-			<li><a href="./hydronamics/hydronamics_11_1.html" 	target="_parent">@ƒŒƒCƒmƒ‹ƒY”</a></li>
-			<li><a href="./hydronamics/hydronamics_11_2.html" 	target="_parent">@ƒEƒF[ƒo[”</a></li>
-			<li><a href="./hydronamics/hydronamics_11_3.html" 	target="_parent">@ƒI[ƒlƒ\ƒ‹ƒWƒ…”</a></li>
-			<li><a href="./hydronamics/hydronamics_11_4.html" 	target="_parent">@ƒ{ƒ“ƒh”</a></li>
-			<li><a href="./hydronamics/hydronamics_11_5.html" 	target="_parent">@ƒtƒ‹[ƒh”</a></li>
-			<li><a href="./hydronamics/hydronamics_11_6.html" 	target="_parent">@ƒ}ƒbƒn”</a></li>
+			<li><a href="./hydronamics/hydronamics_11_1.html" 	target="_parent">ã€€ãƒ¬ã‚¤ãƒŽãƒ«ã‚ºæ•°</a></li>
+			<li><a href="./hydronamics/hydronamics_11_2.html" 	target="_parent">ã€€ã‚¦ã‚§ãƒ¼ãƒãƒ¼æ•°</a></li>
+			<li><a href="./hydronamics/hydronamics_11_3.html" 	target="_parent">ã€€ã‚ªãƒ¼ãƒã‚½ãƒ«ã‚¸ãƒ¥æ•°</a></li>
+			<li><a href="./hydronamics/hydronamics_11_4.html" 	target="_parent">ã€€ãƒœãƒ³ãƒ‰æ•°</a></li>
+			<li><a href="./hydronamics/hydronamics_11_5.html" 	target="_parent">ã€€ãƒ•ãƒ«ãƒ¼ãƒ‰æ•°</a></li>
+			<li><a href="./hydronamics/hydronamics_11_6.html" 	target="_parent">ã€€ãƒžãƒƒãƒæ•°</a></li>
 			</span>
 
-			<li><a href="./hydronamics/hydronamics_12.html" 		target="_parent">–³ŽŸŒ³‰»</a></li>
+			<li><a href="./hydronamics/hydronamics_12.html" 		target="_parent">ç„¡æ¬¡å…ƒåŒ–</a></li>
 			<span id="id_3_5" style="display:none;">
-			<li><a href="./hydronamics/hydronamics_12_1.html" 	target="_parent">@Ž¿—ÊŽûŽxŽ®</a></li>
-			<li><a href="./hydronamics/hydronamics_12_2.html" 	target="_parent">@‰^“®—ÊŽûŽxŽ®</a></li>
+			<li><a href="./hydronamics/hydronamics_12_1.html" 	target="_parent">ã€€è³ªé‡åŽæ”¯å¼</a></li>
+			<li><a href="./hydronamics/hydronamics_12_2.html" 	target="_parent">ã€€é‹å‹•é‡åŽæ”¯å¼</a></li>
 			</span>
 
-			<li><a href="./hydronamics/hydronamics_13.html" 		target="_parent">‘ã•\‘¬“xA‘ã•\’·‚³</a></li>
-			<li><a href="./hydronamics/hydronamics_14.html" 		target="_parent">ƒOƒŠ[ƒ“EƒKƒEƒX‚Ì’è—</a></li>
+			<li><a href="./hydronamics/hydronamics_13.html" 		target="_parent">ä»£è¡¨é€Ÿåº¦ã€ä»£è¡¨é•·ã•</a></li>
+			<li><a href="./hydronamics/hydronamics_14.html" 		target="_parent">ã‚°ãƒªãƒ¼ãƒ³ãƒ»ã‚¬ã‚¦ã‚¹ã®å®šç†</a></li>
 			</ul>
 
 
-			<!-- —LŒÀ—v‘f–@ -->
+			<!-- æœ‰é™è¦ç´ æ³• -->
 			<ul>
-			<li><a href="./fem/fem.html" target="_parent" title="—LŒÀ—v‘f–@‚Ö">—LŒÀ—v‘f–@</a></li>
+			<li><a href="./fem/fem.html" target="_parent" title="æœ‰é™è¦ç´ æ³•ã¸">æœ‰é™è¦ç´ æ³•</a></li>
 			</ul>
 			<ul id="id_4" style="display:none;padding-left:10px;">
-			<li><a href="./fem/fem_1.html" 			target="_parent">ß“_E—v‘f</a></li>
-			<li><a href="./fem/fem_2.html" 			target="_parent">Œ`óŠÖ”E“à‘}ŠÖ”</a></li>
+			<li><a href="./fem/fem_1.html" 			target="_parent">ç¯€ç‚¹ãƒ»è¦ç´ </a></li>
+			<li><a href="./fem/fem_2.html" 			target="_parent">å½¢çŠ¶é–¢æ•°ãƒ»å†…æŒ¿é–¢æ•°</a></li>
 
 			<span id="id_4_2" style="display:none;">
-			<li><a href="./fem/fem_2_1.html" 		target="_parent">@3ŠpŒ`1ŽŸ—v‘f</a></li>
-			<li><a href="./fem/fem_2_2.html" 		target="_parent">@3ŠpŒ`2ŽŸ—v‘f</a></li>
-			<li><a href="./fem/fem_2_3.html" 		target="_parent">@4–Ê‘Ì1ŽŸ—v‘f</a></li>
+			<li><a href="./fem/fem_2_1.html" 		target="_parent">ã€€3è§’å½¢1æ¬¡è¦ç´ </a></li>
+			<li><a href="./fem/fem_2_2.html" 		target="_parent">ã€€3è§’å½¢2æ¬¡è¦ç´ </a></li>
+			<li><a href="./fem/fem_2_3.html" 		target="_parent">ã€€4é¢ä½“1æ¬¡è¦ç´ </a></li>
 			</span>
 
-			<li><a href="./fem/fem_3.html" 			target="_parent">—v‘f‚ÌÏ•ª</a></li>
-			<li><a href="./fem/fem_4.html" 			target="_parent">3ŠpŒ`—v‘f‚Ì–ÊÏ</a></li>
-			<li><a href="./fem/fem_5.html" 			target="_parent">4–Ê‘Ì—v‘f‚Ì‘ÌÏ</a></li>
+			<li><a href="./fem/fem_3.html" 			target="_parent">è¦ç´ ã®ç©åˆ†</a></li>
+			<li><a href="./fem/fem_4.html" 			target="_parent">3è§’å½¢è¦ç´ ã®é¢ç©</a></li>
+			<li><a href="./fem/fem_5.html" 			target="_parent">4é¢ä½“è¦ç´ ã®ä½“ç©</a></li>
 
-			<li><a href="./fem/fem_6.html" 			target="_parent">“à‘}ŠÖ”‚Ì”÷•ª</a></li>
+			<li><a href="./fem/fem_6.html" 			target="_parent">å†…æŒ¿é–¢æ•°ã®å¾®åˆ†</a></li>
 			<span id="id_4_6" style="display:none;">
-			<li><a href="./fem/fem_6_1.html" 		target="_parent">@3ŠpŒ`1ŽŸ—v‘f</a></li>
-			<li><a href="./fem/fem_6_1_1.html" 	target="_parent">@@—v‘f‚Ì–ÊÏ</a></li>
-			<li><a href="./fem/fem_6_1_2.html" 	target="_parent">@@“à‘}ŠÖ”N1‚Ì”÷•ª</a></li>
-			<li><a href="./fem/fem_6_1_3.html" 	target="_parent">@@“à‘}ŠÖ”N2‚Ì”÷•ª</a></li>
-			<li><a href="./fem/fem_6_1_4.html" 	target="_parent">@@“à‘}ŠÖ”N3‚Ì”÷•ª</a></li>
-			<li><a href="./fem/fem_6_1_5.html" 	target="_parent">@@‚Ü‚Æ‚ß</a></li>
+			<li><a href="./fem/fem_6_1.html" 		target="_parent">ã€€3è§’å½¢1æ¬¡è¦ç´ </a></li>
+			<li><a href="./fem/fem_6_1_1.html" 	target="_parent">ã€€ã€€è¦ç´ ã®é¢ç©</a></li>
+			<li><a href="./fem/fem_6_1_2.html" 	target="_parent">ã€€ã€€å†…æŒ¿é–¢æ•°N1ã®å¾®åˆ†</a></li>
+			<li><a href="./fem/fem_6_1_3.html" 	target="_parent">ã€€ã€€å†…æŒ¿é–¢æ•°N2ã®å¾®åˆ†</a></li>
+			<li><a href="./fem/fem_6_1_4.html" 	target="_parent">ã€€ã€€å†…æŒ¿é–¢æ•°N3ã®å¾®åˆ†</a></li>
+			<li><a href="./fem/fem_6_1_5.html" 	target="_parent">ã€€ã€€ã¾ã¨ã‚</a></li>
 
-			<li><a href="./fem/fem_6_2.html" 		target="_parent">@4–Ê‘Ì1ŽŸ—v‘f</a></li>
-			<li><a href="./fem/fem_6_2_1.html" 	target="_parent">@@—v‘f‚Ì‘ÌÏ</a></li>
-			<li><a href="./fem/fem_6_2_2.html" 	target="_parent">@@“à‘}ŠÖ”N1‚Ì”÷•ª</a></li>
-			<li><a href="./fem/fem_6_2_3.html" 	target="_parent">@@“à‘}ŠÖ”N2‚Ì”÷•ª</a></li>
-			<li><a href="./fem/fem_6_2_4.html" 	target="_parent">@@“à‘}ŠÖ”N3‚Ì”÷•ª</a></li>
-			<li><a href="./fem/fem_6_2_5.html" 	target="_parent">@@“à‘}ŠÖ”N4‚Ì”÷•ª</a></li>
-			<li><a href="./fem/fem_6_2_6.html" 	target="_parent">@@‚Ü‚Æ‚ß</a></li>
+			<li><a href="./fem/fem_6_2.html" 		target="_parent">ã€€4é¢ä½“1æ¬¡è¦ç´ </a></li>
+			<li><a href="./fem/fem_6_2_1.html" 	target="_parent">ã€€ã€€è¦ç´ ã®ä½“ç©</a></li>
+			<li><a href="./fem/fem_6_2_2.html" 	target="_parent">ã€€ã€€å†…æŒ¿é–¢æ•°N1ã®å¾®åˆ†</a></li>
+			<li><a href="./fem/fem_6_2_3.html" 	target="_parent">ã€€ã€€å†…æŒ¿é–¢æ•°N2ã®å¾®åˆ†</a></li>
+			<li><a href="./fem/fem_6_2_4.html" 	target="_parent">ã€€ã€€å†…æŒ¿é–¢æ•°N3ã®å¾®åˆ†</a></li>
+			<li><a href="./fem/fem_6_2_5.html" 	target="_parent">ã€€ã€€å†…æŒ¿é–¢æ•°N4ã®å¾®åˆ†</a></li>
+			<li><a href="./fem/fem_6_2_6.html" 	target="_parent">ã€€ã€€ã¾ã¨ã‚</a></li>
 			</span>
 
-			<li><a href="./fem/fem_7.html" 			target="_parent">—£ŽU‰»</a></li>
+			<li><a href="./fem/fem_7.html" 			target="_parent">é›¢æ•£åŒ–</a></li>
 			<span id="id_4_7" style="display:none;">
-			<li><a href="./fem/fem_7_1.html" 		target="_parent">@3ŠpŒ`1ŽŸ—v‘f</a></li>
-			<li><a href="./fem/fem_7_1_1.html" 	target="_parent">@@Ž¿—ÊŽûŽxŽ®</a></li>
-			<li><a href="./fem/fem_7_1_2.html" 	target="_parent">@@‰^“®—ÊŽûŽxŽ®</a></li>
-			<li><a href="./fem/fem_7_2.html" 		target="_parent">@4–Ê‘Ì1ŽŸ—v‘f</a></li>
-			<li><a href="./fem/fem_7_2_1.html" 	target="_parent">@@Ž¿—ÊŽûŽxŽ®</a></li>
-			<li><a href="./fem/fem_7_2_2.html" 	target="_parent">@@‰^“®—ÊŽûŽxŽ®</a></li>
+			<li><a href="./fem/fem_7_1.html" 		target="_parent">ã€€3è§’å½¢1æ¬¡è¦ç´ </a></li>
+			<li><a href="./fem/fem_7_1_1.html" 	target="_parent">ã€€ã€€è³ªé‡åŽæ”¯å¼</a></li>
+			<li><a href="./fem/fem_7_1_2.html" 	target="_parent">ã€€ã€€é‹å‹•é‡åŽæ”¯å¼</a></li>
+			<li><a href="./fem/fem_7_2.html" 		target="_parent">ã€€4é¢ä½“1æ¬¡è¦ç´ </a></li>
+			<li><a href="./fem/fem_7_2_1.html" 	target="_parent">ã€€ã€€è³ªé‡åŽæ”¯å¼</a></li>
+			<li><a href="./fem/fem_7_2_2.html" 	target="_parent">ã€€ã€€é‹å‹•é‡åŽæ”¯å¼</a></li>
 			</span>
 
-			<li><a href="./fem/fem_8.html" 			target="_parent">‹«ŠEðŒ</a></li>
+			<li><a href="./fem/fem_8.html" 			target="_parent">å¢ƒç•Œæ¡ä»¶</a></li>
 			<span id="id_4_8" style="display:none;">
-			<li><a href="./fem/fem_8_1.html" 		target="_parent">@‘æ1Ží</a></li>
-			<li><a href="./fem/fem_8_2.html" 		target="_parent">@‘æ2Ží</a></li>
-			<li><a href="./fem/fem_8_2_1.html" 	target="_parent">@@•\–Ê’£—Í</a></li>
-			<li><a href="./fem/fem_8_2_2.html" 	target="_parent">@@Œù”z0</a></li>
-			<li><a href="./fem/fem_8_3.html" 		target="_parent">@‘æ3Ží</a></li>
+			<li><a href="./fem/fem_8_1.html" 		target="_parent">ã€€ç¬¬1ç¨®</a></li>
+			<li><a href="./fem/fem_8_2.html" 		target="_parent">ã€€ç¬¬2ç¨®</a></li>
+			<li><a href="./fem/fem_8_2_1.html" 	target="_parent">ã€€ã€€è¡¨é¢å¼µåŠ›</a></li>
+			<li><a href="./fem/fem_8_2_2.html" 	target="_parent">ã€€ã€€å‹¾é…0</a></li>
+			<li><a href="./fem/fem_8_3.html" 		target="_parent">ã€€ç¬¬3ç¨®</a></li>
 			</span>
 
-			<li><a href="./fem/fem_9.html" 			target="_parent">À•W‚ÌŽæ‚è•û</a></li>
-			<li><a href="./fem/fem_10.html" 		target="_parent">ƒ}ƒgƒŠƒbƒNƒXì¬</a></li>
-			<li><a href="./fem/fem_11.html" 		target="_parent">s—ñŒvŽZ</a></li>
+			<li><a href="./fem/fem_9.html" 			target="_parent">åº§æ¨™ã®å–ã‚Šæ–¹</a></li>
+			<li><a href="./fem/fem_10.html" 		target="_parent">ãƒžãƒˆãƒªãƒƒã‚¯ã‚¹ä½œæˆ</a></li>
+			<li><a href="./fem/fem_11.html" 		target="_parent">è¡Œåˆ—è¨ˆç®—</a></li>
 
 			<span id="id_4_11" style="display:none;">
-			<li><a href="./fem/fem_11_1.html" 	target="_parent">@ƒKƒEƒX‚ÌÁ‹Ž–@</a></li>
-			<li><a href="./fem/fem_11_2.html" 	target="_parent">@ƒRƒŒƒXƒL[‰ð</a></li>
+			<li><a href="./fem/fem_11_1.html" 	target="_parent">ã€€ã‚¬ã‚¦ã‚¹ã®æ¶ˆåŽ»æ³•</a></li>
+			<li><a href="./fem/fem_11_2.html" 	target="_parent">ã€€ã‚³ãƒ¬ã‚¹ã‚­ãƒ¼è§£</a></li>
 			</span>
 
-			<li><a href="./fem/fem_12.html" 		target="_parent">ƒoƒ“ƒh•‚ÌÅ“K‰»</a></li>
-			<li><a href="./fem/fem_13.html" 		target="_parent">ƒoƒ“ƒh•‚ÌÅ“K‰»•û–@</a></li>
+			<li><a href="./fem/fem_12.html" 		target="_parent">ãƒãƒ³ãƒ‰å¹…ã®æœ€é©åŒ–</a></li>
+			<li><a href="./fem/fem_13.html" 		target="_parent">ãƒãƒ³ãƒ‰å¹…ã®æœ€é©åŒ–æ–¹æ³•</a></li>
 
 			</ul>
 
 
-			<!-- ƒƒbƒVƒ… -->
+			<!-- ãƒ¡ãƒƒã‚·ãƒ¥ -->
 			<ul>
-			<li><a href="./mesh/mesh.html" 		target="_parent" title="ƒƒbƒVƒ…‚Ö">ƒƒbƒVƒ…</a></li>
+			<li><a href="./mesh/mesh.html" 		target="_parent" title="ãƒ¡ãƒƒã‚·ãƒ¥ã¸">ãƒ¡ãƒƒã‚·ãƒ¥</a></li>
 			</ul>
 			<ul id="id_5" style="display:none;padding-left:10px;">
-			<li><a href="./mesh/mesh_1.html" 		target="_parent">@Å¬2æ–@</a></li>
-			<li><a href="./mesh/mesh_2.html" 		target="_parent">@‹È—¦ŒvŽZ</a></li>
-			<li><a href="./mesh/mesh_3.html" 		target="_parent">@ß“_”z’u</a></li>
-			<li><a href="./mesh/mesh_3_1.html" 	target="_parent">@@ƒoƒuƒ‹ƒƒbƒVƒ…–@</a></li>
-			<li><a href="./mesh/mesh_3_2.html" 	target="_parent">@@8•ª–Ø</a></li>
-			<li><a href="./mesh/mesh_4.html" 		target="_parent">@ƒfƒ[ƒj•ªŠ„</a></li>
-			<li><a href="./mesh/mesh_5.html" 		target="_parent">@—v‘f‚Ì•ÏŒ`</a></li>
+			<li><a href="./mesh/mesh_1.html" 		target="_parent">ã€€æœ€å°2ä¹—æ³•</a></li>
+			<li><a href="./mesh/mesh_2.html" 		target="_parent">ã€€æ›²çŽ‡è¨ˆç®—</a></li>
+			<li><a href="./mesh/mesh_3.html" 		target="_parent">ã€€ç¯€ç‚¹é…ç½®</a></li>
+			<li><a href="./mesh/mesh_3_1.html" 	target="_parent">ã€€ã€€ãƒãƒ–ãƒ«ãƒ¡ãƒƒã‚·ãƒ¥æ³•</a></li>
+			<li><a href="./mesh/mesh_3_2.html" 	target="_parent">ã€€ã€€8åˆ†æœ¨</a></li>
+			<li><a href="./mesh/mesh_4.html" 		target="_parent">ã€€ãƒ‡ãƒ­ãƒ¼ãƒ‹åˆ†å‰²</a></li>
+			<li><a href="./mesh/mesh_5.html" 		target="_parent">ã€€è¦ç´ ã®å¤‰å½¢</a></li>
 			</ul>
 
 
-			<!-- SIMPLE–@ -->
+			<!-- SIMPLEæ³• -->
 			<ul>
-			<li><a href="./counting/counting.html" target="_parent" title="SIMPLE–@‚Ö">SIMPLE–@</a></li>
+			<li><a href="./counting/counting.html" target="_parent" title="SIMPLEæ³•ã¸">SIMPLEæ³•</a></li>
 			</ul>
 			<ul id="id_6" style="display:none;padding-left:10px;">
-			<li><a href="./counting/counting_1.html" 	target="_parent">@ƒIƒCƒ‰[À•W</a></li>
-			<li><a href="./counting/counting_2.html" 	target="_parent">@ƒ‰ƒOƒ‰ƒWƒAƒ“À•W</a></li>
+			<li><a href="./counting/counting_1.html" 	target="_parent">ã€€ã‚ªã‚¤ãƒ©ãƒ¼åº§æ¨™</a></li>
+			<li><a href="./counting/counting_2.html" 	target="_parent">ã€€ãƒ©ã‚°ãƒ©ã‚¸ã‚¢ãƒ³åº§æ¨™</a></li>
 			</ul>
 
 
 			<!-- Appendix -->
 			<ul>
-			<li><a href="./appendix/appendix.html" 		target="_parent" title="Appendix‚Ö">Appendix</a></li>
+			<li><a href="./appendix/appendix.html" 		target="_parent" title="Appendixã¸">Appendix</a></li>
 			</ul>
 			<ul id="id_7" style="display:none;padding-left:10px;">
-			<li><a href="./appendix/appendix_1.html" 	target="_parent">@˜A—§•û’öŽ®‚Ì‰ð</a></li>
-			<li><a href="./appendix/appendix_2.html" 	target="_parent">@4–Ê‘Ì‚ÌŠOS</a></li>
-			<li><a href="./appendix/appendix_3.html" 	target="_parent">@À•W•ÏŠ·</a></li>
+			<li><a href="./appendix/appendix_1.html" 	target="_parent">ã€€é€£ç«‹æ–¹ç¨‹å¼ã®è§£</a></li>
+			<li><a href="./appendix/appendix_2.html" 	target="_parent">ã€€4é¢ä½“ã®å¤–å¿ƒ</a></li>
+			<li><a href="./appendix/appendix_3.html" 	target="_parent">ã€€åº§æ¨™å¤‰æ›</a></li>
 
 			<span id="id_7_3" style="display:none;">
-			<li><a href="./appendix/appendix_3_1.html" 	target="_parent">@@‰~“›À•W</a></li>
-			<li><a href="./appendix/appendix_3_2.html" 	target="_parent">@@‹…À•W</a></li>
+			<li><a href="./appendix/appendix_3_1.html" 	target="_parent">ã€€ã€€å††ç­’åº§æ¨™</a></li>
+			<li><a href="./appendix/appendix_3_2.html" 	target="_parent">ã€€ã€€çƒåº§æ¨™</a></li>
 			</span>
 
 			</ul>
 
 
-			<!-- ƒRƒ‰ƒ€ -->
+			<!-- ã‚³ãƒ©ãƒ  -->
 			<ul>
-			<li><a href="./column/column.html" 		target="_parent" title="ƒRƒ‰ƒ€‚Ö">ƒRƒ‰ƒ€</a></li>
+			<li><a href="./column/column.html" 		target="_parent" title="ã‚³ãƒ©ãƒ ã¸">ã‚³ãƒ©ãƒ </a></li>
 			</ul>
 			<ul id="id_8" style="display:none;padding-left:10px;">
-			<li><a href="./column/column_1.html" 	target="_parent">@”÷•ª‚ÆÏ•ª</a></li>
-			<li><a href="./column/column_2.html" 	target="_parent">@ƒGƒlƒ‹ƒM[</a></li>
-			<li><a href="./column/column_3.html" 	target="_parent">@“úí‚É‚ ‚éƒXƒP[ƒ‹‰»</a></li>
-			<li><a href="./column/column_4.html" 	target="_parent">@ƒƒbƒVƒ…ì¬</a></li>
-			<li><a href="./column/column_5.html" 	target="_parent">@‹Md‚È‘ÌŒ±</a></li>
+			<li><a href="./column/column_1.html" 	target="_parent">ã€€å¾®åˆ†ã¨ç©åˆ†</a></li>
+			<li><a href="./column/column_2.html" 	target="_parent">ã€€ã‚¨ãƒãƒ«ã‚®ãƒ¼</a></li>
+			<li><a href="./column/column_3.html" 	target="_parent">ã€€æ—¥å¸¸ã«ã‚ã‚‹ã‚¹ã‚±ãƒ¼ãƒ«åŒ–</a></li>
+			<li><a href="./column/column_4.html" 	target="_parent">ã€€ãƒ¡ãƒƒã‚·ãƒ¥ä½œæˆ</a></li>
+			<li><a href="./column/column_5.html" 	target="_parent">ã€€è²´é‡ãªä½“é¨“</a></li>
 			</ul>
 
 
-			<!-- ƒTƒuƒRƒ“ƒeƒ“ƒc -->
+			<!-- ã‚µãƒ–ã‚³ãƒ³ãƒ†ãƒ³ãƒ„ -->
 			<div class="sub-text">
 				<dl>
-				<dt>ƒTƒuƒRƒ“ƒeƒ“ƒc</dt>
+				<dt>ã‚µãƒ–ã‚³ãƒ³ãƒ†ãƒ³ãƒ„</dt>
 				</dl>
 			</div>
 
 
-			<!-- “`”MHŠw -->
+			<!-- ä¼ç†±å·¥å­¦ -->
 			<ul>
-			<li><a href="./heat/heat.html" target="_parent" title="“`”MHŠw‚Ö">“`”MHŠw</a></li>
+			<li><a href="./heat/heat.html" target="_parent" title="ä¼ç†±å·¥å­¦ã¸">ä¼ç†±å·¥å­¦</a></li>
 			</ul>
 			<ul id="id_9" style="display:none;padding-left:10px;">
-			<li><a href="./heat/heat_1.html" 			target="_parent">Žg—p‚·‚é’PˆÊ</a></li>
-			<li><a href="./heat/heat_2.html" 			target="_parent">Žg—p‚·‚é•¨«’l</a></li>
-			<li><a href="./heat/heat_3.html" 			target="_parent">”M—¬‘©</a></li>
-			<li><a href="./heat/heat_4.html" 			target="_parent">“`”M‚ÌŽí—Þ</a></li>
-			<li><a href="./heat/heat_4_1.html" 		target="_parent">@“`“±“`”M</a></li>
-			<li><a href="./heat/heat_4_2.html" 		target="_parent">@‘Î—¬“`”M</a></li>
-			<li><a href="./heat/heat_4_3.html" 		target="_parent">@•úŽË“`”M</a></li>
-			<li><a href="./heat/heat_5.html" 			target="_parent">”MŽûŽxŽ®</a></li>
-			<li><a href="./heat/heat_5_1.html" 		target="_parent">@’~Ï—Ê</a></li>
-			<li><a href="./heat/heat_5_2.html" 		target="_parent">@‘Î—¬“`”M</a></li>
-			<li><a href="./heat/heat_5_3.html" 		target="_parent">@“`“±“`”M</a></li>
-			<li><a href="./heat/heat_5_4.html" 		target="_parent">@ŽûŽxŽ®‚Ì“±o</a></li>
-			<li><a href="./heat/heat_6.html" 			target="_parent">–³ŽŸŒ³‰»</a></li>
-			<li><a href="./heat/heat_7.html" 			target="_parent">—£ŽU‰»</a></li>
-			<li><a href="./heat/heat_7_1.html" 		target="_parent">@3ŠpŒ`1ŽŸ—v‘f</a></li>
-			<li><a href="./heat/heat_7_2.html" 		target="_parent">@4–Ê‘Ì1ŽŸ—v‘f</a></li>
-			<li><a href="./heat/heat_8.html" 			target="_parent">‹«ŠEðŒ</a></li>
+			<li><a href="./heat/heat_1.html" 			target="_parent">ä½¿ç”¨ã™ã‚‹å˜ä½</a></li>
+			<li><a href="./heat/heat_2.html" 			target="_parent">ä½¿ç”¨ã™ã‚‹ç‰©æ€§å€¤</a></li>
+			<li><a href="./heat/heat_3.html" 			target="_parent">ç†±æµæŸ</a></li>
+			<li><a href="./heat/heat_4.html" 			target="_parent">ä¼ç†±ã®ç¨®é¡ž</a></li>
+			<li><a href="./heat/heat_4_1.html" 		target="_parent">ã€€ä¼å°Žä¼ç†±</a></li>
+			<li><a href="./heat/heat_4_2.html" 		target="_parent">ã€€å¯¾æµä¼ç†±</a></li>
+			<li><a href="./heat/heat_4_3.html" 		target="_parent">ã€€æ”¾å°„ä¼ç†±</a></li>
+			<li><a href="./heat/heat_5.html" 			target="_parent">ç†±åŽæ”¯å¼</a></li>
+			<li><a href="./heat/heat_5_1.html" 		target="_parent">ã€€è“„ç©é‡</a></li>
+			<li><a href="./heat/heat_5_2.html" 		target="_parent">ã€€å¯¾æµä¼ç†±</a></li>
+			<li><a href="./heat/heat_5_3.html" 		target="_parent">ã€€ä¼å°Žä¼ç†±</a></li>
+			<li><a href="./heat/heat_5_4.html" 		target="_parent">ã€€åŽæ”¯å¼ã®å°Žå‡º</a></li>
+			<li><a href="./heat/heat_6.html" 			target="_parent">ç„¡æ¬¡å…ƒåŒ–</a></li>
+			<li><a href="./heat/heat_7.html" 			target="_parent">é›¢æ•£åŒ–</a></li>
+			<li><a href="./heat/heat_7_1.html" 		target="_parent">ã€€3è§’å½¢1æ¬¡è¦ç´ </a></li>
+			<li><a href="./heat/heat_7_2.html" 		target="_parent">ã€€4é¢ä½“1æ¬¡è¦ç´ </a></li>
+			<li><a href="./heat/heat_8.html" 			target="_parent">å¢ƒç•Œæ¡ä»¶</a></li>
 			</ul>
 
 
 			<!-- fortran -->
 			<ul>
-			<li><a href="./fortran/fortran.html" target="_parent" title="Fortran‚Ö">Fortran</a></li>
+			<li><a href="./fortran/fortran.html" target="_parent" title="Fortranã¸">Fortran</a></li>
 			</ul>
 			<ul id="id_10" style="display:none;padding-left:10px;">
-			<li><a href="./fortran/fortran_1.html" 			target="_parent">ƒRƒƒ“ƒg</a></li>
-			<li><a href="./fortran/fortran_2.html" 			target="_parent">•Ï”‚ÌŒ^éŒ¾</a></li>
-			<li><a href="./fortran/fortran_3.html" 			target="_parent">”z—ñéŒ¾</a></li>
-			<li><a href="./fortran/fortran_4.html" 			target="_parent">parameter•¶</a></li>
-			<li><a href="./fortran/fortran_5.html" 			target="_parent">data•¶</a></li>
-			<li><a href="./fortran/fortran_6.html" 			target="_parent">functionŠÖ”</a></li>
-			<li><a href="./fortran/fortran_7.html" 			target="_parent">subroutineŠÖ”</a></li>
-			<li><a href="./fortran/fortran_8.html" 			target="_parent">common•¶</a></li>
-			<li><a href="./fortran/fortran_9.html" 			target="_parent">include•¶</a></li>
-			<li><a href="./fortran/fortran_10.html" 		target="_parent">do•¶</a></li>
-			<li><a href="./fortran/fortran_11.html" 		target="_parent">if•¶</a></li>
-			<li><a href="./fortran/fortran_12.html" 		target="_parent">cycleAexit•¶</a></li>
-			<li><a href="./fortran/fortran_13.html" 		target="_parent">ƒtƒ@ƒCƒ‹‘€ì</a></li>
-			<li><a href="./fortran/fortran_14.html" 		target="_parent">goto•¶</a></li>
+			<li><a href="./fortran/fortran_1.html" 			target="_parent">ã‚³ãƒ¡ãƒ³ãƒˆ</a></li>
+			<li><a href="./fortran/fortran_2.html" 			target="_parent">å¤‰æ•°ã®åž‹å®£è¨€</a></li>
+			<li><a href="./fortran/fortran_3.html" 			target="_parent">é…åˆ—å®£è¨€</a></li>
+			<li><a href="./fortran/fortran_4.html" 			target="_parent">parameteræ–‡</a></li>
+			<li><a href="./fortran/fortran_5.html" 			target="_parent">dataæ–‡</a></li>
+			<li><a href="./fortran/fortran_6.html" 			target="_parent">functioné–¢æ•°</a></li>
+			<li><a href="./fortran/fortran_7.html" 			target="_parent">subroutineé–¢æ•°</a></li>
+			<li><a href="./fortran/fortran_8.html" 			target="_parent">commonæ–‡</a></li>
+			<li><a href="./fortran/fortran_9.html" 			target="_parent">includeæ–‡</a></li>
+			<li><a href="./fortran/fortran_10.html" 		target="_parent">doæ–‡</a></li>
+			<li><a href="./fortran/fortran_11.html" 		target="_parent">ifæ–‡</a></li>
+			<li><a href="./fortran/fortran_12.html" 		target="_parent">cycleã€exitæ–‡</a></li>
+			<li><a href="./fortran/fortran_13.html" 		target="_parent">ãƒ•ã‚¡ã‚¤ãƒ«æ“ä½œ</a></li>
+			<li><a href="./fortran/fortran_14.html" 		target="_parent">gotoæ–‡</a></li>
 			</ul>
 
 
-			<!-- —±Žq–@ -->
+			<!-- ç²’å­æ³• -->
 <!--
 			<ul>
-			<li><a href="./mps/mps.html" target="_parent" title="“`”MHŠw‚Ö">—±Žq–@</a></li>
+			<li><a href="./mps/mps.html" target="_parent" title="ä¼ç†±å·¥å­¦ã¸">ç²’å­æ³•</a></li>
 			</ul>
 			<ul id="id_11" style="display:none;padding-left:10px;">
-			<li><a href="./mps/mps_1.html" 		target="_parent">d‚ÝŠÖ”</a></li>
-			<li><a href="./mps/mps_2.html" 		target="_parent">—±Žq‚Ì”–§“x</a></li>
-			<li><a href="./mps/mps_3.html" 		target="_parent">Œù”zƒ‚ƒfƒ‹</a></li>
-			<li><a href="./mps/mps_4.html" 		target="_parent">”­ŽUƒ‚ƒfƒ‹</a></li>
-			<li><a href="./mps/mps_5.html" 		target="_parent">ƒ‰ƒvƒ‰ƒVƒAƒ“ƒ‚ƒfƒ‹</a></li>
-			<li><a href="./mps/mps_6.html" 		target="_parent">”ñˆ³k«—¬‚ê‚Ö‚Ì“K—p</a></li>
-			<li><a href="./mps/mps_6_1.html" 	target="_parent">@Žx”z•û’öŽ®</a></li>
-			<li><a href="./mps/mps_6_2.html" 	target="_parent">@ŒvŽZ‚Ì—¬‚ê</a></li>
+			<li><a href="./mps/mps_1.html" 		target="_parent">é‡ã¿é–¢æ•°</a></li>
+			<li><a href="./mps/mps_2.html" 		target="_parent">ç²’å­ã®æ•°å¯†åº¦</a></li>
+			<li><a href="./mps/mps_3.html" 		target="_parent">å‹¾é…ãƒ¢ãƒ‡ãƒ«</a></li>
+			<li><a href="./mps/mps_4.html" 		target="_parent">ç™ºæ•£ãƒ¢ãƒ‡ãƒ«</a></li>
+			<li><a href="./mps/mps_5.html" 		target="_parent">ãƒ©ãƒ—ãƒ©ã‚·ã‚¢ãƒ³ãƒ¢ãƒ‡ãƒ«</a></li>
+			<li><a href="./mps/mps_6.html" 		target="_parent">éžåœ§ç¸®æ€§æµã‚Œã¸ã®é©ç”¨</a></li>
+			<li><a href="./mps/mps_6_1.html" 	target="_parent">ã€€æ”¯é…æ–¹ç¨‹å¼</a></li>
+			<li><a href="./mps/mps_6_2.html" 	target="_parent">ã€€è¨ˆç®—ã®æµã‚Œ</a></li>
 			</ul>
 -->
 
 
-			<!-- ƒ\ƒtƒgƒ‰ƒCƒuƒ‰ƒŠ -->
+			<!-- ã‚½ãƒ•ãƒˆãƒ©ã‚¤ãƒ–ãƒ©ãƒª -->
 			<ul>
-			<li><a href="./library/library.html" target="_parent" title="ƒ\ƒtƒgƒ‰ƒCƒuƒ‰ƒŠ‚Ö">ƒ\ƒtƒgƒ‰ƒCƒuƒ‰ƒŠ</a></li>
+			<li><a href="./library/library.html" target="_parent" title="ã‚½ãƒ•ãƒˆãƒ©ã‚¤ãƒ–ãƒ©ãƒªã¸">ã‚½ãƒ•ãƒˆãƒ©ã‚¤ãƒ–ãƒ©ãƒª</a></li>
 			</ul>
 
-			<!-- ‘ÐÐ‰î -->
+			<!-- æ›¸ç±ç´¹ä»‹ -->
 			<ul>
-			<li><a href="./book/book.html" target="_parent" title="‘ÐÐ‰î‚Ö">‘ÐÐ‰î</a></li>
+			<li><a href="./book/book.html" target="_parent" title="æ›¸ç±ç´¹ä»‹ã¸">æ›¸ç±ç´¹ä»‹</a></li>
 			</ul>
 
 			<!-- pdf -->
 			<ul>
-			<li><a href="./pdf/pdf.html" target="_parent" title="PDFŽ‘—¿‚Ö">PDFŽ‘—¿</a></li>
+			<li><a href="./pdf/pdf.html" target="_parent" title="PDFè³‡æ–™ã¸">PDFè³‡æ–™</a></li>
 			</ul>
 
 			<!-- English -->
@@ -627,9 +627,9 @@
 
 		<div class="sub-text">
 			<dl>
-				<dt>L</dt>
+				<dt>åºƒå‘Š</dt>
 				<dd>
-					<p>@</p>
+					<p>ã€€</p>
 				</dd>
 			</dl>
 		</div>

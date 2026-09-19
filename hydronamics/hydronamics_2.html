@@ -3,13 +3,13 @@
 <html lang="ja">
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta http-equiv="content-style-type" content="text/css">
 
-	<meta name="description" content="���̗͊w�E�L���v�f�@�ɂ�鐔�l�v�Z�T�C�g�B">
-	<meta name="keywords" content="���̗͊w,�L���v�f�@,���l�v�Z,���b�V��,FEM"> 
+	<meta name="description" content="流体力学・有限要素法による数値計算サイト。">
+	<meta name="keywords" content="流体力学,有限要素法,数値計算,メッシュ,FEM"> 
 
-	<title>���̂̕����i���̗͊w�j</title>
+	<title>流体の物性（流体力学）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
 </head>
 <body>
@@ -18,13 +18,13 @@
 	<div id="wrapper">
 
 	<div id="header">
-		<h1><a href="./../index.html" title="�g�b�v�y�[�W��">�L���v�f�@�E���̗͊w�ɂ�鐔�l�v�Z</a></h1>
+		<h1><a href="./../index.html" title="トップページへ">有限要素法・流体力学による数値計算</a></h1>
 
 		<br style="clear:both;">
 		<ul style="margin-left:30px;">
-		<li><a href="./../index.html" title="index��">index</a>&gt;</li>
-		<li><a href="./hydronamics.html" title="���̗͊w��">���̗͊w</a>&gt;</li>
-		<li><a href="./hydronamics_2.html" title="���̂̕�����">���̂̕���</a>&gt;</li>
+		<li><a href="./../index.html" title="indexへ">index</a>&gt;</li>
+		<li><a href="./hydronamics.html" title="流体力学へ">流体力学</a>&gt;</li>
+		<li><a href="./hydronamics_2.html" title="流体の物性へ">流体の物性</a>&gt;</li>
 		</ul>
 		<hr>
 	</div>
@@ -32,7 +32,7 @@
 	<div id="main" >
 
 	<div id="image">
-		<p>���̗͊w���琔�l�v�Z�܂�</p>
+		<p>流体力学から数値計算まで</p>
 		<p><img src="./../img/shiki1.gif"></p>
 		<p><img src="./../img/shiki2.gif"></p>
 	</div>
@@ -41,40 +41,40 @@
 
 		<div id="content-text">
 
-			<h2>�L��</h2>
+			<h2>広告</h2>
 			<p><iframe src="./../ad.html" width="470" height="60" scrolling="no" frameborder="0"></iframe></p>
 			<br>
 
-			<h2>���̂̕���</h2>
-			<p>���̂̉^���ɂ͖��x��S�x�A�\�ʒ��͂Ȃǂ̕������e�����܂��B�����̕����̑召��
-					���̗��q�Ԃ̉^���ʂ̌����ʂ��قȂ��Ă��܂��B
-					�܂��A���x��n�t�̏ꍇ�͂��̔Z�x�ɂ���Ă��ω����܂��B</p>
+			<h2>流体の物性</h2>
+			<p>流体の運動には密度や粘度、表面張力などの物性が影響します。これらの物性の大小で
+					流体粒子間の運動量の交換量が異なってきます。
+					また、温度や溶液の場合はその濃度によっても変化します。</p>
 			<br>
 			<br>
-			<h2>�E���x<span class="fs"><i>r</i></span><span class="ft">[kg/m<sup>3</sup>]</span></h2>
-			<p>�P�ʑ̐ϓ���̎��ʁB</p>
-			<p>�@�@�@���@<span class="ft">: 998.2[kg/m<sup>3</sup>]</span></p>
-			<p>�@�@�@��C<span class="ft">: 1.189[kg/m<sup>3</sup>]</span>�@�@<span class="ft">(20[</span>��<span class="ft">]</span>
-								�A<span class="ft">1</span>�~<span class="ft">10<sup>5</sup>[Pa])</span></p>
-			<p>�t�̂̕����C�̖̂��x�����傫�����Ƃ��킩��B</p>
-			<p class="im"><img src="./../img/hydronamics_property.files/image001.png">�@
+			<h2>・密度<span class="fs"><i>r</i></span><span class="ft">[kg/m<sup>3</sup>]</span></h2>
+			<p>単位体積当りの質量。</p>
+			<p>　　　水　<span class="ft">: 998.2[kg/m<sup>3</sup>]</span></p>
+			<p>　　　空気<span class="ft">: 1.189[kg/m<sup>3</sup>]</span>　　<span class="ft">(20[</span>℃<span class="ft">]</span>
+								、<span class="ft">1</span>×<span class="ft">10<sup>5</sup>[Pa])</span></p>
+			<p>液体の方が気体の密度よりも大きいことがわかる。</p>
+			<p class="im"><img src="./../img/hydronamics_property.files/image001.png">　
 							<img src="./../img/hydronamics_property.files/image002.png"></p>
 			<br>
 			<br>
-			<h2>�E�S�x<span class="fs"><i>m</i></span><span class="ft">[Pa</span>�E<span class="ft">s]</span></h2>
-			<p>���̂̔S��C��\���Ă���B</p>
-			<p>�@�@�@���@<span class="ft">: 1,006</span>�~<span class="ft">10<sup>-6</sup>[Pa</span>�E<span class="ft">s]</span></p>
-			<p>�@�@�@��C<span class="ft">: 18.2</span>�~<span class="ft">10<sup>-6</sup>[Pa</span>�E<span class="ft">s]</span>
-			�@�@<span class="ft">(20[</span>��<span class="ft">]</span>�A
-					<span class="ft">1</span>�~<span class="ft">10<sup>5</sup>[Pa])</span></p>
-			<p>�t�̂̕����C�̂̔S�x�����傫�����Ƃ��킩��B
-					�S�x�́A���̗��q�Ԃ̖��C�W����\���Ă���B
-					�傫�����A���C�ɂ��^���ʂ̌����������Ȃ�B</p>
+			<h2>・粘度<span class="fs"><i>m</i></span><span class="ft">[Pa</span>・<span class="ft">s]</span></h2>
+			<p>流体の粘り気を表している。</p>
+			<p>　　　水　<span class="ft">: 1,006</span>×<span class="ft">10<sup>-6</sup>[Pa</span>・<span class="ft">s]</span></p>
+			<p>　　　空気<span class="ft">: 18.2</span>×<span class="ft">10<sup>-6</sup>[Pa</span>・<span class="ft">s]</span>
+			　　<span class="ft">(20[</span>℃<span class="ft">]</span>、
+					<span class="ft">1</span>×<span class="ft">10<sup>5</sup>[Pa])</span></p>
+			<p>液体の方が気体の粘度よりも大きいことがわかる。
+					粘度は、流体粒子間の摩擦係数を表している。
+					大きい程、摩擦による運動量の交換が多くなる。</p>
 			<br>
 			<br>
-			<h2>�E�\�ʒ���<span class="fs"><i>g</i></span><span class="ft"> [N/m]</span></h2>
-			<p>�\�ʒ��͂̑傫����\���Ă���B</p>
-			<p>�@�@�@��<span class="ft">: 72.59</span>�~<span class="ft">10<sup>-3</sup>[N/m]</span></p>
+			<h2>・表面張力<span class="fs"><i>g</i></span><span class="ft"> [N/m]</span></h2>
+			<p>表面張力の大きさを表している。</p>
+			<p>　　　水<span class="ft">: 72.59</span>×<span class="ft">10<sup>-3</sup>[N/m]</span></p>
 			<br>
 
 
@@ -89,7 +89,7 @@
 				</tr></table>
 			</h2>
 
-			<!-- �L�� -->
+			<!-- 広告 -->
 			<p><iframe src="./../questionnaire.html" width="650" height="325" scrolling="yes" frameborder="0"></iframe></p>
 		</div>
 
@@ -100,9 +100,9 @@
 	<div id="sub">
 		<iframe src="./../menu.html" id="menu" name="menu" width="180" scrolling="no" frameborder="0"></iframe>
 
-		<!-- �L�� -->
+		<!-- 広告 -->
 		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-		<!-- �o�i�[3�i���j���[���j -->
+		<!-- バナー3（メニュー欄） -->
 		<ins class="adsbygoogle"
 		     style="display:inline-block;width:160px;height:600px"
 		     data-ad-client="ca-pub-4382202381956938"
@@ -111,26 +111,26 @@
 		(adsbygoogle = window.adsbygoogle || []).push({});
 		</script>
 
-		<!-- �y�[�W�ʃJ�E���^ -->
+		<!-- ページ別カウンタ -->
 		<!--shinobi1-->
 		<script type="text/javascript" src="http://x7.tuzikaze.com/ufo/10850280q"></script>
 		<noscript><a href="http://x7.tuzikaze.com/bin/gg?10850280q" target="_blank">
 		<img src="http://x7.tuzikaze.com/bin/ll?10850280q" border="0"></a><br>
-		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://seikatu-review.biz/">�����̒��ŏd�v�ȃA�C�e��</a></span></noscript>
+		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://seikatu-review.biz/">生活の中で重要なアイテム</a></span></noscript>
 		<!--shinobi2-->
 
 		<div class="sub-text">
 			<dl>
-				<dt>�J�E���^</dt>
+				<dt>カウンタ</dt>
 				<dd>
 					<!-- shinobi ct2 -->
 					<script type="text/javascript" src="http://ct2.tirirenge.com/sc/1515356"></script>
 					<noscript><a href="http://ct2.tirirenge.com/gg/1515356" target="_blank">
-					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="�J�E���^�[" /></a><br />
-					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">�|�C���g</a></span></noscript>
+					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="カウンター" /></a><br />
+					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">ポイント</a></span></noscript>
 					<!-- /shinobi ct2 -->
 					<br>
-				�i2011.3.15�`�j
+				（2011.3.15～）
 				</dd>
 			</dl>
 		</div>

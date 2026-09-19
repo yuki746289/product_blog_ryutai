@@ -3,13 +3,13 @@
 <html lang="ja">
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta http-equiv="content-style-type" content="text/css">
 
-	<meta name="description" content="�L���v�f�@�E���̗͊w�ɂ�鐔�l�v�Z�T�C�g�B">
-	<meta name="keywords" content="�L���v�f�@,FEM,���̗͊w,���l�v�Z,���b�V��"> 
+	<meta name="description" content="有限要素法・流体力学による数値計算サイト。">
+	<meta name="keywords" content="有限要素法,FEM,流体力学,数値計算,メッシュ"> 
 
-	<title>�ߓ_�E�v�f�ɂ��āi�L���v�f�@�j</title>
+	<title>節点・要素について（有限要素法）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
 </head>
 <body>
@@ -18,13 +18,13 @@
 	<div id="wrapper">
 
 	<div id="header">
-		<h1><a href="./../index.html" title="�g�b�v�y�[�W��">�L���v�f�@�E���̗͊w�ɂ�鐔�l�v�Z</a></h1>
+		<h1><a href="./../index.html" title="トップページへ">有限要素法・流体力学による数値計算</a></h1>
 
 		<br style="clear:both;">
 		<ul style="margin-left:30px;">
-		<li><a href="./../index.html" title="index��">index</a>&gt;</li>
-		<li><a href="./fem.html" title="�L���v�f�@��">�L���v�f�@</a>&gt;</li>
-		<li><a href="./fem_1.html" title="�ߓ_�E�v�f��">�ߓ_�E�v�f</a>&gt;</li>
+		<li><a href="./../index.html" title="indexへ">index</a>&gt;</li>
+		<li><a href="./fem.html" title="有限要素法へ">有限要素法</a>&gt;</li>
+		<li><a href="./fem_1.html" title="節点・要素へ">節点・要素</a>&gt;</li>
 		</ul>
 		<hr>
 	</div>
@@ -32,7 +32,7 @@
 	<div id="main" >
 
 	<div id="image">
-		<p>���̗͊w���琔�l�v�Z�܂�</p>
+		<p>流体力学から数値計算まで</p>
 		<p><img src="./../img/shiki1.gif"></p>
 		<p><img src="./../img/shiki2.gif"></p>
 	</div>
@@ -41,33 +41,33 @@
 
 		<div id="content-text">
 
-			<h2>�L��</h2>
+			<h2>広告</h2>
 			<p><iframe src="./../ad.html" width="470" height="60" scrolling="no" frameborder="0"></iframe></p>
 			<br>
 
-			<h2>�ߓ_�E�v�f</h2>
-			<p>�v�f�ɂ͂������̎�ނ�����B</p>
-			<p><span class="ft">3</span>�p�`�v�f</p>
-			<p class="im"><span class="ft">1</span>���v�f�@�@�@�@�@<span class="ft">2</span>���v�f</p>
+			<h2>節点・要素</h2>
+			<p>要素にはいくつかの種類がある。</p>
+			<p><span class="ft">3</span>角形要素</p>
+			<p class="im"><span class="ft">1</span>次要素　　　　　<span class="ft">2</span>次要素</p>
 			<p class="im">
-				<img src="./../img/fem_node.files/image001.png">�@�@
+				<img src="./../img/fem_node.files/image001.png">　　
 				<img src="./../img/fem_node.files/image002.png"></p>
-			<p><span class="ft">4</span>�p�`�v�f</p>
-			<p class="im"><span class="ft">1</span>���v�f�@�@�@�@�@<span class="ft">2</span>���v�f</p>
+			<p><span class="ft">4</span>角形要素</p>
+			<p class="im"><span class="ft">1</span>次要素　　　　　<span class="ft">2</span>次要素</p>
 			<p class="im">
-				<img src="./../img/fem_node.files/image003.png">�@�@
+				<img src="./../img/fem_node.files/image003.png">　　
 				<img src="./../img/fem_node.files/image004.png"></p>
-			<p><span class="ft">4</span>�ʑ̗v�f</p>
-			<p class="im"><span class="ft">1</span>���v�f</p>
+			<p><span class="ft">4</span>面体要素</p>
+			<p class="im"><span class="ft">1</span>次要素</p>
 			<p class="im"><img src="./../img/fem_node.files/image005.png"></p>
-			<p><span class="ft">6</span>�ʑ̗v�f</p>
-			<p class="im"><span class="ft">1</span>���v�f</p>
+			<p><span class="ft">6</span>面体要素</p>
+			<p class="im"><span class="ft">1</span>次要素</p>
 			<p class="im"><img src="./../img/fem_node.files/image006.png"></p>
 			<br>
-			<p>��}�̗l�Ɋe�v�f�̐ߓ_�ɂ͔ԍ�������U���܂��B
-					����U�鏇�Ԃ́A�����v���ł��B
-					�v�Z���ɂ͑S�ߓ_�ɏd�����Ȃ��ԍ�������U���邪�A
-					���̔ԍ��Ƃ͈قȂ�܂��B</p>
+			<p>上図の様に各要素の節点には番号が割り振られます。
+					割り振る順番は、反時計回りです。
+					計算時には全節点に重複しない番号が割り振られるが、
+					その番号とは異なります。</p>
 			<br>
 
 
@@ -82,7 +82,7 @@
 				</tr></table>
 			</h2>
 
-			<!-- �L�� -->
+			<!-- 広告 -->
 			<p><iframe src="./../questionnaire.html" width="650" height="325" scrolling="yes" frameborder="0"></iframe></p>
 		</div>
 
@@ -93,9 +93,9 @@
 	<div id="sub">
 		<iframe src="./../menu.html" id="menu" name="menu" width="180" scrolling="no" frameborder="0"></iframe>
 
-		<!-- �L�� -->
+		<!-- 広告 -->
 		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-		<!-- �o�i�[3�i���j���[���j -->
+		<!-- バナー3（メニュー欄） -->
 		<ins class="adsbygoogle"
 		     style="display:inline-block;width:160px;height:600px"
 		     data-ad-client="ca-pub-4382202381956938"
@@ -104,26 +104,26 @@
 		(adsbygoogle = window.adsbygoogle || []).push({});
 		</script>
 
-		<!-- �y�[�W�ʃJ�E���^ -->
+		<!-- ページ別カウンタ -->
 		<!--shinobi1-->
 		<script type="text/javascript" src="http://x7.tuzikaze.com/ufo/10850280G"></script>
 		<noscript><a href="http://x7.tuzikaze.com/bin/gg?10850280G" target="_blank">
 		<img src="http://x7.tuzikaze.com/bin/ll?10850280G" border="0"></a><br>
-		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://www.kyoseiotu.net/">�����̉��l��n�肾��</a></span></noscript>
+		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://www.kyoseiotu.net/">建物の価値を創りだす</a></span></noscript>
 		<!--shinobi2-->
 
 		<div class="sub-text">
 			<dl>
-				<dt>�J�E���^</dt>
+				<dt>カウンタ</dt>
 				<dd>
 					<!-- shinobi ct2 -->
 					<script type="text/javascript" src="http://ct2.tirirenge.com/sc/1515356"></script>
 					<noscript><a href="http://ct2.tirirenge.com/gg/1515356" target="_blank">
-					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="�J�E���^�[" /></a><br />
-					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">�|�C���g</a></span></noscript>
+					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="カウンター" /></a><br />
+					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">ポイント</a></span></noscript>
 					<!-- /shinobi ct2 -->
 					<br>
-				�i2011.3.15�`�j
+				（2011.3.15～）
 				</dd>
 			</dl>
 		</div>

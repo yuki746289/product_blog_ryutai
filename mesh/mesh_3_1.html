@@ -3,18 +3,18 @@
 <html lang="ja">
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta http-equiv="content-style-type" content="text/css">
 
-	<meta name="description" content="���̗͊w�E�L���v�f�@�ɂ�鐔�l�v�Z�T�C�g�B">
-	<meta name="keywords" content="���̗͊w,�L���v�f�@,���l�v�Z,���b�V��,FEM"> 
+	<meta name="description" content="流体力学・有限要素法による数値計算サイト。">
+	<meta name="keywords" content="流体力学,有限要素法,数値計算,メッシュ,FEM"> 
 
-	<title>�o�u�����b�V���@�i���b�V���j</title>
+	<title>バブルメッシュ法（メッシュ）</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
 
 <script>
 window.MathJax={
-  output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+  output:{displayOverflow:'overflow',linebreaks:{inline:false}},
   chtml:{displayAlign:'left',displayIndent:'0'}
 };
 </script>
@@ -26,14 +26,14 @@ window.MathJax={
 	<div id="wrapper">
 
 	<div id="header">
-		<h1><a href="./../index.html" title="�g�b�v�y�[�W��">�L���v�f�@�E���̗͊w�ɂ�鐔�l�v�Z</a></h1>
+		<h1><a href="./../index.html" title="トップページへ">有限要素法・流体力学による数値計算</a></h1>
 
 		<br style="clear:both;">
 		<ul style="margin-left:30px;">
-		<li><a href="./../index.html" title="index��">index</a>&gt;</li>
-		<li><a href="./mesh.html" title="���b�V����">���b�V��</a>&gt;</li>
-		<li><a href="./mesh_3.html" title="�ߓ_�̔z�u��">�ߓ_�̔z�u</a>&gt;</li>
-		<li><a href="./mesh_3_1.html" title="�o�u�����b�V���@��">�o�u�����b�V���@</a>&gt;</li>
+		<li><a href="./../index.html" title="indexへ">index</a>&gt;</li>
+		<li><a href="./mesh.html" title="メッシュへ">メッシュ</a>&gt;</li>
+		<li><a href="./mesh_3.html" title="節点の配置へ">節点の配置</a>&gt;</li>
+		<li><a href="./mesh_3_1.html" title="バブルメッシュ法へ">バブルメッシュ法</a>&gt;</li>
 		</ul>
 		<hr>
 	</div>
@@ -41,7 +41,7 @@ window.MathJax={
 	<div id="main" >
 
 	<div id="image">
-		<p>���̗͊w���琔�l�v�Z�܂�</p>
+		<p>流体力学から数値計算まで</p>
 		<p><img src="./../img/shiki1.gif"></p>
 		<p><img src="./../img/shiki2.gif"></p>
 	</div>
@@ -50,91 +50,91 @@ window.MathJax={
 
 		<div id="content-text">
 
-			<h2>�L��</h2>
+			<h2>広告</h2>
 			<p><iframe src="./../ad.html" width="470" height="60" scrolling="no" frameborder="0"></iframe></p>
 			<br>
 
-			<h2>�o�u�����b�V���@(bubble mesh method)</h2>
-			<p>��͂̐��x���グ�邽�߂ɂ́A�ł��邾���ߓ_�����炩�ɔz�u����K�v������܂��B
-					�܂��A���b�V���쐬���X���[�Y�ɍs�����Ƃ��ł��܂��B�����ł́A���̂悤�ȕ��@�Őߓ_��z�u���Ă݂܂��B</p>
+			<h2>バブルメッシュ法(bubble mesh method)</h2>
+			<p>解析の精度を上げるためには、できるだけ節点を滑らかに配置する必要があります。
+					また、メッシュ作成もスムーズに行うことができます。ここでは、次のような方法で節点を配置してみます。</p>
 			<p class="im">
 				<img src="./../img/mesh_node_buble.files/image001.png">
 				<img src="./../img/mesh_node_buble.files/image002.png">
 				<img src="./../img/mesh_node_buble.files/image003.png">
 			</p>
 			<br>
-			<p>��}�̗l�ɒ������W���2�̐ߓ_������Ƃ��܂��B���ꂼ��ʒu�x�N�g����
+			<p>上図の様に直交座標上に2つの節点があるとします。それぞれ位置ベクトルを
 				<span class="math-inline" id="formula-mesh-3-1-004" data-source-image="./../img/mesh_node_buble.files/image004.png">\(\vec{p}_{1}\)</span>,
 				<span class="math-inline" id="formula-mesh-3-1-005" data-source-image="./../img/mesh_node_buble.files/image005.png">\(\vec{p}_{2}\)</span>
-					�A���a��<span class="ft"><i>r</i><sub>1</sub></span>
+					、半径を<span class="ft"><i>r</i><sub>1</sub></span>
 					, <span class="ft"><i>r</i><sub>2</sub></span>
-					�Ƃ��܂��B���̎��A2�̐ߓ_�ɓ����͎͂����ƂȂ�܂��B</p>
+					とします。この時、2つの節点に働く力は次式となります。</p>
 			<div class="math-block" id="formula-mesh-3-1-006" data-source-image="./../img/mesh_node_buble.files/image006.png">
 \[\begin{aligned}\vec{F}_{12}&=-\vec{F}_{21}\\&=w\!\left(\frac{|\vec{p}_{2}-\vec{p}_{1}|}{r_{2}+r_{1}}\right)\frac{\vec{p}_{2}-\vec{p}_{1}}{|\vec{p}_{2}-\vec{p}_{2}|}\end{aligned}\]
 </div>
 			<br>
-			<p>�����ŁA<span class="ft"><i>w</i></span>�͏d�݊֐��ł���A
-					���̎��͏d�݊֐��ƕ����x�N�g���̐ς�\���Ă��܂��B
-					�����ŁA���}�ł͈��́A�E�}�ł͐˗͂��ߓ_�Ԃɓ����Ă��܂��B
-					����́A�����̏d�݊֐��ŕ\����܂��B</p>
+			<p>ここで、<span class="ft"><i>w</i></span>は重み関数であり、
+					この式は重み関数と方向ベクトルの積を表しています。
+					ここで、左図では引力、右図では斥力が節点間に働いています。
+					これは、次式の重み関数で表されます。</p>
 			<p class="im"><img src="./../img/mesh_node_buble.files/image007.png"></p>
 			<br>
-			<p><span class="ft"><i>w</i> < 1</span>�̏ꍇ�́A�˗́A
-				<span class="ft"><i>w</i> > 1</span>�̏ꍇ�͈��͂������܂��B
-				���ɉ��}�̗l�Ɏ��͂ɕ����̐ߓ_������ꍇ���l���܂��B</p>
+			<p><span class="ft"><i>w</i> < 1</span>の場合は、斥力、
+				<span class="ft"><i>w</i> > 1</span>の場合は引力が働きます。
+				次に下図の様に周囲に複数の節点がある場合を考えます。</p>
 			<p class="im"><img src="./../img/mesh_node_buble.files/image008.png"></p>
 			<br>
-			<p>���̏ꍇ�́A�ߓ_�ɓ����͎͂����ƂȂ�܂��B</p>
+			<p>この場合は、節点に働く力は次式となります。</p>
 			<div class="math-block" id="formula-mesh-3-1-009" data-source-image="./../img/mesh_node_buble.files/image009.png">
 \[\vec{F}=\sum_{i=1}^{n}w\!\left(\frac{|\vec{p}-\vec{p}_{i}|}{r+r_{i}}\right)\frac{\vec{p}-\vec{p}_{i}}{|\vec{p}-\vec{p}_{i}|}\]
 </div>
 			<br>
-			<p>����́A�˗͂����̌�����\���Ă��܂��B
-					�]���āA�^�C���X�e�b�v���Ƃ̐ߓ_�̕����x�N�g���͎����Ȃ�܂��B</p>
+			<p>これは、斥力が正の向きを表しています。
+					従って、タイムステップごとの節点の方向ベクトルは次式なります。</p>
 			<div class="math-block" id="formula-mesh-3-1-010" data-source-image="./../img/mesh_node_buble.files/image010.png">
 \[\begin{aligned}\vec{r}&=cr\frac{\vec{F}}{|\vec{F}|}\\&=cr\frac{1}{|\vec{F}|}\sum_{i=1}^{n}w\!\left(\frac{|\vec{p}-\vec{p}_{i}|}{r+r_{i}}\right)\frac{\vec{p}-\vec{p}_{i}}{|\vec{p}-\vec{p}_{i}|}\end{aligned}\]
 </div>
 			<br>
-			<p>�����ŁA<span class="ft"><i>c</i></span>�͊ɘa�W���ł���B</p>
+			<p>ここで、<span class="ft"><i>c</i></span>は緩和係数である。</p>
 			<br>
 
-			<h2>�ߓ_�̒ǉ��E�폜</h2>
-			<p>���炩�Ȑߓ_��z�u���邽�߂ɂ́A�ߓ_��ǉ��E�폜����K�v������܂��B
+			<h2>節点の追加・削除</h2>
+			<p>滑らかな節点を配置するためには、節点を追加・削除する必要があります。
 			<p class="im"><img src="./../img/mesh_node_buble.files/image011.png"></p>
-			<p>��}�̗l�ɐߓ_���ƂɎ��͂̐ߓ_�̑e�����l���܂��B
-				<span class="ft">2</span>�����̏ꍇ�A�ߓ_�̒ǉ��E�폜�̏����͎����Ȃ�܂��B<p>
-			<p class="im">�ߓ_�폜�F<span class="math-inline" id="formula-mesh-3-1-012" data-source-image="./../img/mesh_node_buble.files/image012.png">\(n(r_i)>8\)</span></p>
+			<p>上図の様に節点ごとに周囲の節点の粗密を考えます。
+				<span class="ft">2</span>次元の場合、節点の追加・削除の条件は次式なります。<p>
+			<p class="im">節点削除：<span class="math-inline" id="formula-mesh-3-1-012" data-source-image="./../img/mesh_node_buble.files/image012.png">\(n(r_i)>8\)</span></p>
 			<br>
-			<p class="im">�ߓ_�ǉ��F<span class="math-inline" id="formula-mesh-3-1-013" data-source-image="./../img/mesh_node_buble.files/image013.png">\(n(r_i)<5\)</span></p>
+			<p class="im">節点追加：<span class="math-inline" id="formula-mesh-3-1-013" data-source-image="./../img/mesh_node_buble.files/image013.png">\(n(r_i)<5\)</span></p>
 			<br>
-			<p>�����ŁA�ߓ_�̐����x��<span class="ft"><i>n</i>(<i>r<sub>i</sub></i>)</span>�ł��B</p>
+			<p>ここで、節点の数密度を<span class="ft"><i>n</i>(<i>r<sub>i</sub></i>)</span>です。</p>
 			<br>
 
-			<h2>�ߓ_���a�̕␳</h2>
-			<p>�ߓ_�̔��a�́A�����̗l�ɋ����̉��d���ςŕ␳���܂����B</p>
+			<h2>節点半径の補正</h2>
+			<p>節点の半径は、次式の様に距離の加重平均で補正しました。</p>
 			<div class="math-block" id="formula-mesh-3-1-014" data-source-image="./../img/mesh_node_buble.files/image014.png">
 \[r=\frac{\displaystyle\sum_{i=1}^{n}w(|\vec{p}-\vec{p}_{i}|)r_i}{\displaystyle\sum_{i=1}^{n}w(|\vec{p}-\vec{p}_{i}|)}\]
 </div>
 			<br>
-			<p>�����ŁAw�͏d�݊֐��Ŏ����ƂȂ�܂��B</p>
+			<p>ここで、wは重み関数で次式となります。</p>
 			<div class="math-block" id="formula-mesh-3-1-015" data-source-image="./../img/mesh_node_buble.files/image015.png">
 \[w(d)=\frac{1}{d+10^{-3}}\]
 </div>
-			<p>�␳�̓^�C���X�e�b�v���Ƃɍs���܂��B</p>
+			<p>補正はタイムステップごとに行います。</p>
 			<br>
-			<h2>����</h2>
-			<p>2�����̏ꍇ�A���}�̗l�Ȍ��ʂɂȂ�܂����B</p>
+			<h2>結果</h2>
+			<p>2次元の場合、下図の様な結果になりました。</p>
 			<p><iframe width="425" height="349" src="http://www.youtube.com/embed/Voo9Bv1I6Us" frameborder="0" allowfullscreen></iframe></p>
 			<br>
-			<p>�f���[�j������</p>
+			<p>デローニ分割後</p>
 			<p class="im"><img width="500" height="250" src="./../img/result/mesh.jpg"></p>
 			<br>
-			<p>��`</p>
+			<p>矩形</p>
 			<p class="im"><img src="./../img/mesh_node_buble.files/image016.jpg"></p>
 			<br>
 			<p class="im"><img src="./../img/mesh_node_buble.files/image017.jpg"></p>
 			<br>
-			<p>�~�`</p>
+			<p>円形</p>
 			<p class="im"><img src="./../img/mesh_node_buble.files/image018.jpg"></p>
 			<br>
 			<p class="im"><img src="./../img/mesh_node_buble.files/image019.jpg"></p>
@@ -152,7 +152,7 @@ window.MathJax={
 				</tr></table>
 			</h2>
 
-			<!-- �L�� -->
+			<!-- 広告 -->
 			<p><iframe src="./../questionnaire.html" width="650" height="325" scrolling="yes" frameborder="0"></iframe></p>
 		</div>
 
@@ -163,9 +163,9 @@ window.MathJax={
 	<div id="sub">
 		<iframe src="./../menu.html" id="menu" name="menu" width="180" scrolling="no" frameborder="0"></iframe>
 
-		<!-- �L�� -->
+		<!-- 広告 -->
 		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-		<!-- �o�i�[3�i���j���[���j -->
+		<!-- バナー3（メニュー欄） -->
 		<ins class="adsbygoogle"
 		     style="display:inline-block;width:160px;height:600px"
 		     data-ad-client="ca-pub-4382202381956938"
@@ -174,26 +174,26 @@ window.MathJax={
 		(adsbygoogle = window.adsbygoogle || []).push({});
 		</script>
 
-		<!-- �y�[�W�ʃJ�E���^ -->
+		<!-- ページ別カウンタ -->
 		<!--shinobi1-->
 		<script type="text/javascript" src="http://x7.tuzikaze.com/ufo/10850280V"></script>
 		<noscript><a href="http://x7.tuzikaze.com/bin/gg?10850280V" target="_blank">
 		<img src="http://x7.tuzikaze.com/bin/ll?10850280V" border="0"></a><br>
-		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://www.pearlpig.com/">�A�C�f�A����ŕς�鋳��</a></span></noscript>
+		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://www.pearlpig.com/">アイデア次第で変わる教育</a></span></noscript>
 		<!--shinobi2-->
 
 		<div class="sub-text">
 			<dl>
-				<dt>�J�E���^</dt>
+				<dt>カウンタ</dt>
 				<dd>
 					<!-- shinobi ct2 -->
 					<script type="text/javascript" src="http://ct2.tirirenge.com/sc/1515356"></script>
 					<noscript><a href="http://ct2.tirirenge.com/gg/1515356" target="_blank">
-					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="�J�E���^�[" /></a><br />
-					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">�|�C���g</a></span></noscript>
+					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="カウンター" /></a><br />
+					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">ポイント</a></span></noscript>
 					<!-- /shinobi ct2 -->
 					<br>
-				�i2011.3.15�`�j
+				（2011.3.15～）
 				</dd>
 			</dl>
 		</div>
