@@ -1,25 +1,24 @@
 {
-  "page_key": "appendix_2",
-  "page_path": "appendix/appendix_2.html",
-  "source_dir": "img/appendix_sphere.files",
-  "source_fragment": "appendix_sphere.files",
+  "page_key": "appendix_3_1",
+  "page_path": "appendix/appendix_3_1.html",
+  "source_dir": "img/appendix_cord_r.files",
+  "source_fragment": "appendix_cord_r.files",
   "images": [
-    "002",
     "003",
-    "004",
     "005",
     "006",
     "007",
     "008",
     "009",
     "010",
-    "011",
-    "012"
+    "011"
   ],
-  "expected_math_blocks": 11,
+  "expected_math_blocks": 8,
   "formula_selector": "[data-source-image]",
   "retained_source_images": [
-    "001"
+    "001",
+    "002",
+    "004"
   ],
   "viewports": {
     "desktop": {
@@ -31,5 +30,11 @@
       "height": 844
     }
   },
-  "rerun_revision": 103
+  "rerun_revision": 104,
+  "retained_source_image_counts": {
+    "001": 1,
+    "002": 1,
+    "004": 2
+  },
+  "expected_retained_source_elements": 4
 }
