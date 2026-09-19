@@ -131,7 +131,7 @@ V_x={}&N_1V_{x,1}+N_2V_{x,2}+N_3V_{x,3}+N_4V_{x,4}\\
 =[N]\{V_x\},\\[4pt]
 V_y={}&N_1V_{y,1}+N_2V_{y,2}+N_3V_{y,3}+N_4V_{y,4},\\
 V_z={}&N_1V_{z,1}+N_2V_{z,2}+N_3V_{z,3}+N_4V_{z,4},\\
-P={}&N_1P_{x,1}+N_2P_{x,2}+N_3P_{x,3}+N_4P_{x,4}
+P={}&N_1P_{z,1}+N_2P_{z,2}+N_3P_{z,3}+N_4P_{z,4}
 \end{aligned}
 \]
 </div>
@@ -139,14 +139,11 @@ P={}&N_1P_{x,1}+N_2P_{x,2}+N_3P_{x,3}+N_4P_{x,4}
 			<p><span class="ft"><i>i</i></span>軸方向の離散化式は、次式となります。</p>
 			<div class="math-block" id="formula-fem-7-2-2-006" data-source-image="./../img/fem_d_momentum_tet.files/image006.png">
 \[
-\int_V
-\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
-\phi_i\,dV
-=
-\int_V
+\begin{aligned}
+&\int_V
 \begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
 \left(
-\frac{\partial V_i}{\partial t}
+\frac{\partial V_i}{\partial\tau}
 +V_x\frac{\partial V_i}{\partial X}
 +V_y\frac{\partial V_i}{\partial Y}
 +V_z\frac{\partial V_i}{\partial Z}
@@ -154,7 +151,32 @@ P={}&N_1P_{x,1}+N_2P_{x,2}+N_3P_{x,3}+N_4P_{x,4}
 -\frac{\partial\sigma^*_{yi}}{\partial Y}
 -\frac{\partial\sigma^*_{zi}}{\partial Z}
 -g_i^*
-\right)dV
+\right)dV\\
+={}&\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial V_i}{\partial\tau}dV
++V_x\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial V_i}{\partial X}dV
++V_y\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial V_i}{\partial Y}dV\\
+&+V_z\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial V_i}{\partial Z}dV
+-\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial\sigma^*_{xi}}{\partial X}dV
+-\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial\sigma^*_{yi}}{\partial Y}dV\\
+&-\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial\sigma^*_{zi}}{\partial Z}dV
+-\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+g_i^*dV
+\end{aligned}
 \]
 </div>
 			<br><br>
