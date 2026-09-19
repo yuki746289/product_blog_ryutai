@@ -1,0 +1,50 @@
+{
+  "category": "heat",
+  "pages": [
+    {
+      "path": "heat/heat.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 0
+    },
+    {
+      "path": "heat/heat_1.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 0
+    },
+    {
+      "path": "heat/heat_2.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 0
+    },
+    {
+      "path": "heat/heat_4.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 0
+    },
+    {
+      "path": "heat/heat_5.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 1
+    },
+    {
+      "path": "heat/heat_7.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 0
+    },
+    {
+      "path": "heat/heat_8.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 0
+    }
+  ],
+  "viewports": {
+    "desktop": {
+      "width": 1440,
+      "height": 1000
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844
+    }
+  }
+}
