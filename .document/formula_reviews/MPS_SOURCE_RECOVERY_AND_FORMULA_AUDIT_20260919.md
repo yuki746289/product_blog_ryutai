@@ -155,3 +155,45 @@ Acceptance:
 
 Final QA result is recorded in:
 `.document/formula_reviews/MPS_FINAL_BROWSER_QA_20260919.md`
+
+
+## 10. 2026-09-19 source re-audit after recovery
+
+Recovered Word-rendered Equation.3 output was re-compared against all 48 MathJax formulas.
+
+- source-recoverable formulas checked: **48/48**
+- formulas already matching source: **47**
+- transcription differences found: **1**
+- remaining source-blocked formula: **1** (`mps_6_2/image022.gif`)
+
+### image020 correction
+
+Page:
+- `mps/mps_6_2.html`
+
+Source mapping:
+- `img/mps_fluid_count.files/image020.gif`
+
+The recovered Word-rendered source shows the left-hand side as:
+
+`\\nabla^2 P_j^{k+1}`
+
+The MathJax transcription had:
+
+`\\nabla^2 P_i^{k+1}`
+
+The normal HTML on `develop` was changed back to the source-visible `P_j` form.
+
+This is a source-preservation correction only. No theoretical normalization was applied.
+
+### Current MPS final source state
+
+- original site references: **49**
+- recovered authoritative Word source: **48**
+- MathJax reflected: **48**
+- source re-audited: **48/48**
+- actual residual MPS `<img>`: **1**
+- residual: `mps/mps_6_2.html -> image022.gif`
+- image022: **SOURCE BLOCKED / HOLD**
+
+The Visio materials were also rechecked. `HP図.vsd` contains pressure/gradient-related material, but no object can be mapped one-to-one to image022 with sufficient confidence. Therefore image022 remains HOLD.
