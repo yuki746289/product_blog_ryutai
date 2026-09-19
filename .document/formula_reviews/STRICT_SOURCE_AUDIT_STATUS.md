@@ -1574,3 +1574,25 @@ MPSカテゴリのHTMLが参照する49件のGIFについて、正本回収経�
 
 次工程は **本番反映判断 → FTP/FTPS反映 → 公開サイトスモークテスト**。
 MPS追加探索は正本取得手段が見つかるまで行わない。
+
+
+## 2026-09-19 MPS source recovery recheck
+
+MPS 49参照を再確認した。
+
+- 正本: `.document/formula_reviews/MPS_SOURCE_RECOVERY_RECHECK_20260919.md`
+- develop上の参照: **49/49確認**
+- Library上の `HP.7z` / `HP(1).7z`: **存在確認**
+- raw-byte materialize: **Project権限制約で失敗**
+- Word原稿: **未発見**
+- GitHub上の元画像/Word/PDF資産: **未発見**
+- 過去FTPS固定名49件確認: **recovered 0 / missing 49**
+- 推測復元: **禁止継続**
+- Status: **SOURCE BLOCKED / HOLD**
+
+以前の「HP.7zが存在するか不明」状態からは進展しており、現在の主障害は
+**Library実体を実行環境へraw byteとして取得できないこと**。
+
+再開条件:
+1. `HP.7z` / `HP(1).7z` のraw-byte取得が可能になる
+2. MPS Word原稿または元GIFを別経路で取得する
