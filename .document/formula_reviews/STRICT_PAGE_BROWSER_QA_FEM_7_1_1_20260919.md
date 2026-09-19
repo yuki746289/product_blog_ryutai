@@ -8,7 +8,7 @@
 | Viewport | Blocks | Rendered | MathJax errors | Local scroll | Uncontained | Page overflow | Legacy source imgs |
 |---|---:|---:|---:|---:|---:|---|---:|
 | desktop | 20 | 20 | 0 | 0 | 0 | NO | 0 |
-| mobile | 20 | 20 | 0 | 13 | 0 | NO | 0 |
+| mobile | 20 | 20 | 0 | 11 | 0 | NO | 0 |
 
 ## Failures
 
