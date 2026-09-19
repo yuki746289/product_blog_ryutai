@@ -2,10 +2,11 @@
 
 ## Status
 
-**READY FOR EXPLICIT PRODUCTION APPROVAL**
+**BLOCKED — SOURCE-FIDELITY REVALIDATION REQUIRED**
 
 本番サイトへの書込みはまだ行っていない。
-ユーザー指定どおり、デプロイ手前で停止する。
+2026-09-20に数式の元画像忠実性（改行・配置）と文字コード整合性の仕様を修正したため、旧Browser QA PASSはデプロイ判定には使用しない。
+再検証完了まで本番デプロイを禁止する。
 
 ## 完了済み
 
@@ -34,7 +35,15 @@ MPS `mps/mps_6_2.html` の former `image022.gif` は正本未回収のため、
 - missing referenced assets: **0**
 - unreviewed formula images: **0**
 
-### Browser QA
+### Source-fidelity revalidation (2026-09-20)
+
+- canonical spec: `.document/formula_reviews/SOURCE_FIDELITY_SPEC_20260920.md`
+- required encoding: UTF-8 bytes + UTF-8 declarations
+- automatic MathJax line breaking: prohibited for source-faithful formulas
+- responsive rule: preserve source line structure; use local horizontal scroll when needed
+- status: **REVALIDATION IN PROGRESS**
+
+### Previous Browser QA (historical; not sufficient for deployment)
 
 Final full-site QA:
 - run: `35446925022`
@@ -109,7 +118,7 @@ Final MPS delta QA:
 - [x] develop反映
 - [x] MPS 49式反映
 - [x] MPS欠損画像0
-- [x] 最終Browser QA PASS
+- [ ] 2026-09-20 source-fidelity再検証 PASS
 - [x] 残存画像インベントリ更新
 - [x] 監査台帳更新
 - [x] デプロイ対象外パス確認方針
@@ -120,6 +129,6 @@ Final MPS delta QA:
 
 ## 現在位置
 
-**デプロイ直前。**
+**再検証中。デプロイ不可。**
 
-次の操作は本番FTPS書込みになるため、ここでは実施しない。
+次の操作は再検証結果の確認・必要箇所の修正であり、本番FTPS書込みではない。
