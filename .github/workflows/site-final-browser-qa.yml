@@ -1,0 +1,329 @@
+# Created: 2026-09-19T09:15:00+09:00
+name: Site Final Browser QA
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/site-final-browser-qa.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Chromium
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Start local site
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/site-final-qa-http.log 2>&1 &
+          sleep 1
+
+      - name: Run all-page desktop/mobile QA
+        run: |
+          python3 - <<'PY'
+          import json, re
+          from pathlib import Path
+          from urllib.parse import urlparse
+          from playwright.sync_api import sync_playwright
+
+          root=Path('.')
+          excluded_dirs={'.git','.document','.github','node_modules'}
+          excluded_suffixes=('_reaudit.html','_mathjax_audit.html')
+
+          pages=[]
+          for p in root.rglob('*.html'):
+              if set(p.parts) & excluded_dirs:
+                  continue
+              if p.name.endswith(excluded_suffixes):
+                  continue
+              pages.append(p.as_posix())
+          pages=sorted(pages)
+          if len(pages)!=205:
+              raise RuntimeError(f'Expected 205 normal HTML pages, found {len(pages)}')
+
+          viewports={
+              'desktop':{'width':1440,'height':1000},
+              'mobile':{'width':390,'height':844},
+          }
+
+          out=Path('site-final-browser-qa')
+          shots=out/'failures'
+          shots.mkdir(parents=True,exist_ok=True)
+          all_results=[]
+          failures=[]
+
+          def is_local(url):
+              try:
+                  u=urlparse(url)
+                  return (not u.netloc) or u.hostname in ('127.0.0.1','localhost')
+              except Exception:
+                  return False
+
+          with sync_playwright() as p:
+              browser=p.chromium.launch(headless=True)
+              for vp_name,vp in viewports.items():
+                  ctx=browser.new_context(viewport=vp,device_scale_factor=1)
+
+                  def route_handler(route):
+                      url=route.request.url
+                      if is_local(url) or url.startswith('https://cdn.jsdelivr.net/'):
+                          route.continue_()
+                      else:
+                          route.abort()
+                  ctx.route('**/*',route_handler)
+                  pg=ctx.new_page()
+
+                  for idx,page_path in enumerate(pages,1):
+                      page_errors=[]
+                      handler=lambda exc,store=page_errors: store.append(str(exc))
+                      pg.on('pageerror',handler)
+
+                      url='http://127.0.0.1:8000/'+page_path
+                      nav_error=None
+                      try:
+                          pg.goto(url,wait_until='domcontentloaded',timeout=20000)
+                      except Exception as exc:
+                          nav_error=f'{type(exc).__name__}: {exc}'
+
+                      formula_count=0
+                      unrendered=0
+                      merror=0
+                      local_scroll=0
+                      uncontained=0
+
+                      if nav_error is None:
+                          formula_count=pg.locator('.math-block, .math-inline').count()
+                          if formula_count:
+                              try:
+                                  pg.wait_for_function(
+                                      '() => window.MathJax && MathJax.startup && MathJax.startup.promise',
+                                      timeout=30000
+                                  )
+                                  pg.evaluate('async()=>{await MathJax.startup.promise;}')
+                                  pg.wait_for_timeout(150)
+                              except Exception as exc:
+                                  page_errors.append('MathJax startup: '+str(exc))
+
+                              merror=pg.locator('mjx-merror').count()
+                              formula_locs=pg.locator('.math-block, .math-inline')
+                              for i in range(formula_locs.count()):
+                                  el=formula_locs.nth(i)
+                                  if el.locator('mjx-container').count()<1:
+                                      unrendered+=1
+                                  dims=el.evaluate(
+                                      '(e)=>({cw:e.clientWidth,sw:e.scrollWidth,ox:getComputedStyle(e).overflowX})'
+                                  )
+                                  if dims['sw']>dims['cw']+1:
+                                      local_scroll+=1
+                                      if dims['ox'] not in ('auto','scroll'):
+                                          uncontained+=1
+
+                      page_overflow=False
+                      broken_local=[]
+                      expected_mps_missing=[]
+                      if nav_error is None:
+                          dims=pg.evaluate(
+                              '() => ({cw:document.documentElement.clientWidth,sw:document.documentElement.scrollWidth})'
+                          )
+                          page_overflow=dims['sw']>dims['cw']+2
+
+                          imgs=pg.locator('img')
+                          for i in range(imgs.count()):
+                              img=imgs.nth(i)
+                              src=img.get_attribute('src') or ''
+                              if not src:
+                                  continue
+                              try:
+                                  abs_src=img.evaluate('(e)=>e.currentSrc || e.src')
+                                  natural=img.evaluate(
+                                      '(e)=>({w:e.naturalWidth,h:e.naturalHeight,complete:e.complete})'
+                                  )
+                              except Exception:
+                                  continue
+                              if not is_local(abs_src):
+                                  continue
+                              if natural['complete'] and natural['w']==0:
+                                  rel=abs_src.split('127.0.0.1:8000/',1)[-1]
+                                  if re.search(r'^img/mps_[^/]+[.]files/image[0-9]+[.]gif$',rel,re.I):
+                                      expected_mps_missing.append(rel)
+                                  else:
+                                      broken_local.append(rel)
+
+                      row={
+                          'viewport':vp_name,
+                          'page':page_path,
+                          'navigation_error':nav_error,
+                          'page_errors':page_errors,
+                          'formula_count':formula_count,
+                          'mathjax_errors':merror,
+                          'unrendered':unrendered,
+                          'local_scroll':local_scroll,
+                          'uncontained':uncontained,
+                          'page_overflow':page_overflow,
+                          'unexpected_broken_local_images':sorted(set(broken_local)),
+                          'expected_mps_missing_images':sorted(set(expected_mps_missing)),
+                      }
+                      all_results.append(row)
+
+                      hard_fail=(
+                          nav_error is not None or
+                          bool(page_errors) or
+                          merror>0 or
+                          unrendered>0 or
+                          uncontained>0 or
+                          page_overflow or
+                          bool(broken_local)
+                      )
+                      if hard_fail:
+                          failures.append(row)
+                          safe=page_path.replace('/','__').replace('.html','')
+                          try:
+                              pg.screenshot(
+                                  path=str(shots/f'{vp_name}__{safe}.png'),
+                                  full_page=True,
+                                  animations='disabled'
+                              )
+                          except Exception:
+                              pass
+
+                      pg.remove_listener('pageerror',handler)
+                      if idx % 25 == 0:
+                          print(vp_name, idx, '/', len(pages), 'failures', len(failures))
+
+                  ctx.close()
+              browser.close()
+
+          expected_missing_per_viewport={}
+          for vp in viewports:
+              expected_missing_per_viewport[vp]=sum(
+                  len(r['expected_mps_missing_images'])
+                  for r in all_results
+                  if r['viewport']==vp
+              )
+
+          summary={
+              'pages':len(pages),
+              'viewports':list(viewports),
+              'checks':len(all_results),
+              'hard_failures':len(failures),
+              'expected_mps_missing_per_viewport':expected_missing_per_viewport,
+              'total_mathjax_errors':sum(r['mathjax_errors'] for r in all_results),
+              'total_unrendered':sum(r['unrendered'] for r in all_results),
+              'total_uncontained':sum(r['uncontained'] for r in all_results),
+              'pages_with_overflow':sum(1 for r in all_results if r['page_overflow']),
+              'unexpected_broken_local_images':sum(
+                  len(r['unexpected_broken_local_images']) for r in all_results
+              ),
+          }
+
+          (out/'manifest.json').write_text(
+              json.dumps({'summary':summary,'failures':failures,'results':all_results},
+                         ensure_ascii=False,indent=2),
+              encoding='utf-8'
+          )
+
+          report=Path('.document/formula_reviews/SITE_FINAL_BROWSER_QA_20260919.md')
+          lines=[
+              '# Site Final Browser QA — 2026-09-19','',
+              '- Scope: normal HTML pages on develop',
+              '- Browser: Chromium / Playwright',
+              '- Viewports: desktop 1440x1000, mobile 390x844',
+              f'- Pages: **{summary["pages"]}**',
+              f'- Total viewport checks: **{summary["checks"]}**',
+              f'- Hard failures: **{summary["hard_failures"]}**',
+              f'- MathJax errors: **{summary["total_mathjax_errors"]}**',
+              f'- Unrendered formula containers: **{summary["total_unrendered"]}**',
+              f'- Uncontained formula overflow: **{summary["total_uncontained"]}**',
+              f'- Viewport checks with whole-page horizontal overflow: **{summary["pages_with_overflow"]}**',
+              f'- Unexpected broken local images: **{summary["unexpected_broken_local_images"]}**',
+              f'- Expected MPS missing placements (desktop): **{expected_missing_per_viewport["desktop"]}**',
+              f'- Expected MPS missing placements (mobile): **{expected_missing_per_viewport["mobile"]}**',
+              '- Production deployment: not performed.','',
+              '## Failure details',''
+          ]
+
+          if failures:
+              lines += [
+                  '| Viewport | Page | Nav | Page errors | MathJax | Unrendered | Uncontained | Page overflow | Broken local images |',
+                  '|---|---|---|---:|---:|---:|---:|---|---:|'
+              ]
+              for r in failures:
+                  lines.append(
+                      f'| {r["viewport"]} | {r["page"]} | '
+                      f'{"ERR" if r["navigation_error"] else "OK"} | '
+                      f'{len(r["page_errors"])} | {r["mathjax_errors"]} | '
+                      f'{r["unrendered"]} | {r["uncontained"]} | '
+                      f'{"YES" if r["page_overflow"] else "NO"} | '
+                      f'{len(r["unexpected_broken_local_images"])} |'
+                  )
+          else:
+              lines.append('- None.')
+
+          lines += [
+              '',
+              '## Interpretation','',
+              '- MPS source GIF references are a documented HOLD and are counted separately from unexpected broken images.',
+              '- Whole-page horizontal overflow is a failure.',
+              '- Formula-local scroll is allowed only when contained by the formula element.',
+              '- External ads, trackers, and video embeds are blocked during this local structural QA.',
+          ]
+          report.write_text('\n'.join(lines)+'\n',encoding='utf-8')
+          Path('/tmp/site-final-status.json').write_text(
+              json.dumps(summary),encoding='utf-8'
+          )
+          PY
+
+      - name: Upload QA artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-final-browser-qa
+          path: site-final-browser-qa
+          retention-days: 7
+
+      - name: Commit QA report
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .document/formula_reviews/SITE_FINAL_BROWSER_QA_20260919.md
+          if ! git diff --cached --quiet; then
+            git commit -m 'docs: record site final browser QA'
+            for attempt in 1 2 3 4 5; do
+              git pull --rebase origin develop
+              if git push origin HEAD:develop; then break; fi
+              if [ "$attempt" -eq 5 ]; then exit 1; fi
+              sleep 2
+            done
+          fi
+
+      - name: Assert final QA
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          s=json.loads(Path('/tmp/site-final-status.json').read_text())
+          print(s)
+          if s['expected_mps_missing_per_viewport'].get('desktop') != 49:
+              raise SystemExit('desktop MPS missing count != 49')
+          if s['expected_mps_missing_per_viewport'].get('mobile') != 49:
+              raise SystemExit('mobile MPS missing count != 49')
+          if s['hard_failures'] != 0:
+              raise SystemExit(f'hard failures: {s["hard_failures"]}')
+          PY
