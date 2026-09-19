@@ -30,7 +30,7 @@
 | Word数式 ↔ 既存LaTeX差分監査 | **49/49** | 完了 |
 | 元HP画像 ↔ Word直接照合 | **10/49** | pilot 001～010 完了、10/10で式内容一致 |
 | 差分修正のHTML反映 | **完了** | develop反映済み |
-| 静的LaTeX/HTML QA | 未実施 | 次工程 |
+| 静的LaTeX/HTML QA | **完了** | PASS |
 | MathJaxブラウザ Pass 2 | 未実施 | 次工程 |
 | 元画像↔Word追加スポット監査 | 10/49 | 011以降を継続 |
 
@@ -114,8 +114,24 @@ g_i^*dV
 \]
 ```
 
+## 静的LaTeX/HTML QA 結果
+
+2026-09-19 実施。
+
+- math-block: **51個**
+- ID重複: **0**
+- 元画像参照: **image001～image049 = 49/49存在**
+- 意図した再掲: image031 / image037
+- `\\[` / `\\]` の表示数式区切り: **全ブロック整合**
+- `aligned`, `bmatrix`, `cases` の begin/end: **全ブロック整合**
+- image005 の `P_{z,*}`: 維持確認
+- image006 の `τ`: 維持確認
+- image011/012 の二重負号: 維持確認
+
+**静的QA = PASS。**
+
 ## 次回再開位置
 
-1. `fem_7_2_2.html` の静的LaTeX/HTML QA。
-2. MathJax Pass 2。
-3. 元HP画像↔Wordの追加スポット監査（011以降）。
+1. MathJaxブラウザ Pass 2。
+2. 元HP画像↔Wordの追加スポット監査（011以降）。
+3. Pass 2結果を本進捗ファイルへ追記。
