@@ -1,13 +1,24 @@
 {
-  "page_key": "mps_2",
-  "page_path": "mps/mps_2.html",
-  "source_dir": "img/mps_num.files",
-  "source_fragment": "mps_num.files",
+  "page_key": "mps_3",
+  "page_path": "mps/mps_3.html",
+  "source_dir": "img/mps_nabra.files",
+  "source_fragment": "mps_nabra.files",
   "source_ext": "gif",
   "images": [
-    "001"
+    "001",
+    "002",
+    "003",
+    "004",
+    "005",
+    "006",
+    "007",
+    "008",
+    "009",
+    "010",
+    "011",
+    "012"
   ],
-  "expected_math_blocks": 1,
+  "expected_math_blocks": 12,
   "formula_selector": "[data-source-image]",
   "retained_source_images": [],
   "viewports": {
@@ -20,5 +31,5 @@
       "height": 844
     }
   },
-  "rerun_revision": 112
+  "rerun_revision": 113
 }
