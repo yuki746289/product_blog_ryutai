@@ -1,0 +1,118 @@
+name: FEM Final Nonformula Page QA
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.document/formula_reviews/FEM_FINAL_PAGE_QA_TARGET.json'
+      - '.github/workflows/fem-final-nonformula-page-qa.yml'
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Chromium
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Start server
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/fem-final-http.log 2>&1 &
+          sleep 1
+
+      - name: Run final FEM page QA
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+
+          cfg=json.loads(Path('.document/formula_reviews/FEM_FINAL_PAGE_QA_TARGET.json').read_text(encoding='utf-8'))
+          out=Path('fem-final-page-qa')
+          out.mkdir(exist_ok=True)
+          rows=[]
+          failures=[]
+
+          with sync_playwright() as p:
+              browser=p.chromium.launch(headless=True)
+              for item in cfg['pages']:
+                  page_path=item['path']
+                  key=page_path.replace('/','_').replace('.html','')
+                  for vn,vp in cfg['viewports'].items():
+                      ctx=browser.new_context(viewport=vp,device_scale_factor=1)
+                      pg=ctx.new_page()
+                      page_errors=[]
+                      pg.on('pageerror',lambda exc,a=page_errors:a.append(str(exc)))
+
+                      pg.goto(f'http://127.0.0.1:8000/{page_path}',wait_until='domcontentloaded',timeout=120000)
+                      pg.wait_for_timeout(300)
+
+                      math_blocks=pg.locator('.math-block').count()
+                      content_imgs=pg.locator('img[src*=".files/image"]').count()
+                      broken=[]
+                      for i in range(content_imgs):
+                          el=pg.locator('img[src*=".files/image"]').nth(i)
+                          src=el.get_attribute('src') or ''
+                          ok=el.evaluate("e=>e.complete && e.naturalWidth>0 && e.naturalHeight>0")
+                          if not ok:
+                              broken.append(src)
+
+                      d=pg.evaluate("()=>({cw:document.documentElement.clientWidth,sw:document.documentElement.scrollWidth})")
+                      page_overflow=d['sw']>d['cw']+2
+
+                      pg.screenshot(path=str(out/f'{key}_{vn}.png'),full_page=True,animations='disabled')
+
+                      row={
+                        'page':page_path,'viewport':vn,
+                        'math_blocks':math_blocks,
+                        'content_images':content_imgs,
+                        'broken_images':broken,
+                        'page_overflow':page_overflow,
+                        'page_errors':page_errors
+                      }
+                      rows.append(row)
+
+                      if math_blocks!=item['expected_math_blocks']:
+                          failures.append(f"{page_path} {vn}: math-blocks={math_blocks}, expected={item['expected_math_blocks']}")
+                      if content_imgs!=item['expected_local_images']:
+                          failures.append(f"{page_path} {vn}: local images={content_imgs}, expected={item['expected_local_images']}")
+                      if broken:
+                          failures.append(f"{page_path} {vn}: broken local images={broken}")
+                      if page_overflow:
+                          failures.append(f"{page_path} {vn}: page-wide horizontal overflow")
+                      if page_errors:
+                          failures.append(f"{page_path} {vn}: page errors={len(page_errors)}")
+                      ctx.close()
+              browser.close()
+
+          status='PASS' if not failures else 'FAIL'
+          (out/'manifest.json').write_text(json.dumps({'status':status,'rows':rows,'failures':failures},ensure_ascii=False,indent=2),encoding='utf-8')
+
+          report=['# FEM Final Nonformula Page QA — 2026-09-19','',f'- Overall: **{status}**','',
+                  '| Page | Viewport | Math blocks | Local imgs | Broken imgs | Page overflow |',
+                  '|---|---|---:|---:|---:|---|']
+          for r in rows:
+              report.append(f"| {r['page']} | {r['viewport']} | {r['math_blocks']} | {r['content_images']} | {len(r['broken_images'])} | {'YES' if r['page_overflow'] else 'NO'} |")
+          report += ['', '## Failures',''] + ([f'- {x}' for x in failures] if failures else ['- None.'])
+          (out/'report.md').write_text('\n'.join(report)+'\n',encoding='utf-8')
+
+          if failures:
+              raise SystemExit(1)
+          PY
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fem-final-page-qa
+          path: fem-final-page-qa
+          retention-days: 7
