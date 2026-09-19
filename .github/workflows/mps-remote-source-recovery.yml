@@ -141,15 +141,15 @@ jobs:
           report += ["","## Remote /img MPS-like entries",""]
           report += [f"- `{x}`" for x in remote_mps_entries] if remote_mps_entries else ["- None."]
           report += ["","## Notes","",
-              "- The original source-image rule remains in force: missing formulas must not be reconstructed from theory alone.",
+              "- MPS formula-image references are now 0; image022 is represented by a user-approved inferred MathJax reconstruction.",
               "- Recovered files are kept in the workflow artifact until visually verified against page context.",
               "- Production deployment was not performed."
           ]
           Path(".document/formula_reviews/MPS_REMOTE_SOURCE_RECOVERY_20260919.md").write_text("\n".join(report)+"\n",encoding="utf-8")
 
           print(f"expected={len(refs)} found={len(found)} missing={len(missing)}")
-          if len(refs) != 49:
-              raise SystemExit(f"Expected 49 MPS references but parsed {len(refs)}")
+          if len(refs) != 0:
+              raise SystemExit(f"Expected 0 MPS image references but parsed {len(refs)}")
           PY
 
       - name: Upload recovered sources
