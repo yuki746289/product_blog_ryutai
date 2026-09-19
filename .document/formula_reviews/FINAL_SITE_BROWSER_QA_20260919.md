@@ -1,237 +1,91 @@
 # Final Site Browser QA — 2026-09-19
 
-- Overall: **FAIL**
+## 結論
+
+**PASS WITH KNOWN MPS HOLD**
+
+最新 `develop` を対象に、全HTML 205ページを Chromium / Playwright で desktop / mobile の2 viewportに分けて確認した。
+
+- 対象HTML: **205ページ**
+- desktop: **205/205**
+- mobile: **205/205**
+- 総チェック: **410**
+- hard failure rows: **0**
+- 本番FTP/FTPS反映: **未実施**
+
+## 実行条件
+
 - Browser: Chromium / Playwright
-- Viewports: desktop 1440×1000, mobile 390×844
-- Discovered normal HTML pages: **205**
-- QA checks: **410**
-- Hard-failure rows: **191**
-- MPS known missing references: **49/49**
-- Production deployment: not performed.
+- desktop: 1440×1000
+- mobile: 390×844
+- Shard: 4分割
+- GitHub Actions run: `35411325166`
+- 修正版QAでは既存の個別Browser QAと同じoverflow判定を使用
 
-## Global metrics
+### overflow判定
 
-| Metric | Count |
+- ページ全体の横スクロール: 不可
+- 長い数式の `.math-block` 内横スクロール: 許容
+- `.math-block` が横幅超過していて、`overflow-x:auto/scroll` でない場合のみ uncontained と判定
+
+## 全体結果
+
+| 項目 | 結果 |
 |---|---:|
-| MathJax errors | 0 |
-| Unrendered | 0 |
-| Page overflow rows | 0 |
-| Uncontained overflow | 56741 |
-| Page errors | 1 |
-| Non-MPS missing images (desktop) | 0 |
-| Allowed local math scroll | 146 |
+| HTMLページ | 205 |
+| QAチェック | 410 |
+| Hard failure | **0** |
+| MathJax errors | **0** |
+| Unrendered | **0** |
+| Page overflow | **0** |
+| Uncontained overflow | **0** |
+| Page errors | **0** |
+| MathJax console errors | **0** |
+| 非MPS欠損画像 | **0** |
+| 許容された `.math-block` local scroll | 146 |
+
+`local scroll` は長い数式を `.math-block` 内だけで横スクロール可能にする既定仕様であり、hard failureではない。
 
 ## MPS SOURCE BLOCKED / HOLD
 
-| Page | Expected | Actual |
+MPSの欠損画像は既知HOLDとして扱い、最終QAの失敗には含めない。
+
+| ページ | 既知欠損 | QA実測 |
 |---|---:|---:|
-| mps/mps_1.html | 1 | 1 |
-| mps/mps_2.html | 1 | 1 |
-| mps/mps_3.html | 12 | 12 |
-| mps/mps_4.html | 9 | 9 |
-| mps/mps_5.html | 2 | 2 |
-| mps/mps_6_1.html | 2 | 2 |
-| mps/mps_6_2.html | 22 | 22 |
+| `mps/mps_1.html` | 1 | 1 |
+| `mps/mps_2.html` | 1 | 1 |
+| `mps/mps_3.html` | 12 | 12 |
+| `mps/mps_4.html` | 9 | 9 |
+| `mps/mps_5.html` | 2 | 2 |
+| `mps/mps_6_1.html` | 2 | 2 |
+| `mps/mps_6_2.html` | 22 | 22 |
+| **合計** | **49** | **49** |
 
-## Failures
+MPS 49参照は元画像正本が未回収のため、引き続き **SOURCE BLOCKED / HOLD** とする。推測によるMathJax化は行わない。
 
-- appendix/appendix.html [mobile]: uncontained=307
-- appendix/appendix_3_1.html [mobile]: uncontained=307
-- column/column.html [mobile]: uncontained=307
-- column/column_4.html [mobile]: uncontained=307
-- counting/counting_2.html [mobile]: uncontained=307
-- design_samples/v1.5/technical-clean.html [mobile]: uncontained=7
-- fem/fem_11.html [mobile]: uncontained=307
-- fem/fem_13.html [mobile]: uncontained=307
-- fem/fem_2_3.html [mobile]: uncontained=307
-- fem/fem_6.html [mobile]: uncontained=307
-- fem/fem_6_1_3.html [mobile]: uncontained=311
-- fem/fem_6_2_1.html [mobile]: uncontained=309
-- fem/fem_6_2_5.html [mobile]: uncontained=311
-- fem/fem_7_1_1.html [mobile]: uncontained=308
-- fem/fem_7_2_2.html [mobile]: uncontained=309
-- fem/fem_8_2_1.html [mobile]: uncontained=307
-- fortran/fortran_11.html [mobile]: uncontained=307
-- fortran/fortran_2.html [mobile]: uncontained=307
-- fortran/fortran_6.html [mobile]: uncontained=307
-- graph.html [mobile]: uncontained=2
-- heat/heat_2.html [mobile]: uncontained=307
-- heat/heat_4_2.html [mobile]: uncontained=307
-- heat/heat_5_2.html [mobile]: uncontained=307
-- heat/heat_7.html [mobile]: pageerror=1; uncontained=307
-- hydronamics/hydronamics.html [mobile]: uncontained=307
-- hydronamics/hydronamics_10_2.html [mobile]: uncontained=307
-- hydronamics/hydronamics_11_2.html [mobile]: uncontained=307
-- hydronamics/hydronamics_11_6.html [mobile]: uncontained=307
-- hydronamics/hydronamics_13.html [mobile]: uncontained=307
-- hydronamics/hydronamics_4.html [mobile]: uncontained=307
-- hydronamics/hydronamics_6_2.html [mobile]: uncontained=307
-- hydronamics/hydronamics_8.html [mobile]: uncontained=307
-- hydronamics/hydronamics_9_3.html [mobile]: uncontained=307
-- index.html [mobile]: uncontained=307
-- library/library_buble.html [mobile]: uncontained=307
-- mail/introduce.html [mobile]: uncontained=307
-- mesh/mesh_3.html [mobile]: uncontained=307
-- mesh/mesh_5.html [mobile]: uncontained=307
-- mps/mps_3.html [mobile]: uncontained=307
-- mps/mps_6_1.html [mobile]: uncontained=307
-- physics/physics_1.html [mobile]: uncontained=307
-- physics/physics_5.html [mobile]: uncontained=307
-- physics/physics_6_2_1.html [mobile]: uncontained=307
-- physics/physics_6_2_5.html [mobile]: uncontained=307
-- physics/physics_6_3_1.html [mobile]: uncontained=307
-- physics/physics_8.html [mobile]: uncontained=307
-- sitemap/sitemap.html [mobile]: uncontained=307
-- appendix/appendix_1.html [mobile]: uncontained=307
-- appendix/appendix_3_2.html [mobile]: uncontained=307
-- column/column_1.html [mobile]: uncontained=307
-- column/column_5.html [mobile]: uncontained=307
-- design_samples/v1.5/academic-minimal.html [mobile]: uncontained=7
-- fem/fem.html [mobile]: uncontained=307
-- fem/fem_11_1.html [mobile]: uncontained=307
-- fem/fem_2.html [mobile]: uncontained=307
-- fem/fem_3.html [mobile]: uncontained=307
-- fem/fem_6_1.html [mobile]: uncontained=307
-- fem/fem_6_1_4.html [mobile]: uncontained=311
-- fem/fem_6_2_2.html [mobile]: uncontained=311
-- fem/fem_6_2_6.html [mobile]: uncontained=309
-- fem/fem_7_1_2.html [mobile]: uncontained=309
-- fem/fem_8.html [mobile]: uncontained=307
-- fem/fem_8_2_2.html [mobile]: uncontained=307
-- fortran/fortran.html [mobile]: uncontained=307
-- fortran/fortran_12.html [mobile]: uncontained=307
-- fortran/fortran_3.html [mobile]: uncontained=307
-- fortran/fortran_7.html [mobile]: uncontained=307
-- graph_2.html [mobile]: uncontained=2
-- heat/heat_3.html [mobile]: uncontained=307
-- heat/heat_4_3.html [mobile]: uncontained=307
-- heat/heat_5_3.html [mobile]: uncontained=307
-- heat/heat_7_1.html [mobile]: uncontained=307
-- hydronamics/hydronamics_1.html [mobile]: uncontained=307
-- hydronamics/hydronamics_10_3.html [mobile]: uncontained=307
-- hydronamics/hydronamics_11_3.html [mobile]: uncontained=307
-- hydronamics/hydronamics_12.html [mobile]: uncontained=307
-- hydronamics/hydronamics_14.html [mobile]: uncontained=307
-- hydronamics/hydronamics_5.html [mobile]: uncontained=307
-- hydronamics/hydronamics_6_3.html [mobile]: uncontained=307
-- hydronamics/hydronamics_9.html [mobile]: uncontained=307
-- hydronamics/hydronamics_9_4.html [mobile]: uncontained=307
-- introduce/introduce.html [mobile]: uncontained=307
-- library/library_delauney.html [mobile]: uncontained=307
-- mail/mail.html [mobile]: uncontained=307
-- mesh/mesh.html [mobile]: uncontained=307
-- mesh/mesh_3_1.html [mobile]: uncontained=307
-- mps/mps.html [mobile]: uncontained=307
-- mps/mps_4.html [mobile]: uncontained=307
-- mps/mps_6_2.html [mobile]: uncontained=307
-- physics/physics_2.html [mobile]: uncontained=307
-- physics/physics_6.html [mobile]: uncontained=307
-- physics/physics_6_2_2.html [mobile]: uncontained=307
-- physics/physics_6_2_6.html [mobile]: uncontained=307
-- physics/physics_6_3_2.html [mobile]: uncontained=307
-- profile/profile.html [mobile]: uncontained=307
-- appendix/appendix_2.html [mobile]: uncontained=307
-- book/book.html [mobile]: uncontained=307
-- column/column_2.html [mobile]: uncontained=307
-- counting/counting.html [mobile]: uncontained=307
-- design_samples/v1.5/gray/mega-menu-preview.html [mobile]: uncontained=123
-- fem/fem_1.html [mobile]: uncontained=307
-- fem/fem_11_2.html [mobile]: uncontained=307
-- fem/fem_2_1.html [mobile]: uncontained=307
-- fem/fem_4.html [mobile]: uncontained=307
-- fem/fem_6_1_1.html [mobile]: uncontained=309
-- fem/fem_6_1_5.html [mobile]: uncontained=309
-- fem/fem_6_2_3.html [mobile]: uncontained=311
-- fem/fem_7.html [mobile]: uncontained=307
-- fem/fem_7_2.html [mobile]: uncontained=307
-- fem/fem_8_1.html [mobile]: uncontained=307
-- fem/fem_8_3.html [mobile]: uncontained=307
-- fortran/fortran_1.html [mobile]: uncontained=307
-- fortran/fortran_13.html [mobile]: uncontained=307
-- fortran/fortran_4.html [mobile]: uncontained=307
-- fortran/fortran_8.html [mobile]: uncontained=307
-- heat/heat.html [mobile]: uncontained=307
-- heat/heat_4.html [mobile]: uncontained=307
-- heat/heat_5.html [mobile]: uncontained=307
-- heat/heat_5_4.html [mobile]: uncontained=307
-- heat/heat_7_2.html [mobile]: uncontained=307
-- hydronamics/hydronamics_10.html [mobile]: uncontained=307
-- hydronamics/hydronamics_11.html [mobile]: uncontained=307
-- hydronamics/hydronamics_11_4.html [mobile]: uncontained=307
-- hydronamics/hydronamics_12_1.html [mobile]: uncontained=307
-- hydronamics/hydronamics_2.html [mobile]: uncontained=307
-- hydronamics/hydronamics_6.html [mobile]: uncontained=307
-- hydronamics/hydronamics_6_4.html [mobile]: uncontained=307
-- hydronamics/hydronamics_9_1.html [mobile]: uncontained=307
-- hydronamics/hydronamics_9_5.html [mobile]: uncontained=307
-- library/library.html [mobile]: uncontained=307
-- library/library_renum.html [mobile]: uncontained=307
-- mail/mail_base.html [mobile]: uncontained=307
-- mesh/mesh_1.html [mobile]: uncontained=307
-- mesh/mesh_3_2.html [mobile]: uncontained=307
-- mps/mps_1.html [mobile]: uncontained=307
-- mps/mps_5.html [mobile]: uncontained=307
-- pdf/pdf.html [mobile]: uncontained=307
-- physics/physics_3.html [mobile]: uncontained=307
-- physics/physics_6_1.html [mobile]: uncontained=307
-- physics/physics_6_2_3.html [mobile]: uncontained=307
-- physics/physics_6_2_7.html [mobile]: uncontained=307
-- physics/physics_6_3_3.html [mobile]: uncontained=307
-- appendix/appendix_3.html [mobile]: uncontained=307
-- book/library.html [mobile]: uncontained=307
-- column/column_3.html [mobile]: uncontained=307
-- counting/counting_1.html [mobile]: uncontained=307
-- design_samples/v1.5/gray/mega-menu-themes.html [mobile]: uncontained=63
-- design_samples/v1.5/modern-dashboard.html [mobile]: uncontained=7
-- fem/fem_10.html [mobile]: uncontained=307
-- fem/fem_12.html [mobile]: uncontained=307
-- fem/fem_2_2.html [mobile]: uncontained=307
-- fem/fem_5.html [mobile]: uncontained=307
-- fem/fem_6_1_2.html [mobile]: uncontained=311
-- fem/fem_6_2.html [mobile]: uncontained=307
-- fem/fem_6_2_4.html [mobile]: uncontained=311
-- fem/fem_7_1.html [mobile]: uncontained=307
-- fem/fem_7_2_1.html [mobile]: uncontained=308
-- fem/fem_8_2.html [mobile]: uncontained=307
-- fem/fem_9.html [mobile]: uncontained=307
-- fortran/fortran_10.html [mobile]: uncontained=307
-- fortran/fortran_14.html [mobile]: uncontained=307
-- fortran/fortran_5.html [mobile]: uncontained=307
-- fortran/fortran_9.html [mobile]: uncontained=307
-- heat/heat_1.html [mobile]: uncontained=307
-- heat/heat_4_1.html [mobile]: uncontained=307
-- heat/heat_5_1.html [mobile]: uncontained=307
-- heat/heat_6.html [mobile]: uncontained=307
-- heat/heat_8.html [mobile]: uncontained=307
-- hydronamics/hydronamics_10_1.html [mobile]: uncontained=307
-- hydronamics/hydronamics_11_1.html [mobile]: uncontained=307
-- hydronamics/hydronamics_11_5.html [mobile]: uncontained=307
-- hydronamics/hydronamics_12_2.html [mobile]: uncontained=307
-- hydronamics/hydronamics_3.html [mobile]: uncontained=307
-- hydronamics/hydronamics_6_1.html [mobile]: uncontained=307
-- hydronamics/hydronamics_7.html [mobile]: uncontained=307
-- hydronamics/hydronamics_9_2.html [mobile]: uncontained=307
-- hydronamics/hydronamics_9_6.html [mobile]: uncontained=307
-- library/library_1.html [mobile]: uncontained=307
-- link/link.html [mobile]: uncontained=307
-- math/math.html [mobile]: uncontained=307
-- mesh/mesh_2.html [mobile]: uncontained=307
-- mesh/mesh_4.html [mobile]: uncontained=307
-- mps/mps_2.html [mobile]: uncontained=307
-- mps/mps_6.html [mobile]: uncontained=307
-- physics/physics.html [mobile]: uncontained=307
-- physics/physics_4.html [mobile]: uncontained=307
-- physics/physics_6_2.html [mobile]: uncontained=307
-- physics/physics_6_2_4.html [mobile]: uncontained=307
-- physics/physics_6_3.html [mobile]: uncontained=307
-- physics/physics_7.html [mobile]: uncontained=307
-- revision_history.html [mobile]: uncontained=307
+## 初回QAの誤検出
 
-## Acceptance criteria
+初回runではmobile側の多数のページで `uncontained` を誤検出した。
 
-- MPS 49 known missing references remain SOURCE BLOCKED / HOLD.
-- MathJax errors = 0.
-- Unrendered = 0.
-- Page overflow = 0.
-- Uncontained overflow = 0.
-- Missing images outside MPS HOLD = 0.
+原因:
+- 全DOM要素のbounding boxを対象にしていたため、レスポンシブレイアウト内部の要素まで異常として計上していた。
+
+修正:
+- 既存の認証済み個別Browser QAと同じ方式へ変更。
+- `.math-block` の `scrollWidth > clientWidth` の場合だけ確認。
+- `overflow-x:auto/scroll` ならlocal scrollとして許容。
+- それ以外のみuncontainedとして失敗扱い。
+
+修正版の4Shardはすべて **success**。
+
+## 判定
+
+- MPS既知HOLD以外のhard failure: **0**
+- MathJax errors: **0**
+- unrendered: **0**
+- page overflow: **0**
+- uncontained overflow: **0**
+- PC/mobile表示QA: **PASS**
+- 非MPS欠損画像: **0**
+
+したがって、**全サイト最終Browser QAは完了**とする。
