@@ -1,12 +1,18 @@
 {
-  "page_key": "hydronamics_5",
-  "page_path": "hydronamics/hydronamics_5.html",
-  "source_dir": "img/hydronamics_viscosity.files",
-  "source_fragment": "hydronamics_viscosity.files",
+  "page_key": "hydronamics_6_1",
+  "page_path": "hydronamics/hydronamics_6_1.html",
+  "source_dir": "img/hydronamics_f_driving.files",
+  "source_fragment": "hydronamics_f_driving.files",
   "images": [
-    "002"
+    "002",
+    "003",
+    "004",
+    "005",
+    "006",
+    "007",
+    "008"
   ],
-  "expected_math_blocks": 1,
+  "expected_math_blocks": 7,
   "retained_source_images": [
     "001"
   ],
@@ -20,5 +26,5 @@
       "height": 844
     }
   },
-  "rerun_revision": 43
+  "rerun_revision": 44
 }
