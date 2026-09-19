@@ -12,10 +12,9 @@
 - Browser QA: **PASS**
 
 ## 元画像 ↔ MathJax 直接比較
-- Gaussの発散定理導出。x/y/z面、nx、面積符号、∮/∫、ui/viを重点確認。inline式を含むためselector拡張後に再QA。
-- 現HTMLとsource-certified JSONは全対象一致（空白差のみの箇所は描画同値）。
-- 元画像とMathJax完成描画のペア画像を全式確認。
-- 数式内容・符号・添字・項順・改行に修正必要な差異なし。
+- Gaussの発散定理。x/y/z法線、±n_x、面積分・体積分、u/v、x_i添字を確認。保持図 image001/image002。
+- 元画像とMathJax完成描画のペア画像を全対象で確認。
+- 数式内容・符号・添字・上付き・項順・改行に修正必要な差異なし。
 
 ## Browser QA
 - desktop/mobileとも全対象render。
