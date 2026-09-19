@@ -18,8 +18,11 @@
 | Page overflow rows | 0 |
 | Uncontained overflow | 0 |
 | Page errors | 0 |
+| Charset failures | 0 |
+| Mojibake indicator rows | 0 |
+| Automatic MathJax linebreak rows | 0 |
 | Non-MPS missing images (desktop) | 0 |
-| Allowed local math scroll | 148 |
+| Allowed local math scroll | 260 |
 
 ## MPS SOURCE BLOCKED / HOLD
 
@@ -35,6 +38,9 @@
 - MPS known missing references = 0.
 - MathJax errors = 0.
 - Unrendered = 0.
+- Charset failures = 0.
+- Mojibake indicator rows = 0.
+- Automatic MathJax linebreak rows = 0.
 - Page overflow = 0.
 - Uncontained overflow = 0.
 - Missing images outside MPS HOLD = 0.
