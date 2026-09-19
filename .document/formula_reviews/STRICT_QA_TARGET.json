@@ -1,23 +1,15 @@
 {
-  "page_key": "mesh_5",
-  "page_path": "mesh/mesh_5.html",
-  "source_dir": "img/mesh_deformation_tet.files",
-  "source_fragment": "mesh_deformation_tet.files",
+  "page_key": "mps_1",
+  "page_path": "mps/mps_1.html",
+  "source_dir": "img/mps_weight.files",
+  "source_fragment": "mps_weight.files",
+  "source_ext": "gif",
   "images": [
-    "003",
-    "004",
-    "005",
-    "006",
-    "007",
-    "008",
-    "009"
+    "001"
   ],
-  "expected_math_blocks": 7,
+  "expected_math_blocks": 1,
   "formula_selector": "[data-source-image]",
-  "retained_source_images": [
-    "001",
-    "002"
-  ],
+  "retained_source_images": [],
   "viewports": {
     "desktop": {
       "width": 1440,
@@ -28,5 +20,5 @@
       "height": 844
     }
   },
-  "rerun_revision": 110
+  "rerun_revision": 111
 }
