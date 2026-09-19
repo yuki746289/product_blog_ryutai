@@ -2,7 +2,7 @@
 
 ## Overall status
 
-**COMPLETE**
+**CONTENT AUDIT COMPLETE / SOURCE-LAYOUT REVALIDATION REQUIRED**
 
 旧564式監査とは分離し、元画像 / 回収Word数式 / MathJax完成描画を用いた新厳密再監査として完了した。
 
@@ -36,6 +36,17 @@
 - 理論的に不自然でも、正本で確認できる表記は推測修正しない。
 - MPS image022のみ正本未回収のため、ユーザー承認済み推定復元として source-exact と区別する。
 
+## 2026-09-20 source-fidelity correction
+
+The former browser PASS is not a deployment-grade PASS under the corrected specification because it did not gate character-encoding consistency or source-faithful formula line structure.
+
+Canonical specification: `.document/formula_reviews/SOURCE_FIDELITY_SPEC_20260920.md`
+
+Until the 2026-09-20 revalidation is complete:
+- formula content/symbol audit counts below remain valid,
+- source-layout/line-break acceptance is reopened,
+- deployment approval is blocked.
+
 ## Browser QA
 
 - MathJax errors: 0（最終QA対象）
@@ -59,5 +70,5 @@ MPS 49式のうち48式は回収Word Equation.3を内部正本として再監査
 
 ## Final status
 
-**新厳密再監査の実作業は完了。**
+**数式内容の厳密再監査は完了。表示上の改行・配置と文字コードは2026-09-20仕様で再検証中。**
 本番FTP/FTPS反映は本レポートの対象外。
