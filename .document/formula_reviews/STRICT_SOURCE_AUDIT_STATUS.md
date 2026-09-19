@@ -1637,3 +1637,37 @@ Libraryの `HP(1).7z` を
 - **最新合計: 612**
 
 本番FTP/FTPS反映: **未実施**
+
+
+## 2026-09-19 MPS image022 final investigation
+
+正本:
+- `.document/formula_reviews/MPS_IMAGE022_FINAL_INVESTIGATION_20260919.md`
+- `.document/formula_reviews/MPS_FINAL_BROWSER_QA_20260919.md`
+
+image022について最終探索を実施した。
+
+- `HP(1).7z` 全展開: **2,010 files / 約645MB**
+- `HP/source/img/` にMPS画像ディレクトリ: **なし**
+- Word/PDF/HTML/BAK全体横断検索: 代替正本 **なし**
+- 対象Word binary `EMBED Equation.3`: **21**
+- image022位置のWord image/OLE/Equation: **なし**
+- Visio 5ファイル確認
+- `HP図.vsd` 全36ページ視覚確認
+- image022と1対1対応を証明できるVisio式: **なし**
+- 外部MPS文献には最低圧力を用いる修正版圧力勾配式が存在するが、元画像正本ではないため通常HTMLへは採用しない。
+
+最新MPS:
+- 49元参照
+- 48式 recovered / MathJax / source-audited
+- image022 1件のみ SOURCE BLOCKED / HOLD
+
+image020 source correction後の最新Browser QA:
+- run: `35411325166`
+- job: `105827914216`
+- artifact: `10576437193`
+- shard checks: **102**
+- failures: **0**
+- mps_6_2 desktop/mobile: MathJax 0 / unrendered 0 / overflow 0 / missing image022 only
+
+**MPSカテゴリは image022 1件を明示HOLDとして監査完了。**
