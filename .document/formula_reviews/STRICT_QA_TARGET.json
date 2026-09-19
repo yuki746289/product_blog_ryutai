@@ -1,20 +1,45 @@
 {
-  "page_key": "heat_5_4",
-  "page_path": "heat/heat_5_4.html",
-  "source_dir": "img/heat_eq_derivation.files",
-  "source_fragment": "heat_eq_derivation.files",
+  "page_key": "heat_7_1",
+  "page_path": "heat/heat_7_1.html",
+  "source_dir": "img/heat_discretization_tri.files",
+  "source_fragment": "heat_discretization_tri.files",
   "images": [
+    "001",
     "002",
     "003",
     "004",
     "005",
     "006",
-    "007"
+    "007",
+    "008",
+    "009",
+    "010",
+    "011",
+    "012",
+    "013",
+    "014",
+    "015",
+    "016",
+    "017",
+    "018",
+    "019",
+    "020",
+    "021",
+    "022",
+    "023",
+    "024",
+    "025",
+    "026",
+    "027",
+    "028",
+    "029",
+    "030",
+    "031",
+    "032",
+    "033"
   ],
-  "expected_math_blocks": 6,
-  "retained_source_images": [
-    "001"
-  ],
+  "expected_math_blocks": 33,
+  "retained_source_images": [],
   "viewports": {
     "desktop": {
       "width": 1440,
@@ -25,5 +50,5 @@
       "height": 844
     }
   },
-  "rerun_revision": 40
+  "rerun_revision": 41
 }
