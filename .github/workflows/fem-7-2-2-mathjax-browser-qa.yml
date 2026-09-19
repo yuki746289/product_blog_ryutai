@@ -1,0 +1,193 @@
+# Created: 2026-09-19 JST
+name: FEM 7-2-2 MathJax Browser QA
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/fem-7-2-2-mathjax-browser-qa.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Chromium
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Start server
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/fem722-http.log 2>&1 &
+          sleep 1
+
+      - name: Browser QA
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+
+          page_path='fem/fem_7_2_2.html'
+          viewports={
+              'desktop':{'width':1440,'height':1000},
+              'mobile':{'width':390,'height':844},
+          }
+          out=Path('fem-7-2-2-browser-qa')
+          out.mkdir(exist_ok=True)
+          rows=[]
+          failures=[]
+
+          with sync_playwright() as p:
+              browser=p.chromium.launch(headless=True)
+              for name,vp in viewports.items():
+                  ctx=browser.new_context(viewport=vp,device_scale_factor=1)
+                  pg=ctx.new_page()
+                  page_errors=[]
+                  console_errors=[]
+                  pg.on('pageerror', lambda exc, arr=page_errors: arr.append(str(exc)))
+                  pg.on('console', lambda msg, arr=console_errors:
+                        arr.append(msg.text) if msg.type=='error' else None)
+
+                  pg.goto(f'http://127.0.0.1:8000/{page_path}',
+                          wait_until='domcontentloaded', timeout=120000)
+                  pg.wait_for_function(
+                      '() => window.MathJax && MathJax.startup && MathJax.startup.promise',
+                      timeout=60000)
+                  pg.evaluate('async()=>{await MathJax.startup.promise;}')
+                  pg.wait_for_timeout(800)
+
+                  blocks=pg.locator('.math-block')
+                  block_count=blocks.count()
+                  rendered=0
+                  local_scroll=[]
+                  uncontained=[]
+                  unrendered=[]
+                  source_nums=[]
+
+                  for i in range(block_count):
+                      el=blocks.nth(i)
+                      bid=el.get_attribute('id') or f'index-{i}'
+                      src=el.get_attribute('data-source-image') or ''
+                      if 'image' in src:
+                          source_nums.append(src)
+                      if el.locator('mjx-container').count() > 0:
+                          rendered += 1
+                      else:
+                          unrendered.append(bid)
+                      dims=el.evaluate(
+                          "e=>({clientWidth:e.clientWidth,scrollWidth:e.scrollWidth,"
+                          "overflowX:getComputedStyle(e).overflowX})")
+                      if dims['scrollWidth'] > dims['clientWidth'] + 1:
+                          local_scroll.append(bid)
+                          if dims['overflowX'] not in ('auto','scroll'):
+                              uncontained.append(bid)
+
+                  merror=pg.locator('mjx-merror').count()
+                  doc=pg.evaluate(
+                      "()=>({clientWidth:document.documentElement.clientWidth,"
+                      "scrollWidth:document.documentElement.scrollWidth})")
+                  page_overflow=doc['scrollWidth'] > doc['clientWidth'] + 2
+
+                  source_image_elements=pg.locator(
+                      'img[src*="fem_d_momentum_tet.files/image"]').count()
+
+                  pg.screenshot(path=str(out/f'{name}.png'),
+                                full_page=True, animations='disabled')
+
+                  row={
+                      'viewport':name,
+                      'math_blocks':block_count,
+                      'rendered':rendered,
+                      'merror':merror,
+                      'unrendered':unrendered,
+                      'local_scroll_count':len(local_scroll),
+                      'local_scroll':local_scroll,
+                      'uncontained':uncontained,
+                      'page_overflow':page_overflow,
+                      'source_image_elements':source_image_elements,
+                      'page_errors':page_errors,
+                      'console_errors':console_errors,
+                  }
+                  rows.append(row)
+
+                  if block_count != 51:
+                      failures.append(f'{name}: math-block count={block_count}, expected=51')
+                  if rendered != block_count:
+                      failures.append(f'{name}: rendered={rendered}/{block_count}')
+                  if merror:
+                      failures.append(f'{name}: mjx-merror={merror}')
+                  if uncontained:
+                      failures.append(f'{name}: uncontained overflow={len(uncontained)}')
+                  if page_overflow:
+                      failures.append(f'{name}: page-wide horizontal overflow')
+                  if source_image_elements:
+                      failures.append(f'{name}: legacy source image elements={source_image_elements}')
+                  if page_errors:
+                      failures.append(f'{name}: page errors={len(page_errors)}')
+
+                  ctx.close()
+              browser.close()
+
+          status='PASS' if not failures else 'FAIL'
+          (out/'manifest.json').write_text(
+              json.dumps({'status':status,'rows':rows,'failures':failures},
+                         ensure_ascii=False,indent=2), encoding='utf-8')
+
+          report=Path('.document/formula_reviews/FEM_7_2_2_MATHJAX_BROWSER_QA_20260919.md')
+          lines=[
+              '# fem_7_2_2 MathJax Browser QA — 2026-09-19','',
+              f'- Overall: **{status}**',
+              '- Viewports: desktop 1440x1000 / mobile 390x844',
+              '- Expected math-blocks: 51 (49 source images + image031/image037 repeats)',
+              '- Pass criteria: MathJax errors=0, unrendered=0, uncontained overflow=0, page overflow=0.','',
+              '| Viewport | Blocks | Rendered | MathJax errors | Local scroll | Uncontained | Page overflow | Legacy source imgs |',
+              '|---|---:|---:|---:|---:|---:|---|---:|'
+          ]
+          for r in rows:
+              lines.append(
+                  f"| {r['viewport']} | {r['math_blocks']} | {r['rendered']} | "
+                  f"{r['merror']} | {r['local_scroll_count']} | {len(r['uncontained'])} | "
+                  f"{'YES' if r['page_overflow'] else 'NO'} | {r['source_image_elements']} |")
+          lines += ['', '## Failures','']
+          lines += [f'- {x}' for x in failures] if failures else ['- None.']
+          lines += ['', '## Notes','',
+                    '- Local scroll inside .math-block is informational; only uncontained/page-wide overflow is a failure.',
+                    '- This workflow does not certify source-image transcription accuracy; that remains the Word/source re-audit stage.']
+          report.write_text('\n'.join(lines)+'\n',encoding='utf-8')
+
+          if failures:
+              raise SystemExit(1)
+          PY
+
+      - name: Commit QA report
+        if: success()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '4189826+github-actions[bot]@users.noreply.github.com'
+          git add .document/formula_reviews/FEM_7_2_2_MATHJAX_BROWSER_QA_20260919.md
+          if ! git diff --cached --quiet; then
+            git commit -m 'docs: record fem_7_2_2 MathJax browser QA'
+            git pull --rebase origin develop
+            git push origin HEAD:develop
+          fi
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fem-7-2-2-browser-qa
+          path: fem-7-2-2-browser-qa
+          retention-days: 7
