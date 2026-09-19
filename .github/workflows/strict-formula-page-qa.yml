@@ -212,22 +212,12 @@ jobs:
               L.append(f"| {r['viewport']} | {r['math_blocks']} | {r['rendered']} | {r['merror']} | {r['local_scroll_count']} | {len(r['uncontained'])} | {'YES' if r['page_overflow'] else 'NO'} | {r['source_image_elements']} |")
           L += ['', '## Failures',''] + ([f'- {x}' for x in failures] if failures else ['- None.'])
           L += ['', '- Source-vs-MathJax pair images are stored in the workflow artifact for direct visual audit.']
-          report.write_text('\n'.join(L)+'\n',encoding='utf-8')
+          report_text='\n'.join(L)+'\n'
+          report.write_text(report_text,encoding='utf-8')
+          (out/'report.md').write_text(report_text,encoding='utf-8')
           if failures:
               raise SystemExit(1)
           PY
-
-      - name: Commit QA report
-        if: success()
-        run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add .document/formula_reviews/STRICT_PAGE_BROWSER_QA_*_20260919.md
-          if ! git diff --cached --quiet; then
-            git commit -m 'docs: record strict formula page browser QA'
-            git pull --rebase origin develop
-            git push origin HEAD:develop
-          fi
 
       - uses: actions/upload-artifact@v4
         if: always()
