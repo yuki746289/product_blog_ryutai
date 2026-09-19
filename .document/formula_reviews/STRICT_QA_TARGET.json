@@ -1,18 +1,20 @@
 {
-  "page_key": "column_2",
-  "page_path": "column/column_2.html",
-  "source_dir": "img/column_energy.files",
-  "source_fragment": "column_energy.files",
+  "page_key": "mesh_1",
+  "page_path": "mesh/mesh_1.html",
+  "source_dir": "img/mesh_approximation.files",
+  "source_fragment": "mesh_approximation.files",
   "images": [
-    "001",
     "002",
     "003",
     "004",
-    "005"
+    "005",
+    "006"
   ],
   "expected_math_blocks": 5,
   "formula_selector": "[data-source-image]",
-  "retained_source_images": [],
+  "retained_source_images": [
+    "001"
+  ],
   "viewports": {
     "desktop": {
       "width": 1440,
@@ -23,5 +25,5 @@
       "height": 844
     }
   },
-  "rerun_revision": 106
+  "rerun_revision": 107
 }
