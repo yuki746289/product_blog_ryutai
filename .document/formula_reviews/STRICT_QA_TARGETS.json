@@ -1,0 +1,77 @@
+{
+  "targets": [
+    {
+      "page_key": "fem_6_2_1",
+      "page_path": "fem/fem_6_2_1.html",
+      "source_dir": "img/fem_n_tet.files",
+      "source_fragment": "fem_n_tet.files",
+      "images": [
+        "002",
+        "003",
+        "004",
+        "005",
+        "006",
+        "007"
+      ],
+      "expected_math_blocks": 6
+    },
+    {
+      "page_key": "fem_6_2_2",
+      "page_path": "fem/fem_6_2_2.html",
+      "source_dir": "img/fem_n_tet.files",
+      "source_fragment": "fem_n_tet.files",
+      "images": [
+        "009",
+        "010",
+        "011"
+      ],
+      "expected_math_blocks": 3
+    },
+    {
+      "page_key": "fem_6_2_3",
+      "page_path": "fem/fem_6_2_3.html",
+      "source_dir": "img/fem_n_tet.files",
+      "source_fragment": "fem_n_tet.files",
+      "images": [
+        "012",
+        "013",
+        "014"
+      ],
+      "expected_math_blocks": 3
+    },
+    {
+      "page_key": "fem_6_2_4",
+      "page_path": "fem/fem_6_2_4.html",
+      "source_dir": "img/fem_n_tet.files",
+      "source_fragment": "fem_n_tet.files",
+      "images": [
+        "015",
+        "016",
+        "017"
+      ],
+      "expected_math_blocks": 3
+    },
+    {
+      "page_key": "fem_6_2_5",
+      "page_path": "fem/fem_6_2_5.html",
+      "source_dir": "img/fem_n_tet.files",
+      "source_fragment": "fem_n_tet.files",
+      "images": [
+        "018",
+        "019",
+        "020"
+      ],
+      "expected_math_blocks": 3
+    }
+  ],
+  "viewports": {
+    "desktop": {
+      "width": 1440,
+      "height": 1000
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844
+    }
+  }
+}
