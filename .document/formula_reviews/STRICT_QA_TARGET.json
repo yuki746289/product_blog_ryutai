@@ -1,18 +1,19 @@
 {
-  "page_key": "fem_2_2",
-  "page_path": "fem/fem_2_2.html",
-  "source_dir": "img/fem_tri.files",
-  "source_fragment": "fem_tri.files",
+  "page_key": "fem_2_3",
+  "page_path": "fem/fem_2_3.html",
+  "source_dir": "img/fem_tet.files",
+  "source_fragment": "fem_tet.files",
   "images": [
-    "010",
-    "011",
-    "012",
-    "013",
-    "014"
+    "002",
+    "003",
+    "004",
+    "005",
+    "006"
   ],
   "expected_math_blocks": 5,
   "retained_source_images": [
-    "009"
+    "001",
+    "007"
   ],
   "viewports": {
     "desktop": {
@@ -24,5 +25,5 @@
       "height": 844
     }
   },
-  "rerun_revision": 21
+  "rerun_revision": 22
 }
