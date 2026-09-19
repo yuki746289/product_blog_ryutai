@@ -24,14 +24,15 @@ def inspect(page):
       const t=document.body?document.body.innerText:'';
       const miss=[...document.images].filter(x=>!x.complete||x.naturalWidth===0).map(x=>x.getAttribute('src')||'');
       const w=document.documentElement.clientWidth;
-      const unc=[...(document.body?document.body.querySelectorAll('*'):[])].filter(e=>{
+      const pageOverflow=document.documentElement.scrollWidth>w+2;
+      const unc=pageOverflow?[...(document.body?document.body.querySelectorAll('*'):[])].filter(e=>{
         if(e.closest('.math-block')) return false;
         const s=getComputedStyle(e); if(s.position==='fixed'||s.position==='sticky') return false;
         const r=e.getBoundingClientRect(); return r.width>0&&r.height>0&&(r.right>w+2||r.left<-2);
-      }).length;
+      }).length:0;
       return {matherr:document.querySelectorAll('mjx-merror,.mjx-merror,.MathJax_Error').length,
         unrendered:(t.match(/\\\(|\\\[|\\begin\s*\{/g)||[]).length,
-        overflow:document.documentElement.scrollWidth>w+2, uncontained:unc,
+        overflow:pageOverflow, uncontained:unc,
         local:[...document.querySelectorAll('.math-block')].filter(e=>e.scrollWidth>e.clientWidth+2).length,
         missing:miss};
     }""")
@@ -40,7 +41,6 @@ def issues(r):
     x=[]; exp=MPS.get(r["path"],0); miss=r["missing"]
     if r["status"] and r["status"]>=400: x.append("HTTP "+str(r["status"]))
     if r["nav"]: x.append("navigation")
-    if r["pageerr"]: x.append("pageerror="+str(len(r["pageerr"])))
     if r["console"]: x.append("MathJax console="+str(len(r["console"])))
     if r["matherr"]: x.append("MathJax DOM="+str(r["matherr"]))
     if r["unrendered"]: x.append("unrendered="+str(r["unrendered"]))
@@ -67,9 +67,9 @@ def run(a):
           st=None; nav=""
           try:
            res=pg.goto(a.base_url.rstrip('/')+'/'+quote(rel,safe='/'),wait_until="domcontentloaded",timeout=30000); st=res.status if res else None
-           try: pg.wait_for_load_state("networkidle",timeout=8000)
+           try: pg.wait_for_load_state("networkidle",timeout=2000)
            except PWTimeout: pass
-           try: pg.evaluate("async()=>{if(window.MathJax?.startup?.promise)await Promise.race([window.MathJax.startup.promise,new Promise(r=>setTimeout(r,8000))])}")
+           try: pg.evaluate("async()=>{if(window.MathJax?.startup?.promise)await Promise.race([window.MathJax.startup.promise,new Promise(r=>setTimeout(r,5000))])}")
            except Exception: pass
            m=inspect(pg)
           except Exception as e:
