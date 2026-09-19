@@ -2,7 +2,7 @@
 """Sharded final browser QA for product_blog_ryutai."""
 import argparse, json, sys
 from pathlib import Path
-from urllib.parse import quote
+from urllib.parse import quote, urlparse
 from playwright.sync_api import sync_playwright, TimeoutError as PWTimeout
 
 VPS={"desktop":{"width":1440,"height":1000},"mobile":{"width":390,"height":844}}
@@ -46,6 +46,7 @@ def issues(r):
     x=[]; exp=MPS.get(r["path"],0); miss=r["missing"]
     if r["status"] and r["status"]>=400: x.append("HTTP "+str(r["status"]))
     if r["nav"]: x.append("navigation")
+    if r["pageerr"]: x.append("page errors="+str(len(r["pageerr"])))
     if r["console"]: x.append("MathJax console="+str(len(r["console"])))
     if r["matherr"]: x.append("MathJax DOM="+str(r["matherr"]))
     if r["unrendered"]: x.append("unrendered="+str(r["unrendered"]))
@@ -64,6 +65,18 @@ def run(a):
       try:
        for vn,vp in VPS.items():
         c=b.new_context(viewport=vp)
+        def route_handler(route):
+            url=route.request.url
+            try:
+                u=urlparse(url)
+                local=(not u.netloc) or u.hostname in ("127.0.0.1","localhost")
+            except Exception:
+                local=False
+            if local or url.startswith("https://cdn.jsdelivr.net/"):
+                route.continue_()
+            else:
+                route.abort()
+        c.route("**/*", route_handler)
         try:
          for rel in todo:
           pg=c.new_page(); pe=[]; ce=[]
