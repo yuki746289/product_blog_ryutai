@@ -6,12 +6,20 @@
 	<meta http-equiv="content-type" content="text/html; charset=shift_jis">
 	<meta http-equiv="content-style-type" content="text/css">
 
-	<meta name="description" content="���̗͊w�E�L���v�f�@�ɂ�鐔�l�v�Z�T�C�g�B">
-	<meta name="keywords" content="���̗͊w,�L���v�f�@,���l�v�Z,���b�V��,FEM"> 
+	<meta name="description" content="流体力学・有限要素法による数値計算サイト。">
+	<meta name="keywords" content="流体力学,有限要素法,数値計算,メッシュ,FEM"> 
 	<meta name="author" content="HTMQ"> 
 
-	<title>���q�̐����x(���q�@)</title>
+	<title>粒子の数密度(粒子法)</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+	<script>
+	window.MathJax={
+		output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+		chtml:{displayAlign:'left',displayIndent:'0'}
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="11">
@@ -19,13 +27,13 @@
 	<div id="wrapper">
 
 	<div id="header">
-		<h1><a href="./../index.html" title="�g�b�v�y�[�W��">�L���v�f�@�E���̗͊w�ɂ�鐔�l�v�Z</a></h1>
+		<h1><a href="./../index.html" title="トップページへ">有限要素法・流体力学による数値計算</a></h1>
 
 		<br style="clear:both;">
 		<ul style="margin-left:30px;">
-		<li><a href="./../index.html" title="index��">index</a>&gt;</li>
-		<li><a href="./mps.html" title="���q�@��">���q�@</a>&gt;</li>
-		<li><a href="./mps_2.html" title="���q�̐����x��">���q�̐����x</a>&gt;</li>
+		<li><a href="./../index.html" title="indexへ">index</a>&gt;</li>
+		<li><a href="./mps.html" title="粒子法へ">粒子法</a>&gt;</li>
+		<li><a href="./mps_2.html" title="粒子の数密度へ">粒子の数密度</a>&gt;</li>
 		</ul>
 		<hr>
 	</div>
@@ -33,7 +41,7 @@
 	<div id="main" >
 
 	<div id="image">
-		<p>���̗͊w���琔�l�v�Z�܂�</p>
+		<p>流体力学から数値計算まで</p>
 		<p><img src="./../img/shiki1.gif"></p>
 		<p><img src="./../img/shiki2.gif"></p>
 	</div>
@@ -42,16 +50,20 @@
 
 		<div id="content-text">
 
-			<h2>�L��</h2>
+			<h2>広告</h2>
 			<p><iframe src="./../ad.html" width="470" height="60" scrolling="no" frameborder="0"></iframe></p>
 			<br>
 
-			<h2>���q�̐����x</h2>
-			<p>�@���q�̐����x�́A�e���q�ʒu�̐����x�̕��ς���v�Z����܂��B
-				���qi�̈ʒu�ɂ����闱�q�����x�͎����ŕ\����܂��B</p>
-				<p class="im"><img src="./../img/mps_num.files/image001.gif"></p>
-			<p>�@�e���q�̎��ʂ��������ꍇ�A���q�����x�͗��̖̂��x�ɔ�Ⴕ�܂��B
-				���q�̐����x�́A���z���f���A���U���f���A���v���V�A�����f���Ŏg�p����܂��B</p>
+			<h2>粒子の数密度</h2>
+			<p>　粒子の数密度は、各粒子位置の数密度の平均から計算されます。
+				粒子iの位置における粒子数密度は次式で表されます。</p>
+			<div class="math-block" id="formula-mps-2-001" data-source-image="./../img/mps_num.files/image001.gif">
+\[
+n_i=\sum_{j\ne i}w\!\left(\left|\vec r_j-\vec r_i\right|\right)
+\]
+</div>
+			<p>　各粒子の質量が等しい場合、粒子数密度は流体の密度に比例します。
+				粒子の数密度は、勾配モデル、発散モデル、ラプラシアンモデルで使用されます。</p>
 			<br>
 
 			<div style="margin-top:10px;"></div>
@@ -65,7 +77,7 @@
 				</tr></table>
 			</h2>
 
-			<!-- �L�� -->
+			<!-- 広告 -->
 			<p><iframe src="./../questionnaire.html" width="650" height="325" scrolling="yes" frameborder="0"></iframe></p>
 		</div>
 
@@ -76,9 +88,9 @@
 	<div id="sub">
 		<iframe src="./../menu.html" id="menu" name="menu" width="180" scrolling="no" frameborder="0"></iframe>
 
-		<!-- �L�� -->
+		<!-- 広告 -->
 		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-		<!-- �o�i�[3�i���j���[���j -->
+		<!-- バナー3（メニュー欄） -->
 		<ins class="adsbygoogle"
 		     style="display:inline-block;width:160px;height:600px"
 		     data-ad-client="ca-pub-4382202381956938"
@@ -87,26 +99,26 @@
 		(adsbygoogle = window.adsbygoogle || []).push({});
 		</script>
 
-		<!-- �y�[�W�ʃJ�E���^ -->
+		<!-- ページ別カウンタ -->
 		<!--shinobi1-->
 		<script type="text/javascript" src="http://x7.tuzikaze.com/ufo/10850281t"></script>
 		<noscript><a href="http://x7.tuzikaze.com/bin/gg?10850281t" target="_blank">
 		<img src="http://x7.tuzikaze.com/bin/ll?10850281t" border="0"></a><br>
-		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://life-koike.info/">�݂�Ȃō�鐶���p</a></span></noscript>
+		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://life-koike.info/">みんなで作る生活術</a></span></noscript>
 		<!--shinobi2-->
 
 		<div class="sub-text">
 			<dl>
-				<dt>�J�E���^</dt>
+				<dt>カウンタ</dt>
 				<dd>
 					<!-- shinobi ct2 -->
 					<script type="text/javascript" src="http://ct2.tirirenge.com/sc/1515356"></script>
 					<noscript><a href="http://ct2.tirirenge.com/gg/1515356" target="_blank">
-					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="�J�E���^�[" /></a><br />
-					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">�|�C���g</a></span></noscript>
+					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="カウンター" /></a><br />
+					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">ポイント</a></span></noscript>
 					<!-- /shinobi ct2 -->
 					<br>
-				�i2011.3.15�`�j
+				（2011.3.15～）
 				</dd>
 			</dl>
 		</div>
