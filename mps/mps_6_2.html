@@ -236,7 +236,18 @@ w(|\vec r_j-\vec r_i|)\\
 \]
 </div>
 			<p>ここで、圧力の勾配モデルは数値安定性のため、次式を使用します。</p>
-			<p class="im"><img src="./../img/mps_fluid_count.files/image022.gif"></p>
+			<div class="math-block" id="formula-mps-6-2-022" data-source-image="./../img/mps_fluid_count.files/image022.gif" data-source-status="inferred-reconstruction">
+\[
+\left[\nabla P_i^{k+1}\right]
+=
+\frac{d}{n^0}
+\sum_{j\ne i}
+\frac{P_j^{k+1}-\hat P_i^{k+1}}
+{|\vec r_j-\vec r_i|^2}
+(\vec r_j-\vec r_i)
+w(|\vec r_j-\vec r_i|)
+\]
+</div>
 			<p>これで、タイムステップk+1の速度が計算されました。</p>
 			<br>
 
