@@ -1,0 +1,99 @@
+{
+  "pages": [
+    {
+      "path": "fem/fem.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 1
+    },
+    {
+      "path": "fem/fem_1.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 6
+    },
+    {
+      "path": "fem/fem_2.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 0
+    },
+    {
+      "path": "fem/fem_6.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 0
+    },
+    {
+      "path": "fem/fem_6_1.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 0
+    },
+    {
+      "path": "fem/fem_6_2.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 0
+    },
+    {
+      "path": "fem/fem_7.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 0
+    },
+    {
+      "path": "fem/fem_7_1.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 0
+    },
+    {
+      "path": "fem/fem_7_2.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 0
+    },
+    {
+      "path": "fem/fem_8_1.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 1
+    },
+    {
+      "path": "fem/fem_8_2.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 0
+    },
+    {
+      "path": "fem/fem_8_2_2.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 0
+    },
+    {
+      "path": "fem/fem_8_3.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 0
+    },
+    {
+      "path": "fem/fem_11.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 0
+    },
+    {
+      "path": "fem/fem_11_2.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 0
+    },
+    {
+      "path": "fem/fem_12.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 5
+    },
+    {
+      "path": "fem/fem_13.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 8
+    }
+  ],
+  "viewports": {
+    "desktop": {
+      "width": 1440,
+      "height": 1000
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844
+    }
+  }
+}
