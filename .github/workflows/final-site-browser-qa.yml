@@ -2,12 +2,11 @@
 name: Final Site Browser QA
 
 on:
+  workflow_dispatch:
   push:
     branches: [develop]
     paths:
-      - '.github/workflows/final-site-browser-qa.yml'
-      - '.document/tools/final_site_browser_qa.py'
-  workflow_dispatch:
+      - '.document/qa_trigger/final_site_browser_qa.trigger'
 
 permissions:
   contents: write
@@ -120,7 +119,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git pull --rebase origin develop
+          cp .document/formula_reviews/FINAL_SITE_BROWSER_QA_20260919.md /tmp/FINAL_SITE_BROWSER_QA_20260919.md
+          git fetch origin develop
+          git reset --hard origin/develop
+          mkdir -p .document/formula_reviews
+          cp /tmp/FINAL_SITE_BROWSER_QA_20260919.md .document/formula_reviews/FINAL_SITE_BROWSER_QA_20260919.md
           git add .document/formula_reviews/FINAL_SITE_BROWSER_QA_20260919.md
           if git diff --cached --quiet; then
             echo "No QA report change"
