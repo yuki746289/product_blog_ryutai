@@ -6,12 +6,20 @@
 	<meta http-equiv="content-type" content="text/html; charset=shift_jis">
 	<meta http-equiv="content-style-type" content="text/css">
 
-	<meta name="description" content="���̗͊w�E�L���v�f�@�ɂ�鐔�l�v�Z�T�C�g�B">
-	<meta name="keywords" content="���̗͊w,�L���v�f�@,���l�v�Z,���b�V��,FEM"> 
+	<meta name="description" content="流体力学・有限要素法による数値計算サイト。">
+	<meta name="keywords" content="流体力学,有限要素法,数値計算,メッシュ,FEM"> 
 	<meta name="author" content="HTMQ"> 
 
-	<title>���z���f��(���q�@)</title>
+	<title>勾配モデル(粒子法)</title>
 	<link href="./../css/lib.css" rel="stylesheet" type="text/css" media="all">
+
+	<script>
+	window.MathJax={
+		output:{displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:0.2}},
+		chtml:{displayAlign:'left',displayIndent:'0'}
+	};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 <body>
 	<input type="hidden" id="menu_id" value="11">
@@ -19,13 +27,13 @@
 	<div id="wrapper">
 
 	<div id="header">
-		<h1><a href="./../index.html" title="�g�b�v�y�[�W��">�L���v�f�@�E���̗͊w�ɂ�鐔�l�v�Z</a></h1>
+		<h1><a href="./../index.html" title="トップページへ">有限要素法・流体力学による数値計算</a></h1>
 
 		<br style="clear:both;">
 		<ul style="margin-left:30px;">
-		<li><a href="./../index.html" title="index��">index</a>&gt;</li>
-		<li><a href="./mps.html" title="���q�@��">���q�@</a>&gt;</li>
-		<li><a href="./mps_3.html" title="���z���f����">���z���f��</a>&gt;</li>
+		<li><a href="./../index.html" title="indexへ">index</a>&gt;</li>
+		<li><a href="./mps.html" title="粒子法へ">粒子法</a>&gt;</li>
+		<li><a href="./mps_3.html" title="勾配モデルへ">勾配モデル</a>&gt;</li>
 		</ul>
 		<hr>
 	</div>
@@ -33,7 +41,7 @@
 	<div id="main" >
 
 	<div id="image">
-		<p>���̗͊w���琔�l�v�Z�܂�</p>
+		<p>流体力学から数値計算まで</p>
 		<p><img src="./../img/shiki1.gif"></p>
 		<p><img src="./../img/shiki2.gif"></p>
 	</div>
@@ -42,40 +50,96 @@
 
 		<div id="content-text">
 
-			<h2>�L��</h2>
+			<h2>広告</h2>
 			<p><iframe src="./../ad.html" width="470" height="60" scrolling="no" frameborder="0"></iframe></p>
 			<br>
 
-			<h2>���z���f��</h2>
-			<p>�@���z���f���́A�����ŕ\����܂��B</p>
-			<p class="im"><img src="./../img/mps_nabra.files/image001.gif"></p>
-			<p>�@����́A�����̗l�ɉ��߂ł��܂��B</p>
-			<p class="im"><img src="./../img/mps_nabra.files/image002.gif"></p>
-			<p>�@�����ŁA<img src="./../img/mps_nabra.files/image003.gif">�͌��z�A
-				<img src="./../img/mps_nabra.files/image004.gif">�͋K�i�����ꂽ�����x�N�g����\���Ă��܂��B
-				d�́A������\���Ă��āA2�����̏ꍇ��2�A3�����̏ꍇ�́A3�ƂȂ�܂��B</p>
+			<h2>勾配モデル</h2>
+			<p>　勾配モデルは、次式で表されます。</p>
+			<div class="math-block" id="formula-mps-3-001" data-source-image="./../img/mps_nabra.files/image001.gif">
+\[
+[\nabla\phi_i]=\frac{d}{n^0}\sum_{j\ne i}
+\frac{\phi_j-\phi_i}{|\vec r_j-\vec r_i|^2}
+(\vec r_j-\vec r_i)w(|\vec r_j-\vec r_i|)
+\]
+</div>
+			<p>　これは、次式の様に解釈できます。</p>
+			<div class="math-block" id="formula-mps-3-002" data-source-image="./../img/mps_nabra.files/image002.gif">
+\[
+[\nabla\phi_i]=\frac{d}{n^0}\sum_{j\ne i}
+\frac{\phi_j-\phi_i}{|\vec r_j-\vec r_i|}
+\frac{\vec r_j-\vec r_i}{|\vec r_j-\vec r_i|}
+w(|\vec r_j-\vec r_i|)
+\]
+</div>
+			<p>　ここで、<span class="formula-inline" id="formula-mps-3-003" data-source-image="./../img/mps_nabra.files/image003.gif">\(\dfrac{\phi_j-\phi_i}{|\vec r_j-\vec r_i|}\)</span>は勾配、
+				<span class="formula-inline" id="formula-mps-3-004" data-source-image="./../img/mps_nabra.files/image004.gif">\(\dfrac{\vec r_j-\vec r_i}{|\vec r_j-\vec r_i|}\)</span>は規格化された方向ベクトルを表しています。
+				dは、次元を表していて、2次元の場合は2、3次元の場合は、3となります。</p>
 			<br>
-			<h2>���z���f���̓��o</h2>
-			<p>�@�ߐڂ���2�_�̕����ʂ����ꂼ��<img src="./../img/mps_nabra.files/image005.gif">
-				,<img src="./../img/mps_nabra.files/image006.gif">�Ƃ��܂��B
-				�e�[���[�W�J��p���ĕЕ��̕����ʂ������Е��̕����ʂŕ\���Ǝ����ƂȂ�܂��B</p>
-			<p class="im"><img src="./../img/mps_nabra.files/image007.gif"></p>
-			<p>�@�]���āA2���ȍ~���ȗ������</p>
-			<p class="im"><img src="./../img/mps_nabra.files/image008.gif"></p>
-			<p>�@�ƂȂ�A���ӂ�2�_�Ԃ̋����Ŋ���Ǝ����ƂȂ�܂��B</p>
-			<p class="im"><img src="./../img/mps_nabra.files/image009.gif"></p>
-			<p>�@����́A2�_�Ԃ̌��z��\���X�J���[�ʂł��邱�Ƃ��킩��܂��B
-				���ӂɋK�i�����ꂽ�����x�N�g�����|���邱�ƂŁA���z��\���x�N�g���ʂ̎����ƂȂ�܂��B</p>
-			<p class="im"><img src="./../img/mps_nabra.files/image010.gif"></p>
-			<p>�@�ߐڂ��鑽���̓_������z�𓱏o����ꍇ�́A�����Œ�`�����d�ݕ��ς�p���܂��B</p>
-			<p class="im"><img src="./../img/mps_nabra.files/image011.gif"></p>
-			<p>�@�㎮��K�p�����</p>
-			<p class="im"><img src="./../img/mps_nabra.files/image012.gif"></p>
-			<p>�@�����ŁA</p>
-			<p>�@�@1�����Fd=1</p>
-			<p>�@�@2�����Fd=2</p>
-			<p>�@�@3�����Fd=3</p>
-			<p>�@�ł��B����́A���̐���\���Ă��܂��B</p>
+			<h2>勾配モデルの導出</h2>
+			<p>　近接する2点の物理量をそれぞれ<span class="formula-inline" id="formula-mps-3-005" data-source-image="./../img/mps_nabra.files/image005.gif">\(\phi(\vec r_i)\)</span>
+				,<span class="formula-inline" id="formula-mps-3-006" data-source-image="./../img/mps_nabra.files/image006.gif">\(\phi(\vec r_j)\)</span>とします。
+				テーラー展開を用いて片方の物理量をもう片方の物理量で表すと次式となります。</p>
+			<div class="math-block" id="formula-mps-3-007" data-source-image="./../img/mps_nabra.files/image007.gif">
+\[
+\phi_j=\phi_i+\nabla\phi_i\cdot(\vec r_j-\vec r_j)+\cdots
+\]
+</div>
+			<p>　従って、2次以降を省略すると</p>
+			<div class="math-block" id="formula-mps-3-008" data-source-image="./../img/mps_nabra.files/image008.gif">
+\[
+\nabla\phi_i\cdot(\vec r_j-\vec r_j)=\phi_j-\phi_i
+\]
+</div>
+			<p>　となり、両辺を2点間の距離で割ると次式となります。</p>
+			<div class="math-block" id="formula-mps-3-009" data-source-image="./../img/mps_nabra.files/image009.gif">
+\[
+\nabla\phi_i\cdot\frac{\vec r_j-\vec r_j}{|\vec r_j-\vec r_j|}
+=
+\frac{\phi_j-\phi_i}{|\vec r_j-\vec r_j|}
+\]
+</div>
+			<p>　これは、2点間の勾配を表すスカラー量であることがわかります。
+				両辺に規格化された方向ベクトルを掛けることで、勾配を表すベクトル量の次式となります。</p>
+			<div class="math-block" id="formula-mps-3-010" data-source-image="./../img/mps_nabra.files/image010.gif">
+\[
+[\nabla\phi_{ij}]
+=
+\left(
+\nabla\phi_i\cdot\frac{\vec r_j-\vec r_j}{|\vec r_j-\vec r_j|}
+\right)
+\frac{\vec r_j-\vec r_j}{|\vec r_j-\vec r_j|}
+=
+\frac{\phi_j-\phi_i}{|\vec r_j-\vec r_j|}
+\frac{\vec r_j-\vec r_j}{|\vec r_j-\vec r_j|}
+\]
+</div>
+			<p>　近接する多数の点から勾配を導出する場合は、次式で定義される重み平均を用います。</p>
+			<div class="math-block" id="formula-mps-3-011" data-source-image="./../img/mps_nabra.files/image011.gif">
+\[
+f(x)=\frac{\sum f(x_i)w(x_i)}{n^0}
+\]
+</div>
+			<p>　上式を適用すると</p>
+			<div class="math-block" id="formula-mps-3-012" data-source-image="./../img/mps_nabra.files/image012.gif">
+\[
+\begin{aligned}
+[\nabla\phi]
+&=\frac{d}{n^0}\sum_{i\ne j}
+\frac{\phi_j-\phi_i}{|\vec r_j-\vec r_j|}
+\frac{\vec r_j-\vec r_j}{|\vec r_j-\vec r_j|}
+w(|\vec r_j-\vec r_j|)\\
+&=\frac{d}{n^0}\sum_{i\ne j}
+\frac{\phi_j-\phi_i}{|\vec r_j-\vec r_j|^2}
+(\vec r_j-\vec r_j)w(|\vec r_j-\vec r_j|)
+\end{aligned}
+\]
+</div>
+			<p>　ここで、</p>
+			<p>　　1次元：d=1</p>
+			<p>　　2次元：d=2</p>
+			<p>　　3次元：d=3</p>
+			<p>　です。これは、軸の数を表しています。</p>
 			<br>
 
 			<div style="margin-top:10px;"></div>
@@ -89,7 +153,7 @@
 				</tr></table>
 			</h2>
 
-			<!-- �L�� -->
+			<!-- 広告 -->
 			<p><iframe src="./../questionnaire.html" width="650" height="325" scrolling="yes" frameborder="0"></iframe></p>
 		</div>
 
@@ -100,9 +164,9 @@
 	<div id="sub">
 		<iframe src="./../menu.html" id="menu" name="menu" width="180" scrolling="no" frameborder="0"></iframe>
 
-		<!-- �L�� -->
+		<!-- 広告 -->
 		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-		<!-- �o�i�[3�i���j���[���j -->
+		<!-- バナー3（メニュー欄） -->
 		<ins class="adsbygoogle"
 		     style="display:inline-block;width:160px;height:600px"
 		     data-ad-client="ca-pub-4382202381956938"
@@ -111,26 +175,26 @@
 		(adsbygoogle = window.adsbygoogle || []).push({});
 		</script>
 
-		<!-- �y�[�W�ʃJ�E���^ -->
+		<!-- ページ別カウンタ -->
 		<!--shinobi1-->
 		<script type="text/javascript" src="http://x7.tuzikaze.com/ufo/10850281t"></script>
 		<noscript><a href="http://x7.tuzikaze.com/bin/gg?10850281t" target="_blank">
 		<img src="http://x7.tuzikaze.com/bin/ll?10850281t" border="0"></a><br>
-		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://life-koike.info/">�݂�Ȃō�鐶���p</a></span></noscript>
+		<span style="font-size:9px"><img style="margin:0;vertical-align:text-bottom;" src="http://img.shinobi.jp/tadaima/fj.gif" width="19" height="11"> <a href="http://life-koike.info/">みんなで作る生活術</a></span></noscript>
 		<!--shinobi2-->
 
 		<div class="sub-text">
 			<dl>
-				<dt>�J�E���^</dt>
+				<dt>カウンタ</dt>
 				<dd>
 					<!-- shinobi ct2 -->
 					<script type="text/javascript" src="http://ct2.tirirenge.com/sc/1515356"></script>
 					<noscript><a href="http://ct2.tirirenge.com/gg/1515356" target="_blank">
-					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="�J�E���^�[" /></a><br />
-					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">�|�C���g</a></span></noscript>
+					<img src="http://ct2.tirirenge.com/ll/1515356" border="0" alt="カウンター" /></a><br />
+					<span id="NINCT1SPAN1515356" style="font-size:9px">[PR] <a href="http://point.ninja.co.jp/" target="_blank">ポイント</a></span></noscript>
 					<!-- /shinobi ct2 -->
 					<br>
-				�i2011.3.15�`�j
+				（2011.3.15～）
 				</dd>
 			</dl>
 		</div>
