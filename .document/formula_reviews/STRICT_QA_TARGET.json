@@ -1,28 +1,22 @@
 {
-  "page_key": "mesh_3_1",
-  "page_path": "mesh/mesh_3_1.html",
-  "source_dir": "img/mesh_node_buble.files",
-  "source_fragment": "mesh_node_buble.files",
+  "page_key": "mesh_5",
+  "page_path": "mesh/mesh_5.html",
+  "source_dir": "img/mesh_deformation_tet.files",
+  "source_fragment": "mesh_deformation_tet.files",
   "images": [
+    "003",
     "004",
     "005",
     "006",
-    "009",
-    "010",
-    "012",
-    "013",
-    "014",
-    "015"
+    "007",
+    "008",
+    "009"
   ],
-  "expected_math_blocks": 9,
+  "expected_math_blocks": 7,
   "formula_selector": "[data-source-image]",
   "retained_source_images": [
     "001",
-    "002",
-    "003",
-    "007",
-    "008",
-    "011"
+    "002"
   ],
   "viewports": {
     "desktop": {
@@ -34,6 +28,5 @@
       "height": 844
     }
   },
-  "rerun_revision": 100,
-  "expected_retained_source_elements": 10
+  "rerun_revision": 101
 }
