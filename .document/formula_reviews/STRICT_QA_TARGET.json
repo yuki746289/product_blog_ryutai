@@ -1,23 +1,28 @@
 {
-  "page_key": "mesh_2",
-  "page_path": "mesh/mesh_2.html",
-  "source_dir": "img/mesh_curvature.files",
-  "source_fragment": "mesh_curvature.files",
+  "page_key": "mesh_3_1",
+  "page_path": "mesh/mesh_3_1.html",
+  "source_dir": "img/mesh_node_buble.files",
+  "source_fragment": "mesh_node_buble.files",
   "images": [
-    "002",
-    "003",
     "004",
     "005",
     "006",
-    "007",
-    "008",
     "009",
-    "010"
+    "010",
+    "012",
+    "013",
+    "014",
+    "015"
   ],
   "expected_math_blocks": 9,
   "formula_selector": "[data-source-image]",
   "retained_source_images": [
-    "001"
+    "001",
+    "002",
+    "003",
+    "007",
+    "008",
+    "011"
   ],
   "viewports": {
     "desktop": {
@@ -29,5 +34,6 @@
       "height": 844
     }
   },
-  "rerun_revision": 108
+  "rerun_revision": 109,
+  "expected_retained_source_elements": 10
 }
