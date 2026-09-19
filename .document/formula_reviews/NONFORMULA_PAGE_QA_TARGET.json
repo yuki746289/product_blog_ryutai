@@ -1,38 +1,53 @@
 {
-  "category": "heat",
+  "category": "hydronamics",
   "pages": [
     {
-      "path": "heat/heat.html",
+      "path": "hydronamics/hydronamics.html",
       "expected_math_blocks": 0,
       "expected_local_images": 0
     },
     {
-      "path": "heat/heat_1.html",
+      "path": "hydronamics/hydronamics_1.html",
       "expected_math_blocks": 0,
       "expected_local_images": 0
     },
     {
-      "path": "heat/heat_2.html",
+      "path": "hydronamics/hydronamics_2.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 2
+    },
+    {
+      "path": "hydronamics/hydronamics_3.html",
       "expected_math_blocks": 0,
       "expected_local_images": 0
     },
     {
-      "path": "heat/heat_4.html",
+      "path": "hydronamics/hydronamics_6.html",
       "expected_math_blocks": 0,
       "expected_local_images": 0
     },
     {
-      "path": "heat/heat_5.html",
+      "path": "hydronamics/hydronamics_9.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 0
+    },
+    {
+      "path": "hydronamics/hydronamics_10.html",
       "expected_math_blocks": 0,
       "expected_local_images": 1
     },
     {
-      "path": "heat/heat_7.html",
+      "path": "hydronamics/hydronamics_10_2.html",
+      "expected_math_blocks": 0,
+      "expected_local_images": 1
+    },
+    {
+      "path": "hydronamics/hydronamics_10_3.html",
       "expected_math_blocks": 0,
       "expected_local_images": 0
     },
     {
-      "path": "heat/heat_8.html",
+      "path": "hydronamics/hydronamics_13.html",
       "expected_math_blocks": 0,
       "expected_local_images": 0
     }
