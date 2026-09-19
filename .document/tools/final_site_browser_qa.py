@@ -21,7 +21,7 @@ def pages(root):
 def inspect(page):
     return page.evaluate(r"""() => {
       const imgs=[...document.images];
-      const isLocalSrc=s=>s && !/^(?:https?:)?\\/\\//i.test(s) && !/^data:/i.test(s);
+      const isLocalSrc=s=>s && !/^https?:/i.test(s) && !s.startsWith('//') && !/^data:/i.test(s);
       const miss=imgs.filter(x=>{
         const s=x.getAttribute('src')||'';
         return isLocalSrc(s) && (!x.complete||x.naturalWidth===0);
