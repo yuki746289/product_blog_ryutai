@@ -1,8 +1,8 @@
 {
-  "page_key": "appendix_3_1",
-  "page_path": "appendix/appendix_3_1.html",
-  "source_dir": "img/appendix_cord_r.files",
-  "source_fragment": "appendix_cord_r.files",
+  "page_key": "appendix_3_2",
+  "page_path": "appendix/appendix_3_2.html",
+  "source_dir": "img/appendix_cord_s.files",
+  "source_fragment": "appendix_cord_s.files",
   "images": [
     "003",
     "005",
@@ -30,7 +30,7 @@
       "height": 844
     }
   },
-  "rerun_revision": 104,
+  "rerun_revision": 105,
   "retained_source_image_counts": {
     "001": 1,
     "002": 1,
