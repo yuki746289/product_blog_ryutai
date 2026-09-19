@@ -1,15 +1,16 @@
 {
-  "page_key": "physics_5",
-  "page_path": "physics/physics_5.html",
-  "source_dir": "img/physics_operator.files",
-  "source_fragment": "physics_operator.files",
+  "page_key": "physics_6_1",
+  "page_path": "physics/physics_6_1.html",
+  "source_dir": "img/physics_c_four_operator.files",
+  "source_fragment": "physics_c_four_operator.files",
   "images": [
+    "001",
+    "002",
     "003",
     "004",
-    "001",
-    "002"
+    "005"
   ],
-  "expected_math_blocks": 4,
+  "expected_math_blocks": 5,
   "formula_selector": "[data-source-image]",
   "retained_source_images": [],
   "viewports": {
@@ -22,5 +23,5 @@
       "height": 844
     }
   },
-  "rerun_revision": 80
+  "rerun_revision": 81
 }
