@@ -152,15 +152,18 @@ P={}&N_1P_{x,1}+N_2P_{x,2}+N_3P_{x,3}+N_4P_{x,4}
 
 ### `image006`
 
-原画像は4成分重み関数ベクトルを明示し、x/y/z各方向の対流項・応力項を個別に記載している。現候補の `\sum_{a=x,y,z}` は原画像に存在しない。
+添付元画像を再確認。原画像は左辺に4成分重み関数ベクトルと `\phi_i` の体積積分を置き、右辺に運動量残差を代入した式である。時間微分の分母は **`t`** で、`\tau` ではない。また、原画像内では右辺を各積分項へ展開していない（展開は次の `image007`）。
 
 ```latex
 \[
-\begin{aligned}
-&\int_V
+\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\phi_i\,dV
+=
+\int_V
 \begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
 \left(
-\frac{\partial V_i}{\partial\tau}
+\frac{\partial V_i}{\partial t}
 +V_x\frac{\partial V_i}{\partial X}
 +V_y\frac{\partial V_i}{\partial Y}
 +V_z\frac{\partial V_i}{\partial Z}
@@ -168,34 +171,11 @@ P={}&N_1P_{x,1}+N_2P_{x,2}+N_3P_{x,3}+N_4P_{x,4}
 -\frac{\partial\sigma^*_{yi}}{\partial Y}
 -\frac{\partial\sigma^*_{zi}}{\partial Z}
 -g_i^*
-\right)dV\\
-={}&\int_V
-\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
-\frac{\partial V_i}{\partial\tau}dV
-+V_x\int_V
-\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
-\frac{\partial V_i}{\partial X}dV
-+V_y\int_V
-\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
-\frac{\partial V_i}{\partial Y}dV\\
-&+V_z\int_V
-\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
-\frac{\partial V_i}{\partial Z}dV
--\int_V
-\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
-\frac{\partial\sigma^*_{xi}}{\partial X}dV
--\int_V
-\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
-\frac{\partial\sigma^*_{yi}}{\partial Y}dV\\
-&-\int_V
-\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
-\frac{\partial\sigma^*_{zi}}{\partial Z}dV
--\int_V
-\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
-g_i^*dV
-\end{aligned}
+\right)dV
 \]
 ```
+
+**Pass 1 = OK（2026-09-19 再照合・再修正）**。
 
 ### `image008`
 
