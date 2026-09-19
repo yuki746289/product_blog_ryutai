@@ -129,3 +129,33 @@ Word本文には上記文言が残っているが、その直後に式オブジ�
 - inferential replacement: **not performed**
 
 MPSカテゴリは、image022 1件を明示HOLDとした状態で監査完了とする。
+
+
+## 8. User-approved inferred reconstruction
+
+After the source investigation was exhausted, the user approved proceeding with the most probable standard MPS stabilized pressure-gradient expression.
+
+Applied formula:
+
+```latex
+\[
+\left[\nabla P_i^{k+1}\right]
+=
+\frac{d}{n^0}
+\sum_{j\ne i}
+\frac{P_j^{k+1}-\hat P_i^{k+1}}
+{|\vec r_j-\vec r_i|^2}
+(\vec r_j-\vec r_i)
+w(|\vec r_j-\vec r_i|)
+\]
+```
+
+Classification:
+- recovered original source: **NO**
+- technical inference: **YES**
+- user-approved temporary reconstruction: **YES**
+- reflected to normal HTML: **YES**
+- traceability metadata retained: **YES**
+- residual HOLD: **0**
+
+The earlier HOLD conclusion remains part of the investigation history, but the operational site state now uses this documented reconstruction.
