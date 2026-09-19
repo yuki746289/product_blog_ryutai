@@ -20,8 +20,14 @@ def pages(root):
 
 def inspect(page):
     return page.evaluate(r"""() => {
-      const t=document.body?document.body.innerText:'';
-      const miss=[...document.images].filter(x=>!x.complete||x.naturalWidth===0).map(x=>x.getAttribute('src')||'');
+      const imgs=[...document.images];
+      const isLocalSrc=s=>s && !/^(?:https?:)?\\/\\//i.test(s) && !/^data:/i.test(s);
+      const miss=imgs.filter(x=>{
+        const s=x.getAttribute('src')||'';
+        return isLocalSrc(s) && (!x.complete||x.naturalWidth===0);
+      }).map(x=>x.getAttribute('src')||'');
+      const formulaTargets=[...document.querySelectorAll('[data-source-image]')];
+      const unrenderedTargets=formulaTargets.filter(e=>!e.querySelector('mjx-container')).length;
       const w=document.documentElement.clientWidth;
       const pageOverflow=document.documentElement.scrollWidth>w+2;
       const unc=pageOverflow?[...(document.body?document.body.querySelectorAll('*'):[])].filter(e=>{
@@ -30,7 +36,7 @@ def inspect(page):
         const r=e.getBoundingClientRect(); return r.width>0&&r.height>0&&(r.right>w+2||r.left<-2);
       }).length:0;
       return {matherr:document.querySelectorAll('mjx-merror,.mjx-merror,.MathJax_Error').length,
-        unrendered:(t.match(/\\\(|\\\[|\\begin\s*\{/g)||[]).length,
+        unrendered:unrenderedTargets,
         overflow:pageOverflow, uncontained:unc,
         local:[...document.querySelectorAll('.math-block')].filter(e=>e.scrollWidth>e.clientWidth+2).length,
         missing:miss};
@@ -68,8 +74,14 @@ def run(a):
            res=pg.goto(a.base_url.rstrip('/')+'/'+quote(rel,safe='/'),wait_until="domcontentloaded",timeout=30000); st=res.status if res else None
            try: pg.wait_for_load_state("networkidle",timeout=2000)
            except PWTimeout: pass
-           try: pg.evaluate("async()=>{if(window.MathJax?.startup?.promise)await Promise.race([window.MathJax.startup.promise,new Promise(r=>setTimeout(r,5000))])}")
+           try: pg.evaluate("async()=>{if(window.MathJax?.startup?.promise)await Promise.race([window.MathJax.startup.promise,new Promise(r=>setTimeout(r,8000))])}")
            except Exception: pass
+           try:
+            pg.wait_for_function("""() => {
+              const t=[...document.querySelectorAll('[data-source-image]')];
+              return t.length===0 || t.every(e=>e.querySelector('mjx-container'));
+            }""", timeout=8000)
+           except PWTimeout: pass
            m=inspect(pg)
           except Exception as e:
            nav=type(e).__name__+": "+str(e); m={"matherr":0,"unrendered":0,"overflow":False,"uncontained":0,"local":0,"missing":[]}
