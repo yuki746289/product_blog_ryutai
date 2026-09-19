@@ -11,17 +11,20 @@
 
 ### Formula conversion / audit
 
-- 従来のsource-exact監査: **564**
-- MPS source-exact / recovered: **48**
-- source-exact / recovered subtotal: **612**
-- MPS user-approved inferred reconstruction: **1**
-- reflected formula/formula-text total: **613**
+- source-exact / source-recovered: **633**
+- user-approved inferred reconstruction: **1**
+- operational MathJax total: **634**
+- formula pages: **95**
+- unresolved HOLD: **0**
 - MPS MathJax: **49/49**
+  - source-exact / recovered: **48**
+  - inferred reconstruction: **1**
 - MPS residual formula images: **0**
-- MPS HOLD: **0**
 
-image022は正本未回収のため、
+MPS `mps/mps_6_2.html` の former `image022.gif` は正本未回収のため、
 `data-source-status="inferred-reconstruction"` として他の48式と区別している。
+
+旧「564式」は旧スコープの履歴値であり、現行634式とは単純比較しない。
 
 ### Residual images
 
@@ -33,12 +36,31 @@ image022は正本未回収のため、
 
 ### Browser QA
 
-Baseline full-site:
+Final full-site QA:
+- run: `35446925022`
+- source head at trigger: `04b3f060b585023987bdfdc657bf6bac30f44673`
 - HTML: **205 pages**
 - desktop: **205/205**
 - mobile: **205/205**
 - checks: **410**
 - hard failures: **0**
+- page errors: **0**
+- MathJax errors: **0**
+- unrendered formulas: **0**
+- page-wide horizontal overflow: **0**
+- uncontained formula overflow: **0**
+- non-MPS missing images: **0**
+- MPS known missing references: **0**
+- allowed local math scroll: **148**
+- overall: **PASS**
+
+QAでは外部広告・外部トラッカーを遮断し、ローカル公開資産とMathJax CDNを対象に確認した。
+`pageerror` もhard failure条件に含めて再実行済み。
+
+補足:
+- 直前のrun `35446528245` はhard failure 0だったが、外部スクリプト由来の一過性 `pageerror: int64` が2件あった。
+- 最終runでは外部広告/トラッカーを遮断し、`pageerror=0` を確認した。
+- さらにその前のrun `35445949212` の全ページ `navigation` FAILは、QA内JavaScript正規表現の不具合による誤判定で、HTTP応答自体は200だった。QAコード修正後に再検証済み。
 
 Final MPS delta QA:
 - run: `35411325166`
@@ -47,10 +69,6 @@ Final MPS delta QA:
 - checks: **102**
 - failures: **0**
 - final `mps_6_2.html` desktop/mobile: **PASS**
-- MathJax errors: **0**
-- unrendered: **0**
-- missing images: **0**
-- page overflow: **0**
 
 ### FTPS capability
 
@@ -67,6 +85,13 @@ Final MPS delta QA:
   - workflowの期待値は **0件** へ修正済み。
 - 一時ファイルupload/delete能力: 過去に確認済み
 - 本番書込み: **未実施**
+
+## Deploy前整合確認
+
+- 引継ぎ時HEAD `c080be9f6e289ba92bf652e41781ee4828e336ca` 以降、今回のQA修正・再実行による変更は `.document` 内のみ。
+- 公開対象（HTML / CSS / JS / img等）の追加変更: **0件**
+- QAスクリプト・QAトリガー・QAレポート・本デプロイ準備台帳は公開対象外。
+- 本番FTPS書込み: **未実施**
 
 ## 本番反映時の安全条件
 
