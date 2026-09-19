@@ -6,7 +6,7 @@ from urllib.parse import quote
 from playwright.sync_api import sync_playwright, TimeoutError as PWTimeout
 
 VPS={"desktop":{"width":1440,"height":1000},"mobile":{"width":390,"height":844}}
-MPS={"mps/mps_6_2.html":1}
+MPS={}
 SKIP=("_mathjax_audit.html","_reaudit.html")
 
 def pages(root):
@@ -94,14 +94,14 @@ def merge(a):
     for p,e in MPS.items():
       r=next((x for x in desk if x["path"]==p),None); actual[p]=len(r["missing"]) if r else -1
       if not r or actual[p]!=e: probs.append(f"MPS {p} expected={e} actual={actual[p]}")
-    if sum(v for v in actual.values() if v>=0)!=1: probs.append("MPS total is not 1")
+    if sum(v for v in actual.values() if v>=0)!=0: probs.append("MPS total is not 0")
     mj=sum(r["matherr"]+len(r["console"]) for r in rows); ur=sum(r["unrendered"] for r in rows)
     ov=sum(bool(r["overflow"]) for r in rows); uc=sum(r["uncontained"] for r in rows); pe=sum(len(r["pageerr"]) for r in rows)
     nonm=sum(len(r["missing"]) for r in desk if r["path"] not in MPS); ls=sum(r["local"] for r in rows)
-    fail=bool(bad or probs); status="FAIL" if fail else "PASS WITH KNOWN MPS HOLD"
+    fail=bool(bad or probs); status="FAIL" if fail else "PASS"
     L=["# Final Site Browser QA — 2026-09-19","",f"- Overall: **{status}**","- Browser: Chromium / Playwright",
        "- Viewports: desktop 1440×1000, mobile 390×844",f"- Discovered normal HTML pages: **{n}**",f"- QA checks: **{len(rows)}**",
-       f"- Hard-failure rows: **{len(bad)}**",f"- MPS known missing references: **{sum(v for v in actual.values() if v>=0)}/1**",
+       f"- Hard-failure rows: **{len(bad)}**",f"- MPS known missing references: **{sum(v for v in actual.values() if v>=0)}/0**",
        "- Production deployment: not performed.","","## Global metrics","","| Metric | Count |","|---|---:|",
        f"| MathJax errors | {mj} |",f"| Unrendered | {ur} |",f"| Page overflow rows | {ov} |",f"| Uncontained overflow | {uc} |",
        f"| Page errors | {pe} |",f"| Non-MPS missing images (desktop) | {nonm} |",f"| Allowed local math scroll | {ls} |","",
@@ -112,7 +112,7 @@ def merge(a):
     else:
       L += ["- GLOBAL: "+x for x in probs]
       L += [f"- {r['path']} [{r['viewport']}]: {'; '.join(r['issues'])}" for r in bad[:200]]
-    L += ["","## Acceptance criteria","","- MPS image022 is the only known missing reference and remains SOURCE BLOCKED / HOLD.","- MathJax errors = 0.",
+    L += ["","## Acceptance criteria","","- MPS known missing references = 0.","- MathJax errors = 0.",
           "- Unrendered = 0.","- Page overflow = 0.","- Uncontained overflow = 0.","- Missing images outside MPS HOLD = 0."]
     p=Path(a.report); p.parent.mkdir(parents=True,exist_ok=True); p.write_text("\n".join(L)+"\n",encoding="utf-8"); print(status); return fail
 
