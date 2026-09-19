@@ -47,6 +47,7 @@ jobs:
           page_path=cfg['page_path']
           source_dir=Path(cfg['source_dir'])
           source_fragment=cfg['source_fragment']
+          source_ext=cfg.get('source_ext','png')
           nums=cfg['images']
           retained=cfg.get('retained_source_images',[])
           retained_expected=cfg.get('retained_source_image_counts',{n:1 for n in retained})
@@ -114,7 +115,7 @@ jobs:
 
                   mappings={}
                   for n in nums:
-                      sel=f'[data-source-image*="{source_fragment}/image{n}.png"]'
+                      sel=f'[data-source-image*="{source_fragment}/image{n}.{source_ext}"]'
                       cnt=pg.locator(sel).count()
                       mappings[n]=cnt
                       if cnt<1:
@@ -125,7 +126,7 @@ jobs:
                   page_overflow=d['sw']>d['cw']+2
                   source_img_elements=pg.locator(f'img[src*="{source_fragment}/image"]').count()
                   retained_counts={
-                      n:pg.locator(f'img[src*="{source_fragment}/image{n}.png"]').count()
+                      n:pg.locator(f'img[src*="{source_fragment}/image{n}.{source_ext}"]').count()
                       for n in retained_expected
                   }
                   unexpected_source_img_elements=source_img_elements-retained_total_expected
@@ -136,10 +137,10 @@ jobs:
                   if vn=='desktop':
                       pair_paths=[]
                       for n in nums:
-                          loc=pg.locator(f'[data-source-image*="{source_fragment}/image{n}.png"]').first
+                          loc=pg.locator(f'[data-source-image*="{source_fragment}/image{n}.{source_ext}"]').first
                           rpath=render_dir/f'image{n}.png'
                           loc.screenshot(path=str(rpath),animations='disabled')
-                          spath=source_dir/f'image{n}.png'
+                          spath=source_dir/f'image{n}.{source_ext}'
                           if not spath.exists():
                               failures.append(f'source missing: {spath}')
                               continue
