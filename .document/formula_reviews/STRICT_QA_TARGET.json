@@ -1,21 +1,14 @@
 {
-  "page_key": "mps_4",
-  "page_path": "mps/mps_4.html",
-  "source_dir": "img/mps_dot.files",
-  "source_fragment": "mps_dot.files",
+  "page_key": "mps_5",
+  "page_path": "mps/mps_5.html",
+  "source_dir": "img/mps_rap.files",
+  "source_fragment": "mps_rap.files",
   "source_ext": "gif",
   "images": [
     "001",
-    "002",
-    "003",
-    "004",
-    "005",
-    "006",
-    "007",
-    "008",
-    "009"
+    "002"
   ],
-  "expected_math_blocks": 9,
+  "expected_math_blocks": 2,
   "formula_selector": "[data-source-image]",
   "retained_source_images": [],
   "viewports": {
@@ -28,5 +21,5 @@
       "height": 844
     }
   },
-  "rerun_revision": 114
+  "rerun_revision": 115
 }
