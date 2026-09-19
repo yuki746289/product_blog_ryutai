@@ -434,6 +434,12 @@
 - HOLD: 0
 - レポート: `.document/formula_reviews/MESH_STRICT_REAUDIT_20260919.md`
 
+## Column / Appendix数式ページ完了結果
+- 新厳密再監査: **46式 / 5ページ**
+- Browser QA: 全ページ **PASS**
+- HOLD: 0
+- レポート: `.document/formula_reviews/COLUMN_APPENDIX_STRICT_REAUDIT_20260919.md`
+
 ## 累計
 
 - source-exact / source-recovered 新厳密再監査完了: **633式**
