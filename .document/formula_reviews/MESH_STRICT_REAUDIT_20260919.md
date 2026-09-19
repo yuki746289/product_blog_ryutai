@@ -1,20 +1,29 @@
 # Mesh Strict Re-audit — 2026-09-19
 
-**PASS**
+## 結果
 
-- Formula pages: **4**
-- Formulas: **30**
-- New Pass 1/2: **30/30**
+**Mesh数式ページ: PASS**
+
+- 新厳密再監査: **30式 / 4ページ**
+- 元HP画像 ↔ MathJax完成描画を全対象で直接比較
+- Browser QA: 全ページ PASS
 - HOLD: **0**
-- Browser QA: all PASS
-- Source image ↔ MathJax pair comparison: **30/30**
-- Current HTML matches source-certified formula records: **30/30**
 
-Pages:
-- mesh_1: 5
-- mesh_2: 9
-- mesh_3_1: 9
-- mesh_5: 7
+| Page | Formulas |
+|---|---:|
+| mesh_1 | 5 |
+| mesh_2 | 9 |
+| mesh_3_1 | 9 |
+| mesh_5 | 7 |
 
-Checks emphasized vector subscripts, x/y/z coordinates, signs, summation indices, radius/distance formulas and powers.  
-For mesh_3_1 image012/image013, the source-image labels “節点削除” / “節点追加” are preserved as surrounding HTML text while the mapped inline MathJax span contains the formula itself.
+## 重点確認
+
+- x/y/z, i/j 添字
+- ベクトル `p_1/p_2`, `F`, `r`
+- 最小二乗式の符号・総和添字
+- 曲率近似式の中心座標・半径
+- 節点追加/削除条件
+- 4面体変形式の総和・平方根・最小値式
+- 改行・式範囲
+
+`mesh_3_1` はPNG図6枚＋JPG図4枚を意図的に保持。初回QAはJPG保持図のカウント仕様でFAILだったが、数式9/9はrender済み。保持図を明示して再実行し **PASS**。
