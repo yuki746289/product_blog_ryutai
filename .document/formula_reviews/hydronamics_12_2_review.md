@@ -12,10 +12,9 @@
 - Browser QA: **PASS**
 
 ## 元画像 ↔ MathJax 直接比較
-- 運動方程式の無次元化。σ*, Re, Fr, δij, i/j、X添字を重点確認。inline式を含むためselector拡張後に再QA。
-- 現HTMLとsource-certified JSONは全対象一致（空白差のみの箇所は描画同値）。
-- 元画像とMathJax完成描画のペア画像を全式確認。
-- 数式内容・符号・添字・項順・改行に修正必要な差異なし。
+- 運動方程式の無次元化。σij, δij, Re, Fr、X_i添字と*を重点確認。
+- 元画像とMathJax完成描画のペア画像を全対象で確認。
+- 数式内容・符号・添字・上付き・項順・改行に修正必要な差異なし。
 
 ## Browser QA
 - desktop/mobileとも全対象render。
