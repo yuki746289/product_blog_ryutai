@@ -1,23 +1,20 @@
 {
-  "page_key": "fem_11_1",
-  "page_path": "fem/fem_11_1.html",
-  "source_dir": "img/fem_m_gauss.files",
-  "source_fragment": "fem_m_gauss.files",
+  "page_key": "fem_8_2_1",
+  "page_path": "fem/fem_8_2_1.html",
+  "source_dir": "img/fem_bd_2.files",
+  "source_fragment": "fem_bd_2.files",
   "images": [
-    "001",
     "002",
     "003",
     "004",
     "005",
-    "006",
-    "007",
-    "008",
-    "009",
-    "010",
-    "011"
+    "006"
   ],
-  "expected_math_blocks": 11,
-  "retained_source_images": [],
+  "expected_math_blocks": 5,
+  "retained_source_images": [
+    "001",
+    "007"
+  ],
   "viewports": {
     "desktop": {
       "width": 1440,
@@ -28,5 +25,5 @@
       "height": 844
     }
   },
-  "rerun_revision": 24
+  "rerun_revision": 25
 }
