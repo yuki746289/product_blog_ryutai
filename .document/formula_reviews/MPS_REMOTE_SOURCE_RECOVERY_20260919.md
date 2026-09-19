@@ -1,31 +1,48 @@
 # MPS Remote Source Recovery — 2026-09-19
 
-Production FTPS was accessed in read-only mode. No remote files were created, modified, or deleted.
+## Current status
 
-- Expected referenced GIF placements: **0**
-- Recovered from FTPS: **0**
-- Still missing on FTPS: **0**
-- Remote /img entries containing 'mps': **0**
+Production FTPS connectivity was rechecked in read-only mode after MPS formula conversion completed.
 
-## By page
+- latest run: `35408141850`
+- latest job: `105836951290`
+- checkout: latest `develop`
+- FTPS connect/login: **success**
+- TLS data protection (`PROT P`): **success**
+- passive mode: **success**
+- remote `/img` read access: **reached**
+- remote write/delete: **none**
+- current MPS `<img ...files/imageNNN.gif>` references: **0**
+- current MPS missing formula images: **0**
 
-| Page | Expected | Recovered | Missing |
-|---|---:|---:|---:|
+## Why the latest job concluded failure
 
-## Recovered assets
+The legacy recovery workflow still contained an old assertion:
 
-- None.
+```text
+Expected 49 MPS references but parsed 0
+```
 
-## Still missing
+This assertion ran **after** FTPS connection/login and remote read access succeeded.
 
-- None.
+The current site correctly has zero MPS formula-image references because all 49 MPS formula positions are now MathJax:
+- source-exact / recovered: **48**
+- user-approved inferred reconstruction: **1**
+- total: **49**
 
-## Remote /img MPS-like entries
+The workflow expectation has since been updated from 49 to 0.
 
-- None.
+## Historical recovery result
 
-## Notes
+Before MathJax replacement, production FTPS did not contain the 49 referenced MPS GIF assets.
+That historical result led to the Word/Visio/archive recovery work.
 
-- MPS formula-image references are now 0; image022 is represented by a user-approved inferred MathJax reconstruction.
-- Recovered files are kept in the workflow artifact until visually verified against page context.
-- Production deployment was not performed.
+The historical missing-49 state is no longer the current HTML state.
+
+## Current deployment interpretation
+
+- FTPS credentials/connectivity: **verified**
+- production remote mutation in this check: **none**
+- MPS missing images: **0**
+- MPS HOLD: **0**
+- production deployment: **not performed**
