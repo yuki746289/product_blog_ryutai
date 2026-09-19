@@ -32,6 +32,7 @@
 | 4 | `fem/fem_7_1_1.html` | 20 | **20/20** | **20/20** | **PASS** | **DONE** |
 | 5 | `fem/fem_6_2_6.html` | 12 | **12/12** | **12/12** | **PASS** | **DONE** |
 | 6 | `fem/fem_6_2_1.html` | 6 | **6/6** | **6/6** | **PASS** | **DONE** |
+| 7 | `fem/fem_6_1_5.html` | 6 | **6/6** | **6/6** | **PASS** | **DONE** |
 
 ## fem_7_2_2 完了結果
 
@@ -110,12 +111,22 @@
 - 補助JSONの source image directory metadata を修正
 - レビュー正本: `.document/formula_reviews/fem_6_2_1_review.md`
 
+## fem_6_1_5 完了結果
+
+- 元画像: image013～image018 = **6式**
+- 新Pass 1: **6/6**
+- 新Pass 2: **6/6**
+- 要修正: **0**
+- HOLD: 0
+- Browser QA: **PASS**
+- レビュー正本: `.document/formula_reviews/fem_6_1_5_review.md`
+
 ## 累計
 
-- 新厳密再監査完了: **149式**
-- 完了ページ: **6**
+- 新厳密再監査完了: **155式**
+- 完了ページ: **7**
 - 旧564式監査結果とは分離して管理する。
 
 ## 次回再開位置
 
-**`fem_6_1_5.html` を同じ新厳密方式で再監査する。**
+**`fem_6_1_1.html` を同じ新厳密方式で再監査する。**
