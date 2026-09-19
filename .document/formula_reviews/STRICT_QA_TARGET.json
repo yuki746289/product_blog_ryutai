@@ -1,8 +1,8 @@
 {
-  "page_key": "mps_3",
-  "page_path": "mps/mps_3.html",
-  "source_dir": "img/mps_nabra.files",
-  "source_fragment": "mps_nabra.files",
+  "page_key": "mps_4",
+  "page_path": "mps/mps_4.html",
+  "source_dir": "img/mps_dot.files",
+  "source_fragment": "mps_dot.files",
   "source_ext": "gif",
   "images": [
     "001",
@@ -13,12 +13,9 @@
     "006",
     "007",
     "008",
-    "009",
-    "010",
-    "011",
-    "012"
+    "009"
   ],
-  "expected_math_blocks": 12,
+  "expected_math_blocks": 9,
   "formula_selector": "[data-source-image]",
   "retained_source_images": [],
   "viewports": {
@@ -31,5 +28,5 @@
       "height": 844
     }
   },
-  "rerun_revision": 113
+  "rerun_revision": 114
 }
