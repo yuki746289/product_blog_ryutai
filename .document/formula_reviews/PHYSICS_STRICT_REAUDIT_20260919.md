@@ -1,18 +1,20 @@
 # Physics Strict Re-audit — 2026-09-19
 
-## Result
+## 結果
 
-**Physics formula strict re-audit: PASS**
+Physics数式ページの新厳密再監査を実施。
 
-### Scope
-- Formula pages: **16**
-- Formula images: **49**
-- New strict Pass 1: **49/49**
-- New strict Pass 2: **49/49**
+- 対象: **49式 / 16ページ**
+- 元HP画像 ↔ MathJax完成描画を全対象で直接比較
+- Browser QA: **全ページ PASS**
+- MathJax error=0
+- unrendered=0
+- uncontained overflow=0
+- page-wide overflow=0
 - HOLD: **0**
-- Browser QA: **all PASS**
 
-### Pages
+## 完了ページ
+
 | Page | Formulas |
 |---|---:|
 | physics_2 | 7 |
@@ -32,27 +34,17 @@
 | physics_6_3_3 | 1 |
 | physics_7 | 1 |
 
-### Verification
-- All 49 source-image / MathJax pairs were generated and visually compared.
-- Current HTML matches the source-certified formula JSON for **49/49** formulas.
-- Focus checks included:
-  - `i / j / k` indices
-  - `x / y / z` components
-  - Kronecker delta `δ_{ij}`
-  - Levi-Civita `ε_{ijk}`
-  - vector basis subscripts
-  - divergence / gradient / Laplacian notation
-  - dot / cross product expansions
-  - signs, superscripts, subscripts, and line structure
-- No source-confirmed formula-content correction was required in this Physics batch.
+## 重点確認
 
-### Browser QA
-- Desktop and mobile: all target formulas rendered.
-- MathJax error = 0
-- Unrendered = 0
-- Uncontained overflow = 0
-- Page-wide overflow = 0
+- `t/τ`, `i/j/k`
+- x/y/z成分添字
+- Kronecker delta `δ_ij`
+- Levi-Civita記号 `ε_ijk`
+- 内積・外積の添字展開
+- ∇, Δ, ∂/∂x_i
+- ベクトル記号と上付き/下付き
+- source imageでの改行・式範囲
 
-## Verdict
+## 判定
 
-**Physics formula pages: strict re-audit complete.**
+**Physics 数式ページ: 新厳密再監査完了。**
