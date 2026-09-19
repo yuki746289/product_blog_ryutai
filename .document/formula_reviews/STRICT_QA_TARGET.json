@@ -1,20 +1,18 @@
 {
-  "page_key": "hydronamics_6_4",
-  "page_path": "hydronamics/hydronamics_6_4.html",
-  "source_dir": "img/hydronamics_f_gravity.files",
-  "source_fragment": "hydronamics_f_gravity.files",
+  "page_key": "hydronamics_9_1",
+  "page_path": "hydronamics/hydronamics_9_1.html",
+  "source_dir": "img/hydronamics_shear_velocity.files",
+  "source_fragment": "hydronamics_shear_velocity.files",
   "images": [
     "002",
     "003",
-    "004",
     "005",
-    "006",
-    "007"
+    "006"
   ],
-  "expected_math_blocks": 6,
-  "formula_selector": "[data-source-image]",
+  "expected_math_blocks": 4,
   "retained_source_images": [
-    "001"
+    "001",
+    "004"
   ],
   "viewports": {
     "desktop": {
@@ -26,5 +24,5 @@
       "height": 844
     }
   },
-  "rerun_revision": 49
+  "rerun_revision": 50
 }
