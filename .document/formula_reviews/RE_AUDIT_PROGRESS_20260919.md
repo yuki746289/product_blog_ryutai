@@ -186,6 +186,15 @@
 - 全ページ Browser QA: **PASS**
 - HOLD: 0
 
+## FEMカテゴリ最終QA
+
+- 数式新厳密再監査: **235式 / 26ページ**
+- 非数式ページ最終QA: **17/17 PASS**
+- ローカル図画像: **21枚 / broken 0**
+- PC/mobile page-wide overflow: **0**
+- FEMカテゴリ: **COMPLETE**
+- 最終レポート: `.document/formula_reviews/FEM_FINAL_QA_20260919.md`
+
 ## 累計
 
 - 新厳密再監査完了: **235式**
@@ -194,4 +203,4 @@
 
 ## 次回再開位置
 
-**FEMカテゴリの残り未完了ページを棚卸しして継続する。**
+**FEM完了。次カテゴリ（Heatを優先）へ移行する。**
