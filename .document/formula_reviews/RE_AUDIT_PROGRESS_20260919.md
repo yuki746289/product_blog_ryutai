@@ -30,26 +30,26 @@
 | 003 | Wordと元画像の構造一致 | 一致 | DONE | 時間記号は τ |
 | 004 | 元画像と式内容一致 | 一致 | DONE | 4成分ベクトル + φ_i |
 | 005 | Wordと元画像を再照合 | 一致 | DONE | 圧力節点添字は z |
-| 006 | ユーザー提示元画像で再確認 | 不一致→修正 | DONE | 左辺 ∫[N]^T φ_i dV を含む。時間微分は t。次画像の展開を混在させない |
-| 007 | 対応付け再確認中 | 候補あり | TODO | 006との式境界を独立確認 |
-| 008 | 対応付け再確認中 | 候補あり | TODO | Word式との対応確認 |
-| 009 | 対応付け再確認中 | 候補あり | TODO | Word式との対応確認 |
-| 010 | 対応付け再確認中 | 候補あり | TODO | Word式との対応確認 |
+| 006 | 元HP画像 + Wordを再照合 | 修正済み | DONE | 時間記号は τ。残差積分から各積分項まで同一画像内に含む |
+| 007 | 元HP画像 + Wordを再照合 | 修正済み | DONE | 006と同じ式内容だが改行構成が異なる。画像007の改行に合わせて復元 |
+| 008 | 元HP画像 + Wordを再照合 | 一致 | DONE | [N]^T表記、τ、対流3項・応力3項・重力項の行構成一致 |
+| 009 | 元HP画像 + Wordを再照合 | 一致 | DONE | 時間差分 + Green-Gauss後のx/y/z各項を個別確認 |
+| 010 | 元HP画像 + Wordを再照合 | 改行修正 | DONE | 表面応力積分と重力積分を元画像どおり別行に分離 |
 
-進捗: 6 / 49（新再監査）
+進捗: 10 / 49（新再監査）
 
 ## image006 確定内容
 
+元HP画像（image006.gif）とWordレンダリングを並べて再確認し、両者が一致することを確認した。
+時間微分の分母は **τ**。画像006は残差積分から個別積分への展開までを含む。
+
 ```latex
 \[
-\int_V
-\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
-\phi_i\,dV
-=
-\int_V
+\begin{aligned}
+&\int_V
 \begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
 \left(
-\frac{\partial V_i}{\partial t}
+\frac{\partial V_i}{\partial\tau}
 +V_x\frac{\partial V_i}{\partial X}
 +V_y\frac{\partial V_i}{\partial Y}
 +V_z\frac{\partial V_i}{\partial Z}
@@ -57,10 +57,35 @@
 -\frac{\partial\sigma^*_{yi}}{\partial Y}
 -\frac{\partial\sigma^*_{zi}}{\partial Z}
 -g_i^*
-\right)dV
+\right)dV\\
+={}&\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial V_i}{\partial\tau}dV
++V_x\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial V_i}{\partial X}dV
++V_y\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial V_i}{\partial Y}dV
++V_z\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial V_i}{\partial Z}dV\\
+&-\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial\sigma^*_{xi}}{\partial X}dV
+-\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial\sigma^*_{yi}}{\partial Y}dV
+-\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial\sigma^*_{zi}}{\partial Z}dV
+-\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+g_i^*dV
+\end{aligned}
 \]
 ```
 
 ## 次回再開位置
 
-`fem_7_2_2 / image007` から。
+`fem_7_2_2 / image011` から。
