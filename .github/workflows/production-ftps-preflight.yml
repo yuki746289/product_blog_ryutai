@@ -1,0 +1,177 @@
+name: Production FTPS Preflight
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/production-ftps-preflight.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - name: Build publish manifest and check FTPS
+        shell: bash
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          python3 - <<'PY'
+          import ftplib
+          import os
+          import sys
+          from pathlib import Path
+          from urllib.parse import urlparse
+
+          PUBLIC_DIRS = {
+              "appendix","book","column","counting","fem","fortran","heat",
+              "hydronamics","introduce","library","link","mail","math","mesh",
+              "mps","pdf","physics","profile","sitemap","css","js","img"
+          }
+          EXTS = {
+              ".html",".htm",".css",".js",".png",".gif",".jpg",".jpeg",
+              ".svg",".webp",".ico",".xml",".txt",".pdf",".woff",".woff2",".ttf"
+          }
+          SKIP_SUFFIX = ("_mathjax_audit.html","_reaudit.html")
+          root = Path(".")
+
+          candidates=[]
+          for p in root.rglob("*"):
+              if not p.is_file():
+                  continue
+              rel=p.as_posix().lstrip("./")
+              parts=Path(rel).parts
+              if any(part.startswith(".") for part in parts):
+                  continue
+              if parts and parts[0]=="design_samples":
+                  continue
+              if rel.endswith(SKIP_SUFFIX):
+                  continue
+              if len(parts)>1 and parts[0] not in PUBLIC_DIRS:
+                  continue
+              if p.suffix.lower() not in EXTS:
+                  continue
+              candidates.append(rel)
+          candidates=sorted(set(candidates))
+
+          server=os.environ.get("FTP_SERVER","").strip()
+          username=os.environ.get("FTP_USERNAME","").strip()
+          password=os.environ.get("FTP_PASSWORD","").strip()
+          missing_secrets=[k for k,v in {
+              "FTP_SERVER":server,"FTP_USERNAME":username,"FTP_PASSWORD":password
+          }.items() if not v]
+          if missing_secrets:
+              raise SystemExit("Missing secrets: "+", ".join(missing_secrets))
+
+          if "://" in server:
+              u=urlparse(server); host=u.hostname or ""; port=u.port or 21
+          else:
+              hp=server.rsplit(":",1)
+              if len(hp)==2 and hp[1].isdigit():
+                  host,port=hp[0],int(hp[1])
+              else:
+                  host,port=server,21
+
+          ftp=ftplib.FTP_TLS(timeout=25)
+          remote_root=""
+          remote_names=[]
+          missing_remote=[]
+          size_mismatch=[]
+          checked=0
+          try:
+              ftp.connect(host,port)
+              ftp.login(username,password)
+              ftp.prot_p()
+              ftp.set_pasv(True)
+              remote_root=ftp.pwd()
+              remote_names=ftp.nlst()
+              ftp.voidcmd("TYPE I")
+              for rel in candidates:
+                  try:
+                      rsize=ftp.size(rel)
+                  except Exception:
+                      rsize=None
+                  if rsize is None:
+                      missing_remote.append(rel)
+                  else:
+                      checked+=1
+                      lsize=Path(rel).stat().st_size
+                      if int(rsize)!=int(lsize):
+                          size_mismatch.append((rel,lsize,int(rsize)))
+          finally:
+              try: ftp.quit()
+              except Exception: pass
+
+          by_top={}
+          for rel in candidates:
+              parts=Path(rel).parts
+              top=parts[0] if len(parts)>1 else "(root)"
+              by_top[top]=by_top.get(top,0)+1
+
+          lines=[
+              "# Production FTPS Preflight — 2026-09-19","",
+              "## Result","",
+              "- Mode: **READ ONLY** (FTPSへの書込み・削除なし)",
+              f"- FTPS login directory: `{remote_root}`",
+              f"- Remote root entries: **{len(remote_names)}**",
+              f"- Local publish candidates: **{len(candidates)}**",
+              f"- Remote existing candidates: **{checked}**",
+              f"- Remote missing candidates: **{len(missing_remote)}**",
+              f"- Size-different candidates: **{len(size_mismatch)}**","",
+              "## Publish whitelist","",
+              "- Root-level web files with approved extensions",
+              "- Public directories: "+", ".join(f"`{x}`" for x in sorted(PUBLIC_DIRS)),
+              "- Excluded: `.git`, `.github`, `.document`, `design_samples`, audit/re-audit HTML, non-web source files","",
+              "## Candidate count by top-level path","",
+              "| Path | Files |","|---|---:|"
+          ]
+          for k in sorted(by_top):
+              lines.append(f"| `{k}` | {by_top[k]} |")
+          lines += ["","## Remote-missing candidates",""]
+          if missing_remote:
+              for x in missing_remote[:200]:
+                  lines.append(f"- `{x}`")
+              if len(missing_remote)>200:
+                  lines.append(f"- ... and {len(missing_remote)-200} more")
+          else:
+              lines.append("- None")
+          lines += ["","## Size-different candidates",""]
+          if size_mismatch:
+              for rel,ls,rs in size_mismatch[:200]:
+                  lines.append(f"- `{rel}`: local={ls}, remote={rs}")
+              if len(size_mismatch)>200:
+                  lines.append(f"- ... and {len(size_mismatch)-200} more")
+          else:
+              lines.append("- None")
+          lines += ["","## Deployment policy","",
+              "- 本番反映時は上記publish candidatesのみを対象とする。",
+              "- Remote側のファイル削除は行わない。",
+              "- MPS欠損49画像はローカルに存在しないため、新規作成・推測復元・削除を行わない。",
+              "- 公開後にHTTPスモークテストとPC/mobile MathJax確認を行う。",""
+          ]
+          out=Path(".document/deploy/PRODUCTION_FTPS_PREFLIGHT_20260919.md")
+          out.parent.mkdir(parents=True,exist_ok=True)
+          out.write_text("\n".join(lines),encoding="utf-8")
+          print(f"candidates={len(candidates)} existing={checked} missing={len(missing_remote)} size_diff={len(size_mismatch)}")
+          PY
+
+      - name: Commit preflight report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .document/deploy/PRODUCTION_FTPS_PREFLIGHT_20260919.md
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "docs: record production FTPS preflight [skip ci]"
+          git push origin HEAD:develop
