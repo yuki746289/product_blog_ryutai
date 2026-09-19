@@ -105,6 +105,15 @@
 | 77 | `physics/physics_6_3_2.html` | 2 | **2/2** | **2/2** | **PASS** | **DONE** |
 | 78 | `physics/physics_6_3_3.html` | 1 | **1/1** | **1/1** | **PASS** | **DONE** |
 | 79 | `physics/physics_7.html` | 1 | **1/1** | **1/1** | **PASS** | **DONE** |
+| 80 | `appendix/appendix_1.html` | 14 | **14/14** | **14/14** | **PASS** | **DONE** |
+| 81 | `appendix/appendix_2.html` | 11 | **11/11** | **11/11** | **PASS** | **DONE** |
+| 82 | `appendix/appendix_3_1.html` | 8 | **8/8** | **8/8** | **PASS** | **DONE** |
+| 83 | `appendix/appendix_3_2.html` | 8 | **8/8** | **8/8** | **PASS** | **DONE** |
+| 84 | `column/column_2.html` | 5 | **5/5** | **5/5** | **PASS** | **DONE** |
+| 85 | `mesh/mesh_1.html` | 5 | **5/5** | **5/5** | **PASS** | **DONE** |
+| 86 | `mesh/mesh_2.html` | 9 | **9/9** | **9/9** | **PASS** | **DONE** |
+| 87 | `mesh/mesh_3_1.html` | 9 | **9/9** | **9/9** | **PASS** | **DONE** |
+| 88 | `mesh/mesh_5.html` | 7 | **7/7** | **7/7** | **PASS** | **DONE** |
 
 ## fem_7_2_2 完了結果
 
@@ -360,12 +369,20 @@
 - Physicsカテゴリ: **COMPLETE**
 - 最終レポート: `.document/formula_reviews/PHYSICS_FINAL_QA_20260919_STRICT.md`
 
+## Appendix / Column / Mesh 数式ページ完了結果
+- 新厳密再監査: **76式 / 9ページ**
+- 元画像↔MathJax直接比較: **76/76**
+- 現HTML↔source-certified JSON: **76/76一致**
+- Browser QA: 全ページ **PASS**
+- HOLD: 0
+- レビュー正本: `.document/formula_reviews/APPENDIX_COLUMN_MESH_STRICT_REAUDIT_20260919.md`
+
 ## 累計
 
-- 新厳密再監査完了: **509式**
-- 完了ページ: **79**
+- 新厳密再監査完了: **585式**
+- 完了ページ: **88**
 - 旧564式監査結果とは分離して管理する。
 
 ## 次回再開位置
 
-**Appendix / Column / Mesh の残り数式ページを継続する。**
+**Appendix / Column / Mesh の非数式ページ最終QAを実施する。**
