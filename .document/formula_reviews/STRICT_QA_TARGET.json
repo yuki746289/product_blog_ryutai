@@ -1,16 +1,20 @@
 {
-  "page_key": "mesh_1",
-  "page_path": "mesh/mesh_1.html",
-  "source_dir": "img/mesh_approximation.files",
-  "source_fragment": "mesh_approximation.files",
+  "page_key": "mesh_2",
+  "page_path": "mesh/mesh_2.html",
+  "source_dir": "img/mesh_curvature.files",
+  "source_fragment": "mesh_curvature.files",
   "images": [
     "002",
     "003",
     "004",
     "005",
-    "006"
+    "006",
+    "007",
+    "008",
+    "009",
+    "010"
   ],
-  "expected_math_blocks": 5,
+  "expected_math_blocks": 9,
   "formula_selector": "[data-source-image]",
   "retained_source_images": [
     "001"
@@ -25,5 +29,5 @@
       "height": 844
     }
   },
-  "rerun_revision": 118
+  "rerun_revision": 119
 }
