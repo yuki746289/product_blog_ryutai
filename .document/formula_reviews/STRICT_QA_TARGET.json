@@ -1,13 +1,12 @@
 {
-  "page_key": "physics_6_2_4",
-  "page_path": "physics/physics_6_2_4.html",
+  "page_key": "physics_6_2_5",
+  "page_path": "physics/physics_6_2_5.html",
   "source_dir": "img/physics_c_inner.files",
   "source_fragment": "physics_c_inner.files",
   "images": [
-    "016",
-    "017"
+    "018"
   ],
-  "expected_math_blocks": 2,
+  "expected_math_blocks": 1,
   "formula_selector": "[data-source-image]",
   "retained_source_images": [],
   "viewports": {
@@ -20,5 +19,5 @@
       "height": 844
     }
   },
-  "rerun_revision": 85
+  "rerun_revision": 86
 }
