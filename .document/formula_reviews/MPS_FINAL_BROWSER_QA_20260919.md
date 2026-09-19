@@ -1,48 +1,52 @@
 # MPS Final Browser QA — 2026-09-19
 
-- Overall: **PASS WITH IMAGE022 HOLD**
-- Scope: MPS 7 pages only
-- Formula replacements: **48**
-- Known HOLD: **mps/mps_6_2.html image022.gif only**
-- GitHub Actions run: `35411325166`
-- Latest mps_6_2 shard: `qa-shard-1` job `105827914216`
-- Latest shard artifact: `10576437193`
-- Latest shard result: **102 checks / failures 0**
+## 結論
 
-## Final MPS page result
+**PASS**
 
-| Page | Viewport | Formula | MathJax | Unrendered | Overflow | Uncontained | MPS img | Missing |
-|---|---|---:|---:|---:|---:|---:|---:|---:|
-| mps/mps_1.html | desktop | 1/1 | 0 | 0 | 0 | 0 | 0 | 0 |
-| mps/mps_2.html | desktop | 1/1 | 0 | 0 | 0 | 0 | 0 | 0 |
-| mps/mps_3.html | desktop | 12/12 | 0 | 0 | 0 | 0 | 0 | 0 |
-| mps/mps_4.html | desktop | 9/9 | 0 | 0 | 0 | 0 | 0 | 0 |
-| mps/mps_5.html | desktop | 2/2 | 0 | 0 | 0 | 0 | 0 | 0 |
-| mps/mps_6_1.html | desktop | 2/2 | 0 | 0 | 0 | 0 | 0 | 0 |
-| mps/mps_6_2.html | desktop | 21/21 | 0 | 0 | 0 | 0 | 1 | 1 |
-| mps/mps_1.html | mobile | 1/1 | 0 | 0 | 0 | 0 | 0 | 0 |
-| mps/mps_2.html | mobile | 1/1 | 0 | 0 | 0 | 0 | 0 | 0 |
-| mps/mps_3.html | mobile | 12/12 | 0 | 0 | 0 | 0 | 0 | 0 |
-| mps/mps_4.html | mobile | 9/9 | 0 | 0 | 0 | 0 | 0 | 0 |
-| mps/mps_5.html | mobile | 2/2 | 0 | 0 | 0 | 0 | 0 | 0 |
-| mps/mps_6_1.html | mobile | 2/2 | 0 | 0 | 0 | 0 | 0 | 0 |
-| mps/mps_6_2.html | mobile | 21/21 | 0 | 0 | 0 | 0 | 1 | 1 |
+MPS 7ページの最終状態:
+- MathJax formula total: **49**
+- source-exact / recovered: **48**
+- user-approved inferred reconstruction: **1**
+- residual MPS formula images: **0**
+- MPS HOLD: **0**
 
-## Post-correction verification
+## image022 final replacement
 
-`mps/mps_6_2.html` の `image020` 相当式を元Wordどおり
-`\\nabla^2P_j^{k+1}` に修正後、同ページを含む最新 `qa-shard-1` を再実行した。
+`mps/mps_6_2.html` の旧 `image022.gif` は、
+ユーザー承認の推定復元式として `formula-mps-6-2-022` に置換済み。
 
-Desktop / mobile ともに:
+Traceability:
+- former path: `img/mps_fluid_count.files/image022.gif`
+- `data-source-status="inferred-reconstruction"`
 
-- HTTP: **200**
+## Final Browser QA
+
+GitHub Actions:
+- run: `35411325166`
+- final shard: `qa-shard-1`
+- job: `105835730146`
+- artifact: `10576893632`
+- shard checks: **102**
+- shard failures: **0**
+
+`mps/mps_6_2.html` final result:
+
+| Viewport | HTTP | MathJax | Unrendered | Page overflow | Uncontained | Local math scroll | Missing | Issues |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| desktop | 200 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| mobile | 200 | 0 | 0 | 0 | 0 | 1 | 0 | 0 |
+
+Mobileのlocal math scroll 1は `.math-block` 内の許容スクロールであり、ページ全体のoverflowではない。
+
+## 判定
+
+- MPS MathJax: **49/49**
+- Missing MPS images: **0**
 - MathJax errors: **0**
-- unrendered: **0**
-- page overflow: **0**
-- uncontained overflow: **0**
-- page errors: **0**
-- console errors: **0**
-- missing image: **image022.gif 1件のみ**
-- issues: **0**
+- Unrendered formulas: **0**
+- Page overflow: **0**
+- Uncontained overflow: **0**
+- Browser QA: **PASS**
 
-**判定: MPS表示QA完了。**
+本番FTP/FTPS反映は未実施。
