@@ -1,0 +1,117 @@
+# Created: 2026-09-19T09:25:00+09:00
+name: Recover MPS assets from Wayback
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/recover-mps-assets-wayback.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Query CDX and recover archived GIFs
+        run: |
+          python3 - <<'PY'
+          import json, time, urllib.parse, urllib.request
+          from pathlib import Path
+
+          dirs={
+            "mps_weight.files":1,
+            "mps_num.files":1,
+            "mps_nabra.files":12,
+            "mps_dot.files":9,
+            "mps_rap.files":2,
+            "mps_fluid_eq.files":2,
+            "mps_fluid_count.files":22,
+          }
+          targets={}
+          for d,n in dirs.items():
+              for i in range(1,n+1):
+                  rel=f"img/{d}/image{i:03d}.gif"
+                  targets[rel]=None
+
+          out=Path("mps-wayback-recovery")
+          rec=out/"recovered"
+          rec.mkdir(parents=True,exist_ok=True)
+          queries=[]
+
+          def get_json(url, timeout=30):
+              req=urllib.request.Request(url,headers={"User-Agent":"Mozilla/5.0"})
+              with urllib.request.urlopen(req,timeout=timeout) as r:
+                  return json.loads(r.read().decode("utf-8","replace"))
+
+          # Query each expected directory as a prefix to minimize CDX requests.
+          for d in dirs:
+              original_prefix=f"http://ryutai.ninja-web.net/img/{d}/"
+              params={
+                "url":original_prefix,
+                "matchType":"prefix",
+                "output":"json",
+                "fl":"timestamp,original,statuscode,mimetype,digest",
+                "filter":["statuscode:200"],
+                "collapse":"digest",
+                "limit":"500"
+              }
+              # urllib.urlencode with doseq for filter list
+              q=urllib.parse.urlencode(params,doseq=True)
+              url="https://web.archive.org/cdx/search/cdx?"+q
+              try:
+                  data=get_json(url)
+                  rows=data[1:] if data and isinstance(data[0],list) else data
+                  queries.append({"directory":d,"status":"ok","row_count":len(rows)})
+                  for row in rows:
+                      if len(row)<5: continue
+                      ts,orig,status,mime,digest=row[:5]
+                      path=urllib.parse.urlparse(orig).path.lstrip("/")
+                      # normalize case and scheme differences
+                      for rel in targets:
+                          if rel.lower()==path.lower():
+                              prev=targets[rel]
+                              if prev is None or ts>prev["timestamp"]:
+                                  targets[rel]={"timestamp":ts,"original":orig,"mime":mime,"digest":digest}
+              except Exception as exc:
+                  queries.append({"directory":d,"status":"error","error":f"{type(exc).__name__}: {exc}"})
+              time.sleep(0.5)
+
+          results=[]
+          for rel,hit in targets.items():
+              if not hit:
+                  results.append({"remote":rel,"status":"not_indexed"})
+                  continue
+              ts=hit["timestamp"]
+              orig=hit["original"]
+              snap=f"https://web.archive.org/web/{ts}id_/{orig}"
+              try:
+                  req=urllib.request.Request(snap,headers={"User-Agent":"Mozilla/5.0"})
+                  with urllib.request.urlopen(req,timeout=30) as r:
+                      data=r.read()
+                      ct=r.headers.get("Content-Type","")
+                      code=getattr(r,"status",200)
+                  if code==200 and len(data)>20 and "text/html" not in ct.lower():
+                      p=rec/rel
+                      p.parent.mkdir(parents=True,exist_ok=True)
+                      p.write_bytes(data)
+                      results.append({"remote":rel,"status":"recovered","timestamp":ts,"snapshot":snap,"size":len(data),"content_type":ct})
+                      print("RECOVERED",rel,ts,len(data),ct)
+                  else:
+                      results.append({"remote":rel,"status":"bad_snapshot","timestamp":ts,"http_status":code,"size":len(data),"content_type":ct})
+              except Exception as exc:
+                  results.append({"remote":rel,"status":"fetch_error","timestamp":ts,"snapshot":snap,"error":f"{type(exc).__name__}: {exc}"})
+
+          ok=sum(x["status"]=="recovered" for x in results)
+          manifest={"target_count":len(results),"recovered_count":ok,"missing_count":len(results)-ok,"queries":queries,"results":results}
+          (out/"manifest.json").write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding="utf-8")
+          print("SUMMARY",json.dumps({"recovered":ok,"missing":len(results)-ok,"total":len(results),"queries":queries},ensure_ascii=False))
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mps-wayback-recovery
+          path: mps-wayback-recovery
+          retention-days: 7
