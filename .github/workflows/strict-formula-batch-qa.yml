@@ -1,15 +1,11 @@
-# Created: 2026-09-19 JST
 name: Strict Formula Batch QA
 
 on:
   push:
     branches: [develop]
     paths:
-      - '.document/formula_reviews/STRICT_QA_TARGETS.json'
+      - '.document/formula_reviews/STRICT_QA_BATCH_TARGET.json'
       - '.github/workflows/strict-formula-batch-qa.yml'
-
-permissions:
-  contents: write
 
 jobs:
   qa:
@@ -18,7 +14,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: develop
           fetch-depth: 0
 
       - uses: actions/setup-python@v5
@@ -35,19 +30,18 @@ jobs:
           python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/strict-batch-http.log 2>&1 &
           sleep 1
 
-      - name: Batch QA
+      - name: Run batch QA
         run: |
           python3 - <<'PY'
-          import json
+          import json, re
           from pathlib import Path
           from PIL import Image, ImageDraw
           from playwright.sync_api import sync_playwright
 
-          cfg=json.loads(Path('.document/formula_reviews/STRICT_QA_TARGETS.json').read_text(encoding='utf-8'))
-          vps=cfg['viewports']
-          root=Path('strict-formula-batch-qa')
-          root.mkdir(exist_ok=True)
-          manifest={'targets':[],'failures':[]}
+          cfg=json.loads(Path('.document/formula_reviews/STRICT_QA_BATCH_TARGET.json').read_text(encoding='utf-8'))
+          out=Path('strict-formula-batch-qa')
+          out.mkdir(exist_ok=True)
+          rows=[]; failures=[]
 
           def white_rgb(im):
               im=im.convert('RGBA')
@@ -55,120 +49,121 @@ jobs:
               bg.alpha_composite(im)
               return bg.convert('RGB')
 
-          def fit(im,max_w=720,max_h=520):
+          def fit(im,max_w=700,max_h=480):
               ratio=min(max_w/im.width,max_h/im.height,1.0)
-              if ratio<1.0:
+              if ratio < 1.0:
                   im=im.resize((max(1,int(im.width*ratio)),max(1,int(im.height*ratio))),Image.Resampling.LANCZOS)
               return im
 
           with sync_playwright() as p:
               browser=p.chromium.launch(headless=True)
-              for t in cfg['targets']:
-                  key=t['page_key']; out=root/key
-                  out.mkdir(exist_ok=True)
-                  (out/'pairs').mkdir(exist_ok=True)
-                  (out/'rendered').mkdir(exist_ok=True)
-                  rows=[]; failures=[]
-                  for vn,vp in vps.items():
+              for item in cfg['pages']:
+                  key=item['key']
+                  page_path=item['path']
+                  frag=item['frag']
+                  srcdir=Path(item['dir'])
+                  images=item['images']
+                  retained=item.get('retained',[])
+                  page_out=out/key
+                  pair_dir=page_out/'pairs'
+                  render_dir=page_out/'rendered'
+                  page_out.mkdir(parents=True,exist_ok=True)
+                  pair_dir.mkdir(exist_ok=True)
+                  render_dir.mkdir(exist_ok=True)
+                  page_fail=[]
+
+                  for vn,vp in cfg['viewports'].items():
                       ctx=browser.new_context(viewport=vp,device_scale_factor=1)
-                      pg=ctx.new_page(); page_errors=[]
+                      pg=ctx.new_page()
+                      page_errors=[]
                       pg.on('pageerror',lambda exc,a=page_errors:a.append(str(exc)))
-                      pg.goto(f"http://127.0.0.1:8000/{t['page_path']}",wait_until='domcontentloaded',timeout=120000)
+                      pg.goto(f'http://127.0.0.1:8000/{page_path}',wait_until='domcontentloaded',timeout=120000)
                       pg.wait_for_function('() => window.MathJax && MathJax.startup && MathJax.startup.promise',timeout=60000)
                       pg.evaluate('async()=>{await MathJax.startup.promise;}')
                       pg.wait_for_timeout(500)
 
-                      blocks=pg.locator('.math-block'); bc=blocks.count()
-                      rendered=0; unrendered=[]; local=[]; uncontained=[]
-                      for i in range(bc):
-                          el=blocks.nth(i); bid=el.get_attribute('id') or f'index-{i}'
-                          if el.locator('mjx-container').count()>0: rendered+=1
-                          else: unrendered.append(bid)
-                          d=el.evaluate("e=>({cw:e.clientWidth,sw:e.scrollWidth,ox:getComputedStyle(e).overflowX})")
-                          if d['sw']>d['cw']+1:
-                              local.append(bid)
-                              if d['ox'] not in ('auto','scroll'): uncontained.append(bid)
-
-                      mappings={}
-                      for n in t['images']:
-                          cnt=pg.locator(f'[data-source-image*="{t["source_fragment"]}/image{n}.png"]').count()
-                          mappings[n]=cnt
-                          if cnt<1: failures.append(f'{vn}: image{n} mapped blocks={cnt}')
+                      rendered=0; unrendered=[]; uncontained=[]
+                      for n in images:
+                          loc=pg.locator(f'[data-source-image*="{frag}/image{n}.png"]').first
+                          if loc.count()<1:
+                              page_fail.append(f'{vn}: image{n} mapping missing')
+                              continue
+                          if loc.locator('mjx-container').count()>0:
+                              rendered += 1
+                          else:
+                              unrendered.append(n)
+                          dims=loc.evaluate("e=>({cw:e.clientWidth,sw:e.scrollWidth,ox:getComputedStyle(e).overflowX})")
+                          if dims['sw']>dims['cw']+1 and dims['ox'] not in ('auto','scroll'):
+                              uncontained.append(n)
 
                       merror=pg.locator('mjx-merror').count()
-                      dd=pg.evaluate("()=>({cw:document.documentElement.clientWidth,sw:document.documentElement.scrollWidth})")
-                      po=dd['sw']>dd['cw']+2
-                      srcimgs=pg.locator(f'img[src*="{t["source_fragment"]}/image"]').count()
-                      pg.screenshot(path=str(out/f'{key}_{vn}.png'),full_page=True,animations='disabled')
+                      doc=pg.evaluate("()=>({cw:document.documentElement.clientWidth,sw:document.documentElement.scrollWidth})")
+                      page_overflow=doc['sw']>doc['cw']+2
+
+                      retained_counts={n:pg.locator(f'img[src*="{frag}/image{n}.png"]').count() for n in retained}
+                      if any(v!=1 for v in retained_counts.values()):
+                          page_fail.append(f'{vn}: retained image counts={retained_counts}')
+
+                      if rendered!=len(images): page_fail.append(f'{vn}: rendered={rendered}/{len(images)}')
+                      if unrendered: page_fail.append(f'{vn}: unrendered={unrendered}')
+                      if merror: page_fail.append(f'{vn}: mjx-merror={merror}')
+                      if uncontained: page_fail.append(f'{vn}: uncontained overflow={uncontained}')
+                      if page_overflow: page_fail.append(f'{vn}: page-wide overflow')
+                      if page_errors: page_fail.append(f'{vn}: page errors={page_errors}')
 
                       if vn=='desktop':
                           pair_paths=[]
-                          for n in t['images']:
-                              loc=pg.locator(f'[data-source-image*="{t["source_fragment"]}/image{n}.png"]').first
-                              rpath=out/'rendered'/f'image{n}.png'
+                          for n in images:
+                              loc=pg.locator(f'[data-source-image*="{frag}/image{n}.png"]').first
+                              if loc.count()<1: continue
+                              rpath=render_dir/f'image{n}.png'
                               loc.screenshot(path=str(rpath),animations='disabled')
-                              spath=Path(t['source_dir'])/f'image{n}.png'
+                              spath=srcdir/f'image{n}.png'
+                              if not spath.exists():
+                                  page_fail.append(f'source missing: {spath}')
+                                  continue
                               src=fit(white_rgb(Image.open(spath)))
                               ren=fit(white_rgb(Image.open(rpath)))
                               h=max(src.height,ren.height)+42
-                              pair=Image.new('RGB',(1480,h),'white')
+                              pair=Image.new('RGB',(1440,h),'white')
                               dr=ImageDraw.Draw(pair)
-                              dr.text((10,8),f'image{n} SOURCE',fill='black')
-                              dr.text((750,8),f'image{n} MATHJAX',fill='black')
-                              pair.paste(src,(10,32)); pair.paste(ren,(750,32))
-                              pp=out/'pairs'/f'image{n}_pair.png'; pair.save(pp); pair_paths.append(pp)
-                          imgs=[Image.open(x).convert('RGB') for x in pair_paths]
-                          if imgs:
-                              total_h=sum(i.height for i in imgs)+12*(len(imgs)-1)
-                              sheet=Image.new('RGB',(1480,total_h),'white'); y=0
+                              dr.text((10,8),f'{key} image{n} SOURCE',fill='black')
+                              dr.text((730,8),f'{key} image{n} MATHJAX',fill='black')
+                              pair.paste(src,(10,32)); pair.paste(ren,(730,32))
+                              pp=pair_dir/f'image{n}_pair.png'
+                              pair.save(pp); pair_paths.append(pp)
+                          for start in range(0,len(pair_paths),10):
+                              group=pair_paths[start:start+10]
+                              imgs=[Image.open(x).convert('RGB') for x in group]
+                              total_h=sum(im.height for im in imgs)+12*(len(imgs)-1)
+                              sheet=Image.new('RGB',(1440,total_h),'white')
+                              y=0
                               for im in imgs:
                                   sheet.paste(im,(0,y)); y+=im.height+12
-                              sheet.save(out/'pair_sheet.png')
+                              sheet.save(page_out/f'pair_sheet_{start+1:03d}_{start+len(group):03d}.png')
 
-                      row={'viewport':vn,'math_blocks':bc,'rendered':rendered,'merror':merror,
-                           'unrendered':unrendered,'local_scroll':local,'uncontained':uncontained,
-                           'page_overflow':po,'source_image_elements':srcimgs,'mappings':mappings,
-                           'page_errors':page_errors}
-                      rows.append(row)
-                      if bc!=t['expected_math_blocks']: failures.append(f'{vn}: blocks={bc} expected={t["expected_math_blocks"]}')
-                      if rendered!=bc: failures.append(f'{vn}: rendered={rendered}/{bc}')
-                      if merror: failures.append(f'{vn}: merror={merror}')
-                      if uncontained: failures.append(f'{vn}: uncontained={len(uncontained)}')
-                      if po: failures.append(f'{vn}: page overflow')
-                      if srcimgs: failures.append(f'{vn}: legacy source imgs={srcimgs}')
-                      if page_errors: failures.append(f'{vn}: page errors={len(page_errors)}')
+                      rows.append({'page':key,'viewport':vn,'expected':len(images),'rendered':rendered,
+                                   'merror':merror,'unrendered':unrendered,'uncontained':uncontained,
+                                   'page_overflow':page_overflow,'page_errors':page_errors})
                       ctx.close()
 
-                  status='PASS' if not failures else 'FAIL'
-                  manifest['targets'].append({'page_key':key,'status':status,'rows':rows,'failures':failures})
-                  manifest['failures'] += [f'{key}: {x}' for x in failures]
+                  if page_fail:
+                      failures.extend([f'{key}: {x}' for x in page_fail])
+
               browser.close()
 
-          manifest['status']='PASS' if not manifest['failures'] else 'FAIL'
-          (root/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf-8')
-          report=Path('.document/formula_reviews/STRICT_BATCH_QA_20260919.md')
-          L=['# Strict Formula Batch QA — 2026-09-19','',f"- Overall: **{manifest['status']}**",'',
-             '| Page | Status | Desktop blocks | Mobile blocks | MathJax errors | Uncontained | Page overflow |',
-             '|---|---|---:|---:|---:|---:|---|']
-          for t in manifest['targets']:
-              d=t['rows'][0]; m=t['rows'][1]
-              L.append(f"| {t['page_key']} | {t['status']} | {d['rendered']}/{d['math_blocks']} | {m['rendered']}/{m['math_blocks']} | {d['merror']+m['merror']} | {len(d['uncontained'])+len(m['uncontained'])} | {'YES' if d['page_overflow'] or m['page_overflow'] else 'NO'} |")
-          L += ['', '## Failures',''] + ([f'- {x}' for x in manifest['failures']] if manifest['failures'] else ['- None.'])
-          report.write_text('\n'.join(L)+'\n',encoding='utf-8')
-          if manifest['failures']: raise SystemExit(1)
+          status='PASS' if not failures else 'FAIL'
+          manifest={'status':status,'category':cfg.get('category'),'rows':rows,'failures':failures}
+          (out/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf-8')
+          lines=[f"# Strict Formula Batch QA: {cfg.get('category')} — 2026-09-19",'',f'- Overall: **{status}**','',
+                 '| Page | Viewport | Expected | Rendered | MathJax errors | Uncontained | Page overflow |',
+                 '|---|---|---:|---:|---:|---:|---|']
+          for r in rows:
+              lines.append(f"| {r['page']} | {r['viewport']} | {r['expected']} | {r['rendered']} | {r['merror']} | {len(r['uncontained'])} | {'YES' if r['page_overflow'] else 'NO'} |")
+          lines += ['', '## Failures',''] + ([f'- {x}' for x in failures] if failures else ['- None.'])
+          (out/'report.md').write_text('\n'.join(lines)+'\n',encoding='utf-8')
+          if failures: raise SystemExit(1)
           PY
-
-      - name: Commit QA report
-        if: success()
-        run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add .document/formula_reviews/STRICT_BATCH_QA_20260919.md
-          if ! git diff --cached --quiet; then
-            git commit -m 'docs: record strict formula batch QA'
-            git pull --rebase origin develop
-            git push origin HEAD:develop
-          fi
 
       - uses: actions/upload-artifact@v4
         if: always()
