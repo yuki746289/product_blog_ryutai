@@ -22,5 +22,8 @@
       "height": 844
     }
   },
-  "rerun_revision": 9
+  "rerun_revision": 10,
+  "retained_source_images": [
+    "001"
+  ]
 }
