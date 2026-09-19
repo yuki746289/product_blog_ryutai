@@ -1,19 +1,17 @@
 {
-  "page_key": "hydronamics_9_5",
-  "page_path": "hydronamics/hydronamics_9_5.html",
-  "source_dir": "img/hydronamics_shear_value.files",
-  "source_fragment": "hydronamics_shear_value.files",
+  "page_key": "hydronamics_9_6",
+  "page_path": "hydronamics/hydronamics_9_6.html",
+  "source_dir": "img/hydronamics_stress_conclusion.files",
+  "source_fragment": "hydronamics_stress_conclusion.files",
   "images": [
+    "001",
     "002",
     "003",
     "004",
-    "005",
-    "006"
+    "005"
   ],
   "expected_math_blocks": 5,
-  "retained_source_images": [
-    "001"
-  ],
+  "retained_source_images": [],
   "viewports": {
     "desktop": {
       "width": 1440,
@@ -24,5 +22,5 @@
       "height": 844
     }
   },
-  "rerun_revision": 54
+  "rerun_revision": 55
 }
