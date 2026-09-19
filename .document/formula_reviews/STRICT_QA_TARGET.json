@@ -1,25 +1,18 @@
 {
-  "page_key": "appendix_3_2",
-  "page_path": "appendix/appendix_3_2.html",
-  "source_dir": "img/appendix_cord_s.files",
-  "source_fragment": "appendix_cord_s.files",
+  "page_key": "column_2",
+  "page_path": "column/column_2.html",
+  "source_dir": "img/column_energy.files",
+  "source_fragment": "column_energy.files",
   "images": [
-    "003",
-    "005",
-    "006",
-    "007",
-    "008",
-    "009",
-    "010",
-    "011"
-  ],
-  "expected_math_blocks": 8,
-  "formula_selector": "[data-source-image]",
-  "retained_source_images": [
     "001",
     "002",
-    "004"
+    "003",
+    "004",
+    "005"
   ],
+  "expected_math_blocks": 5,
+  "formula_selector": "[data-source-image]",
+  "retained_source_images": [],
   "viewports": {
     "desktop": {
       "width": 1440,
@@ -30,11 +23,5 @@
       "height": 844
     }
   },
-  "rerun_revision": 96,
-  "retained_source_image_counts": {
-    "001": 1,
-    "002": 1,
-    "004": 2
-  },
-  "expected_retained_source_elements": 4
+  "rerun_revision": 97
 }
