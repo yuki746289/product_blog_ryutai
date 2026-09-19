@@ -1,23 +1,27 @@
 {
-  "page_key": "mesh_5",
-  "page_path": "mesh/mesh_5.html",
-  "source_dir": "img/mesh_deformation_tet.files",
-  "source_fragment": "mesh_deformation_tet.files",
+  "page_key": "appendix_1",
+  "page_path": "appendix/appendix_1.html",
+  "source_dir": "img/appendix_equation.files",
+  "source_fragment": "appendix_equation.files",
   "images": [
+    "001",
+    "002",
     "003",
     "004",
     "005",
     "006",
     "007",
     "008",
-    "009"
+    "009",
+    "010",
+    "011",
+    "012",
+    "013",
+    "014"
   ],
-  "expected_math_blocks": 7,
+  "expected_math_blocks": 14,
   "formula_selector": "[data-source-image]",
-  "retained_source_images": [
-    "001",
-    "002"
-  ],
+  "retained_source_images": [],
   "viewports": {
     "desktop": {
       "width": 1440,
@@ -28,5 +32,5 @@
       "height": 844
     }
   },
-  "rerun_revision": 101
+  "rerun_revision": 102
 }
