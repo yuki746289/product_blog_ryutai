@@ -125,11 +125,11 @@ dV
 
 **Pass 1 = OK（再転記）**。
 
-## `image005` 直接目視再転記
+## `image005` 元HP画像 + Word再照合（2026-09-19）
 
-原画像は速度・圧力を節点値で明示展開している。現候補は `[N]\{V\}` 形式へ短縮しているため忠実転記ではない。
+元HP画像とWord数式を再照合した。速度・圧力の節点展開は両者で一致する。
 
-また最下段の圧力式は、元画像では各節点値が **`P_{x,1}`, `P_{x,2}`, `P_{x,3}`, `P_{x,4}`** と記載されている。圧力がスカラーであることから誤記の可能性はあるが、原文式では修正しない。
+重要: 最下段の圧力式は **`P_{z,1}` ～ `P_{z,4}`**。旧監査記録の `P_{x,*}` は誤り。
 
 ```latex
 \[
@@ -141,29 +141,28 @@ V_x={}&N_1V_{x,1}+N_2V_{x,2}+N_3V_{x,3}+N_4V_{x,4}\\
 =[N]\{V_x\},\\[4pt]
 V_y={}&N_1V_{y,1}+N_2V_{y,2}+N_3V_{y,3}+N_4V_{y,4},\\
 V_z={}&N_1V_{z,1}+N_2V_{z,2}+N_3V_{z,3}+N_4V_{z,4},\\
-P={}&N_1P_{x,1}+N_2P_{x,2}+N_3P_{x,3}+N_4P_{x,4}
+P={}&N_1P_{z,1}+N_2P_{z,2}+N_3P_{z,3}+N_4P_{z,4}
 \end{aligned}
 \]
 ```
 
-**Pass 1 = OK（再転記）**。
+**Pass 1 = OK（元HP画像 + Word一致確認）**。
 
 ## `image006` / `image008` / `image009` 直接目視再転記
 
 ### `image006`
 
-添付元画像を再確認。原画像は左辺に4成分重み関数ベクトルと `\phi_i` の体積積分を置き、右辺に運動量残差を代入した式である。時間微分の分母は **`t`** で、`\tau` ではない。また、原画像内では右辺を各積分項へ展開していない（展開は次の `image007`）。
+元HP画像とWord数式を再照合。元画像は `\int_V[N]^T\phi_i dV` から始まらず、運動量残差を代入した積分から開始し、その同じ画像内で各積分項まで展開している。時間微分は **`\partial V_i/\partial\tau`**。
+
+2026-09-19の直前修正では、ユーザー提示の「現行表示のスクリーンショット」を元画像と誤認して `t` と判定したため誤修正となった。元HP画像を正本として撤回・復元した。
 
 ```latex
 \[
-\int_V
-\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
-\phi_i\,dV
-=
-\int_V
+\begin{aligned}
+&\int_V
 \begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
 \left(
-\frac{\partial V_i}{\partial t}
+\frac{\partial V_i}{\partial\tau}
 +V_x\frac{\partial V_i}{\partial X}
 +V_y\frac{\partial V_i}{\partial Y}
 +V_z\frac{\partial V_i}{\partial Z}
@@ -171,11 +170,36 @@ P={}&N_1P_{x,1}+N_2P_{x,2}+N_3P_{x,3}+N_4P_{x,4}
 -\frac{\partial\sigma^*_{yi}}{\partial Y}
 -\frac{\partial\sigma^*_{zi}}{\partial Z}
 -g_i^*
-\right)dV
+\right)dV\\
+={}&\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial V_i}{\partial\tau}dV
++V_x\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial V_i}{\partial X}dV
++V_y\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial V_i}{\partial Y}dV\\
+&+V_z\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial V_i}{\partial Z}dV
+-\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial\sigma^*_{xi}}{\partial X}dV
+-\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial\sigma^*_{yi}}{\partial Y}dV\\
+&-\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+\frac{\partial\sigma^*_{zi}}{\partial Z}dV
+-\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\\N_4\end{bmatrix}
+g_i^*dV
+\end{aligned}
 \]
 ```
 
-**Pass 1 = OK（2026-09-19 再照合・再修正）**。
+**Pass 1 = OK（元HP画像 + Word一致確認、誤修正撤回）**。
 
 ### `image008`
 
