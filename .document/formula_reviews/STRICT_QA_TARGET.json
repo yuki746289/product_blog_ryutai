@@ -1,18 +1,26 @@
 {
-  "page_key": "physics_6_1",
-  "page_path": "physics/physics_6_1.html",
-  "source_dir": "img/physics_c_four_operator.files",
-  "source_fragment": "physics_c_four_operator.files",
+  "page_key": "physics_2",
+  "page_path": "physics/physics_2.html",
+  "source_dir": "img/physics_quantity.files",
+  "source_fragment": "physics_quantity.files",
   "images": [
     "001",
     "002",
     "003",
     "004",
-    "005"
+    "005",
+    "008",
+    "011"
   ],
-  "expected_math_blocks": 5,
+  "expected_math_blocks": 7,
   "formula_selector": "[data-source-image]",
-  "retained_source_images": [],
+  "retained_source_images": [
+    "006",
+    "007",
+    "009",
+    "010",
+    "012"
+  ],
   "viewports": {
     "desktop": {
       "width": 1440,
@@ -23,5 +31,5 @@
       "height": 844
     }
   },
-  "rerun_revision": 76
+  "rerun_revision": 77
 }
