@@ -38,7 +38,7 @@ jobs:
               if len(hp)==2 and hp[1].isdigit(): host,port=hp[0],int(hp[1])
               else: host,port=server,21
 
-          ftp=ftplib.FTP_TLS(timeout=20)
+          ftp=ftplib.FTP_TLS(timeout=20)\n          ftp.encoding="cp932"
           ftp.connect(host,port); ftp.login(username,password); ftp.prot_p(); ftp.set_pasv(True)
 
           out={"root_pwd":ftp.pwd(),"img_entries":[],"mps_entries":{},"errors":[]}
