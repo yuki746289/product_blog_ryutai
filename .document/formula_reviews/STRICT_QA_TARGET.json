@@ -1,16 +1,13 @@
 {
-  "page_key": "fem_4",
-  "page_path": "fem/fem_4.html",
-  "source_dir": "img/fem_tri_area.files",
-  "source_fragment": "fem_tri_area.files",
+  "page_key": "fem_8",
+  "page_path": "fem/fem_8.html",
+  "source_dir": "img/fem_bd.files",
+  "source_fragment": "fem_bd.files",
   "images": [
     "001",
-    "002",
-    "003",
-    "004",
-    "005"
+    "002"
   ],
-  "expected_math_blocks": 4,
+  "expected_math_blocks": 2,
   "retained_source_images": [],
   "viewports": {
     "desktop": {
@@ -22,5 +19,5 @@
       "height": 844
     }
   },
-  "rerun_revision": 29
+  "rerun_revision": 30
 }
