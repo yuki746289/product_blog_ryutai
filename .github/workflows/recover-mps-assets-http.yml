@@ -1,0 +1,80 @@
+# Created: 2026-09-19T09:20:00+09:00
+name: Recover missing MPS assets over HTTP
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - '.github/workflows/recover-mps-assets-http.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Fetch exact public MPS image URLs
+        run: |
+          python3 - <<'PY'
+          import json, urllib.request, urllib.error
+          from pathlib import Path
+
+          base="https://ryutai.ninja-web.net"
+          groups={
+            "mps_weight.files":1,
+            "mps_num.files":1,
+            "mps_nabra.files":12,
+            "mps_dot.files":9,
+            "mps_rap.files":2,
+            "mps_fluid_eq.files":2,
+            "mps_fluid_count.files":22,
+          }
+          out=Path("mps-http-recovery")
+          rec=out/"recovered"
+          rec.mkdir(parents=True,exist_ok=True)
+          results=[]
+
+          for d,n in groups.items():
+              for i in range(1,n+1):
+                  rel=f"img/{d}/image{i:03d}.gif"
+                  urls=[
+                    f"{base}/{rel}",
+                    f"{base}/{rel[:-4]}.GIF",
+                  ]
+                  got=False
+                  attempts=[]
+                  for url in urls:
+                      try:
+                          req=urllib.request.Request(url,headers={"User-Agent":"Mozilla/5.0"})
+                          with urllib.request.urlopen(req,timeout=20) as resp:
+                              data=resp.read()
+                              ct=resp.headers.get("Content-Type","")
+                              status=getattr(resp,"status",200)
+                          attempts.append({"url":url,"status":status,"content_type":ct,"size":len(data)})
+                          if status==200 and len(data)>20 and "text/html" not in ct.lower():
+                              p=rec/rel
+                              p.parent.mkdir(parents=True,exist_ok=True)
+                              p.write_bytes(data)
+                              results.append({"remote":rel,"status":"recovered","url":url,"size":len(data),"content_type":ct})
+                              print("RECOVERED",rel,len(data),ct)
+                              got=True
+                              break
+                      except Exception as exc:
+                          attempts.append({"url":url,"error":f"{type(exc).__name__}: {exc}"})
+                  if not got:
+                      results.append({"remote":rel,"status":"missing","attempts":attempts})
+                      print("MISSING",rel)
+
+          ok=sum(x["status"]=="recovered" for x in results)
+          manifest={"target_count":len(results),"recovered_count":ok,"missing_count":len(results)-ok,"results":results}
+          (out/"manifest.json").write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding="utf-8")
+          print("SUMMARY",json.dumps({"recovered":ok,"missing":len(results)-ok,"total":len(results)}))
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mps-http-recovery
+          path: mps-http-recovery
+          retention-days: 7
