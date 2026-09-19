@@ -1,13 +1,15 @@
 {
-  "page_key": "heat_3",
-  "page_path": "heat/heat_3.html",
-  "source_dir": "img/heat_flux.files",
-  "source_fragment": "heat_flux.files",
+  "page_key": "heat_4_1",
+  "page_path": "heat/heat_4_1.html",
+  "source_dir": "img/heat_conduction.files",
+  "source_fragment": "heat_conduction.files",
   "images": [
-    "001"
+    "002"
   ],
   "expected_math_blocks": 1,
-  "retained_source_images": [],
+  "retained_source_images": [
+    "001"
+  ],
   "viewports": {
     "desktop": {
       "width": 1440,
@@ -18,5 +20,5 @@
       "height": 844
     }
   },
-  "rerun_revision": 33
+  "rerun_revision": 34
 }
