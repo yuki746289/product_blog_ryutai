@@ -1,12 +1,12 @@
 {
-  "page_key": "fem_6_2_4",
-  "page_path": "fem/fem_6_2_4.html",
+  "page_key": "fem_6_2_5",
+  "page_path": "fem/fem_6_2_5.html",
   "source_dir": "img/fem_n_tet.files",
   "source_fragment": "fem_n_tet.files",
   "images": [
-    "015",
-    "016",
-    "017"
+    "018",
+    "019",
+    "020"
   ],
   "expected_math_blocks": 3,
   "retained_source_images": [],
@@ -20,5 +20,5 @@
       "height": 844
     }
   },
-  "rerun_revision": 18
+  "rerun_revision": 19
 }
