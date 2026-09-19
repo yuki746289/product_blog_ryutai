@@ -1671,3 +1671,47 @@ image020 source correction後の最新Browser QA:
 - mps_6_2 desktop/mobile: MathJax 0 / unrendered 0 / overflow 0 / missing image022 only
 
 **MPSカテゴリは image022 1件を明示HOLDとして監査完了。**
+
+
+## 2026-09-19 MPS image022 reconstruction adopted
+
+ユーザー承認により、正本未回収だった `mps_6_2/image022.gif` を、
+標準MPS法の数値安定化圧力勾配モデルとして推定復元した。
+
+反映式:
+
+```latex
+\[
+\left[\nabla P_i^{k+1}\right]
+=
+\frac{d}{n^0}
+\sum_{j\ne i}
+\frac{P_j^{k+1}-\hat P_i^{k+1}}
+{|\vec r_j-\vec r_i|^2}
+(\vec r_j-\vec r_i)
+w(|\vec r_j-\vec r_i|)
+\]
+```
+
+分類:
+- source-exact / recovered: **48**
+- inferred reconstruction: **1**
+- MPS MathJax total: **49**
+- MPS residual image: **0**
+- MPS HOLD: **0**
+- inferred formula metadata: `data-source-status="inferred-reconstruction"`
+
+この1式は「元画像と完全一致を確認済み」には含めない。
+旧HOLD節は調査履歴として保持し、本節を運用上の最新状態とする。
+
+最新の数式・数式テキスト総数:
+- 従来: **564**
+- MPS: **49**
+- **合計: 613**
+
+残存inline-image:
+- 非MPS保持図: **112**
+- MPS: **0**
+- 全体: **112**
+
+本番FTP/FTPS反映: **未実施**
