@@ -1,0 +1,231 @@
+{
+  "category": "physics",
+  "pages": [
+    {
+      "key": "physics_2",
+      "path": "physics/physics_2.html",
+      "dir": "img/physics_quantity.files",
+      "frag": "physics_quantity.files",
+      "images": [
+        "001",
+        "002",
+        "003",
+        "004",
+        "005",
+        "008",
+        "011"
+      ],
+      "retained": [
+        "006",
+        "007",
+        "009",
+        "010",
+        "012"
+      ]
+    },
+    {
+      "key": "physics_3",
+      "path": "physics/physics_3.html",
+      "dir": "img/physics_vector.files",
+      "frag": "physics_vector.files",
+      "images": [
+        "002",
+        "003",
+        "004",
+        "005",
+        "006",
+        "007"
+      ],
+      "retained": [
+        "001"
+      ]
+    },
+    {
+      "key": "physics_4",
+      "path": "physics/physics_4.html",
+      "dir": "img/physics_q_category.files",
+      "frag": "physics_q_category.files",
+      "images": [
+        "002",
+        "003",
+        "004",
+        "005",
+        "007",
+        "008"
+      ],
+      "retained": [
+        "001",
+        "006",
+        "009"
+      ]
+    },
+    {
+      "key": "physics_5",
+      "path": "physics/physics_5.html",
+      "dir": "img/physics_operator.files",
+      "frag": "physics_operator.files",
+      "images": [
+        "003",
+        "004",
+        "001",
+        "002"
+      ],
+      "retained": []
+    },
+    {
+      "key": "physics_6_1",
+      "path": "physics/physics_6_1.html",
+      "dir": "img/physics_c_four_operator.files",
+      "frag": "physics_c_four_operator.files",
+      "images": [
+        "001",
+        "002",
+        "003",
+        "004",
+        "005"
+      ],
+      "retained": []
+    },
+    {
+      "key": "physics_6_2_1",
+      "path": "physics/physics_6_2_1.html",
+      "dir": "img/physics_c_inner.files",
+      "frag": "physics_c_inner.files",
+      "images": [
+        "001",
+        "002",
+        "003",
+        "004"
+      ],
+      "retained": [
+        "005"
+      ]
+    },
+    {
+      "key": "physics_6_2_2",
+      "path": "physics/physics_6_2_2.html",
+      "dir": "img/physics_c_inner.files",
+      "frag": "physics_c_inner.files",
+      "images": [
+        "006",
+        "008"
+      ],
+      "retained": [
+        "007"
+      ]
+    },
+    {
+      "key": "physics_6_2_3",
+      "path": "physics/physics_6_2_3.html",
+      "dir": "img/physics_c_inner.files",
+      "frag": "physics_c_inner.files",
+      "images": [
+        "009",
+        "012",
+        "013",
+        "014",
+        "015"
+      ],
+      "retained": [
+        "010",
+        "011"
+      ]
+    },
+    {
+      "key": "physics_6_2_4",
+      "path": "physics/physics_6_2_4.html",
+      "dir": "img/physics_c_inner.files",
+      "frag": "physics_c_inner.files",
+      "images": [
+        "016",
+        "017"
+      ],
+      "retained": []
+    },
+    {
+      "key": "physics_6_2_5",
+      "path": "physics/physics_6_2_5.html",
+      "dir": "img/physics_c_inner.files",
+      "frag": "physics_c_inner.files",
+      "images": [
+        "018"
+      ],
+      "retained": []
+    },
+    {
+      "key": "physics_6_2_6",
+      "path": "physics/physics_6_2_6.html",
+      "dir": "img/physics_c_inner.files",
+      "frag": "physics_c_inner.files",
+      "images": [
+        "019"
+      ],
+      "retained": []
+    },
+    {
+      "key": "physics_6_2_7",
+      "path": "physics/physics_6_2_7.html",
+      "dir": "img/physics_c_inner.files",
+      "frag": "physics_c_inner.files",
+      "images": [
+        "020"
+      ],
+      "retained": []
+    },
+    {
+      "key": "physics_6_3_1",
+      "path": "physics/physics_6_3_1.html",
+      "dir": "img/physics_c_cross.files",
+      "frag": "physics_c_cross.files",
+      "images": [
+        "001"
+      ],
+      "retained": []
+    },
+    {
+      "key": "physics_6_3_2",
+      "path": "physics/physics_6_3_2.html",
+      "dir": "img/physics_c_cross.files",
+      "frag": "physics_c_cross.files",
+      "images": [
+        "002",
+        "003"
+      ],
+      "retained": [
+        "004"
+      ]
+    },
+    {
+      "key": "physics_6_3_3",
+      "path": "physics/physics_6_3_3.html",
+      "dir": "img/physics_c_cross.files",
+      "frag": "physics_c_cross.files",
+      "images": [
+        "005"
+      ],
+      "retained": [
+        "006"
+      ]
+    },
+    {
+      "key": "physics_7",
+      "path": "physics/physics_7.html",
+      "dir": "img/physics_form.files",
+      "frag": "physics_form.files",
+      "images": [
+        "001"
+      ],
+      "retained": []
+    }
+  ],
+  "viewports": {
+    "desktop": {
+      "width": 1440,
+      "height": 1000
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844
+    }
+  }
+}
