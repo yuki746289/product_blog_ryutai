@@ -104,8 +104,8 @@
 V_x&=N_1V_{x,1}+N_2V_{x,2}+N_3V_{x,3}
 =\begin{bmatrix}N_1&N_2&N_3\end{bmatrix}
 \begin{bmatrix}V_{x,1}\\V_{x,2}\\V_{x,3}\end{bmatrix}
-=[N]\{V_x\}=0\\
-V_y&=N_1V_{y,1}+N_2V_{y,2}+N_3V_{y,3}=0\\
+=[N]\{V_x\}=0,\\
+V_y&=N_1V_{y,1}+N_2V_{y,2}+N_3V_{y,3}=0,\\
 P&=N_1P_{x,1}+N_2P_{x,2}+N_3P_{x,3}
 \end{aligned}
 \]
@@ -115,8 +115,8 @@ P&=N_1P_{x,1}+N_2P_{x,2}+N_3P_{x,3}
 			<div class="math-block" id="formula-fem-7-1-2-005" data-source-image="./../img/fem_d_momentum_tri.files/image005.png">
 \[
 \begin{aligned}
-&\int_V
-\begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}\phi_i\,dV\\
+\int_V
+\begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}\phi_i\,dV
 ={}&\int_S
 \begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}
 \left(
@@ -139,8 +139,8 @@ P&=N_1P_{x,1}+N_2P_{x,2}+N_3P_{x,3}
 +V_x\int_S\begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}\frac{\partial V_i}{\partial X}dS
 +V_y\int_S\begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}\frac{\partial V_i}{\partial Y}dS\\
 &-\int_S\begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}\frac{\partial\sigma^*_{xi}}{\partial X}dS
--\int_S\begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}\frac{\partial\sigma^*_{yi}}{\partial Y}dS\\
-&-\int_S\begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}g_i^*dS
+-\int_S\begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}\frac{\partial\sigma^*_{yi}}{\partial Y}dS
+-\int_S\begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}g_i^*dS
 \end{aligned}
 \]
 </div><br>
@@ -151,8 +151,8 @@ P&=N_1P_{x,1}+N_2P_{x,2}+N_3P_{x,3}
 +V_x\int_S[N]^T\frac{\partial V_i}{\partial X}dS
 +V_y\int_S[N]^T\frac{\partial V_i}{\partial Y}dS\\
 &-\int_S[N]^T\frac{\partial\sigma^*_{xi}}{\partial X}dS
--\int_S[N]^T\frac{\partial\sigma^*_{yi}}{\partial Y}dS\\
-&-\int_S[N]^Tg_i^*dS
+-\int_S[N]^T\frac{\partial\sigma^*_{yi}}{\partial Y}dS
+-\int_S[N]^Tg_i^*dS
 \end{aligned}
 \]
 </div><br>
@@ -166,8 +166,8 @@ P&=N_1P_{x,1}+N_2P_{x,2}+N_3P_{x,3}
 &-\int_L[N]^T\sigma^*_{xi}n_xdL
 +\int_S\left[\frac{\partial N}{\partial X}\right]^T\sigma^*_{xi}dS\\
 &-\int_L[N]^T\sigma^*_{yi}n_ydL
-+\int_S\left[\frac{\partial N}{\partial Y}\right]^T\sigma^*_{yi}dS\\
-&-\int_S[N]^Tg_i^*dS
++\int_S\left[\frac{\partial N}{\partial Y}\right]^T\sigma^*_{yi}dS
+-\int_S[N]^Tg_i^*dS
 \end{aligned}
 \]
 </div><br>
@@ -175,13 +175,13 @@ P&=N_1P_{x,1}+N_2P_{x,2}+N_3P_{x,3}
 			<div class="math-block" id="formula-fem-7-1-2-009" data-source-image="./../img/fem_d_momentum_tri.files/image009.png">
 \[
 \begin{aligned}
-={}&\int_S[N]^T[N]dS\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}\\
-&+V_x\int_S[N]^T\left[\frac{\partial N}{\partial X}\right]dS\{V_i\}
+={}&\int_S[N]^T[N]dS\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}
++V_x\int_S[N]^T\left[\frac{\partial N}{\partial X}\right]dS\{V_i\}
 +V_y\int_S[N]^T\left[\frac{\partial N}{\partial Y}\right]dS\{V_i\}\\
 &+\int_S\left[\frac{\partial N}{\partial X}\right]^T\sigma^*_{xi}dS
 +\int_S\left[\frac{\partial N}{\partial Y}\right]^T\sigma^*_{yi}dS\\
-&-\int_L[N]^T(\sigma^*_{xi}n_x+\sigma^*_{yi}n_y)dL\\
-&-\int_S[N]^Tg_i^*dS
+&-\int_L[N]^T(\sigma^*_{xi}n_x+\sigma^*_{yi}n_y)dL
+-\int_S[N]^Tg_i^*dS
 \end{aligned}
 \]
 </div><br>
@@ -189,30 +189,30 @@ P&=N_1P_{x,1}+N_2P_{x,2}+N_3P_{x,3}
 			<div class="math-block" id="formula-fem-7-1-2-010" data-source-image="./../img/fem_d_momentum_tri.files/image010.png">
 \[
 \begin{aligned}
-={}&\int_S[N]^T[N]dS\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}\\
-&+V_x\int_S[N]^T\left[\frac{\partial N}{\partial X}\right]dS\{V_i\}
+={}&\int_S[N]^T[N]dS\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}
++V_x\int_S[N]^T\left[\frac{\partial N}{\partial X}\right]dS\{V_i\}
 +V_y\int_S[N]^T\left[\frac{\partial N}{\partial Y}\right]dS\{V_i\}\\
 &+\int_S\left[\frac{\partial N}{\partial X}\right]^T
 \left\{-\delta_{xi}P+\frac1{Re}\left(\frac{\partial V_i}{\partial X}+\frac{\partial V_x}{\partial X_i}\right)\right\}dS\\
 &+\int_S\left[\frac{\partial N}{\partial Y}\right]^T
 \left\{-\delta_{yi}P+\frac1{Re}\left(\frac{\partial V_i}{\partial Y}+\frac{\partial V_y}{\partial X_i}\right)\right\}dS\\
-&-\frac{2K^*}{We}n_i\int_L[N]^TdL\\
-&-\int_S[N]^Tg_i^*dS
+&-\frac{2K^*}{We}n_i\int_L[N]^TdL
+-\int_S[N]^Tg_i^*dS
 \end{aligned}
 \]
 </div><br>
 			<div class="math-block" id="formula-fem-7-1-2-011" data-source-image="./../img/fem_d_momentum_tri.files/image011.png">
 \[
 \begin{aligned}
-={}&\int_S[N]^T[N]dS\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}\\
-&+V_x\int_S[N]^T\left[\frac{\partial N}{\partial X}\right]dS\{V_i\}
+={}&\int_S[N]^T[N]dS\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}
++V_x\int_S[N]^T\left[\frac{\partial N}{\partial X}\right]dS\{V_i\}
 +V_y\int_S[N]^T\left[\frac{\partial N}{\partial Y}\right]dS\{V_i\}\\
 &+\int_S\left[\frac{\partial N}{\partial X}\right]^T
 \left\{-\delta_{xi}P+\frac1{Re}\left(\frac{\partial V_i}{\partial X}+\frac{\partial V_x}{\partial X_i}\right)\right\}dS\\
 &+\int_S\left[\frac{\partial N}{\partial Y}\right]^T
 \left\{-\delta_{yi}P+\frac1{Re}\left(\frac{\partial V_i}{\partial Y}+\frac{\partial V_y}{\partial X_i}\right)\right\}dS\\
-&+\frac{2K^*}{We}n_i\int_L[N]^TdL\\
-&-\int_S[N]^Tg_i^*dS
+&+\frac{2K^*}{We}n_i\int_L[N]^TdL
+-\int_S[N]^Tg_i^*dS
 \end{aligned}
 \]
 </div><br>
@@ -220,8 +220,8 @@ P&=N_1P_{x,1}+N_2P_{x,2}+N_3P_{x,3}
 			<div class="math-block" id="formula-fem-7-1-2-012" data-source-image="./../img/fem_d_momentum_tri.files/image012.png">
 \[
 \begin{aligned}
-={}&\int_S[N]^T[N]dS\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}\\
-&+V_x\int_S[N]^T\left[\frac{\partial N}{\partial X}\right]dS\{V_i\}
+={}&\int_S[N]^T[N]dS\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}
++V_x\int_S[N]^T\left[\frac{\partial N}{\partial X}\right]dS\{V_i\}
 +V_y\int_S[N]^T\left[\frac{\partial N}{\partial Y}\right]dS\{V_i\}\\
 &+\frac1{Re}\int_S\left[\frac{\partial N}{\partial X}\right]^T\frac{\partial V_i}{\partial X}dS
 +\frac1{Re}\int_S\left[\frac{\partial N}{\partial X}\right]^T\frac{\partial V_x}{\partial X_i}dS
@@ -229,8 +229,8 @@ P&=N_1P_{x,1}+N_2P_{x,2}+N_3P_{x,3}
 &+\frac1{Re}\int_S\left[\frac{\partial N}{\partial Y}\right]^T\frac{\partial V_i}{\partial Y}dS
 +\frac1{Re}\int_S\left[\frac{\partial N}{\partial Y}\right]^T\frac{\partial V_y}{\partial X_i}dS
 -\int_S\left[\frac{\partial N}{\partial Y}\right]^T\delta_{yi}P\,dS\\
-&+\frac{2K^*}{We}n_i\int_L[N]^TdL\\
-&-g_i^*\int_S[N]^TdS
+&+\frac{2K^*}{We}n_i\int_L[N]^TdL
+-g_i^*\int_S[N]^TdS
 \end{aligned}
 \]
 </div><br>
@@ -238,8 +238,8 @@ P&=N_1P_{x,1}+N_2P_{x,2}+N_3P_{x,3}
 			<div class="math-block" id="formula-fem-7-1-2-013" data-source-image="./../img/fem_d_momentum_tri.files/image013.png">
 \[
 \begin{aligned}
-={}&\int_S[N]^T[N]dS\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}\\
-&+V_x\int_S[N]^T\left[\frac{\partial N}{\partial X}\right]dS\{V_i\}
+={}&\int_S[N]^T[N]dS\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}
++V_x\int_S[N]^T\left[\frac{\partial N}{\partial X}\right]dS\{V_i\}
 +V_y\int_S[N]^T\left[\frac{\partial N}{\partial Y}\right]dS\{V_i\}\\
 &+\frac1{Re}\int_S\left[\frac{\partial N}{\partial X}\right]^T\frac{\partial[N]\{V_i\}}{\partial X}dS
 +\frac1{Re}\int_S\left[\frac{\partial N}{\partial X}\right]^T\frac{\partial[N]\{V_x\}}{\partial X_i}dS
@@ -247,8 +247,8 @@ P&=N_1P_{x,1}+N_2P_{x,2}+N_3P_{x,3}
 &+\frac1{Re}\int_S\left[\frac{\partial N}{\partial Y}\right]^T\frac{\partial[N]\{V_i\}}{\partial Y}dS
 +\frac1{Re}\int_S\left[\frac{\partial N}{\partial Y}\right]^T\frac{\partial[N]\{V_y\}}{\partial X_i}dS
 -\delta_{yi}\int_S\left[\frac{\partial N}{\partial Y}\right]^T[N]\{P\}dS\\
-&+\frac{2K^*}{We}n_iL\int_L[N]^TdL\\
-&-g_i^*\int_S[N]^TdS
+&+\frac{2K^*}{We}n_iL\int_L[N]^TdL
+-g_i^*\int_S[N]^TdS
 \end{aligned}
 \]
 </div><br>
@@ -256,8 +256,8 @@ P&=N_1P_{x,1}+N_2P_{x,2}+N_3P_{x,3}
 			<div class="math-block" id="formula-fem-7-1-2-014" data-source-image="./../img/fem_d_momentum_tri.files/image014.png">
 \[
 \begin{aligned}
-={}&\int_S[N]^T[N]dS\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}\\
-&+V_x\int_S[N]^T\left[\frac{\partial N}{\partial X}\right]dS\{V_i\}
+={}&\int_S[N]^T[N]dS\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}
++V_x\int_S[N]^T\left[\frac{\partial N}{\partial X}\right]dS\{V_i\}
 +V_y\int_S[N]^T\left[\frac{\partial N}{\partial Y}\right]dS\{V_i\}\\
 &+\frac1{Re}\int_S\left[\frac{\partial N}{\partial X}\right]^T\left[\frac{\partial N}{\partial X}\right]dS\{V_i\}
 +\frac1{Re}\int_S\left[\frac{\partial N}{\partial X}\right]^T\left[\frac{\partial N}{\partial X_i}\right]dS\{V_x\}
@@ -265,8 +265,8 @@ P&=N_1P_{x,1}+N_2P_{x,2}+N_3P_{x,3}
 &+\frac1{Re}\int_S\left[\frac{\partial N}{\partial Y}\right]^T\left[\frac{\partial N}{\partial Y}\right]dS\{V_i\}
 +\frac1{Re}\int_S\left[\frac{\partial N}{\partial Y}\right]^T\left[\frac{\partial N}{\partial X_i}\right]dS\{V_y\}
 -\delta_{yi}\int_S\left[\frac{\partial N}{\partial Y}\right]^T[N]dS\{P\}\\
-&+\frac{2K^*}{We}n_i\int_L[N]^TdL\\
-&-g_i^*\int_S[N]^TdS
+&+\frac{2K^*}{We}n_i\int_L[N]^TdL
+-g_i^*\int_S[N]^TdS,
 \qquad (i=1,2)
 \end{aligned}
 \]
@@ -365,7 +365,7 @@ N_3\frac{\partial N_1}{\partial Y}&N_3\frac{\partial N_2}{\partial Y}&N_3\frac{\
 			<div class="math-block" id="formula-fem-7-1-2-020" data-source-image="./../img/fem_d_momentum_tri.files/image020.png">
 \[
 -g_i^*\int_S
-\begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}dS
+\begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}dS,
 \qquad (i=1,2)
 \]
 </div><br>
@@ -462,7 +462,7 @@ c_{3y}L_1&c_{3y}L_2&c_{3y}L_3
 			<div class="math-block" id="formula-fem-7-1-2-026" data-source-image="./../img/fem_d_momentum_tri.files/image026.png">
 \[
 -g_i^*\int_S
-\begin{bmatrix}L_1\\L_2\\L_3\end{bmatrix}^{T}dS
+\begin{bmatrix}L_1\\L_2\\L_3\end{bmatrix}^{T}dS,
 \qquad (i=1,2)
 \]
 </div><br>
@@ -477,8 +477,8 @@ c_{3y}L_1&c_{3y}L_2&c_{3y}L_3
 \[
 \int_S L_iL_j\,dS=
 \begin{cases}
-\displaystyle \frac{1!1!}{(1+1+2)!}\,2A=\frac{2}{4!}A=\frac1{12}A&(i\ne j)\\[6pt]
-\displaystyle \frac{2!}{(1+1+2)!}\,2A=\frac{4}{4!}V=\frac1{6}A&(i=j)
+\displaystyle \frac{1!1!}{(1+1+2)!}\,2A=\frac{2}{4!}A=\frac1{12}A,&(i\ne j),\\[6pt]
+\displaystyle \frac{2!}{(1+1+2)!}\,2A=\frac{4}{4!}V=\frac1{6}A,&(i=j)
 \end{cases}
 \]
 
@@ -592,7 +592,7 @@ c_{3y}&c_{3y}&c_{3y}
 			<div class="math-block" id="formula-fem-7-1-2-033" data-source-image="./../img/fem_d_momentum_tri.files/image033.png">
 \[
 -g_i^*\frac{A}{3}
-\begin{bmatrix}1\\1\\1\end{bmatrix}
+\begin{bmatrix}1\\1\\1\end{bmatrix},
 \qquad (i=1,2)
 \]
 </div><br>
@@ -703,7 +703,7 @@ c_{3y}&c_{3y}&c_{3y}
 &+\frac1{Re}[S_{xx}]\{V_i\}+\frac1{Re}[S_{xi}]\{V_x\}-\delta_{xi}[H_x]\{P\}\\
 &+\frac1{Re}[S_{yy}]\{V_i\}+\frac1{Re}[S_{yi}]\{V_y\}-\delta_{yi}[H_y]\{P\}\\
 &+\frac{2K^*}{We}Ln_i\begin{bmatrix}1\\1\end{bmatrix}
--g_i^*\frac{A}{3}\begin{bmatrix}1\\1\\1\end{bmatrix}
+-g_i^*\frac{A}{3}\begin{bmatrix}1\\1\\1\end{bmatrix},
 \qquad (i=1,2)
 \end{aligned}
 \]
@@ -715,11 +715,11 @@ c_{3y}&c_{3y}&c_{3y}
 \begin{aligned}
 ={}&[C]\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}
 +(V_x[C_x]+V_y[C_y])\{V_i\}\\
-&+\frac1{Re}([S_{xx}]+[S_{yy}])\{V_i\}\\
-&+\frac1{Re}([S_{xi}]\{V_x\}+[S_{yi}]\{V_y\})\\
-&-(\delta_{xi}[H_x]+\delta_{yi}[H_y])\{P\}\\
-&+\frac{2K^*}{We}Ln_i\begin{bmatrix}1\\1\end{bmatrix}\\
-&-g_i^*\frac{A}{3}\begin{bmatrix}1\\1\\1\end{bmatrix}
+&+\frac1{Re}([S_{xx}]+[S_{yy}])\{V_i\}
++\frac1{Re}([S_{xi}]\{V_x\}+[S_{yi}]\{V_y\})\\
+&-(\delta_{xi}[H_x]+\delta_{yi}[H_y])\{P\}
++\frac{2K^*}{We}Ln_i\begin{bmatrix}1\\1\end{bmatrix}\\
+&-g_i^*\frac{A}{3}\begin{bmatrix}1\\1\\1\end{bmatrix},
 \qquad (i=1,2,3)\\
 ={}&\begin{bmatrix}0\\0\\0\end{bmatrix}
 \end{aligned}
@@ -731,13 +731,13 @@ c_{3y}&c_{3y}&c_{3y}
 \[
 \begin{aligned}
 [C]\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}
-&+(V_x[C_x]+V_y[C_y])\{V_i\}\\
-&+\frac1{Re}([S_{xx}]+[S_{yy}])\{V_i\}\\
-&+\frac1{Re}([S_{xi}]\{V_x\}+[S_{yi}]\{V_y\})\\
-&-(\delta_{xi}[H_x]+\delta_{yi}[H_y])\{P\}\\
+&+(V_x[C_x]+V_y[C_y])\{V_i\}
++\frac1{Re}([S_{xx}]+[S_{yy}])\{V_i\}\\
+&+\frac1{Re}([S_{xi}]\{V_x\}+[S_{yi}]\{V_y\})
+-(\delta_{xi}[H_x]+\delta_{yi}[H_y])\{P\}\\
 &+\frac{2K^*}{We}Ln_i\begin{bmatrix}1\\1\end{bmatrix}
 -g_i^*\frac{A}{3}\begin{bmatrix}1\\1\\1\end{bmatrix}
-=\begin{bmatrix}0\\0\\0\end{bmatrix}
+=\begin{bmatrix}0\\0\\0\end{bmatrix},
 \qquad (i=1,2)
 \end{aligned}
 \]
@@ -748,13 +748,13 @@ c_{3y}&c_{3y}&c_{3y}
 \[
 \begin{aligned}
 \frac{[C]}{\Delta\tau}\{V_i\}^{\tau+\Delta\tau}
-&+(V_x[C_x]+V_y[C_y])\{V_i\}^{\tau+\Delta\tau}\\
-&+\frac1{Re}([S_{xx}]+[S_{yy}])\{V_i\}^{\tau+\Delta\tau}\\
-&+\frac1{Re}([S_{xi}]\{V_x\}^{\tau+\Delta\tau}+[S_{yi}]\{V_y\}^{\tau+\Delta\tau})\\
-&-(\delta_{xi}[H_x]+\delta_{yi}[H_y])\{P\}^{\tau+\Delta\tau}\\
+&+(V_x[C_x]+V_y[C_y])\{V_i\}^{\tau+\Delta\tau}
++\frac1{Re}([S_{xx}]+[S_{yy}])\{V_i\}^{\tau+\Delta\tau}\\
+&+\frac1{Re}([S_{xi}]\{V_x\}^{\tau+\Delta\tau}+[S_{yi}]\{V_y\}^{\tau+\Delta\tau})
+-(\delta_{xi}[H_x]+\delta_{yi}[H_y])\{P\}^{\tau+\Delta\tau}\\
 ={}&\frac{[C]}{\Delta\tau}\{V_i\}^{\tau}
 -\frac{2K^*}{We}Ln_i\begin{bmatrix}1\\1\end{bmatrix}
-+g_i^*\frac{A}{3}\begin{bmatrix}1\\1\\1\end{bmatrix}
++g_i^*\frac{A}{3}\begin{bmatrix}1\\1\\1\end{bmatrix},
 \qquad (i=1,2)
 \end{aligned}
 \]
