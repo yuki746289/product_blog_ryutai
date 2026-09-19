@@ -1,4 +1,4 @@
-name: MPS Batch 1-2 Browser QA
+name: MPS Final Browser QA
 
 on:
   push:
@@ -12,7 +12,7 @@ permissions:
 jobs:
   qa:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
         with:
@@ -32,17 +32,26 @@ jobs:
         run: |
           python - <<'PY'
           from playwright.sync_api import sync_playwright
-          pages=["mps/mps_1.html","mps/mps_2.html"]
+          expected={
+            "mps/mps_1.html":1,
+            "mps/mps_2.html":1,
+            "mps/mps_3.html":12,
+            "mps/mps_4.html":9,
+            "mps/mps_5.html":2,
+            "mps/mps_6_1.html":2,
+            "mps/mps_6_2.html":21,
+          }
           vps={"desktop":{"width":1440,"height":1000},"mobile":{"width":390,"height":844}}
           rows=[]
           with sync_playwright() as p:
               b=p.chromium.launch(headless=True)
               for vn,vp in vps.items():
                   c=b.new_context(viewport=vp)
-                  for rel in pages:
+                  for rel,exp in expected.items():
                       pg=c.new_page()
-                      errors=[]
-                      pg.on("pageerror",lambda e,d=errors:d.append(str(e)))
+                      perr=[]; cerr=[]
+                      pg.on("pageerror",lambda e,d=perr:d.append(str(e)))
+                      pg.on("console",lambda m,d=cerr:d.append(m.text) if m.type=="error" and "mathjax" in (m.text or "").lower() else None)
                       res=pg.goto("http://127.0.0.1:8000/"+rel,wait_until="domcontentloaded",timeout=30000)
                       try:
                           pg.evaluate("async()=>{if(window.MathJax?.startup?.promise)await Promise.race([window.MathJax.startup.promise,new Promise(r=>setTimeout(r,8000))])}")
@@ -60,37 +69,54 @@ jobs:
                             if(ox!=='auto'&&ox!=='scroll') unc++;
                           }
                         }
+                        const formulas=document.querySelectorAll('.math-block,.formula-inline').length;
+                        const mpsImgs=[...document.images].filter(x=>(x.getAttribute('src')||'').includes('mps_'));
+                        const missingMps=mpsImgs.filter(x=>!x.complete||x.naturalWidth===0).length;
                         return {
-                          blocks:blocks.length,
+                          formulas,
                           merror:document.querySelectorAll('mjx-merror,.mjx-merror,.MathJax_Error').length,
                           unrendered:(t.match(/\\\(|\\\[|\\begin\s*\{/g)||[]).length,
                           overflow:document.documentElement.scrollWidth>document.documentElement.clientWidth+2,
                           uncontained:unc,
-                          local:local,
-                          formulaImages:[...document.images].filter(x=>(x.getAttribute('src')||'').includes('mps_')).length
+                          local,
+                          mpsImgs:mpsImgs.length,
+                          missingMps
                         };
                       }""")
-                      row={"page":rel,"viewport":vn,"status":res.status if res else None,"errors":errors,**m}
+                      expectedImgs=1 if rel=="mps/mps_6_2.html" else 0
+                      expectedMissing=1 if rel=="mps/mps_6_2.html" else 0
+                      row={"page":rel,"viewport":vn,"status":res.status if res else None,"expected":exp,"perr":perr,"cerr":cerr,**m}
+                      row["bad"]=bool(row["status"]!=200 or perr or cerr or m["formulas"]!=exp or m["merror"] or m["unrendered"] or m["overflow"] or m["uncontained"] or m["mpsImgs"]!=expectedImgs or m["missingMps"]!=expectedMissing)
                       rows.append(row)
                       pg.close()
                   c.close()
               b.close()
-          bad=[r for r in rows if r["status"]!=200 or r["errors"] or r["blocks"]!=1 or r["merror"] or r["unrendered"] or r["overflow"] or r["uncontained"] or r["formulaImages"]]
-          lines=["# MPS 1-2 Browser QA — 2026-09-19","",f"- Overall: **{'FAIL' if bad else 'PASS'}**","",
-                 "| Page | Viewport | Blocks | MathJax | Unrendered | Overflow | Uncontained | Formula images |","|---|---|---:|---:|---:|---:|---:|---:|"]
+          bad=[r for r in rows if r["bad"]]
+          lines=[
+            "# MPS Final Browser QA — 2026-09-19","",
+            f"- Overall: **{'FAIL' if bad else 'PASS WITH IMAGE022 HOLD'}**",
+            "- Scope: MPS 7 pages only",
+            "- Formula replacements: **48**",
+            "- Known HOLD: **mps/mps_6_2.html image022.gif only**","",
+            "| Page | Viewport | Formula | MathJax | Unrendered | Overflow | Uncontained | MPS img | Missing |",
+            "|---|---|---:|---:|---:|---:|---:|---:|---:|"
+          ]
           for r in rows:
-              lines.append(f"| {r['page']} | {r['viewport']} | {r['blocks']} | {r['merror']} | {r['unrendered']} | {int(r['overflow'])} | {r['uncontained']} | {r['formulaImages']} |")
-          open(".document/formula_reviews/MPS_1_2_NORMAL_BROWSER_QA_20260919.md","w",encoding="utf-8").write("\n".join(lines)+"\n")
+              lines.append(f"| {r['page']} | {r['viewport']} | {r['formulas']}/{r['expected']} | {r['merror']} | {r['unrendered']} | {int(r['overflow'])} | {r['uncontained']} | {r['mpsImgs']} | {r['missingMps']} |")
           if bad:
-              print(bad)
-              raise SystemExit(1)
-          print(rows)
+              lines += ["","## Failures",""]
+              for r in bad: lines.append("- "+repr(r))
+          path=".document/formula_reviews/MPS_FINAL_BROWSER_QA_20260919.md"
+          open(path,"w",encoding="utf-8").write("\n".join(lines)+"\n")
+          print("FAIL" if bad else "PASS WITH IMAGE022 HOLD")
+          if bad: raise SystemExit(1)
           PY
       - name: Commit report
         if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add .document/formula_reviews/MPS_1_2_NORMAL_BROWSER_QA_20260919.md
-          git commit -m "test: record MPS 1-2 browser QA [skip ci]" || exit 0
+          git add .document/formula_reviews/MPS_FINAL_BROWSER_QA_20260919.md
+          git commit -m "test: record final MPS browser QA [skip ci]" || exit 0
+          git pull --rebase origin develop
           git push origin HEAD:develop
