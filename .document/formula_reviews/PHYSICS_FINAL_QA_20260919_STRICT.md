@@ -1,28 +1,26 @@
 # Physics Final QA — 2026-09-19
 
-## 結果
+## Result
 
-**Physicsカテゴリ最終QA: PASS**
+**Physics category final QA: PASS**
 
-### 数式ページ
-- 新厳密再監査: **49式 / 16ページ**
-- 元HP画像 ↔ MathJax完成描画の直接比較を実施
+### Formula pages
+- Strict re-audit: **49 formulas / 16 pages**
+- Source image ↔ MathJax direct comparison completed for all 49 formulas
 - HOLD: **0**
-- Browser QA: 全対象PASS
+- Browser QA: all formula pages PASS
 
-### 非数式ページ
-対象: **6ページ**
-- PC: 6/6 PASS
+### Nonformula pages
+- Pages: **6**
+- Desktop: 6/6 PASS
 - Mobile: 6/6 PASS
-- ローカル図画像: 1枚
-- broken image: **0**
-- page-wide horizontal overflow: **0**
-- page errors: **0**
+- Broken local images: **0**
+- Page-wide horizontal overflow: **0**
+- Page errors: **0**
 
-対象:
-`physics.html`, `physics_1.html`, `physics_6.html`,
-`physics_6_2.html`, `physics_6_3.html`, `physics_8.html`
+Pages:
+`physics.html`, `physics_1.html`, `physics_6.html`, `physics_6_2.html`, `physics_6_3.html`, `physics_8.html`
 
-## 判定
+## Verdict
 
-**Physicsカテゴリは新厳密再監査＋最終表示QAまで完了。**
+**Physics category complete: strict formula re-audit + final display QA.**
