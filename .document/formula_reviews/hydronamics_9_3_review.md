@@ -1,0 +1,25 @@
+# 数式レビュー: hydronamics/hydronamics_9_3.html
+
+更新日: 2026-09-19
+
+## 対象
+- ページ: `hydronamics/hydronamics_9_3.html`
+- 正本ディレクトリ: `img/hydronamics_stress_pressure.files`
+- 数式: **2式**
+- 新厳密 Pass 1: **2/2**
+- 新厳密 Pass 2: **2/2**
+- HOLD: **0**
+- Browser QA: **PASS**
+
+## 元画像 ↔ MathJax 直接比較
+- 圧力と法線応力の関係。px/py/pz, p, μ′, ∇·vを確認。
+- 現HTMLとsource-certified JSONは全対象一致。
+- 元画像とMathJax完成描画のペア画像を全式確認。
+- 数式内容・符号・添字・項順・改行に修正必要な差異なし。
+
+## Browser QA
+- desktop/mobileとも全対象render。
+- MathJax error=0、unrendered=0、uncontained overflow=0、page overflow=0。
+
+## 判定
+**hydronamics_9_3: 新厳密再監査 完了。**
