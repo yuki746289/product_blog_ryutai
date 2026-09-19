@@ -17,9 +17,9 @@
 | Unrendered | 0 |
 | Page overflow rows | 0 |
 | Uncontained overflow | 0 |
-| Page errors | 2 |
+| Page errors | 0 |
 | Non-MPS missing images (desktop) | 0 |
-| Allowed local math scroll | 145 |
+| Allowed local math scroll | 148 |
 
 ## MPS SOURCE BLOCKED / HOLD
 
