@@ -1,60 +1,20 @@
 {
-  "category": "appendix-column-mesh",
+  "category": "counting",
   "pages": [
     {
-      "path": "appendix/appendix.html",
+      "path": "counting/counting.html",
       "expected_math_blocks": 0,
       "expected_local_images": 0
     },
     {
-      "path": "appendix/appendix_3.html",
+      "path": "counting/counting_1.html",
       "expected_math_blocks": 0,
-      "expected_local_images": 0
+      "expected_local_images": 1
     },
     {
-      "path": "column/column.html",
+      "path": "counting/counting_2.html",
       "expected_math_blocks": 0,
-      "expected_local_images": 0
-    },
-    {
-      "path": "column/column_1.html",
-      "expected_math_blocks": 0,
-      "expected_local_images": 0
-    },
-    {
-      "path": "column/column_3.html",
-      "expected_math_blocks": 0,
-      "expected_local_images": 0
-    },
-    {
-      "path": "column/column_4.html",
-      "expected_math_blocks": 0,
-      "expected_local_images": 0
-    },
-    {
-      "path": "column/column_5.html",
-      "expected_math_blocks": 0,
-      "expected_local_images": 0
-    },
-    {
-      "path": "mesh/mesh.html",
-      "expected_math_blocks": 0,
-      "expected_local_images": 0
-    },
-    {
-      "path": "mesh/mesh_3.html",
-      "expected_math_blocks": 0,
-      "expected_local_images": 0
-    },
-    {
-      "path": "mesh/mesh_3_2.html",
-      "expected_math_blocks": 0,
-      "expected_local_images": 5
-    },
-    {
-      "path": "mesh/mesh_4.html",
-      "expected_math_blocks": 0,
-      "expected_local_images": 4
+      "expected_local_images": 1
     }
   ],
   "viewports": {
