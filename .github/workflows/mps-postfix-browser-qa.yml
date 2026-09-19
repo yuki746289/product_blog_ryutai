@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   qa:
@@ -30,6 +30,8 @@ jobs:
           python -m http.server 8000 --bind 127.0.0.1 >/tmp/mps-qa.log 2>&1 &
           sleep 2
       - name: Check MPS pages
+        id: mpsqa
+        continue-on-error: true
         run: |
           cat > /tmp/mps_qa.py <<'PY'
           from playwright.sync_api import sync_playwright, TimeoutError as PWTimeout
@@ -96,4 +98,42 @@ jobs:
           print(f"checks={len(rows)} failures={len(bad)}")
           raise SystemExit(1 if bad else 0)
           PY
-          python /tmp/mps_qa.py
+          set +e
+          python /tmp/mps_qa.py | tee /tmp/mps-qa.log
+          code=${PIPESTATUS[0]}
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          exit $code
+
+      - name: Record MPS postfix QA
+        if: always()
+        run: |
+          mkdir -p .document/formula_reviews
+          if [ "${{ steps.mpsqa.outcome }}" = "success" ]; then
+            overall="PASS WITH IMAGE022 HOLD"
+          else
+            overall="FAIL"
+          fi
+          {
+            echo "# MPS Postfix Browser QA — 2026-09-19"
+            echo
+            echo "- Overall: **$overall**"
+            echo "- Scope: MPS 7 pages / desktop + mobile"
+            echo "- Formula replacements expected: **48**"
+            echo "- Known HOLD: **mps/mps_6_2.html image022.gif only**"
+            echo "- Source correction under test: **image020 P_i → P_j**"
+            echo
+            echo '## Runner output'
+            echo
+            echo '~~~text'
+            cat /tmp/mps-qa.log 2>/dev/null || true
+            echo '~~~'
+          } > .document/formula_reviews/MPS_POSTFIX_BROWSER_QA_20260919.md
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .document/formula_reviews/MPS_POSTFIX_BROWSER_QA_20260919.md
+          git commit -m "test: record MPS postfix browser QA [skip ci]" || true
+          git push origin HEAD:develop
+
+      - name: Mark QA failed
+        if: steps.mpsqa.outcome == 'failure'
+        run: exit 1
