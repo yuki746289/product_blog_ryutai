@@ -156,7 +156,7 @@ jobs:
           lines += ["","## Deployment policy","",
               "- 本番反映時は上記publish candidatesのみを対象とする。",
               "- Remote側のファイル削除は行わない。",
-              "- MPS欠損49画像はローカルに存在しないため、新規作成・推測復元・削除を行わない。",
+              "- MPS数式画像の残存は0。image022はユーザー承認済みの推定復元MathJaxを使用し、画像ファイルは新規作成しない。",
               "- 公開後にHTTPスモークテストとPC/mobile MathJax確認を行う。",""
           ]
           out=Path(".document/deploy/PRODUCTION_FTPS_PREFLIGHT_20260919.md")
