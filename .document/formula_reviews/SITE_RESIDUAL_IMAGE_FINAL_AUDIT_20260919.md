@@ -28,15 +28,18 @@ Normal HTML pages on `develop`, using the current residual-image inventory after
 
 The 49 MPS references remain unresolved as source assets.
 
+- current HTML / `.BAK`: all 49 reference paths agree; this is not a recent HTML path regression
 - `develop`: source files absent
 - `release_1.0.0`: source files absent
-- oldest reachable Git tree: source files absent
-- HTML / BAK files: references only; no embedded source images
-- production FTPS read-only recovery run **35408141850**: **0/49 recovered**
-- production `/img`: no MPS-related directories were found
-- prior project notes confirm that `HP.7z` contained legacy Word manuscripts, but the archive itself and exact MPS Word filenames are not available in the current runtime
+- production FTPS exact-file recovery run **35408373561**: **0/49 recovered**
+- production `img` directory inventory final run **35408685270**: no MPS-related directories present
+- public HTTP exact URL recovery run **35408843344**: **0/49 recovered**; `.gif` / `.GIF` attempts returned no source image
+- Wayback CDX recovery run **35408902368**: **0/49 recovered**; expected MPS asset directory prefixes had no indexed rows
+- Library contains `HP.7z`, `HP(1).7z`, and a prior `_tmp_HP_mps_recovery.7z` copy
+- the current Project execution context cannot materialize those compressed archives as raw bytes, and Files text extraction cannot inspect archive contents
+- no separately extracted MPS Word manuscript was found in the Library filename inventory
 
-Under the strict source policy, standard MPS formulas from external literature are **not** accepted as a substitute for the original source images.
+Under the strict source policy, standard MPS formulas from external literature or surrounding prose are **not** accepted as substitutes for the original source images.
 
 ## Conclusion
 
@@ -49,6 +52,6 @@ Under the strict source policy, standard MPS formulas from external literature a
 ## Supporting records
 
 - `.document/formula_reviews/SITE_INLINE_IMAGE_INVENTORY_20260918.md`
-- `.document/formula_reviews/MPS_REMOTE_SOURCE_RECOVERY_20260919.md`
+- `.document/formula_reviews/MPS_MISSING_ASSET_RECOVERY_20260919.md`
 - `.document/formula_reviews/STRICT_SOURCE_AUDIT_STATUS.md`
 - category-specific retained-image final audit records under `.document/formula_reviews/`
