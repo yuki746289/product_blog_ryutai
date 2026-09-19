@@ -1,8 +1,8 @@
 {
-  "page_key": "heat_7_1",
-  "page_path": "heat/heat_7_1.html",
-  "source_dir": "img/heat_discretization_tri.files",
-  "source_fragment": "heat_discretization_tri.files",
+  "page_key": "heat_7_2",
+  "page_path": "heat/heat_7_2.html",
+  "source_dir": "img/heat_discretization_tet.files",
+  "source_fragment": "heat_discretization_tet.files",
   "images": [
     "001",
     "002",
@@ -35,10 +35,9 @@
     "029",
     "030",
     "031",
-    "032",
-    "033"
+    "032"
   ],
-  "expected_math_blocks": 33,
+  "expected_math_blocks": 32,
   "retained_source_images": [],
   "viewports": {
     "desktop": {
@@ -50,5 +49,5 @@
       "height": 844
     }
   },
-  "rerun_revision": 41
+  "rerun_revision": 42
 }
