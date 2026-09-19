@@ -50,6 +50,7 @@ jobs:
           nums=cfg['images']
           retained=cfg.get('retained_source_images',[])
           expected=cfg['expected_math_blocks']
+          formula_selector=cfg.get('formula_selector','.math-block')
           vps=cfg['viewports']
 
           out=Path('strict-formula-page-qa')
@@ -91,7 +92,7 @@ jobs:
                   pg.evaluate('async()=>{await MathJax.startup.promise;}')
                   pg.wait_for_timeout(800)
 
-                  blocks=pg.locator('.math-block')
+                  blocks=pg.locator(formula_selector)
                   block_count=blocks.count()
                   rendered=0; local=[]; uncontained=[]; unrendered=[]
                   for i in range(block_count):
@@ -176,7 +177,7 @@ jobs:
                   rows.append(row)
 
                   if block_count!=expected:
-                      failures.append(f'{vn}: math-block count={block_count}, expected={expected}')
+                      failures.append(f'{vn}: formula target count={block_count}, expected={expected}')
                   if rendered!=block_count:
                       failures.append(f'{vn}: rendered={rendered}/{block_count}')
                   if merror:
