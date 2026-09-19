@@ -20,7 +20,11 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: develop
-      - name: Record run id
+      - name: Normalize source fidelity policy
+        run: |
+          python .document/tools/source_fidelity_prepare.py
+
+      - name: Record run id and normalized public assets
         run: |
           mkdir -p .document/formula_reviews
           {
@@ -32,9 +36,52 @@ jobs:
           } > .document/formula_reviews/FINAL_SITE_BROWSER_QA_RUN_20260919.md
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add .document/formula_reviews/FINAL_SITE_BROWSER_QA_RUN_20260919.md
-          git commit -m "test: record final browser QA run [skip ci]"
+          git add -A
+          git commit -m "fix: normalize source fidelity and record final browser QA run [skip ci]"
           git push origin HEAD:develop
+
+
+  source-fidelity:
+    name: source-fidelity
+    needs: probe
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install source fidelity dependencies
+        run: |
+          pip install playwright pillow
+          python -m playwright install --with-deps chromium
+      - name: Start local server
+        run: |
+          python -m http.server 8000 --bind 127.0.0.1 >/tmp/source-fidelity-http.log 2>&1 &
+          sleep 2
+      - name: Revalidate source line structure and encoding
+        id: source_fidelity
+        continue-on-error: true
+        run: |
+          python .document/tools/source_fidelity_visual_qa.py \
+            --root . \
+            --base-url http://127.0.0.1:8000 \
+            --output-dir qa-results/source-fidelity \
+            --report .document/formula_reviews/SOURCE_FIDELITY_REVALIDATION_20260920.md
+      - name: Upload source fidelity evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: source-fidelity-revalidation
+          path: |
+            qa-results/source-fidelity/
+            .document/formula_reviews/SOURCE_FIDELITY_REVALIDATION_20260920.md
+          if-no-files-found: error
+      - name: Mark source fidelity review required
+        if: steps.source_fidelity.outcome == 'failure'
+        run: exit 1
 
   qa:
     name: qa-shard-${{ matrix.shard }}
