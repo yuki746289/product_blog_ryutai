@@ -12,10 +12,9 @@
 - Browser QA: **PASS**
 
 ## 元画像 ↔ MathJax 直接比較
-- 連続の式の無次元化。ρ/p、c、X/Y/Z、τ、Maを重点確認。
-- 現HTMLとsource-certified JSONは全対象一致（空白差のみの箇所は描画同値）。
-- 元画像とMathJax完成描画のペア画像を全式確認。
-- 数式内容・符号・添字・項順・改行に修正必要な差異なし。
+- 連続の式の無次元化。ρ/p、c、Ma、X/Y/Z、τ、V成分を重点確認。
+- 元画像とMathJax完成描画のペア画像を全対象で確認。
+- 数式内容・符号・添字・上付き・項順・改行に修正必要な差異なし。
 
 ## Browser QA
 - desktop/mobileとも全対象render。
