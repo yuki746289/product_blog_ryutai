@@ -69,13 +69,16 @@ jobs:
                             if(ox!=='auto'&&ox!=='scroll') unc++;
                           }
                         }
-                        const formulas=document.querySelectorAll('.math-block,.formula-inline').length;
+                        const formulaEls=[...document.querySelectorAll('.math-block,.formula-inline')];
+                        const formulas=formulaEls.length;
+                        const rendered=formulaEls.filter(e=>e.querySelector('mjx-container')).length;
                         const mpsImgs=[...document.images].filter(x=>(x.getAttribute('src')||'').includes('mps_'));
                         const missingMps=mpsImgs.filter(x=>!x.complete||x.naturalWidth===0).length;
                         return {
                           formulas,
+                          rendered,
                           merror:document.querySelectorAll('mjx-merror,.mjx-merror,.MathJax_Error').length,
-                          unrendered:(t.match(/\\\(|\\\[|\\begin\s*\{/g)||[]).length,
+                          unrendered:formulas-rendered,
                           overflow:document.documentElement.scrollWidth>document.documentElement.clientWidth+2,
                           uncontained:unc,
                           local,
@@ -116,7 +119,14 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ ! -f .document/formula_reviews/MPS_FINAL_BROWSER_QA_20260919.md ]; then
+            echo "QA report was not generated"
+            exit 1
+          fi
           git add .document/formula_reviews/MPS_FINAL_BROWSER_QA_20260919.md
-          git commit -m "test: record final MPS browser QA [skip ci]" || exit 0
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "test: record final MPS browser QA [skip ci]"
           git pull --rebase origin develop
           git push origin HEAD:develop
