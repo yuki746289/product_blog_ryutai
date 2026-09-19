@@ -449,6 +449,32 @@
 - Mesh / Column / Appendix: **COMPLETE**
 - 最終レポート: `.document/formula_reviews/MESH_COLUMN_APPENDIX_FINAL_QA_20260919_STRICT.md`
 
+## Counting / MPS 統合確認
+
+### Counting
+- 数式画像: **0**
+- 保持フローチャート: **2**
+- Final QA: **PASS**
+
+### MPS
+- formula slots: **49**
+- source-exact / recovered: **48**
+- explicit inferred reconstruction: **1**
+- HOLD: **0**
+- Browser QA: **PASS**
+
+## 現行厳密インベントリ
+
+- Core strict formulas: **585 / 88 formula pages**
+- MPS: **49 / 7 formula pages**
+- **Current total: 634 formula slots / 95 formula pages**
+- source-exact/source-audited: **633**
+- inferred: **1**
+- unresolved HOLD: **0**
+- Final summary: `.document/formula_reviews/STRICT_REAUDIT_FINAL_20260919.md`
+
+> 旧「564式完了」は旧監査時点・旧スコープの履歴値であり、現在の厳密インベントリ634とは単純比較しない。
+
 ## 累計
 
 - source-exact / source-recovered 新厳密再監査完了: **633式**
