@@ -273,6 +273,7 @@ P&=N_1P_{x,1}+N_2P_{x,2}+N_3P_{x,3}
 </div><br>
 
 			<p>行列式で表す</p>
+			<p>蓄積量</p>
 			<div class="math-block" id="formula-fem-7-1-2-015" data-source-image="./../img/fem_d_momentum_tri.files/image015.png">
 \[
 =\int_S
@@ -364,7 +365,7 @@ N_3\frac{\partial N_1}{\partial Y}&N_3\frac{\partial N_2}{\partial Y}&N_3\frac{\
 			<div class="math-block" id="formula-fem-7-1-2-020" data-source-image="./../img/fem_d_momentum_tri.files/image020.png">
 \[
 -g_i^*\int_S
-\begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}dS,
+\begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}dS
 \qquad (i=1,2)
 \]
 </div><br>
@@ -461,7 +462,7 @@ c_{3y}L_1&c_{3y}L_2&c_{3y}L_3
 			<div class="math-block" id="formula-fem-7-1-2-026" data-source-image="./../img/fem_d_momentum_tri.files/image026.png">
 \[
 -g_i^*\int_S
-\begin{bmatrix}L_1\\L_2\\L_3\end{bmatrix}^{T}dS,
+\begin{bmatrix}L_1\\L_2\\L_3\end{bmatrix}^{T}dS
 \qquad (i=1,2)
 \]
 </div><br>
@@ -591,7 +592,7 @@ c_{3y}&c_{3y}&c_{3y}
 			<div class="math-block" id="formula-fem-7-1-2-033" data-source-image="./../img/fem_d_momentum_tri.files/image033.png">
 \[
 -g_i^*\frac{A}{3}
-\begin{bmatrix}1\\1\\1\end{bmatrix},
+\begin{bmatrix}1\\1\\1\end{bmatrix}
 \qquad (i=1,2)
 \]
 </div><br>
@@ -702,7 +703,7 @@ c_{3y}&c_{3y}&c_{3y}
 &+\frac1{Re}[S_{xx}]\{V_i\}+\frac1{Re}[S_{xi}]\{V_x\}-\delta_{xi}[H_x]\{P\}\\
 &+\frac1{Re}[S_{yy}]\{V_i\}+\frac1{Re}[S_{yi}]\{V_y\}-\delta_{yi}[H_y]\{P\}\\
 &+\frac{2K^*}{We}Ln_i\begin{bmatrix}1\\1\end{bmatrix}
--g_i^*\frac{A}{3}\begin{bmatrix}1\\1\\1\end{bmatrix},
+-g_i^*\frac{A}{3}\begin{bmatrix}1\\1\\1\end{bmatrix}
 \qquad (i=1,2)
 \end{aligned}
 \]
@@ -714,11 +715,11 @@ c_{3y}&c_{3y}&c_{3y}
 \begin{aligned}
 ={}&[C]\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}
 +(V_x[C_x]+V_y[C_y])\{V_i\}\\
-&+\frac1{Re}([S_{xx}]+[S_{yy}])\{V_i\}
-+\frac1{Re}([S_{xi}]\{V_x\}+[S_{yi}]\{V_y\})\\
+&+\frac1{Re}([S_{xx}]+[S_{yy}])\{V_i\}\\
+&+\frac1{Re}([S_{xi}]\{V_x\}+[S_{yi}]\{V_y\})\\
 &-(\delta_{xi}[H_x]+\delta_{yi}[H_y])\{P\}
 +\frac{2K^*}{We}Ln_i\begin{bmatrix}1\\1\end{bmatrix}\\
-&-g_i^*\frac{A}{3}\begin{bmatrix}1\\1\\1\end{bmatrix},
+&-g_i^*\frac{A}{3}\begin{bmatrix}1\\1\\1\end{bmatrix}
 \qquad (i=1,2,3)\\
 ={}&\begin{bmatrix}0\\0\\0\end{bmatrix}
 \end{aligned}
@@ -730,13 +731,13 @@ c_{3y}&c_{3y}&c_{3y}
 \[
 \begin{aligned}
 [C]\frac{\{V_i\}^{\tau+\Delta\tau}-\{V_i\}^{\tau}}{\Delta\tau}
-&+(V_x[C_x]+V_y[C_y])\{V_i\}
-+\frac1{Re}([S_{xx}]+[S_{yy}])\{V_i\}\\
-&+\frac1{Re}([S_{xi}]\{V_x\}+[S_{yi}]\{V_y\})
--(\delta_{xi}[H_x]+\delta_{yi}[H_y])\{P\}\\
+&+(V_x[C_x]+V_y[C_y])\{V_i\}\\
+&+\frac1{Re}([S_{xx}]+[S_{yy}])\{V_i\}\\
+&+\frac1{Re}([S_{xi}]\{V_x\}+[S_{yi}]\{V_y\})\\
+&-(\delta_{xi}[H_x]+\delta_{yi}[H_y])\{P\}\\
 &+\frac{2K^*}{We}Ln_i\begin{bmatrix}1\\1\end{bmatrix}
 -g_i^*\frac{A}{3}\begin{bmatrix}1\\1\\1\end{bmatrix}
-=\begin{bmatrix}0\\0\\0\end{bmatrix},
+=\begin{bmatrix}0\\0\\0\end{bmatrix}
 \qquad (i=1,2)
 \end{aligned}
 \]
@@ -747,13 +748,13 @@ c_{3y}&c_{3y}&c_{3y}
 \[
 \begin{aligned}
 \frac{[C]}{\Delta\tau}\{V_i\}^{\tau+\Delta\tau}
-&+(V_x[C_x]+V_y[C_y])\{V_i\}^{\tau+\Delta\tau}
-+\frac1{Re}([S_{xx}]+[S_{yy}])\{V_i\}^{\tau+\Delta\tau}\\
-&+\frac1{Re}([S_{xi}]\{V_x\}^{\tau+\Delta\tau}+[S_{yi}]\{V_y\}^{\tau+\Delta\tau})
--(\delta_{xi}[H_x]+\delta_{yi}[H_y])\{P\}^{\tau+\Delta\tau}\\
+&+(V_x[C_x]+V_y[C_y])\{V_i\}^{\tau+\Delta\tau}\\
+&+\frac1{Re}([S_{xx}]+[S_{yy}])\{V_i\}^{\tau+\Delta\tau}\\
+&+\frac1{Re}([S_{xi}]\{V_x\}^{\tau+\Delta\tau}+[S_{yi}]\{V_y\}^{\tau+\Delta\tau})\\
+&-(\delta_{xi}[H_x]+\delta_{yi}[H_y])\{P\}^{\tau+\Delta\tau}\\
 ={}&\frac{[C]}{\Delta\tau}\{V_i\}^{\tau}
 -\frac{2K^*}{We}Ln_i\begin{bmatrix}1\\1\end{bmatrix}
-+g_i^*\frac{A}{3}\begin{bmatrix}1\\1\\1\end{bmatrix},
++g_i^*\frac{A}{3}\begin{bmatrix}1\\1\\1\end{bmatrix}
 \qquad (i=1,2)
 \end{aligned}
 \]
