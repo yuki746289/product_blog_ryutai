@@ -1715,3 +1715,36 @@ w(|\vec r_j-\vec r_i|)
 - 全体: **112**
 
 本番FTP/FTPS反映: **未実施**
+
+
+## 2026-09-19 MPS reconstruction final Browser QA
+
+最終 `mps_6_2.html` を含む最新Browser QAを実行。
+
+- run: `35411325166`
+- job: `105835730146`
+- artifact: `10576893632`
+- shard checks: **102**
+- failures: **0**
+
+`mps_6_2.html`:
+- desktop HTTP 200
+- mobile HTTP 200
+- MathJax errors: 0
+- unrendered: 0
+- page overflow: 0
+- uncontained: 0
+- missing images: 0
+- issues: 0
+
+最新状態:
+- source-exact / recovered: **612**
+- inferred reconstruction: **1**
+- reflected total: **613**
+- MPS formulas: **49**
+- MPS residual images: **0**
+- MPS HOLD: **0**
+- retained inline images: **112**
+- 本番FTP/FTPS反映: **未実施**
+
+**判定: デプロイ前監査・QA完了。**
