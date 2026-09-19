@@ -1596,3 +1596,44 @@ MPS 49参照を再確認した。
 再開条件:
 1. `HP.7z` / `HP(1).7z` のraw-byte取得が可能になる
 2. MPS Word原稿または元GIFを別経路で取得する
+
+
+## 2026-09-19 MPS source recovery FINAL
+
+Libraryの `HP(1).7z` を
+**Library → Google Drive → raw download → libarchive**
+の経路で回収・展開し、MPS正本を再監査した。
+
+正本:
+- `.document/formula_reviews/MPS_SOURCE_RECOVERY_AND_FORMULA_AUDIT_20260919.md`
+- `.document/formula_reviews/MPS_FINAL_BROWSER_QA_20260919.md`
+- `.document/formula_reviews/FINAL_RETAINED_IMAGE_STATUS_20260919.md`
+
+最終状態:
+- MPS元参照: **49**
+- Word Equation.3 / Word-rendered source回収: **48**
+- MathJax反映: **48**
+- source re-audit: **48/48**
+- 実際に残るMPS `<img>`: **1**
+- HOLD: `mps/mps_6_2.html -> image022.gif` のみ
+- 非MPS残存画像: **112**（全件確認済み保持図等）
+- 全残存inline-image配置: **113**
+- 未確認数式画像: **0**
+
+追加再監査で1件の転記差を検出し修正した:
+- `mps_6_2/image020.gif`
+- 元Word左辺: `\\nabla^2 P_j^{k+1}`
+- 旧MathJax: `\\nabla^2 P_i^{k+1}`
+- **元資料どおり `P_j` に修正済み**
+
+元資料に見える理論上不自然な添字・記法は、他ページと同様に勝手に補正せず保持する。
+
+旧節にある「MPS 49 SOURCE BLOCKED / HOLD」「HP.7z raw展開不可」は履歴情報であり、
+**現在状態としては本節を優先する。**
+
+厳密監査・通常ページ化済み総数:
+- 従来: **564**
+- MPS追加: **48**
+- **最新合計: 612**
+
+本番FTP/FTPS反映: **未実施**
