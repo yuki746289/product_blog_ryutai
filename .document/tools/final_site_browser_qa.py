@@ -35,7 +35,10 @@ def inspect(page):
         const s=getComputedStyle(e); if(s.position==='fixed'||s.position==='sticky') return false;
         const r=e.getBoundingClientRect(); return r.width>0&&r.height>0&&(r.right>w+2||r.left<-2);
       }).length:0;
+      const txt=document.body?document.body.innerText:'';
+      const mojibake=['�','\u0081','縺','繧','譁'].filter(x=>txt.includes(x));
       return {matherr:document.querySelectorAll('mjx-merror,.mjx-merror,.MathJax_Error').length,
+        charset:document.characterSet||'', mojibake,
         unrendered:unrenderedTargets,
         overflow:pageOverflow, uncontained:unc,
         local:[...document.querySelectorAll('.math-block')].filter(e=>e.scrollWidth>e.clientWidth+2).length,
@@ -47,6 +50,9 @@ def issues(r):
     if r["status"] and r["status"]>=400: x.append("HTTP "+str(r["status"]))
     if r["nav"]: x.append("navigation")
     if r["pageerr"]: x.append("page errors="+str(len(r["pageerr"])))
+    if (r.get("charset") or "").upper()!="UTF-8": x.append("charset="+str(r.get("charset")))
+    if r.get("mojibake"): x.append("mojibake="+",".join(r["mojibake"]))
+    if r.get("auto_linebreak"): x.append("automatic MathJax linebreak enabled")
     if r["console"]: x.append("MathJax console="+str(len(r["console"])))
     if r["matherr"]: x.append("MathJax DOM="+str(r["matherr"]))
     if r["unrendered"]: x.append("unrendered="+str(r["unrendered"]))
@@ -96,8 +102,13 @@ def run(a):
             }""", timeout=8000)
            except PWTimeout: pass
            m=inspect(pg)
+           try:
+            html_text=(root/rel).read_text(encoding="utf-8")
+            m["auto_linebreak"]=bool(__import__("re").search(r"displayOverflow\s*:\s*['\"]linebreak['\"]",html_text,__import__("re").I))
+           except Exception:
+            m["auto_linebreak"]=True
           except Exception as e:
-           nav=type(e).__name__+": "+str(e); m={"matherr":0,"unrendered":0,"overflow":False,"uncontained":0,"local":0,"missing":[]}
+           nav=type(e).__name__+": "+str(e); m={"matherr":0,"charset":"","mojibake":[],"auto_linebreak":True,"unrendered":0,"overflow":False,"uncontained":0,"local":0,"missing":[]}
           pg.close(); r={"path":rel,"viewport":vn,"status":st,"nav":nav,"pageerr":pe,"console":ce,**m}; r["issues"]=issues(r); rows.append(r)
         finally: c.close()
       finally: b.close()
@@ -122,6 +133,7 @@ def merge(a):
     if sum(v for v in actual.values() if v>=0)!=0: probs.append("MPS total is not 0")
     mj=sum(r["matherr"]+len(r["console"]) for r in rows); ur=sum(r["unrendered"] for r in rows)
     ov=sum(bool(r["overflow"]) for r in rows); uc=sum(r["uncontained"] for r in rows); pe=sum(len(r["pageerr"]) for r in rows)
+    ch=sum((r.get("charset") or "").upper()!="UTF-8" for r in rows); mb=sum(bool(r.get("mojibake")) for r in rows); al=sum(bool(r.get("auto_linebreak")) for r in rows)
     nonm=sum(len(r["missing"]) for r in desk if r["path"] not in MPS); ls=sum(r["local"] for r in rows)
     fail=bool(bad or probs); status="FAIL" if fail else "PASS"
     L=["# Final Site Browser QA — 2026-09-19","",f"- Overall: **{status}**","- Browser: Chromium / Playwright",
@@ -129,7 +141,8 @@ def merge(a):
        f"- Hard-failure rows: **{len(bad)}**",f"- MPS known missing references: **{sum(v for v in actual.values() if v>=0)}/0**",
        "- Production deployment: not performed.","","## Global metrics","","| Metric | Count |","|---|---:|",
        f"| MathJax errors | {mj} |",f"| Unrendered | {ur} |",f"| Page overflow rows | {ov} |",f"| Uncontained overflow | {uc} |",
-       f"| Page errors | {pe} |",f"| Non-MPS missing images (desktop) | {nonm} |",f"| Allowed local math scroll | {ls} |","",
+       f"| Page errors | {pe} |",f"| Charset failures | {ch} |",f"| Mojibake indicator rows | {mb} |",f"| Automatic MathJax linebreak rows | {al} |",
+       f"| Non-MPS missing images (desktop) | {nonm} |",f"| Allowed local math scroll | {ls} |","",
        "## MPS SOURCE BLOCKED / HOLD","","| Page | Expected | Actual |","|---|---:|---:|"]
     for p,e in MPS.items(): L.append(f"| {p} | {e} | {actual[p]} |")
     L += ["","## Failures",""]
@@ -138,7 +151,7 @@ def merge(a):
       L += ["- GLOBAL: "+x for x in probs]
       L += [f"- {r['path']} [{r['viewport']}]: {'; '.join(r['issues'])}" for r in bad[:200]]
     L += ["","## Acceptance criteria","","- MPS known missing references = 0.","- MathJax errors = 0.",
-          "- Unrendered = 0.","- Page overflow = 0.","- Uncontained overflow = 0.","- Missing images outside MPS HOLD = 0."]
+          "- Unrendered = 0.","- Charset failures = 0.","- Mojibake indicator rows = 0.","- Automatic MathJax linebreak rows = 0.","- Page overflow = 0.","- Uncontained overflow = 0.","- Missing images outside MPS HOLD = 0."]
     p=Path(a.report); p.parent.mkdir(parents=True,exist_ok=True); p.write_text("\n".join(L)+"\n",encoding="utf-8"); print(status); return fail
 
 def main():
