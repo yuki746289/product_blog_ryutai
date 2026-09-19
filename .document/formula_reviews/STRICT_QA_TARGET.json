@@ -1,15 +1,21 @@
 {
-  "page_key": "fem_6_2_5",
-  "page_path": "fem/fem_6_2_5.html",
-  "source_dir": "img/fem_n_tet.files",
-  "source_fragment": "fem_n_tet.files",
+  "page_key": "fem_2_1",
+  "page_path": "fem/fem_2_1.html",
+  "source_dir": "img/fem_tri.files",
+  "source_fragment": "fem_tri.files",
   "images": [
-    "018",
-    "019",
-    "020"
+    "002",
+    "003",
+    "004",
+    "005",
+    "006",
+    "007"
   ],
-  "expected_math_blocks": 3,
-  "retained_source_images": [],
+  "expected_math_blocks": 6,
+  "retained_source_images": [
+    "001",
+    "008"
+  ],
   "viewports": {
     "desktop": {
       "width": 1440,
@@ -20,5 +26,5 @@
       "height": 844
     }
   },
-  "rerun_revision": 19
+  "rerun_revision": 20
 }
