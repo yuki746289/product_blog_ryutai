@@ -1,13 +1,17 @@
 {
-  "page_key": "heat_5_3",
-  "page_path": "heat/heat_5_3.html",
-  "source_dir": "img/heat_eq_conduction.files",
-  "source_fragment": "heat_eq_conduction.files",
+  "page_key": "heat_5_4",
+  "page_path": "heat/heat_5_4.html",
+  "source_dir": "img/heat_eq_derivation.files",
+  "source_fragment": "heat_eq_derivation.files",
   "images": [
     "002",
-    "003"
+    "003",
+    "004",
+    "005",
+    "006",
+    "007"
   ],
-  "expected_math_blocks": 2,
+  "expected_math_blocks": 6,
   "retained_source_images": [
     "001"
   ],
@@ -21,5 +25,5 @@
       "height": 844
     }
   },
-  "rerun_revision": 39
+  "rerun_revision": 40
 }
