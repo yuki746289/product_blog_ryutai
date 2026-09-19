@@ -1,12 +1,25 @@
 {
-  "page_key": "physics_7",
-  "page_path": "physics/physics_7.html",
-  "source_dir": "img/physics_form.files",
-  "source_fragment": "physics_form.files",
+  "page_key": "appendix_1",
+  "page_path": "appendix/appendix_1.html",
+  "source_dir": "img/appendix_equation.files",
+  "source_fragment": "appendix_equation.files",
   "images": [
-    "001"
+    "001",
+    "002",
+    "003",
+    "004",
+    "005",
+    "006",
+    "007",
+    "008",
+    "009",
+    "010",
+    "011",
+    "012",
+    "013",
+    "014"
   ],
-  "expected_math_blocks": 1,
+  "expected_math_blocks": 14,
   "formula_selector": "[data-source-image]",
   "retained_source_images": [],
   "viewports": {
@@ -19,5 +32,5 @@
       "height": 844
     }
   },
-  "rerun_revision": 92
+  "rerun_revision": 93
 }
