@@ -23,18 +23,16 @@ jobs:
         shell: bash
         run: |
           python3 - <<'PY'
+          import re
           import shutil
           from pathlib import Path
 
           PUBLIC_DIRS = {
               "appendix","book","column","counting","fem","fortran","heat","html",
               "hydronamics","introduce","library","link","mail","math","mesh","mps",
-              "pdf","physics","profile","sitemap","css","img"
+              "physics","profile","sitemap","css"
           }
-          EXTS = {
-              ".html",".htm",".css",".js",".png",".gif",".jpg",".jpeg",
-              ".svg",".webp",".ico",".xml",".txt",".pdf",".woff",".woff2",".ttf"
-          }
+          EXTS = {".html",".htm",".css",".js",".xml",".txt"}
 
           root=Path(".")
           stage=Path("_old_publish")
@@ -58,16 +56,43 @@ jobs:
                   continue
               candidates.append(rel)
 
+          asset_attr=re.compile(
+              r'''(?P<prefix>\b(?:src|href|background)\s*=\s*["'])(?P<path>(?:\./)?(?:\.\./)*)(?P<dir>img|pdf)/''',
+              re.I
+          )
+          css_url=re.compile(
+              r'''(?P<prefix>url\(\s*["']?)(?P<path>(?:\./)?(?:\.\./)*)(?P<dir>img|pdf)/''',
+              re.I
+          )
+
+          rewritten=0
           for rel in sorted(set(candidates)):
               src=Path(rel)
               dst=stage/rel
               dst.parent.mkdir(parents=True,exist_ok=True)
-              shutil.copy2(src,dst)
+              text=src.read_text(encoding="utf-8")
+              new=asset_attr.sub(lambda m: m.group("prefix")+"/"+m.group("dir").lower()+"/", text)
+              new=css_url.sub(lambda m: m.group("prefix")+"/"+m.group("dir").lower()+"/", new)
+              if new != text:
+                  rewritten += 1
+              dst.write_text(new,encoding="utf-8")
 
-          print(f"legacy publish files={len(set(candidates))}")
-          print(f"legacy publish bytes={sum((stage/p).stat().st_size for p in set(candidates))}")
+          leftovers=[]
+          for p in stage.rglob("*"):
+              if not p.is_file():
+                  continue
+              text=p.read_text(encoding="utf-8")
+              if re.search(r'''(?:src|href|background)\s*=\s*["'](?:\./)?(?:\.\./)*(?:img|pdf)/''',text,re.I):
+                  leftovers.append(p.as_posix())
+              if re.search(r'''url\(\s*["']?(?:\./)?(?:\.\./)*(?:img|pdf)/''',text,re.I):
+                  leftovers.append(p.as_posix())
+          if leftovers:
+              raise SystemExit("Unconverted shared-asset references: "+", ".join(sorted(set(leftovers))[:20]))
+
+          print(f"legacy text files={len(set(candidates))}")
+          print(f"rewritten files={rewritten}")
+          print("shared assets: /img and /pdf")
           PY
-
       - name: Install lftp
         run: |
           sudo apt-get update -qq
@@ -124,6 +149,22 @@ jobs:
           bye
           LFTP
 
+      - name: Remove duplicated legacy image directory after path rewrite
+        shell: bash
+        env:
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          lftp -u "$(printf '%s' "$FTP_USERNAME" | xargs)","$(printf '%s' "$FTP_PASSWORD" | xargs)" -p "$FTP_PORT" "$FTP_HOST" <<'LFTP'
+          set ftp:ssl-force true
+          set ftp:ssl-protect-data true
+          set ftp:passive-mode true
+          set net:timeout 30
+          set net:max-retries 3
+          rm -r -f /old/img
+          bye
+          LFTP
+
       - name: Verify production old site
         shell: bash
         run: |
@@ -133,9 +174,9 @@ jobs:
           base="https://ryutai.ninja-web.net/old/"
           checks={
               "index.html":["2016.5.20","2016.5.22"],
-              "mps/mps_1.html":["重み関数"],
-              "fem/fem_7_1_2.html":["運動量"],
-              "css/lib.css":["wrapper"],
+              "mps/mps_1.html":["重み関数","/img/mps_weight.files/image001.gif"],
+              "fem/fem_7_1_2.html":["運動量","/img/fem_d_momentum_tri.files/image001.png"],
+              "css/lib.css":["wrapper","/img/fts012_wrap_bg.gif"],
           }
           for path,needles in checks.items():
               req=urllib.request.Request(base+path,headers={"User-Agent":"Mozilla/5.0 old-site-smoke"})
