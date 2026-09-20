@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "certification": "source-layout-and-content-reviewed",
-  "certified_at_utc": "2026-09-20T03:53:01.599739+00:00",
-  "certified_git_head": "91c1e27e3b802e308ebf524034b2728ba063d6d8",
+  "certified_at_utc": "2026-09-20T04:29:44.981845+00:00",
+  "certified_git_head": "63859d6b4c5c39cae97c7e540902c005d84e5b0f",
   "canonical_formula_slots": 634,
   "rendered_formula_instances": 638,
   "review_basis": [
@@ -4876,7 +4876,7 @@
       "page": "mps/mps_1.html",
       "id": "formula-mps-1-001",
       "data_source_image": "./../img/mps_weight.files/image001.gif",
-      "formula_sha256": "8a4750d39bc0ede091bf5d17bdd8f64cd7ece9dbd4e5880b14ada8a54bf2c596",
+      "formula_sha256": "e43e647b7e530b6f01169e16d6e77f2237d745f5ab6792640fe6c0392fcbed08",
       "source_basis": "word-recovered-source",
       "source_path": null,
       "source_sha256": null
