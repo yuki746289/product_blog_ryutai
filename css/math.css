@@ -12,12 +12,12 @@
 	overflow-y: hidden;
 	overscroll-behavior-x: contain;
 	-webkit-overflow-scrolling: touch;
-	margin: 12px 0 18px 0;
-	padding: 4px 0;
+	margin: 18pt 0;
+	padding: 0;
 	box-sizing: border-box;
 }
 
-.math-block mjx-container[display="true"] {
+/* Legacy pages often add <br> immediately after a formula.\n * Hide only that redundant break so the global 18pt spacing remains consistent. */\n.math-block + br {\n\tdisplay: none;\n}\n\n.math-block mjx-container[display="true"] {
 	max-width: 100%;
 	text-align: left !important;
 	margin: 0 !important;
