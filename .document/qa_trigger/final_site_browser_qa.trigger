@@ -12,3 +12,4 @@ run=2026-09-19-strict-final-v3-rerun-strict-pageerror
 2026-09-20 final-qa-after-duplicate-revision-mps1-fixes
 2026-09-20 final-qa-after-mps1-aligned-brace
 2026-09-20 final-qa-after-mps1-lt-escape
+2026-09-20 final-qa-font-size-control-alignment
