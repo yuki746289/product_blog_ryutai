@@ -23,7 +23,7 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Upload public assets by FTPS without remote deletion
+      - name: Upload public assets by FTPS with targeted cache refresh
         shell: bash
         env:
           FTP_SERVER: ${{ secrets.FTP_SERVER }}
@@ -43,6 +43,14 @@ jobs:
           }
           EXTS = {".html",".htm",".css",".js",".xml",".txt"}
           SKIP_SUFFIX = ("_mathjax_audit.html","_reaudit.html")
+          CACHE_REFRESH_FILES = {
+              "index.html",
+              "footer.html",
+              "ad.html",
+              "ad_top.html",
+              "ad_google.html",
+              "js/site_ads_v1_6.js",
+          }
           root = Path(".")
           candidates = []
           for p in root.rglob("*"):
@@ -88,6 +96,7 @@ jobs:
           ftp = ftplib.FTP_TLS(timeout=30)
           uploaded = 0
           verified = 0
+          cache_refreshed = 0
           created_dirs = set()
           try:
               ftp.connect(host,port)
@@ -117,6 +126,20 @@ jobs:
 
               for rel in candidates:
                   ensure_parent(rel)
+
+                  # Ninja Homepage can continue serving a cached object after an
+                  # in-place STOR overwrite. For the small set of files involved
+                  # in the AdSense migration, explicitly remove the old object
+                  # immediately before uploading its replacement.
+                  if rel in CACHE_REFRESH_FILES:
+                      try:
+                          ftp.delete(Path(rel).name)
+                          cache_refreshed += 1
+                          print(f"cache refresh delete: {rel}", flush=True)
+                      except ftplib.error_perm as exc:
+                          if not str(exc).startswith("550"):
+                              raise
+
                   with open(rel,"rb") as fh:
                       ftp.storbinary("STOR " + Path(rel).name, fh, blocksize=262144)
                   uploaded += 1
@@ -141,7 +164,8 @@ jobs:
 
               print(f"FTPS upload complete: candidates={len(candidates)} uploaded={uploaded} verified={verified}")
               print(f"Remote directories created if missing: {len(created_dirs)}")
-              print("Remote deletions: 0")
+              print(f"Targeted cache-refresh replacements: {cache_refreshed}/{len(CACHE_REFRESH_FILES)}")
+              print("Unrelated remote deletions: 0")
           finally:
               try:
                   ftp.quit()
@@ -181,14 +205,16 @@ jobs:
 
           def fetch(path):
               req = urllib.request.Request(base + path, headers={
-                  "User-Agent":"Mozilla/5.0 production-smoke"
+                  "User-Agent":"Mozilla/5.0 production-smoke",
+                  "Cache-Control":"no-cache, no-store, max-age=0",
+                  "Pragma":"no-cache",
               })
               with urllib.request.urlopen(req, timeout=20) as res:
                   if res.status != 200:
                       raise RuntimeError(f"{path}: HTTP {res.status}")
                   return res.read().decode("utf-8")
 
-          for attempt in range(1, 6):
+          for attempt in range(1, 13):
               failures = []
               for path, needles in checks.items():
                   try:
@@ -213,9 +239,9 @@ jobs:
               if not failures:
                   print("HTTP content smoke: PASS")
                   break
-              if attempt == 5:
+              if attempt == 12:
                   raise SystemExit("HTTP content smoke failed:\n" + "\n".join(failures))
-              time.sleep(5)
+              time.sleep(10)
           PY
 
       - name: Install Chromium for production browser smoke
