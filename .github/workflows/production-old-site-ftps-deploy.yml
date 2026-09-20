@@ -79,6 +79,25 @@ jobs:
                   lambda m: m.group("prefix")+b"/"+m.group("dir").lower()+b"/",
                   new
               )
+              if rel == "mps/mps_1.html":
+                  mathjax_head = (
+                      b'<script>window.MathJax={output:{displayOverflow:"overflow"},'
+                      b'chtml:{displayAlign:"left",displayIndent:"0"}};</script>\n'
+                      b'<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>\n'
+                  )
+                  new = new.replace(b"</head>", mathjax_head + b"</head>")
+                  legacy_img = b'<p class="im"><img src="/img/mps_weight.files/image001.gif"></p>'
+                  legacy_formula = (
+                      b'<div id="formula-mps-1-legacy" style="margin:16px 0;">'
+                      b'\\[w(r)=\\left\\{\\begin{aligned}'
+                      b'&\\displaystyle\\frac{r_e}{r}-1 && (0\\le r\\lt r_e)\\\\[6pt]'
+                      b'&0 && (r_e\\le r)'
+                      b'\\end{aligned}\\right.\\]'
+                      b'</div>'
+                  )
+                  if legacy_img not in new:
+                      raise SystemExit("Legacy MPS formula image marker not found")
+                  new = new.replace(legacy_img, legacy_formula)
               if new != data:
                   rewritten += 1
               dst.write_bytes(new)
@@ -143,23 +162,6 @@ jobs:
           print(f"FTP_PORT={port}")
           PY
 
-      - name: Ensure legacy-only shared MPS image exists
-        shell: bash
-        env:
-          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-        run: |
-          lftp -u "$(printf '%s' "$FTP_USERNAME" | xargs)","$(printf '%s' "$FTP_PASSWORD" | xargs)" -p "$FTP_PORT" "$FTP_HOST" <<'LFTP'
-          set ftp:ssl-force true
-          set ftp:ssl-protect-data true
-          set ftp:passive-mode true
-          set net:timeout 30
-          set net:max-retries 3
-          mkdir -p /img/mps_weight.files
-          put -O /img/mps_weight.files img/mps_weight.files/image001.gif
-          bye
-          LFTP
-
       - name: Upload release_1.0.0 to remote old directory
         shell: bash
         env:
@@ -201,18 +203,9 @@ jobs:
           import urllib.request
 
           base="https://ryutai.ninja-web.net/old/"
-          shared_asset="https://ryutai.ninja-web.net/img/mps_weight.files/image001.gif"
-          with urllib.request.urlopen(
-              urllib.request.Request(shared_asset,headers={"User-Agent":"Mozilla/5.0 old-site-smoke"}),
-              timeout=20
-          ) as res:
-              data=res.read()
-              if res.status != 200 or not data:
-                  raise SystemExit("Shared MPS image check failed")
-          print("PASS shared MPS image")
           checks={
               "index.html":["2016.5.20","2016.5.22"],
-              "mps/mps_1.html":["重み関数","/img/mps_weight.files/image001.gif"],
+              "mps/mps_1.html":["重み関数","formula-mps-1-legacy"],
               "fem/fem_7_1_2.html":["運動量","/img/fem_d_momentum_tri.files/image001.png"],
               "css/lib.css":["wrapper","/img/fts012_wrap_bg.gif"],
           }
@@ -261,7 +254,7 @@ jobs:
                       ctx=browser.new_context(viewport=vp)
                       def route_handler(route):
                           u=urlparse(route.request.url)
-                          if u.hostname=="ryutai.ninja-web.net" or not u.hostname:
+                          if u.hostname in ("ryutai.ninja-web.net","cdn.jsdelivr.net") or not u.hostname:
                               route.continue_()
                           else:
                               route.abort()
@@ -290,10 +283,13 @@ jobs:
                                     });
                                     return {
                                       missing:localImgs.filter(x=>!x.complete||x.naturalWidth===0).map(x=>x.src),
+                                      legacyMath:document.querySelector('#formula-mps-1-legacy mjx-container')!==null
                                     };
                                   }""")
                                   if result["missing"]:
                                       failures.append(f"{label} {rel}: missing local images={len(result['missing'])}")
+                                  if rel=="mps/mps_1.html" and not result["legacyMath"]:
+                                      failures.append(f"{label} {rel}: legacy MathJax formula not rendered")
                               finally:
                                   page.close()
                       finally:
