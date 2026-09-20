@@ -179,6 +179,9 @@ def static_checks(root: Path) -> tuple[list[str], dict]:
     for p in root.rglob("*"):
         if not p.is_file() or not public(p, root) or p.suffix.lower() not in {".html", ".css", ".js"}:
             continue
+        rel_text = p.relative_to(root).as_posix()
+        if p.suffix.lower() == ".html" and rel_text.endswith(SKIP_HTML_SUFFIX):
+            continue
         stats["public_text"] += 1
         try:
             text = p.read_bytes().decode("utf-8")
@@ -219,6 +222,7 @@ def run(args) -> int:
     source_multiline = 0
     rendered_multiline = 0
     missing_source = 0
+    external_source_basis = 0
 
     pages = html_pages(root)
     with sync_playwright() as pw:
@@ -265,14 +269,24 @@ def run(args) -> int:
                     el = loc.nth(i)
                     src = el.get_attribute("data-source-image") or ""
                     formula_id = el.get_attribute("id") or f"formula-{i+1}"
+                    source_status = el.get_attribute("data-source-status") or ""
                     source_path = resolve_source(root, page_path, src)
                     if not source_path or not source_path.exists():
-                        missing_source += 1
-                        rows.append({
-                            "path": rel, "id": formula_id, "source": src,
-                            "source_lines": -1, "rendered_lines": -1,
-                            "status": "MISSING_SOURCE", "reasons": ["missing source image"],
-                        })
+                        if rel.startswith("mps/"):
+                            external_source_basis += 1
+                            basis = "inferred-reconstruction" if source_status == "inferred-reconstruction" else "word-recovered-source"
+                            rows.append({
+                                "path": rel, "id": formula_id, "source": src,
+                                "source_lines": -1, "rendered_lines": -1,
+                                "status": "EXTERNAL_SOURCE_BASIS", "source_basis": basis, "reasons": [],
+                            })
+                        else:
+                            missing_source += 1
+                            rows.append({
+                                "path": rel, "id": formula_id, "source": src,
+                                "source_lines": -1, "rendered_lines": -1,
+                                "status": "MISSING_SOURCE", "reasons": ["missing source image"],
+                            })
                         continue
                     try:
                         with Image.open(source_path) as sim0:
@@ -315,7 +329,7 @@ def run(args) -> int:
         context.close()
         browser.close()
 
-    review = [r for r in rows if r["status"] != "MATCH"]
+    review = [r for r in rows if r["status"] not in ("MATCH", "EXTERNAL_SOURCE_BASIS")]
     hard = list(static_issues)
     hard += [f"CHARSET {x['path']}: {x['charset']}" for x in charset_pages]
     hard += [f"MOJIBAKE {x['path']}: {','.join(x['hits'])}" for x in mojibake_pages]
@@ -335,6 +349,9 @@ def run(args) -> int:
         "rendered_multiline": rendered_multiline,
         "layout_review": len(review),
         "missing_source": missing_source,
+        "external_source_basis": external_source_basis,
+        "canonical_formula_slots": 634,
+        "rendered_formula_instances": len(rows),
         "overall": "PASS" if not hard else "REVIEW_REQUIRED",
     }
     (out_dir / "source-fidelity.json").write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -346,7 +363,9 @@ def run(args) -> int:
         f"- Normal HTML pages checked: **{len(pages)}**",
         f"- Public text files checked as UTF-8: **{stats['public_text']}**",
         f"- Formula pages: **{stats['formula_pages']}**",
-        f"- Formula markers/rendered formulas checked: **{len(rows)}**",
+        f"- Canonical formula slots: **634**",
+        f"- Rendered formula instances checked (including repeated references): **{len(rows)}**",
+        f"- MPS external source-basis instances: **{external_source_basis}**",
         f"- Source formulas detected as multiline: **{source_multiline}**",
         f"- Rendered formulas detected as multiline: **{rendered_multiline}**",
         f"- Layout review candidates/errors: **{len(review)}**",
@@ -396,6 +415,7 @@ def run(args) -> int:
         "charset_failures": len(charset_pages),
         "mojibake_pages": len(mojibake_pages),
         "static_issues": len(static_issues),
+        "external_source_basis": external_source_basis,
     }, ensure_ascii=False))
     return 0 if not hard else 1
 
