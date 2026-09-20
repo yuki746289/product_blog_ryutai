@@ -81,10 +81,10 @@
 \begin{aligned}
 &\int_V[N]^T\phi\,dV
 =\int_V
-\begin{bmatrix}N_1\\N_1\\N_3\end{bmatrix}\phi\,dV\\
-={}&\int_V
-\begin{bmatrix}0\\0\\0\end{bmatrix}dV\\
-={}&\begin{bmatrix}0\\0\\0\end{bmatrix}
+\begin{bmatrix}N_1\\N_1\\N_3\end{bmatrix}\phi\,dV\\[6pt]
+&={}\int_V
+\begin{bmatrix}0\\0\\0\end{bmatrix}dV\\[6pt]
+&={}\begin{bmatrix}0\\0\\0\end{bmatrix}
 \end{aligned}
 \]
 </div>
@@ -94,11 +94,11 @@
 \[
 \begin{aligned}
 V_x
-&=N_1V_{x1}+N_2V_{x2}+N_3V_{x3}\\
+&=N_1V_{x1}+N_2V_{x2}+N_3V_{x3}\\[6pt]
 &=\begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}
-\begin{Bmatrix}V_{x1}&V_{x2}&V_{x3}\end{Bmatrix}\\
-&=[N]^T\{V_x\},\\
-V_y&=[N]^T\{V_y\}\\
+\begin{Bmatrix}V_{x1}&V_{x2}&V_{x3}\end{Bmatrix}\\[6pt]
+&=[N]^T\{V_x\},\\[6pt]
+V_y&=[N]^T\{V_y\}\\[6pt]
 P&=[N]^T\{P\}
 \end{aligned}
 \]
@@ -108,8 +108,8 @@ P&=[N]^T\{P\}
 			<div class="math-block" id="formula-fem-7-1-1-004" data-source-image="./../img/fem_d_mass_tri.files/image004.png">
 \[
 \begin{aligned}
-&\int_S[N]^T\phi\,dS\\
-={}&\int_S[N]^T\left\{
+&\int_S[N]^T\phi\,dS\\[6pt]
+&={}\int_S[N]^T\left\{
 \frac{\partial P}{\partial\tau}
 +V_x\frac{\partial P}{\partial x}
 +V_y\frac{\partial P}{\partial y}
@@ -126,9 +126,9 @@ P&=[N]^T\{P\}
 			<div class="math-block" id="formula-fem-7-1-1-005" data-source-image="./../img/fem_d_mass_tri.files/image005.png">
 \[
 \begin{aligned}
-={}&\int_S[N]^T\frac{\partial P}{\partial\tau}\,dS
+&={}\int_S[N]^T\frac{\partial P}{\partial\tau}\,dS
 +\int_S[N]^TV_x\frac{\partial P}{\partial X}\,dS
-+\int_S[N]^TV_y\frac{\partial P}{\partial Y}\,dS\\
++\int_S[N]^TV_y\frac{\partial P}{\partial Y}\,dS\\[6pt]
 &+\frac{1}{Ma^2}\int_S[N]^T\frac{\partial V_x}{\partial X}\,dS
 +\frac{1}{Ma^2}\int_S[N]^T\frac{\partial V_y}{\partial Y}\,dS
 \end{aligned}
@@ -139,10 +139,10 @@ P&=[N]^T\{P\}
 			<div class="math-block" id="formula-fem-7-1-1-006" data-source-image="./../img/fem_d_mass_tri.files/image006.png">
 \[
 \begin{aligned}
-={}&\int_S[N]^T[N]dS\,
-\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+&={}\int_S[N]^T[N]dS\,
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\[6pt]
 &+V_x\int_S[N]^T\frac{\partial[N]\{P\}^{\Delta\tau+\tau}}{\partial X}dS
-+V_y\int_S[N]^T\frac{\partial[N]\{P\}^{\Delta\tau+\tau}}{\partial Y}dS\\
++V_y\int_S[N]^T\frac{\partial[N]\{P\}^{\Delta\tau+\tau}}{\partial Y}dS\\[6pt]
 &+\frac{1}{Ma^2}\int_S[N]^T\frac{\partial[N]\{V_x\}^{\Delta\tau+\tau}}{\partial X}dS
 +\frac{1}{Ma^2}\int_S[N]^T\frac{\partial[N]\{V_y\}^{\Delta\tau+\tau}}{\partial Y}dS
 \end{aligned}
@@ -153,10 +153,10 @@ P&=[N]^T\{P\}
 			<div class="math-block" id="formula-fem-7-1-1-007" data-source-image="./../img/fem_d_mass_tri.files/image007.png">
 \[
 \begin{aligned}
-={}&\int_S[N]^T[N]dS\,
-\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+&={}\int_S[N]^T[N]dS\,
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\[6pt]
 &+V_x\int_S[N]^T\frac{\partial[N]}{\partial X}dS\,\{P\}^{\Delta\tau+\tau}
-+V_y\int_S[N]^T\frac{\partial[N]}{\partial Y}dS\,\{P\}^{\Delta\tau+\tau}\\
++V_y\int_S[N]^T\frac{\partial[N]}{\partial Y}dS\,\{P\}^{\Delta\tau+\tau}\\[6pt]
 &+\frac{1}{Ma^2}\int_S[N]^T\frac{\partial[N]}{\partial X}dS\,\{V_x\}^{\Delta\tau+\tau}
 +\frac{1}{Ma^2}\int_S[N]^T\frac{\partial[N]}{\partial Y}dS\,\{V_y\}^{\Delta\tau+\tau}
 \end{aligned}
@@ -167,25 +167,25 @@ P&=[N]^T\{P\}
 			<div class="math-block" id="formula-fem-7-1-1-008" data-source-image="./../img/fem_d_mass_tri.files/image008.png">
 \[
 \begin{aligned}
-={}&\int_S
+&={}\int_S
 \begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}
 \begin{bmatrix}N_1&N_2&N_3\end{bmatrix}dS\,
-\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\[6pt]
 &+V_x\int_S
 \begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}
 \begin{bmatrix}
 \dfrac{\partial N_1}{\partial X}&\dfrac{\partial N_2}{\partial X}&\dfrac{\partial N_3}{\partial X}
-\end{bmatrix}dS\,\{P\}^{\Delta\tau+\tau}\\
+\end{bmatrix}dS\,\{P\}^{\Delta\tau+\tau}\\[6pt]
 &+V_y\int_S
 \begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}
 \begin{bmatrix}
 \dfrac{\partial N_1}{\partial Y}&\dfrac{\partial N_2}{\partial Y}&\dfrac{\partial N_3}{\partial Y}
-\end{bmatrix}dS\,\{P\}^{\Delta\tau+\tau}\\
+\end{bmatrix}dS\,\{P\}^{\Delta\tau+\tau}\\[6pt]
 &+\frac{1}{Ma^2}\int_S
 \begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}
 \begin{bmatrix}
 \dfrac{\partial N_1}{\partial X}&\dfrac{\partial N_2}{\partial X}&\dfrac{\partial N_3}{\partial X}
-\end{bmatrix}dS\,\{V_x\}^{\Delta\tau+\tau}\\
+\end{bmatrix}dS\,\{V_x\}^{\Delta\tau+\tau}\\[6pt]
 &+\frac{1}{Ma^2}\int_S
 \begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}
 \begin{bmatrix}
@@ -199,19 +199,19 @@ P&=[N]^T\{P\}
 			<div class="math-block" id="formula-fem-7-1-1-009" data-source-image="./../img/fem_d_mass_tri.files/image009.png">
 \[
 \begin{aligned}
-={}&\int_S
+&={}\int_S
 \begin{bmatrix}
 N_1N_1&N_1N_2&N_1N_3\\
 N_2N_1&N_2N_2&N_2N_3\\
 N_3N_1&N_3N_2&N_3N_3
 \end{bmatrix}dS\,
-\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\[6pt]
 &+V_x\int_S
 \begin{bmatrix}
 N_1\dfrac{\partial N_1}{\partial X}&N_1\dfrac{\partial N_2}{\partial X}&N_1\dfrac{\partial N_3}{\partial X}\\
 N_2\dfrac{\partial N_1}{\partial X}&N_2\dfrac{\partial N_2}{\partial X}&N_2\dfrac{\partial N_3}{\partial X}\\
 N_3\dfrac{\partial N_1}{\partial X}&N_3\dfrac{\partial N_2}{\partial X}&N_3\dfrac{\partial N_3}{\partial X}
-\end{bmatrix}dS\,\{V_x\}^{\Delta\tau+\tau}\\
+\end{bmatrix}dS\,\{V_x\}^{\Delta\tau+\tau}\\[6pt]
 &+V_y\int_S
 \begin{bmatrix}
 N_1\dfrac{\partial N_1}{\partial Y}&N_1\dfrac{\partial N_2}{\partial Y}&N_1\dfrac{\partial N_3}{\partial Y}\\
@@ -229,7 +229,7 @@ N_3\dfrac{\partial N_1}{\partial Y}&N_3\dfrac{\partial N_2}{\partial Y}&N_3\dfra
 N_1\dfrac{\partial N_1}{\partial X}&N_1\dfrac{\partial N_2}{\partial X}&N_1\dfrac{\partial N_3}{\partial X}\\
 N_2\dfrac{\partial N_1}{\partial X}&N_2\dfrac{\partial N_2}{\partial X}&N_2\dfrac{\partial N_3}{\partial X}\\
 N_3\dfrac{\partial N_1}{\partial X}&N_3\dfrac{\partial N_2}{\partial X}&N_3\dfrac{\partial N_3}{\partial X}
-\end{bmatrix}dS\,\{V_x\}^{\Delta\tau+\tau}\\
+\end{bmatrix}dS\,\{V_x\}^{\Delta\tau+\tau}\\[6pt]
 &+\frac{1}{Ma^2}\int_S
 \begin{bmatrix}
 N_1\dfrac{\partial N_1}{\partial Y}&N_1\dfrac{\partial N_2}{\partial Y}&N_1\dfrac{\partial N_3}{\partial Y}\\
@@ -244,31 +244,31 @@ N_3\dfrac{\partial N_1}{\partial Y}&N_3\dfrac{\partial N_2}{\partial Y}&N_3\dfra
 			<div class="math-block" id="formula-fem-7-1-1-011" data-source-image="./../img/fem_d_mass_tri.files/image011.png">
 \[
 \begin{aligned}
-={}&\int_S
+&={}\int_S
 \begin{bmatrix}
 L_1L_1&L_1L_2&L_1L_3\\
 L_2L_1&L_2L_2&L_2L_3\\
 L_3L_1&L_3L_2&L_3L_3
 \end{bmatrix}dS\,
-\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\[6pt]
 &+V_x\int_S
 \begin{bmatrix}
 L_1\dfrac{\partial L_1}{\partial X}&L_1\dfrac{\partial L_2}{\partial X}&L_1\dfrac{\partial L_3}{\partial X}\\
 L_2\dfrac{\partial L_1}{\partial X}&L_2\dfrac{\partial L_2}{\partial X}&L_2\dfrac{\partial L_3}{\partial X}\\
 L_3\dfrac{\partial L_1}{\partial X}&L_3\dfrac{\partial L_2}{\partial X}&L_3\dfrac{\partial L_3}{\partial X}
-\end{bmatrix}dS\,\{P\}^{\Delta\tau+\tau}\\
+\end{bmatrix}dS\,\{P\}^{\Delta\tau+\tau}\\[6pt]
 &+V_y\int_S
 \begin{bmatrix}
 L_1\dfrac{\partial L_1}{\partial Y}&L_1\dfrac{\partial L_2}{\partial Y}&L_1\dfrac{\partial L_3}{\partial Y}\\
 L_2\dfrac{\partial L_1}{\partial Y}&L_2\dfrac{\partial L_2}{\partial Y}&L_2\dfrac{\partial L_3}{\partial Y}\\
 L_3\dfrac{\partial L_1}{\partial Y}&L_3\dfrac{\partial L_2}{\partial Y}&L_3\dfrac{\partial L_3}{\partial Y}
-\end{bmatrix}dS\,\{P\}^{\Delta\tau+\tau}\\
+\end{bmatrix}dS\,\{P\}^{\Delta\tau+\tau}\\[6pt]
 &+\frac{1}{Ma^2}\int_S
 \begin{bmatrix}
 L_1\dfrac{\partial L_1}{\partial X}&L_1\dfrac{\partial L_2}{\partial X}&L_1\dfrac{\partial L_3}{\partial X}\\
 L_2\dfrac{\partial L_1}{\partial X}&L_2\dfrac{\partial L_2}{\partial X}&L_2\dfrac{\partial L_3}{\partial X}\\
 L_3\dfrac{\partial L_1}{\partial X}&L_3\dfrac{\partial L_2}{\partial X}&L_3\dfrac{\partial L_3}{\partial X}
-\end{bmatrix}dS\,\{V_x\}^{\Delta\tau+\tau}\\
+\end{bmatrix}dS\,\{V_x\}^{\Delta\tau+\tau}\\[6pt]
 &+\frac{1}{Ma^2}\int_S
 \begin{bmatrix}
 L_1\dfrac{\partial L_1}{\partial Y}&L_1\dfrac{\partial L_2}{\partial Y}&L_1\dfrac{\partial L_3}{\partial Y}\\
@@ -283,20 +283,20 @@ L_3\dfrac{\partial L_1}{\partial Y}&L_3\dfrac{\partial L_2}{\partial Y}&L_3\dfra
 			<div class="math-block" id="formula-fem-7-1-1-012" data-source-image="./../img/fem_d_mass_tri.files/image012.png">
 \[
 \begin{aligned}
-={}&\int_S
+&={}\int_S
 \begin{bmatrix}
 L_1L_1&L_1L_2&L_1L_3\\L_2L_1&L_2L_2&L_2L_3\\L_3L_1&L_3L_2&L_3L_3
 \end{bmatrix}dS\,
-\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\[6pt]
 &+V_x\int_S\frac{1}{2A}
 \begin{bmatrix}L_1c_{1x}&L_1c_{2x}&L_1c_{3x}\\L_2c_{1x}&L_2c_{2x}&L_2c_{3x}\\L_3c_{1x}&L_3c_{2x}&L_3c_{3x}\end{bmatrix}
-dS\,\{P\}^{\Delta\tau+\tau}\\
+dS\,\{P\}^{\Delta\tau+\tau}\\[6pt]
 &+V_y\int_S\frac{1}{2A}
 \begin{bmatrix}L_1c_{1y}&L_1c_{2y}&L_1c_{3y}\\L_2c_{1y}&L_2c_{2y}&L_2c_{3y}\\L_3c_{1y}&L_3c_{2y}&L_3c_{3y}\end{bmatrix}
-dS\,\{P\}^{\Delta\tau+\tau}\\
+dS\,\{P\}^{\Delta\tau+\tau}\\[6pt]
 &+\frac{1}{Ma^2}\int_S\frac{1}{2A}
 \begin{bmatrix}L_1c_{1x}&L_1c_{2x}&L_1c_{3x}\\L_2c_{1x}&L_2c_{2x}&L_2c_{3x}\\L_3c_{1x}&L_3c_{2x}&L_3c_{3x}\end{bmatrix}
-dS\,\{V_x\}^{\Delta\tau+\tau}3\\
+dS\,\{V_x\}^{\Delta\tau+\tau}3\\[6pt]
 &+\frac{1}{Ma^2}\int_S\frac{1}{2A}
 \begin{bmatrix}L_1c_{1y}&L_1c_{2y}&L_1c_{3y}\\L_2c_{1y}&L_2c_{2y}&L_2c_{3y}\\L_3c_{1y}&L_3c_{2y}&L_3c_{3y}\end{bmatrix}
 dS\,\{V_y\}^{\Delta\tau+\tau}
@@ -331,17 +331,17 @@ dS\,\{V_y\}^{\Delta\tau+\tau}
 			<div class="math-block" id="formula-fem-7-1-1-014" data-source-image="./../img/fem_d_mass_tri.files/image014.png">
 \[
 \begin{aligned}
-={}&\frac{A}{12}\begin{bmatrix}2&1&1\\1&2&1\\1&1&2\end{bmatrix}
-\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+&={}\frac{A}{12}\begin{bmatrix}2&1&1\\1&2&1\\1&1&2\end{bmatrix}
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\[6pt]
 &+V_x\frac{1}{2A}\frac{A}{3}
 \begin{bmatrix}c_{1x}&c_{2x}&c_{3x}\\c_{1x}&c_{2x}&c_{3x}\\c_{1x}&c_{2x}&c_{3x}\end{bmatrix}
-\{P\}^{\Delta\tau+\tau}\\
+\{P\}^{\Delta\tau+\tau}\\[6pt]
 &+V_y\frac{1}{2A}\frac{A}{3}
 \begin{bmatrix}c_{1y}&c_{2y}&c_{3y}\\c_{1y}&c_{2y}&c_{3y}\\c_{1y}&c_{2y}&c_{3y}\end{bmatrix}
-\{P\}^{\Delta\tau+\tau}\\
+\{P\}^{\Delta\tau+\tau}\\[6pt]
 &+\frac{1}{Ma^2}\frac{1}{2A}\frac{A}{3}
 \begin{bmatrix}c_{1x}&c_{2x}&c_{3x}\\c_{1x}&c_{2x}&c_{3x}\\c_{1x}&c_{2x}&c_{3x}\end{bmatrix}
-\{V_x\}^{\Delta\tau+\tau}\\
+\{V_x\}^{\Delta\tau+\tau}\\[6pt]
 &+\frac{1}{Ma^2}\frac{1}{2A}\frac{A}{3}
 \begin{bmatrix}c_{1y}&c_{2y}&c_{3y}\\c_{1y}&c_{2y}&c_{3y}\\c_{1y}&c_{2y}&c_{3y}\end{bmatrix}
 \{V_y\}^{\Delta\tau+\tau}
@@ -354,14 +354,14 @@ dS\,\{V_y\}^{\Delta\tau+\tau}
 			<div class="math-block" id="formula-fem-7-1-1-015" data-source-image="./../img/fem_d_mass_tri.files/image015.png">
 \[
 \begin{aligned}
-={}&\frac{A}{12}\begin{bmatrix}2&1&1\\1&2&1\\1&1&2\end{bmatrix}
-\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+&={}\frac{A}{12}\begin{bmatrix}2&1&1\\1&2&1\\1&1&2\end{bmatrix}
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\[6pt]
 &+V_x\frac{1}{6}
-\begin{bmatrix}c_{1x}&c_{2x}&c_{3x}\\c_{1x}&c_{2x}&c_{3x}\\c_{1x}&c_{2x}&c_{3x}\end{bmatrix}\{P\}^{\Delta\tau+\tau}\\
+\begin{bmatrix}c_{1x}&c_{2x}&c_{3x}\\c_{1x}&c_{2x}&c_{3x}\\c_{1x}&c_{2x}&c_{3x}\end{bmatrix}\{P\}^{\Delta\tau+\tau}\\[6pt]
 &+V_y\frac{1}{6}
-\begin{bmatrix}c_{1y}&c_{2y}&c_{3y}\\c_{1y}&c_{2y}&c_{3y}\\c_{1y}&c_{2y}&c_{3y}\end{bmatrix}\{P\}^{\Delta\tau+\tau}\\
+\begin{bmatrix}c_{1y}&c_{2y}&c_{3y}\\c_{1y}&c_{2y}&c_{3y}\\c_{1y}&c_{2y}&c_{3y}\end{bmatrix}\{P\}^{\Delta\tau+\tau}\\[6pt]
 &+\frac{1}{Ma^2}\frac{1}{6}
-\begin{bmatrix}c_{1x}&c_{2x}&c_{3x}\\c_{1x}&c_{2x}&c_{3x}\\c_{1x}&c_{2x}&c_{3x}\end{bmatrix}\{V_x\}^{\Delta\tau+\tau}\\
+\begin{bmatrix}c_{1x}&c_{2x}&c_{3x}\\c_{1x}&c_{2x}&c_{3x}\\c_{1x}&c_{2x}&c_{3x}\end{bmatrix}\{V_x\}^{\Delta\tau+\tau}\\[6pt]
 &+\frac{1}{Ma^2}\frac{1}{6}
 \begin{bmatrix}c_{1y}&c_{2y}&c_{3y}\\c_{1y}&c_{2y}&c_{3y}\\c_{1y}&c_{2y}&c_{3y}\end{bmatrix}\{V_y\}^{\Delta\tau+\tau}
 \end{aligned}
@@ -373,10 +373,10 @@ dS\,\{V_y\}^{\Delta\tau+\tau}
 			<div class="math-block" id="formula-fem-7-1-1-016" data-source-image="./../img/fem_d_mass_tri.files/image016.png">
 \[
 \begin{aligned}
-={}&[C]
-\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\
+&={}[C]
+\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}\\[6pt]
 &+V_x[C_x]\{P\}^{\Delta\tau+\tau}
-+V_y[C_y]\{P\}^{\Delta\tau+\tau}\\
++V_y[C_y]\{P\}^{\Delta\tau+\tau}\\[6pt]
 &+\frac{1}{Ma^2}[C_x]\{V_x\}^{\Delta\tau+\tau}
 +\frac{1}{Ma^2}[C_y]\{V_y\}^{\Delta\tau+\tau}
 \end{aligned}
@@ -394,7 +394,7 @@ dS\,\{V_y\}^{\Delta\tau+\tau}
 \begin{aligned}
 &[C]\frac{\{P\}^{\Delta\tau+\tau}-\{P\}^{\tau}}{\Delta\tau}
 +V_x[C_x]\{P\}^{\Delta\tau+\tau}
-+V_y[C_y]\{P\}^{\Delta\tau+\tau}\\
++V_y[C_y]\{P\}^{\Delta\tau+\tau}\\[6pt]
 &+\frac{1}{Ma^2}[C_x]\{V_x\}^{\Delta\tau+\tau}
 +\frac{1}{Ma^2}[C_y]\{V_y\}^{\Delta\tau+\tau}
 =[0]
@@ -406,9 +406,9 @@ dS\,\{V_y\}^{\Delta\tau+\tau}
 			<div class="math-block" id="formula-fem-7-1-1-020" data-source-image="./../img/fem_d_mass_tri.files/image020.png">
 \[
 \begin{aligned}
-&\frac{[C]}{\Delta\tau}\{P\}^{\Delta\tau+\tau}\\
+&\frac{[C]}{\Delta\tau}\{P\}^{\Delta\tau+\tau}\\[6pt]
 &+V_x[C_x]\{P\}^{\Delta\tau+\tau}
-+V_y[C_y]\{P\}^{\Delta\tau+\tau}\\
++V_y[C_y]\{P\}^{\Delta\tau+\tau}\\[6pt]
 &+\frac{1}{Ma^2}[C_x]\{V_x\}^{\Delta\tau+\tau}
 +\frac{1}{Ma^2}[C_y]\{V_y\}^{\Delta\tau+\tau}
 =\frac{[C]}{\Delta\tau}\{P\}^{\tau}
@@ -424,7 +424,7 @@ dS\,\{V_y\}^{\Delta\tau+\tau}
 \frac{[C]}{\Delta\tau}
 +V_x[C_x]
 +V_y[C_y]
-\right)\{P\}^{\Delta\tau+\tau}\\
+\right)\{P\}^{\Delta\tau+\tau}\\[6pt]
 &+\frac{1}{Ma^2}\left(
 [C_x]\{V_x\}^{\Delta\tau+\tau}
 +[C_y]\{V_y\}^{\Delta\tau+\tau}
