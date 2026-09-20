@@ -210,7 +210,7 @@ jobs:
               "css/lib.css":["wrapper","/img/fts012_wrap_bg.gif"],
           }
           for path,needles in checks.items():
-              req=urllib.request.Request(base+path,headers={"User-Agent":"Mozilla/5.0 old-site-smoke"})
+              req=urllib.request.Request(base+path+"?v=20260920-old2",headers={"User-Agent":"Mozilla/5.0 old-site-smoke","Cache-Control":"no-cache"})
               with urllib.request.urlopen(req,timeout=20) as res:
                   if res.status != 200:
                       raise SystemExit(f"{path}: HTTP {res.status}")
@@ -263,7 +263,7 @@ jobs:
                           for rel in targets:
                               page=ctx.new_page()
                               try:
-                                  res=page.goto(base+rel,wait_until="load",timeout=30000)
+                                  res=page.goto(base+rel+"?v=20260920-old2",wait_until="load",timeout=30000)
                                   if not res or res.status != 200:
                                       failures.append(f"{label} {rel}: HTTP {res.status if res else 'none'}")
                                       continue
