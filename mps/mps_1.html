@@ -61,14 +61,13 @@
 				平均粒子間距離の数倍といったところでしょうか。
 				　重み関数は、次に述べる、勾配モデル、発散モデル、ラプラシアンモデルで使用されます。</p>
 			<div class="math-block" id="formula-mps-1-001" data-source-image="./../img/mps_weight.files/image001.gif">
-<div style="display:flex;align-items:center;gap:0.3em;flex-wrap:nowrap;">
-<span>\(w(r)=\)</span>
-<span aria-hidden="true" style="font-family:serif;font-size:3.2em;line-height:0.9;">{</span>
-<span style="display:inline-flex;flex-direction:column;gap:0.25em;">
-<span>\(\dfrac{r_e}{r}-1 \qquad (0\le r<r_e)\)</span>
-<span>\(0 \qquad (r_e\le r)\)</span>
-</span>
-</div>
+\[
+w(r)=
+\begin{cases}
+\displaystyle\frac{r_e}{r}-1 & (0\le r<r_e)\\
+0 & (r_e\le r)
+\end{cases}
+\]
 </div>
 			<br>
 
