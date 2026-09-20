@@ -1,10 +1,10 @@
 /**
- * Updated: 2026/09/16
+ * Updated: 2026/09/20
  * Summary: [S001]-[S006] Build the v1.6 shared navigation and D Monochrome bootstrap from the footer iframe.
  * Differences from previous version:
  * - [ADD]: PC 8-category mega menu, mobile drawer/accordion, utility links and safe fallback.
  * - [ADD]: Existing menu.html is read-only navigation data; resolved anchor.href values are reused.
- * - [MOD]: None. This is a new shared JavaScript file.
+ * - [MOD]: Start core navigation immediately from the footer iframe and do not wait for the duplicate stylesheet link before building the UI.
  * - [DEL]: None.
  */
 "use strict";
@@ -74,7 +74,7 @@ function refreshSiteNavigationV16() {
     try {
         // [L005] Load CSS first, then build the shared model and both navigation surfaces.
         var stylesheetLink = registSiteStylesheet(parentDocument);
-        if (!stylesheetLink || stylesheetLink.getAttribute("data-rv-loaded") !== "true") {
+        if (!stylesheetLink) {
             return isInitialized;
         }
 
@@ -949,7 +949,10 @@ function updateMobileMenuStateV16(parentDocument, mapMobileElements, isOpen) {
     return isOpenResult;
 }
 
-// Start the v1.6 bootstrap after the shared footer iframe finishes loading.
+// Start the v1.6 bootstrap as soon as this script is parsed.
+// The parent page has already parsed the menu/footer iframe elements at this point.
+// A second call on load is harmless and covers slow iframe/style edge cases.
+refreshSiteNavigationV16();
 window.addEventListener("load", function() {
     refreshSiteNavigationV16();
 });

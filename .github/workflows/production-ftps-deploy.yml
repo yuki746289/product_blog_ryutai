@@ -50,6 +50,9 @@ jobs:
               "ad_top.html",
               "ad_google.html",
               "js/site_ads_v1_6.js",
+              "css/lib.css",
+              "css/responsive.css",
+              "js/site_navigation_v1_6.js",
           }
           root = Path(".")
           candidates = []
@@ -201,6 +204,14 @@ jobs:
                   "calc((100% - 1080px) / 2)",
                   "text-align: center !important;",
               ],
+              "css/responsive.css": [
+                  "body:not(.rv-nav-ready) #wrapper",
+                  "8s forwards",
+              ],
+              "js/site_navigation_v1_6.js": [
+                  "refreshSiteNavigationV16();",
+                  "Start the v1.6 bootstrap as soon as this script is parsed.",
+              ],
           }
 
           def fetch(path):
@@ -292,6 +303,20 @@ jobs:
                                   if not response or response.status != 200:
                                       failures.append(f"{label} {rel}: HTTP {response.status if response else 'none'}")
                                       continue
+                                  early_state=page.evaluate("""() => {
+                                    const body=document.body;
+                                    const wrapper=document.getElementById('wrapper');
+                                    if (!body || !wrapper) return {ready:false,visibility:'missing'};
+                                    return {
+                                      ready:body.classList.contains('rv-nav-ready'),
+                                      visibility:getComputedStyle(wrapper).visibility
+                                    };
+                                  }""")
+                                  if not early_state["ready"] and early_state["visibility"] != "hidden":
+                                      failures.append(
+                                          f"{label} {rel}: legacy layout visible before rv-nav-ready "
+                                          f"(visibility={early_state['visibility']})"
+                                      )
                                   try:
                                       page.wait_for_load_state("networkidle",timeout=3000)
                                   except PWTimeout:

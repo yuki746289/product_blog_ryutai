@@ -4,11 +4,11 @@
 @import url("site_utility_v1_6.css?v=20260917e");
 
 /**
- * 更新日時: 2026/09/17
+ * 更新日時: 2026/09/20
  * 処理概要: [S001][STYLE001][S010] レスポンシブ表示とv1.6共通UIの先読み、FOUC抑止
  * 前回バージョンとの違い:
  * - [ADD]: v1.6 D Monochrome / 文字サイズ / ホームメニューCSSをhead段階で先読み
- * - [ADD]: 新UI構築完了前の旧レイアウト描画を抑止し、1.2秒後に旧表示へフォールバック
+ * - [ADD]: 基本ナビ構築完了前の旧レイアウト描画を抑止し、8秒後のみ旧表示へフォールバック
  * - [KEEP]: 767px以下の既存レスポンシブ・オフキャンバス制御
  */
 
@@ -19,15 +19,16 @@
 }
 
 /*
- * 新UIはfooter iframeから構築されるため、旧レイアウトを先に描画しない。
- * JS/CSS障害時は1.2秒後に旧ページを表示し、閲覧不能にはしない。
+ * 基本ナビはfooter iframeから構築されるため、旧レイアウトを先に描画しない。
+ * Homeメニュー完成までは待たず rv-nav-ready で表示する。
+ * JS/CSS障害時のみ8秒後に旧ページを表示し、閲覧不能にはしない。
  */
-body:not(.rv-home-navigation-ready) #wrapper {
+body:not(.rv-nav-ready) #wrapper {
 	visibility: hidden;
-	animation: rv-v16-fouc-fallback-visible 0s linear 1.2s forwards;
+	animation: rv-v16-fouc-fallback-visible 0s linear 8s forwards;
 }
 
-body.rv-home-navigation-ready #wrapper {
+body.rv-nav-ready #wrapper {
 	visibility: visible;
 }
 
