@@ -54,9 +54,9 @@ For discretization/derivation formulas that continue across multiple rows:
 - leading continuation operators `=`, `+`, and `-` must use the same alignment column when the source shows them aligned;
 - do not place the first `=` on the opposite side of the alignment tab (for example, avoid `={}&` when following rows use `&+` / `&-`);
 - interpolation definitions that are separate rows in the source (for example `V_x`, `V_y`, `V_z`, `P`, `\\Theta`) must remain separate rows;
-- for the FEM/heat discretization pages, add approximately **6pt** of extra vertical space between outer `aligned` rows for readability; nested matrix/array row spacing is unchanged.
+- across all pages, top-level rows in multi-line display environments (`aligned`, `alignedat`, `gathered`, `split`) use **6pt** additional vertical spacing for a consistent reading rhythm; nested matrix/cases/array row spacing is unchanged.
 
-This is a presentation-fidelity rule and must not change formula content or source-defined row grouping.
+This is a presentation-fidelity rule and must not change formula content or source-defined row grouping. Site-wide presentation spacing may intentionally differ from the source image, but source-defined line breaks and grouping remain authoritative.
 
 ## 3.2 Shared desktop content width
 
