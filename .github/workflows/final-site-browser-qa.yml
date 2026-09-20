@@ -73,6 +73,13 @@ jobs:
             --base-url http://127.0.0.1:8000 \
             --output-dir qa-results/source-fidelity \
             --report .document/formula_reviews/SOURCE_FIDELITY_REVALIDATION_20260920.md
+      - name: Check reviewed source-fidelity certification
+        id: certification
+        continue-on-error: true
+        run: |
+          python .document/tools/source_fidelity_fingerprints.py \
+            --check .document/formula_reviews/SOURCE_FIDELITY_CERTIFICATION_20260920.json
+
       - name: Upload source fidelity evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -83,7 +90,7 @@ jobs:
             .document/formula_reviews/SOURCE_FIDELITY_REVALIDATION_20260920.md
           if-no-files-found: error
       - name: Mark source fidelity review required
-        if: steps.source_fidelity.outcome == 'failure'
+        if: steps.source_fidelity.outcome == 'failure' || steps.certification.outcome == 'failure'
         run: exit 1
 
   qa:
