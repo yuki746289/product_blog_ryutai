@@ -58,6 +58,13 @@ For discretization/derivation formulas that continue across multiple rows:
 
 This is a presentation-fidelity rule and must not change formula content or source-defined row grouping.
 
+## 3.2 Shared desktop content width
+
+- The shared desktop content/header/navigation width is **1080px maximum** with a 48px viewport gutter.
+- This rule is global and applies through the common v1.6 stylesheet, not page-by-page overrides.
+- Mobile behavior remains fluid at 100% width.
+- Formula-local horizontal scrolling remains allowed only when the source-faithful formula still exceeds the available content width.
+
 ## 4. Character encoding policy
 
 Public text assets are standardized to **UTF-8**.
