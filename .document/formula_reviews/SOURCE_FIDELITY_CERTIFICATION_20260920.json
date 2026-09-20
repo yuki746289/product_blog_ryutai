@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "certification": "source-layout-and-content-reviewed",
-  "certified_at_utc": "2026-09-20T01:08:13.825205+00:00",
-  "certified_git_head": "327414b38a734d675f93cc4c8ecccab56a2d62f2",
+  "certified_at_utc": "2026-09-20T01:22:19.484530+00:00",
+  "certified_git_head": "a800fc2fab2c9bc61dff755aed5e940270545757",
   "canonical_formula_slots": 634,
   "rendered_formula_instances": 638,
   "review_basis": [
@@ -1483,7 +1483,7 @@
       "page": "fem/fem_7_1_2.html",
       "id": "formula-fem-7-1-2-005",
       "data_source_image": "./../img/fem_d_momentum_tri.files/image005.png",
-      "formula_sha256": "348a4152454b456407b79a850e7db1831be9704ef10b21afaa5eaad9a15a7fd0",
+      "formula_sha256": "5a473b56432026434d57e54e6a95a5f09a2224680a181463846ec45594d83938",
       "source_basis": "original-image",
       "source_path": "img/fem_d_momentum_tri.files/image005.png",
       "source_sha256": "c18881f33a30ffa06af067dc4d5c46758ca472f527cc64b49bc8c04902179e2b"
