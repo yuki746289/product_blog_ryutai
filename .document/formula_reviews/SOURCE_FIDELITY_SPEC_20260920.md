@@ -46,6 +46,18 @@ Canonical MathJax overflow policy:
 - `linebreaks.inline: false`
 - `.math-block` handles local horizontal scrolling when required.
 
+
+## 3.1 Discretization multi-line alignment
+
+For discretization/derivation formulas that continue across multiple rows:
+
+- leading continuation operators `=`, `+`, and `-` must use the same alignment column when the source shows them aligned;
+- do not place the first `=` on the opposite side of the alignment tab (for example, avoid `={}&` when following rows use `&+` / `&-`);
+- interpolation definitions that are separate rows in the source (for example `V_x`, `V_y`, `V_z`, `P`, `\\Theta`) must remain separate rows;
+- for the FEM/heat discretization pages, add approximately **6pt** of extra vertical space between outer `aligned` rows for readability; nested matrix/array row spacing is unchanged.
+
+This is a presentation-fidelity rule and must not change formula content or source-defined row grouping.
+
 ## 4. Character encoding policy
 
 Public text assets are standardized to **UTF-8**.
