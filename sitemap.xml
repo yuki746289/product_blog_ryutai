@@ -1,1456 +1,727 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-
-<!--  created with free sitemap generation system www.sitemapxml.jp  --> 
-<url>
-  <loc>http://ryutai.ninja-web.net/</loc>
-  <priority>1.0</priority>
-  <lastmod>2014-06-22T23:19:37+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/index.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:19:37+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/physics/physics.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:19:11+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/physics/physics_1.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:19:11+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/physics/physics_2.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:19:12+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/physics/physics_3.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:19:13+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:17:27+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_1.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:17:28+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_6_1.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:17:44+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_6_2.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:17:45+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_6_3.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:17:49+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_6_4.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:17:50+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_7.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:17:50+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_4.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:17:39+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_8.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:17:52+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/physics/physics_6_2.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:19:16+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/physics/physics_6_3.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:19:21+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:16:39+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_7.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:16:55+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_1.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:16:39+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_2.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:16:43+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_8_2.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:17:02+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_14.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:17:37+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_8_2_1.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:17:03+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_11_1.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:16:41+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/mesh/mesh_2.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:18:53+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/mesh/mesh_1.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:18:53+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_12.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:16:42+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fortran/fortran.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:17:05+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fortran/fortran_2.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:17:10+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fortran/fortran_3.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:17:10+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fortran/fortran_7.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:17:13+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/mesh/mesh.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:18:51+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_2_1.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:16:44+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_2_3.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:16:45+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/mesh/mesh_4.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:18:55+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/mesh/mesh_5.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:18:56+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/mesh/mesh_3.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:18:54+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/mesh/mesh_3_1.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:18:54+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/counting/counting.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:16:37+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/appendix/appendix.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:16:26+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/column/column.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:16:32+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/mail/mail_base.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:18:50+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/link/link.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:18:48+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/sitemap.html</loc>
-  <priority>0.8</priority>
-  <lastmod>2014-06-22T23:19:26+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/physics/.index.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/physics/physics_4.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2014-06-22T23:19:13+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_2.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2014-06-22T23:17:37+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_6.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2014-06-22T23:17:43+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_9.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2014-06-22T23:17:54+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_3.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2014-06-22T23:17:38+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_5.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2014-06-22T23:17:41+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/physics/physics_6.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2014-06-22T23:19:15+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/physics/physics_6_1.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2014-06-22T23:19:15+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/physics/physics_6_2_1.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2014-06-22T23:19:17+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/physics/physics_6_2_7.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2014-06-22T23:19:20+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/physics/physics_6_3_1.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2014-06-22T23:19:22+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/.index.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/.mesh/mesh.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_6_6.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2011-03-17T21:41:45+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_7_1.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2014-06-22T23:16:56+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_8.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2014-06-22T23:17:00+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_8_1.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2014-06-22T23:17:01+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_13.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2014-06-22T23:17:36+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_8_2_2.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2014-06-22T23:17:04+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_11.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2014-06-22T23:16:40+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_11_2.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2014-06-22T23:16:41+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/mesh/.index.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_13.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2014-06-22T23:16:43+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fortran/.index.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fortran/fortran_1.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2014-06-22T23:17:06+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fortran/fortran_4.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2014-06-22T23:17:11+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fortran/fortran_6.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2014-06-22T23:17:13+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fortran/fortran_8.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2014-06-22T23:17:14+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_2_2.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2014-06-22T23:16:44+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_3.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2014-06-22T23:16:46+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/mesh/.appendix/appendix_2.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/mesh/mesh_3_2.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2014-06-22T23:18:55+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/counting/.index.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/counting/counting_1.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2014-06-22T23:16:37+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/appendix/.index.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/appendix/appendix_1.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2014-06-22T23:16:26+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/column/.index.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/column/column_1.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2014-06-22T23:16:32+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/column/column_2.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2014-06-22T23:16:33+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/column/column_3.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2014-06-22T23:16:34+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/column/column_4.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2014-06-22T23:16:34+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/mail/.index.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/mail/mail.html</loc>
-  <priority>0.7</priority>
-  <lastmod>2014-06-22T23:18:49+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/link/.index.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/link/.mail/mail_base.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.index.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.introduce/introduce.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.profile/profile.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.mail/mail.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.mail/mail_base.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.link/link.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.physics/physics.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.physics/physics_1.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.physics/physics_2.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.physics/physics_3.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.physics/physics_4.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.physics/physics_5.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.physics/physics_6.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.physics/physics_6_1.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.physics/physics_6_2.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.physics/physics_6_2_1.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.physics/physics_6_2_2.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.physics/physics_6_2_3.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.physics/physics_6_2_4.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.physics/physics_6_2_5.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.physics/physics_6_2_6.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.physics/physics_6_2_7.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.physics/physics_6_3.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.physics/physics_6_3_1.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.physics/physics_6_3_2.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.physics/physics_6_3_3.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.physics/physics_7.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.physics/physics_8.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_1.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_2.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_3.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_4.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_5.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_6.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_6_1.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_6_2.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_6_3.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_6_4.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_7.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_8.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_9.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_9_1.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_9_2.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_9_3.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_9_4.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_9_5.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_9_6.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_10.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_10_1.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_10_2.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_10_3.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_11.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_11_1.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_11_2.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_11_3.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_11_4.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_11_5.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_11_6.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_12.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_12_1.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_12_2.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_13.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.hydronamics/hydronamics_14.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_1.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_2.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_2_1.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_2_2.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_2_3.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_3.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_4.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_5.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_6.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_6_1.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_6_1_1.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_6_1_2.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_6_1_3.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_6_1_4.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_6_1_5.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_6_2.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_6_2_1.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_6_2_2.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_6_2_3.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_6_2_4.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_6_2_5.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_6_2_6.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_7.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_7_1.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_7_1_1.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_7_1_2.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_7_2.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_7_2_1.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_7_2_2.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_8.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_8_1.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_8_2.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_8_2_1.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_8_2_2.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_8_3.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_9.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_10.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_11.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_11_1.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_11_2.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_12.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fem/fem_13.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.mesh/mesh.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.mesh/mesh_1.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.mesh/mesh_2.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.mesh/mesh_3.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.mesh/mesh_3_1.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.mesh/mesh_3_2.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.mesh/mesh_4.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.mesh/mesh_5.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.counting/counting.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.counting/counting_1.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.counting/counting_2.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.appendix/appendix.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.appendix/appendix_1.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.appendix/appendix_2.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.appendix/appendix_3.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.appendix/appendix_3_1.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.appendix/appendix_3_2.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.column/column.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.column/column_1.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.column/column_2.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.column/column_3.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.column/column_4.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.heat/heat.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.heat/heat_1.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.heat/heat_2.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.heat/heat_3.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.heat/heat_4.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.heat/heat_4_1.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.heat/heat_4_2.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.heat/heat_4_3.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.heat/heat_5.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.heat/heat_5_1.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.heat/heat_5_2.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.heat/heat_5_3.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.heat/heat_5_4.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.heat/heat_6.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.heat/heat_7.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.heat/heat_7_1.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.heat/heat_7_2.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.heat/heat_8.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fortran/fortran.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fortran/fortran_2.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fortran/fortran_3.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fortran/fortran_4.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fortran/fortran_5.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fortran/fortran_6.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fortran/fortran_7.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fortran/fortran_8.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fortran/fortran_9.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fortran/fortran_10.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fortran/fortran_11.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fortran/fortran_12.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fortran/fortran_13.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.fortran/fortran_14.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.library/library.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.book/book.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/sitemap/.pdf/pdf.html</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/physics/physics_5.html</loc>
-  <priority>0.6</priority>
-  <lastmod>2014-06-22T23:19:14+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_9_1.html</loc>
-  <priority>0.6</priority>
-  <lastmod>2014-06-22T23:17:55+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/physics/physics_6_2_2.html</loc>
-  <priority>0.6</priority>
-  <lastmod>2014-06-22T23:19:17+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/physics/physics_6_2_6.html</loc>
-  <priority>0.6</priority>
-  <lastmod>2014-06-22T23:19:20+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/physics/physics_6_3_2.html</loc>
-  <priority>0.6</priority>
-  <lastmod>2014-06-22T23:19:22+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_6_5.html</loc>
-  <priority>0.6</priority>
-  <lastmod>2011-03-17T21:41:44+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_7_1_1.html</loc>
-  <priority>0.6</priority>
-  <lastmod>2014-06-22T23:16:57+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_7_2.html</loc>
-  <priority>0.6</priority>
-  <lastmod>2014-06-22T23:16:58+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_12_2.html</loc>
-  <priority>0.6</priority>
-  <lastmod>2014-06-22T23:17:36+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_8_3.html</loc>
-  <priority>0.6</priority>
-  <lastmod>2014-06-22T23:17:04+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_10.html</loc>
-  <priority>0.6</priority>
-  <lastmod>2014-06-22T23:16:40+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fortran/fortran_5.html</loc>
-  <priority>0.6</priority>
-  <lastmod>2014-06-22T23:17:12+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fortran/fortran_9.html</loc>
-  <priority>0.6</priority>
-  <lastmod>2014-06-22T23:17:14+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_4.html</loc>
-  <priority>0.6</priority>
-  <lastmod>2014-06-22T23:16:46+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/counting/counting_2.html</loc>
-  <priority>0.6</priority>
-  <lastmod>2014-06-22T23:16:38+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/appendix/appendix_2.html</loc>
-  <priority>0.6</priority>
-  <lastmod>2014-06-22T23:16:27+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/column/.mesh/mesh_3_1.html</loc>
-  <priority>0.6</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/column/.mesh/mesh_4.html</loc>
-  <priority>0.6</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/column/.mesh/mesh_5.html</loc>
-  <priority>0.6</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_9_2.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:17:55+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/physics/physics_6_2_3.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:19:18+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/physics/physics_6_2_5.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:19:19+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/physics/physics_6_3_3.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:19:23+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_6_4.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2011-03-17T21:41:44+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_7_1_2.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:16:57+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_7_2_1.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:16:59+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_12.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:17:35+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_12_1.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:17:35+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_9.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:17:05+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_9_2.html</loc>
-  <priority>0.5</priority>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fortran/fortran_10.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:17:06+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_5.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:16:47+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/appendix/appendix_3.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:16:28+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_9_3.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:17:56+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/physics/physics_6_2_4.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:19:19+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/physics/physics_7.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:19:24+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_6_3.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2011-03-17T21:41:43+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_7_2_2.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:17:00+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_11_6.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:17:34+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fortran/fortran_11.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:17:07+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_6.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:16:47+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/appendix/appendix_3_1.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:16:29+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_9_4.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:17:57+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/physics/physics_8.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:19:25+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_6_2.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:16:51+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_11.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:17:31+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_11_5.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:17:34+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fortran/fortran_12.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:17:08+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_6_1.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:16:48+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/appendix/appendix_3_2.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:16:30+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_9_5.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:17:58+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_6_1_5.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:16:51+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_6_2_1.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:16:52+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_10_3.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:17:30+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_11_1.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:17:31+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_11_4.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:17:33+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fortran/fortran_13.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:17:09+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_6_1_1.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:16:48+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_9_6.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:17:58+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_6_1_4.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:16:50+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_6_2_2.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:16:53+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_10.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:17:28+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_11_3.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:17:33+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_10_2.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:17:29+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_11_2.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:17:32+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fortran/fortran_14.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:17:09+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_6_1_2.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:16:49+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_6_1_3.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:16:49+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_6_2_3.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:16:53+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/hydronamics/hydronamics_10_1.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:17:29+09:00</lastmod>
-</url>
-<url>
-  <loc>http://ryutai.ninja-web.net/fem/fem_6_2_4.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2014-06-22T23:16:54+09:00</lastmod>
-</url>
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://ryutai.ninja-web.net/</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/appendix/appendix.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/appendix/appendix_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/appendix/appendix_2.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/appendix/appendix_3.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/appendix/appendix_3_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/appendix/appendix_3_2.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/book/book.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/column/column.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/column/column_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/column/column_2.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/column/column_3.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/column/column_4.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/column/column_5.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/counting/counting.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/counting/counting_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/counting/counting_2.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_10.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_11.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_11_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_11_2.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_12.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_13.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_2.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_2_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_2_2.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_2_3.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_3.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_4.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_5.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_6.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_6_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_6_1_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_6_1_2.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_6_1_3.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_6_1_4.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_6_1_5.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_6_2.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_6_2_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_6_2_2.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_6_2_3.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_6_2_4.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_6_2_5.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_6_2_6.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_7.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_7_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_7_1_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_7_1_2.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_7_2.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_7_2_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_7_2_2.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_8.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_8_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_8_2.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_8_2_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_8_2_2.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_8_3.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fem/fem_9.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fortran/fortran.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fortran/fortran_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fortran/fortran_10.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fortran/fortran_11.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fortran/fortran_12.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fortran/fortran_13.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fortran/fortran_14.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fortran/fortran_2.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fortran/fortran_3.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fortran/fortran_4.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fortran/fortran_5.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fortran/fortran_6.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fortran/fortran_7.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fortran/fortran_8.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/fortran/fortran_9.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/heat/heat.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/heat/heat_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/heat/heat_2.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/heat/heat_3.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/heat/heat_4.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/heat/heat_4_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/heat/heat_4_2.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/heat/heat_4_3.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/heat/heat_5.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/heat/heat_5_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/heat/heat_5_2.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/heat/heat_5_3.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/heat/heat_5_4.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/heat/heat_6.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/heat/heat_7.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/heat/heat_7_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/heat/heat_7_2.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/heat/heat_8.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_10.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_10_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_10_2.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_10_3.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_11.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_11_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_11_2.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_11_3.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_11_4.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_11_5.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_11_6.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_12.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_12_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_12_2.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_13.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_14.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_2.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_3.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_4.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_5.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_6.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_6_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_6_2.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_6_3.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_6_4.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_7.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_8.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_9.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_9_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_9_2.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_9_3.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_9_4.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_9_5.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/hydronamics/hydronamics_9_6.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/introduce/introduce.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/library/library.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/library/library_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/library/library_buble.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/library/library_delauney.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/library/library_renum.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/link/link.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/mail/mail.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/mail/mail_base.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/mesh/mesh.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/mesh/mesh_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/mesh/mesh_2.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/mesh/mesh_3.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/mesh/mesh_3_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/mesh/mesh_3_2.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/mesh/mesh_4.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/mesh/mesh_5.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/mps/mps.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/mps/mps_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/mps/mps_2.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/mps/mps_3.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/mps/mps_4.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/mps/mps_5.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/mps/mps_6.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/mps/mps_6_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/mps/mps_6_2.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/pdf/pdf.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/physics/physics.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/physics/physics_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/physics/physics_2.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/physics/physics_3.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/physics/physics_4.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/physics/physics_5.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/physics/physics_6.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/physics/physics_6_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/physics/physics_6_2.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/physics/physics_6_2_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/physics/physics_6_2_2.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/physics/physics_6_2_3.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/physics/physics_6_2_4.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/physics/physics_6_2_5.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/physics/physics_6_2_6.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/physics/physics_6_2_7.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/physics/physics_6_3.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/physics/physics_6_3_1.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/physics/physics_6_3_2.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/physics/physics_6_3_3.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/physics/physics_7.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/physics/physics_8.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/profile/profile.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/revision_history.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://ryutai.ninja-web.net/sitemap/sitemap.html</loc>
+    <lastmod>2026-09-20</lastmod>
+  </url>
 </urlset>
