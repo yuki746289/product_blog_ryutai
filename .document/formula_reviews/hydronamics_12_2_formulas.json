@@ -21,7 +21,7 @@
     },
     {
       "image": "image017.png",
-      "latex": "\\[\n\\begin{aligned}\n\\sigma_{ij}\n&=-\\delta_{ij}p_j-\\tau_{ij}\\\\\n&=-\\delta_{ij}p_j\n+\\mu\\left(\n\\frac{\\partial v_i}{\\partial x_j}\n+\\frac{\\partial v_j}{\\partial x_i}\n\\right)\n-\\delta_{ij}\\frac{2}{3}\\mu(\\nabla\\cdot\\vec v)\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\sigma_{ij}\n&=-\\delta_{ij}p_j-\\tau_{ij}\\\\[6pt]\n&=-\\delta_{ij}p_j\n+\\mu\\left(\n\\frac{\\partial v_i}{\\partial x_j}\n+\\frac{\\partial v_j}{\\partial x_i}\n\\right)\n-\\delta_{ij}\\frac{2}{3}\\mu(\\nabla\\cdot\\vec v)\n\\end{aligned}\n\\]"
     },
     {
       "image": "image018.png",
@@ -34,7 +34,7 @@
     },
     {
       "image": "image020.png",
-      "latex": "\\[\n\\begin{aligned}\n\\sigma_{ij}^{*}\n&=-\\delta_{ij}P_j-\\tau_{ij}^{*}\\\\\n&=-\\delta_{ij}P_j\n+\\frac{1}{Re}\\left(\n\\frac{\\partial V_i}{\\partial X_j}\n+\\frac{\\partial V_j}{\\partial X_i}\n\\right)\n-\\delta_{ij}\\frac{2}{3}\\frac{1}{Re}(\\nabla\\cdot\\vec V)\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\sigma_{ij}^{*}\n&=-\\delta_{ij}P_j-\\tau_{ij}^{*}\\\\[6pt]\n&=-\\delta_{ij}P_j\n+\\frac{1}{Re}\\left(\n\\frac{\\partial V_i}{\\partial X_j}\n+\\frac{\\partial V_j}{\\partial X_i}\n\\right)\n-\\delta_{ij}\\frac{2}{3}\\frac{1}{Re}(\\nabla\\cdot\\vec V)\n\\end{aligned}\n\\]"
     },
     {
       "image": "image021.png",

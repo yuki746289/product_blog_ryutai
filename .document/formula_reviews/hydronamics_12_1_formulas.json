@@ -20,15 +20,15 @@
     },
     {
       "image": "image008.png",
-      "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial\\rho}{\\partial t}&=\\frac{1}{c^2}\\frac{\\partial p}{\\partial t}\\\\\n\\frac{\\partial\\rho}{\\partial x}&=\\frac{1}{c^2}\\frac{\\partial p}{\\partial x}\\\\\n\\frac{\\partial\\rho}{\\partial y}&=\\frac{1}{c^2}\\frac{\\partial p}{\\partial y}\\\\\n\\frac{\\partial\\rho}{\\partial z}&=\\frac{1}{c^2}\\frac{\\partial p}{\\partial z}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial\\rho}{\\partial t}&=\\frac{1}{c^2}\\frac{\\partial p}{\\partial t}\\\\[6pt]\n\\frac{\\partial\\rho}{\\partial x}&=\\frac{1}{c^2}\\frac{\\partial p}{\\partial x}\\\\[6pt]\n\\frac{\\partial\\rho}{\\partial y}&=\\frac{1}{c^2}\\frac{\\partial p}{\\partial y}\\\\[6pt]\n\\frac{\\partial\\rho}{\\partial z}&=\\frac{1}{c^2}\\frac{\\partial p}{\\partial z}\n\\end{aligned}\n\\]"
     },
     {
       "image": "image009.png",
-      "latex": "\\[\n\\begin{aligned}\n&\\frac{\\partial(P\\rho v_0^2)}{\\partial(\\tau x_0/v_0)}\n+V_xv_0\\frac{\\partial(P\\rho v_0^2)}{\\partial(Xx_0)}\n+V_yv_0\\frac{\\partial(P\\rho v_0^2)}{\\partial(Yx_0)}\n+V_zv_0\\frac{\\partial(P\\rho v_0^2)}{\\partial(Zx_0)}\\\\\n&=-c^2\\rho\\left\\{\n\\frac{\\partial(V_xv_0)}{\\partial(Xx_0)}\n-\\frac{\\partial(V_yv_0)}{\\partial(Yx_0)}\n-\\frac{\\partial(V_zv_0)}{\\partial(Zx_0)}\n\\right\\}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n&\\frac{\\partial(P\\rho v_0^2)}{\\partial(\\tau x_0/v_0)}\n+V_xv_0\\frac{\\partial(P\\rho v_0^2)}{\\partial(Xx_0)}\n+V_yv_0\\frac{\\partial(P\\rho v_0^2)}{\\partial(Yx_0)}\n+V_zv_0\\frac{\\partial(P\\rho v_0^2)}{\\partial(Zx_0)}\\\\[6pt]\n&=-c^2\\rho\\left\\{\n\\frac{\\partial(V_xv_0)}{\\partial(Xx_0)}\n-\\frac{\\partial(V_yv_0)}{\\partial(Yx_0)}\n-\\frac{\\partial(V_zv_0)}{\\partial(Zx_0)}\n\\right\\}\n\\end{aligned}\n\\]"
     },
     {
       "image": "image010.png",
-      "latex": "\\[\n\\begin{aligned}\n&\\frac{\\rho v_0^3}{x_0}\\frac{\\partial P}{\\partial\\tau}\n+\\frac{\\rho v_0^3}{x_0}V_x\\frac{\\partial P}{\\partial X}\n+\\frac{\\rho v_0^3}{x_0}V_y\\frac{\\partial P}{\\partial Y}\n+\\frac{\\rho v_0^3}{x_0}V_z\\frac{\\partial P}{\\partial Z}\\\\\n&=-c^2\\rho\\frac{v_0}{x_0}\\left(\n\\frac{\\partial V_x}{\\partial X}\n+\\frac{\\partial V_y}{\\partial Y}\n+\\frac{\\partial V_z}{\\partial Z}\n\\right)\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n&\\frac{\\rho v_0^3}{x_0}\\frac{\\partial P}{\\partial\\tau}\n+\\frac{\\rho v_0^3}{x_0}V_x\\frac{\\partial P}{\\partial X}\n+\\frac{\\rho v_0^3}{x_0}V_y\\frac{\\partial P}{\\partial Y}\n+\\frac{\\rho v_0^3}{x_0}V_z\\frac{\\partial P}{\\partial Z}\\\\[6pt]\n&=-c^2\\rho\\frac{v_0}{x_0}\\left(\n\\frac{\\partial V_x}{\\partial X}\n+\\frac{\\partial V_y}{\\partial Y}\n+\\frac{\\partial V_z}{\\partial Z}\n\\right)\n\\end{aligned}\n\\]"
     },
     {
       "image": "image011.png",

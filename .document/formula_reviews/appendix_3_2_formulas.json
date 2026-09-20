@@ -6,31 +6,31 @@
   "formulas": [
     {
       "image": "image003.png",
-      "latex": "\\[\n\\left\\{\n\\begin{aligned}\nx&=r\\sin\\theta\\cos\\phi\\\\\ny&=r\\sin\\theta\\sin\\phi\\\\\nz&=r\\cos\\theta\n\\end{aligned}\n\\right.\n\\]"
+      "latex": "\\[\n\\left\\{\n\\begin{aligned}\nx&=r\\sin\\theta\\cos\\phi\\\\[6pt]\ny&=r\\sin\\theta\\sin\\phi\\\\[6pt]\nz&=r\\cos\\theta\n\\end{aligned}\n\\right.\n\\]"
     },
     {
       "image": "image005.png",
-      "latex": "\\[\n\\begin{aligned}\n\\vec{\\delta}_x&=\\vec{\\delta}_r(\\sin\\theta\\cos\\phi)+\\vec{\\delta}_\\theta(\\cos\\theta\\cos\\phi)+\\vec{\\delta}_\\phi(-\\sin\\phi)\\\\\n\\vec{\\delta}_y&=\\vec{\\delta}_r(\\sin\\theta\\sin\\phi)+\\vec{\\delta}_\\theta(\\cos\\theta\\sin\\phi)+\\vec{\\delta}_\\phi(\\cos\\phi)\\\\\n\\vec{\\delta}_z&=\\vec{\\delta}_r(\\cos\\theta)+\\vec{\\delta}_\\theta(-\\sin\\theta)+\\vec{\\delta}_\\phi(0)\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\vec{\\delta}_x&=\\vec{\\delta}_r(\\sin\\theta\\cos\\phi)+\\vec{\\delta}_\\theta(\\cos\\theta\\cos\\phi)+\\vec{\\delta}_\\phi(-\\sin\\phi)\\\\[6pt]\n\\vec{\\delta}_y&=\\vec{\\delta}_r(\\sin\\theta\\sin\\phi)+\\vec{\\delta}_\\theta(\\cos\\theta\\sin\\phi)+\\vec{\\delta}_\\phi(\\cos\\phi)\\\\[6pt]\n\\vec{\\delta}_z&=\\vec{\\delta}_r(\\cos\\theta)+\\vec{\\delta}_\\theta(-\\sin\\theta)+\\vec{\\delta}_\\phi(0)\n\\end{aligned}\n\\]"
     },
     {
       "image": "image006.png",
-      "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial}{\\partial x}\n&=(\\sin\\theta\\cos\\phi)\\frac{\\partial}{\\partial r}\n+\\left(\\frac{\\cos\\theta\\cos\\phi}{r}\\right)\\frac{\\partial}{\\partial\\theta}\n+\\left(\\frac{-\\sin\\phi}{r\\sin\\theta}\\right)\\frac{\\partial}{\\partial\\phi}\\\\\n\\frac{\\partial}{\\partial y}\n&=(\\sin\\theta\\sin\\phi)\\frac{\\partial}{\\partial r}\n+\\left(\\frac{\\cos\\theta\\sin\\phi}{r}\\right)\\frac{\\partial}{\\partial\\theta}\n+\\left(\\frac{\\cos\\phi}{r\\sin\\theta}\\right)\\frac{\\partial}{\\partial\\phi}\\\\\n\\frac{\\partial}{\\partial z}\n&=(\\cos\\theta)\\frac{\\partial}{\\partial r}\n+\\left(\\frac{-\\sin\\theta}{r}\\right)\\frac{\\partial}{\\partial\\theta}\n+(0)\\frac{\\partial}{\\partial\\phi}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial}{\\partial x}\n&=(\\sin\\theta\\cos\\phi)\\frac{\\partial}{\\partial r}\n+\\left(\\frac{\\cos\\theta\\cos\\phi}{r}\\right)\\frac{\\partial}{\\partial\\theta}\n+\\left(\\frac{-\\sin\\phi}{r\\sin\\theta}\\right)\\frac{\\partial}{\\partial\\phi}\\\\[6pt]\n\\frac{\\partial}{\\partial y}\n&=(\\sin\\theta\\sin\\phi)\\frac{\\partial}{\\partial r}\n+\\left(\\frac{\\cos\\theta\\sin\\phi}{r}\\right)\\frac{\\partial}{\\partial\\theta}\n+\\left(\\frac{\\cos\\phi}{r\\sin\\theta}\\right)\\frac{\\partial}{\\partial\\phi}\\\\[6pt]\n\\frac{\\partial}{\\partial z}\n&=(\\cos\\theta)\\frac{\\partial}{\\partial r}\n+\\left(\\frac{-\\sin\\theta}{r}\\right)\\frac{\\partial}{\\partial\\theta}\n+(0)\\frac{\\partial}{\\partial\\phi}\n\\end{aligned}\n\\]"
     },
     {
       "image": "image007.png",
-      "latex": "\\[\n\\left\\{\n\\begin{aligned}\nr&=+\\sqrt{x^2+y^2+z^2}\\\\\n\\theta&=\\tan^{-1}\\left(\\frac{\\sqrt{x^2+y^2}}{z}\\right)\\\\\n\\phi&=\\tan^{-1}\\left(\\frac{y}{x}\\right)\n\\end{aligned}\n\\right.\n\\]"
+      "latex": "\\[\n\\left\\{\n\\begin{aligned}\nr&=+\\sqrt{x^2+y^2+z^2}\\\\[6pt]\n\\theta&=\\tan^{-1}\\left(\\frac{\\sqrt{x^2+y^2}}{z}\\right)\\\\[6pt]\n\\phi&=\\tan^{-1}\\left(\\frac{y}{x}\\right)\n\\end{aligned}\n\\right.\n\\]"
     },
     {
       "image": "image008.png",
-      "latex": "\\[\n\\begin{aligned}\n\\vec{\\delta}_r&=\\vec{\\delta}_x(\\sin\\theta\\cos\\phi)+\\vec{\\delta}_y(\\sin\\theta\\sin\\phi)+\\vec{\\delta}_z(\\cos\\theta)\\\\\n\\vec{\\delta}_\\theta&=\\vec{\\delta}_x(\\cos\\theta\\cos\\phi)+\\vec{\\delta}_y(\\cos\\theta\\sin\\phi)+\\vec{\\delta}_z(-\\sin\\theta)\\\\\n\\vec{\\delta}_\\phi&=\\vec{\\delta}_x(-\\sin\\phi)+\\vec{\\delta}_y(\\cos\\phi)+\\vec{\\delta}_z(0)\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\vec{\\delta}_r&=\\vec{\\delta}_x(\\sin\\theta\\cos\\phi)+\\vec{\\delta}_y(\\sin\\theta\\sin\\phi)+\\vec{\\delta}_z(\\cos\\theta)\\\\[6pt]\n\\vec{\\delta}_\\theta&=\\vec{\\delta}_x(\\cos\\theta\\cos\\phi)+\\vec{\\delta}_y(\\cos\\theta\\sin\\phi)+\\vec{\\delta}_z(-\\sin\\theta)\\\\[6pt]\n\\vec{\\delta}_\\phi&=\\vec{\\delta}_x(-\\sin\\phi)+\\vec{\\delta}_y(\\cos\\phi)+\\vec{\\delta}_z(0)\n\\end{aligned}\n\\]"
     },
     {
       "image": "image009.png",
-      "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial}{\\partial r}\n&=\\sin\\theta\\cos\\phi\\frac{\\partial}{\\partial x}\n+\\sin\\theta\\sin\\phi\\frac{\\partial}{\\partial y}\n+\\cos\\theta\\frac{\\partial}{\\partial z}\\\\\n\\frac{\\partial}{\\partial\\theta}\n&=r\\cos\\theta\\cos\\phi\\frac{\\partial}{\\partial x}\n+r\\cos\\theta\\sin\\phi\\frac{\\partial}{\\partial y}\n-r\\sin\\theta\\frac{\\partial}{\\partial z}\\\\\n\\frac{\\partial}{\\partial\\phi}\n&=-r\\sin\\theta\\sin\\phi\\frac{\\partial}{\\partial x}\n+r\\sin\\theta\\cos\\phi\\frac{\\partial}{\\partial y}\n+(0)\\frac{\\partial}{\\partial z}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial}{\\partial r}\n&=\\sin\\theta\\cos\\phi\\frac{\\partial}{\\partial x}\n+\\sin\\theta\\sin\\phi\\frac{\\partial}{\\partial y}\n+\\cos\\theta\\frac{\\partial}{\\partial z}\\\\[6pt]\n\\frac{\\partial}{\\partial\\theta}\n&=r\\cos\\theta\\cos\\phi\\frac{\\partial}{\\partial x}\n+r\\cos\\theta\\sin\\phi\\frac{\\partial}{\\partial y}\n-r\\sin\\theta\\frac{\\partial}{\\partial z}\\\\[6pt]\n\\frac{\\partial}{\\partial\\phi}\n&=-r\\sin\\theta\\sin\\phi\\frac{\\partial}{\\partial x}\n+r\\sin\\theta\\cos\\phi\\frac{\\partial}{\\partial y}\n+(0)\\frac{\\partial}{\\partial z}\n\\end{aligned}\n\\]"
     },
     {
       "image": "image010.png",
-      "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial}{\\partial r}\\vec{\\delta}_r&=0,\\qquad\n\\frac{\\partial}{\\partial r}\\vec{\\delta}_\\theta=0,\\qquad\n\\frac{\\partial}{\\partial r}\\vec{\\delta}_\\phi=0\\\\\n\\frac{\\partial}{\\partial\\theta}\\vec{\\delta}_r&=\\vec{\\delta}_\\theta,\\qquad\n\\frac{\\partial}{\\partial\\theta}\\vec{\\delta}_\\theta=-\\vec{\\delta}_r,\\qquad\n\\frac{\\partial}{\\partial\\theta}\\vec{\\delta}_\\phi=0\\\\\n\\frac{\\partial}{\\partial\\phi}\\vec{\\delta}_r&=\\vec{\\delta}_\\phi(\\sin\\theta),\\qquad\n\\frac{\\partial}{\\partial\\phi}\\vec{\\delta}_\\theta=\\vec{\\delta}_\\phi(\\cos\\theta),\\qquad\n\\frac{\\partial}{\\partial\\phi}\\vec{\\delta}_\\phi=-\\vec{\\delta}_r(\\sin\\theta)-\\vec{\\delta}_\\theta(\\cos\\theta)\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial}{\\partial r}\\vec{\\delta}_r&=0,\\qquad\n\\frac{\\partial}{\\partial r}\\vec{\\delta}_\\theta=0,\\qquad\n\\frac{\\partial}{\\partial r}\\vec{\\delta}_\\phi=0\\\\[6pt]\n\\frac{\\partial}{\\partial\\theta}\\vec{\\delta}_r&=\\vec{\\delta}_\\theta,\\qquad\n\\frac{\\partial}{\\partial\\theta}\\vec{\\delta}_\\theta=-\\vec{\\delta}_r,\\qquad\n\\frac{\\partial}{\\partial\\theta}\\vec{\\delta}_\\phi=0\\\\[6pt]\n\\frac{\\partial}{\\partial\\phi}\\vec{\\delta}_r&=\\vec{\\delta}_\\phi(\\sin\\theta),\\qquad\n\\frac{\\partial}{\\partial\\phi}\\vec{\\delta}_\\theta=\\vec{\\delta}_\\phi(\\cos\\theta),\\qquad\n\\frac{\\partial}{\\partial\\phi}\\vec{\\delta}_\\phi=-\\vec{\\delta}_r(\\sin\\theta)-\\vec{\\delta}_\\theta(\\cos\\theta)\n\\end{aligned}\n\\]"
     },
     {
       "image": "image011.png",

@@ -16,15 +16,15 @@
   "formulas": [
     {
       "image": "image001.png",
-      "latex": "\\[\n\\begin{aligned}\n\\tau_{xx}&=-2\\mu\\frac{\\partial v_x}{\\partial x}+\\frac{2}{3}\\mu(\\nabla\\cdot\\vec v)\\\\\n\\tau_{xy}&=-\\mu\\left(\\frac{\\partial v_x}{\\partial y}+\\frac{\\partial v_y}{\\partial x}\\right)\\\\\n\\tau_{xz}&=-\\mu\\left(\\frac{\\partial v_x}{\\partial z}+\\frac{\\partial v_z}{\\partial x}\\right)\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\tau_{xx}&=-2\\mu\\frac{\\partial v_x}{\\partial x}+\\frac{2}{3}\\mu(\\nabla\\cdot\\vec v)\\\\[6pt]\n\\tau_{xy}&=-\\mu\\left(\\frac{\\partial v_x}{\\partial y}+\\frac{\\partial v_y}{\\partial x}\\right)\\\\[6pt]\n\\tau_{xz}&=-\\mu\\left(\\frac{\\partial v_x}{\\partial z}+\\frac{\\partial v_z}{\\partial x}\\right)\n\\end{aligned}\n\\]"
     },
     {
       "image": "image002.png",
-      "latex": "\\[\n\\begin{aligned}\n\\tau_{yx}&=-\\mu\\left(\\frac{\\partial v_y}{\\partial x}+\\frac{\\partial v_x}{\\partial y}\\right)\\\\\n\\tau_{yy}&=-2\\mu\\frac{\\partial v_y}{\\partial y}+\\frac{2}{3}\\mu(\\nabla\\cdot\\vec v)\\\\\n\\tau_{yz}&=-\\mu\\left(\\frac{\\partial v_y}{\\partial z}+\\frac{\\partial v_z}{\\partial y}\\right)\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\tau_{yx}&=-\\mu\\left(\\frac{\\partial v_y}{\\partial x}+\\frac{\\partial v_x}{\\partial y}\\right)\\\\[6pt]\n\\tau_{yy}&=-2\\mu\\frac{\\partial v_y}{\\partial y}+\\frac{2}{3}\\mu(\\nabla\\cdot\\vec v)\\\\[6pt]\n\\tau_{yz}&=-\\mu\\left(\\frac{\\partial v_y}{\\partial z}+\\frac{\\partial v_z}{\\partial y}\\right)\n\\end{aligned}\n\\]"
     },
     {
       "image": "image003.png",
-      "latex": "\\[\n\\begin{aligned}\n\\tau_{zx}&=-\\mu\\left(\\frac{\\partial v_z}{\\partial x}+\\frac{\\partial v_x}{\\partial z}\\right)\\\\\n\\tau_{zy}&=-\\mu\\left(\\frac{\\partial v_z}{\\partial y}+\\frac{\\partial v_y}{\\partial z}\\right)\\\\\n\\tau_{zz}&=-2\\mu\\frac{\\partial v_z}{\\partial z}+\\frac{2}{3}\\mu(\\nabla\\cdot\\vec v)\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\tau_{zx}&=-\\mu\\left(\\frac{\\partial v_z}{\\partial x}+\\frac{\\partial v_x}{\\partial z}\\right)\\\\[6pt]\n\\tau_{zy}&=-\\mu\\left(\\frac{\\partial v_z}{\\partial y}+\\frac{\\partial v_y}{\\partial z}\\right)\\\\[6pt]\n\\tau_{zz}&=-2\\mu\\frac{\\partial v_z}{\\partial z}+\\frac{2}{3}\\mu(\\nabla\\cdot\\vec v)\n\\end{aligned}\n\\]"
     },
     {
       "image": "image004.png",
@@ -32,7 +32,7 @@
     },
     {
       "image": "image005.png",
-      "latex": "\\[\n\\begin{aligned}\n\\sigma_{ij}\n&=-\\delta_{ij}p_j-\\tau_{ij}\\\\\n&=-\\delta_{ij}p_j\n+\\mu\\left(\n\\frac{\\partial v_i}{\\partial x_j}\n+\\frac{\\partial v_j}{\\partial x_i}\n\\right)\n-\\delta_{ij}\\frac{2}{3}\\mu(\\nabla\\cdot\\vec v)\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\sigma_{ij}\n&=-\\delta_{ij}p_j-\\tau_{ij}\\\\[6pt]\n&=-\\delta_{ij}p_j\n+\\mu\\left(\n\\frac{\\partial v_i}{\\partial x_j}\n+\\frac{\\partial v_j}{\\partial x_i}\n\\right)\n-\\delta_{ij}\\frac{2}{3}\\mu(\\nabla\\cdot\\vec v)\n\\end{aligned}\n\\]"
     }
   ]
 }

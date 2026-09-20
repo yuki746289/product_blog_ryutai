@@ -1,11 +1,15 @@
 {
-  "created_at":"2026-09-19T06:40:00+09:00",
-  "page":"physics/physics_6_3_3.html",
-  "image_dir":"img/physics_c_cross.files",
-  "canonical_source":"original source images",
-  "retained_diagrams":["image006.png"],
-  "formulas":[{
-    "image":"image005.png",
-    "latex":"\\[\n\\begin{aligned}\n[\\nabla\\times\\vec{v}]\n&=\\left[\\sum_{i=0}^{3}\\vec{\\delta}_{i}\\frac{\\partial}{\\partial x_i}\\times\\sum_{j=0}^{3}\\vec{\\delta}_{j}v_j\\right]\\\\\n&=\\sum_{i=0}^{3}\\sum_{j=0}^{3}\\left[\\vec{\\delta}_{i}\\frac{\\partial}{\\partial x_i}\\times\\vec{\\delta}_{j}v_j\\right]\\\\\n&=\\sum_{i=0}^{3}\\sum_{j=0}^{3}[\\vec{\\delta}_{i}\\times\\vec{\\delta}_{j}]\\frac{\\partial}{\\partial x_i}v_j\\\\\n&=\\sum_{i=0}^{3}\\sum_{j=0}^{3}\\sum_{k=0}^{3}\\varepsilon_{ijk}\\vec{\\delta}_{k}\\frac{\\partial v_j}{\\partial x_i}\\\\\n&=\\varepsilon_{123}\\vec{\\delta}_{z}\\frac{\\partial v_y}{\\partial x_x}+\\varepsilon_{231}\\vec{\\delta}_{x}\\frac{\\partial v_z}{\\partial x_y}+\\varepsilon_{312}\\vec{\\delta}_{y}\\frac{\\partial v_x}{\\partial x_z}\\\\\n&\\quad+\\varepsilon_{321}\\vec{\\delta}_{x}\\frac{\\partial v_y}{\\partial x_z}+\\varepsilon_{213}\\vec{\\delta}_{z}\\frac{\\partial v_x}{\\partial x_y}+\\varepsilon_{132}\\vec{\\delta}_{y}\\frac{\\partial v_z}{\\partial x_x}\\\\\n&=\\vec{\\delta}_{x}\\left(\\frac{\\partial v_z}{\\partial x_y}-\\frac{\\partial v_y}{\\partial x_z}\\right)+\\vec{\\delta}_{y}\\left(\\frac{\\partial v_x}{\\partial x_z}-\\frac{\\partial v_z}{\\partial x_x}\\right)+\\vec{\\delta}_{z}\\left(\\frac{\\partial v_y}{\\partial x_x}-\\frac{\\partial v_x}{\\partial x_y}\\right)\n\\end{aligned}\n\\]"
-  }]
+  "created_at": "2026-09-19T06:40:00+09:00",
+  "page": "physics/physics_6_3_3.html",
+  "image_dir": "img/physics_c_cross.files",
+  "canonical_source": "original source images",
+  "retained_diagrams": [
+    "image006.png"
+  ],
+  "formulas": [
+    {
+      "image": "image005.png",
+      "latex": "\\[\n\\begin{aligned}\n[\\nabla\\times\\vec{v}]\n&=\\left[\\sum_{i=0}^{3}\\vec{\\delta}_{i}\\frac{\\partial}{\\partial x_i}\\times\\sum_{j=0}^{3}\\vec{\\delta}_{j}v_j\\right]\\\\[6pt]\n&=\\sum_{i=0}^{3}\\sum_{j=0}^{3}\\left[\\vec{\\delta}_{i}\\frac{\\partial}{\\partial x_i}\\times\\vec{\\delta}_{j}v_j\\right]\\\\[6pt]\n&=\\sum_{i=0}^{3}\\sum_{j=0}^{3}[\\vec{\\delta}_{i}\\times\\vec{\\delta}_{j}]\\frac{\\partial}{\\partial x_i}v_j\\\\[6pt]\n&=\\sum_{i=0}^{3}\\sum_{j=0}^{3}\\sum_{k=0}^{3}\\varepsilon_{ijk}\\vec{\\delta}_{k}\\frac{\\partial v_j}{\\partial x_i}\\\\[6pt]\n&=\\varepsilon_{123}\\vec{\\delta}_{z}\\frac{\\partial v_y}{\\partial x_x}+\\varepsilon_{231}\\vec{\\delta}_{x}\\frac{\\partial v_z}{\\partial x_y}+\\varepsilon_{312}\\vec{\\delta}_{y}\\frac{\\partial v_x}{\\partial x_z}\\\\[6pt]\n&\\quad+\\varepsilon_{321}\\vec{\\delta}_{x}\\frac{\\partial v_y}{\\partial x_z}+\\varepsilon_{213}\\vec{\\delta}_{z}\\frac{\\partial v_x}{\\partial x_y}+\\varepsilon_{132}\\vec{\\delta}_{y}\\frac{\\partial v_z}{\\partial x_x}\\\\[6pt]\n&=\\vec{\\delta}_{x}\\left(\\frac{\\partial v_z}{\\partial x_y}-\\frac{\\partial v_y}{\\partial x_z}\\right)+\\vec{\\delta}_{y}\\left(\\frac{\\partial v_x}{\\partial x_z}-\\frac{\\partial v_z}{\\partial x_x}\\right)+\\vec{\\delta}_{z}\\left(\\frac{\\partial v_y}{\\partial x_x}-\\frac{\\partial v_x}{\\partial x_y}\\right)\n\\end{aligned}\n\\]"
+    }
+  ]
 }

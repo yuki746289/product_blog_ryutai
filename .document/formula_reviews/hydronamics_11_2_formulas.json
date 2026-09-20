@@ -6,7 +6,7 @@
   "formulas": [
     {
       "image": "image001.png",
-      "latex": "\\[\n\\begin{aligned}\nWe\n&=\\frac{F_{\\text{慣性力}}}{F_{\\text{表面張力}/2}}\\\\\n&=\\frac{\\rho x^2v^2}{\\gamma x}\\\\\n&=\\frac{\\rho xv^2}{\\gamma}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\nWe\n&=\\frac{F_{\\text{慣性力}}}{F_{\\text{表面張力}/2}}\\\\[6pt]\n&=\\frac{\\rho x^2v^2}{\\gamma x}\\\\[6pt]\n&=\\frac{\\rho xv^2}{\\gamma}\n\\end{aligned}\n\\]"
     }
   ]
 }

@@ -27,11 +27,11 @@
     },
     {
       "image": "image007.png",
-      "latex": "\\[\n\\begin{aligned}\n\\iiint_{\\Delta V}\\frac{\\partial\\phi}{\\partial x}\\,dx\\,dy\\,dz\n&=\\iint(\\phi\\,dy\\,dz)_R-\\iint(\\phi\\,dy\\,dz)_L\\\\\n&=\\iint\\{\\phi(+n_x\\,dA)\\}_R-\\iint\\{\\phi(-n_x\\,dA)\\}_L\\\\\n&=\\iint(\\phi n_x\\,dA)_R+\\iint(\\phi n_x\\,dA)_L\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\iiint_{\\Delta V}\\frac{\\partial\\phi}{\\partial x}\\,dx\\,dy\\,dz\n&=\\iint(\\phi\\,dy\\,dz)_R-\\iint(\\phi\\,dy\\,dz)_L\\\\[6pt]\n&=\\iint\\{\\phi(+n_x\\,dA)\\}_R-\\iint\\{\\phi(-n_x\\,dA)\\}_L\\\\[6pt]\n&=\\iint(\\phi n_x\\,dA)_R+\\iint(\\phi n_x\\,dA)_L\n\\end{aligned}\n\\]"
     },
     {
       "image": "image008.png",
-      "latex": "\\[\n\\begin{aligned}\n\\iiint_V\\frac{\\partial\\phi}{\\partial x}\\,dx\\,dy\\,dz\n&=\\iint_R\\phi n_x\\,dA+\\iint_L\\phi n_x\\,dA\\\\\n&=\\oiint_S\\phi n_x\\,dA\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\iiint_V\\frac{\\partial\\phi}{\\partial x}\\,dx\\,dy\\,dz\n&=\\iint_R\\phi n_x\\,dA+\\iint_L\\phi n_x\\,dA\\\\[6pt]\n&=\\oiint_S\\phi n_x\\,dA\n\\end{aligned}\n\\]"
     },
     {
       "image": "image009.png",

@@ -5,7 +5,7 @@
   "formulas": [
     {
       "image": "image001.png",
-      "latex": "\\[\n\\left\\{\n\\begin{aligned}\na_1x_1+b_1y_1+c_1z_1&=d_1\\\\\na_2x_2+b_2y_2+c_2z_2&=d_2\\\\\na_3x_3+b_3y_3+c_3z_3&=d_3\n\\end{aligned}\n\\right.\n\\]"
+      "latex": "\\[\n\\left\\{\n\\begin{aligned}\na_1x_1+b_1y_1+c_1z_1&=d_1\\\\[6pt]\na_2x_2+b_2y_2+c_2z_2&=d_2\\\\[6pt]\na_3x_3+b_3y_3+c_3z_3&=d_3\n\\end{aligned}\n\\right.\n\\]"
     },
     {
       "image": "image002.png",
@@ -41,7 +41,7 @@
     },
     {
       "image": "image010.png",
-      "latex": "\\[\n\\left\\{\n\\begin{aligned}\nx+\\frac{b_1}{a_1}y+\\frac{c_1}{a_1}z&=\\frac{d_1}{a_1}\\\\\ny+\\frac{s_2}{s_1}z&=\\frac{s_3}{s_1}\\\\\n\\left(\\frac{t_2}{t_1}-\\frac{s_2}{s_1}\\right)z&=\\frac{t_3}{t_1}-\\frac{s_3}{s_1}\n\\end{aligned}\n\\right.\n\\]"
+      "latex": "\\[\n\\left\\{\n\\begin{aligned}\nx+\\frac{b_1}{a_1}y+\\frac{c_1}{a_1}z&=\\frac{d_1}{a_1}\\\\[6pt]\ny+\\frac{s_2}{s_1}z&=\\frac{s_3}{s_1}\\\\[6pt]\n\\left(\\frac{t_2}{t_1}-\\frac{s_2}{s_1}\\right)z&=\\frac{t_3}{t_1}-\\frac{s_3}{s_1}\n\\end{aligned}\n\\right.\n\\]"
     },
     {
       "image": "image011.png",

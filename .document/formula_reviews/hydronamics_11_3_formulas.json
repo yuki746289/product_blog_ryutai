@@ -6,7 +6,7 @@
   "formulas": [
     {
       "image": "image001.png",
-      "latex": "\\[\n\\begin{aligned}\nOh\n&=\\frac{F_{\\text{粘性力}}}{\\sqrt{F_{\\text{表面張力}/2}F_{\\text{慣性力}}}}\\\\\n&=\\frac{\\mu vx}{\\sqrt{\\gamma x\\rho x^2v^2}}\\\\\n&=\\frac{\\mu}{\\sqrt{\\gamma x\\rho}}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\nOh\n&=\\frac{F_{\\text{粘性力}}}{\\sqrt{F_{\\text{表面張力}/2}F_{\\text{慣性力}}}}\\\\[6pt]\n&=\\frac{\\mu vx}{\\sqrt{\\gamma x\\rho x^2v^2}}\\\\[6pt]\n&=\\frac{\\mu}{\\sqrt{\\gamma x\\rho}}\n\\end{aligned}\n\\]"
     }
   ]
 }

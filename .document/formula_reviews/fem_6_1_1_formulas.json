@@ -8,23 +8,23 @@
   "formulas": [
     {
       "image": "image002.png",
-      "latex": "\\[\n\\begin{aligned}\nS&=\\frac{1}{2}\\det\n\\begin{pmatrix}\n1&x_1&y_1\\\\\n1&x_2&y_2\\\\\n1&x_3&y_3\n\\end{pmatrix}\\\\\n&=\\frac{1}{2}\n(x_2y_3-y_2x_3-x_1y_3+x_1y_2+y_1x_3-y_1x_2)\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\nS&=\\frac{1}{2}\\det\n\\begin{pmatrix}\n1&x_1&y_1\\\\\n1&x_2&y_2\\\\\n1&x_3&y_3\n\\end{pmatrix}\\\\[6pt]\n&=\\frac{1}{2}\n(x_2y_3-y_2x_3-x_1y_3+x_1y_2+y_1x_3-y_1x_2)\n\\end{aligned}\n\\]"
     },
     {
       "image": "image003.png",
-      "latex": "\\[\n\\begin{aligned}\na_{11}&=1,\\ a_{12}=x_1,\\ a_{13}=y_1\\\\\na_{21}&=1,\\ a_{22}=x_2,\\ a_{23}=y_2\\\\\na_{31}&=1,\\ a_{32}=x_3,\\ a_{33}=y_3\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\na_{11}&=1,\\ a_{12}=x_1,\\ a_{13}=y_1\\\\[6pt]\na_{21}&=1,\\ a_{22}=x_2,\\ a_{23}=y_2\\\\[6pt]\na_{31}&=1,\\ a_{32}=x_3,\\ a_{33}=y_3\n\\end{aligned}\n\\]"
     },
     {
       "image": "image004.png",
-      "latex": "\\[\n\\begin{aligned}\nS_1&=\\frac{1}{2}\\det\n\\begin{pmatrix}\n1&x&y\\\\\n1&x_2&y_2\\\\\n1&x_3&y_3\n\\end{pmatrix}\\\\\n&=\\frac{1}{2}\n(x_2y_3-y_2x_3-xy_3+xy_2+yx_3-yx_2)\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\nS_1&=\\frac{1}{2}\\det\n\\begin{pmatrix}\n1&x&y\\\\\n1&x_2&y_2\\\\\n1&x_3&y_3\n\\end{pmatrix}\\\\[6pt]\n&=\\frac{1}{2}\n(x_2y_3-y_2x_3-xy_3+xy_2+yx_3-yx_2)\n\\end{aligned}\n\\]"
     },
     {
       "image": "image005.png",
-      "latex": "\\[\n\\begin{aligned}\nS_2&=\\frac{1}{2}\\det\n\\begin{pmatrix}\n1&x_1&y_1\\\\\n1&x&y\\\\\n1&x_3&y_3\n\\end{pmatrix}\\\\\n&=\\frac{1}{2}\n(xy_3-yx_3-x_1y_3+x_1y+y_1x_3-y_1x)\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\nS_2&=\\frac{1}{2}\\det\n\\begin{pmatrix}\n1&x_1&y_1\\\\\n1&x&y\\\\\n1&x_3&y_3\n\\end{pmatrix}\\\\[6pt]\n&=\\frac{1}{2}\n(xy_3-yx_3-x_1y_3+x_1y+y_1x_3-y_1x)\n\\end{aligned}\n\\]"
     },
     {
       "image": "image006.png",
-      "latex": "\\[\n\\begin{aligned}\nS_3&=\\frac{1}{2}\\det\n\\begin{pmatrix}\n1&x_1&y_1\\\\\n1&x_2&y_2\\\\\n1&x&y\n\\end{pmatrix}\\\\\n&=\\frac{1}{2}\n(x_2y-y_2x-x_1y+x_1y_2+y_1x-y_1x_2)\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\nS_3&=\\frac{1}{2}\\det\n\\begin{pmatrix}\n1&x_1&y_1\\\\\n1&x_2&y_2\\\\\n1&x&y\n\\end{pmatrix}\\\\[6pt]\n&=\\frac{1}{2}\n(x_2y-y_2x-x_1y+x_1y_2+y_1x-y_1x_2)\n\\end{aligned}\n\\]"
     }
   ]
 }

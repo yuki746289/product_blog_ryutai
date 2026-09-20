@@ -18,7 +18,7 @@
       "formulas": [
         {
           "image": "image002.png",
-          "latex": "\\[\n\\begin{aligned}\nq&=-k\\lim_{\\Delta x\\to 0}\\frac{T_2-T_1}{\\Delta x}\\\\\n&=-k\\frac{dT}{dx}\n\\end{aligned}\n\\]"
+          "latex": "\\[\n\\begin{aligned}\nq&=-k\\lim_{\\Delta x\\to 0}\\frac{T_2-T_1}{\\Delta x}\\\\[6pt]\n&=-k\\frac{dT}{dx}\n\\end{aligned}\n\\]"
         }
       ]
     },
@@ -62,11 +62,11 @@
       "formulas": [
         {
           "image": "image002.png",
-          "latex": "\\[\n\\begin{aligned}\nQ_{in}\n&=C_p(F_xT|_x+F_yT|_y+F_zT|_z)\\\\\n&=C_p\\left(\\rho\\Delta y\\Delta z\\,v_xT|_x+\\rho\\Delta z\\Delta x\\,v_yT|_y+\\rho\\Delta x\\Delta y\\,v_zT|_z\\right)\\\\\n&=\\rho C_p\\left(\\Delta y\\Delta z\\,v_xT|_x+\\Delta z\\Delta x\\,v_yT|_y+\\Delta x\\Delta y\\,v_zT|_z\\right)\n\\end{aligned}\n\\]"
+          "latex": "\\[\n\\begin{aligned}\nQ_{in}\n&=C_p(F_xT|_x+F_yT|_y+F_zT|_z)\\\\[6pt]\n&=C_p\\left(\\rho\\Delta y\\Delta z\\,v_xT|_x+\\rho\\Delta z\\Delta x\\,v_yT|_y+\\rho\\Delta x\\Delta y\\,v_zT|_z\\right)\\\\[6pt]\n&=\\rho C_p\\left(\\Delta y\\Delta z\\,v_xT|_x+\\Delta z\\Delta x\\,v_yT|_y+\\Delta x\\Delta y\\,v_zT|_z\\right)\n\\end{aligned}\n\\]"
         },
         {
           "image": "image003.png",
-          "latex": "\\[\n\\begin{aligned}\nQ_{out}\n&=-C_p(F_xT|_{x+\\Delta x}+F_yT|_{y+\\Delta y}+F_zT|_{z+\\Delta z})\\\\\n&=-C_p\\left(\\rho\\Delta y\\Delta z\\,v_xT|_{x+\\Delta x}+\\rho\\Delta z\\Delta x\\,v_yT|_{y+\\Delta y}+\\rho\\Delta x\\Delta y\\,v_zT|_{z+\\Delta z}\\right)\\\\\n&=-\\rho C_p\\left(\\Delta y\\Delta z\\,v_xT|_{x+\\Delta x}+\\Delta z\\Delta x\\,v_yT|_{y+\\Delta y}+\\Delta x\\Delta y\\,v_zT|_{z+\\Delta z}\\right)\n\\end{aligned}\n\\]"
+          "latex": "\\[\n\\begin{aligned}\nQ_{out}\n&=-C_p(F_xT|_{x+\\Delta x}+F_yT|_{y+\\Delta y}+F_zT|_{z+\\Delta z})\\\\[6pt]\n&=-C_p\\left(\\rho\\Delta y\\Delta z\\,v_xT|_{x+\\Delta x}+\\rho\\Delta z\\Delta x\\,v_yT|_{y+\\Delta y}+\\rho\\Delta x\\Delta y\\,v_zT|_{z+\\Delta z}\\right)\\\\[6pt]\n&=-\\rho C_p\\left(\\Delta y\\Delta z\\,v_xT|_{x+\\Delta x}+\\Delta z\\Delta x\\,v_yT|_{y+\\Delta y}+\\Delta x\\Delta y\\,v_zT|_{z+\\Delta z}\\right)\n\\end{aligned}\n\\]"
         }
       ]
     },
@@ -76,11 +76,11 @@
       "formulas": [
         {
           "image": "image002.png",
-          "latex": "\\[\n\\begin{aligned}\nQ_{in}\n&=\\Delta y\\Delta z\\,q_x+\\Delta z\\Delta x\\,q_y+\\Delta x\\Delta y\\,q_z\\\\\n&=-\\Delta y\\Delta z\\,k\\left.\\frac{dT}{dx}\\right|_x\n-\\Delta z\\Delta x\\,k\\left.\\frac{dT}{dy}\\right|_y\n-\\Delta x\\Delta y\\,k\\left.\\frac{dT}{dz}\\right|_z\n\\end{aligned}\n\\]"
+          "latex": "\\[\n\\begin{aligned}\nQ_{in}\n&=\\Delta y\\Delta z\\,q_x+\\Delta z\\Delta x\\,q_y+\\Delta x\\Delta y\\,q_z\\\\[6pt]\n&=-\\Delta y\\Delta z\\,k\\left.\\frac{dT}{dx}\\right|_x\n-\\Delta z\\Delta x\\,k\\left.\\frac{dT}{dy}\\right|_y\n-\\Delta x\\Delta y\\,k\\left.\\frac{dT}{dz}\\right|_z\n\\end{aligned}\n\\]"
         },
         {
           "image": "image003.png",
-          "latex": "\\[\n\\begin{aligned}\nQ_{out}\n&=-\\Delta y\\Delta z\\,q_{x+\\Delta x}\n-\\Delta z\\Delta x\\,q_{y+\\Delta y}\n-\\Delta x\\Delta y\\,q_{z+\\Delta z}\\\\\n&=\\Delta y\\Delta z\\,k\\left.\\frac{dT}{dx}\\right|_{x+\\Delta x}\n+\\Delta z\\Delta x\\,k\\left.\\frac{dT}{dy}\\right|_{y+\\Delta y}\n+\\Delta x\\Delta y\\,k\\left.\\frac{dT}{dz}\\right|_{z+\\Delta z}\n\\end{aligned}\n\\]"
+          "latex": "\\[\n\\begin{aligned}\nQ_{out}\n&=-\\Delta y\\Delta z\\,q_{x+\\Delta x}\n-\\Delta z\\Delta x\\,q_{y+\\Delta y}\n-\\Delta x\\Delta y\\,q_{z+\\Delta z}\\\\[6pt]\n&=\\Delta y\\Delta z\\,k\\left.\\frac{dT}{dx}\\right|_{x+\\Delta x}\n+\\Delta z\\Delta x\\,k\\left.\\frac{dT}{dy}\\right|_{y+\\Delta y}\n+\\Delta x\\Delta y\\,k\\left.\\frac{dT}{dz}\\right|_{z+\\Delta z}\n\\end{aligned}\n\\]"
         }
       ]
     },
@@ -98,7 +98,7 @@
         },
         {
           "image": "image004.png",
-          "latex": "\\[\n\\begin{aligned}\n&\\rho C_p\\frac{T_{t+\\Delta t}-T_t}{\\Delta t}\\\\\n&+\\rho C_p\\left(\n\\frac{v_x|_{x+\\Delta x}T|_{x+\\Delta x}-v_x|_xT|_x}{\\Delta x}\n\\right)\\\\\n&+\\rho C_p\\left(\n\\frac{v_y|_{y+\\Delta y}T|_{y+\\Delta y}-v_y|_yT|_y}{\\Delta y}\n\\right)\\\\\n&+\\rho C_p\\left(\n\\frac{v_z|_{z+\\Delta z}T|_{x+\\Delta x}-v_z|_zT|_z}{\\Delta z}\n\\right)\\\\\n&=k\\left(\n\\frac{\\left.\\frac{dT}{dx}\\right|_{x+\\Delta x}-\\left.\\frac{dT}{dx}\\right|_x}{\\Delta x}\n+\\frac{\\left.\\frac{dT}{dy}\\right|_{y+\\Delta y}-\\left.\\frac{dT}{dy}\\right|_y}{\\Delta y}\n+\\frac{\\left.\\frac{dT}{dz}\\right|_{z+\\Delta z}-\\left.\\frac{dT}{dz}\\right|_z}{\\Delta z}\n\\right)\n\\end{aligned}\n\\]"
+          "latex": "\\[\n\\begin{aligned}\n&\\rho C_p\\frac{T_{t+\\Delta t}-T_t}{\\Delta t}\\\\[6pt]\n&+\\rho C_p\\left(\n\\frac{v_x|_{x+\\Delta x}T|_{x+\\Delta x}-v_x|_xT|_x}{\\Delta x}\n\\right)\\\\[6pt]\n&+\\rho C_p\\left(\n\\frac{v_y|_{y+\\Delta y}T|_{y+\\Delta y}-v_y|_yT|_y}{\\Delta y}\n\\right)\\\\[6pt]\n&+\\rho C_p\\left(\n\\frac{v_z|_{z+\\Delta z}T|_{x+\\Delta x}-v_z|_zT|_z}{\\Delta z}\n\\right)\\\\[6pt]\n&=k\\left(\n\\frac{\\left.\\frac{dT}{dx}\\right|_{x+\\Delta x}-\\left.\\frac{dT}{dx}\\right|_x}{\\Delta x}\n+\\frac{\\left.\\frac{dT}{dy}\\right|_{y+\\Delta y}-\\left.\\frac{dT}{dy}\\right|_y}{\\Delta y}\n+\\frac{\\left.\\frac{dT}{dz}\\right|_{z+\\Delta z}-\\left.\\frac{dT}{dz}\\right|_z}{\\Delta z}\n\\right)\n\\end{aligned}\n\\]"
         },
         {
           "image": "image005.png",

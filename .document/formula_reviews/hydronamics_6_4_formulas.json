@@ -23,11 +23,11 @@
     },
     {
       "image": "image003.png",
-      "latex": "\\[\n\\begin{aligned}\n\\vec g&=\\vec\\delta_x g_x+\\vec\\delta_y g_y++\\vec\\delta_z g_z\\\\\n|\\vec g|&\\simeq 9.81\\,[\\mathrm{m/s^2}]\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\vec g&=\\vec\\delta_x g_x+\\vec\\delta_y g_y++\\vec\\delta_z g_z\\\\[6pt]\n|\\vec g|&\\simeq 9.81\\,[\\mathrm{m/s^2}]\n\\end{aligned}\n\\]"
     },
     {
       "image": "image004.png",
-      "latex": "\\[\n\\begin{aligned}\n[\\mathrm{m/s^2}]\n&=\\left[\\frac{\\mathrm{kg}\\cdot\\mathrm{m/s^2}}{\\mathrm{kg}}\\right]\\\\\n&=[\\mathrm{N/kg}]\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n[\\mathrm{m/s^2}]\n&=\\left[\\frac{\\mathrm{kg}\\cdot\\mathrm{m/s^2}}{\\mathrm{kg}}\\right]\\\\[6pt]\n&=[\\mathrm{N/kg}]\n\\end{aligned}\n\\]"
     },
     {
       "image": "image005.png",

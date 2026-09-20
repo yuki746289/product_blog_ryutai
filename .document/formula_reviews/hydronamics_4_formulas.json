@@ -11,19 +11,19 @@
   "formulas": [
     {
       "image": "image002.png",
-      "latex": "\\[\n\\begin{aligned}\nF_{x|x}&=\\rho\\Delta y\\Delta z\\,v_{x|x}\\\\\nF_{x|x+\\Delta x}&=-\\rho\\Delta y\\Delta z\\,v_{x|x+\\Delta x}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\nF_{x|x}&=\\rho\\Delta y\\Delta z\\,v_{x|x}\\\\[6pt]\nF_{x|x+\\Delta x}&=-\\rho\\Delta y\\Delta z\\,v_{x|x+\\Delta x}\n\\end{aligned}\n\\]"
     },
     {
       "image": "image003.png",
-      "latex": "\\[\n\\begin{aligned}\nF_{y|y}&=\\rho\\Delta z\\Delta x\\,v_{y|y}\\\\\nF_{y|y+\\Delta y}&=-\\rho\\Delta z\\Delta x\\,v_{y|y+\\Delta y}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\nF_{y|y}&=\\rho\\Delta z\\Delta x\\,v_{y|y}\\\\[6pt]\nF_{y|y+\\Delta y}&=-\\rho\\Delta z\\Delta x\\,v_{y|y+\\Delta y}\n\\end{aligned}\n\\]"
     },
     {
       "image": "image004.png",
-      "latex": "\\[\n\\begin{aligned}\nF_{z|z}&=\\rho\\Delta x\\Delta y\\,v_{z|z}\\\\\nF_{z|z+\\Delta z}&=-\\rho\\Delta x\\Delta y\\,v_{z|z+\\Delta z}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\nF_{z|z}&=\\rho\\Delta x\\Delta y\\,v_{z|z}\\\\[6pt]\nF_{z|z+\\Delta z}&=-\\rho\\Delta x\\Delta y\\,v_{z|z+\\Delta z}\n\\end{aligned}\n\\]"
     },
     {
       "image": "image005.png",
-      "latex": "\\[\n\\begin{aligned}\n\\Delta x\\Delta y\\Delta z\n\\frac{\\rho_{t|t+\\Delta t}-\\rho_{t|t}}{\\Delta t}\n&=F_{z|z+\\Delta z}+F_{z|z}\\\\\n&\\quad+F_{y|y+\\Delta y}+F_{y|y}\\\\\n&\\quad+F_{z|z+\\Delta z}+F_{z|z+\\Delta z}\\\\\n&=-\\rho\\Delta y\\Delta z\\,v_{x|x+\\Delta x}\n+\\rho\\Delta y\\Delta z\\,v_{x|x}\\\\\n&\\quad-\\rho\\Delta z\\Delta x\\,v_{y|y+\\Delta y}\n+\\rho\\Delta z\\Delta x\\,v_{y|y}\\\\\n&\\quad-\\rho\\Delta x\\Delta y\\,v_{z|z+\\Delta z}\n+\\rho\\Delta x\\Delta y\\,v_{z|z}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\Delta x\\Delta y\\Delta z\n\\frac{\\rho_{t|t+\\Delta t}-\\rho_{t|t}}{\\Delta t}\n&=F_{z|z+\\Delta z}+F_{z|z}\\\\[6pt]\n&\\quad+F_{y|y+\\Delta y}+F_{y|y}\\\\[6pt]\n&\\quad+F_{z|z+\\Delta z}+F_{z|z+\\Delta z}\\\\[6pt]\n&=-\\rho\\Delta y\\Delta z\\,v_{x|x+\\Delta x}\n+\\rho\\Delta y\\Delta z\\,v_{x|x}\\\\[6pt]\n&\\quad-\\rho\\Delta z\\Delta x\\,v_{y|y+\\Delta y}\n+\\rho\\Delta z\\Delta x\\,v_{y|y}\\\\[6pt]\n&\\quad-\\rho\\Delta x\\Delta y\\,v_{z|z+\\Delta z}\n+\\rho\\Delta x\\Delta y\\,v_{z|z}\n\\end{aligned}\n\\]"
     },
     {
       "image": "image006.png",

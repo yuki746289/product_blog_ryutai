@@ -14,12 +14,12 @@
   "formulas": [
     {
       "image": "image002.png",
-      "latex": "\\[\n\\begin{aligned}\nF_{|x}&=ma\\\\\n&=(w_x+w_y+w_z)\\Delta t\\left.\\frac{dv}{dt}\\right|_x\n\\qquad \\text{ここで、 }m=(w_x+w_y+w_z)\\Delta t\\\\\n&=(w_x+w_y+w_z)\\left.\\frac{dv}{dt}\\right|_x\\Delta t\\\\\n&=(w_x+w_y+w_z)v_{x|x}\n\\qquad \\text{ここで、 }v_x=\\left.\\frac{dv}{dt}\\right|_x\\Delta t\\\\\n&=\\rho\\left(\\Delta y\\Delta z\\,v_x+\\Delta z\\Delta x\\,v_y+\\Delta x\\Delta y\\,v_z\\right)v_{x|x}\n\\end{aligned}\n\\]",
+      "latex": "\\[\n\\begin{aligned}\nF_{|x}&=ma\\\\[6pt]\n&=(w_x+w_y+w_z)\\Delta t\\left.\\frac{dv}{dt}\\right|_x\n\\qquad \\text{ここで、 }m=(w_x+w_y+w_z)\\Delta t\\\\[6pt]\n&=(w_x+w_y+w_z)\\left.\\frac{dv}{dt}\\right|_x\\Delta t\\\\[6pt]\n&=(w_x+w_y+w_z)v_{x|x}\n\\qquad \\text{ここで、 }v_x=\\left.\\frac{dv}{dt}\\right|_x\\Delta t\\\\[6pt]\n&=\\rho\\left(\\Delta y\\Delta z\\,v_x+\\Delta z\\Delta x\\,v_y+\\Delta x\\Delta y\\,v_z\\right)v_{x|x}\n\\end{aligned}\n\\]",
       "kind": "mixed-text-math"
     },
     {
       "image": "image003.png",
-      "latex": "\\[\n\\begin{aligned}\nw_x&=\\rho\\Delta y\\Delta z\\,v_x\\\\\nw_y&=\\rho\\Delta z\\Delta x\\,v_y\\\\\nw_z&=\\rho\\Delta x\\Delta y\\,v_z\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\nw_x&=\\rho\\Delta y\\Delta z\\,v_x\\\\[6pt]\nw_y&=\\rho\\Delta z\\Delta x\\,v_y\\\\[6pt]\nw_z&=\\rho\\Delta x\\Delta y\\,v_z\n\\end{aligned}\n\\]"
     },
     {
       "image": "image004.png",

@@ -1,37 +1,40 @@
 {
-  "created_at":"2026-09-19T08:18:00+09:00",
-  "page":"mesh/mesh_5.html",
-  "image_dir":"img/mesh_deformation_tet.files",
-  "canonical_source":"original source images",
-  "retained_diagrams":["image001.png","image002.png"],
-  "formulas":[
+  "created_at": "2026-09-19T08:18:00+09:00",
+  "page": "mesh/mesh_5.html",
+  "image_dir": "img/mesh_deformation_tet.files",
+  "canonical_source": "original source images",
+  "retained_diagrams": [
+    "image001.png",
+    "image002.png"
+  ],
+  "formulas": [
     {
-      "image":"image003.png",
-      "latex":"\\[\\begin{aligned}x_g&=\\frac{1}{4}\\sum_{i=1}^{4}x_i\\\\y_g&=\\frac{1}{4}\\sum_{i=1}^{4}y_i\\\\z_g&=\\frac{1}{4}\\sum_{i=1}^{4}z_i\\end{aligned}\\]"
+      "image": "image003.png",
+      "latex": "\\[\\begin{aligned}x_g&=\\frac{1}{4}\\sum_{i=1}^{4}x_i\\\\[6pt]y_g&=\\frac{1}{4}\\sum_{i=1}^{4}y_i\\\\[6pt]z_g&=\\frac{1}{4}\\sum_{i=1}^{4}z_i\\end{aligned}\\]"
     },
     {
-      "image":"image004.png",
-      "latex":"\\[r_i=\\sqrt{(x_i-x_g)^2+(y_i-y_g)^2+(z_i-z_g)^2}\\]"
+      "image": "image004.png",
+      "latex": "\\[r_i=\\sqrt{(x_i-x_g)^2+(y_i-y_g)^2+(z_i-z_g)^2}\\]"
     },
     {
-      "image":"image005.png",
-      "latex":"\\[\\begin{aligned}dr^2&=\\sum_{i=1}^{4}(r_i-r)^2\\\\&=\\sum_{i=1}^{4}(r^2-2r_ir+r_i^2)\\\\&=\\sum_{i=1}^{4}r^2-\\sum_{i=1}^{4}2r_ir+\\sum_{i=1}^{4}r_i^2\\\\&=4r^2-2\\sum_{i=1}^{4}r_ir+\\sum_{i=1}^{4}r_i^2\\\\&=4r^2-2ar+b\\\\&=4\\left(r^2-\\frac{1}{2}ar+\\frac{b}{4}\\right)\\\\&=4\\left\\{\\left(r^2-\\frac{1}{2}ar+\\frac{1}{16}a^2\\right)-\\frac{1}{16}a^2+\\frac{b}{4}\\right\\}\\\\&=4\\left\\{\\left(r-\\frac{1}{4}a\\right)^2-\\frac{1}{16}a^2+\\frac{b}{4}\\right\\}\\\\&=4\\left\\{\\left(r-\\frac{1}{4}a\\right)^2-\\frac{1}{16}a^2+\\frac{b}{4}\\right\\}\\\\&=4\\left(r-\\frac{1}{4}a\\right)^2-\\frac{1}{4}a^2+b\\end{aligned}\\]"
+      "image": "image005.png",
+      "latex": "\\[\\begin{aligned}dr^2&=\\sum_{i=1}^{4}(r_i-r)^2\\\\[6pt]&=\\sum_{i=1}^{4}(r^2-2r_ir+r_i^2)\\\\[6pt]&=\\sum_{i=1}^{4}r^2-\\sum_{i=1}^{4}2r_ir+\\sum_{i=1}^{4}r_i^2\\\\[6pt]&=4r^2-2\\sum_{i=1}^{4}r_ir+\\sum_{i=1}^{4}r_i^2\\\\[6pt]&=4r^2-2ar+b\\\\[6pt]&=4\\left(r^2-\\frac{1}{2}ar+\\frac{b}{4}\\right)\\\\[6pt]&=4\\left\\{\\left(r^2-\\frac{1}{2}ar+\\frac{1}{16}a^2\\right)-\\frac{1}{16}a^2+\\frac{b}{4}\\right\\}\\\\[6pt]&=4\\left\\{\\left(r-\\frac{1}{4}a\\right)^2-\\frac{1}{16}a^2+\\frac{b}{4}\\right\\}\\\\[6pt]&=4\\left\\{\\left(r-\\frac{1}{4}a\\right)^2-\\frac{1}{16}a^2+\\frac{b}{4}\\right\\}\\\\[6pt]&=4\\left(r-\\frac{1}{4}a\\right)^2-\\frac{1}{4}a^2+b\\end{aligned}\\]"
     },
     {
-      "image":"image006.png",
-      "latex":"\\[\\begin{aligned}a&=\\sum_{i=1}^{4}r_i\\\\b&=\\sum_{i=1}^{4}r_i^2\\end{aligned}\\]"
+      "image": "image006.png",
+      "latex": "\\[\\begin{aligned}a&=\\sum_{i=1}^{4}r_i\\\\[6pt]b&=\\sum_{i=1}^{4}r_i^2\\end{aligned}\\]"
     },
     {
-      "image":"image007.png",
-      "latex":"\\[dr_{\\min}^{2}=b-\\left(\\frac{a}{2}\\right)^2\\qquad \\text{at }r_{\\min}=\\frac{a}{4}\\]"
+      "image": "image007.png",
+      "latex": "\\[dr_{\\min}^{2}=b-\\left(\\frac{a}{2}\\right)^2\\qquad \\text{at }r_{\\min}=\\frac{a}{4}\\]"
     },
     {
-      "image":"image008.png",
-      "latex":"\\[\\begin{aligned}dR_{\\min}^{2}&=\\frac{dr_{\\min}^{2}}{r_{\\min}^{2}}\\\\&=\\frac{b-(a/2)^2}{(a/4)^2}\\\\&=\\frac{16b-4a^2}{a^2}\\\\&=\\left(\\frac{2}{a}\\right)^2(4b-a^2)\\end{aligned}\\]"
+      "image": "image008.png",
+      "latex": "\\[\\begin{aligned}dR_{\\min}^{2}&=\\frac{dr_{\\min}^{2}}{r_{\\min}^{2}}\\\\[6pt]&=\\frac{b-(a/2)^2}{(a/4)^2}\\\\[6pt]&=\\frac{16b-4a^2}{a^2}\\\\[6pt]&=\\left(\\frac{2}{a}\\right)^2(4b-a^2)\\end{aligned}\\]"
     },
     {
-      "image":"image009.png",
-      "latex":"\\[\\begin{aligned}dR_{\\min}&=\\frac{2}{a}\\sqrt{4b-a^2}\\\\&=\\frac{2}{\\displaystyle\\sum_{i=1}^{4}r_i}\\sqrt{4\\sum_{i=1}^{4}r_i^2-\\left(\\sum_{i=1}^{4}r_i\\right)^2}\\end{aligned}\\]"
+      "image": "image009.png",
+      "latex": "\\[\\begin{aligned}dR_{\\min}&=\\frac{2}{a}\\sqrt{4b-a^2}\\\\[6pt]&=\\frac{2}{\\displaystyle\\sum_{i=1}^{4}r_i}\\sqrt{4\\sum_{i=1}^{4}r_i^2-\\left(\\sum_{i=1}^{4}r_i\\right)^2}\\end{aligned}\\]"
     }
   ]
 }

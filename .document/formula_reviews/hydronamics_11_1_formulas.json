@@ -6,7 +6,7 @@
   "formulas": [
     {
       "image": "image001.png",
-      "latex": "\\[\n\\begin{aligned}\nRe\n&=\\frac{F_{\\text{慣性力}}}{F_{\\text{粘性力}}}\\\\\n&=\\frac{\\rho x^2v^2}{\\mu vx}\\\\\n&=\\frac{\\rho xv}{\\mu}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\nRe\n&=\\frac{F_{\\text{慣性力}}}{F_{\\text{粘性力}}}\\\\[6pt]\n&=\\frac{\\rho x^2v^2}{\\mu vx}\\\\[6pt]\n&=\\frac{\\rho xv}{\\mu}\n\\end{aligned}\n\\]"
     }
   ]
 }

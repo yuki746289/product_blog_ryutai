@@ -6,31 +6,31 @@
   "formulas": [
     {
       "image": "image003.png",
-      "latex": "\\[\n\\left\\{\n\\begin{aligned}\nx&=r\\cos\\theta\\\\\ny&=r\\sin\\theta\\\\\nz&=z\n\\end{aligned}\n\\right.\n\\]"
+      "latex": "\\[\n\\left\\{\n\\begin{aligned}\nx&=r\\cos\\theta\\\\[6pt]\ny&=r\\sin\\theta\\\\[6pt]\nz&=z\n\\end{aligned}\n\\right.\n\\]"
     },
     {
       "image": "image005.png",
-      "latex": "\\[\n\\begin{aligned}\n\\vec{\\delta}_x&=\\vec{\\delta}_r(\\cos\\theta)+\\vec{\\delta}_\\theta(-\\sin\\theta)+\\vec{\\delta}_z(0)\\\\\n\\vec{\\delta}_y&=\\vec{\\delta}_r(\\sin\\theta)+\\vec{\\delta}_\\theta(\\cos\\theta)+\\vec{\\delta}_z(0)\\\\\n\\vec{\\delta}_z&=\\vec{\\delta}_r(0)+\\vec{\\delta}_\\theta(0)+\\vec{\\delta}_z(1)\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\vec{\\delta}_x&=\\vec{\\delta}_r(\\cos\\theta)+\\vec{\\delta}_\\theta(-\\sin\\theta)+\\vec{\\delta}_z(0)\\\\[6pt]\n\\vec{\\delta}_y&=\\vec{\\delta}_r(\\sin\\theta)+\\vec{\\delta}_\\theta(\\cos\\theta)+\\vec{\\delta}_z(0)\\\\[6pt]\n\\vec{\\delta}_z&=\\vec{\\delta}_r(0)+\\vec{\\delta}_\\theta(0)+\\vec{\\delta}_z(1)\n\\end{aligned}\n\\]"
     },
     {
       "image": "image006.png",
-      "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial}{\\partial x}\n&=(\\cos\\theta)\\frac{\\partial}{\\partial r}\n+\\left(\\frac{-\\sin\\theta}{r}\\right)\\frac{\\partial}{\\partial\\theta}\n+(0)\\frac{\\partial}{\\partial z}\\\\\n\\frac{\\partial}{\\partial y}\n&=(\\sin\\theta)\\frac{\\partial}{\\partial r}\n+\\left(\\frac{\\cos\\theta}{r}\\right)\\frac{\\partial}{\\partial\\theta}\n+(0)\\frac{\\partial}{\\partial z}\\\\\n\\frac{\\partial}{\\partial z}\n&=(0)\\frac{\\partial}{\\partial r}\n+(0)\\frac{\\partial}{\\partial\\theta}\n+(1)\\frac{\\partial}{\\partial z}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial}{\\partial x}\n&=(\\cos\\theta)\\frac{\\partial}{\\partial r}\n+\\left(\\frac{-\\sin\\theta}{r}\\right)\\frac{\\partial}{\\partial\\theta}\n+(0)\\frac{\\partial}{\\partial z}\\\\[6pt]\n\\frac{\\partial}{\\partial y}\n&=(\\sin\\theta)\\frac{\\partial}{\\partial r}\n+\\left(\\frac{\\cos\\theta}{r}\\right)\\frac{\\partial}{\\partial\\theta}\n+(0)\\frac{\\partial}{\\partial z}\\\\[6pt]\n\\frac{\\partial}{\\partial z}\n&=(0)\\frac{\\partial}{\\partial r}\n+(0)\\frac{\\partial}{\\partial\\theta}\n+(1)\\frac{\\partial}{\\partial z}\n\\end{aligned}\n\\]"
     },
     {
       "image": "image007.png",
-      "latex": "\\[\n\\left\\{\n\\begin{aligned}\nr&=+\\sqrt{x^2+y^2}\\\\\n\\theta&=\\tan^{-1}\\frac{y}{x}\\\\\nz&=z\n\\end{aligned}\n\\right.\n\\]"
+      "latex": "\\[\n\\left\\{\n\\begin{aligned}\nr&=+\\sqrt{x^2+y^2}\\\\[6pt]\n\\theta&=\\tan^{-1}\\frac{y}{x}\\\\[6pt]\nz&=z\n\\end{aligned}\n\\right.\n\\]"
     },
     {
       "image": "image008.png",
-      "latex": "\\[\n\\begin{aligned}\n\\vec{\\delta}_r&=\\vec{\\delta}_x(\\cos\\theta)+\\vec{\\delta}_y(\\sin\\theta)+\\vec{\\delta}_z(0)\\\\\n\\vec{\\delta}_\\theta&=\\vec{\\delta}_x(-\\sin\\theta)+\\vec{\\delta}_y(\\cos\\theta)+\\vec{\\delta}_z(0)\\\\\n\\vec{\\delta}_z&=\\vec{\\delta}_x(0)+\\vec{\\delta}_y(0)+\\vec{\\delta}_z(1)\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\vec{\\delta}_r&=\\vec{\\delta}_x(\\cos\\theta)+\\vec{\\delta}_y(\\sin\\theta)+\\vec{\\delta}_z(0)\\\\[6pt]\n\\vec{\\delta}_\\theta&=\\vec{\\delta}_x(-\\sin\\theta)+\\vec{\\delta}_y(\\cos\\theta)+\\vec{\\delta}_z(0)\\\\[6pt]\n\\vec{\\delta}_z&=\\vec{\\delta}_x(0)+\\vec{\\delta}_y(0)+\\vec{\\delta}_z(1)\n\\end{aligned}\n\\]"
     },
     {
       "image": "image009.png",
-      "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial}{\\partial r}\n&=(\\cos\\theta)\\frac{\\partial}{\\partial x}\n+(\\sin\\theta)\\frac{\\partial}{\\partial y}\n+(0)\\frac{\\partial}{\\partial z}\\\\\n\\frac{\\partial}{\\partial\\theta}\n&=(-r\\sin\\theta)\\frac{\\partial}{\\partial x}\n+(r\\cos\\theta)\\frac{\\partial}{\\partial y}\n+(0)\\frac{\\partial}{\\partial z}\\\\\n\\frac{\\partial}{\\partial z}\n&=(0)\\frac{\\partial}{\\partial x}\n+(0)\\frac{\\partial}{\\partial y}\n+(1)\\frac{\\partial}{\\partial z}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial}{\\partial r}\n&=(\\cos\\theta)\\frac{\\partial}{\\partial x}\n+(\\sin\\theta)\\frac{\\partial}{\\partial y}\n+(0)\\frac{\\partial}{\\partial z}\\\\[6pt]\n\\frac{\\partial}{\\partial\\theta}\n&=(-r\\sin\\theta)\\frac{\\partial}{\\partial x}\n+(r\\cos\\theta)\\frac{\\partial}{\\partial y}\n+(0)\\frac{\\partial}{\\partial z}\\\\[6pt]\n\\frac{\\partial}{\\partial z}\n&=(0)\\frac{\\partial}{\\partial x}\n+(0)\\frac{\\partial}{\\partial y}\n+(1)\\frac{\\partial}{\\partial z}\n\\end{aligned}\n\\]"
     },
     {
       "image": "image010.png",
-      "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial}{\\partial r}\\vec{\\delta}_r&=0,\\qquad\n\\frac{\\partial}{\\partial r}\\vec{\\delta}_\\theta=0,\\qquad\n\\frac{\\partial}{\\partial r}\\vec{\\delta}_z=0\\\\\n\\frac{\\partial}{\\partial\\theta}\\vec{\\delta}_r&=\\vec{\\delta}_\\theta,\\qquad\n\\frac{\\partial}{\\partial\\theta}\\vec{\\delta}_\\theta=-\\vec{\\delta}_r,\\qquad\n\\frac{\\partial}{\\partial\\theta}\\vec{\\delta}_z=0\\\\\n\\frac{\\partial}{\\partial z}\\vec{\\delta}_r&=0,\\qquad\n\\frac{\\partial}{\\partial z}\\vec{\\delta}_\\theta=0,\\qquad\n\\frac{\\partial}{\\partial z}\\vec{\\delta}_z=0\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial}{\\partial r}\\vec{\\delta}_r&=0,\\qquad\n\\frac{\\partial}{\\partial r}\\vec{\\delta}_\\theta=0,\\qquad\n\\frac{\\partial}{\\partial r}\\vec{\\delta}_z=0\\\\[6pt]\n\\frac{\\partial}{\\partial\\theta}\\vec{\\delta}_r&=\\vec{\\delta}_\\theta,\\qquad\n\\frac{\\partial}{\\partial\\theta}\\vec{\\delta}_\\theta=-\\vec{\\delta}_r,\\qquad\n\\frac{\\partial}{\\partial\\theta}\\vec{\\delta}_z=0\\\\[6pt]\n\\frac{\\partial}{\\partial z}\\vec{\\delta}_r&=0,\\qquad\n\\frac{\\partial}{\\partial z}\\vec{\\delta}_\\theta=0,\\qquad\n\\frac{\\partial}{\\partial z}\\vec{\\delta}_z=0\n\\end{aligned}\n\\]"
     },
     {
       "image": "image011.png",

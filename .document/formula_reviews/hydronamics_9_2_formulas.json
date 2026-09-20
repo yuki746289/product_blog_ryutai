@@ -14,15 +14,15 @@
   "formulas": [
     {
       "image": "image002.png",
-      "latex": "\\[\n\\begin{aligned}\n\\Delta\\alpha&\\simeq\\sin\\Delta\\alpha\\\\\n&=\\frac{\n\\frac{1}{\\sqrt{2}}\\frac{\\partial v_x}{\\partial x}\\Delta l\\Delta t\n-\\frac{1}{\\sqrt{2}}\\frac{\\partial v_y}{\\partial y}\\Delta l\\Delta t\n}{\n\\frac{1}{\\sqrt{2}}\\frac{\\partial v_y}{\\partial y}\\Delta l\\Delta t\n+\\sqrt{2}\\Delta l\n}\\\\\n&=\\frac{\n\\frac{\\partial v_x}{\\partial x}-\\frac{\\partial v_y}{\\partial y}\n}{\n\\frac{\\partial v_y}{\\partial y}+\\frac{2}{\\Delta t}\n}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\Delta\\alpha&\\simeq\\sin\\Delta\\alpha\\\\[6pt]\n&=\\frac{\n\\frac{1}{\\sqrt{2}}\\frac{\\partial v_x}{\\partial x}\\Delta l\\Delta t\n-\\frac{1}{\\sqrt{2}}\\frac{\\partial v_y}{\\partial y}\\Delta l\\Delta t\n}{\n\\frac{1}{\\sqrt{2}}\\frac{\\partial v_y}{\\partial y}\\Delta l\\Delta t\n+\\sqrt{2}\\Delta l\n}\\\\[6pt]\n&=\\frac{\n\\frac{\\partial v_x}{\\partial x}-\\frac{\\partial v_y}{\\partial y}\n}{\n\\frac{\\partial v_y}{\\partial y}+\\frac{2}{\\Delta t}\n}\n\\end{aligned}\n\\]"
     },
     {
       "image": "image003.png",
-      "latex": "\\[\n\\begin{aligned}\n\\gamma\n&=\\lim_{\\Delta t\\to0}\\frac{2\\Delta\\alpha}{\\Delta t}\\\\\n&=\\lim_{\\Delta t\\to0}\n2\\frac{\n\\frac{\\partial v_x}{\\partial x}-\\frac{\\partial v_y}{\\partial y}\n}{\n\\frac{\\partial v_y}{\\partial y}\\Delta t+2\n}\\\\\n&=\\frac{\\partial v_x}{\\partial x}-\\frac{\\partial v_y}{\\partial y}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\gamma\n&=\\lim_{\\Delta t\\to0}\\frac{2\\Delta\\alpha}{\\Delta t}\\\\[6pt]\n&=\\lim_{\\Delta t\\to0}\n2\\frac{\n\\frac{\\partial v_x}{\\partial x}-\\frac{\\partial v_y}{\\partial y}\n}{\n\\frac{\\partial v_y}{\\partial y}\\Delta t+2\n}\\\\[6pt]\n&=\\frac{\\partial v_x}{\\partial x}-\\frac{\\partial v_y}{\\partial y}\n\\end{aligned}\n\\]"
     },
     {
       "image": "image004.png",
-      "latex": "\\[\n\\begin{aligned}\n\\tau'_{xy}&=\\mu\\gamma\\\\\n&=\\mu\\left(\\frac{\\partial v_x}{\\partial x}-\\frac{\\partial v_y}{\\partial y}\\right)\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\tau'_{xy}&=\\mu\\gamma\\\\[6pt]\n&=\\mu\\left(\\frac{\\partial v_x}{\\partial x}-\\frac{\\partial v_y}{\\partial y}\\right)\n\\end{aligned}\n\\]"
     },
     {
       "image": "image005.png",
@@ -34,11 +34,11 @@
     },
     {
       "image": "image007.png",
-      "latex": "\\[\n\\begin{aligned}\n\\sigma_x-\\sigma_y&=2\\tau'_{xy}\\\\\n&=2\\mu\\left(\\frac{\\partial v_x}{\\partial x}-\\frac{\\partial v_y}{\\partial y}\\right)\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\sigma_x-\\sigma_y&=2\\tau'_{xy}\\\\[6pt]\n&=2\\mu\\left(\\frac{\\partial v_x}{\\partial x}-\\frac{\\partial v_y}{\\partial y}\\right)\n\\end{aligned}\n\\]"
     },
     {
       "image": "image008.png",
-      "latex": "\\[\n\\begin{aligned}\n\\sigma_y-\\sigma_z&=2\\mu\\left(\\frac{\\partial v_y}{\\partial y}-\\frac{\\partial v_z}{\\partial z}\\right)\\\\\n\\sigma_z-\\sigma_x&=2\\mu\\left(\\frac{\\partial v_z}{\\partial z}-\\frac{\\partial v_x}{\\partial x}\\right)\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\sigma_y-\\sigma_z&=2\\mu\\left(\\frac{\\partial v_y}{\\partial y}-\\frac{\\partial v_z}{\\partial z}\\right)\\\\[6pt]\n\\sigma_z-\\sigma_x&=2\\mu\\left(\\frac{\\partial v_z}{\\partial z}-\\frac{\\partial v_x}{\\partial x}\\right)\n\\end{aligned}\n\\]"
     },
     {
       "image": "image009.png",
@@ -46,7 +46,7 @@
     },
     {
       "image": "image010.png",
-      "latex": "\\[\n\\begin{aligned}\n\\sigma_x&=-p_x+2\\mu\\frac{\\partial v_x}{\\partial x}\n-\\frac{2}{3}\\mu(\\nabla\\cdot v)\\\\\n\\sigma_y&=-p_y+2\\mu\\frac{\\partial v_y}{\\partial y}\n-\\frac{2}{3}\\mu(\\nabla\\cdot v)\\\\\n\\sigma_z&=-p_z+2\\mu\\frac{\\partial v_z}{\\partial z}\n-\\frac{2}{3}\\mu(\\nabla\\cdot v)\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\sigma_x&=-p_x+2\\mu\\frac{\\partial v_x}{\\partial x}\n-\\frac{2}{3}\\mu(\\nabla\\cdot v)\\\\[6pt]\n\\sigma_y&=-p_y+2\\mu\\frac{\\partial v_y}{\\partial y}\n-\\frac{2}{3}\\mu(\\nabla\\cdot v)\\\\[6pt]\n\\sigma_z&=-p_z+2\\mu\\frac{\\partial v_z}{\\partial z}\n-\\frac{2}{3}\\mu(\\nabla\\cdot v)\n\\end{aligned}\n\\]"
     }
   ]
 }

@@ -13,11 +13,11 @@
     },
     {
       "image": "image003.png",
-      "latex": "\\[\n\\left\\{\n\\begin{aligned}\n\\phi_1&=\\alpha+\\beta x_1+\\gamma y_1+\\xi z_1\\\\\n\\phi_2&=\\alpha+\\beta x_2+\\gamma y_2+\\xi z_2\\\\\n\\phi_3&=\\alpha+\\beta x_3+\\gamma y_3+\\xi z_3\\\\\n\\phi_4&=\\alpha+\\beta x_4+\\gamma y_4+\\xi z_4\n\\end{aligned}\n\\right.\n\\]"
+      "latex": "\\[\n\\left\\{\n\\begin{aligned}\n\\phi_1&=\\alpha+\\beta x_1+\\gamma y_1+\\xi z_1\\\\[6pt]\n\\phi_2&=\\alpha+\\beta x_2+\\gamma y_2+\\xi z_2\\\\[6pt]\n\\phi_3&=\\alpha+\\beta x_3+\\gamma y_3+\\xi z_3\\\\[6pt]\n\\phi_4&=\\alpha+\\beta x_4+\\gamma y_4+\\xi z_4\n\\end{aligned}\n\\right.\n\\]"
     },
     {
       "image": "image004.png",
-      "latex": "\\[\n\\begin{aligned}\n\\phi(x,y)&=N_1\\phi_1+N_2\\phi_2+N_3\\phi_3+N_4\\phi_4\\\\\n&=L_1\\phi_1+L_2\\phi_2+L_3\\phi_3+L_4\\phi_4\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\phi(x,y)&=N_1\\phi_1+N_2\\phi_2+N_3\\phi_3+N_4\\phi_4\\\\[6pt]\n&=L_1\\phi_1+L_2\\phi_2+L_3\\phi_3+L_4\\phi_4\n\\end{aligned}\n\\]"
     },
     {
       "image": "image005.png",
@@ -25,7 +25,7 @@
     },
     {
       "image": "image006.png",
-      "latex": "\\[\n\\begin{aligned}\n&N_1=L_1,\\qquad N_2=L_2,\\qquad N_3=L_3,\\qquad N_4=L_4\\\\\n&N_1+N_2+N_3+N_4=1\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n&N_1=L_1,\\qquad N_2=L_2,\\qquad N_3=L_3,\\qquad N_4=L_4\\\\[6pt]\n&N_1+N_2+N_3+N_4=1\n\\end{aligned}\n\\]"
     }
   ]
 }

@@ -6,7 +6,7 @@
   "formulas": [
     {
       "image": "image001.png",
-      "latex": "\\[\n\\begin{aligned}\nFr\n&=\\sqrt{\\frac{F_{\\text{慣性力}}}{F_{\\text{重力}}}}\\\\\n&=\\sqrt{\\frac{\\rho x^2v^2}{\\rho x^3g}}\\\\\n&=\\sqrt{\\frac{v^2}{xg}}\\\\\n&=\\frac{v}{\\sqrt{xg}}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\nFr\n&=\\sqrt{\\frac{F_{\\text{慣性力}}}{F_{\\text{重力}}}}\\\\[6pt]\n&=\\sqrt{\\frac{\\rho x^2v^2}{\\rho x^3g}}\\\\[6pt]\n&=\\sqrt{\\frac{v^2}{xg}}\\\\[6pt]\n&=\\frac{v}{\\sqrt{xg}}\n\\end{aligned}\n\\]"
     }
   ]
 }

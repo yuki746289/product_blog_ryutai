@@ -24,12 +24,12 @@
         {
           "image": "image007.png",
           "type": "math",
-          "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial N_1}{\\partial x}\n&=\\frac{\\partial L_1}{\\partial x}\n=\\frac{\\partial(S_1/S)}{\\partial x}\n=\\frac{1}{S}\\frac{\\partial S_1}{\\partial x}\\\\\n&=\\frac{1}{S}\\frac{\\partial}{\\partial x}\\frac{1}{2}\n(x_2y_3-y_2x_3-xy_3+xy_2+yx_3-yx_2)\\\\\n&=\\frac{1}{2S}(-y_3+y_2)\n\\end{aligned}\n\\]"
+          "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial N_1}{\\partial x}\n&=\\frac{\\partial L_1}{\\partial x}\n=\\frac{\\partial(S_1/S)}{\\partial x}\n=\\frac{1}{S}\\frac{\\partial S_1}{\\partial x}\\\\[6pt]\n&=\\frac{1}{S}\\frac{\\partial}{\\partial x}\\frac{1}{2}\n(x_2y_3-y_2x_3-xy_3+xy_2+yx_3-yx_2)\\\\[6pt]\n&=\\frac{1}{2S}(-y_3+y_2)\n\\end{aligned}\n\\]"
         },
         {
           "image": "image008.png",
           "type": "math",
-          "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial N_1}{\\partial y}\n&=\\frac{\\partial L_1}{\\partial y}\n=\\frac{\\partial(S_1/S)}{\\partial y}\n=\\frac{1}{S}\\frac{\\partial S_1}{\\partial y}\\\\\n&=\\frac{1}{S}\\frac{\\partial}{\\partial y}\\frac{1}{2}\n(x_2y_3-y_2x_3-xy_3+xy_2+yx_3-yx_2)\\\\\n&=\\frac{1}{2S}(x_3-x_2)\n\\end{aligned}\n\\]"
+          "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial N_1}{\\partial y}\n&=\\frac{\\partial L_1}{\\partial y}\n=\\frac{\\partial(S_1/S)}{\\partial y}\n=\\frac{1}{S}\\frac{\\partial S_1}{\\partial y}\\\\[6pt]\n&=\\frac{1}{S}\\frac{\\partial}{\\partial y}\\frac{1}{2}\n(x_2y_3-y_2x_3-xy_3+xy_2+yx_3-yx_2)\\\\[6pt]\n&=\\frac{1}{2S}(x_3-x_2)\n\\end{aligned}\n\\]"
         }
       ]
     },
@@ -40,12 +40,12 @@
         {
           "image": "image009.png",
           "type": "math",
-          "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial N_2}{\\partial x}\n&=\\frac{\\partial L_2}{\\partial x}\n=\\frac{\\partial(S_2/S)}{\\partial x}\n=\\frac{1}{S}\\frac{\\partial S_2}{\\partial x}\\\\\n&=\\frac{1}{S}\\frac{\\partial}{\\partial x}\\frac{1}{2}\n(xy_3-yx_3-x_1y_3+x_1y+y_1x_3-y_1x)\\\\\n&=\\frac{1}{2S}(y_3-y_1)\n\\end{aligned}\n\\]"
+          "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial N_2}{\\partial x}\n&=\\frac{\\partial L_2}{\\partial x}\n=\\frac{\\partial(S_2/S)}{\\partial x}\n=\\frac{1}{S}\\frac{\\partial S_2}{\\partial x}\\\\[6pt]\n&=\\frac{1}{S}\\frac{\\partial}{\\partial x}\\frac{1}{2}\n(xy_3-yx_3-x_1y_3+x_1y+y_1x_3-y_1x)\\\\[6pt]\n&=\\frac{1}{2S}(y_3-y_1)\n\\end{aligned}\n\\]"
         },
         {
           "image": "image010.png",
           "type": "math",
-          "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial N_2}{\\partial y}\n&=\\frac{\\partial L_2}{\\partial y}\n=\\frac{\\partial(S_2/S)}{\\partial y}\n=\\frac{1}{S}\\frac{\\partial S_2}{\\partial y}\\\\\n&=\\frac{1}{S}\\frac{\\partial}{\\partial x}\\frac{1}{2}\n(xy_3-yx_3-x_1y_3+x_1y+y_1x_3-y_1x)\\\\\n&=\\frac{1}{2S}(-x_3+x_1)\n\\end{aligned}\n\\]"
+          "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial N_2}{\\partial y}\n&=\\frac{\\partial L_2}{\\partial y}\n=\\frac{\\partial(S_2/S)}{\\partial y}\n=\\frac{1}{S}\\frac{\\partial S_2}{\\partial y}\\\\[6pt]\n&=\\frac{1}{S}\\frac{\\partial}{\\partial x}\\frac{1}{2}\n(xy_3-yx_3-x_1y_3+x_1y+y_1x_3-y_1x)\\\\[6pt]\n&=\\frac{1}{2S}(-x_3+x_1)\n\\end{aligned}\n\\]"
         }
       ]
     },
@@ -56,12 +56,12 @@
         {
           "image": "image011.png",
           "type": "math",
-          "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial N_3}{\\partial x}\n&=\\frac{\\partial L_3}{\\partial x}\n=\\frac{\\partial(S_3/S)}{\\partial x}\n=\\frac{1}{S}\\frac{\\partial S_3}{\\partial x}\\\\\n&=\\frac{1}{S}\\frac{\\partial}{\\partial x}\\frac{1}{2}\n(x_2y-y_2x-x_1y+x_1y_2+y_1x-y_1x_2)\\\\\n&=\\frac{1}{2S}(-y_2+y_1)\n\\end{aligned}\n\\]"
+          "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial N_3}{\\partial x}\n&=\\frac{\\partial L_3}{\\partial x}\n=\\frac{\\partial(S_3/S)}{\\partial x}\n=\\frac{1}{S}\\frac{\\partial S_3}{\\partial x}\\\\[6pt]\n&=\\frac{1}{S}\\frac{\\partial}{\\partial x}\\frac{1}{2}\n(x_2y-y_2x-x_1y+x_1y_2+y_1x-y_1x_2)\\\\[6pt]\n&=\\frac{1}{2S}(-y_2+y_1)\n\\end{aligned}\n\\]"
         },
         {
           "image": "image012.png",
           "type": "math",
-          "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial N_3}{\\partial y}\n&=\\frac{\\partial L_3}{\\partial y}\n=\\frac{\\partial(S_3/S)}{\\partial y}\n=\\frac{1}{S}\\frac{\\partial S_3}{\\partial y}\\\\\n&=\\frac{1}{S}\\frac{\\partial}{\\partial x}\\frac{1}{2}\n(x_2y-y_2x-x_1y+x_1y_2+y_1x-y_1x_2)\\\\\n&=\\frac{1}{2S}(x_2-x_1)\n\\end{aligned}\n\\]"
+          "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial N_3}{\\partial y}\n&=\\frac{\\partial L_3}{\\partial y}\n=\\frac{\\partial(S_3/S)}{\\partial y}\n=\\frac{1}{S}\\frac{\\partial S_3}{\\partial y}\\\\[6pt]\n&=\\frac{1}{S}\\frac{\\partial}{\\partial x}\\frac{1}{2}\n(x_2y-y_2x-x_1y+x_1y_2+y_1x-y_1x_2)\\\\[6pt]\n&=\\frac{1}{2S}(x_2-x_1)\n\\end{aligned}\n\\]"
         }
       ]
     },

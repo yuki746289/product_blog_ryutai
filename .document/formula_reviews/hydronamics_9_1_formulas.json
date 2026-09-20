@@ -15,7 +15,7 @@
   "formulas": [
     {
       "image": "image002.png",
-      "latex": "\\[\n\\begin{aligned}\n\\gamma&=\\lim_{\\Delta x\\to0}\\frac{v_2-v_1}{\\Delta x}\\\\\n&=\\frac{dv}{dx}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\gamma&=\\lim_{\\Delta x\\to0}\\frac{v_2-v_1}{\\Delta x}\\\\[6pt]\n&=\\frac{dv}{dx}\n\\end{aligned}\n\\]"
     },
     {
       "image": "image003.png",
@@ -27,7 +27,7 @@
     },
     {
       "image": "image006.png",
-      "latex": "\\[\n\\begin{aligned}\n\\gamma&=\\lim_{\\Delta t\\to0}\\frac{\\Delta\\theta}{\\Delta t}\\\\\n&=\\frac{v}{r}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\gamma&=\\lim_{\\Delta t\\to0}\\frac{\\Delta\\theta}{\\Delta t}\\\\[6pt]\n&=\\frac{v}{r}\n\\end{aligned}\n\\]"
     }
   ]
 }

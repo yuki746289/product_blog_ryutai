@@ -12,15 +12,15 @@
     },
     {
       "image": "image011.png",
-      "latex": "\\[\n\\left\\{\n\\begin{aligned}\n\\phi_1&=\\alpha+\\beta x_1+\\gamma y_1+\\xi x_1^2+\\eta x_1y_1+\\zeta y_1^2\\\\\n\\phi_2&=\\alpha+\\beta x_2+\\gamma y_2+\\xi x_2^2+\\eta x_2y_2+\\zeta y_2^2\\\\\n\\phi_3&=\\alpha+\\beta x_3+\\gamma y_3+\\xi x_3^2+\\eta x_3y_3+\\zeta y_3^2\\\\\n\\phi_4&=\\alpha+\\beta x_4+\\gamma y_4+\\xi x_4^2+\\eta x_4y_4+\\zeta y_4^2\\\\\n\\phi_5&=\\alpha+\\beta x_5+\\gamma y_5+\\xi x_5^2+\\eta x_5y_5+\\zeta y_5^2\\\\\n\\phi_6&=\\alpha+\\beta x_6+\\gamma y_6+\\xi x_6^2+\\eta x_6y_6+\\zeta y_6^2\n\\end{aligned}\n\\right.\n\\]"
+      "latex": "\\[\n\\left\\{\n\\begin{aligned}\n\\phi_1&=\\alpha+\\beta x_1+\\gamma y_1+\\xi x_1^2+\\eta x_1y_1+\\zeta y_1^2\\\\[6pt]\n\\phi_2&=\\alpha+\\beta x_2+\\gamma y_2+\\xi x_2^2+\\eta x_2y_2+\\zeta y_2^2\\\\[6pt]\n\\phi_3&=\\alpha+\\beta x_3+\\gamma y_3+\\xi x_3^2+\\eta x_3y_3+\\zeta y_3^2\\\\[6pt]\n\\phi_4&=\\alpha+\\beta x_4+\\gamma y_4+\\xi x_4^2+\\eta x_4y_4+\\zeta y_4^2\\\\[6pt]\n\\phi_5&=\\alpha+\\beta x_5+\\gamma y_5+\\xi x_5^2+\\eta x_5y_5+\\zeta y_5^2\\\\[6pt]\n\\phi_6&=\\alpha+\\beta x_6+\\gamma y_6+\\xi x_6^2+\\eta x_6y_6+\\zeta y_6^2\n\\end{aligned}\n\\right.\n\\]"
     },
     {
       "image": "image012.png",
-      "latex": "\\[\n\\begin{aligned}\n\\phi(x,y)\n&=N_1\\phi_1+N_2\\phi_2+N_3\\phi_3+N_4\\phi_4+N_5\\phi_5+N_6\\phi_6\\\\\n&=L_1(2L_1-1)\\phi_1+L_2(2L_2-1)\\phi_2+L_3(2L_3-1)\\phi_3\\\\\n&\\quad+4L_1L_2\\phi_4+4L_2L_3\\phi_5+4L_3L_1\\phi_6\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\phi(x,y)\n&=N_1\\phi_1+N_2\\phi_2+N_3\\phi_3+N_4\\phi_4+N_5\\phi_5+N_6\\phi_6\\\\[6pt]\n&=L_1(2L_1-1)\\phi_1+L_2(2L_2-1)\\phi_2+L_3(2L_3-1)\\phi_3\\\\[6pt]\n&\\quad+4L_1L_2\\phi_4+4L_2L_3\\phi_5+4L_3L_1\\phi_6\n\\end{aligned}\n\\]"
     },
     {
       "image": "image013.png",
-      "latex": "\\[\n\\begin{aligned}\nN_1&=L_1(2L_1-1)\\\\\nN_2&=L_2(2L_2-1)\\\\\nN_3&=L_3(2L_3-1)\\\\\nN_4&=4L_1L_2\\\\\nN_5&=4L_2L_3\\\\\nN_6&=4L_3L_1\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\nN_1&=L_1(2L_1-1)\\\\[6pt]\nN_2&=L_2(2L_2-1)\\\\[6pt]\nN_3&=L_3(2L_3-1)\\\\[6pt]\nN_4&=4L_1L_2\\\\[6pt]\nN_5&=4L_2L_3\\\\[6pt]\nN_6&=4L_3L_1\n\\end{aligned}\n\\]"
     },
     {
       "image": "image014.png",

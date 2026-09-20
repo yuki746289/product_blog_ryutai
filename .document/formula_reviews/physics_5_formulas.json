@@ -18,7 +18,7 @@
     },
     {
       "image": "image004.png",
-      "latex": "\\[\n\\begin{aligned}\n\\nabla\n&=\\sum_{i=0}^{3}\\vec{\\delta}_{i}\\frac{\\partial}{\\partial x_i}\\\\\n&=\\vec{\\delta}_{x}\\frac{\\partial}{\\partial x}+\\vec{\\delta}_{y}\\frac{\\partial}{\\partial y}+\\vec{\\delta}_{z}\\frac{\\partial}{\\partial z}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\nabla\n&=\\sum_{i=0}^{3}\\vec{\\delta}_{i}\\frac{\\partial}{\\partial x_i}\\\\[6pt]\n&=\\vec{\\delta}_{x}\\frac{\\partial}{\\partial x}+\\vec{\\delta}_{y}\\frac{\\partial}{\\partial y}+\\vec{\\delta}_{z}\\frac{\\partial}{\\partial z}\n\\end{aligned}\n\\]"
     },
     {
       "image": "image001.png",
@@ -27,7 +27,7 @@
     },
     {
       "image": "image002.png",
-      "latex": "\\[\n\\begin{aligned}\n\\Delta\n&=\\sum_{i=0}^{3}\\frac{\\partial^2}{\\partial x_i^2}\\\\\n&=\\frac{\\partial^2}{\\partial x^2}+\\frac{\\partial^2}{\\partial y^2}+\\frac{\\partial^2}{\\partial z^2}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\Delta\n&=\\sum_{i=0}^{3}\\frac{\\partial^2}{\\partial x_i^2}\\\\[6pt]\n&=\\frac{\\partial^2}{\\partial x^2}+\\frac{\\partial^2}{\\partial y^2}+\\frac{\\partial^2}{\\partial z^2}\n\\end{aligned}\n\\]"
     }
   ]
 }

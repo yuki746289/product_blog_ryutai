@@ -20,11 +20,11 @@
   "formulas": [
     {
       "image": "image001.png",
-      "latex": "\\[\n\\begin{aligned}\nv\n&=\\lim_{\\Delta t\\to0}\\frac{l_{t+\\Delta t}-l_t}{\\Delta t}\\\\\n&=\\frac{dl}{dt}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\nv\n&=\\lim_{\\Delta t\\to0}\\frac{l_{t+\\Delta t}-l_t}{\\Delta t}\\\\[6pt]\n&=\\frac{dl}{dt}\n\\end{aligned}\n\\]"
     },
     {
       "image": "image002.png",
-      "latex": "\\[\n\\begin{aligned}\na\n&=\\lim_{\\Delta t\\to0}\\frac{v_{t+\\Delta t}-v_t}{\\Delta t}\\\\\n&=\\frac{dv}{dt}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\na\n&=\\lim_{\\Delta t\\to0}\\frac{v_{t+\\Delta t}-v_t}{\\Delta t}\\\\[6pt]\n&=\\frac{dv}{dt}\n\\end{aligned}\n\\]"
     },
     {
       "image": "image003.png",
@@ -38,15 +38,15 @@
     },
     {
       "image": "image005.png",
-      "latex": "\\[\n\\begin{aligned}\nF\n&=ma\\\\\n&=m\\frac{dv}{dt}\\\\\n&=\\lim_{\\Delta t\\to0}\\frac{mv_{t+\\Delta t}-mv_t}{\\Delta t}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\nF\n&=ma\\\\[6pt]\n&=m\\frac{dv}{dt}\\\\[6pt]\n&=\\lim_{\\Delta t\\to0}\\frac{mv_{t+\\Delta t}-mv_t}{\\Delta t}\n\\end{aligned}\n\\]"
     },
     {
       "image": "image008.png",
-      "latex": "\\[\n\\begin{aligned}\n\\int F\\,dt\n&=\\int m\\frac{dv}{dt}\\,dt\\\\\n&=m\\int dv\\\\\n&=m(v_f-v_i)\\,[\\mathrm{kgm/s}]\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\int F\\,dt\n&=\\int m\\frac{dv}{dt}\\,dt\\\\[6pt]\n&=m\\int dv\\\\[6pt]\n&=m(v_f-v_i)\\,[\\mathrm{kgm/s}]\n\\end{aligned}\n\\]"
     },
     {
       "image": "image011.png",
-      "latex": "\\[\n\\begin{aligned}\n\\int F\\,dl\n&=\\int F\\frac{dl}{dt}\\,dt\\\\\n&=\\int Fv\\,dt\\\\\n&=\\int m\\frac{dv}{dt}\\frac{dl}{dt}\\,dt\\\\\n&=\\int m\\frac{dl}{dt}\\,dv\\\\\n&=\\int mv\\,dv\\\\\n&=\\frac{1}{2}mv^2\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\int F\\,dl\n&=\\int F\\frac{dl}{dt}\\,dt\\\\[6pt]\n&=\\int Fv\\,dt\\\\[6pt]\n&=\\int m\\frac{dv}{dt}\\frac{dl}{dt}\\,dt\\\\[6pt]\n&=\\int m\\frac{dl}{dt}\\,dv\\\\[6pt]\n&=\\int mv\\,dv\\\\[6pt]\n&=\\frac{1}{2}mv^2\n\\end{aligned}\n\\]"
     }
   ]
 }

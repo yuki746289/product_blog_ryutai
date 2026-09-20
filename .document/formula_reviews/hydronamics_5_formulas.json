@@ -8,7 +8,7 @@
   "formulas": [
     {
       "image": "image002.png",
-      "latex": "\\[\n\\begin{aligned}\n\\tau\n&=\\mu\\lim_{\\Delta x\\to0}\\frac{v_2-v_1}{\\Delta x}\\\\\n&=\\mu\\frac{dv}{dx}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\tau\n&=\\mu\\lim_{\\Delta x\\to0}\\frac{v_2-v_1}{\\Delta x}\\\\[6pt]\n&=\\mu\\frac{dv}{dx}\n\\end{aligned}\n\\]"
     }
   ]
 }

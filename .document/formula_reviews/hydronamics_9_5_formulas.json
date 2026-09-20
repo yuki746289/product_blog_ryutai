@@ -19,23 +19,23 @@
   "formulas": [
     {
       "image": "image002.png",
-      "latex": "\\[\n\\begin{aligned}\n\\Delta\\alpha &\\cong \\tan\\Delta\\alpha\\\\\n&=\\frac{\\frac{\\partial v_y}{\\partial x}\\Delta x\\Delta t}\n{\\Delta x+\\frac{\\partial v_x}{\\partial x}\\Delta x\\Delta t}\\\\\n&=\\frac{\\frac{\\partial v_y}{\\partial x}}\n{\\frac{1}{\\Delta t}+\\frac{\\partial v_x}{\\partial x}}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\Delta\\alpha &\\cong \\tan\\Delta\\alpha\\\\[6pt]\n&=\\frac{\\frac{\\partial v_y}{\\partial x}\\Delta x\\Delta t}\n{\\Delta x+\\frac{\\partial v_x}{\\partial x}\\Delta x\\Delta t}\\\\[6pt]\n&=\\frac{\\frac{\\partial v_y}{\\partial x}}\n{\\frac{1}{\\Delta t}+\\frac{\\partial v_x}{\\partial x}}\n\\end{aligned}\n\\]"
     },
     {
       "image": "image003.png",
-      "latex": "\\[\n\\begin{aligned}\n\\Delta\\beta &\\cong \\tan\\Delta\\beta\\\\\n&=\\frac{\\frac{\\partial v_x}{\\partial y}\\Delta y\\Delta t}\n{\\Delta y+\\frac{\\partial v_y}{\\partial y}\\Delta y\\Delta t}\\\\\n&=\\frac{\\frac{\\partial v_x}{\\partial y}}\n{\\frac{1}{\\Delta t}+\\frac{\\partial v_y}{\\partial y}}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\Delta\\beta &\\cong \\tan\\Delta\\beta\\\\[6pt]\n&=\\frac{\\frac{\\partial v_x}{\\partial y}\\Delta y\\Delta t}\n{\\Delta y+\\frac{\\partial v_y}{\\partial y}\\Delta y\\Delta t}\\\\[6pt]\n&=\\frac{\\frac{\\partial v_x}{\\partial y}}\n{\\frac{1}{\\Delta t}+\\frac{\\partial v_y}{\\partial y}}\n\\end{aligned}\n\\]"
     },
     {
       "image": "image004.png",
-      "latex": "\\[\n\\begin{aligned}\n\\gamma_z\n&=\\lim_{\\Delta t\\to0}\\frac{\\Delta\\alpha+\\Delta\\beta}{\\Delta t}\\\\\n&=\\lim_{\\Delta t\\to0}\\frac{1}{\\Delta t}\n\\left(\n\\frac{\\frac{\\partial v_y}{\\partial x}}\n{\\frac{1}{\\Delta t}+\\frac{\\partial v_x}{\\partial x}}\n+\n\\frac{\\frac{\\partial v_x}{\\partial y}}\n{\\frac{1}{\\Delta t}+\\frac{\\partial v_y}{\\partial y}}\n\\right)\\\\\n&=\\lim_{\\Delta t\\to0}\n\\left(\n\\frac{\\frac{\\partial v_y}{\\partial x}}\n{1+\\frac{\\partial v_x}{\\partial x}\\Delta t}\n+\n\\frac{\\frac{\\partial v_x}{\\partial y}}\n{1+\\frac{\\partial v_y}{\\partial y}\\Delta t}\n\\right)\\\\\n&=\\frac{\\partial v_y}{\\partial x}+\\frac{\\partial v_x}{\\partial y}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\gamma_z\n&=\\lim_{\\Delta t\\to0}\\frac{\\Delta\\alpha+\\Delta\\beta}{\\Delta t}\\\\[6pt]\n&=\\lim_{\\Delta t\\to0}\\frac{1}{\\Delta t}\n\\left(\n\\frac{\\frac{\\partial v_y}{\\partial x}}\n{\\frac{1}{\\Delta t}+\\frac{\\partial v_x}{\\partial x}}\n+\n\\frac{\\frac{\\partial v_x}{\\partial y}}\n{\\frac{1}{\\Delta t}+\\frac{\\partial v_y}{\\partial y}}\n\\right)\\\\[6pt]\n&=\\lim_{\\Delta t\\to0}\n\\left(\n\\frac{\\frac{\\partial v_y}{\\partial x}}\n{1+\\frac{\\partial v_x}{\\partial x}\\Delta t}\n+\n\\frac{\\frac{\\partial v_x}{\\partial y}}\n{1+\\frac{\\partial v_y}{\\partial y}\\Delta t}\n\\right)\\\\[6pt]\n&=\\frac{\\partial v_y}{\\partial x}+\\frac{\\partial v_x}{\\partial y}\n\\end{aligned}\n\\]"
     },
     {
       "image": "image005.png",
-      "latex": "\\[\n\\begin{aligned}\n\\gamma_y&=\\frac{\\partial v_y}{\\partial z}+\\frac{\\partial v_z}{\\partial y}\\\\\n\\gamma_z&=\\frac{\\partial v_y}{\\partial z}+\\frac{\\partial v_z}{\\partial y}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\gamma_y&=\\frac{\\partial v_y}{\\partial z}+\\frac{\\partial v_z}{\\partial y}\\\\[6pt]\n\\gamma_z&=\\frac{\\partial v_y}{\\partial z}+\\frac{\\partial v_z}{\\partial y}\n\\end{aligned}\n\\]"
     },
     {
       "image": "image006.png",
-      "latex": "\\[\n\\begin{aligned}\n\\tau_{xy}&=\\tau_{yx}=-\\mu\\left(\\frac{\\partial v_x}{\\partial y}+\\frac{\\partial v_y}{\\partial x}\\right)\\\\\n\\tau_{yz}&=\\tau_{zx}=-\\mu\\left(\\frac{\\partial v_y}{\\partial z}+\\frac{\\partial v_z}{\\partial y}\\right)\\\\\n\\tau_{zx}&=\\tau_{yz}=-\\mu\\left(\\frac{\\partial v_z}{\\partial x}+\\frac{\\partial v_x}{\\partial z}\\right)\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\tau_{xy}&=\\tau_{yx}=-\\mu\\left(\\frac{\\partial v_x}{\\partial y}+\\frac{\\partial v_y}{\\partial x}\\right)\\\\[6pt]\n\\tau_{yz}&=\\tau_{zx}=-\\mu\\left(\\frac{\\partial v_y}{\\partial z}+\\frac{\\partial v_z}{\\partial y}\\right)\\\\[6pt]\n\\tau_{zx}&=\\tau_{yz}=-\\mu\\left(\\frac{\\partial v_z}{\\partial x}+\\frac{\\partial v_x}{\\partial z}\\right)\n\\end{aligned}\n\\]"
     }
   ]
 }
