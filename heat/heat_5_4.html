@@ -62,19 +62,19 @@
 \[
 \begin{aligned}
 \rho C_p\frac{T_{t+\Delta t}-T_t}{\Delta t}\Delta x\Delta y\Delta z
-={}&\rho C_p\left(
+&={}\rho C_p\left(
 \Delta y\Delta z\,v_xT|_x
 +\Delta z\Delta x\,v_yT|_y
 +\Delta x\Delta y\,v_zT|_z
-\right)\\
+\right)\\[6pt]
 &-\rho C_p\left(
 \Delta y\Delta z\,v_xT|_{x+\Delta x}
 +\Delta z\Delta x\,v_yT|_{y+\Delta y}
 +\Delta x\Delta y\,v_zT|_{z+\Delta z}
-\right)\\
+\right)\\[6pt]
 &-\Delta y\Delta z\,k\left.\frac{dT}{dx}\right|_x
 -\Delta z\Delta x\,k\left.\frac{dT}{dy}\right|_y
--\Delta x\Delta y\,k\left.\frac{dT}{dz}\right|_z\\
+-\Delta x\Delta y\,k\left.\frac{dT}{dz}\right|_z\\[6pt]
 &+\Delta y\Delta z\,k\left.\frac{dT}{dx}\right|_{x+\Delta x}
 +\Delta z\Delta x\,k\left.\frac{dT}{dy}\right|_{y+\Delta y}
 +\Delta x\Delta y\,k\left.\frac{dT}{dz}\right|_{z+\Delta z}
@@ -89,19 +89,19 @@
 \[
 \begin{aligned}
 \rho C_p\frac{T_{t+\Delta t}-T_t}{\Delta t}
-={}&\rho C_p\left(
+&={}\rho C_p\left(
 \frac{v_x|_xT|_x}{\Delta x}
 +\frac{v_y|_yT|_x}{\Delta y}
 +\frac{v_z|_zT|_x}{\Delta z}
-\right)\\
+\right)\\[6pt]
 &-\rho C_p\left(
 \frac{v_x|_{x+\Delta x}T|_{x+\Delta x}}{\Delta x}
 +\frac{v_y|_{y+\Delta y}T|_{x+\Delta x}}{\Delta y}
 +\frac{v_z|_{z+\Delta z}T|_{x+\Delta x}}{\Delta z}
-\right)\\
+\right)\\[6pt]
 &-k\frac{\left.\frac{dT}{dx}\right|_x}{\Delta x}
 -k\frac{\left.\frac{dT}{dx}\right|_y}{\Delta y}
--k\frac{\left.\frac{dT}{dx}\right|_z}{\Delta z}\\
+-k\frac{\left.\frac{dT}{dx}\right|_z}{\Delta z}\\[6pt]
 &+k\frac{\left.\frac{dT}{dx}\right|_{x+\Delta x}}{\Delta x}
 +k\frac{\left.\frac{dT}{dx}\right|_{y+\Delta y}}{\Delta y}
 +k\frac{\left.\frac{dT}{dx}\right|_{z+\Delta z}}{\Delta z}
