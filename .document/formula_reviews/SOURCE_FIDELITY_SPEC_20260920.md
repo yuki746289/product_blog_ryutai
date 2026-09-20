@@ -65,6 +65,13 @@ This is a presentation-fidelity rule and must not change formula content or sour
 - Mobile behavior remains fluid at 100% width.
 - Formula-local horizontal scrolling remains allowed only when the source-faithful formula still exceeds the available content width.
 
+## 3.3 Global formula block spacing
+
+- All display formula blocks use a common vertical outer spacing of **18pt above and 18pt below**.
+- The common rule is defined in `css/math.css`.
+- Legacy `<br>` immediately following a `.math-block` is suppressed so it does not add a second, page-specific gap.
+- This rule controls spacing between formulas and surrounding content. It does not alter source-defined internal formula row grouping or matrix/cases row spacing.
+
 ## 4. Character encoding policy
 
 Public text assets are standardized to **UTF-8**.
