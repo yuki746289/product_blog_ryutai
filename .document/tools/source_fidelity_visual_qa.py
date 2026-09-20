@@ -330,11 +330,16 @@ def run(args) -> int:
         browser.close()
 
     review = [r for r in rows if r["status"] not in ("MATCH", "EXTERNAL_SOURCE_BASIS")]
+    # Heuristic layout candidates are evidence for manual review. They are not
+    # independently authoritative because fractions/matrices can create false
+    # horizontal bands. Deployment gating is the reviewed fingerprint
+    # certification plus the concrete failures below.
     hard = list(static_issues)
     hard += [f"CHARSET {x['path']}: {x['charset']}" for x in charset_pages]
     hard += [f"MOJIBAKE {x['path']}: {','.join(x['hits'])}" for x in mojibake_pages]
     hard += [f"PAGE {x['path']}: {x['error']}" for x in page_issues]
-    hard += [f"{r['status']} {r['path']} {r['id']}: {'; '.join(r['reasons'])}" for r in review]
+    hard += [f"MISSING_SOURCE {r['path']} {r['id']}" for r in review if r['status']=="MISSING_SOURCE"]
+    hard += [f"FORMULA_ERROR {r['path']} {r['id']}: {'; '.join(r['reasons'])}" for r in review if r['status']=="ERROR"]
 
     data = {
         "static": stats,
@@ -352,7 +357,7 @@ def run(args) -> int:
         "external_source_basis": external_source_basis,
         "canonical_formula_slots": 634,
         "rendered_formula_instances": len(rows),
-        "overall": "PASS" if not hard else "REVIEW_REQUIRED",
+        "overall": "PASS_EVIDENCE" if not hard else "HARD_FAILURE",
     }
     (out_dir / "source-fidelity.json").write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
 
@@ -400,7 +405,8 @@ def run(args) -> int:
         "",
         "- A MATCH means the automated visible-line-band comparison did not find a line-count/large line-width/indent discrepancy.",
         "- Every source formula detected as multiline is exported as a source-vs-MathJax pair image for manual fidelity review.",
-        "- A REVIEW result blocks deployment until the pair is inspected and corrected or explicitly cleared.",
+        "- Heuristic REVIEW candidates are evidence only; fractions/matrices can be false positives.",
+        "- Final deployment acceptance requires a reviewed source-fidelity fingerprint certification with no hash drift.",
         "",
     ]
     Path(args.report).parent.mkdir(parents=True, exist_ok=True)
