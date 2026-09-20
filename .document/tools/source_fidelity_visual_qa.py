@@ -21,7 +21,10 @@ MOJIBAKE_PATTERNS = (
     "縺", "繧", "譁", # common UTF-8/legacy-Japanese mojibake fragments
 )
 LEGACY_CHARSET_RE = re.compile(r"(?:charset\s*=\s*|@charset\s+[\"'])(?:shift[_-]?jis|windows-31j|cp932)", re.I)
-ALIGNED_BLOCK_RE = re.compile(r"\\\\begin\\{aligned\\}([\\s\\S]*?)\\\\end\\{aligned\\}", re.I)\nLEGACY_OPERATOR_ALIGNMENT_RE = re.compile(r"=\\{\\}&")\n\nAUTO_LINEBREAK_RE = re.compile(r"displayOverflow\s*:\s*['\"]linebreak['\"]", re.I)
+ALIGNED_BLOCK_RE = re.compile(r"\\\\begin\\{aligned\\}([\\s\\S]*?)\\\\end\\{aligned\\}", re.I)
+LEGACY_OPERATOR_ALIGNMENT_RE = re.compile(r"=\\{\\}&")
+
+AUTO_LINEBREAK_RE = re.compile(r"displayOverflow\s*:\s*['\"]linebreak['\"]", re.I)
 EXPECTED_OVERFLOW_RE = re.compile(r"displayOverflow\s*:\s*['\"]overflow['\"]", re.I)
 INLINE_FALSE_RE = re.compile(r"linebreaks\s*:\s*\{[^}]*inline\s*:\s*false", re.I | re.S)
 
