@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "certification": "source-layout-and-content-reviewed",
-  "certified_at_utc": "2026-09-20T03:16:12.936357+00:00",
-  "certified_git_head": "b32a6998159321a50bc211dc0a2eda063d21e039",
+  "certified_at_utc": "2026-09-20T03:53:01.599739+00:00",
+  "certified_git_head": "91c1e27e3b802e308ebf524034b2728ba063d6d8",
   "canonical_formula_slots": 634,
   "rendered_formula_instances": 638,
   "review_basis": [
@@ -16,7 +16,7 @@
       "page": "appendix/appendix_1.html",
       "id": "formula-appendix-1-001",
       "data_source_image": "./../img/appendix_equation.files/image001.png",
-      "formula_sha256": "79f992010480c79f7a3cb3f7f17874bf4f8beb5ada4c48e86660ca441d853cba",
+      "formula_sha256": "c411f88058e4751f93eed22e3c8ee51b001a7608473561e02c30deaa9ed64b61",
       "source_basis": "original-image",
       "source_path": "img/appendix_equation.files/image001.png",
       "source_sha256": "43e0c393d6356b661197925a72c4a3d62b3940c7bcd725dcdddb7d6134be9a06"
@@ -25,7 +25,7 @@
       "page": "appendix/appendix_1.html",
       "id": "formula-appendix-1-002",
       "data_source_image": "./../img/appendix_equation.files/image002.png",
-      "formula_sha256": "88a23ac15826ac37d015dcc302be5060411cde954fddc6b4bd863f83e9e0e6a0",
+      "formula_sha256": "4b5c849c9c76f2dee0994d7980fb97cdf4ee332142e7f6ea35e272d771124923",
       "source_basis": "original-image",
       "source_path": "img/appendix_equation.files/image002.png",
       "source_sha256": "2eb2b14a5f803cf8a18c762a73c658e8fbac597c7ce2aeb2ed806270a3822614"
@@ -34,7 +34,7 @@
       "page": "appendix/appendix_1.html",
       "id": "formula-appendix-1-003",
       "data_source_image": "./../img/appendix_equation.files/image003.png",
-      "formula_sha256": "fa101d3c226c96c3eb77428631db19f9f049f184e0a206245170ed87bf2c1738",
+      "formula_sha256": "95099c6b2ef8595c961ef65b38228b38af3dd45bf9b1a3b63e8e12dbf43777f7",
       "source_basis": "original-image",
       "source_path": "img/appendix_equation.files/image003.png",
       "source_sha256": "373a2e9a5a8417e6298ebcd5d3cc56a971e7a34228d372d9106ba03f3ec4c3d5"
@@ -43,7 +43,7 @@
       "page": "appendix/appendix_1.html",
       "id": "formula-appendix-1-004",
       "data_source_image": "./../img/appendix_equation.files/image004.png",
-      "formula_sha256": "eabb2383206e0e1e3864e0d7f9eefebb00a520291c5b3f97ff09df70d5393889",
+      "formula_sha256": "513b7472845e9067912abb53ca17e896f20ef457d75c57bf786fe6809256a84f",
       "source_basis": "original-image",
       "source_path": "img/appendix_equation.files/image004.png",
       "source_sha256": "a1ece00c7d5fbd7b87c1dfc9d827eb7642d975899798841458cf6608a7f060db"
@@ -52,7 +52,7 @@
       "page": "appendix/appendix_1.html",
       "id": "formula-appendix-1-005",
       "data_source_image": "./../img/appendix_equation.files/image005.png",
-      "formula_sha256": "6d168e07f295adbdd046440206474d2a8a46603c7d061a08a6750ed057f8434d",
+      "formula_sha256": "7afa333fe775dd32560d2c2696c0561d3231f3d95892e833e24afaaee89c1252",
       "source_basis": "original-image",
       "source_path": "img/appendix_equation.files/image005.png",
       "source_sha256": "6bbcd4f421973e5cbb9137184cb1482d2a67086d9423e50f69e6b8cc6d8422a4"
@@ -70,7 +70,7 @@
       "page": "appendix/appendix_1.html",
       "id": "formula-appendix-1-007",
       "data_source_image": "./../img/appendix_equation.files/image007.png",
-      "formula_sha256": "fe29f5ad7766eaf887fec301034d4d6eb5bd340a3ba1e664cdcb2ee97b1829d9",
+      "formula_sha256": "3f588607d7d20870901a0ac21dac90dfe45d9edc338480c04c102fa08d55c6c3",
       "source_basis": "original-image",
       "source_path": "img/appendix_equation.files/image007.png",
       "source_sha256": "b50d5d9043646d5096b587fa90584e04ec1b7c914ce36ae359acd49f4941cf1b"
@@ -79,7 +79,7 @@
       "page": "appendix/appendix_1.html",
       "id": "formula-appendix-1-008",
       "data_source_image": "./../img/appendix_equation.files/image008.png",
-      "formula_sha256": "eabb2383206e0e1e3864e0d7f9eefebb00a520291c5b3f97ff09df70d5393889",
+      "formula_sha256": "513b7472845e9067912abb53ca17e896f20ef457d75c57bf786fe6809256a84f",
       "source_basis": "original-image",
       "source_path": "img/appendix_equation.files/image008.png",
       "source_sha256": "6e49a349eb213a153d6c6b64368d5456c2cc4425594acb4ad01acc74f6c3e301"
@@ -88,7 +88,7 @@
       "page": "appendix/appendix_1.html",
       "id": "formula-appendix-1-009",
       "data_source_image": "./../img/appendix_equation.files/image009.png",
-      "formula_sha256": "592a69fdc1facf6ef624d8576acbc98908ac58d94a3d387bb45fce5d7010dfaf",
+      "formula_sha256": "9c0d0fe21f2c8b9859985cc6af59e1e012dcde45aacd9c0052781f5cf18c98c7",
       "source_basis": "original-image",
       "source_path": "img/appendix_equation.files/image009.png",
       "source_sha256": "0f817eff24544ac9814a3ce736aed8b37fdeb63ea046e2cd7dc413bbcfa508ca"
@@ -106,7 +106,7 @@
       "page": "appendix/appendix_1.html",
       "id": "formula-appendix-1-011",
       "data_source_image": "./../img/appendix_equation.files/image011.png",
-      "formula_sha256": "a78c0ae5a6e6327b6fc850cfe10f5790f6a4a872bf9770a2cdf6ef8f729a3f5a",
+      "formula_sha256": "9ea1570dd9ecbfd7f869ca08cd17c40a43bfafb48e2545e8f73926e71635323b",
       "source_basis": "original-image",
       "source_path": "img/appendix_equation.files/image011.png",
       "source_sha256": "4642986b637c275f7fd65a6d09787b9676501b1793d6f07d3a2baeff14f41ea3"
@@ -115,7 +115,7 @@
       "page": "appendix/appendix_1.html",
       "id": "formula-appendix-1-012",
       "data_source_image": "./../img/appendix_equation.files/image012.png",
-      "formula_sha256": "04da2dc6b1126dcd6f36759b9ee032f4a8957a53eea45366a717514198c688a7",
+      "formula_sha256": "5de7485ecc10b009c5d399cd4112e230cc9cf10d78e1ba21e1fcc89eeb3cf14a",
       "source_basis": "original-image",
       "source_path": "img/appendix_equation.files/image012.png",
       "source_sha256": "a525fde807b704635a6e6013246631dbeed5e6b57e28c84652b344105d6ffd91"
@@ -124,7 +124,7 @@
       "page": "appendix/appendix_1.html",
       "id": "formula-appendix-1-013",
       "data_source_image": "./../img/appendix_equation.files/image013.png",
-      "formula_sha256": "1f3580c926d67d8b4fc374dc3ef214624788854efd320f23ad50c3f87b01d2b3",
+      "formula_sha256": "f6ce48d9d188a9f329bae8f9a45b75fe6c9aae4b26282bc774322aabb8cd772e",
       "source_basis": "original-image",
       "source_path": "img/appendix_equation.files/image013.png",
       "source_sha256": "6a84e4b54ee3f29512f52b0c5b417614593ad731db48e5504e938c881dcc9e88"
@@ -142,7 +142,7 @@
       "page": "appendix/appendix_2.html",
       "id": "formula-appendix-2-002",
       "data_source_image": "./../img/appendix_sphere.files/image002.png",
-      "formula_sha256": "9c508b24563322a4102c7a5735d38f6345701c2ac97a587d1e63621ad109222f",
+      "formula_sha256": "eac24ef150501203371ef93c847d4348d3801914774838ab68efcdb69eb0f525",
       "source_basis": "original-image",
       "source_path": "img/appendix_sphere.files/image002.png",
       "source_sha256": "052315016ce9f8ed0eee611cac3df9dfc6c5f6c843b5c600971190540d841877"
@@ -151,7 +151,7 @@
       "page": "appendix/appendix_2.html",
       "id": "formula-appendix-2-003",
       "data_source_image": "./../img/appendix_sphere.files/image003.png",
-      "formula_sha256": "ffe9cc42c4e4fb13e5586241db2651e4a549f4e7382531844bac0201d5cc3cb9",
+      "formula_sha256": "0f40ae7dcf9d27d5f487629607aa8f21b124719b940650dd81c59f222f3bf591",
       "source_basis": "original-image",
       "source_path": "img/appendix_sphere.files/image003.png",
       "source_sha256": "6798ca3d564fa2666132c3b85ff04a27b2b56f3c4d19e41881670a912b7d47a1"
@@ -160,7 +160,7 @@
       "page": "appendix/appendix_2.html",
       "id": "formula-appendix-2-004",
       "data_source_image": "./../img/appendix_sphere.files/image004.png",
-      "formula_sha256": "e3dcadef7d36292138c6b6ad570004c5aec158d41a5aa68dddbfa31c8161ed38",
+      "formula_sha256": "4d7f6a05171139243e671857cf5fcf014bf32e63e4b6cd00f56450fd64472490",
       "source_basis": "original-image",
       "source_path": "img/appendix_sphere.files/image004.png",
       "source_sha256": "6d18a2754f4c9e8225f55459cd1e30ce850fbceab339b36a6abdf95c64955161"
@@ -169,7 +169,7 @@
       "page": "appendix/appendix_2.html",
       "id": "formula-appendix-2-005",
       "data_source_image": "./../img/appendix_sphere.files/image005.png",
-      "formula_sha256": "edee3789f9505abf5d2d41b1bd2a84694459ba924fdf1b564a66fc54d1493754",
+      "formula_sha256": "f4c34410f55eb02e8fbc8b2833f77e6d356a75e377c4c1b728cb1b6f84e25720",
       "source_basis": "original-image",
       "source_path": "img/appendix_sphere.files/image005.png",
       "source_sha256": "f5c9c5a1bb6add942e32f096b38ffb7f1c4abac60f94244c0dc6eb6a036c93e3"
@@ -178,7 +178,7 @@
       "page": "appendix/appendix_2.html",
       "id": "formula-appendix-2-006",
       "data_source_image": "./../img/appendix_sphere.files/image006.png",
-      "formula_sha256": "79f992010480c79f7a3cb3f7f17874bf4f8beb5ada4c48e86660ca441d853cba",
+      "formula_sha256": "c411f88058e4751f93eed22e3c8ee51b001a7608473561e02c30deaa9ed64b61",
       "source_basis": "original-image",
       "source_path": "img/appendix_sphere.files/image006.png",
       "source_sha256": "aa941881052bd22102f3e0b61bd9a06c22f28731bb760f911e7751e6a6b31bd9"
@@ -187,7 +187,7 @@
       "page": "appendix/appendix_2.html",
       "id": "formula-appendix-2-007",
       "data_source_image": "./../img/appendix_sphere.files/image007.png",
-      "formula_sha256": "7438f6474e483f47d2458d7d3edad22f17b4b71631ce8ded282e9f45f2225d71",
+      "formula_sha256": "b91680c7323e740f7e65b17e20bac70936468cb8203c166874b06fcf2e619a08",
       "source_basis": "original-image",
       "source_path": "img/appendix_sphere.files/image007.png",
       "source_sha256": "9c5a1ffc2f501d7cad527a8224310617146556dd63e23b168426085a6ee71566"
@@ -196,7 +196,7 @@
       "page": "appendix/appendix_2.html",
       "id": "formula-appendix-2-008",
       "data_source_image": "./../img/appendix_sphere.files/image008.png",
-      "formula_sha256": "e7e627e1a7ff6384c7a0f64a973d85e14eb4172858c4db96c8710da98fe1af9f",
+      "formula_sha256": "4e8a2c8b9074a16213e86f452cd23405edac8a8f9b1eda86eb5d8a509670e9ff",
       "source_basis": "original-image",
       "source_path": "img/appendix_sphere.files/image008.png",
       "source_sha256": "37f8bd29da37e59a270134ef448ae7d09134cf7b28dd25a1b5d445b642ec7d46"
@@ -205,7 +205,7 @@
       "page": "appendix/appendix_2.html",
       "id": "formula-appendix-2-009",
       "data_source_image": "./../img/appendix_sphere.files/image009.png",
-      "formula_sha256": "0c6f4c8f9452116d77bb8c1c27d9af2c517667c31c3177d2dc2b392f5a4d7726",
+      "formula_sha256": "83395167e30314d209b98b542a241cad5b157318480e52e0eb5c8086acafa55c",
       "source_basis": "original-image",
       "source_path": "img/appendix_sphere.files/image009.png",
       "source_sha256": "3a0ac43274c55a694703da96b7d220e6b3dd218511304624028b634bcb1923ed"
@@ -214,7 +214,7 @@
       "page": "appendix/appendix_2.html",
       "id": "formula-appendix-2-010",
       "data_source_image": "./../img/appendix_sphere.files/image010.png",
-      "formula_sha256": "b2d4b872ec1503efa9c4ef589eff9dac457e214a885e391e7a79b57e279f10ed",
+      "formula_sha256": "ef0b52d957feae07c11ccfadccb7098224e94f0194eb21adfe67df6ebcd1c00a",
       "source_basis": "original-image",
       "source_path": "img/appendix_sphere.files/image010.png",
       "source_sha256": "5286009a9d59afdf3bd32e1cda2556af4281a50052872e4d73c4b06f6a4ebc9c"
@@ -223,7 +223,7 @@
       "page": "appendix/appendix_2.html",
       "id": "formula-appendix-2-011",
       "data_source_image": "./../img/appendix_sphere.files/image011.png",
-      "formula_sha256": "7d2c73e9b45dfc0d1642581b86e9c37db8d2c3aca49fe7d19682a39cf99ec1cd",
+      "formula_sha256": "00c973dbad5adf5b07f077ad4c0aec90969c02bdda75a0466134e5e296fe9882",
       "source_basis": "original-image",
       "source_path": "img/appendix_sphere.files/image011.png",
       "source_sha256": "731d8f77d44c4881384c8c43e2daa6aede0474c25d6220dbe83a19824f4e7cf2"
@@ -232,7 +232,7 @@
       "page": "appendix/appendix_2.html",
       "id": "formula-appendix-2-012",
       "data_source_image": "./../img/appendix_sphere.files/image012.png",
-      "formula_sha256": "d8568dee99c9391b1ecf820a8358955b8c9d516fa90ab8019efc6b6bb17046f7",
+      "formula_sha256": "6a1d42e2514e31edd13f98db1a9bfc07ecdfe41bdd791e08da0ab88ac6aa979b",
       "source_basis": "original-image",
       "source_path": "img/appendix_sphere.files/image012.png",
       "source_sha256": "1d8856f83309d13809e5c30d178f8de473d628f36b31d7244d9c14791b0dbb7f"
@@ -241,7 +241,7 @@
       "page": "appendix/appendix_3_1.html",
       "id": "formula-appendix-3-1-003",
       "data_source_image": "./../img/appendix_cord_r.files/image003.png",
-      "formula_sha256": "c32c5bde9953910b16ed2be4184e05dc7e08b5df5b3e00fee932f1dbfa97a890",
+      "formula_sha256": "3d02054be076631ba29a47993b4fef59cf59f068add71c35231fb4a5d6557a91",
       "source_basis": "original-image",
       "source_path": "img/appendix_cord_r.files/image003.png",
       "source_sha256": "ccc54c1504b9de655d475ef447068ed0533362e84b83cf742bbee8861ee7b578"
@@ -250,7 +250,7 @@
       "page": "appendix/appendix_3_1.html",
       "id": "formula-appendix-3-1-005",
       "data_source_image": "./../img/appendix_cord_r.files/image005.png",
-      "formula_sha256": "ef739d95e40a1e37c78b94d1c4a6d172dcdcb745f113a0f30c68f6e321b7c8f8",
+      "formula_sha256": "7c90d4b4f0f39d4b10310220c98000660d4ca11cae54a822d6453ba41e21c9bf",
       "source_basis": "original-image",
       "source_path": "img/appendix_cord_r.files/image005.png",
       "source_sha256": "8d1a1e36ff42779e7d36fd9cb25a69df1a38f3386d839da2cc1d1ffd1f649d7d"
@@ -259,7 +259,7 @@
       "page": "appendix/appendix_3_1.html",
       "id": "formula-appendix-3-1-006",
       "data_source_image": "./../img/appendix_cord_r.files/image006.png",
-      "formula_sha256": "064aed347cb6e999ca349946d1113c3ee9bd52f20cc92cc15154b7efddd8dbc2",
+      "formula_sha256": "b757f6dae5bf7347e1e2bb89bffd7c521b289c25bdf0b53dc29946ace5d1b5cf",
       "source_basis": "original-image",
       "source_path": "img/appendix_cord_r.files/image006.png",
       "source_sha256": "659b3de53e724920c2e236b7bf940f1ad1de903a5d2d69d278f7535a7a35c5c1"
@@ -268,7 +268,7 @@
       "page": "appendix/appendix_3_1.html",
       "id": "formula-appendix-3-1-007",
       "data_source_image": "./../img/appendix_cord_r.files/image007.png",
-      "formula_sha256": "599b0dc3e60e6bf8a6f2070961fa5a9cbc590220a77b49817043233146421ddb",
+      "formula_sha256": "f39bad29306a0d3925071c79844cd9c6d37b18e21a2531bf4ec39166bc37a24f",
       "source_basis": "original-image",
       "source_path": "img/appendix_cord_r.files/image007.png",
       "source_sha256": "c4f7219d72d0b63d7d67006204f1807682c74b239a00c579493348888146b36d"
@@ -277,7 +277,7 @@
       "page": "appendix/appendix_3_1.html",
       "id": "formula-appendix-3-1-008",
       "data_source_image": "./../img/appendix_cord_r.files/image008.png",
-      "formula_sha256": "8ac3e57b4802ec4610313bc9525b543d41efb2b28a4c0d48ff5945fa7d7f5725",
+      "formula_sha256": "755c0caaf0ad411f8888ef124fa5ca6ee3e0f0562291a63f7f91567f77ce19d4",
       "source_basis": "original-image",
       "source_path": "img/appendix_cord_r.files/image008.png",
       "source_sha256": "00a267ab283193c4c409924f0b6274710de8aae91d94f6c89a5c3d42e06c9146"
@@ -286,7 +286,7 @@
       "page": "appendix/appendix_3_1.html",
       "id": "formula-appendix-3-1-009",
       "data_source_image": "./../img/appendix_cord_r.files/image009.png",
-      "formula_sha256": "f885334719c21b50a84417d2d50de4925d0b16b3b927087cb14904db1df34573",
+      "formula_sha256": "d25bcc3673d037d3418319a71fddfa48c257facc9f4cf9bdc91c0ec404c344d6",
       "source_basis": "original-image",
       "source_path": "img/appendix_cord_r.files/image009.png",
       "source_sha256": "813d60e79954a80a01feb583f5e854081683ad4594a78f744f80b5858e68ebd3"
@@ -295,7 +295,7 @@
       "page": "appendix/appendix_3_1.html",
       "id": "formula-appendix-3-1-010",
       "data_source_image": "./../img/appendix_cord_r.files/image010.png",
-      "formula_sha256": "08e5267e67fb0a4a7d535c2655ca0dbe6405328dd8ca1231b1398acd7100be90",
+      "formula_sha256": "305836be41f8f7968a4183fc706ceb7e3eef1924402074eb62bd36d5b05dda54",
       "source_basis": "original-image",
       "source_path": "img/appendix_cord_r.files/image010.png",
       "source_sha256": "55adcbbf13e9b9003d314a991dcb0ec83106cc7bcd2c3e27fcb1135d39cc9e5e"
@@ -313,7 +313,7 @@
       "page": "appendix/appendix_3_2.html",
       "id": "formula-appendix-3-2-003",
       "data_source_image": "./../img/appendix_cord_s.files/image003.png",
-      "formula_sha256": "8ce629831999e1e80eb566e6269b2bdbcfdb6b5a24ab2bb08d5e131007c1f024",
+      "formula_sha256": "fd6ab3038d75fe3f470d6d27c024d14402bb6a7afc082f21b4546992e901e556",
       "source_basis": "original-image",
       "source_path": "img/appendix_cord_s.files/image003.png",
       "source_sha256": "b7b539950d1245e85363c0b04013bfebf469e520708d4a20036addb14dc4640d"
@@ -322,7 +322,7 @@
       "page": "appendix/appendix_3_2.html",
       "id": "formula-appendix-3-2-005",
       "data_source_image": "./../img/appendix_cord_s.files/image005.png",
-      "formula_sha256": "727de23956e48b1143fc16004c05fcf96c064a810c6e74204f4a95c86dc215d8",
+      "formula_sha256": "ef88d2ff6a78f43e230ca287ef929b40ad70d27cbaecee16c19c1700b3cdbd13",
       "source_basis": "original-image",
       "source_path": "img/appendix_cord_s.files/image005.png",
       "source_sha256": "9db65fcf60647fb35419b5e6c36b57232607bcf8caaf609d85eb49bcf560e1e8"
@@ -331,7 +331,7 @@
       "page": "appendix/appendix_3_2.html",
       "id": "formula-appendix-3-2-006",
       "data_source_image": "./../img/appendix_cord_s.files/image006.png",
-      "formula_sha256": "0ad3e35be11830c391b112be0eb1582e2aac38ff8498de7fd4ac74c58d769b67",
+      "formula_sha256": "1ada594c27c7448634ec36ea5f4b1cd12988431a72ab69f495f3e8113c7f873d",
       "source_basis": "original-image",
       "source_path": "img/appendix_cord_s.files/image006.png",
       "source_sha256": "2962c2a1c0dfbbb8f20d3f511b29cbb8bc0e449bfc19e96038a890c047294fb2"
@@ -340,7 +340,7 @@
       "page": "appendix/appendix_3_2.html",
       "id": "formula-appendix-3-2-007",
       "data_source_image": "./../img/appendix_cord_s.files/image007.png",
-      "formula_sha256": "947be338683ab5a8df6f8ef87adba83c53841e4e8dfe10e425767851b6edcafb",
+      "formula_sha256": "37ebcdeea18bb61248e6da2c79ddc31734a008f5e0f844b5f10b4bb4ce52222f",
       "source_basis": "original-image",
       "source_path": "img/appendix_cord_s.files/image007.png",
       "source_sha256": "8af8910e0214e7b47bf2bcfe3ae690364b50d49a352f17efb6191e76eaf094eb"
@@ -349,7 +349,7 @@
       "page": "appendix/appendix_3_2.html",
       "id": "formula-appendix-3-2-008",
       "data_source_image": "./../img/appendix_cord_s.files/image008.png",
-      "formula_sha256": "5782f4bec4d5a1ec067642bfa06f327dd2d2f0cd30efcdd74535e82c6ff52698",
+      "formula_sha256": "802a498290da60f200dd8f65082d0cfdea26aa93a20ad7ba88d2edaf8e6ec7d0",
       "source_basis": "original-image",
       "source_path": "img/appendix_cord_s.files/image008.png",
       "source_sha256": "601fae35349f584268bf05a70c7e3fae7276d58c3806d4cbb443c6eb676bcd41"
@@ -358,7 +358,7 @@
       "page": "appendix/appendix_3_2.html",
       "id": "formula-appendix-3-2-009",
       "data_source_image": "./../img/appendix_cord_s.files/image009.png",
-      "formula_sha256": "9cb07dac079d0258808cdc79b15429b153ddfb64574650455b1b7146454ebe92",
+      "formula_sha256": "2db97ce561fbd756581934431ca17dc9fb55b1c6419f6c435d683ab1d26f5cf2",
       "source_basis": "original-image",
       "source_path": "img/appendix_cord_s.files/image009.png",
       "source_sha256": "10fa6b8673f48a2e615189c99d1c573aeb117f123533645f2349ba23e2b97b45"
@@ -367,7 +367,7 @@
       "page": "appendix/appendix_3_2.html",
       "id": "formula-appendix-3-2-010",
       "data_source_image": "./../img/appendix_cord_s.files/image010.png",
-      "formula_sha256": "533de5100f60306ace9c5de6010a120e9fd54918f2818bfeaf2b90353300c5ac",
+      "formula_sha256": "f3b0317948d5e44e7fbff77126f51788801c502ba13c0fa4111081a49339d49e",
       "source_basis": "original-image",
       "source_path": "img/appendix_cord_s.files/image010.png",
       "source_sha256": "85646052dca22e24203e31d2e2d9de54ba930a5f5b95968a11fc58534ca37b42"
@@ -394,7 +394,7 @@
       "page": "column/column_2.html",
       "id": "formula-column-2-002",
       "data_source_image": "./../img/column_energy.files/image002.png",
-      "formula_sha256": "20c51112f2b1b3ad6c9d58f362eaa13d26db771a54e65df68d46253f6109ae96",
+      "formula_sha256": "da444bdf3150f31bf7fbd63aae9ed794f0b389118fb13860e6a55e6035d4483e",
       "source_basis": "original-image",
       "source_path": "img/column_energy.files/image002.png",
       "source_sha256": "3429c4c1b03fb7c89568db48fd7990f896fe82cb156eebbda8d91bacf6d295e9"
@@ -412,7 +412,7 @@
       "page": "column/column_2.html",
       "id": "formula-column-2-004",
       "data_source_image": "./../img/column_energy.files/image004.png",
-      "formula_sha256": "262c5d1dc21913f3fa0c5acf29601090d343ad78a1aeed232a115e81bd0ccc23",
+      "formula_sha256": "948d0cb83c263392d1f8a635827c43a846a8b0653c02fb5476797377170eeab6",
       "source_basis": "original-image",
       "source_path": "img/column_energy.files/image004.png",
       "source_sha256": "aef2a7959651685ee470f7dd5493a00f8b9d60904219c57523b366c2259b4b62"
@@ -421,7 +421,7 @@
       "page": "column/column_2.html",
       "id": "formula-column-2-005",
       "data_source_image": "./../img/column_energy.files/image005.png",
-      "formula_sha256": "1b40f80131561fcff1521f9122138761403b5d38ff38a49c934e54c826d82f08",
+      "formula_sha256": "a44fdddf6ba114e7731f4db23c87c247ae9ef693a6b3675e1b140e3914303366",
       "source_basis": "original-image",
       "source_path": "img/column_energy.files/image005.png",
       "source_sha256": "11c4ac37c92867871e96ae9da6d1c178e19d20e337a80e7e66452695e5d0e6b4"
@@ -430,7 +430,7 @@
       "page": "fem/fem_10.html",
       "id": "formula-fem_10-001",
       "data_source_image": "./../img/fem_d_matrix.files/image001.png",
-      "formula_sha256": "dd1a6538cb244022e06c446d0b69e9cfe6b2603416baa4bb3b1a2a4546c05629",
+      "formula_sha256": "86a942678477b15c3416db88369322979c3d4ddc6c189488b8105e96090b8706",
       "source_basis": "original-image",
       "source_path": "img/fem_d_matrix.files/image001.png",
       "source_sha256": "e201edb28ea1487803d0c3f0cc82241d52fad2c2e0b83e506c5478d1dcab9639"
@@ -439,7 +439,7 @@
       "page": "fem/fem_10.html",
       "id": "formula-fem_10-002",
       "data_source_image": "./../img/fem_d_matrix.files/image002.png",
-      "formula_sha256": "26c87f411b6571ff70406ad76da403daa716d42195f03fa1238e8ea731018a21",
+      "formula_sha256": "bef23e21118792b46ed1e8559ba475c6da0b4f9d551ccd577ae1003fc33f7d6a",
       "source_basis": "original-image",
       "source_path": "img/fem_d_matrix.files/image002.png",
       "source_sha256": "fbbd54c7a7bf54a07cc1a5d5e01fef89ae80953fddd537902a8b7547eeb4214e"
@@ -448,7 +448,7 @@
       "page": "fem/fem_10.html",
       "id": "formula-fem_10-003",
       "data_source_image": "./../img/fem_d_matrix.files/image003.png",
-      "formula_sha256": "03690cdff3bd6a655b91b78eba3157bcc0775bc57a9fd686d08214bd71f2bbc3",
+      "formula_sha256": "10819df34adce41080710c684ded5a8364c7eaa2bb7817ba279039760513b952",
       "source_basis": "original-image",
       "source_path": "img/fem_d_matrix.files/image003.png",
       "source_sha256": "50ceff6580120e0812b0b32e7dfea221740bc31374ad1ce27caf0e7236a53315"
@@ -457,7 +457,7 @@
       "page": "fem/fem_10.html",
       "id": "formula-fem_10-004",
       "data_source_image": "./../img/fem_d_matrix.files/image004.png",
-      "formula_sha256": "75bedcde644a61f10f08560694b08dda7494311e62097ac436d99c83532ee1f2",
+      "formula_sha256": "7412e3bb1226301238e5f437cc96ed73a844443906e9236bf2836d40aa4b82d6",
       "source_basis": "original-image",
       "source_path": "img/fem_d_matrix.files/image004.png",
       "source_sha256": "1becab40ba446fe6201fd5d17023da05c4df17a4fc91308e615458a900963c37"
@@ -466,7 +466,7 @@
       "page": "fem/fem_10.html",
       "id": "formula-fem_10-006",
       "data_source_image": "./../img/fem_d_matrix.files/image006.png",
-      "formula_sha256": "ec11732bae2b877b344adf22c5e811d6070e2ef2bfe020a1375b58dc3c4cb8f6",
+      "formula_sha256": "686c37848869d9c9bc83937b0e3d1e506d2279ce247be2ee9e02de304c2e4eb6",
       "source_basis": "original-image",
       "source_path": "img/fem_d_matrix.files/image006.png",
       "source_sha256": "68715d7649f44f2abb696c81a039b858bcc8e96973bf229440400567ff20895c"
@@ -484,7 +484,7 @@
       "page": "fem/fem_11_1.html",
       "id": "formula-fem_11_1-001",
       "data_source_image": "./../img/fem_m_gauss.files/image001.png",
-      "formula_sha256": "009c070be28a3f8c044c652d678e728058e786326375a113c54c6afa7efa30c4",
+      "formula_sha256": "99babb8acc7b46ffa4003d507dee5a2a9c6b69544b02c14498011a28f941a415",
       "source_basis": "original-image",
       "source_path": "img/fem_m_gauss.files/image001.png",
       "source_sha256": "0b54d136e8b6a6e3ae5063132775b96cb08e1b3987116f8eff6f4fe442906acf"
@@ -565,7 +565,7 @@
       "page": "fem/fem_11_1.html",
       "id": "formula-fem_11_1-010",
       "data_source_image": "./../img/fem_m_gauss.files/image010.png",
-      "formula_sha256": "8e7b91587e6984f2be232a24860bf935ba283ca474a02af14bb403713f053b2c",
+      "formula_sha256": "5e468810380ed71cf5ae768d0f3fa68fa412c6cd8e3a0467550781c2c3691720",
       "source_basis": "original-image",
       "source_path": "img/fem_m_gauss.files/image010.png",
       "source_sha256": "8639f5856c662feeca7c1ba47a220940dc1bbc17bdc48f1c5c8ba10bdc72865e"
@@ -592,7 +592,7 @@
       "page": "fem/fem_2_1.html",
       "id": "formula-fem_2_1-003",
       "data_source_image": "./../img/fem_tri.files/image003.png",
-      "formula_sha256": "de0324ab242273c70d2aa52112c771d61d3f524bc86c59ddfd6976fc8f0d7bb7",
+      "formula_sha256": "1727603861b8339b28ffa475d42491998a6832a8107808319c27a918d02e002c",
       "source_basis": "original-image",
       "source_path": "img/fem_tri.files/image003.png",
       "source_sha256": "20afe95f561ba5f685f50018e00a5be25d8377c8c1f3f69f21a3fa93e32d44f6"
@@ -601,7 +601,7 @@
       "page": "fem/fem_2_1.html",
       "id": "formula-fem_2_1-004",
       "data_source_image": "./../img/fem_tri.files/image004.png",
-      "formula_sha256": "27692a1f7e1f44c409aaa68cc61b576d5109b76ed38705d0b0ab126d4aa455c3",
+      "formula_sha256": "baf87b91ede42d7cb1dad081251ffe24a3acf77e3e30732db432176ab80b3b33",
       "source_basis": "original-image",
       "source_path": "img/fem_tri.files/image004.png",
       "source_sha256": "f7c7b91ed13e2977cedf70348e0b51debe616051887cb0471b78c943f96d9a72"
@@ -610,7 +610,7 @@
       "page": "fem/fem_2_1.html",
       "id": "formula-fem_2_1-005",
       "data_source_image": "./../img/fem_tri.files/image005.png",
-      "formula_sha256": "a0026b4d774fb742b3c92cfffa2260a746551d592087cf44d4ddfad0f0c9fad5",
+      "formula_sha256": "8586b6f2dbd4a42632f9139fbf1755a58cf889a01517c73891f0c21f101ff15d",
       "source_basis": "original-image",
       "source_path": "img/fem_tri.files/image005.png",
       "source_sha256": "9b3127a3cf4f3fb03db1c16ab59d1bf4f06c9a261c7d943b7bab82b1ba8ed106"
@@ -628,7 +628,7 @@
       "page": "fem/fem_2_1.html",
       "id": "formula-fem_2_1-007",
       "data_source_image": "./../img/fem_tri.files/image007.png",
-      "formula_sha256": "db29dbfaa0a313ecdbc7e450d63cb8c3429270a6ad719fc9bb3dd4419ceff416",
+      "formula_sha256": "2ac8804543639e5bab7871d57e561340c05975c0c64ac1e73b2dfca8909d918b",
       "source_basis": "original-image",
       "source_path": "img/fem_tri.files/image007.png",
       "source_sha256": "9afa0db98697d0caccfc072e08a6d4e44eec27d26c1d7067186daa00410a63b2"
@@ -646,7 +646,7 @@
       "page": "fem/fem_2_2.html",
       "id": "formula-fem-2-2-011",
       "data_source_image": "./../img/fem_tri.files/image011.png",
-      "formula_sha256": "5e689a64845a6aaae0e472e219b683205f632f6ccd8da98247f3af19fe296ee5",
+      "formula_sha256": "81fa7dafe9ff764955d9c727f9f7c8b556909ae44cf4645e153964506c126eca",
       "source_basis": "original-image",
       "source_path": "img/fem_tri.files/image011.png",
       "source_sha256": "6c77fd6475c85d564dc9bee4d0ada74473608e3a3ccf2376505c80d8d91efbcc"
@@ -655,7 +655,7 @@
       "page": "fem/fem_2_2.html",
       "id": "formula-fem-2-2-012",
       "data_source_image": "./../img/fem_tri.files/image012.png",
-      "formula_sha256": "9da5a18619f2df23db8e6af6a423a29ebb18322751f259edb853a3ec18f2a07a",
+      "formula_sha256": "08405f4e5074551da9e9a6727077aab2d67253bb86bfa5ddb907d3c4678ecde7",
       "source_basis": "original-image",
       "source_path": "img/fem_tri.files/image012.png",
       "source_sha256": "a82206cb756fb807e92fff44c0f92f4f1eeda6759405565e610411093e06b51f"
@@ -664,7 +664,7 @@
       "page": "fem/fem_2_2.html",
       "id": "formula-fem-2-2-013",
       "data_source_image": "./../img/fem_tri.files/image013.png",
-      "formula_sha256": "0be0c8575ea56c3dceb6875c93af0a52c8dc11702d03fed0e1d5f76b3f224782",
+      "formula_sha256": "de2ea1fa8e15b0229cfc0e6b89d5b08bfd4f0a65e4689b5cd0d00214f3306148",
       "source_basis": "original-image",
       "source_path": "img/fem_tri.files/image013.png",
       "source_sha256": "776f975f0dc0bd10b45cadefbd671c2f11309e7cf3212c02aff014355dda6734"
@@ -691,7 +691,7 @@
       "page": "fem/fem_2_3.html",
       "id": "formula-fem-2-3-003",
       "data_source_image": "./../img/fem_tet.files/image003.png",
-      "formula_sha256": "4a89edafc6ed0f6f785aaeed20b9259a04f9ba2e09a1e9fdea12ac1a88a96d15",
+      "formula_sha256": "27687fc4338c2dbefa4011e14eccde8e96a8e116e4096156a624e01797618fdd",
       "source_basis": "original-image",
       "source_path": "img/fem_tet.files/image003.png",
       "source_sha256": "1c2baffd62ef0c7830c773ca8cbf5a0682f9c5c2844e5c3b15ea8353bc301690"
@@ -700,7 +700,7 @@
       "page": "fem/fem_2_3.html",
       "id": "formula-fem-2-3-004",
       "data_source_image": "./../img/fem_tet.files/image004.png",
-      "formula_sha256": "a1dee7c39b633765432296de870701e6f89b74b24369b9030b89ff91a3817672",
+      "formula_sha256": "0d46161941623626e71ad61854d981d0ea6399c9d23cec4431e43fda3a6c0877",
       "source_basis": "original-image",
       "source_path": "img/fem_tet.files/image004.png",
       "source_sha256": "bec5d0e037a804340973c84a551ae4be2882c547613ad6e2f9a836c3303eccb4"
@@ -718,7 +718,7 @@
       "page": "fem/fem_2_3.html",
       "id": "formula-fem-2-3-006",
       "data_source_image": "./../img/fem_tet.files/image006.png",
-      "formula_sha256": "fc0166cf44daa43b1595f5b64011c9a331db993acc039f7802b4293bca5899ae",
+      "formula_sha256": "51e11aedb1500f0ef39150e5b979855633110be90664b6ec277c5622b6e5eea2",
       "source_basis": "original-image",
       "source_path": "img/fem_tet.files/image006.png",
       "source_sha256": "ce91c8171625e1ec0cb72e484c046bde1c7732bc6d0302598218ac051facb967"
@@ -763,7 +763,7 @@
       "page": "fem/fem_4.html",
       "id": "formula-fem-4-003",
       "data_source_image": "./../img/fem_tri_area.files/image003.png",
-      "formula_sha256": "9a2e9d2443b5c9a5aecf9f2ad5e97215d0d443a09345ccbba26976a48d0ce38b",
+      "formula_sha256": "e313a979614a7fec4c05e03710d1d8fba8972e6897b6f54d2f61c4c849c125af",
       "source_basis": "original-image",
       "source_path": "img/fem_tri_area.files/image003.png",
       "source_sha256": "9a6d9bbaae3dc06676983d88dcc50276e798dacee0c451a028dc9b8f3c412b78"
@@ -772,7 +772,7 @@
       "page": "fem/fem_4.html",
       "id": "formula-fem-4-004",
       "data_source_image": "./../img/fem_tri_area.files/image004.png",
-      "formula_sha256": "8161666c6b18de7dae20ca2a989e7e011191be3d412e53d09163a9b0c9fb147b",
+      "formula_sha256": "1e96c553cf377c7c30554271dab9b253b4e814f91cf4f3fd427cd470205da8d2",
       "source_basis": "original-image",
       "source_path": "img/fem_tri_area.files/image004.png",
       "source_sha256": "ae356dd167f4f78f1ed64822c334432e48ccf896964587f579e27d6fd3282297"
@@ -781,7 +781,7 @@
       "page": "fem/fem_4.html",
       "id": "formula-fem-4-005",
       "data_source_image": "./../img/fem_tri_area.files/image005.png",
-      "formula_sha256": "283aad72a440f9602ca67a154efff28eac68fe2c186d0188659426ac7aec48a7",
+      "formula_sha256": "91545ee04f04459a38984cf09b4ce1ce36cac7e586a9bdacab8fa700f6e030de",
       "source_basis": "original-image",
       "source_path": "img/fem_tri_area.files/image005.png",
       "source_sha256": "02d5e09fd8af976859229938a813fc1936ab3c5275548ad09ac524bc0f80ca99"
@@ -799,7 +799,7 @@
       "page": "fem/fem_5.html",
       "id": "formula-fem-5-003",
       "data_source_image": "./../img/fem_tet_vol.files/image003.png",
-      "formula_sha256": "845ecc839c84ee84651846798f0d37826d8f7fff1e8ccc0ef349533f41849d39",
+      "formula_sha256": "c4a5a9eead845628bdcc88a43259153c36373c8d7ce6336c1f730e19aafa2fe1",
       "source_basis": "original-image",
       "source_path": "img/fem_tet_vol.files/image003.png",
       "source_sha256": "2eaf1949bdba8020b13dc77627093da75ccad952165d3747ec7e76ffdf6d3e87"
@@ -808,7 +808,7 @@
       "page": "fem/fem_5.html",
       "id": "formula-fem-5-004",
       "data_source_image": "./../img/fem_tet_vol.files/image004.png",
-      "formula_sha256": "150e7d5c82df9ce1486c574ce27cf714f1f7081dee9adf1b6b3620ddb0fb3f0c",
+      "formula_sha256": "9c4635c72374a64e5ec8e4a396b4348610cb8037e9dc88e4cc703b230d87d9ba",
       "source_basis": "original-image",
       "source_path": "img/fem_tet_vol.files/image004.png",
       "source_sha256": "a4e0c20195a579d8381bc8321af5946b6fc728412e292069d8f0dfd44f1a955a"
@@ -817,7 +817,7 @@
       "page": "fem/fem_5.html",
       "id": "formula-fem-5-005",
       "data_source_image": "./../img/fem_tet_vol.files/image005.png",
-      "formula_sha256": "3c90d20d914e4a5784c0914e727f1671b4ca27104001341b064fa5acfb93f30d",
+      "formula_sha256": "4b8d6ebb950c64f7913c1c9ecabb3002a14ed39cee2c8e9a1aad3dfc01d2cfdd",
       "source_basis": "original-image",
       "source_path": "img/fem_tet_vol.files/image005.png",
       "source_sha256": "82c5e75ff2111ef1da38367a45fa5e375482770a427cc1b6272735834629da65"
@@ -826,7 +826,7 @@
       "page": "fem/fem_5.html",
       "id": "formula-fem-5-006",
       "data_source_image": "./../img/fem_tet_vol.files/image006.png",
-      "formula_sha256": "00a9994374ecef4413f5b3584c85ffb43f0ba5a5621fb9cbac35f6e3f2c25ef2",
+      "formula_sha256": "0da27a4745ecdf0f26b012ec263378c117daf3e84ae51ee9047e3626ef09737e",
       "source_basis": "original-image",
       "source_path": "img/fem_tet_vol.files/image006.png",
       "source_sha256": "58d1d4e73cef6ceaab518f0be0a0df3a72eeab1526a467e0e1278eb5bcb860ad"
@@ -835,7 +835,7 @@
       "page": "fem/fem_5.html",
       "id": "formula-fem-5-007",
       "data_source_image": "./../img/fem_tet_vol.files/image007.png",
-      "formula_sha256": "4653c4d8701c6ee23023f9c52793766e10bb508d63d9f357e05022ca2e097541",
+      "formula_sha256": "a4d056f64110dcc2bc6a9003393e33362aeff60848f230c9fb91e701bb3c657e",
       "source_basis": "original-image",
       "source_path": "img/fem_tet_vol.files/image007.png",
       "source_sha256": "498c9a4b5fc419352098731f5a709b4059b0e21197c4baae16ee81f90041dd88"
@@ -844,7 +844,7 @@
       "page": "fem/fem_6_1_1.html",
       "id": "formula-fem-6-1-1-002",
       "data_source_image": "./../img/fem_n_tri.files/image002.png",
-      "formula_sha256": "53ca7b887838a1052955051a81321eec0e65ef5a4762168cd5138687480c7255",
+      "formula_sha256": "9ec41836fda2c5fa504855a3857f6703cca62269a7b5ed9cc13bc31d54b83670",
       "source_basis": "original-image",
       "source_path": "img/fem_n_tri.files/image002.png",
       "source_sha256": "a4413b06ac8c9865a36a6d0e01a7f166a6af3c6eac03e0252ea4233a10fc167d"
@@ -853,7 +853,7 @@
       "page": "fem/fem_6_1_1.html",
       "id": "formula-fem-6-1-1-003",
       "data_source_image": "./../img/fem_n_tri.files/image003.png",
-      "formula_sha256": "66331f832e053779e3ddac396f9a743e0679af5498c7542810fce9246124f428",
+      "formula_sha256": "7920ccc944bab2fe7df82cd17464ea6b5ea6bee3c1a276d731dfe5518cb04d4f",
       "source_basis": "original-image",
       "source_path": "img/fem_n_tri.files/image003.png",
       "source_sha256": "24c1e0c39cae922c79cc3ae0a04f660a7a78266b07bef57946afe002d2862048"
@@ -862,7 +862,7 @@
       "page": "fem/fem_6_1_1.html",
       "id": "formula-fem-6-1-1-004",
       "data_source_image": "./../img/fem_n_tri.files/image004.png",
-      "formula_sha256": "d3f4e7f825e12723be9a2bdef7ded047b0546e28a6cda2af1d63faa9bf0863b9",
+      "formula_sha256": "74c6ad6abab4f234e6246d04552ce85715d6b1f77bb9c5f600856553f1f75ab6",
       "source_basis": "original-image",
       "source_path": "img/fem_n_tri.files/image004.png",
       "source_sha256": "8e9ec91c9ef63fa56b52567a52dffe975c7269cb44d7935d045903a05adf9746"
@@ -871,7 +871,7 @@
       "page": "fem/fem_6_1_1.html",
       "id": "formula-fem-6-1-1-005",
       "data_source_image": "./../img/fem_n_tri.files/image005.png",
-      "formula_sha256": "372b1d040cd9d8f3a8db8e31fd77ccb2c61ca597c1e7bba5aa4cb89c2f35170d",
+      "formula_sha256": "a923ee3492fadec1ceedb7036c02f7ca23e53ba7146a5a2c09433d0619cc47cd",
       "source_basis": "original-image",
       "source_path": "img/fem_n_tri.files/image005.png",
       "source_sha256": "2051a94799cf62f8f4f3d860f15a2b531448fb3273d24e9a4a117cec988735a2"
@@ -880,7 +880,7 @@
       "page": "fem/fem_6_1_1.html",
       "id": "formula-fem-6-1-1-006",
       "data_source_image": "./../img/fem_n_tri.files/image006.png",
-      "formula_sha256": "9a8518ff0b19061df801c576951bd22664b15a2f07b4400027baa86e5f66fd4e",
+      "formula_sha256": "c0a249e722563a42d3528fbeb271bfb80239007a26a4a9717a4c77fe4c2bfce3",
       "source_basis": "original-image",
       "source_path": "img/fem_n_tri.files/image006.png",
       "source_sha256": "03f43f324f0c169078d7d33507310c010b462f37a97bb56e1cc07030dbe2e26a"
@@ -889,7 +889,7 @@
       "page": "fem/fem_6_1_2.html",
       "id": "formula-fem_6_1_2-007",
       "data_source_image": "./../img/fem_n_tri.files/image007.png",
-      "formula_sha256": "70b1390d3b454dc7ead6c362828737f95961361d87237b76b32004b9e0d8cd84",
+      "formula_sha256": "23200e11afd2489934e7de79765bfa36df04c90ba21f63d1053878e0db4123d6",
       "source_basis": "original-image",
       "source_path": "img/fem_n_tri.files/image007.png",
       "source_sha256": "403be38885d958289e102440b157e1c3cbdab5bf1f0e2db97035b89bdc5f33b0"
@@ -898,7 +898,7 @@
       "page": "fem/fem_6_1_2.html",
       "id": "formula-fem_6_1_2-008",
       "data_source_image": "./../img/fem_n_tri.files/image008.png",
-      "formula_sha256": "bfef715885d8969e24235ae7a23435e1d1a79f516f18888dd626017dda9d00b6",
+      "formula_sha256": "84ea9cd57985efca86e78cc06f9496dc09b1f769397e1596c10d247f8e9f8389",
       "source_basis": "original-image",
       "source_path": "img/fem_n_tri.files/image008.png",
       "source_sha256": "49982eb1a3f1accc8d39a84c077d2908146e307099be30ccee00fa033a0f9f40"
@@ -907,7 +907,7 @@
       "page": "fem/fem_6_1_3.html",
       "id": "formula-fem_6_1_3-009",
       "data_source_image": "./../img/fem_n_tri.files/image009.png",
-      "formula_sha256": "a4ca4fbb1d86c5d7206935ee828dbcb674b081ea2b180ce45d8f24754c1e0d95",
+      "formula_sha256": "1a29d119378030715d69a97497f86bc8b11c98834e2b7431e8683191ae07cbc1",
       "source_basis": "original-image",
       "source_path": "img/fem_n_tri.files/image009.png",
       "source_sha256": "905614dd093eb0f748b44eb0f1df39da3323ca8e086be88d63ad763357933fd8"
@@ -916,7 +916,7 @@
       "page": "fem/fem_6_1_3.html",
       "id": "formula-fem_6_1_3-010",
       "data_source_image": "./../img/fem_n_tri.files/image010.png",
-      "formula_sha256": "0d18a27f383fe637a064284e7a49afa0c5d1d2b5fb80346184fa295af6ce5705",
+      "formula_sha256": "61342b1b755362f3a754293d63f9cad33c5ac1833d8c3da5dcf1e41d6af6ea35",
       "source_basis": "original-image",
       "source_path": "img/fem_n_tri.files/image010.png",
       "source_sha256": "fe967fc5851985e3921c4a60cfc16876ad7c453fd74f2a58167ddd88bd1e4c41"
@@ -925,7 +925,7 @@
       "page": "fem/fem_6_1_4.html",
       "id": "formula-fem_6_1_4-011",
       "data_source_image": "./../img/fem_n_tri.files/image011.png",
-      "formula_sha256": "f7e75a5a0c9802d94ff35d31be3ff3f2b6e134042b4c4d229204fc1e3a71a5c3",
+      "formula_sha256": "0d5e90e69ef982182cd6371b713c7e0dd22c8bf759406fb609bb4487e99e8933",
       "source_basis": "original-image",
       "source_path": "img/fem_n_tri.files/image011.png",
       "source_sha256": "07c3a56a7b65213228254903850f350cad5ccad61097740bd170e42cab5f47d2"
@@ -934,7 +934,7 @@
       "page": "fem/fem_6_1_4.html",
       "id": "formula-fem_6_1_4-012",
       "data_source_image": "./../img/fem_n_tri.files/image012.png",
-      "formula_sha256": "c628fa901eaca87866ef6469b663a468c94f1c6985ccdf82c74fb5294b533573",
+      "formula_sha256": "92a14c4384da35947d5f015e1a8bb486d2d1948c398edc3c9423303646f6f0ce",
       "source_basis": "original-image",
       "source_path": "img/fem_n_tri.files/image012.png",
       "source_sha256": "cabef7f27f82d52606fafd2ca7b826a21e4e5e35ac869406170533bb0ce64de0"
@@ -997,7 +997,7 @@
       "page": "fem/fem_6_2_1.html",
       "id": "formula-fem-6-2-1-002",
       "data_source_image": "./../img/fem_n_tet.files/image002.png",
-      "formula_sha256": "00a9994374ecef4413f5b3584c85ffb43f0ba5a5621fb9cbac35f6e3f2c25ef2",
+      "formula_sha256": "0da27a4745ecdf0f26b012ec263378c117daf3e84ae51ee9047e3626ef09737e",
       "source_basis": "original-image",
       "source_path": "img/fem_n_tet.files/image002.png",
       "source_sha256": "160627c0d61db81be4ee4e74f1074c104c359f43c8d1c3973fa05c750745d472"
@@ -1006,7 +1006,7 @@
       "page": "fem/fem_6_2_1.html",
       "id": "formula-fem-6-2-1-003",
       "data_source_image": "./../img/fem_n_tet.files/image003.png",
-      "formula_sha256": "4653c4d8701c6ee23023f9c52793766e10bb508d63d9f357e05022ca2e097541",
+      "formula_sha256": "a4d056f64110dcc2bc6a9003393e33362aeff60848f230c9fb91e701bb3c657e",
       "source_basis": "original-image",
       "source_path": "img/fem_n_tet.files/image003.png",
       "source_sha256": "84e700f9356dfb0724654620d5710f9d7f3c1cfa6ab3425f226a9c91d05deb3e"
@@ -1015,7 +1015,7 @@
       "page": "fem/fem_6_2_1.html",
       "id": "formula-fem-6-2-1-004",
       "data_source_image": "./../img/fem_n_tet.files/image004.png",
-      "formula_sha256": "faac2fc896a3bcce8ebe48d9a17a10c101a079d5e773a3774698f771d14ba66b",
+      "formula_sha256": "dd043c78ecd370fc9e0271617f2117ca3a542b737207a60ca39d0f0f9abecd1b",
       "source_basis": "original-image",
       "source_path": "img/fem_n_tet.files/image004.png",
       "source_sha256": "687cf7ad4ea312722e5454e2751fc4f909a5c1dad6ca7d47ac4d0af5d8ec1c3e"
@@ -1024,7 +1024,7 @@
       "page": "fem/fem_6_2_1.html",
       "id": "formula-fem-6-2-1-005",
       "data_source_image": "./../img/fem_n_tet.files/image005.png",
-      "formula_sha256": "946094fed54f53b37b3e092b7bb98860f09bd6b6be0ec478e9acf93df9a50fd6",
+      "formula_sha256": "7a7af404175dc4dddbd83bb73928a2376d57eb3db0a0eeb915db5e8c15066bb3",
       "source_basis": "original-image",
       "source_path": "img/fem_n_tet.files/image005.png",
       "source_sha256": "28bfbe31f9374930dfe732f8fa4347ffb45908541c85da819c1406015e9a706e"
@@ -1033,7 +1033,7 @@
       "page": "fem/fem_6_2_1.html",
       "id": "formula-fem-6-2-1-006",
       "data_source_image": "./../img/fem_n_tet.files/image006.png",
-      "formula_sha256": "a1029dd03cec5a873eb96241fb1144a5f64aea5ee7b6df707cfca9aab6381b77",
+      "formula_sha256": "fc388f1eb6448eea682cf0f1786e424f93a0dbf8334e724fe24939bc5e055285",
       "source_basis": "original-image",
       "source_path": "img/fem_n_tet.files/image006.png",
       "source_sha256": "c7c61af379cebf61fe1b98587d343f470848ce9636df74ef3d3018c6c8a6b5be"
@@ -1042,7 +1042,7 @@
       "page": "fem/fem_6_2_1.html",
       "id": "formula-fem-6-2-1-007",
       "data_source_image": "./../img/fem_n_tet.files/image007.png",
-      "formula_sha256": "06aecc9adbc6ecb8d504813efb41527c2106ce0d4f3f784d6b3e96fb8c3847fe",
+      "formula_sha256": "7b476204ea805f856e958f1d31c4ab241c922816a355af8d67eb71a418d6d829",
       "source_basis": "original-image",
       "source_path": "img/fem_n_tet.files/image007.png",
       "source_sha256": "8e8c29584cf15e45ec0e39185c2a95ac475348ebb0f84fc9a912a49eb7c06dc3"
@@ -1051,7 +1051,7 @@
       "page": "fem/fem_6_2_2.html",
       "id": "formula-fem-6-2-2-009",
       "data_source_image": "./../img/fem_n_tet.files/image009.png",
-      "formula_sha256": "2a6a1221b5c7eef46f40abcdeed2167c39bc6db906e2d49203064332af815036",
+      "formula_sha256": "dde43c2b51ced7c12ece4d3fc2951f794f00fdf1cce42765f1754c6ecbf2b14f",
       "source_basis": "original-image",
       "source_path": "img/fem_n_tet.files/image009.png",
       "source_sha256": "f8099e474ef4f4c2cca3fe442c67f4068b495414a4df89747735338a0a5d2f35"
@@ -1060,7 +1060,7 @@
       "page": "fem/fem_6_2_2.html",
       "id": "formula-fem-6-2-2-010",
       "data_source_image": "./../img/fem_n_tet.files/image010.png",
-      "formula_sha256": "91187b79dd361d5f8887bb691ac835514e8b3ef1347ad6a72796f468e3ba4896",
+      "formula_sha256": "e11e61cce245b8cd383bc854544b3627e4a7de23f2343b3258606703dd3a3e28",
       "source_basis": "original-image",
       "source_path": "img/fem_n_tet.files/image010.png",
       "source_sha256": "9aeb8dd636f39dde7f51dcfb404bbba693d8c3052bda7264368f44409d242afa"
@@ -1069,7 +1069,7 @@
       "page": "fem/fem_6_2_2.html",
       "id": "formula-fem-6-2-2-011",
       "data_source_image": "./../img/fem_n_tet.files/image011.png",
-      "formula_sha256": "9229a07b29771769719f3d1a43adc5f1aff1b7d9f8f51318282bf9f15a791d3d",
+      "formula_sha256": "05fbb193437fb2ca70b0543e94d9b5e651ec8ffcf9a6d9581b0516da7c442eba",
       "source_basis": "original-image",
       "source_path": "img/fem_n_tet.files/image011.png",
       "source_sha256": "16f29950d87770dbbd5bdebd2b9ffe4fafcd2de4ecb06419877fb469bc5ebde3"
@@ -1078,7 +1078,7 @@
       "page": "fem/fem_6_2_3.html",
       "id": "formula-fem-6-2-3-012",
       "data_source_image": "./../img/fem_n_tet.files/image012.png",
-      "formula_sha256": "1428b3c60ca43ecaaebaa7ed48db08f6536832652e3cd3df0d20a1693f6ea97c",
+      "formula_sha256": "1d4a29599022844433eaaf5af61704e621c3df6855d7cf68adf51ef56bcfb5df",
       "source_basis": "original-image",
       "source_path": "img/fem_n_tet.files/image012.png",
       "source_sha256": "88691c3b67e8a18c148a5efeb5d77a23efdecd7a8c14bb3e86e33676954f57f2"
@@ -1087,7 +1087,7 @@
       "page": "fem/fem_6_2_3.html",
       "id": "formula-fem-6-2-3-013",
       "data_source_image": "./../img/fem_n_tet.files/image013.png",
-      "formula_sha256": "41f7bc58ea27efe9381ecf715fbda85f25a565c7277dba63e74610f2f809daab",
+      "formula_sha256": "1c5b1a3dc154cc2b9199a92394731ac4e11a903c6486d2b90c73b9ede8cfd4b8",
       "source_basis": "original-image",
       "source_path": "img/fem_n_tet.files/image013.png",
       "source_sha256": "7f80b1ac1cb2ceaf30777cef18f75e7a29936ede395cf6d4ee8c803ae7ce0b14"
@@ -1096,7 +1096,7 @@
       "page": "fem/fem_6_2_3.html",
       "id": "formula-fem-6-2-3-014",
       "data_source_image": "./../img/fem_n_tet.files/image014.png",
-      "formula_sha256": "b4dd068274013f96e9c4d05f8165ac4d338c6ddbb041c2e18f1c36478df54e33",
+      "formula_sha256": "c52acf7c01604c9f0fe4f5f08d5d4bf0f6b67000809b4a543c07c902b1275a38",
       "source_basis": "original-image",
       "source_path": "img/fem_n_tet.files/image014.png",
       "source_sha256": "a5aa99c202d47715d16d159b1167832b927705c7ee1c3cae1524283ab0c831eb"
@@ -1105,7 +1105,7 @@
       "page": "fem/fem_6_2_4.html",
       "id": "formula-fem-6-2-4-015",
       "data_source_image": "./../img/fem_n_tet.files/image015.png",
-      "formula_sha256": "194222ca8b8a90b53ca0a6e02e1f58b8f3d66d996c7b07f28a6a1d0582187c69",
+      "formula_sha256": "05d4eb4803b1fc844ac9abaad18acd2a53c1cfa2ebaabf0860fd47f3692ed34a",
       "source_basis": "original-image",
       "source_path": "img/fem_n_tet.files/image015.png",
       "source_sha256": "ff954d565fb9199e96e95d9a7802d854c26627a2068eb81ea46805462697762c"
@@ -1114,7 +1114,7 @@
       "page": "fem/fem_6_2_4.html",
       "id": "formula-fem-6-2-4-016",
       "data_source_image": "./../img/fem_n_tet.files/image016.png",
-      "formula_sha256": "3cb294d9382ce931d30b0efab4470597236e7b36b4500d239f1e2a825c1e5253",
+      "formula_sha256": "47bd9663f40122f646897aaee4ce5d6840bd6b718e23ac8161ba1e11fbbad568",
       "source_basis": "original-image",
       "source_path": "img/fem_n_tet.files/image016.png",
       "source_sha256": "05919d20544657a79dc5091cac795305e5d512baeb5b6bc4bc3682b3203f8acb"
@@ -1123,7 +1123,7 @@
       "page": "fem/fem_6_2_4.html",
       "id": "formula-fem-6-2-4-017",
       "data_source_image": "./../img/fem_n_tet.files/image017.png",
-      "formula_sha256": "c26fdd3230d6e02bcffb1abaebbd51dd3c9b09a5ca697f0b20b8a9a32e196564",
+      "formula_sha256": "eb57751f544013105134585f4fcb4d82da4685826cb936f00658cfbad34d4605",
       "source_basis": "original-image",
       "source_path": "img/fem_n_tet.files/image017.png",
       "source_sha256": "5810fb0cfa023fe696a9a21c166067be5f7ecad96133342b5db94a339d460722"
@@ -1132,7 +1132,7 @@
       "page": "fem/fem_6_2_5.html",
       "id": "formula-fem-6-2-5-018",
       "data_source_image": "./../img/fem_n_tet.files/image018.png",
-      "formula_sha256": "bbf7faffbdb039fe6ee2c9a78a54bf348d9200b4c2238f2c3fbac75de6600734",
+      "formula_sha256": "adb05f195b94cf11ab38891f6a1b8919b8f72bd42e99aef40e0d1cda7216d3d5",
       "source_basis": "original-image",
       "source_path": "img/fem_n_tet.files/image018.png",
       "source_sha256": "ed9bfcc58c2e9dfb55994ffbf1e941619010b81647c302e5e3ba72ceacb37a82"
@@ -1141,7 +1141,7 @@
       "page": "fem/fem_6_2_5.html",
       "id": "formula-fem-6-2-5-019",
       "data_source_image": "./../img/fem_n_tet.files/image019.png",
-      "formula_sha256": "9b36bb4de82dec6afe15a73e309e43859509ce00fc270b70c748a45ecfb2fe7c",
+      "formula_sha256": "1985f1ef7308c5c8b82e30d4e9a50c76c1a9e6dc5e09ff5937fd23606ba3fc9a",
       "source_basis": "original-image",
       "source_path": "img/fem_n_tet.files/image019.png",
       "source_sha256": "f59b9dff3000b8022d4aae254e4cc77d7751c5101a5c008bb227467d75a091c3"
@@ -1150,7 +1150,7 @@
       "page": "fem/fem_6_2_5.html",
       "id": "formula-fem-6-2-5-020",
       "data_source_image": "./../img/fem_n_tet.files/image020.png",
-      "formula_sha256": "3343f6d8400df6a4f4aac1dec254ed1f46683b9d322a6d1ce64f38501cb210bb",
+      "formula_sha256": "8aebaf40ab92c5277136dae97c21908967159e0b5c9048b1bc6f4d08cd05edd1",
       "source_basis": "original-image",
       "source_path": "img/fem_n_tet.files/image020.png",
       "source_sha256": "8c12328dd62c724bf059a58785981b68a7ee42cd64e54045c4aa5f60aa2e364f"
@@ -2509,7 +2509,7 @@
       "page": "fem/fem_8_2_1.html",
       "id": "formula-fem-8-2-1-002",
       "data_source_image": "./../img/fem_bd_2.files/image002.png",
-      "formula_sha256": "654f2936c9c8f95e55e6917b89418295381b29472d0c50a4c366488d68e36f20",
+      "formula_sha256": "8a39516a427cbbe030cf7ad3ee08a1cd3361bcaefb718760083d988fd52741a1",
       "source_basis": "original-image",
       "source_path": "img/fem_bd_2.files/image002.png",
       "source_sha256": "0b26386f8d24ebcae129460a544091430920a671d18a9d71d5b34afc5ebc0371"
@@ -2536,7 +2536,7 @@
       "page": "fem/fem_8_2_1.html",
       "id": "formula-fem-8-2-1-005",
       "data_source_image": "./../img/fem_bd_2.files/image005.png",
-      "formula_sha256": "c7fd2d153d94b22a4ba2862245023677f23287507b02c2e11187cee4bbb562c3",
+      "formula_sha256": "916880747942e8777d304db471409930efc8c4eb63e387602218d95d42575206",
       "source_basis": "original-image",
       "source_path": "img/fem_bd_2.files/image005.png",
       "source_sha256": "be29731aa49aaac679855c0089c31ffceed718721a02fa6fa56b35682fd5c74d"
@@ -2545,7 +2545,7 @@
       "page": "fem/fem_8_2_1.html",
       "id": "formula-fem-8-2-1-006",
       "data_source_image": "./../img/fem_bd_2.files/image006.png",
-      "formula_sha256": "ebce7e36f8b25dc3fd2b8c555e70885505ed02a079f00ec12d3f69f018f10954",
+      "formula_sha256": "7e091226857785f13723bb97d78b562d75cc4f25a8c584c2dcffeeac2a6ffaf2",
       "source_basis": "original-image",
       "source_path": "img/fem_bd_2.files/image006.png",
       "source_sha256": "019d099595400e39051f8523c7d40c3c99add2fb840bb37971ebd60692238776"
@@ -2590,7 +2590,7 @@
       "page": "heat/heat_4_1.html",
       "id": "formula-heat_4_1-002",
       "data_source_image": "./../img/heat_conduction.files/image002.png",
-      "formula_sha256": "3dac60e61a60d108bd49e6e88213e0a8253e78630f1c49e8ec1a1a6ae11bc119",
+      "formula_sha256": "f063b7bc6e18c93cbf2b18ad9450e298fc8ea5f00e8be525c47714d1f9b66d59",
       "source_basis": "original-image",
       "source_path": "img/heat_conduction.files/image002.png",
       "source_sha256": "d9afb7078c6ad3c536604ad9da826cef7355216174dff1e821628ef1520b4763"
@@ -2635,7 +2635,7 @@
       "page": "heat/heat_5_2.html",
       "id": "formula-heat_5_2-002",
       "data_source_image": "./../img/heat_eq_convection.files/image002.png",
-      "formula_sha256": "9101a7e8e474b1108000498324da2a36415bdb89e488672cdf39f454a71e93eb",
+      "formula_sha256": "7cb1098d43b7fb1c61e18c39c98816fc734294091d04448818cc7623c07fc92e",
       "source_basis": "original-image",
       "source_path": "img/heat_eq_convection.files/image002.png",
       "source_sha256": "296e7630d31bef478fb9f604225b59ba045948b09d11eafc74d06d4626f0af3e"
@@ -2644,7 +2644,7 @@
       "page": "heat/heat_5_2.html",
       "id": "formula-heat_5_2-003",
       "data_source_image": "./../img/heat_eq_convection.files/image003.png",
-      "formula_sha256": "d7874bacc3fb83c317bf90f0abbf0f9df8ebe8771aaf888cf63b2405bd2b2f61",
+      "formula_sha256": "131dae5adbac60c9f556ed1b2d246965dac392abc6e43ee5433b3f9ba1f902c1",
       "source_basis": "original-image",
       "source_path": "img/heat_eq_convection.files/image003.png",
       "source_sha256": "312b902bb94dade58a6cccb629c6f33f32b84f50fa67bc05bebc2ffdb862d34a"
@@ -2653,7 +2653,7 @@
       "page": "heat/heat_5_3.html",
       "id": "formula-heat_5_3-002",
       "data_source_image": "./../img/heat_eq_conduction.files/image002.png",
-      "formula_sha256": "da2724b473295aeaaf0c01d584c72f33c9747f0803d65054abfea9c272f1bd8f",
+      "formula_sha256": "999d7ecda7679b16ba955015d48b3d93bfda7ee6e76c99fc08fd016e862703e1",
       "source_basis": "original-image",
       "source_path": "img/heat_eq_conduction.files/image002.png",
       "source_sha256": "8e9e9d4d1423e6f4b151b33f519a4919cc62b6da42912e796029ad30f0428826"
@@ -2662,7 +2662,7 @@
       "page": "heat/heat_5_3.html",
       "id": "formula-heat_5_3-003",
       "data_source_image": "./../img/heat_eq_conduction.files/image003.png",
-      "formula_sha256": "2dffc4dde4ae8412c1178ca3a9df7c93e65a56bb683d96849eb7169306c70f10",
+      "formula_sha256": "ea376c6200a5ace6012ca3486fc2d58e7dceabeab190f8fa92662e6a33919658",
       "source_basis": "original-image",
       "source_path": "img/heat_eq_conduction.files/image003.png",
       "source_sha256": "4531d4aafc73d5add28c3eafc3347280bd898c052f13475864a9aa8b5ab0e147"
@@ -2689,7 +2689,7 @@
       "page": "heat/heat_5_4.html",
       "id": "formula-heat_5_4-004",
       "data_source_image": "./../img/heat_eq_derivation.files/image004.png",
-      "formula_sha256": "0c94e7d509c0bf02abd03544c6ba22933a4be2dd85353042ce71de66989cd443",
+      "formula_sha256": "8fc767525a03346f5d2d8f2646816e6a6f7e12e3af999c3c5774303974968ff1",
       "source_basis": "original-image",
       "source_path": "img/heat_eq_derivation.files/image004.png",
       "source_sha256": "d17762437b215eceb4b03d3502826a7c12ed213306acd76e0a5ab67a2ea6eaf4"
@@ -3427,7 +3427,7 @@
       "page": "hydronamics/hydronamics_10_1.html",
       "id": "formula-hydronamics-10-1-002",
       "data_source_image": "./../img/hydronamics_b_surface.files/image002.png",
-      "formula_sha256": "b1c43f827432baaeca0c03768cf99163b437b52b407fd1fb083993fa57ad56e7",
+      "formula_sha256": "6af4d369a70993bec3f40ff69a6ee6e9ff206caa1b41b59a1e56d4b0db1f7b39",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_b_surface.files/image002.png",
       "source_sha256": "1d92aa44d1799a51d245e8a234d3aee8f0244e1003c154596974699ef808b07a"
@@ -3436,7 +3436,7 @@
       "page": "hydronamics/hydronamics_10_1.html",
       "id": "formula-hydronamics-10-1-005",
       "data_source_image": "./../img/hydronamics_b_surface.files/image005.png",
-      "formula_sha256": "96fb3d05c4477b2758ddd41f8c1bc6b8ae4c0b69e310402c3279377ca174577c",
+      "formula_sha256": "a2e6f8166deac1d40ec031d607bf3d5e655fc12159d2f45152f7ff47aedf179c",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_b_surface.files/image005.png",
       "source_sha256": "6830437c316a2cd607d970d55381174ebcbba4766d655f45594a03faf674438a"
@@ -3454,7 +3454,7 @@
       "page": "hydronamics/hydronamics_10_1.html",
       "id": "formula-hydronamics-10-1-007",
       "data_source_image": "./../img/hydronamics_b_surface.files/image007.png",
-      "formula_sha256": "f8d4097c6ab74298e2463e3f6d548e323500208f563bc097b4e2b1d9a8e41430",
+      "formula_sha256": "918b2382ff9bd205b16e5c9dd9fd97024b5339440c61e71b3c2dab2e79fea6a7",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_b_surface.files/image007.png",
       "source_sha256": "bb1d45f02bb24993a81f6d45861943affd4d883d34db3746cb4734bc822c6f25"
@@ -3472,7 +3472,7 @@
       "page": "hydronamics/hydronamics_11.html",
       "id": "formula-hydronamics-11-001",
       "data_source_image": "./../img/hydronamics_d_number.files/image001.png",
-      "formula_sha256": "26b607dcd5277ae2b0dacb2e1ba6bf5d5d66f204c0db86e6f16af3d58c4af28e",
+      "formula_sha256": "95e8e9ea059143f015b41e44575e19e4c03355276c5bf6603a92e2bf39b9fc94",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_d_number.files/image001.png",
       "source_sha256": "c190b669899d03cb61d32efdf50143943f5258270d836ffc3894b9676813c50c"
@@ -3481,7 +3481,7 @@
       "page": "hydronamics/hydronamics_11.html",
       "id": "formula-hydronamics-11-002",
       "data_source_image": "./../img/hydronamics_d_number.files/image002.png",
-      "formula_sha256": "1808452f826aa8c3f76a1a7f9fca4d9b00093170633c7a9c1c3c3395f56738ad",
+      "formula_sha256": "b43aa587bacad5b322846d74816d45a694f040569fbca9bbc0fb87b370e76cad",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_d_number.files/image002.png",
       "source_sha256": "9c096059db8de540332becfdd69b562de577662c42ea010564e4f1d03f9c2c63"
@@ -3490,7 +3490,7 @@
       "page": "hydronamics/hydronamics_11.html",
       "id": "formula-hydronamics-11-003",
       "data_source_image": "./../img/hydronamics_d_number.files/image003.png",
-      "formula_sha256": "c57a1b206d89eef95446b2af20ee3eb72d19ae1e1555ab3689a6990de899d822",
+      "formula_sha256": "b956a76cb2f5e3c63b992afd0391d52af11e8be628438824020672eab2ce882c",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_d_number.files/image003.png",
       "source_sha256": "97dc5e6f40a1bf30181cd88ecd0e4d6393d91103eed044cadd7926b324c7364a"
@@ -3499,7 +3499,7 @@
       "page": "hydronamics/hydronamics_11.html",
       "id": "formula-hydronamics-11-004",
       "data_source_image": "./../img/hydronamics_d_number.files/image004.png",
-      "formula_sha256": "666c0e46b29b3e9f3f87d094502c907fb55e145d1915e7cfd88effc70cee9ec7",
+      "formula_sha256": "da7a3d6575930ab82affd9f460dc3f83aec7197dfbb8522a0bf274ee6918f410",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_d_number.files/image004.png",
       "source_sha256": "1ebfba6a09d2fa79d1a2db80d82fd1ed99fbbb01bfb9554801a9c6d2a3ec087b"
@@ -3508,7 +3508,7 @@
       "page": "hydronamics/hydronamics_11_1.html",
       "id": "formula-hydronamics-11-1-001",
       "data_source_image": "./../img/hydronamics_d_re.files/image001.png",
-      "formula_sha256": "10e50080249a57e3694d489b52613423fa777ef4789209c0fa3ef608a57dd513",
+      "formula_sha256": "6e52599dfebbc76c5c9ae24c22e78b4de8fd5d1073355f6f28c4a11744367114",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_d_re.files/image001.png",
       "source_sha256": "410016b6397f1ca3253e4ab6b351935c0f8a5646cb02f4d30d53a43189f36cc9"
@@ -3517,7 +3517,7 @@
       "page": "hydronamics/hydronamics_11_2.html",
       "id": "formula-hydronamics-11-2-001",
       "data_source_image": "./../img/hydronamics_d_we.files/image001.png",
-      "formula_sha256": "dab27671a114734bb3d7d17f4aff105b9f45143f9dd45911ae9477ef9522908c",
+      "formula_sha256": "23a6dbbfa3c6663ec08a9eb78e988ed7babc8917e7409cac24c0a179cf348376",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_d_we.files/image001.png",
       "source_sha256": "c9ad89454263ffc3161e6f409e56e286321506eae64b847be57e872927f76159"
@@ -3526,7 +3526,7 @@
       "page": "hydronamics/hydronamics_11_3.html",
       "id": "formula-hydronamics-11-3-001",
       "data_source_image": "./../img/hydronamics_d_oh.files/image001.png",
-      "formula_sha256": "350f07b40a8df6914bbccba41e111bb3dd65682435423766b1ea393c14c4846d",
+      "formula_sha256": "e868eac29ebb8b877878e88e8a73cc5d1e21d049dcb71fa953aa7c7b516f20d3",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_d_oh.files/image001.png",
       "source_sha256": "7e613ccaf95eb57442865be14e62d6cb6e0cce5c88df7cdd9a916690e34621c4"
@@ -3535,7 +3535,7 @@
       "page": "hydronamics/hydronamics_11_4.html",
       "id": "formula-hydronamics-11-4-001",
       "data_source_image": "./../img/hydronamics_d_bo.files/image001.png",
-      "formula_sha256": "0231631003fc66b7c0d1577368b770eea1d46cf57f1f2ba5a0622fc8fcabf4e3",
+      "formula_sha256": "7b63cc286cb1643c08c0f80a58559b8f510bf37ac378afa363f1a5d774558037",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_d_bo.files/image001.png",
       "source_sha256": "7d08a3e4239f20fedb002dae57157c9d9b20aa46a9d0385934cde7092bb2365e"
@@ -3544,7 +3544,7 @@
       "page": "hydronamics/hydronamics_11_5.html",
       "id": "formula-hydronamics-11-5-001",
       "data_source_image": "./../img/hydronamics_d_fr.files/image001.png",
-      "formula_sha256": "e720d6ade45f5d4c97fe5a8da6969ba422cab9677e0480004833e5dac39e6142",
+      "formula_sha256": "f64fc1d25a843a6422effe3fdec322cfc6d92e881313448c46b8f1a9f4b89026",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_d_fr.files/image001.png",
       "source_sha256": "32ada42d35c5c10e919f5f2d78b06cd25f2908862cae97e9a0f764e029d31a02"
@@ -3634,7 +3634,7 @@
       "page": "hydronamics/hydronamics_12_1.html",
       "id": "formula-hydronamics-12-1-008",
       "data_source_image": "./../img/hydronamics_dimensionless.files/image008.png",
-      "formula_sha256": "ba1ea3321c16f6f731e387c0e60b5cc71ee27a0bdd7c02e030ee531b5a099f35",
+      "formula_sha256": "ebf1f8050bb47ac5cc99c0d95b9f7da964511956ccb7d0acda0d0e82bc471259",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_dimensionless.files/image008.png",
       "source_sha256": "c088e89311010f15b9c7eb5bc21ff49ff2fa54e194f8faf460fd0b4b665730f1"
@@ -3643,7 +3643,7 @@
       "page": "hydronamics/hydronamics_12_1.html",
       "id": "formula-hydronamics-12-1-009",
       "data_source_image": "./../img/hydronamics_dimensionless.files/image009.png",
-      "formula_sha256": "c0e54662e23224d9c21dd000c744426c8744b01157e761024f4442e9ebfc0028",
+      "formula_sha256": "d943287e64692b2232dafca569fcd67855e13cef577f8d5e581f0bc594762b0d",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_dimensionless.files/image009.png",
       "source_sha256": "9fcce9de754eb4d083d302e80735591bb2b86cb61ed31bbb38773562168150e5"
@@ -3652,7 +3652,7 @@
       "page": "hydronamics/hydronamics_12_1.html",
       "id": "formula-hydronamics-12-1-010",
       "data_source_image": "./../img/hydronamics_dimensionless.files/image010.png",
-      "formula_sha256": "d4249aa982ecd69b3389ee8d00ba098681964920514b0e3f29606fcd3f65e4fb",
+      "formula_sha256": "30a72e8840efa95e8b2780f79c83ecc6c8d9c006d72a91c39d497dd2a0840f18",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_dimensionless.files/image010.png",
       "source_sha256": "c43427d02ab1473d666be72de0ccd520d21a42be5fddb2b7ba3f1fdbe9ec93f8"
@@ -3715,7 +3715,7 @@
       "page": "hydronamics/hydronamics_12_2.html",
       "id": "formula-hydronamics-12-2-017",
       "data_source_image": "./../img/hydronamics_dimensionless.files/image017.png",
-      "formula_sha256": "4dcc180e61e062f8ce196e46a8472c40e545ecaa97b886fbee0cb3a4a924dc78",
+      "formula_sha256": "30fedecebfc6602b31dbc84842acb7daf2fc687874ffb383f0863ac63df5eadf",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_dimensionless.files/image017.png",
       "source_sha256": "dbcb1f40550007b7b62bd94a4baab3ef149254e3570763715725e74eb865292e"
@@ -3742,7 +3742,7 @@
       "page": "hydronamics/hydronamics_12_2.html",
       "id": "formula-hydronamics-12-2-020",
       "data_source_image": "./../img/hydronamics_dimensionless.files/image020.png",
-      "formula_sha256": "5aaddd34a27db0279f268b97aea59f31a7ed5351d10a950c728aadd275c4f77e",
+      "formula_sha256": "0405a4707cfb0698aed005dd84ebfa805677d385d8df39d517dc2dea7a8bc4db",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_dimensionless.files/image020.png",
       "source_sha256": "08cf402d68b4d5c54800f51fdf2338a710c2c33c7e46660a46f083ccee177427"
@@ -3805,7 +3805,7 @@
       "page": "hydronamics/hydronamics_14.html",
       "id": "formula-hydronamics-14-007",
       "data_source_image": "./../img/hydronamics_gauss.files/image007.png",
-      "formula_sha256": "5cfdb8789ed044a0752a6e447cdb6f69328fc85c1b687c99545f791ed563d462",
+      "formula_sha256": "4c4e23e96aad850159b32544c5a7a83acdb0573a45ba10df751868d942c85edb",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_gauss.files/image007.png",
       "source_sha256": "8a646744bb3db075b14a6fdf7ca3285fc760c06ee2e2ebf736457bb5f9bac79e"
@@ -3814,7 +3814,7 @@
       "page": "hydronamics/hydronamics_14.html",
       "id": "formula-hydronamics-14-008",
       "data_source_image": "./../img/hydronamics_gauss.files/image008.png",
-      "formula_sha256": "127e7a9448418c4b093c673939302cacb98116c65fb04c39080c5cba6f57e6d9",
+      "formula_sha256": "1320ae01ef43bfc8dbce1c75390073a3dd7d110fb88a263123171b72dc90d857",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_gauss.files/image008.png",
       "source_sha256": "b52c705e9995ce522da07cfc03433558591f3100f159cd6d6330d130c7c73971"
@@ -3877,7 +3877,7 @@
       "page": "hydronamics/hydronamics_4.html",
       "id": "formula-hydronamics-4-002",
       "data_source_image": "./../img/hydronamics_e_mass.files/image002.png",
-      "formula_sha256": "5168a44dcdd99541d7e2ea754b631fb44119e70b25a15495fbd3e28257c0fb58",
+      "formula_sha256": "339d931ec544855bf767ab40a21870f800f58a30c162fa27a2d35cc6a7b4d9b5",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_e_mass.files/image002.png",
       "source_sha256": "33a1485b92e8df0b56cb416c37ca7e9fc20ee572905187449baa07fad6a08f0b"
@@ -3886,7 +3886,7 @@
       "page": "hydronamics/hydronamics_4.html",
       "id": "formula-hydronamics-4-003",
       "data_source_image": "./../img/hydronamics_e_mass.files/image003.png",
-      "formula_sha256": "fbd776b3d1196121a588485c1124abc5941872e811448abef29470b36bcdf1e8",
+      "formula_sha256": "d5511236028cb62bf39970f6ca3f0cc412c8f34f41afa7963b75782746ae9c7b",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_e_mass.files/image003.png",
       "source_sha256": "8950ce710f30193924801d66085118f7e8585ce80e8f5ba7146d44e1d5f65566"
@@ -3895,7 +3895,7 @@
       "page": "hydronamics/hydronamics_4.html",
       "id": "formula-hydronamics-4-004",
       "data_source_image": "./../img/hydronamics_e_mass.files/image004.png",
-      "formula_sha256": "180d9af1dceaa65c93af12289a740799f90614a8e10715d879fc83370536300b",
+      "formula_sha256": "56e93e3e414ae590210f38a257ce9fdd577cf7f66bb1639664d925f29cfbab53",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_e_mass.files/image004.png",
       "source_sha256": "eaa60e6003c469dce5b2cb79c7f0099ba539bafddbd40745fcfe0e3e641796b6"
@@ -3904,7 +3904,7 @@
       "page": "hydronamics/hydronamics_4.html",
       "id": "formula-hydronamics-4-005",
       "data_source_image": "./../img/hydronamics_e_mass.files/image005.png",
-      "formula_sha256": "a604f7f2d859b399ba80e252c6663738f72bbc6883a22b9e5be32bfa14414844",
+      "formula_sha256": "c987cd2aea37eb26d15ca8ca9510d25d70017d0fb31cd9966232b7cb57959e0a",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_e_mass.files/image005.png",
       "source_sha256": "62931560d8e1d8f69cb377054b96e039fc465075a5f1a6a785e87f8ed81cd470"
@@ -3958,7 +3958,7 @@
       "page": "hydronamics/hydronamics_5.html",
       "id": "formula-hydronamics-5-002",
       "data_source_image": "./../img/hydronamics_viscosity.files/image002.png",
-      "formula_sha256": "ca9aeb2d17d2660bcb16a809108e8563a9c64252db633df1a54d1b9c02d9857e",
+      "formula_sha256": "46ba18531e808926022d4a374468bdd4ef2c2d3cc28df84b16dd4166e9f1e3be",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_viscosity.files/image002.png",
       "source_sha256": "f40e6a29d93423bddd0b7f4a0704d2a47215118b2ae23eccb5478a0396c2e243"
@@ -3967,7 +3967,7 @@
       "page": "hydronamics/hydronamics_6_1.html",
       "id": "formula-hydronamics-6-1-002",
       "data_source_image": "./../img/hydronamics_f_driving.files/image002.png",
-      "formula_sha256": "b7e8ef5b29b400f1ccdb88181f4abc370235b559b926c563e29f67f477268bef",
+      "formula_sha256": "6d0f636dee7b9019835ed8ef81cbfd385c92e66ac488ddbf3c131bb26c710ee0",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_f_driving.files/image002.png",
       "source_sha256": "8fdeedc0b099546c67117794dd04d6847cc7c7f6be4c480466f284698520030f"
@@ -3976,7 +3976,7 @@
       "page": "hydronamics/hydronamics_6_1.html",
       "id": "formula-hydronamics-6-1-003",
       "data_source_image": "./../img/hydronamics_f_driving.files/image003.png",
-      "formula_sha256": "8282460283439b3b3ad48eb1c27ee7d7312907e0c8391988e7e54cfc9b83ad02",
+      "formula_sha256": "392c4c34cb9d1bfbede08f92287bc3121daf5d3e48e8d494d939375ca9a7bae5",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_f_driving.files/image003.png",
       "source_sha256": "1d11299a22c592136a6f6df7cebd524cfc6596caa2414854dc1904d27967bc47"
@@ -4147,7 +4147,7 @@
       "page": "hydronamics/hydronamics_6_4.html",
       "id": "formula-hydronamics-6-4-003",
       "data_source_image": "./../img/hydronamics_f_gravity.files/image003.png",
-      "formula_sha256": "7af9cea5f2a8e1bbc98fd0992b9cd1e693d8f9fe331a595269e6542a09ee49ae",
+      "formula_sha256": "c3fc2b043b85c5a9b28691a23f0dcb5011f91f09f3af7e126c79ceb3c55d88ec",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_f_gravity.files/image003.png",
       "source_sha256": "8433872f3af429d66182926e560802e6b669cb0082752ff5b7ece84470b6892f"
@@ -4156,7 +4156,7 @@
       "page": "hydronamics/hydronamics_6_4.html",
       "id": "formula-hydronamics-6-4-004",
       "data_source_image": "./../img/hydronamics_f_gravity.files/image004.png",
-      "formula_sha256": "dabf34f166dfc3c8a03ef0b00d7efc6e7ef3df49422dd4f4590d588799352a62",
+      "formula_sha256": "54ce5b6494ee8106953c08daf436c55271987a679d134da94f8cb35d9ed21763",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_f_gravity.files/image004.png",
       "source_sha256": "2672e42b93facbd0f9b406d9c381589464a14c397368f3675f05a66a16e67e63"
@@ -4210,7 +4210,7 @@
       "page": "hydronamics/hydronamics_8.html",
       "id": "formula-hydronamics-8-002",
       "data_source_image": "./../img/hydronamics_e_momentum.files/image002.png",
-      "formula_sha256": "afa9052c134f16bcafec316b2ac7254c74a27ae4f6d50c443a7d5eee265c9248",
+      "formula_sha256": "96c0c936da92c54961766631bd19cdedbc48e68af5aac50dbfd13bcea48a970a",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_e_momentum.files/image002.png",
       "source_sha256": "e4b239e48b894fe77e190061f6981a0e6710071426f057da6f53a3fddebff3a6"
@@ -4309,7 +4309,7 @@
       "page": "hydronamics/hydronamics_9_1.html",
       "id": "formula-hydronamics-9-1-002",
       "data_source_image": "./../img/hydronamics_shear_velocity.files/image002.png",
-      "formula_sha256": "5c94a6fea23d2c5c57ee20aed7eb546d6cb6bec4374afa1521293e846dafab7a",
+      "formula_sha256": "d6807b71608eeb71e3e50b86a744198a22cd4768fcad8a4755f9afdc1311c8d0",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_shear_velocity.files/image002.png",
       "source_sha256": "df73a27222ead770dbb9bf149e0e3788ea82942014a61e4504a58365d5497380"
@@ -4336,7 +4336,7 @@
       "page": "hydronamics/hydronamics_9_1.html",
       "id": "formula-hydronamics-9-1-006",
       "data_source_image": "./../img/hydronamics_shear_velocity.files/image006.png",
-      "formula_sha256": "d2a30c945d288b27dde5af164f11ef806b945b9d3abb6abee3a5b95ad507307d",
+      "formula_sha256": "ad8f3720213c05757b0e11f616fd7780f1d50160e5db1c326138052aa4bff576",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_shear_velocity.files/image006.png",
       "source_sha256": "7c67ea7a54623f856a4de01fbc348492dec76bd1465398ecdcb17d1c210db649"
@@ -4345,7 +4345,7 @@
       "page": "hydronamics/hydronamics_9_2.html",
       "id": "formula-hydronamics-9-2-002",
       "data_source_image": "./../img/hydronamics_stress_vertical.files/image002.png",
-      "formula_sha256": "cacc1c5c226ec8e53ae69fc5f8fcace4a2c60a4981235b009722b93b7ac78336",
+      "formula_sha256": "89e09e0a8484e3bc3e0a4216ea4fbcacc2987c6f13c0823d6da88f23dd7b5eb7",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_stress_vertical.files/image002.png",
       "source_sha256": "76e5384cd9434f6af4fd9a6807611bf98afaba5a939b343a4aca86c620201ed8"
@@ -4354,7 +4354,7 @@
       "page": "hydronamics/hydronamics_9_2.html",
       "id": "formula-hydronamics-9-2-003",
       "data_source_image": "./../img/hydronamics_stress_vertical.files/image003.png",
-      "formula_sha256": "406c4301d45e6df8cbca4f9a31eb4090f7e32ac6213ac652589c6e684b627793",
+      "formula_sha256": "cd64dae1e6e9364968886cf48fc3f9491e407c47f1261bb8888b289cbbe32316",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_stress_vertical.files/image003.png",
       "source_sha256": "c0bb43eced56ae3b2d35636ff388017ca92869b7d90befb384a4bc164415a390"
@@ -4363,7 +4363,7 @@
       "page": "hydronamics/hydronamics_9_2.html",
       "id": "formula-hydronamics-9-2-004",
       "data_source_image": "./../img/hydronamics_stress_vertical.files/image004.png",
-      "formula_sha256": "122c3d306f4dfcb3cbcf73d3b8ac3f76ab36fcf6731694512320bcc24c591f9f",
+      "formula_sha256": "9f4b5a9c26c0e20247476d1f4785ec8fc0e2ed97af492d5d5c4ddd1edf6993b0",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_stress_vertical.files/image004.png",
       "source_sha256": "7974f43a7d88240782a2c44bab1139638d390adb7608412c746613cbaf4603c5"
@@ -4390,7 +4390,7 @@
       "page": "hydronamics/hydronamics_9_2.html",
       "id": "formula-hydronamics-9-2-007",
       "data_source_image": "./../img/hydronamics_stress_vertical.files/image007.png",
-      "formula_sha256": "bfa119833bd12b687d7e565f174f11aba5ba23c4c67110dc19e2d58a4ce0e8fe",
+      "formula_sha256": "b7365a4ae4731b2a70b61b5bb798ede9a22bea49e4032bf3a1d7559492742961",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_stress_vertical.files/image007.png",
       "source_sha256": "4de15698fd22f3a30bbd9f38a21c5e44c5197484be4bf72124821567c66533c2"
@@ -4399,7 +4399,7 @@
       "page": "hydronamics/hydronamics_9_2.html",
       "id": "formula-hydronamics-9-2-008",
       "data_source_image": "./../img/hydronamics_stress_vertical.files/image008.png",
-      "formula_sha256": "6bb22dd44dd6c46fbc91b5569ed32d9e80e477bfaf6229c797ab9015c311b358",
+      "formula_sha256": "5ad9fd07cceceeb5381f6098037635f9cb8e773fef480196d044e32eade48e5e",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_stress_vertical.files/image008.png",
       "source_sha256": "e40157f3ee79595bc39093eb8229ee31a8f509055baca5951c1b5754cdb189f1"
@@ -4417,7 +4417,7 @@
       "page": "hydronamics/hydronamics_9_2.html",
       "id": "formula-hydronamics-9-2-010",
       "data_source_image": "./../img/hydronamics_stress_vertical.files/image010.png",
-      "formula_sha256": "88ce93a8e8b2cbb90d0379d3292b8deda4bf584b9fb711d6c5b6bc9aec1783ee",
+      "formula_sha256": "92adfa4a1d4c13238a1af49749ea04348db92c7394fa8304aca78519c6070fe9",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_stress_vertical.files/image010.png",
       "source_sha256": "bc89e27a60c544a5bfdf2d0cc42816dd937453985f91ba03d0260b59b6f55491"
@@ -4462,7 +4462,7 @@
       "page": "hydronamics/hydronamics_9_4.html",
       "id": "formula-hydronamics-9-4-004",
       "data_source_image": "./../img/hydronamics_shear_symmetry.files/image004.png",
-      "formula_sha256": "c6603ff948d39d4831bf3de0174525160890c112a5bde9863ce2b725976e3beb",
+      "formula_sha256": "ad3e50f8520edc141b7be849f1280e5df5a4f639bcd4800153e2847a3ed2e5e0",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_shear_symmetry.files/image004.png",
       "source_sha256": "2fa72e118413ea1381e447b84e607c9c031b267a4425dc6ef4e0b23482e49c9e"
@@ -4471,7 +4471,7 @@
       "page": "hydronamics/hydronamics_9_4.html",
       "id": "formula-hydronamics-9-4-005",
       "data_source_image": "./../img/hydronamics_shear_symmetry.files/image005.png",
-      "formula_sha256": "1637818acbebe1c9a10de86090711958ab995a3fdcbbe1d512b71b3186e04884",
+      "formula_sha256": "c776d2cef726cbcb1eb1648d7d60e55c888f0c739c8447dc3fab3cf651e54e05",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_shear_symmetry.files/image005.png",
       "source_sha256": "c5fb36a3f6c222ed5e42021acc241ddf7b80bd6a07733da541a380ab775f8c48"
@@ -4507,7 +4507,7 @@
       "page": "hydronamics/hydronamics_9_4.html",
       "id": "formula-hydronamics-9-4-009",
       "data_source_image": "./../img/hydronamics_shear_symmetry.files/image009.png",
-      "formula_sha256": "a1a1147eb7c86b26fffdb1057a78e6121cb28424a17586ef87ac9c79ab6c5fa1",
+      "formula_sha256": "ef66544efbc512d1672f5234f5dd08735156b6b2905ac75c701fe22292541c56",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_shear_symmetry.files/image009.png",
       "source_sha256": "3008649c3ec76647c55d3289045a5db483b18d98994977c6a5f2ca2478fff3ae"
@@ -4516,7 +4516,7 @@
       "page": "hydronamics/hydronamics_9_5.html",
       "id": "formula-hydronamics-9-5-002",
       "data_source_image": "./../img/hydronamics_shear_value.files/image002.png",
-      "formula_sha256": "28503da6166c6a3289f65929768510dc8b05df6868370a1d81b6b42ef77eb93b",
+      "formula_sha256": "960b1587b9e50cd614d82bab8c9b602a976e9be170ea8bc82be2a3102a9af80e",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_shear_value.files/image002.png",
       "source_sha256": "5e6bc273a048c5a0dfd318d73b759554cdbbc537b4a1c585ff19315323128500"
@@ -4525,7 +4525,7 @@
       "page": "hydronamics/hydronamics_9_5.html",
       "id": "formula-hydronamics-9-5-003",
       "data_source_image": "./../img/hydronamics_shear_value.files/image003.png",
-      "formula_sha256": "38f54338851c3bff40c06930f3e93bc6565cecff249f5ee8cf1fd2c661b8fba5",
+      "formula_sha256": "06f9056fa4f6da60d4b5279dd1f4411695b8e55363c40592860494d7ebe54bb4",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_shear_value.files/image003.png",
       "source_sha256": "ee74363aaf4b1d422313173886703ef5c24a0f8f62a1153a28af1142fb1fd83a"
@@ -4534,7 +4534,7 @@
       "page": "hydronamics/hydronamics_9_5.html",
       "id": "formula-hydronamics-9-5-004",
       "data_source_image": "./../img/hydronamics_shear_value.files/image004.png",
-      "formula_sha256": "0ae4f2f0189d02f1c885b51fb9455c0ba0cd12ca090604781ff1895db010adf6",
+      "formula_sha256": "87237bb9557d4cdd3fb5e80ef52081ded6fb734b49adc53da81df2fdc808b2de",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_shear_value.files/image004.png",
       "source_sha256": "1cecae31e3e97e29323800c5e66e1fb6825f7761bd21cea540c3271ec3faa5e2"
@@ -4543,7 +4543,7 @@
       "page": "hydronamics/hydronamics_9_5.html",
       "id": "formula-hydronamics-9-5-005",
       "data_source_image": "./../img/hydronamics_shear_value.files/image005.png",
-      "formula_sha256": "2d7aef9e7cb4f156a3ead130cb7c1e42d7b1aa076fe8290da429c080063fff42",
+      "formula_sha256": "273fef515aff785f88485533dc1851701c930bda3a6d75c33a288992f1dcd79f",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_shear_value.files/image005.png",
       "source_sha256": "1cc3a982ca5bcf8136c7e7c9ee0bc821f6fd1db9975c20ef575cc9ca5e6ec03e"
@@ -4552,7 +4552,7 @@
       "page": "hydronamics/hydronamics_9_5.html",
       "id": "formula-hydronamics-9-5-006",
       "data_source_image": "./../img/hydronamics_shear_value.files/image006.png",
-      "formula_sha256": "ad91f122974f893e24acb6e30313302415314b0db25d331a11539707f2fc9b33",
+      "formula_sha256": "db1897b2bd1433e840661b79ab00eaf4d165a658b89acc032a9f03b1b0bb40f8",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_shear_value.files/image006.png",
       "source_sha256": "2a984efab20f094240fce2ba0477800ca3fbe50263ed2ee13f9ef1e96e50abdc"
@@ -4561,7 +4561,7 @@
       "page": "hydronamics/hydronamics_9_6.html",
       "id": "formula-hydronamics-9-6-001",
       "data_source_image": "./../img/hydronamics_stress_conclusion.files/image001.png",
-      "formula_sha256": "1bd628550280b2a86404e51240d3df6aa0fa6e0fb930fa7637be063beb63e30b",
+      "formula_sha256": "47f6516a04eddee1de98ca32abe7ccedaddd7cc5baf8905bd362a24836f83a47",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_stress_conclusion.files/image001.png",
       "source_sha256": "6e2cd6e309b741ba79347bf812d9d6c2a4bda1e6bb3e080280d6f743ab7da3b9"
@@ -4570,7 +4570,7 @@
       "page": "hydronamics/hydronamics_9_6.html",
       "id": "formula-hydronamics-9-6-002",
       "data_source_image": "./../img/hydronamics_stress_conclusion.files/image002.png",
-      "formula_sha256": "5334b362a7ef8033e3d4c5e61cc8ba772c168f35e5f03ac5a5d1dab950c38e84",
+      "formula_sha256": "99b58b10ccfd87b287322ca0d1997eca2bf2a39eca98a25c6575ce447faa8ed1",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_stress_conclusion.files/image002.png",
       "source_sha256": "10218168a0f391e8f3fa024aa755879ccff4ad881feb6f30715b9358b3e4739d"
@@ -4579,7 +4579,7 @@
       "page": "hydronamics/hydronamics_9_6.html",
       "id": "formula-hydronamics-9-6-003",
       "data_source_image": "./../img/hydronamics_stress_conclusion.files/image003.png",
-      "formula_sha256": "c0f413b576e6065931942b663111c2fe6358e5e213bcf26aed63fe1d274428e7",
+      "formula_sha256": "ad8d719a988c5f4f02bfd3f48fe383086b2e638b5b6824e727f287649590addf",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_stress_conclusion.files/image003.png",
       "source_sha256": "8919e05a016766b5bbfb4e9a470cfb12789c055a07beb0c2327c4fdedba18828"
@@ -4597,7 +4597,7 @@
       "page": "hydronamics/hydronamics_9_6.html",
       "id": "formula-hydronamics-9-6-005",
       "data_source_image": "./../img/hydronamics_stress_conclusion.files/image005.png",
-      "formula_sha256": "4dcc180e61e062f8ce196e46a8472c40e545ecaa97b886fbee0cb3a4a924dc78",
+      "formula_sha256": "30fedecebfc6602b31dbc84842acb7daf2fc687874ffb383f0863ac63df5eadf",
       "source_basis": "original-image",
       "source_path": "img/hydronamics_stress_conclusion.files/image005.png",
       "source_sha256": "e4f0ef21334c94b5627607db94834e60737d0752329c7f8137b96abdec2d4922"
@@ -4606,7 +4606,7 @@
       "page": "mesh/mesh_1.html",
       "id": "formula-mesh-1-002",
       "data_source_image": "./../img/mesh_approximation.files/image002.png",
-      "formula_sha256": "b28ace6675e456072edbb1ea7a62ea8ffd75952af7d21d00ec965938cb3754f2",
+      "formula_sha256": "7528e164ae66f97c3504a9a0651dbea702c379762f33edeb303a453424d1bae2",
       "source_basis": "original-image",
       "source_path": "img/mesh_approximation.files/image002.png",
       "source_sha256": "c7a6e77e67ae425e466c026c8efd8a48cbcf062a7fd194957fc00fb6bb602a28"
@@ -4615,7 +4615,7 @@
       "page": "mesh/mesh_1.html",
       "id": "formula-mesh-1-003",
       "data_source_image": "./../img/mesh_approximation.files/image003.png",
-      "formula_sha256": "e48c3370c52848d96e5a9eae4e2c55923e6a6b4c5de936549aa502f12212148a",
+      "formula_sha256": "0be7f07d068eb10a693dfbd885e527fe08ffb61625adc88fa10b86ea78221847",
       "source_basis": "original-image",
       "source_path": "img/mesh_approximation.files/image003.png",
       "source_sha256": "7d31bdf2083b24473fbb27058ec362bba05632b821525ddcc4dc9b770fcd5b96"
@@ -4624,7 +4624,7 @@
       "page": "mesh/mesh_1.html",
       "id": "formula-mesh-1-004",
       "data_source_image": "./../img/mesh_approximation.files/image004.png",
-      "formula_sha256": "2e24d866553dc216bb82b6aef8700799320c079e58751b57c3fb15254519632e",
+      "formula_sha256": "2132d95cb38ea8632bacd8f72d74f9668cc8b8fa5727ff7c682904b44c67a40f",
       "source_basis": "original-image",
       "source_path": "img/mesh_approximation.files/image004.png",
       "source_sha256": "666f9b9b7e966904e1d6d374c0785945354fe29c744a039cb4c7cb9cc71c7f2d"
@@ -4633,7 +4633,7 @@
       "page": "mesh/mesh_1.html",
       "id": "formula-mesh-1-005",
       "data_source_image": "./../img/mesh_approximation.files/image005.png",
-      "formula_sha256": "efec60019ce2a7bd1daa8f7a9aba3881be233fbe31afd190dd51b1251c88f71c",
+      "formula_sha256": "c38177388bb52c3e5b84a23a896fb4f9129e6b8b6d02a3d102f7a87873be4cdb",
       "source_basis": "original-image",
       "source_path": "img/mesh_approximation.files/image005.png",
       "source_sha256": "772ae23e19da856be2f861b1052255f046c1ac5a4d2de5abaeb88dda8b845122"
@@ -4642,7 +4642,7 @@
       "page": "mesh/mesh_1.html",
       "id": "formula-mesh-1-006",
       "data_source_image": "./../img/mesh_approximation.files/image006.png",
-      "formula_sha256": "bee254bb63e89f5050092c81407d14547b9298f46ab92e398a1ada0c0477ffcc",
+      "formula_sha256": "1429053a577f8aee277aed1e34ffb9ed4e367615a35aa79809dd4db2f385a388",
       "source_basis": "original-image",
       "source_path": "img/mesh_approximation.files/image006.png",
       "source_sha256": "a14f8a372912033a3c65088f456fcad21457d5b98ae762321cb0a4581191530b"
@@ -4660,7 +4660,7 @@
       "page": "mesh/mesh_2.html",
       "id": "formula-mesh-2-003",
       "data_source_image": "./../img/mesh_curvature.files/image003.png",
-      "formula_sha256": "e7e757ab3b146ba5caeb38f92dbedc8387c5fa4463b42d08f2315f1d214de6cb",
+      "formula_sha256": "1f3bf6cbaa334b97ed711a14a965cd24fb57fd0fc281141ad3018b3f4f0b6f66",
       "source_basis": "original-image",
       "source_path": "img/mesh_curvature.files/image003.png",
       "source_sha256": "795f96e1f49400fade6dcbfb48706ad9f042ffe8ec4e47986829fe4553528402"
@@ -4669,7 +4669,7 @@
       "page": "mesh/mesh_2.html",
       "id": "formula-mesh-2-004",
       "data_source_image": "./../img/mesh_curvature.files/image004.png",
-      "formula_sha256": "731ad9604fd51a1e8b219536d5236b8b18583e830f6f48ab8f58751059e9c2ae",
+      "formula_sha256": "003323b45bc1f70ac4dd525a6ae04c3ebcbd89b06e87f5e442df8d6217a32ffd",
       "source_basis": "original-image",
       "source_path": "img/mesh_curvature.files/image004.png",
       "source_sha256": "8a3837ca3373b7293ff8c88b1473ca2026e6a91263beb174a44afc3207009163"
@@ -4678,7 +4678,7 @@
       "page": "mesh/mesh_2.html",
       "id": "formula-mesh-2-005",
       "data_source_image": "./../img/mesh_curvature.files/image005.png",
-      "formula_sha256": "94bca8ee95e4fcdeaae3c522cc67aaba5308afa789db68e5f8c1eb148f30b566",
+      "formula_sha256": "0232f042f9dafcc68b5ec5ce4f2dab9b0e2055bb9f63f7aaaa5c4116548d8df5",
       "source_basis": "original-image",
       "source_path": "img/mesh_curvature.files/image005.png",
       "source_sha256": "28000d4c977ea50d3fbea3fa0a17eacbd72d209613e15b6c5a8b040a5be8da1a"
@@ -4687,7 +4687,7 @@
       "page": "mesh/mesh_2.html",
       "id": "formula-mesh-2-006",
       "data_source_image": "./../img/mesh_curvature.files/image006.png",
-      "formula_sha256": "ca2344b5bdbe9318a3ae4667c7c46ab327319d67ffd1b2685217960cb4b42852",
+      "formula_sha256": "11207014ae9008863d8cf5d3d4229e096e8d06396e6fb09730c187e9bc62b82f",
       "source_basis": "original-image",
       "source_path": "img/mesh_curvature.files/image006.png",
       "source_sha256": "a2acd6e54c2f4af3d885ba0a0eba69ba8e144d6e0d0bd859804261244b684191"
@@ -4696,7 +4696,7 @@
       "page": "mesh/mesh_2.html",
       "id": "formula-mesh-2-007",
       "data_source_image": "./../img/mesh_curvature.files/image007.png",
-      "formula_sha256": "bfe6c32a27d51f34e1bf92e87e5b628292e53550fc91a6f9d7882ee32a0a3a4c",
+      "formula_sha256": "d1752ef93b795ea57b4afeaeb5e818def7a812281c2584d8ce604e5303d4444e",
       "source_basis": "original-image",
       "source_path": "img/mesh_curvature.files/image007.png",
       "source_sha256": "7dd2f0561131ce9f65dfc4564eb74dcb9173daff534f4285d495da3efc731699"
@@ -4705,7 +4705,7 @@
       "page": "mesh/mesh_2.html",
       "id": "formula-mesh-2-008",
       "data_source_image": "./../img/mesh_curvature.files/image008.png",
-      "formula_sha256": "36e7b2a4cfa072fafcf1ac3bc8b7e86a93b7e787f9b6f80a06a36b437078fcd4",
+      "formula_sha256": "def949f17aa7cce78ca64c797025990523e1f69e6f5dae374813710ac5645376",
       "source_basis": "original-image",
       "source_path": "img/mesh_curvature.files/image008.png",
       "source_sha256": "44db8b829d359637cc8449f5a40d5d19bb5cb57ada2a24828f17646a6fe59b3a"
@@ -4714,7 +4714,7 @@
       "page": "mesh/mesh_2.html",
       "id": "formula-mesh-2-009",
       "data_source_image": "./../img/mesh_curvature.files/image009.png",
-      "formula_sha256": "0680dd72f270c02e958c0511e6cb06e23d748ed83980abd898c2869c27360b6d",
+      "formula_sha256": "90caae0acd0bfa48b0b529d15f4c531655b0d060f032506079fc5ee1b2929858",
       "source_basis": "original-image",
       "source_path": "img/mesh_curvature.files/image009.png",
       "source_sha256": "128e0a28b7e2dfeb618628a20284d3c509c33e3181999066e3be0a88d0c587d8"
@@ -4723,7 +4723,7 @@
       "page": "mesh/mesh_2.html",
       "id": "formula-mesh-2-010",
       "data_source_image": "./../img/mesh_curvature.files/image010.png",
-      "formula_sha256": "2d4fdc096056aa8ce2217e62ebde9005e22d962c7e7347a5d19176d2d1c5da18",
+      "formula_sha256": "ccdc870bea04a9757d1c741db64af9c5b2889243cef9e9ff4bb012226db13617",
       "source_basis": "original-image",
       "source_path": "img/mesh_curvature.files/image010.png",
       "source_sha256": "a5d51c03f7adada809304a6f8889f4c2e1432a9b47dc02fe96ee85e10203543b"
@@ -4750,7 +4750,7 @@
       "page": "mesh/mesh_3_1.html",
       "id": "formula-mesh-3-1-006",
       "data_source_image": "./../img/mesh_node_buble.files/image006.png",
-      "formula_sha256": "43a225843f020fe483d572b4cdffab81f53835b6d6d40b48e8d510972bfa7985",
+      "formula_sha256": "32122b7877c8b8ae625ff42791deb4361ae468b35dbb06211714c49f4a2be336",
       "source_basis": "original-image",
       "source_path": "img/mesh_node_buble.files/image006.png",
       "source_sha256": "fdaae54dab7db4e112b4ecd58f10f608b2fe37b177c34fb158524e363520755b"
@@ -4768,7 +4768,7 @@
       "page": "mesh/mesh_3_1.html",
       "id": "formula-mesh-3-1-010",
       "data_source_image": "./../img/mesh_node_buble.files/image010.png",
-      "formula_sha256": "23e819552c8d7a20dd91c19baf8d146057f83cc9d7fbcbbadc634565547a9fad",
+      "formula_sha256": "d3de21364f54a2be8256f7e3447351e687c5347d12975df4e964129765af63cb",
       "source_basis": "original-image",
       "source_path": "img/mesh_node_buble.files/image010.png",
       "source_sha256": "1a70cd615d76fdbbd51b6e3a802b7d9095503408817a1ff593de3c6e395daa07"
@@ -4813,7 +4813,7 @@
       "page": "mesh/mesh_5.html",
       "id": "formula-mesh-5-003",
       "data_source_image": "./../img/mesh_deformation_tet.files/image003.png",
-      "formula_sha256": "5772250aaaa43a30ea77bdefddc8c463672ff9b08bdaf408ff4705a0fafee70f",
+      "formula_sha256": "64c632a8a2e93bd3000611710e89b950462f88db19fb39611c097d6cc931b892",
       "source_basis": "original-image",
       "source_path": "img/mesh_deformation_tet.files/image003.png",
       "source_sha256": "05a7921b186fb83455656d88be08c180101fbb981ba6732410c28cf1694f9fd4"
@@ -4831,7 +4831,7 @@
       "page": "mesh/mesh_5.html",
       "id": "formula-mesh-5-005",
       "data_source_image": "./../img/mesh_deformation_tet.files/image005.png",
-      "formula_sha256": "f82f96385ab176e86ed23dfbea3a49d90107ee70cf1ca0e6c00ed6a5d24f2a58",
+      "formula_sha256": "ca72a5c149ab71ccd0940c44cc6bb326aee074a1aba9dae3e2c020f1d2fe969d",
       "source_basis": "original-image",
       "source_path": "img/mesh_deformation_tet.files/image005.png",
       "source_sha256": "e0b1b908cea72fcaf8fc267912764413ad611aae12212bd6b1a6fe653ac4d55c"
@@ -4840,7 +4840,7 @@
       "page": "mesh/mesh_5.html",
       "id": "formula-mesh-5-006",
       "data_source_image": "./../img/mesh_deformation_tet.files/image006.png",
-      "formula_sha256": "7f88b4ed2c1f06560d8fd7157e485f6b40585eac16b85d0aed7d9bb428e91cdd",
+      "formula_sha256": "d348ce4e08b32e62a346f12369fdd53a5873fb8106649dba5c51bcb126b20192",
       "source_basis": "original-image",
       "source_path": "img/mesh_deformation_tet.files/image006.png",
       "source_sha256": "db2ac9b2ef299496d92746226e2688d2790c24a872cf0078ad1de7c45c246047"
@@ -4858,7 +4858,7 @@
       "page": "mesh/mesh_5.html",
       "id": "formula-mesh-5-008",
       "data_source_image": "./../img/mesh_deformation_tet.files/image008.png",
-      "formula_sha256": "a6ccfd621496ee46d487c92de46aeabcf43d1fd8f48f4fbcad0bb276c8ec8a4e",
+      "formula_sha256": "7754888987117bb9e8a9395b9e05dd7f0cd67de9faf12fbd93273e87d3d3da77",
       "source_basis": "original-image",
       "source_path": "img/mesh_deformation_tet.files/image008.png",
       "source_sha256": "af4efef91634abc93a7d5e382877d60bf85b5561f3b48d0d75810215295188ec"
@@ -4867,7 +4867,7 @@
       "page": "mesh/mesh_5.html",
       "id": "formula-mesh-5-009",
       "data_source_image": "./../img/mesh_deformation_tet.files/image009.png",
-      "formula_sha256": "f88943a704717ede25c9bc00b034f9b5a4b6abb44654abc3b92ddd9f3c37b156",
+      "formula_sha256": "694cc061f0c8845ef8097fb3baaa435d63e4f1aa90126b4489cdd18d8902f46a",
       "source_basis": "original-image",
       "source_path": "img/mesh_deformation_tet.files/image009.png",
       "source_sha256": "39e47ddc359cebb42a71ebaa28b073525812f5edf72b08d92d67852578288eb6"
@@ -4993,7 +4993,7 @@
       "page": "mps/mps_3.html",
       "id": "formula-mps-3-012",
       "data_source_image": "./../img/mps_nabra.files/image012.gif",
-      "formula_sha256": "aa035c85170b6c16089b5d41e0501a7e6f4f95dd92119c75ed6541411e7bedc3",
+      "formula_sha256": "57d35f9c2f23cb35305bca5c0818e18f72b3ef49f3d8e62786f86d30c7ba735c",
       "source_basis": "word-recovered-source",
       "source_path": null,
       "source_sha256": null
@@ -5038,7 +5038,7 @@
       "page": "mps/mps_4.html",
       "id": "formula-mps-4-005",
       "data_source_image": "./../img/mps_dot.files/image005.gif",
-      "formula_sha256": "b22777581fb79c56de1e256551735289277b774b42a8d224700e96e4078fb1b9",
+      "formula_sha256": "cb1805dd5fca078daac1ee0d7841f52d40e588a12091ff520c646b0963179914",
       "source_basis": "word-recovered-source",
       "source_path": null,
       "source_sha256": null
@@ -5056,7 +5056,7 @@
       "page": "mps/mps_4.html",
       "id": "formula-mps-4-007",
       "data_source_image": "./../img/mps_dot.files/image007.gif",
-      "formula_sha256": "70190882b25c55194b814c54f8aec57b9e1e8ba4c8e7acfc504498cf0c1e3b06",
+      "formula_sha256": "a9abc852a3a923262c23cad1d0a3ba1d623d65c9bb97c92dff72eb476c4bb8fa",
       "source_basis": "word-recovered-source",
       "source_path": null,
       "source_sha256": null
@@ -5191,7 +5191,7 @@
       "page": "mps/mps_6_2.html",
       "id": "formula-mps-6-2-009",
       "data_source_image": "./../img/mps_fluid_count.files/image009.gif",
-      "formula_sha256": "a5621cdf863d2e20ae13391afb10b96dd8d46c57ec8f5f3ba16f1ade777ec99f",
+      "formula_sha256": "58d628859cbc9aff7aeeb1ad1ed94a4c735c42aa8b72d6886b97d32508da4dcf",
       "source_basis": "word-recovered-source",
       "source_path": null,
       "source_sha256": null
@@ -5272,7 +5272,7 @@
       "page": "mps/mps_6_2.html",
       "id": "formula-mps-6-2-018",
       "data_source_image": "./../img/mps_fluid_count.files/image018.gif",
-      "formula_sha256": "80343f5d55032d6682b5b19d445d7b6f8d122d8834abfd0daaa57688a772e4b9",
+      "formula_sha256": "017d7cbf23a8a6fdd05f35f489d624e5e2475d2d6de599d8503c016d38250ad5",
       "source_basis": "word-recovered-source",
       "source_path": null,
       "source_sha256": null
@@ -5290,7 +5290,7 @@
       "page": "mps/mps_6_2.html",
       "id": "formula-mps-6-2-020",
       "data_source_image": "./../img/mps_fluid_count.files/image020.gif",
-      "formula_sha256": "7bce2654685c63982d31c79833e61e160781fea410910f32bb8cb1cf1552d7a2",
+      "formula_sha256": "8958468bd1d5fb06da76dffa7d06f2f242d1c76510ff71eabe685392019a8dc1",
       "source_basis": "word-recovered-source",
       "source_path": null,
       "source_sha256": null
@@ -5317,7 +5317,7 @@
       "page": "physics/physics_2.html",
       "id": "formula-physics-2-001",
       "data_source_image": "./../img/physics_quantity.files/image001.png",
-      "formula_sha256": "d26b670f38c3d79e2c4e7159cab3624091d6db054625162ce33988e09841eb34",
+      "formula_sha256": "183cb33b727ae2641c816b2c754145c537b71dbc3851b61b70083900edf34fff",
       "source_basis": "original-image",
       "source_path": "img/physics_quantity.files/image001.png",
       "source_sha256": "ed39170d54744481578cc573966731a7f1f40a9f603dc432d07960875ee0dd15"
@@ -5326,7 +5326,7 @@
       "page": "physics/physics_2.html",
       "id": "formula-physics-2-002",
       "data_source_image": "./../img/physics_quantity.files/image002.png",
-      "formula_sha256": "460d3edffbad1eb94b4c613bbd8e1c8ac0e1e3517197184a933f205f25caa52c",
+      "formula_sha256": "a8daec3a47bdb108aaf20a66f2501f512482769a487cc6194e622c42b76bc33a",
       "source_basis": "original-image",
       "source_path": "img/physics_quantity.files/image002.png",
       "source_sha256": "a4887bcfde71dc852054856e47632d3ea4428d9124a0e1ec664fc229fe65a1e1"
@@ -5353,7 +5353,7 @@
       "page": "physics/physics_2.html",
       "id": "formula-physics-2-005",
       "data_source_image": "./../img/physics_quantity.files/image005.png",
-      "formula_sha256": "05f022ee68844b882b9259e293bf5785e270045a38a5514694795888f0fd8c25",
+      "formula_sha256": "b5f895fae102006eb728cfc217ec8abf4721963161a36c059f06b6e7bdafd70e",
       "source_basis": "original-image",
       "source_path": "img/physics_quantity.files/image005.png",
       "source_sha256": "c1c0bcdbba68a654342ece59b46aa069c90100221526e4cf6e440205b832e67e"
@@ -5362,7 +5362,7 @@
       "page": "physics/physics_2.html",
       "id": "formula-physics-2-008",
       "data_source_image": "./../img/physics_quantity.files/image008.png",
-      "formula_sha256": "00a543a327d4ce21d82a3ddbe04a54d8d5aeb83083168951b3f5fc30bbbfe2dc",
+      "formula_sha256": "e4108b71b15915a28054ca08def0597d697e03ec2dfa2c6a1d8e068b1d2611eb",
       "source_basis": "original-image",
       "source_path": "img/physics_quantity.files/image008.png",
       "source_sha256": "4f00e508aaefa0f355ac5c280666148039eb347560b51d88dfa93ac9dc3b8506"
@@ -5371,7 +5371,7 @@
       "page": "physics/physics_2.html",
       "id": "formula-physics-2-011",
       "data_source_image": "./../img/physics_quantity.files/image011.png",
-      "formula_sha256": "3a0a15449301cefc775116c313788712ed3728142d60e7f15d2f7fd105444185",
+      "formula_sha256": "847ab09c73215a0f5f43e1855c7e34d6a514264fcebd5fb26dfe7b33b09427ce",
       "source_basis": "original-image",
       "source_path": "img/physics_quantity.files/image011.png",
       "source_sha256": "7c6a2fd62b13f9980a904186ba46e2d879b55767b9246aa8ae18413f66e26451"
@@ -5452,7 +5452,7 @@
       "page": "physics/physics_4.html",
       "id": "formula-physics-4-004",
       "data_source_image": "./../img/physics_q_category.files/image004.png",
-      "formula_sha256": "6490ca83522253496ef68ce446d097d4882cff3e53d08cd2efc6c578ea2c6310",
+      "formula_sha256": "f886c0c0bd275362daca1374d909bdade0d31516efc58ed599734374088f07bf",
       "source_basis": "original-image",
       "source_path": "img/physics_q_category.files/image004.png",
       "source_sha256": "07f071a95e9c2c852f855065c04b2a48ca3e7831c15aadf88fbbec8b1dc3a7b5"
@@ -5479,7 +5479,7 @@
       "page": "physics/physics_4.html",
       "id": "formula-physics-4-008",
       "data_source_image": "./../img/physics_q_category.files/image008.png",
-      "formula_sha256": "7cacfec8ce1423c97ec81e7b66b9a1c113e7977723be13ffdbc740300fa6821f",
+      "formula_sha256": "9d2a2732f7e08c6ed8bee17b22f897816220108e9e5a4d41c0d7f2e8d3b7a9e6",
       "source_basis": "original-image",
       "source_path": "img/physics_q_category.files/image008.png",
       "source_sha256": "9708af91bf546f97aba916688b8458fafbab9e6c714c6cc460abc0157a7185b2"
@@ -5497,7 +5497,7 @@
       "page": "physics/physics_5.html",
       "id": "formula-physics-5-004",
       "data_source_image": "./../img/physics_operator.files/image004.png",
-      "formula_sha256": "f8dddfdcd3c36e79c7e974b305ca1fc53b914957eadfe68f77879a25e33c1de7",
+      "formula_sha256": "fad1048fbeffaf75c7dc3271b9915576201aa39c687d46bb207e283265423136",
       "source_basis": "original-image",
       "source_path": "img/physics_operator.files/image004.png",
       "source_sha256": "931ae711d6721c1d7f026f7a75b01afdee098fc091a79ce1039c544c13635fd6"
@@ -5515,7 +5515,7 @@
       "page": "physics/physics_5.html",
       "id": "formula-physics-5-002",
       "data_source_image": "./../img/physics_operator.files/image002.png",
-      "formula_sha256": "36cfd5997d363185fac14f07f41669da30d17e2488c539f9b7f321dc1d464bed",
+      "formula_sha256": "487e1a2b4cd477402224e261259be59570fc3856457e24afb1cd482bf2e2bd38",
       "source_basis": "original-image",
       "source_path": "img/physics_operator.files/image002.png",
       "source_sha256": "56c661aca74e574dea44e062eb7a310bd5f7667d3688f46c7c58ae0ab3d6c995"
@@ -5524,7 +5524,7 @@
       "page": "physics/physics_6_1.html",
       "id": "formula-physics-6-1-001",
       "data_source_image": "./../img/physics_c_four_operator.files/image001.png",
-      "formula_sha256": "332814513a36d8841a80cfbe0bfe0d9a2b43bb8aab35ef5600582c69ac053f80",
+      "formula_sha256": "e74f46866ac83a6654d636949c17a110b2a951d1e92fd429e108b17813209df5",
       "source_basis": "original-image",
       "source_path": "img/physics_c_four_operator.files/image001.png",
       "source_sha256": "a422109318ca2abd5e4b52466335e8eadc8b4b1d2b2ff65bd163b5b670d205b7"
@@ -5533,7 +5533,7 @@
       "page": "physics/physics_6_1.html",
       "id": "formula-physics-6-1-002",
       "data_source_image": "./../img/physics_c_four_operator.files/image002.png",
-      "formula_sha256": "3fab06af23781a230ef3391cf5bd68143dad770df4c6285fd7855fb03a1f2fb3",
+      "formula_sha256": "0cdbfaa7ed0b85538bf9c89840843be718835cd4b6434a44bf656eed3cf2bcfa",
       "source_basis": "original-image",
       "source_path": "img/physics_c_four_operator.files/image002.png",
       "source_sha256": "93a65f08ed1b8d52fded29ffc6df1c7bbeb33596468ecc39d51b387cedaa9b8d"
@@ -5542,7 +5542,7 @@
       "page": "physics/physics_6_1.html",
       "id": "formula-physics-6-1-003",
       "data_source_image": "./../img/physics_c_four_operator.files/image003.png",
-      "formula_sha256": "51fc6fe2268368d138f10b0a4b1f65f826b33d711a27fe97d351ec083f98cb9f",
+      "formula_sha256": "3d344b91bee0a0673adf591f6113b5f29be7b75f87ce1e1c413d301658d7f5ef",
       "source_basis": "original-image",
       "source_path": "img/physics_c_four_operator.files/image003.png",
       "source_sha256": "23476bb467f7f7fcf2e38778be36ccd16d5d01afee9a4558b496928f2740dba4"
@@ -5551,7 +5551,7 @@
       "page": "physics/physics_6_1.html",
       "id": "formula-physics-6-1-004",
       "data_source_image": "./../img/physics_c_four_operator.files/image004.png",
-      "formula_sha256": "42ea4f9545333d68929542323bebd9d05e0daf688c2b1405384fe7a80feca7d8",
+      "formula_sha256": "e81f12aaa3dae6bf0ef0879cedf779e99a9e31e895bd45fae32a76583d2d7674",
       "source_basis": "original-image",
       "source_path": "img/physics_c_four_operator.files/image004.png",
       "source_sha256": "b9967bf31f3c2cc7b5bed0551416034555fc2b81af909f50ac705047c504014a"
@@ -5560,7 +5560,7 @@
       "page": "physics/physics_6_1.html",
       "id": "formula-physics-6-1-005",
       "data_source_image": "./../img/physics_c_four_operator.files/image005.png",
-      "formula_sha256": "c1329ab99185c0d635deb893df33a6238fc2f7bb88233efbbc535aec133b7e62",
+      "formula_sha256": "5a06eeb9736ac7b94c600da9e7fbcabc5f2870f89983b22c365077860392873d",
       "source_basis": "original-image",
       "source_path": "img/physics_c_four_operator.files/image005.png",
       "source_sha256": "b9366eae681a154f6bbc3cf19534b74bd01a3598dceb465c70196ed8b40b8303"
@@ -5587,7 +5587,7 @@
       "page": "physics/physics_6_2_1.html",
       "id": "formula-physics-6-2-1-003",
       "data_source_image": "./../img/physics_c_inner.files/image003.png",
-      "formula_sha256": "d7b2df0094e608ae9466318eef3f11b4540d6fcecf5562102ea73d9d0aba27f0",
+      "formula_sha256": "b29a486b4f8d0834d2dbc8e9f203e962f565292bea3017b5b4848b1130e476ab",
       "source_basis": "original-image",
       "source_path": "img/physics_c_inner.files/image003.png",
       "source_sha256": "4b917d0e40d4ce507d8fdb08487995226723194133f3bf1d7c17821241ddc9d5"
@@ -5596,7 +5596,7 @@
       "page": "physics/physics_6_2_1.html",
       "id": "formula-physics-6-2-1-004",
       "data_source_image": "./../img/physics_c_inner.files/image004.png",
-      "formula_sha256": "ca25ac496b3b3586490b046112d5117c6febbd270a6ea5120632ddb7ddff68a9",
+      "formula_sha256": "085ddf878f4ac5428033d32f5dd0f23491d7d162a7d2ee25fe7b61b72525c1b6",
       "source_basis": "original-image",
       "source_path": "img/physics_c_inner.files/image004.png",
       "source_sha256": "5a1986b09f27f6ee0d8d181b358c63d07e74bd69b7a011dee1971e39eba2cce5"
@@ -5605,7 +5605,7 @@
       "page": "physics/physics_6_2_2.html",
       "id": "formula-physics-6-2-2-006",
       "data_source_image": "./../img/physics_c_inner.files/image006.png",
-      "formula_sha256": "78f110b5438e4519b5f10119ff6e1531e0ce374a009f222ea162f8517decf03d",
+      "formula_sha256": "d4270714980ba235f1363881e6cd642cc966f59d6ae508145377dd9193fe40b3",
       "source_basis": "original-image",
       "source_path": "img/physics_c_inner.files/image006.png",
       "source_sha256": "f3596df8c071c511ec98a2592e7f39508343aacd7f5cdc82772a172f1d6596a7"
@@ -5623,7 +5623,7 @@
       "page": "physics/physics_6_2_3.html",
       "id": "formula-physics-6-2-3-009",
       "data_source_image": "./../img/physics_c_inner.files/image009.png",
-      "formula_sha256": "b3bbfa19b60274814318e1e4bfa75d8c73e4a5fe746daa03066f2cbab35e1ba6",
+      "formula_sha256": "92a3b6f83e60fbc1d73c07a8d55dfdb9e9e2f5d04081bc923b2ea141d2cae02d",
       "source_basis": "original-image",
       "source_path": "img/physics_c_inner.files/image009.png",
       "source_sha256": "316c7f8b2967e6d516c5fb99eddcd91c6a317f4668d2a80790bf318ef135badf"
@@ -5668,7 +5668,7 @@
       "page": "physics/physics_6_2_4.html",
       "id": "formula-physics-6-2-4-016",
       "data_source_image": "./../img/physics_c_inner.files/image016.png",
-      "formula_sha256": "2c86fb551ebd4799f059ce5da1698bb3f1615f540c922d6fde80c22135112d9a",
+      "formula_sha256": "6d9d09585000c61ce13dd980adb9b42759421cd365de40ca1ff89f29982caec1",
       "source_basis": "original-image",
       "source_path": "img/physics_c_inner.files/image016.png",
       "source_sha256": "59f7fe532f3e947b2fcf87498d21ff482f3c58cb3325cef94f5fa0ebe2a50485"
@@ -5686,7 +5686,7 @@
       "page": "physics/physics_6_2_5.html",
       "id": "formula-physics-6-2-5-018",
       "data_source_image": "./../img/physics_c_inner.files/image018.png",
-      "formula_sha256": "deab0a46ad93997301372148d34abb835546b1689b3bf8d031faa6b418dd10c7",
+      "formula_sha256": "70c9c1181d34dc451bece608d8bd13280a97534e64d6fd973cd3ef9dd03ac072",
       "source_basis": "original-image",
       "source_path": "img/physics_c_inner.files/image018.png",
       "source_sha256": "871ff50f961da0a41640d30f96c72c164f6dc21309f0f38f4b3bec3fd457f288"
@@ -5695,7 +5695,7 @@
       "page": "physics/physics_6_2_6.html",
       "id": "formula-physics-6-2-6-019",
       "data_source_image": "./../img/physics_c_inner.files/image019.png",
-      "formula_sha256": "8e83988f173df6e4910f984ac09c9547f295875a9c51eeec96eb618384219431",
+      "formula_sha256": "a14693a886f4df48afef48558eb1bfc6e374be7e8a43d599095f3720cb32c699",
       "source_basis": "original-image",
       "source_path": "img/physics_c_inner.files/image019.png",
       "source_sha256": "3a67f987a086ad11ffa8db2f059a32b2120c47ab1d9abb8cdf8d9fd3c0eec579"
@@ -5704,7 +5704,7 @@
       "page": "physics/physics_6_2_7.html",
       "id": "formula-physics-6-2-7-020",
       "data_source_image": "./../img/physics_c_inner.files/image020.png",
-      "formula_sha256": "c3e397bca153ff8621a6019d31d1fc6695ac54a4b429fe76cc8119af23d3191b",
+      "formula_sha256": "bb4ced1a14d81382916c4ddc339b10bd321b6bee4740318efe55665bbf0c232e",
       "source_basis": "original-image",
       "source_path": "img/physics_c_inner.files/image020.png",
       "source_sha256": "cf21da1de3ee3f805e454f4a7b549a4484c8f49b47dbc6f2196978ddefe2d984"
@@ -5722,7 +5722,7 @@
       "page": "physics/physics_6_3_2.html",
       "id": "formula-physics-6-3-2-002",
       "data_source_image": "./../img/physics_c_cross.files/image002.png",
-      "formula_sha256": "f35e53f51ccb05310ffdfc87a436ee83a387d5ac0a59b50c464e14ae908d37bc",
+      "formula_sha256": "6ff90dee40806305442212f1e1252045d916d3986788cae5ff6d0f16f0f709a3",
       "source_basis": "original-image",
       "source_path": "img/physics_c_cross.files/image002.png",
       "source_sha256": "99916cb7eadf7205932abd44d7018f34a5ef71a21ec090e181f1ead01284215e"
@@ -5740,7 +5740,7 @@
       "page": "physics/physics_6_3_3.html",
       "id": "formula-physics-6-3-3-005",
       "data_source_image": "./../img/physics_c_cross.files/image005.png",
-      "formula_sha256": "e1d39b3adee24e031f5427ddea463fd92aeff82bcff8a47419b967b2993fa58b",
+      "formula_sha256": "9064d3d8938921f472c7003f2a6c25a5acc733abf8d0d1a9605485fc636d95ca",
       "source_basis": "original-image",
       "source_path": "img/physics_c_cross.files/image005.png",
       "source_sha256": "1cf61ceda12fe248b02d735d950c7844c6de72b432404f023768fab736a0b569"
