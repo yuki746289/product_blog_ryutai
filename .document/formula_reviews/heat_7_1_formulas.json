@@ -126,11 +126,11 @@
     },
     {
       "image": "image031.png",
-      "latex": "\\[\n\\begin{aligned}\n={}&[C]\\frac{\\{\\Theta\\}^{\\tau+\\Delta\\tau}-\\{\\Theta\\}^{\\tau}}{\\Delta\\tau}\n+\\left(V_x[C_x]+V_y[C_y]\\right)\\{\\Theta\\}\\\\\n&+\\frac{1}{Pe}\\left([S_{xx}]+[S_{yy}]\\right)\\{\\Theta\\}\n+Nu(\\Theta-\\Theta_h)L\n\\begin{bmatrix}1\\\\1\\end{bmatrix}\\\\\n={}&\n\\begin{bmatrix}0\\\\0\\\\0\\end{bmatrix}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n={}&[C]\\frac{\\{\\Theta\\}^{\\tau+\\Delta\\tau}-\\{\\Theta\\}^{\\tau}}{\\Delta\\tau}\n+\\left(V_x[C_x]+V_y[C_y]\\right)\\{\\Theta\\}\\\\\n&+\\frac{1}{Pe}\\left([S_{xx}]+[S_{yy}]\\right)\\{\\Theta\\}\\\\\n&+Nu(\\Theta-\\Theta_h)L\n\\begin{bmatrix}1\\\\1\\end{bmatrix}\\\\\n={}&\n\\begin{bmatrix}0\\\\0\\\\0\\end{bmatrix}\n\\end{aligned}\n\\]"
     },
     {
       "image": "image032.png",
-      "latex": "\\[\n\\begin{aligned}\n&[C]\\frac{\\{\\Theta\\}^{\\tau+\\Delta\\tau}-\\{\\Theta\\}^{\\tau}}{\\Delta\\tau}\n+\\left(V_x[C_x]+V_y[C_y]\\right)\\{\\Theta\\}\\\\\n&+\\frac{1}{Pe}\\left([S_{xx}]+[S_{yy}]\\right)\\{\\Theta\\}\n+Nu(\\Theta-\\Theta_h)L\n\\begin{bmatrix}1\\\\1\\end{bmatrix}\n=\n\\begin{bmatrix}0\\\\0\\\\0\\end{bmatrix}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n&[C]\\frac{\\{\\Theta\\}^{\\tau+\\Delta\\tau}-\\{\\Theta\\}^{\\tau}}{\\Delta\\tau}\n+\\left(V_x[C_x]+V_y[C_y]\\right)\\{\\Theta\\}\\\\\n&+\\frac{1}{Pe}\\left([S_{xx}]+[S_{yy}]\\right)\\{\\Theta\\}\\\\\n&+Nu(\\Theta-\\Theta_h)L\n\\begin{bmatrix}1\\\\1\\end{bmatrix}\n=\n\\begin{bmatrix}0\\\\0\\\\0\\end{bmatrix}\n\\end{aligned}\n\\]"
     },
     {
       "image": "image033.png",

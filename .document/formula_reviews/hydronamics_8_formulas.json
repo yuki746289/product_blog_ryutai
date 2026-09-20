@@ -11,7 +11,7 @@
     {
       "image": "image002.png",
       "mode": "display",
-      "latex": "\\[\n\\begin{aligned}\n\\frac{\\rho v_{x|t+\\Delta t}-\\rho v_{x|t}}{\\Delta t}\n={}&\n-\\frac{\\rho v_xv_{x|x+\\Delta x}-\\rho v_xv_{x|x}}{\\Delta x}\\\\\n&-\\frac{\\rho v_yv_{x|x+\\Delta x}-\\rho v_yv_{x|x}}{\\Delta y}\\\\\n&-\\frac{\\rho v_zv_{x|x+\\Delta x}-\\rho v_zv_{x|x}}{\\Delta z}\\\\\n&-\\frac{\\tau_{xx|x+\\Delta x}-\\tau_{xx|x}}{\\Delta x}\n-\\frac{\\tau_{yx|y+\\Delta y}-\\tau_{yx|y}}{\\Delta y}\n-\\frac{\\tau_{zx|z+\\Delta z}-\\tau_{zx|z}}{\\Delta z}\\\\\n&-\\frac{p_{x|x+\\Delta x}-p_{x|x}}{\\Delta x}\n+\\rho g_x\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n&\\frac{\\rho v_{x|t+\\Delta t}-\\rho v_{x|t}}{\\Delta t}=\\\\\n&-\\frac{\\rho v_xv_{x|x+\\Delta x}-\\rho v_xv_{x|x}}{\\Delta x}\n-\\frac{\\rho v_yv_{x|x+\\Delta x}-\\rho v_yv_{x|x}}{\\Delta y}\n-\\frac{\\rho v_zv_{x|x+\\Delta x}-\\rho v_zv_{x|x}}{\\Delta z}\\\\\n&-\\frac{\\tau_{xx|x+\\Delta x}-\\tau_{xx|x}}{\\Delta x}\n-\\frac{\\tau_{yx|y+\\Delta y}-\\tau_{yx|y}}{\\Delta y}\n-\\frac{\\tau_{zx|z+\\Delta z}-\\tau_{zx|z}}{\\Delta z}\\\\\n&-\\frac{p_{x|x+\\Delta x}-p_{x|x}}{\\Delta x}\\\\\n&+\\rho g_x\n\\end{aligned}\n\\]"
     },
     {
       "image": "image003.png",

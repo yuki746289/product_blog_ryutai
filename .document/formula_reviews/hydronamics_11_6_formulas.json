@@ -16,7 +16,7 @@
     },
     {
       "image": "image002.png",
-      "latex": "\\[\n\\frac{\\partial \\rho}{\\partial t}\\neq 0\n\\]"
+      "latex": "\\[\n\\frac{\\partial\\rho}{\\partial t}\\neq0\n\\]"
     }
   ]
 }

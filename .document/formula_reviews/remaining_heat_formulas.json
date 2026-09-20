@@ -98,7 +98,7 @@
         },
         {
           "image": "image004.png",
-          "latex": "\\[\n\\begin{aligned}\n\\rho C_p\\frac{T_{t+\\Delta t}-T_t}{\\Delta t}\n&+\\rho C_p\\left(\n\\frac{v_x|_{x+\\Delta x}T|_{x+\\Delta x}-v_x|_xT|_x}{\\Delta x}\n\\right)\\\\\n&+\\rho C_p\\left(\n\\frac{v_y|_{y+\\Delta y}T|_{y+\\Delta y}-v_y|_yT|_y}{\\Delta y}\n\\right)\\\\\n&+\\rho C_p\\left(\n\\frac{v_z|_{z+\\Delta z}T|_{x+\\Delta x}-v_z|_zT|_z}{\\Delta z}\n\\right)\\\\\n&=k\\left(\n\\frac{\\left.\\frac{dT}{dx}\\right|_{x+\\Delta x}-\\left.\\frac{dT}{dx}\\right|_x}{\\Delta x}\n+\\frac{\\left.\\frac{dT}{dy}\\right|_{y+\\Delta y}-\\left.\\frac{dT}{dy}\\right|_y}{\\Delta y}\n+\\frac{\\left.\\frac{dT}{dz}\\right|_{z+\\Delta z}-\\left.\\frac{dT}{dz}\\right|_z}{\\Delta z}\n\\right)\n\\end{aligned}\n\\]"
+          "latex": "\\[\n\\begin{aligned}\n&\\rho C_p\\frac{T_{t+\\Delta t}-T_t}{\\Delta t}\\\\\n&+\\rho C_p\\left(\n\\frac{v_x|_{x+\\Delta x}T|_{x+\\Delta x}-v_x|_xT|_x}{\\Delta x}\n\\right)\\\\\n&+\\rho C_p\\left(\n\\frac{v_y|_{y+\\Delta y}T|_{y+\\Delta y}-v_y|_yT|_y}{\\Delta y}\n\\right)\\\\\n&+\\rho C_p\\left(\n\\frac{v_z|_{z+\\Delta z}T|_{x+\\Delta x}-v_z|_zT|_z}{\\Delta z}\n\\right)\\\\\n&=k\\left(\n\\frac{\\left.\\frac{dT}{dx}\\right|_{x+\\Delta x}-\\left.\\frac{dT}{dx}\\right|_x}{\\Delta x}\n+\\frac{\\left.\\frac{dT}{dy}\\right|_{y+\\Delta y}-\\left.\\frac{dT}{dy}\\right|_y}{\\Delta y}\n+\\frac{\\left.\\frac{dT}{dz}\\right|_{z+\\Delta z}-\\left.\\frac{dT}{dz}\\right|_z}{\\Delta z}\n\\right)\n\\end{aligned}\n\\]"
         },
         {
           "image": "image005.png",

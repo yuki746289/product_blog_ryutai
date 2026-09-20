@@ -129,7 +129,7 @@
     },
     {
       "image": "image031.png",
-      "latex": "\\[\n\\begin{aligned}\n&[C]\\frac{\\{\\Theta\\}^{\\tau+\\Delta\\tau}-\\{\\Theta\\}^{\\tau}}{\\Delta\\tau}\n+\\left(V_x[C_x]+V_y[C_y]+V_z[C_z]\\right)\\{\\Theta\\}\\\\\n&+\\frac{1}{Pe}\\left([S_{xx}]+[S_{yy}]+[S_{zz}]\\right)\\{\\Theta\\}\n+Nu(\\Theta-\\Theta_h)\\frac{S}{3}\n\\begin{bmatrix}1\\\\1\\\\1\\end{bmatrix}\n=\n\\begin{bmatrix}0\\\\0\\\\0\\\\0\\end{bmatrix}\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n&[C]\\frac{\\{\\Theta\\}^{\\tau+\\Delta\\tau}-\\{\\Theta\\}^{\\tau}}{\\Delta\\tau}\\\\\n&+\\left(V_x[C_x]+V_y[C_y]+V_z[C_z]\\right)\\{\\Theta\\}\\\\\n&+\\frac{1}{Pe}\\left([S_{xx}]+[S_{yy}]+[S_{zz}]\\right)\\{\\Theta\\}\\\\\n&+Nu(\\Theta-\\Theta_h)\\frac{S}{3}\n\\begin{bmatrix}1\\\\1\\\\1\\end{bmatrix}\n=\n\\begin{bmatrix}0\\\\0\\\\0\\\\0\\end{bmatrix}\n\\end{aligned}\n\\]"
     },
     {
       "image": "image032.png",

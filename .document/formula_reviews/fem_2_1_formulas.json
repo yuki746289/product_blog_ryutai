@@ -29,7 +29,7 @@
     },
     {
       "image": "image007.png",
-      "latex": "\\[\n\\begin{aligned}\nN_1&=L_1,\\qquad N_2=L_2,\\qquad N_3=L_3\\\\\nN_1+N_2+N_3&=1\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n&N_1=L_1,\\qquad N_2=L_2,\\qquad N_3=L_3\\\\\n&N_1+N_2+N_3=1\n\\end{aligned}\n\\]"
     }
   ]
 }

@@ -46,7 +46,7 @@
     },
     {
       "image": "image011.png",
-      "latex": "\\[\n\\left\\{\n(c_3a_1-c_1a_3)(a_1b_2-a_2b_1)\n-(c_2a_1-c_1a_2)(a_1b_3-a_3b_1)\n\\right\\}y\n=\n(c_3a_1-c_1a_3)(a_1d_2-a_2d_1)\n-(c_2a_1-c_1a_2)(a_1d_3-a_3d_1)\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n&\\left\\{\n(c_3a_1-c_1a_3)(a_1b_2-a_2b_1)\n-(c_2a_1-c_1a_2)(a_1b_3-a_3b_1)\n\\right\\}y\\\\\n&=(c_3a_1-c_1a_3)(a_1d_2-a_2d_1)\n-(c_2a_1-c_1a_2)(a_1d_3-a_3d_1)\n\\end{aligned}\n\\]"
     },
     {
       "image": "image012.png",

@@ -8,7 +8,7 @@
   "formulas": [
     {
       "image": "image001.png",
-      "latex": "\\[\n\\left(\n\\frac{[C]}{5\\Delta\\tau}\n+V_x[C_x]+V_y[C_y]+V_z[C_z]\n\\right)\\{P\\}^{\\Delta\\tau+\\tau}\n+\\frac{1}{Ma^2}\n\\left(\n[C_x]\\{V_x\\}^{\\Delta\\tau+\\tau}\n+[C_y]\\{V_y\\}^{\\Delta\\tau+\\tau}\n+[C_z]\\{V_z\\}^{\\Delta\\tau+\\tau}\n\\right)\n=\n\\frac{[C]}{5\\Delta\\tau}\\{P\\}^{\\tau}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n&\\left(\n\\frac{[C]}{5\\Delta\\tau}\n+V_x[C_x]+V_y[C_y]+V_z[C_z]\n\\right)\\{P\\}^{\\Delta\\tau+\\tau}\\\\\n&\\quad+\\frac{1}{Ma^2}\n\\left(\n[C_x]\\{V_x\\}^{\\Delta\\tau+\\tau}\n+[C_y]\\{V_y\\}^{\\Delta\\tau+\\tau}\n+[C_z]\\{V_z\\}^{\\Delta\\tau+\\tau}\n\\right)\n=\n\\frac{[C]}{5\\Delta\\tau}\\{P\\}^{\\tau}\n\\end{aligned}\n\\]"
     },
     {
       "image": "image002.png",
