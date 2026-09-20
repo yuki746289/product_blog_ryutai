@@ -61,11 +61,12 @@
 			<p>質量収支式</p>
 			<div class="math-block" id="formula-fem_10-001" data-source-image="./../img/fem_d_matrix.files/image001.png">
 \[
-\left(
+\begin{aligned}
+&\left(
 \frac{[C]}{5\Delta\tau}
 +V_x[C_x]+V_y[C_y]+V_z[C_z]
-\right)\{P\}^{\Delta\tau+\tau}
-+\frac{1}{Ma^2}
+\right)\{P\}^{\Delta\tau+\tau}\\
+&\quad+\frac{1}{Ma^2}
 \left(
 [C_x]\{V_x\}^{\Delta\tau+\tau}
 +[C_y]\{V_y\}^{\Delta\tau+\tau}
@@ -73,6 +74,7 @@
 \right)
 =
 \frac{[C]}{5\Delta\tau}\{P\}^{\tau}
+\end{aligned}
 \]
 </div>
 			<br><br>
