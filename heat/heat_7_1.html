@@ -101,8 +101,8 @@ dS
 V_x&=N_1V_{x,1}+N_2V_{x,2}+N_3V_{x,3}
 =\begin{bmatrix}N_1&N_2&N_3\end{bmatrix}
 \begin{Bmatrix}V_{x,1}\\V_{x,2}\\V_{x,3}\end{Bmatrix}
-=[N]\{V_x\}=0\\
-V_y&=N_1V_{y,1}+N_2V_{y,2}+N_3V_{y,3}=0\\
+=[N]\{V_x\}=0\\[6pt]
+V_y&=N_1V_{y,1}+N_2V_{y,2}+N_3V_{y,3}=0\\[6pt]
 \Theta&=N_1\Theta_1+N_2\Theta_2+N_3\Theta_3
 \end{aligned}
 \]
@@ -122,7 +122,7 @@ N_1\\N_2\\N_3
 +V_y\frac{\partial\Theta}{\partial Y}
 +\frac{\partial q_x^{*}}{\partial X}
 +\frac{\partial q_y^{*}}{\partial Y}
-\right)dS\\
+\right)dS\\[6pt]
 &=
 \int_S
 \begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}
@@ -132,7 +132,7 @@ N_1\\N_2\\N_3
 \frac{\partial\Theta}{\partial X}dS
 +V_y\int_S
 \begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}
-\frac{\partial\Theta}{\partial Y}dS\\
+\frac{\partial\Theta}{\partial Y}dS\\[6pt]
 &\quad+
 \int_S
 \begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}
@@ -159,7 +159,7 @@ N_1\\N_2\\N_3
 +V_y\frac{\partial\Theta}{\partial Y}
 +\frac{\partial q_x^{*}}{\partial X}
 +\frac{\partial q_y^{*}}{\partial Y}
-\right)dS\\
+\right)dS\\[6pt]
 &=
 \int_S
 \begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}
@@ -169,7 +169,7 @@ N_1\\N_2\\N_3
 \frac{\partial\Theta}{\partial X}dS
 +V_y\int_S
 \begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}
-\frac{\partial\Theta}{\partial Y}dS\\
+\frac{\partial\Theta}{\partial Y}dS\\[6pt]
 &\quad+
 \int_S
 \begin{bmatrix}N_1\\N_2\\N_3\end{bmatrix}
@@ -184,10 +184,10 @@ N_1\\N_2\\N_3
 			<div class="math-block" id="formula-heat-7-1-006" data-source-image="./../img/heat_discretization_tri.files/image006.png">
 \[
 \begin{aligned}
-={}&
+&={}
 \int_S[N]^T\frac{\partial\Theta}{\partial\tau}dS
 +V_x\int_S[N]^T\frac{\partial\Theta}{\partial X}dS
-+V_y\int_S[N]^T\frac{\partial\Theta}{\partial Y}dS\\
++V_y\int_S[N]^T\frac{\partial\Theta}{\partial Y}dS\\[6pt]
 &+\int_S[N]^T\frac{\partial q_x^{*}}{\partial X}dS
 +\int_S[N]^T\frac{\partial q_y^{*}}{\partial Y}dS
 \end{aligned}
@@ -197,16 +197,16 @@ N_1\\N_2\\N_3
 			<div class="math-block" id="formula-heat-7-1-007" data-source-image="./../img/heat_discretization_tri.files/image007.png">
 \[
 \begin{aligned}
-={}&
+&={}
 \int_S[N]^T
 \frac{[N]\left(\{\Theta\}^{\tau+\Delta\tau}-\{\Theta\}^{\tau}\right)}
-{\Delta\tau}dS\\
+{\Delta\tau}dS\\[6pt]
 &+V_x\int_S[N]^T
 \frac{\partial[N]\{\Theta\}}{\partial X}dS
 +V_y\int_S[N]^T
-\frac{\partial[N]\{\Theta\}}{\partial Y}dS\\
+\frac{\partial[N]\{\Theta\}}{\partial Y}dS\\[6pt]
 &+\int_L[N]^Tq_x^{*}n_x\,dL
--\int_S\left[\frac{\partial N}{\partial X}\right]^Tq_x^{*}dS\\
+-\int_S\left[\frac{\partial N}{\partial X}\right]^Tq_x^{*}dS\\[6pt]
 &+\int_L[N]^Tq_y^{*}n_y\,dL
 -\int_S\left[\frac{\partial N}{\partial Y}\right]^Tq_y^{*}dS
 \end{aligned}
@@ -216,14 +216,14 @@ N_1\\N_2\\N_3
 			<div class="math-block" id="formula-heat-7-1-008" data-source-image="./../img/heat_discretization_tri.files/image008.png">
 \[
 \begin{aligned}
-={}&
+&={}
 \int_S[N]^T[N]dS
 \frac{\{\Theta\}^{\tau+\Delta\tau}-\{\Theta\}^{\tau}}
-{\Delta\tau}\\
+{\Delta\tau}\\[6pt]
 &+V_x\int_S[N]^T\left[\frac{\partial N}{\partial X}\right]dS\{\Theta\}
-+V_y\int_S[N]^T\left[\frac{\partial N}{\partial Y}\right]dS\{\Theta\}\\
++V_y\int_S[N]^T\left[\frac{\partial N}{\partial Y}\right]dS\{\Theta\}\\[6pt]
 &-\int_S\left[\frac{\partial N}{\partial X}\right]^Tq_x^{*}dS
--\int_S\left[\frac{\partial N}{\partial Y}\right]^Tq_y^{*}dS\\
+-\int_S\left[\frac{\partial N}{\partial Y}\right]^Tq_y^{*}dS\\[6pt]
 &+\int_L[N]^T(q_x^{*}n_x+q_y^{*}n_y)dL
 \end{aligned}
 \]
@@ -232,16 +232,16 @@ N_1\\N_2\\N_3
 			<div class="math-block" id="formula-heat-7-1-009" data-source-image="./../img/heat_discretization_tri.files/image009.png">
 \[
 \begin{aligned}
-={}&
+&={}
 \int_S[N]^T[N]dS
 \frac{\{\Theta\}^{\tau+\Delta\tau}-\{\Theta\}^{\tau}}
-{\Delta\tau}\\
+{\Delta\tau}\\[6pt]
 &+V_x\int_S[N]^T\left[\frac{\partial N}{\partial X}\right]dS\{\Theta\}
-+V_y\int_S[N]^T\left[\frac{\partial N}{\partial Y}\right]dS\{\Theta\}\\
++V_y\int_S[N]^T\left[\frac{\partial N}{\partial Y}\right]dS\{\Theta\}\\[6pt]
 &-\int_S\left[\frac{\partial N}{\partial X}\right]^T
-\left(-\frac{1}{Pe}\frac{\partial\Theta}{\partial X}\right)dS\\
+\left(-\frac{1}{Pe}\frac{\partial\Theta}{\partial X}\right)dS\\[6pt]
 &-\int_S\left[\frac{\partial N}{\partial Y}\right]^T
-\left(-\frac{1}{Pe}\frac{\partial\Theta}{\partial Y}\right)dS\\
+\left(-\frac{1}{Pe}\frac{\partial\Theta}{\partial Y}\right)dS\\[6pt]
 &+Nu(\Theta-\Theta_h)\int_L[N]^T dL
 \end{aligned}
 \]
@@ -250,16 +250,16 @@ N_1\\N_2\\N_3
 			<div class="math-block" id="formula-heat-7-1-010" data-source-image="./../img/heat_discretization_tri.files/image010.png">
 \[
 \begin{aligned}
-={}&
+&={}
 \int_S[N]^T[N]dS
 \frac{\{\Theta\}^{\tau+\Delta\tau}-\{\Theta\}^{\tau}}
-{\Delta\tau}\\
+{\Delta\tau}\\[6pt]
 &+V_x\int_S[N]^T\left[\frac{\partial N}{\partial X}\right]dS\{\Theta\}
-+V_y\int_S[N]^T\left[\frac{\partial N}{\partial Y}\right]dS\{\Theta\}\\
++V_y\int_S[N]^T\left[\frac{\partial N}{\partial Y}\right]dS\{\Theta\}\\[6pt]
 &+\frac{1}{Pe}\int_S\left[\frac{\partial N}{\partial X}\right]^T
 \frac{\partial\Theta}{\partial X}dS
 +\frac{1}{Pe}\int_S\left[\frac{\partial N}{\partial Y}\right]^T
-\frac{\partial\Theta}{\partial Y}dS\\
+\frac{\partial\Theta}{\partial Y}dS\\[6pt]
 &+Nu(\Theta-\Theta_h)\int_L[N]^T dL
 \end{aligned}
 \]
@@ -268,16 +268,16 @@ N_1\\N_2\\N_3
 			<div class="math-block" id="formula-heat-7-1-011" data-source-image="./../img/heat_discretization_tri.files/image011.png">
 \[
 \begin{aligned}
-={}&
+&={}
 \int_S[N]^T[N]dS
 \frac{\{\Theta\}^{\tau+\Delta\tau}-\{\Theta\}^{\tau}}
-{\Delta\tau}\\
+{\Delta\tau}\\[6pt]
 &+V_x\int_S[N]^T\left[\frac{\partial N}{\partial X}\right]dS\{\Theta\}
-+V_y\int_S[N]^T\left[\frac{\partial N}{\partial Y}\right]dS\{\Theta\}\\
++V_y\int_S[N]^T\left[\frac{\partial N}{\partial Y}\right]dS\{\Theta\}\\[6pt]
 &+\frac{1}{Pe}\int_S\left[\frac{\partial N}{\partial X}\right]^T
 \frac{\partial[N]\{\Theta\}}{\partial X}dS
 +\frac{1}{Pe}\int_S\left[\frac{\partial N}{\partial Y}\right]^T
-\frac{\partial[N]\{\Theta\}}{\partial Y}dS\\
+\frac{\partial[N]\{\Theta\}}{\partial Y}dS\\[6pt]
 &+Nu(\Theta-\Theta_h)\int_L[N]^T dL
 \end{aligned}
 \]
@@ -286,16 +286,16 @@ N_1\\N_2\\N_3
 			<div class="math-block" id="formula-heat-7-1-012" data-source-image="./../img/heat_discretization_tri.files/image012.png">
 \[
 \begin{aligned}
-={}&
+&={}
 \int_S[N]^T[N]dS
 \frac{\{\Theta\}^{\tau+\Delta\tau}-\{\Theta\}^{\tau}}
-{\Delta\tau}\\
+{\Delta\tau}\\[6pt]
 &+V_x\int_S[N]^T\left[\frac{\partial N}{\partial X}\right]dS\{\Theta\}
-+V_y\int_S[N]^T\left[\frac{\partial N}{\partial Y}\right]dS\{\Theta\}\\
++V_y\int_S[N]^T\left[\frac{\partial N}{\partial Y}\right]dS\{\Theta\}\\[6pt]
 &+\frac{1}{Pe}\int_S\left[\frac{\partial N}{\partial X}\right]^T
 \left[\frac{\partial N}{\partial X}\right]dS\{\Theta\}
 +\frac{1}{Pe}\int_S\left[\frac{\partial N}{\partial Y}\right]^T
-\left[\frac{\partial N}{\partial Y}\right]dS\{\Theta\}\\
+\left[\frac{\partial N}{\partial Y}\right]dS\{\Theta\}\\[6pt]
 &+Nu(\Theta-\Theta_h)\int_L[N]^T dL
 \end{aligned}
 \]
@@ -326,7 +326,7 @@ N_1\frac{\partial N_1}{\partial X}&N_1\frac{\partial N_2}{\partial X}&N_1\frac{\
 N_2\frac{\partial N_1}{\partial X}&N_2\frac{\partial N_2}{\partial X}&N_2\frac{\partial N_3}{\partial X}\\
 N_3\frac{\partial N_1}{\partial X}&N_3\frac{\partial N_2}{\partial X}&N_3\frac{\partial N_3}{\partial X}
 \end{bmatrix}
-dS\{\Theta\}\\
+dS\{\Theta\}\\[6pt]
 &+V_y\int_S
 \begin{bmatrix}
 N_1\frac{\partial N_1}{\partial Y}&N_1\frac{\partial N_2}{\partial Y}&N_1\frac{\partial N_3}{\partial Y}\\
@@ -353,7 +353,7 @@ dS\{\Theta\}
 \frac{\partial N_3}{\partial X}\frac{\partial N_2}{\partial X}&
 \frac{\partial N_3}{\partial X}\frac{\partial N_3}{\partial X}
 \end{bmatrix}
-dS\{\Theta\}\\
+dS\{\Theta\}\\[6pt]
 &+\frac{1}{Pe}\int_S
 \begin{bmatrix}
 \frac{\partial N_1}{\partial Y}\frac{\partial N_1}{\partial Y}&
@@ -405,7 +405,7 @@ L_1c_{1x}&L_1c_{2x}&L_1c_{3x}\\
 L_2c_{1x}&L_2c_{2x}&L_2c_{3x}\\
 L_3c_{1x}&L_3c_{2x}&L_3c_{3x}
 \end{bmatrix}
-dS\{\Theta\}\\
+dS\{\Theta\}\\[6pt]
 &+V_y\int_S\frac{1}{2A}
 \begin{bmatrix}
 L_1c_{1y}&L_1c_{2y}&L_1c_{3y}\\
@@ -426,7 +426,7 @@ c_{1x}c_{1x}&c_{1x}c_{2x}&c_{1x}c_{3x}\\
 c_{2x}c_{1x}&c_{2x}c_{2x}&c_{2x}c_{3x}\\
 c_{3x}c_{1x}&c_{3x}c_{2x}&c_{3x}c_{3x}
 \end{bmatrix}
-dS\{\Theta\}\\
+dS\{\Theta\}\\[6pt]
 &+\frac{1}{Pe}\int_S\frac{1}{4A^2}
 \begin{bmatrix}
 c_{1y}c_{1y}&c_{1y}c_{2y}&c_{1y}c_{3y}\\
@@ -452,7 +452,7 @@ L_1\\L_2
 \[
 \begin{aligned}
 \int_S L_1^pL_2^qL_3^r\,dS
-&=\frac{p!q!r!}{(p+q+r+2)!}\,2A\\
+&=\frac{p!q!r!}{(p+q+r+2)!}\,2A\\[6pt]
 \int_S L_iL_j\,dS
 &=
 \begin{cases}
@@ -462,13 +462,13 @@ L_1\\L_2
 \displaystyle\frac{2!}{(1+1+2)!}\,2A
 =\frac{4}{4!}V
 =\frac{1}{6}A &(i=j)
-\end{cases}\\
+\end{cases}\\[6pt]
 \int_S L_i\,dS
 &=\frac{1!}{(1+2)!}\,2A
 =\frac{2}{3!}A
-=\frac{1}{3}A\\
+=\frac{1}{3}A\\[6pt]
 \int_L L_1^pL_2^q\,dL
-&=\frac{p!q!}{(p+q)!}L\\
+&=\frac{p!q!}{(p+q)!}L\\[6pt]
 \int_L L_i\,dL
 &=\frac{1}{1!}L=L
 \end{aligned}
@@ -498,7 +498,7 @@ L_1\\L_2
 c_{1x}&c_{2x}&c_{3x}\\
 c_{1x}&c_{2x}&c_{3x}\\
 c_{1x}&c_{2x}&c_{3x}
-\end{bmatrix}\{\Theta\}\\
+\end{bmatrix}\{\Theta\}\\[6pt]
 &+V_y\frac{1}{2A}\frac{A}{3}
 \begin{bmatrix}
 c_{1y}&c_{2y}&c_{3y}\\
@@ -517,7 +517,7 @@ c_{1y}&c_{2y}&c_{3y}
 c_{1x}c_{1x}&c_{1x}c_{2x}&c_{1x}c_{3x}\\
 c_{2x}c_{1x}&c_{2x}c_{2x}&c_{2x}c_{3x}\\
 c_{3x}c_{1x}&c_{3x}c_{2x}&c_{3x}c_{3x}
-\end{bmatrix}\{\Theta\}\\
+\end{bmatrix}\{\Theta\}\\[6pt]
 &+\frac{1}{Pe}\frac{1}{4A^2}A
 \begin{bmatrix}
 c_{1y}c_{1y}&c_{1y}c_{2y}&c_{1y}c_{3y}\\
@@ -560,7 +560,7 @@ c_{3y}c_{1y}&c_{3y}c_{2y}&c_{3y}c_{3y}
 c_{1x}&c_{2x}&c_{3x}\\
 c_{1x}&c_{2x}&c_{3x}\\
 c_{1x}&c_{2x}&c_{3x}
-\end{bmatrix}\{\Theta\}\\
+\end{bmatrix}\{\Theta\}\\[6pt]
 &+V_y\frac{1}{6}
 \begin{bmatrix}
 c_{1y}&c_{2y}&c_{3y}\\
@@ -579,7 +579,7 @@ c_{1y}&c_{2y}&c_{3y}
 c_{1x}c_{1x}&c_{1x}c_{2x}&c_{1x}c_{3x}\\
 c_{2x}c_{1x}&c_{2x}c_{2x}&c_{2x}c_{3x}\\
 c_{3x}c_{1x}&c_{3x}c_{2x}&c_{3x}c_{3x}
-\end{bmatrix}\{\Theta\}\\
+\end{bmatrix}\{\Theta\}\\[6pt]
 &+\frac{1}{Pe}\frac{1}{4A}
 \begin{bmatrix}
 c_{1y}c_{1y}&c_{1y}c_{2y}&c_{1y}c_{3y}\\
@@ -603,11 +603,11 @@ c_{3y}c_{1y}&c_{3y}c_{2y}&c_{3y}c_{3y}
 			<div class="math-block" id="formula-heat-7-1-030" data-source-image="./../img/heat_discretization_tri.files/image030.png">
 \[
 \begin{aligned}
-={}&[C]\frac{\{\Theta\}^{\tau+\Delta\tau}-\{\Theta\}^{\tau}}{\Delta\tau}
+&={}[C]\frac{\{\Theta\}^{\tau+\Delta\tau}-\{\Theta\}^{\tau}}{\Delta\tau}
 +V_x[C_x]\{\Theta\}
-+V_y[C_y]\{\Theta\}\\
++V_y[C_y]\{\Theta\}\\[6pt]
 &+\frac{1}{Pe}[S_{xx}]\{\Theta\}
-+\frac{1}{Pe}[S_{yy}]\{\Theta\}\\
++\frac{1}{Pe}[S_{yy}]\{\Theta\}\\[6pt]
 &+Nu(\Theta-\Theta_h)L
 \begin{bmatrix}1\\1\end{bmatrix}
 \end{aligned}
@@ -618,12 +618,12 @@ c_{3y}c_{1y}&c_{3y}c_{2y}&c_{3y}c_{3y}
 			<div class="math-block" id="formula-heat-7-1-031" data-source-image="./../img/heat_discretization_tri.files/image031.png">
 \[
 \begin{aligned}
-={}&[C]\frac{\{\Theta\}^{\tau+\Delta\tau}-\{\Theta\}^{\tau}}{\Delta\tau}
-+\left(V_x[C_x]+V_y[C_y]\right)\{\Theta\}\\
-&+\frac{1}{Pe}\left([S_{xx}]+[S_{yy}]\right)\{\Theta\}\\
+&={}[C]\frac{\{\Theta\}^{\tau+\Delta\tau}-\{\Theta\}^{\tau}}{\Delta\tau}
++\left(V_x[C_x]+V_y[C_y]\right)\{\Theta\}\\[6pt]
+&+\frac{1}{Pe}\left([S_{xx}]+[S_{yy}]\right)\{\Theta\}\\[6pt]
 &+Nu(\Theta-\Theta_h)L
-\begin{bmatrix}1\\1\end{bmatrix}\\
-={}&
+\begin{bmatrix}1\\1\end{bmatrix}\\[6pt]
+&={}
 \begin{bmatrix}0\\0\\0\end{bmatrix}
 \end{aligned}
 \]
@@ -634,8 +634,8 @@ c_{3y}c_{1y}&c_{3y}c_{2y}&c_{3y}c_{3y}
 \[
 \begin{aligned}
 &[C]\frac{\{\Theta\}^{\tau+\Delta\tau}-\{\Theta\}^{\tau}}{\Delta\tau}
-+\left(V_x[C_x]+V_y[C_y]\right)\{\Theta\}\\
-&+\frac{1}{Pe}\left([S_{xx}]+[S_{yy}]\right)\{\Theta\}\\
++\left(V_x[C_x]+V_y[C_y]\right)\{\Theta\}\\[6pt]
+&+\frac{1}{Pe}\left([S_{xx}]+[S_{yy}]\right)\{\Theta\}\\[6pt]
 &+Nu(\Theta-\Theta_h)L
 \begin{bmatrix}1\\1\end{bmatrix}
 =
@@ -649,9 +649,9 @@ c_{3y}c_{1y}&c_{3y}c_{2y}&c_{3y}c_{3y}
 \[
 \begin{aligned}
 &\frac{[C]}{\Delta\tau}\{\Theta\}^{\tau+\Delta\tau}
-+\left(V_x[C_x]+V_y[C_y]\right)\{\Theta\}^{\tau+\Delta\tau}\\
-&+\frac{1}{Pe}\left([S_{xx}]+[S_{yy}]\right)\{\Theta\}^{\tau+\Delta\tau}\\
-={}&
++\left(V_x[C_x]+V_y[C_y]\right)\{\Theta\}^{\tau+\Delta\tau}\\[6pt]
+&+\frac{1}{Pe}\left([S_{xx}]+[S_{yy}]\right)\{\Theta\}^{\tau+\Delta\tau}\\[6pt]
+&={}
 \frac{[C]}{\Delta\tau}\{\Theta\}^{\tau}
 -Nu(\Theta-\Theta_h)L
 \begin{bmatrix}1\\1\end{bmatrix}
