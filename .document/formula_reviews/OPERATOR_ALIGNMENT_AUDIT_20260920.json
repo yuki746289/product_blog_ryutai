@@ -1,0 +1,26 @@
+{
+  "pages": 193,
+  "blocks": 606,
+  "issues": [
+    {
+      "page": "heat/heat_5_4.html",
+      "id": "formula-heat_5_4-002",
+      "reason": "mixed alignment column: ={}& with &+ / &-"
+    },
+    {
+      "page": "heat/heat_5_4.html",
+      "id": "formula-heat_5_4-003",
+      "reason": "mixed alignment column: ={}& with &+ / &-"
+    },
+    {
+      "page": "hydronamics/hydronamics_8.html",
+      "id": "formula-hydronamics-8-001",
+      "reason": "mixed alignment column: ={}& with &+ / &-"
+    },
+    {
+      "page": "hydronamics/hydronamics_8.html",
+      "id": "formula-hydronamics-8-003",
+      "reason": "mixed alignment column: ={}& with &+ / &-"
+    }
+  ]
+}
