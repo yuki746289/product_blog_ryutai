@@ -41,10 +41,7 @@ jobs:
               "hydronamics","introduce","library","link","mail","math","mesh",
               "mps","pdf","physics","profile","sitemap","css","js","img"
           }
-          EXTS = {
-              ".html",".htm",".css",".js",".png",".gif",".jpg",".jpeg",
-              ".svg",".webp",".ico",".xml",".txt",".pdf",".woff",".woff2",".ttf"
-          }
+          EXTS = {".html",".htm",".css",".js",".xml",".txt"}
           SKIP_SUFFIX = ("_mathjax_audit.html","_reaudit.html")
           root = Path(".")
           candidates = []
@@ -123,6 +120,8 @@ jobs:
                   with open(rel,"rb") as fh:
                       ftp.storbinary("STOR " + Path(rel).name, fh, blocksize=262144)
                   uploaded += 1
+                  if uploaded % 25 == 0 or uploaded == len(candidates):
+                      print(f"upload progress: {uploaded}/{len(candidates)}", flush=True)
 
               ftp.voidcmd("TYPE I")
               for rel in candidates:
@@ -137,6 +136,8 @@ jobs:
                           f"Remote verification failed for {rel}: local={local_size} remote={remote_size}"
                       )
                   verified += 1
+                  if verified % 25 == 0 or verified == len(candidates):
+                      print(f"verify progress: {verified}/{len(candidates)}", flush=True)
 
               print(f"FTPS upload complete: candidates={len(candidates)} uploaded={uploaded} verified={verified}")
               print(f"Remote directories created if missing: {len(created_dirs)}")
