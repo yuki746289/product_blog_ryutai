@@ -2,11 +2,11 @@
 
 ## Status
 
-**BLOCKED — SOURCE-FIDELITY REVALIDATION REQUIRED**
+**READY FOR EXPLICIT PRODUCTION APPROVAL**
 
 本番サイトへの書込みはまだ行っていない。
-2026-09-20に数式の元画像忠実性（改行・配置）と文字コード整合性の仕様を修正したため、旧Browser QA PASSはデプロイ判定には使用しない。
-再検証完了まで本番デプロイを禁止する。
+2026-09-20に数式の元画像忠実性（改行・配置）と文字コード整合性の仕様を修正し、再検証を完了した。
+最新Browser QA / source-fidelity / operator-alignment audit はすべてPASS。
 
 ## 完了済み
 
@@ -41,7 +41,19 @@ MPS `mps/mps_6_2.html` の former `image022.gif` は正本未回収のため、
 - required encoding: UTF-8 bytes + UTF-8 declarations
 - automatic MathJax line breaking: prohibited for source-faithful formulas
 - responsive rule: preserve source line structure; use local horizontal scroll when needed
-- status: **REVALIDATION IN PROGRESS**
+- status: **PASS**
+- source-fidelity certification: **PASS**
+- operator alignment audit: **606 math blocks / 0 issues**
+- shared desktop content width: **1080px max**
+- latest full-site QA run: `35486148973`
+- latest QA trigger head: `bc719445d1dfa0182b6eca3742143f44a5759c3f`
+- normal HTML: **205 pages**
+- desktop + mobile checks: **410**
+- hard failures: **0**
+- desktop formula-local scroll: **1 formula / 1 page** (`fem/fem_5.html`)
+- mobile formula-local scroll: **240 formula instances / 47 pages**
+- page-wide overflow: **0**
+- MathJax errors / unrendered / page errors / charset / mojibake / missing images: **all 0**
 
 ### Previous Browser QA (historical; not sufficient for deployment)
 
@@ -97,8 +109,8 @@ Final MPS delta QA:
 
 ## Deploy前整合確認
 
-- 引継ぎ時HEAD `c080be9f6e289ba92bf652e41781ee4828e336ca` 以降、今回のQA修正・再実行による変更は `.document` 内のみ。
-- 公開対象（HTML / CSS / JS / img等）の追加変更: **0件**
+- 2026-09-20に公開HTML/CSSへ、UTF-8統一、source-faithful line break/alignment、共通本文幅1080pxの修正を反映済み。
+- 公開変更は最新の全サイトBrowser QA / source-fidelity / operator-alignment auditで再検証済み。
 - QAスクリプト・QAトリガー・QAレポート・本デプロイ準備台帳は公開対象外。
 - 本番FTPS書込み: **未実施**
 
@@ -118,7 +130,7 @@ Final MPS delta QA:
 - [x] develop反映
 - [x] MPS 49式反映
 - [x] MPS欠損画像0
-- [ ] 2026-09-20 source-fidelity再検証 PASS
+- [x] 2026-09-20 source-fidelity再検証 PASS
 - [x] 残存画像インベントリ更新
 - [x] 監査台帳更新
 - [x] デプロイ対象外パス確認方針
@@ -129,6 +141,6 @@ Final MPS delta QA:
 
 ## 現在位置
 
-**再検証中。デプロイ不可。**
+**デプロイ直前。**
 
-次の操作は再検証結果の確認・必要箇所の修正であり、本番FTPS書込みではない。
+次の操作はユーザーの明示承認後の本番FTPS書込み。現時点では本番書込みを行っていない。
