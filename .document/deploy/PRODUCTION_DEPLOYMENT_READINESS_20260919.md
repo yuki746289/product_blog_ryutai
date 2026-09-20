@@ -2,9 +2,9 @@
 
 ## Status
 
-**READY FOR EXPLICIT PRODUCTION APPROVAL**
+**PRODUCTION DEPLOYED — VERIFIED**
 
-本番サイトへの書込みはまだ行っていない。
+本番サイトへのFTPS反映を2026-09-20に実施し、公開後検証まで完了した。
 2026-09-20に数式の元画像忠実性（改行・配置）と文字コード整合性の仕様を修正し、再検証を完了した。
 最新Browser QA / source-fidelity / operator-alignment audit はすべてPASS。
 
@@ -135,12 +135,18 @@ Final MPS delta QA:
 - [x] 監査台帳更新
 - [x] デプロイ対象外パス確認方針
 - [x] 最新FTPS read-only接続確認
-- [ ] **ユーザーの本番デプロイ明示承認**
-- [ ] FTPS本番upload
-- [ ] 公開サイトsmoke test
+- [x] **ユーザーの本番デプロイ明示承認**
+- [x] FTPS本番upload
+- [x] 公開サイトsmoke test
 
 ## 現在位置
 
-**デプロイ直前。**
+**本番デプロイ完了。**
 
-次の操作はユーザーの明示承認後の本番FTPS書込み。現時点では本番書込みを行っていない。
+- Production workflow run: `35494354501`
+- text/web assets uploaded: **316 / 316**
+- remote size verification: **316 / 316**
+- image upload: **0**
+- remote deletion: **0**
+- HTTP content smoke: **PASS**
+- production browser smoke: **PASS** (5 pages × desktop/mobile = 10 checks)
