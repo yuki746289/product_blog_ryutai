@@ -7,3 +7,4 @@ run=2026-09-19-strict-final-v3-rerun-strict-pageerror
 2026-09-20 final-after-last-source-break
 2026-09-20 global-1080-width-and-vx-break-final-pass
 2026-09-20 global-formula-spacing-18pt
+2026-09-20 final-global-18pt-outer-6pt-inner
