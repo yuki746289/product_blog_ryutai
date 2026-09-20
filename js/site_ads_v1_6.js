@@ -127,7 +127,7 @@
     if (!box) return;
     var text = box.textContent || "";
     var html = box.innerHTML || "";
-    if (html.indexOf("show_ads.js") === -1 && text.indexOf("3994918548") === -1 && html.indexOf("3994918548") === -1) {
+    if (html.indexOf("show_ads.js") === -1 && html.indexOf("google_ad_slot") === -1) {
       return;
     }
     while (box.firstChild) box.removeChild(box.firstChild);
