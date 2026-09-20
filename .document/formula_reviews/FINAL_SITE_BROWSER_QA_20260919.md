@@ -22,7 +22,7 @@
 | Mojibake indicator rows | 0 |
 | Automatic MathJax linebreak rows | 0 |
 | Non-MPS missing images (desktop) | 0 |
-| Allowed local math scroll | 260 |
+| Allowed local math scroll | 250 |
 
 ## MPS SOURCE BLOCKED / HOLD
 
