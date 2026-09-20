@@ -162,7 +162,11 @@ jobs:
                   "2026.9.20 スマートフォン表示に対応し",
                   "<h2>サイトリニューアルについて</h2>",
                   "ChatGPT + GitHubの組み合わせで、コーディングは行っていません。",
+                  'data-ad-slot="4832539076"',
+                  'data-full-width-responsive="true"',
               ],
+              "footer.html": ["site_ads_v1_6.js?v=20260920a"],
+              "ad_top.html": ["Legacy compatibility endpoint."],
               "revision_history.html": ["<h2>2026-09-20</h2>"],
               "mps/mps_1.html": ['id="formula-mps-1-001"', r"\lt r_e"],
               "menu.html": ['href="./mps/mps.html"', "粒子法"],
@@ -194,6 +198,14 @@ jobs:
                               failures.append(f"{path}: missing {needle!r}")
                       if path == "index.html" and body.count("<h2>サイトリニューアルについて</h2>") != 1:
                           failures.append("index.html: renewal heading is not exactly one")
+                      if path == "index.html" and "<h2>広告</h2>" in body:
+                          failures.append("index.html: legacy advertisement heading remains")
+                      if path == "index.html" and "ad_top.html" in body:
+                          failures.append("index.html: legacy ad_top iframe remains")
+                      if path == "index.html" and "show_ads.js" in body:
+                          failures.append("index.html: legacy show_ads.js remains")
+                      if path == "ad_top.html" and "pagead2.googlesyndication.com" in body:
+                          failures.append("ad_top.html: legacy AdSense script remains")
                       if path == "js/site_home_cleanup_v1_6.js" and "registRenewalNotice" in body:
                           failures.append("site_home_cleanup_v1_6.js: duplicate renewal generator remains")
                   except Exception as exc:
