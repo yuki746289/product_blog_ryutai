@@ -1,5 +1,5 @@
 /**
- * Updated: 2026/09/17
+ * Updated: 2026/09/20
  * Summary: [S007] Add a three-step font-size selector to the v1.6 site header.
  * Differences from previous version:
  * - [ADD]: Normal / Large / Extra Large selector in the upper-right header area.
@@ -21,7 +21,7 @@ var mapSiteFontSizeV16Config = {
     {key: "xlarge", label: "\u7279\u5927", className: "rv-font-xlarge"}
   ],
   styleUrl: new URL(
-    "../css/site_font_size_v1_6.css?v=20260917f",
+    "../css/site_font_size_v1_6.css?v=20260920a",
     document.currentScript && document.currentScript.src ? document.currentScript.src : window.location.href
   ).href
 };
