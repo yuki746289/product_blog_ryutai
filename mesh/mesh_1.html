@@ -58,23 +58,23 @@ window.MathJax={
 			<p class="im"><img src="./../img/mesh_approximation.files/image001.png"></p>
 			<p>ここで、点と近似関数の誤差の総和は次式で表されます。</p>
 			<div class="math-block" id="formula-mesh-1-002" data-source-image="./../img/mesh_approximation.files/image002.png">
-\[\begin{aligned}\chi(a,b)&=\sum_{i=1}^{n}\{y_i-f(x_i)\}^2\\&=\sum_{i=1}^{n}\{y_i-(a+bx_i)\}^2\\&=\sum_{i=1}^{n}(y_i-a-bx_i)^2\\&=\sum_{i=1}^{n}\{(a+bx_i-y_i)a+(a+bx_i-y_i)bx_i-(a+bx_i-y_i)y_i\}\\&=\sum_{i=1}^{n}(a^2+x_iab-y_ia+x_iab+x_i^2b^2-x_iy_ib-y_ia-x_iy_ib+y_i^2)\\&=\sum_{i=1}^{n}(a^2+2x_iab+x_i^2b^2-2y_ia-2x_iy_ib+y_i^2)\\&=na^2+2ab\sum_{i=1}^{n}x_i+b^2\sum_{i=1}^{n}x_i^2-2a\sum_{i=1}^{n}y_i-2b\sum_{i=1}^{n}x_iy_i+\sum_{i=1}^{n}y_i^2\end{aligned}\]
+\[\begin{aligned}\chi(a,b)&=\sum_{i=1}^{n}\{y_i-f(x_i)\}^2\\[6pt]&=\sum_{i=1}^{n}\{y_i-(a+bx_i)\}^2\\[6pt]&=\sum_{i=1}^{n}(y_i-a-bx_i)^2\\[6pt]&=\sum_{i=1}^{n}\{(a+bx_i-y_i)a+(a+bx_i-y_i)bx_i-(a+bx_i-y_i)y_i\}\\[6pt]&=\sum_{i=1}^{n}(a^2+x_iab-y_ia+x_iab+x_i^2b^2-x_iy_ib-y_ia-x_iy_ib+y_i^2)\\[6pt]&=\sum_{i=1}^{n}(a^2+2x_iab+x_i^2b^2-2y_ia-2x_iy_ib+y_i^2)\\[6pt]&=na^2+2ab\sum_{i=1}^{n}x_i+b^2\sum_{i=1}^{n}x_i^2-2a\sum_{i=1}^{n}y_i-2b\sum_{i=1}^{n}x_iy_i+\sum_{i=1}^{n}y_i^2\end{aligned}\]
 </div>
 			<p>この誤差は、 </p>
 			<div class="math-block" id="formula-mesh-1-003" data-source-image="./../img/mesh_approximation.files/image003.png">
-\[\begin{aligned}\frac{\partial\chi(a,b)}{\partial a}&=0\\\frac{\partial\chi(a,b)}{\partial b}&=0\end{aligned}\]
+\[\begin{aligned}\frac{\partial\chi(a,b)}{\partial a}&=0\\[6pt]\frac{\partial\chi(a,b)}{\partial b}&=0\end{aligned}\]
 </div>
 			<p>の場合に最小になります。従って、</p>
 			<div class="math-block" id="formula-mesh-1-004" data-source-image="./../img/mesh_approximation.files/image004.png">
-\[\begin{aligned}\frac{\partial\chi(a,b)}{\partial a}&=2na+2b\sum_{i=1}^{n}x_i-2\sum_{i=1}^{n}y_i\\&=0\end{aligned}\]
+\[\begin{aligned}\frac{\partial\chi(a,b)}{\partial a}&=2na+2b\sum_{i=1}^{n}x_i-2\sum_{i=1}^{n}y_i\\[6pt]&=0\end{aligned}\]
 </div>
 			<p>また、</p>
 			<div class="math-block" id="formula-mesh-1-005" data-source-image="./../img/mesh_approximation.files/image005.png">
-\[\begin{aligned}\frac{\partial\chi(a,b)}{\partial b}&=2a\sum_{i=1}^{n}x_i+2b\sum_{i=1}^{n}x_i^2-2\sum_{i=1}^{n}x_iy_i\\&=0\end{aligned}\]
+\[\begin{aligned}\frac{\partial\chi(a,b)}{\partial b}&=2a\sum_{i=1}^{n}x_i+2b\sum_{i=1}^{n}x_i^2-2\sum_{i=1}^{n}x_iy_i\\[6pt]&=0\end{aligned}\]
 </div>
 			<p>まとめると</p>
 			<div class="math-block" id="formula-mesh-1-006" data-source-image="./../img/mesh_approximation.files/image006.png">
-\[\left\{\begin{aligned}na+b\sum_{i=1}^{n}x_i-\sum_{i=1}^{n}y_i&=0\\a\sum_{i=1}^{n}x_i+b\sum_{i=1}^{n}x_i^2-\sum_{i=1}^{n}x_iy_i&=0\end{aligned}\right.\]
+\[\left\{\begin{aligned}na+b\sum_{i=1}^{n}x_i-\sum_{i=1}^{n}y_i&=0\\[6pt]a\sum_{i=1}^{n}x_i+b\sum_{i=1}^{n}x_i^2-\sum_{i=1}^{n}x_iy_i&=0\end{aligned}\right.\]
 </div>
 			<p>これを解くと係数a, bが求まります。</p>
 			<br>

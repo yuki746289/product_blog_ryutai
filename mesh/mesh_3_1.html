@@ -70,7 +70,7 @@ window.MathJax={
 					, <span class="ft"><i>r</i><sub>2</sub></span>
 					とします。この時、2つの節点に働く力は次式となります。</p>
 			<div class="math-block" id="formula-mesh-3-1-006" data-source-image="./../img/mesh_node_buble.files/image006.png">
-\[\begin{aligned}\vec{F}_{12}&=-\vec{F}_{21}\\&=w\!\left(\frac{|\vec{p}_{2}-\vec{p}_{1}|}{r_{2}+r_{1}}\right)\frac{\vec{p}_{2}-\vec{p}_{1}}{|\vec{p}_{2}-\vec{p}_{2}|}\end{aligned}\]
+\[\begin{aligned}\vec{F}_{12}&=-\vec{F}_{21}\\[6pt]&=w\!\left(\frac{|\vec{p}_{2}-\vec{p}_{1}|}{r_{2}+r_{1}}\right)\frac{\vec{p}_{2}-\vec{p}_{1}}{|\vec{p}_{2}-\vec{p}_{2}|}\end{aligned}\]
 </div>
 			<br>
 			<p>ここで、<span class="ft"><i>w</i></span>は重み関数であり、
@@ -92,7 +92,7 @@ window.MathJax={
 			<p>これは、斥力が正の向きを表しています。
 					従って、タイムステップごとの節点の方向ベクトルは次式なります。</p>
 			<div class="math-block" id="formula-mesh-3-1-010" data-source-image="./../img/mesh_node_buble.files/image010.png">
-\[\begin{aligned}\vec{r}&=cr\frac{\vec{F}}{|\vec{F}|}\\&=cr\frac{1}{|\vec{F}|}\sum_{i=1}^{n}w\!\left(\frac{|\vec{p}-\vec{p}_{i}|}{r+r_{i}}\right)\frac{\vec{p}-\vec{p}_{i}}{|\vec{p}-\vec{p}_{i}|}\end{aligned}\]
+\[\begin{aligned}\vec{r}&=cr\frac{\vec{F}}{|\vec{F}|}\\[6pt]&=cr\frac{1}{|\vec{F}|}\sum_{i=1}^{n}w\!\left(\frac{|\vec{p}-\vec{p}_{i}|}{r+r_{i}}\right)\frac{\vec{p}-\vec{p}_{i}}{|\vec{p}-\vec{p}_{i}|}\end{aligned}\]
 </div>
 			<br>
 			<p>ここで、<span class="ft"><i>c</i></span>は緩和係数である。</p>

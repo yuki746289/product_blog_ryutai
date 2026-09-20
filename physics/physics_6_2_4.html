@@ -59,15 +59,15 @@ window.MathJax={output:{displayOverflow:'overflow',linebreaks:{inline:false}},ch
 \[
 \begin{aligned}
 [\nabla\cdot\vec{\tau}]
-&=\left[\sum_{i=0}^{3}\vec{\delta}_{i}\frac{\partial}{\partial x_i}\cdot\sum_{j=0}^{3}\sum_{k=0}^{3}\vec{\delta}_{j}\vec{\delta}_{k}\tau_{jk}\right]\\
-&=\sum_{i=0}^{3}\sum_{j=0}^{3}\sum_{k=0}^{3}\left[\vec{\delta}_{i}\frac{\partial}{\partial x_i}\cdot\vec{\delta}_{j}\vec{\delta}_{k}\tau_{jk}\right]\\
-&=\sum_{i=0}^{3}\sum_{j=0}^{3}\sum_{k=0}^{3}\left[(\vec{\delta}_{i}\cdot\vec{\delta}_{j})\vec{\delta}_{k}\right]\frac{\partial}{\partial x_i}\tau_{jk}\\
-&=\sum_{i=0}^{3}\sum_{j=0}^{3}\sum_{k=0}^{3}\delta_{ij}\vec{\delta}_{k}\frac{\partial\tau_{jk}}{\partial x_i}\\
-&=\sum_{j=0}^{3}\sum_{k=0}^{3}\vec{\delta}_{k}\frac{\partial\tau_{jk}}{\partial x_i}\qquad(i=j)\\
-&=\sum_{k=0}^{3}\vec{\delta}_{k}\sum_{j=0}^{3}\frac{\partial\tau_{jk}}{\partial x_i}\\
-&=\sum_{k=0}^{3}\vec{\delta}_{k}\left(\frac{\partial\tau_{xk}}{\partial x}+\frac{\partial\tau_{yk}}{\partial y}+\frac{\partial\tau_{zk}}{\partial z}\right)\\
-&=\vec{\delta}_{x}\left(\frac{\partial\tau_{xx}}{\partial x}+\frac{\partial\tau_{yx}}{\partial y}+\frac{\partial\tau_{zx}}{\partial z}\right)\\
-&\quad+\vec{\delta}_{y}\left(\frac{\partial\tau_{xy}}{\partial x}+\frac{\partial\tau_{yy}}{\partial y}+\frac{\partial\tau_{zy}}{\partial z}\right)\\
+&=\left[\sum_{i=0}^{3}\vec{\delta}_{i}\frac{\partial}{\partial x_i}\cdot\sum_{j=0}^{3}\sum_{k=0}^{3}\vec{\delta}_{j}\vec{\delta}_{k}\tau_{jk}\right]\\[6pt]
+&=\sum_{i=0}^{3}\sum_{j=0}^{3}\sum_{k=0}^{3}\left[\vec{\delta}_{i}\frac{\partial}{\partial x_i}\cdot\vec{\delta}_{j}\vec{\delta}_{k}\tau_{jk}\right]\\[6pt]
+&=\sum_{i=0}^{3}\sum_{j=0}^{3}\sum_{k=0}^{3}\left[(\vec{\delta}_{i}\cdot\vec{\delta}_{j})\vec{\delta}_{k}\right]\frac{\partial}{\partial x_i}\tau_{jk}\\[6pt]
+&=\sum_{i=0}^{3}\sum_{j=0}^{3}\sum_{k=0}^{3}\delta_{ij}\vec{\delta}_{k}\frac{\partial\tau_{jk}}{\partial x_i}\\[6pt]
+&=\sum_{j=0}^{3}\sum_{k=0}^{3}\vec{\delta}_{k}\frac{\partial\tau_{jk}}{\partial x_i}\qquad(i=j)\\[6pt]
+&=\sum_{k=0}^{3}\vec{\delta}_{k}\sum_{j=0}^{3}\frac{\partial\tau_{jk}}{\partial x_i}\\[6pt]
+&=\sum_{k=0}^{3}\vec{\delta}_{k}\left(\frac{\partial\tau_{xk}}{\partial x}+\frac{\partial\tau_{yk}}{\partial y}+\frac{\partial\tau_{zk}}{\partial z}\right)\\[6pt]
+&=\vec{\delta}_{x}\left(\frac{\partial\tau_{xx}}{\partial x}+\frac{\partial\tau_{yx}}{\partial y}+\frac{\partial\tau_{zx}}{\partial z}\right)\\[6pt]
+&\quad+\vec{\delta}_{y}\left(\frac{\partial\tau_{xy}}{\partial x}+\frac{\partial\tau_{yy}}{\partial y}+\frac{\partial\tau_{zy}}{\partial z}\right)\\[6pt]
 &\quad+\vec{\delta}_{z}\left(\frac{\partial\tau_{xz}}{\partial x}+\frac{\partial\tau_{yz}}{\partial y}+\frac{\partial\tau_{zz}}{\partial z}\right)
 \end{aligned}
 \]

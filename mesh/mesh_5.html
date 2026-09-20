@@ -69,7 +69,7 @@ window.MathJax={
 			<br>
 			<p>まず、要素の重心の位置は次式となります。</p>
 			<div class="math-block" id="formula-mesh-5-003" data-source-image="./../img/mesh_deformation_tet.files/image003.png">
-\[\begin{aligned}x_g&=\frac{1}{4}\sum_{i=1}^{4}x_i\\y_g&=\frac{1}{4}\sum_{i=1}^{4}y_i\\z_g&=\frac{1}{4}\sum_{i=1}^{4}z_i\end{aligned}\]
+\[\begin{aligned}x_g&=\frac{1}{4}\sum_{i=1}^{4}x_i\\[6pt]y_g&=\frac{1}{4}\sum_{i=1}^{4}y_i\\[6pt]z_g&=\frac{1}{4}\sum_{i=1}^{4}z_i\end{aligned}\]
 </div>
 
 			<p>正<span class="ft">4<span>面体の重心から各節点までの距離を
@@ -81,12 +81,12 @@ window.MathJax={
 
 			<p>ここで、各節点から重心までの距離のずれを<span class="ft"><i>dr</i></span>とすると次式となる。</p>
 			<div class="math-block" id="formula-mesh-5-005" data-source-image="./../img/mesh_deformation_tet.files/image005.png">
-\[\begin{aligned}dr^2&=\sum_{i=1}^{4}(r_i-r)^2\\&=\sum_{i=1}^{4}(r^2-2r_ir+r_i^2)\\&=\sum_{i=1}^{4}r^2-\sum_{i=1}^{4}2r_ir+\sum_{i=1}^{4}r_i^2\\&=4r^2-2\sum_{i=1}^{4}r_ir+\sum_{i=1}^{4}r_i^2\\&=4r^2-2ar+b\\&=4\left(r^2-\frac{1}{2}ar+\frac{b}{4}\right)\\&=4\left\{\left(r^2-\frac{1}{2}ar+\frac{1}{16}a^2\right)-\frac{1}{16}a^2+\frac{b}{4}\right\}\\&=4\left\{\left(r-\frac{1}{4}a\right)^2-\frac{1}{16}a^2+\frac{b}{4}\right\}\\&=4\left\{\left(r-\frac{1}{4}a\right)^2-\frac{1}{16}a^2+\frac{b}{4}\right\}\\&=4\left(r-\frac{1}{4}a\right)^2-\frac{1}{4}a^2+b\end{aligned}\]
+\[\begin{aligned}dr^2&=\sum_{i=1}^{4}(r_i-r)^2\\[6pt]&=\sum_{i=1}^{4}(r^2-2r_ir+r_i^2)\\[6pt]&=\sum_{i=1}^{4}r^2-\sum_{i=1}^{4}2r_ir+\sum_{i=1}^{4}r_i^2\\[6pt]&=4r^2-2\sum_{i=1}^{4}r_ir+\sum_{i=1}^{4}r_i^2\\[6pt]&=4r^2-2ar+b\\[6pt]&=4\left(r^2-\frac{1}{2}ar+\frac{b}{4}\right)\\[6pt]&=4\left\{\left(r^2-\frac{1}{2}ar+\frac{1}{16}a^2\right)-\frac{1}{16}a^2+\frac{b}{4}\right\}\\[6pt]&=4\left\{\left(r-\frac{1}{4}a\right)^2-\frac{1}{16}a^2+\frac{b}{4}\right\}\\[6pt]&=4\left\{\left(r-\frac{1}{4}a\right)^2-\frac{1}{16}a^2+\frac{b}{4}\right\}\\[6pt]&=4\left(r-\frac{1}{4}a\right)^2-\frac{1}{4}a^2+b\end{aligned}\]
 </div>
 
 			<p>ここで、</p>
 			<div class="math-block" id="formula-mesh-5-006" data-source-image="./../img/mesh_deformation_tet.files/image006.png">
-\[\begin{aligned}a&=\sum_{i=1}^{4}r_i\\b&=\sum_{i=1}^{4}r_i^2\end{aligned}\]
+\[\begin{aligned}a&=\sum_{i=1}^{4}r_i\\[6pt]b&=\sum_{i=1}^{4}r_i^2\end{aligned}\]
 </div>
 
 			<p>このずれは、次の場合に最小となります。</p>
@@ -96,12 +96,12 @@ window.MathJax={
 
 			<p>従って、規格化したこのずれを変形度とすると次式となります。</p>
 			<div class="math-block" id="formula-mesh-5-008" data-source-image="./../img/mesh_deformation_tet.files/image008.png">
-\[\begin{aligned}dR_{\min}^{2}&=\frac{dr_{\min}^{2}}{r_{\min}^{2}}\\&=\frac{b-(a/2)^2}{(a/4)^2}\\&=\frac{16b-4a^2}{a^2}\\&=\left(\frac{2}{a}\right)^2(4b-a^2)\end{aligned}\]
+\[\begin{aligned}dR_{\min}^{2}&=\frac{dr_{\min}^{2}}{r_{\min}^{2}}\\[6pt]&=\frac{b-(a/2)^2}{(a/4)^2}\\[6pt]&=\frac{16b-4a^2}{a^2}\\[6pt]&=\left(\frac{2}{a}\right)^2(4b-a^2)\end{aligned}\]
 </div>
 
 			<p>従って、</p>
 			<div class="math-block" id="formula-mesh-5-009" data-source-image="./../img/mesh_deformation_tet.files/image009.png">
-\[\begin{aligned}dR_{\min}&=\frac{2}{a}\sqrt{4b-a^2}\\&=\frac{2}{\displaystyle\sum_{i=1}^{4}r_i}\sqrt{4\sum_{i=1}^{4}r_i^2-\left(\sum_{i=1}^{4}r_i\right)^2}\end{aligned}\]
+\[\begin{aligned}dR_{\min}&=\frac{2}{a}\sqrt{4b-a^2}\\[6pt]&=\frac{2}{\displaystyle\sum_{i=1}^{4}r_i}\sqrt{4\sum_{i=1}^{4}r_i^2-\left(\sum_{i=1}^{4}r_i\right)^2}\end{aligned}\]
 </div>
 			<p>この変形度は、要素が正4面体の場合<span class="ft">0</span>になります。</p>
 			<p>経験的に<span class="ft">0.5</span>～<span class="ft">0.7</span>がメッシュ再作成の目安になりました。</p>
