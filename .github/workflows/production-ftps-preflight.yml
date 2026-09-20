@@ -1,4 +1,5 @@
 name: Production FTPS Preflight
+# Explicit pre-deployment preflight: 2026-09-20
 
 on:
   push:
