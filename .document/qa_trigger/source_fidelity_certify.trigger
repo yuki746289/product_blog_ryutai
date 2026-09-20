@@ -4,3 +4,4 @@
 2026-09-20 recertify-after-global-6pt-row-spacing
 2026-09-20 recertify-after-mps1-cases-fix
 2026-09-20 recertify-after-mps1-aligned-brace
+2026-09-20 recertify-after-mps1-lt-escape
