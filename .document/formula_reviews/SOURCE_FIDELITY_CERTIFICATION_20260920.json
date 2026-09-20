@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "certification": "source-layout-and-content-reviewed",
-  "certified_at_utc": "2026-09-20T01:22:19.484530+00:00",
-  "certified_git_head": "a800fc2fab2c9bc61dff755aed5e940270545757",
+  "certified_at_utc": "2026-09-20T03:16:12.936357+00:00",
+  "certified_git_head": "b32a6998159321a50bc211dc0a2eda063d21e039",
   "canonical_formula_slots": 634,
   "rendered_formula_instances": 638,
   "review_basis": [
@@ -1474,7 +1474,7 @@
       "page": "fem/fem_7_1_2.html",
       "id": "fix-r-fem2d-mom-002",
       "data_source_image": "./../img/fem_d_momentum_tri.files/image004.png",
-      "formula_sha256": "50eeaa737167354fcbb08334e7d54391e37459de4d6d8d3817377474a2a46a36",
+      "formula_sha256": "16a2747d4d3c5a67a2651a4df7103048176c6d79c579bedb9cd143bf87f21008",
       "source_basis": "original-image",
       "source_path": "img/fem_d_momentum_tri.files/image004.png",
       "source_sha256": "72d6e53c98e872032f1808a1edf7f8ab61422dcf75221b95de2273d680d6cbb0"
