@@ -24,6 +24,9 @@ jobs:
         run: |
           python .document/tools/source_fidelity_prepare.py
 
+      - name: Synchronize formula review ledgers
+        run: python .document/tools/sync_formula_ledgers_from_html.py
+
       - name: Record run id and normalized public assets
         run: |
           mkdir -p .document/formula_reviews
