@@ -57,11 +57,11 @@ jobs:
               candidates.append(rel)
 
           asset_attr=re.compile(
-              r'''(?P<prefix>\b(?:src|href|background)\s*=\s*["'])(?P<path>(?:\./)?(?:\.\./)*)(?P<dir>img|pdf)/''',
+              rb'''(?P<prefix>\b(?:src|href|background)\s*=\s*["'])(?P<path>(?:\./)?(?:\.\./)*)(?P<dir>img|pdf)/''',
               re.I
           )
           css_url=re.compile(
-              r'''(?P<prefix>url\(\s*["']?)(?P<path>(?:\./)?(?:\.\./)*)(?P<dir>img|pdf)/''',
+              rb'''(?P<prefix>url\(\s*["']?)(?P<path>(?:\./)?(?:\.\./)*)(?P<dir>img|pdf)/''',
               re.I
           )
 
@@ -70,21 +70,33 @@ jobs:
               src=Path(rel)
               dst=stage/rel
               dst.parent.mkdir(parents=True,exist_ok=True)
-              text=src.read_text(encoding="utf-8")
-              new=asset_attr.sub(lambda m: m.group("prefix")+"/"+m.group("dir").lower()+"/", text)
-              new=css_url.sub(lambda m: m.group("prefix")+"/"+m.group("dir").lower()+"/", new)
-              if new != text:
+              data=src.read_bytes()
+              new=asset_attr.sub(
+                  lambda m: m.group("prefix")+b"/"+m.group("dir").lower()+b"/",
+                  data
+              )
+              new=css_url.sub(
+                  lambda m: m.group("prefix")+b"/"+m.group("dir").lower()+b"/",
+                  new
+              )
+              if new != data:
                   rewritten += 1
-              dst.write_text(new,encoding="utf-8")
+              dst.write_bytes(new)
 
           leftovers=[]
+          asset_left=re.compile(
+              rb'''(?:src|href|background)\s*=\s*["'](?:\./)?(?:\.\./)*(?:img|pdf)/''',
+              re.I
+          )
+          css_left=re.compile(
+              rb'''url\(\s*["']?(?:\./)?(?:\.\./)*(?:img|pdf)/''',
+              re.I
+          )
           for p in stage.rglob("*"):
               if not p.is_file():
                   continue
-              text=p.read_text(encoding="utf-8")
-              if re.search(r'''(?:src|href|background)\s*=\s*["'](?:\./)?(?:\.\./)*(?:img|pdf)/''',text,re.I):
-                  leftovers.append(p.as_posix())
-              if re.search(r'''url\(\s*["']?(?:\./)?(?:\.\./)*(?:img|pdf)/''',text,re.I):
+              data=p.read_bytes()
+              if asset_left.search(data) or css_left.search(data):
                   leftovers.append(p.as_posix())
           if leftovers:
               raise SystemExit("Unconverted shared-asset references: "+", ".join(sorted(set(leftovers))[:20]))
