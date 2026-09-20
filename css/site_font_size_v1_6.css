@@ -2,8 +2,8 @@
 @import url("site_readability_v1_6.css?v=20260917a");
 
 /**
- * Updated: 2026/09/17
- * Summary: [S007] Font-size selector and three-step type scaling for v1.6.
+ * Updated: 2026/09/20
+ * Summary: [S007] Font-size selector and three-step type scaling for v1.6; align controls to the 1080px header grid and center button labels.
  * Also overrides generated navigation symbols with ASCII-only Unicode escapes.
  */
 
@@ -15,7 +15,7 @@
 .rv-font-size-control {
   position: absolute;
   top: 20px;
-  right: max(24px, calc((100% - 980px) / 2));
+  right: max(24px, calc((100% - 1080px) / 2));
   z-index: 65;
   display: flex;
   align-items: center;
@@ -42,6 +42,7 @@
   font: inherit;
   font-size: 12px !important;
   line-height: 1.2;
+  text-align: center !important;
 }
 
 .rv-font-size-button:hover,
