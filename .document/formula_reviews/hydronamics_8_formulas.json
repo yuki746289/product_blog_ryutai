@@ -6,7 +6,7 @@
     {
       "image": "image001.png",
       "mode": "display",
-      "latex": "\\[\n\\begin{aligned}\n\\rho\\Delta x\\Delta y\\Delta z\n\\frac{v_{x|t+\\Delta t}-v_{x|t}}{\\Delta t}\n={}&\n\\rho(\\Delta y\\Delta z\\,v_x+\\Delta z\\Delta x\\,v_y+\\Delta x\\Delta y\\,v_z)v_{x|x}\\\\\n&-\\rho(\\Delta y\\Delta z\\,v_x+\\Delta z\\Delta x\\,v_y+\\Delta x\\Delta y\\,v_z)v_{x|x+\\Delta x}\\\\\n&+\\Delta y\\Delta z\\,\\tau_{xx|x}\n-\\Delta y\\Delta z\\,\\tau_{xx|x+\\Delta x}\\\\\n&+\\Delta z\\Delta x\\,\\tau_{yx|y}\n-\\Delta z\\Delta x\\,\\tau_{yx|y+\\Delta y}\\\\\n&+\\Delta x\\Delta y\\,\\tau_{zx|z}\n-\\Delta x\\Delta y\\,\\tau_{zx|z+\\Delta z}\\\\\n&+\\Delta y\\Delta z\\,p_{x|x}\n-\\Delta y\\Delta z\\,p_{x|x+\\Delta x}\\\\\n&+\\rho\\Delta x\\Delta y\\Delta z\\,g_x\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\rho\\Delta x\\Delta y\\Delta z\n\\frac{v_{x|t+\\Delta t}-v_{x|t}}{\\Delta t}\n&={}\n\\rho(\\Delta y\\Delta z\\,v_x+\\Delta z\\Delta x\\,v_y+\\Delta x\\Delta y\\,v_z)v_{x|x}\\\\[6pt]\n&-\\rho(\\Delta y\\Delta z\\,v_x+\\Delta z\\Delta x\\,v_y+\\Delta x\\Delta y\\,v_z)v_{x|x+\\Delta x}\\\\[6pt]\n&+\\Delta y\\Delta z\\,\\tau_{xx|x}\n-\\Delta y\\Delta z\\,\\tau_{xx|x+\\Delta x}\\\\[6pt]\n&+\\Delta z\\Delta x\\,\\tau_{yx|y}\n-\\Delta z\\Delta x\\,\\tau_{yx|y+\\Delta y}\\\\[6pt]\n&+\\Delta x\\Delta y\\,\\tau_{zx|z}\n-\\Delta x\\Delta y\\,\\tau_{zx|z+\\Delta z}\\\\[6pt]\n&+\\Delta y\\Delta z\\,p_{x|x}\n-\\Delta y\\Delta z\\,p_{x|x+\\Delta x}\\\\[6pt]\n&+\\rho\\Delta x\\Delta y\\Delta z\\,g_x\n\\end{aligned}\n\\]"
     },
     {
       "image": "image002.png",
@@ -16,7 +16,7 @@
     {
       "image": "image003.png",
       "mode": "display",
-      "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial(\\rho v_x)}{\\partial t}\n={}&\n-\\frac{\\partial(\\rho v_xv_x)}{\\partial x}\n-\\frac{\\partial(\\rho v_yv_x)}{\\partial y}\n-\\frac{\\partial(\\rho v_zv_x)}{\\partial z}\\\\\n&-\\frac{\\partial\\tau_x}{\\partial x}\n-\\frac{\\partial\\tau_y}{\\partial y}\n-\\frac{\\partial\\tau_z}{\\partial z}\\\\\n&-\\frac{\\partial p_x}{\\partial x}\n+\\rho g_x\n\\end{aligned}\n\\]"
+      "latex": "\\[\n\\begin{aligned}\n\\frac{\\partial(\\rho v_x)}{\\partial t}\n&={}\n-\\frac{\\partial(\\rho v_xv_x)}{\\partial x}\n-\\frac{\\partial(\\rho v_yv_x)}{\\partial y}\n-\\frac{\\partial(\\rho v_zv_x)}{\\partial z}\\\\[6pt]\n&-\\frac{\\partial\\tau_x}{\\partial x}\n-\\frac{\\partial\\tau_y}{\\partial y}\n-\\frac{\\partial\\tau_z}{\\partial z}\\\\[6pt]\n&-\\frac{\\partial p_x}{\\partial x}\n+\\rho g_x\n\\end{aligned}\n\\]"
     },
     {
       "image": "image004.png",
