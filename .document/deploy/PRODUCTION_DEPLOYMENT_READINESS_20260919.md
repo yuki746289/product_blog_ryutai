@@ -45,8 +45,8 @@ MPS `mps/mps_6_2.html` の former `image022.gif` は正本未回収のため、
 - source-fidelity certification: **PASS**
 - operator alignment audit: **606 math blocks / 0 issues**
 - shared desktop content width: **1080px max**
-- latest full-site QA run: `35486148973`
-- latest QA trigger head: `bc719445d1dfa0182b6eca3742143f44a5759c3f`
+- latest full-site QA run: `35491138623`
+- latest QA trigger head: `a6e4352f0fe65cf6345f742ba0de8c1ddb792cd3`
 - normal HTML: **205 pages**
 - desktop + mobile checks: **410**
 - hard failures: **0**
@@ -105,22 +105,22 @@ Final MPS delta QA:
   - 接続処理完了後に `Expected 49 MPS references but parsed 0` で終了したもの。
   - workflowの期待値は **0件** へ修正済み。
 - 一時ファイルupload/delete能力: 過去に確認済み
-- 本番書込み: **未実施**
+- 本番書込み: **実施済み**
 
 ## Deploy前整合確認
 
 - 2026-09-20に公開HTML/CSSへ、UTF-8統一、source-faithful line break/alignment、共通本文幅1080pxの修正を反映済み。
 - 公開変更は最新の全サイトBrowser QA / source-fidelity / operator-alignment auditで再検証済み。
 - QAスクリプト・QAトリガー・QAレポート・本デプロイ準備台帳は公開対象外。
-- 本番FTPS書込み: **未実施**
+- 本番FTPS書込み: **実施済み**
 
 ## 本番反映時の安全条件
 
 1. source branchは `develop`
 2. `.document` / `.github` / `design_samples` は公開しない
 3. audit / re-audit用HTMLは公開しない
-4. Remote側の削除は行わない
-5. HTML / CSS / JS / img等の公開資産のみ上書き
+4. 通常デプロイではRemote側の削除は行わない
+5. 通常デプロイはHTML / HTM / CSS / JS / XML / TXTのみ上書きし、既存画像は再転送しない
 6. image022は現在のユーザー承認済み推定復元MathJaxを使用
 7. deploy後に公開URLでsmoke test
 8. PC/mobileでMathJax・overflow・missing imageを再確認
@@ -150,3 +150,15 @@ Final MPS delta QA:
 - remote deletion: **0**
 - HTTP content smoke: **PASS**
 - production browser smoke: **PASS** (5 pages × desktop/mobile = 10 checks)
+
+### 旧ページ `/old/` 最終構成
+
+- source: `release_1.0.0`
+- legacy text assets: HTML / HTM / CSS / JS / XML / TXTのみ `/old/` に配置
+- images: `/old/img/` を保持せず、現行 `/img/` を共用
+- PDFs: 現行 `/pdf/` を共用
+- duplicated `/old/img/`: **削除済み**
+- `mps/mps_1.html` の旧数式画像1件は正本画像がrepository/共通assetに無いため、**新規画像を作らずMathJax表示**
+- final old-site workflow run: `35496891008`
+- HTTP verification: **PASS**
+- desktop/mobile browser smoke: **PASS**
