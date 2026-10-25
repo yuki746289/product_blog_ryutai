@@ -1,0 +1,7 @@
+2026-10-25 seo_indexing_fix_v1.1
+- 種別: quick_fix
+- 対象: production FTPS workflow / old-site FTPS workflow / robots.txt
+- 目的: sitemap約181URLに対しindex約40件で停滞する問題の重複・canonical対策
+- 実装: 現行sitemap HTMLへself canonical、旧/old/ HTMLへnoindex,follow、robots.txtへsitemap宣言
+- 確認: sitemap 181/181実在、旧HTML295/295現行対応、変換ロジックsmoke PASS
+- 本番: 未反映（ユーザー明示承認待ち）
