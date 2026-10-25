@@ -5,3 +5,4 @@
 2026-09-20 restore-shared-mps-image-and-final-old-verify
 2026-09-20 final-old-mps-mathjax-no-image
 2026-09-20 final-old-cache-bypass-verify
+2026-10-25 seo-indexing-old-noindex-production-deploy
