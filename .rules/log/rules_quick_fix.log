@@ -4,4 +4,6 @@
 - 目的: sitemap約181URLに対しindex約40件で停滞する問題の重複・canonical対策
 - 実装: 現行sitemap HTMLへself canonical、旧/old/ HTMLへnoindex,follow、robots.txtへsitemap宣言
 - 確認: sitemap 181/181実在、旧HTML295/295現行対応、変換ロジックsmoke PASS
-- 本番: 未反映（ユーザー明示承認待ち）
+- 本番: 2026-10-25 明示承認後に反映完了
+- Production run 40192883478: SUCCESS（HTTP/browser smoke PASS）
+- Old-site run 40192886915: SUCCESS（HTTP/browser smoke PASS）
