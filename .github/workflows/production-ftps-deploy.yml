@@ -23,6 +23,72 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Prepare SEO metadata for publish
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import re
+          import xml.etree.ElementTree as ET
+          from pathlib import Path
+          from urllib.parse import urlparse
+
+          sitemap = Path("sitemap.xml")
+          root = ET.fromstring(sitemap.read_text(encoding="utf-8"))
+          namespace = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+          canonical_by_path = {}
+
+          for node in root.findall("sm:url/sm:loc", namespace):
+              canonical = (node.text or "").strip()
+              parsed = urlparse(canonical)
+              if parsed.scheme != "https" or parsed.netloc != "ryutai.ninja-web.net":
+                  raise SystemExit(f"Unexpected sitemap URL: {canonical}")
+              if parsed.query or parsed.fragment:
+                  raise SystemExit(f"Sitemap URL must not contain query/fragment: {canonical}")
+
+              rel = parsed.path.lstrip("/") or "index.html"
+              if rel.endswith("/"):
+                  rel += "index.html"
+              if rel.lower().endswith((".html", ".htm")):
+                  canonical_by_path[rel] = canonical
+
+          close_head = re.compile(rb"</head\s*>", re.I)
+          canonical_tag = re.compile(
+              rb'''<link\b[^>]*\brel\s*=\s*["'][^"']*\bcanonical\b[^"']*["'][^>]*>''',
+              re.I,
+          )
+
+          modified = 0
+          verified = 0
+          for rel, canonical in sorted(canonical_by_path.items()):
+              page = Path(rel)
+              if not page.is_file():
+                  raise SystemExit(f"Sitemap HTML is missing from checkout: {rel}")
+
+              data = page.read_bytes()
+              expected = f'<link rel="canonical" href="{canonical}">'.encode("utf-8")
+              existing = canonical_tag.search(data)
+              if existing:
+                  if expected not in existing.group(0):
+                      raise SystemExit(
+                          f"Conflicting canonical in {rel}: {existing.group(0)!r}"
+                      )
+              else:
+                  if not close_head.search(data):
+                      raise SystemExit(f"Missing </head> in sitemap HTML: {rel}")
+                  data = close_head.sub(b"  " + expected + b"\n</head>", data, count=1)
+                  page.write_bytes(data)
+                  modified += 1
+
+              if expected not in page.read_bytes():
+                  raise SystemExit(f"Canonical verification failed: {rel}")
+              verified += 1
+
+          print(
+              f"SEO canonical preparation: targets={len(canonical_by_path)} "
+              f"modified={modified} verified={verified}"
+          )
+          PY
+
       - name: Upload public assets by FTPS with targeted cache refresh
         shell: bash
         env:
@@ -194,13 +260,23 @@ jobs:
                   'data-ad-slot="4832539076"',
                   'data-full-width-responsive="true"',
                   'rel="icon" href="/favicon.ico"',
+                  '<link rel="canonical" href="https://ryutai.ninja-web.net/">',
                   '"@type": "WebSite"',
                   '"name": "有限要素法・流体力学による数値計算"',
               ],
               "footer.html": ["site_ads_v1_6.js?v=20260920a"],
+              "robots.txt": [
+                  "User-agent: *",
+                  "Allow: /",
+                  "Sitemap: https://ryutai.ninja-web.net/sitemap.xml",
+              ],
               "ad_top.html": ["Legacy compatibility endpoint."],
               "revision_history.html": ["<h2>2026-09-20</h2>"],
-              "mps/mps_1.html": ['id="formula-mps-1-001"', r"\lt r_e"],
+              "mps/mps_1.html": [
+                  'id="formula-mps-1-001"',
+                  r"\lt r_e",
+                  '<link rel="canonical" href="https://ryutai.ninja-web.net/mps/mps_1.html">',
+              ],
               "menu.html": ['href="./mps/mps.html"', "粒子法"],
               "js/site_home_cleanup_v1_6.js": [
                   "Renewal notice is now maintained directly in index.html"
