@@ -64,8 +64,15 @@ jobs:
               rb'''(?P<prefix>url\(\s*["']?)(?P<path>(?:\./)?(?:\.\./)*)(?P<dir>img|pdf)/''',
               re.I
           )
+          close_head=re.compile(rb"</head\s*>",re.I)
+          robots_meta=re.compile(
+              rb'''<meta\b[^>]*\bname\s*=\s*["']robots["'][^>]*>''',
+              re.I
+          )
+          required_robots=b'<meta name="robots" content="noindex,follow">'
 
           rewritten=0
+          noindex_pages=0
           for rel in sorted(set(candidates)):
               src=Path(rel)
               dst=stage/rel
@@ -79,6 +86,16 @@ jobs:
                   lambda m: m.group("prefix")+b"/"+m.group("dir").lower()+b"/",
                   new
               )
+
+              if src.suffix.lower() in {".html",".htm"}:
+                  if robots_meta.search(new):
+                      new=robots_meta.sub(required_robots,new,count=1)
+                  else:
+                      if not close_head.search(new):
+                          raise SystemExit(f"Legacy HTML is missing </head>: {rel}")
+                      new=close_head.sub(b"  "+required_robots+b"\n</head>",new,count=1)
+                  noindex_pages += 1
+
               if rel == "mps/mps_1.html":
                   mathjax_head = (
                       b'<script>window.MathJax={output:{displayOverflow:"overflow"},'
@@ -120,8 +137,28 @@ jobs:
           if leftovers:
               raise SystemExit("Unconverted shared-asset references: "+", ".join(sorted(set(leftovers))[:20]))
 
+          missing_noindex=[]
+          staged_html=0
+          for p in stage.rglob("*"):
+              if not p.is_file() or p.suffix.lower() not in {".html",".htm"}:
+                  continue
+              staged_html += 1
+              match=robots_meta.search(p.read_bytes())
+              if not match or b"noindex" not in match.group(0).lower():
+                  missing_noindex.append(p.as_posix())
+          if missing_noindex:
+              raise SystemExit(
+                  "Legacy HTML without noindex: "
+                  + ", ".join(sorted(missing_noindex)[:20])
+              )
+          if staged_html != noindex_pages:
+              raise SystemExit(
+                  f"Legacy noindex count mismatch: staged={staged_html} prepared={noindex_pages}"
+              )
+
           print(f"legacy text files={len(set(candidates))}")
           print(f"rewritten files={rewritten}")
+          print(f"legacy noindex pages={noindex_pages}")
           print("shared assets: /img and /pdf")
           PY
       - name: Install lftp
@@ -228,6 +265,8 @@ jobs:
               for needle in needles:
                   if needle not in text:
                       raise SystemExit(f"{path}: missing expected marker {needle!r}")
+              if '<meta name="robots" content="noindex,follow">' not in text:
+                  raise SystemExit(f"{path}: legacy noindex meta is missing")
               print(f"PASS {path}")
           print("Production old-site smoke: PASS")
           PY
