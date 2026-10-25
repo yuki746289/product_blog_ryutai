@@ -4,3 +4,4 @@
 2026-09-20 force-refresh-ads-production
 2026-09-20 eliminate-legacy-layout-flash
 2026-09-24 favicon-breadcrumb-production-deploy
+2026-10-25 seo-indexing-canonical-robots-production-deploy
