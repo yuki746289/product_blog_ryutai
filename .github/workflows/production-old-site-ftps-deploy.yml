@@ -265,8 +265,9 @@ jobs:
               for needle in needles:
                   if needle not in text:
                       raise SystemExit(f"{path}: missing expected marker {needle!r}")
-              if '<meta name="robots" content="noindex,follow">' not in text:
-                  raise SystemExit(f"{path}: legacy noindex meta is missing")
+              if path.lower().endswith((".html", ".htm")):
+                  if '<meta name="robots" content="noindex,follow">' not in text:
+                      raise SystemExit(f"{path}: legacy noindex meta is missing")
               print(f"PASS {path}")
           print("Production old-site smoke: PASS")
           PY
