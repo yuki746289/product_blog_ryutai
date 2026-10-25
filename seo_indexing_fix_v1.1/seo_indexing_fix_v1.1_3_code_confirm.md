@@ -1,7 +1,7 @@
 # SEOインデックス停滞修正 v1.1 - コード確認
 
 ## 総合判定
-**PASS（develop修正完了 / 本番FTP未反映）**
+**PASS（develop修正完了 / 本番FTP反映・公開後検証完了）**
 
 ## 確認対象
 - `seo_indexing_fix_v1.1_1_request.md`
@@ -57,6 +57,21 @@
 - HTML/CSS/JSのID/DOM/レイアウト変更: 対象外
 - 追加コードのインデント: 既存YAML/Python形式に準拠、タブ追加なし
 
-## 未実施
-本番FTPデプロイと公開HTTP smokeは未実施。
-プロジェクト固有ルールにより、本番反映はユーザーの明示承認後にのみ実施する。
+## 本番反映結果
+ユーザーの明示承認後、2026-10-25に本番反映を実施した。
+
+- 現行サイト Production FTPS Deploy: run `40192883478` / SUCCESS
+  - SEO metadata preparation: PASS
+  - FTPS upload: PASS
+  - HTTP content smoke: PASS
+  - PC/mobile browser smoke: PASS
+- 旧サイト Production Old Site FTPS Deploy: run `40192886915` / SUCCESS
+  - legacy publish staging + noindex: PASS
+  - FTPS upload: PASS
+  - HTTP verification: PASS
+  - old-site browser smoke: PASS
+
+本番確認済み:
+- root `robots.txt` の sitemap 宣言
+- 現行代表ページの self canonical
+- `/old/` 代表HTMLの `noindex,follow`
